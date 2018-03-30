@@ -8,7 +8,7 @@
 
 import React from "react";
 import classNames from "classnames";
-import { setCoreClass, isUsable } from "../_utilities/CoreUtils";
+import { isUsable } from "../_utilities/CoreUtils";
 import {
   getValidProps,
   getCorePropTypes,
@@ -22,7 +22,7 @@ class GridColumn extends React.Component {
   });
 
   static defaultProps = getCorePropDefaults({
-    uirole: Roles.CELL,
+    uirole: Roles.COLUMN,
     cols: 12,
     textAlign: "left"
   });
@@ -34,6 +34,9 @@ class GridColumn extends React.Component {
       children,
       props
     } = getValidProps(this.props);
+
+    // console.log(this.props);
+    // console.log(props);
 
     const classes = {};
 
@@ -49,4 +52,4 @@ class GridColumn extends React.Component {
   }
 }
 
-export default setCoreClass("grid-column", GridColumn);
+export default GridColumn;

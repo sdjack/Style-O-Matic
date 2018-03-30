@@ -17,7 +17,7 @@ import {
   prefix
 } from "../_utilities/CoreUtils";
 import Input from "../Input";
-// import "./Form.css";
+import "./Form.css";
 
 const INPUT_ROLE = Input.defaultProps.uirole;
 

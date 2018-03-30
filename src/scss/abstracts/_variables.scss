@@ -15,6 +15,7 @@ $title-font-size: 24px;
 /// Code (monospace) font family
 /// @type List
 $code-font-stack: 'Source Sans Pro', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+$icon-font-stack: 'Font Awesome 5 Free' !default;
 
 /// Copy text color
 /// @type Color
@@ -118,6 +119,11 @@ $padding-smaller: ($padding / 3) !default;
 
 $border-radius: 3px !default;
 $border-radius-large: 5px !default;
+
+$toggle-size: 28px !default;
+$toggle-v-offset: (($outer-frame-height - $toggle-size) / 2);
+$toggle-h-offset: (($outer-frame-width - $toggle-size) / 2);
+$toggle-padding: $toggle-v-offset $toggle-h-offset !default;
 /**
 *  HEADER
 */
@@ -188,7 +194,7 @@ $nav-folder-caret-padding: 17px 10px 17px 0;
 */
 $button-min-width: 32px !default;
 $button-height: 26px !default;
-$button-padding: 12px 24px !default;
+$button-padding: ($padding - 2) ($padding * 2) ($padding + 2) !default;
 $button-margin: 4px !default;
 $button-fab-size: 56px !default;
 $button-fab-size-mini: 40px !default;
@@ -270,42 +276,42 @@ $selectbox-font-size: 24px !default;
 /**
 *  TILE
 */
-$tile-background-color: unquote("rgb(#{$color-white})") !default;
-$tile-image-placeholder-color: $common-text-color;
-$tile-body-actions-text-color: $common-text-color;
-$tile-border-color: rgba(0,0,0,0.1) !default;
-$tile-padding: 8px;
-$tile-margin: $padding;
-$tile-min-width: 20.5% !default;
-$tile-max-width: 24.1% !default;
-$tile-height: 325px;
-$tile-responsive-min-width: 300px;
-$tile-responsive-max-width: 380px;
-$tile-responsive-height: 380px;
-$tile-header-height: 40px;
-$tile-badge-offset: $tile-header-height + 30;
-$tile-body-height: 300px;
-$tile-horizontal-padding: 16px !default;
-$tile-vertical-padding: 16px !default;
-$tile-font-size: 16px !default;
-$tile-header-font-size: 20px !default;
-$tile-header-perspective-origin-x: 165px !default;
-$tile-header-perspective-origin-y: 56px !default;
-$tile-header-transform-origin-x: 165px !default;
-$tile-header-transform-origin-y: 56px !default;
-$tile-header-horizontal-padding: 0px !default;
-$tile-header-vertical-padding: 12px !default;
-$tile-header-text-transform-origin-x: 149px !default;
-$tile-header-text-transform-origin-y: 48px !default;
-$tile-header-text-font-weight: 300 !default;
-$tile-body-line-height: 18px !default;
-$tile-body-font-size: 13px !default;
-$tile-body-actions-font-size: 16px !default;
-$tile-body-horizontal-padding: 0px !default;
-$tile-body-vertical-padding: 8px !default;
-$tile-z-index: 1 !default;
-$tile-cover-image-height: 186px !default;
-$tile-background-image-url: '' !default;
+$card-background-color: unquote("rgb(#{$color-white})") !default;
+$card-image-placeholder-color: $common-text-color;
+$card-body-actions-text-color: $common-text-color;
+$card-border-color: rgba(0,0,0,0.1) !default;
+$card-padding: 8px;
+$card-margin: $padding;
+$card-min-width: 20.5% !default;
+$card-max-width: 24.1% !default;
+$card-height: 325px;
+$card-responsive-min-width: 300px;
+$card-responsive-max-width: 380px;
+$card-responsive-height: 380px;
+$card-header-height: 40px;
+$card-badge-offset: $card-header-height + 30;
+$card-body-height: 300px;
+$card-horizontal-padding: 16px !default;
+$card-vertical-padding: 16px !default;
+$card-font-size: 16px !default;
+$card-header-font-size: 20px !default;
+$card-header-perspective-origin-x: 165px !default;
+$card-header-perspective-origin-y: 56px !default;
+$card-header-transform-origin-x: 165px !default;
+$card-header-transform-origin-y: 56px !default;
+$card-header-horizontal-padding: 0px !default;
+$card-header-vertical-padding: 12px !default;
+$card-header-text-transform-origin-x: 149px !default;
+$card-header-text-transform-origin-y: 48px !default;
+$card-header-text-font-weight: 300 !default;
+$card-body-line-height: 18px !default;
+$card-body-font-size: 13px !default;
+$card-body-actions-font-size: 16px !default;
+$card-body-horizontal-padding: 0px !default;
+$card-body-vertical-padding: 8px !default;
+$card-z-index: 1 !default;
+$card-cover-image-height: 186px !default;
+$card-background-image-url: '' !default;
 /**
 *  MISC
 */

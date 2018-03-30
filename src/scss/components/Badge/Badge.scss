@@ -11,7 +11,7 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 
-.badge {
+.ui-badge {
   display: inline-block;
   min-width: $badge-size;
   height: $badge-size;
@@ -26,7 +26,7 @@
   }
 }
 
-.badge-small {
+.ui-badge-small {
   display: inline-block;
   min-width: $badge-size-small;
   height: $badge-size-small;
@@ -41,11 +41,11 @@
   }
 }
 
-.badge-no-icon {
+.ui-badge-no-icon {
   padding: 0 24px !important;
 }
 
-.badge-label {
+.ui-badge-label {
   display: inline-block;
   min-width: $badge-size;
   font-size: 12px;

@@ -1,30 +1,21 @@
-/***
- *     ██████╗ ██████╗ ██╗██████╗ 
- *    ██╔════╝ ██╔══██╗██║██╔══██╗
- *    ██║  ███╗██████╔╝██║██║  ██║
- *    ██║   ██║██╔══██╗██║██║  ██║
- *    ╚██████╔╝██║  ██║██║██████╔╝
- *     ╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝ 
- *                                
- */
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
 
  @import 'config';
 
-// .grid {
+// .ui-grid {
 //   @include make-grid();
 //   //@include make-grid-max-widths();
 // }
 
-// .grid-row {
+// .ui-grid-row {
 //   @include make-grid-row();
 // }
 
 // @include make-grid-columns();
 
-.grid {
+.ui-grid {
   display: block;
   padding: 0;
   max-width: 1200px;
@@ -32,7 +23,7 @@
   margin-right: auto !important;
 }
 
-.grid-row {
+.ui-grid-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -42,12 +33,12 @@
   padding-left: 20px;
   padding-right: 20px;
 
-  & > .grid-row {
+  & > .ui-grid-row {
     padding: ($padding-large / 2) 0 ($padding-large / 2) $padding-large !important;
   }
 }
 
-.grid-column {
+.ui-grid-column {
   display: inline-block;
   flex-grow: 1;
   flex-shrink: 1;
@@ -108,7 +99,7 @@
   }
 }
 
-.grid-divider {
+.ui-grid-divider {
   padding: 2px 14px 2px 2px;
   border: 0px solid rgba(0,0,0,0);
   border-right: 1px solid rgba(0,0,0,0.2);
@@ -121,7 +112,7 @@
   }
 }
 
-.grid-post-divider {
+.ui-grid-post-divider {
   padding: 2px 2px 2px 14px;
 
   @media screen and (max-width: $grid-screen-threshold) {

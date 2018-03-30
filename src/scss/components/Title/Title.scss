@@ -1,47 +1,47 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.title {
+.ui-title {
 	display: block;
 }
 
-.title-content,
-.title-subtitle,
-.title-icon {
+.ui-title-content,
+.ui-title-subtitle,
+.ui-title-icon {
     display: block;
 }
 
-.title-content,
-.title-icon {
+.ui-title-content,
+.ui-title-icon {
     padding: 0 !important;
     margin-bottom: 6px !important;
 }
 
-.title-subtitle,
-.title-icon {
+.ui-title-subtitle,
+.ui-title-icon {
     padding: 0 !important;
     margin: 0 !important;
 }
 
-.title-content,
-.title-subtitle {
-    & > .title-icon {
+.ui-title-content,
+.ui-title-subtitle {
+    & > .ui-title-icon {
         display: inline-block !important;
         margin: 0 !important;
     }
 }
 
-section > .title,
-header > .title,
-footer > .title,
-nav > .title,
-ul > .title,
-form > .title,
-.window > .title,
-.well > .title,
-.panel > .title {
-    & > .title-content,
-    & > .title-icon {
+section > .ui-title,
+header > .ui-title,
+footer > .ui-title,
+nav > .ui-title,
+ul > .ui-title,
+form > .ui-title,
+.window > .ui-title,
+.well > .ui-title,
+.panel > .ui-title {
+    & > .ui-title-content,
+    & > .ui-title-icon {
         margin: 0 !important;
     }
 }

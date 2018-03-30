@@ -6,8 +6,9 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React from "react";
-import { setCoreClass } from "../_utilities/CoreUtils";
+import React, { cloneElement } from "react";
+import warning from "warning";
+import { createChainedFunction, prefix } from "../_utilities/CoreUtils";
 import {
   getValidProps,
   getCorePropTypes,
@@ -22,13 +23,50 @@ class GridRow extends React.Component {
     uirole: Roles.ROW
   });
 
+  renderChild = (child, props) => {
+    const role = child.props.uirole || Roles.COLUMN;
+    let ref = c => {
+      this[role] = c;
+    };
+    if (typeof child.ref === "string") {
+      warning(
+        false,
+        `String refs are not supported on grid-${role} components.`
+      );
+    } else {
+      ref = createChainedFunction(child.ref, ref);
+    }
+    return cloneElement(child, {
+      ...props,
+      ref,
+      uiclass: prefix(props, role)
+    });
+  };
+
   render() {
     const { componentClass: Component, children, props } = getValidProps(
       this.props
     );
 
-    return <Component {...props}>{children}</Component>;
+    return (
+      <Component {...props}>
+        {React.Children.map(children, child => {
+          if (
+            typeof child.props !== "undefined" &&
+            typeof child.props.uirole !== "undefined"
+          ) {
+            switch (child.props.uirole) {
+              case Roles.COLUMN:
+                return this.renderChild(child, { uiclass: "ui-grid" });
+              default:
+                return child;
+            }
+          }
+          return child;
+        })}
+      </Component>
+    );
   }
 }
 
-export default setCoreClass("grid-row", GridRow);
+export default GridRow;

@@ -1,0 +1,126 @@
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+.ui-main {
+  width: 100%;
+  height: 100%;
+  padding: 0 !important;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin: 0 !important;
+  overflow: hidden;
+
+  & > .scroll-wrapper {
+    display: inline-block;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 0px !important;
+    padding: 0px !important;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.ui-main-content {
+  width: 100%;
+  display: block;
+  margin: 0px !important;
+  padding: 0px 0px 128px 0px !important;
+}
+
+.ui-main-drawer,
+.ui-main-drawer-flyout {
+    padding: 0px;
+    margin: 0px;
+}
+
+.ui-main-drawer {
+    z-index: 70;
+    color: $color-white;
+    background-color: $color-darkest-grey;
+    overflow: hidden;
+    @include no-shadow();
+    @include animate-default(0.2s);
+    transition-property: all;
+    width: 0px;
+    max-width: $nav-size;
+    height: 100%;
+    & > .ui-main-drawer-flyout {
+      height: 100%;
+    }
+
+    &.active {
+      width: $nav-size !important;
+      min-width: $nav-size !important;
+      max-width: $nav-size !important;
+      // overflow-x: hidden !important;
+      // overflow-y: auto !important;
+      @include shadow-drawer();
+    }
+
+    &.minimized {
+      width: $outer-frame-width !important;
+      min-width: $outer-frame-width !important;
+      max-width: $outer-frame-width !important;
+      background-color: $color-darker-grey;
+      // overflow-x: hidden !important;
+      // overflow-y: auto !important;
+      @include shadow-drawer();
+    }
+
+    & > .drawer-toggle-button {
+      height: 60px !important;
+      width: 100% !important;
+      color: $color-white !important;
+      background-color: transparent;
+      display: inline-block;
+      padding: 2px !important;
+      font-size: $toggle-size !important;
+      border: none !important;
+      border-radius: 0 !important;
+      @include text-align-center();
+      @include shadow-removed();
+      &:hover {
+        background-color: rgba(33, 150, 243, 0.5);
+      }
+    }
+}
+
+.ui-main-drawer-content {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: $color-white;
+  background-color: $color-darkest-grey;
+}
+
+.ui-main-drawer-flyout {
+  display: block;
+  width: 100%;
+  float: left;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+  color: $color-white;
+  background-color: $color-darkest-grey;
+}
+
+.ui-main-drawer-collapsed {
+  width: 0px !important;
+  overflow: hidden !important;
+  @include no-shadow();
+}
+
+.ui-main-drawer-flyout-collapsed {
+  width: 0px !important;
+  height: 0px !important;
+  overflow: hidden !important;
+  @include no-shadow();
+}

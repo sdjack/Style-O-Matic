@@ -2,7 +2,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://use.fontawesome.com/releases/v5.0.9/css/all.css');
 
+// Vendors
+// @import
+//   'vendor/vendor';
+  
 // Configuration and helpers
 @import
   'abstracts/colors',
@@ -23,21 +28,21 @@
 // Components
 @import
   'components/Accordion/Accordion',
-  'components/Grid/Grid',
   'components/Badge/Badge',
   'components/Breadcrumbs/Breadcrumbs',
   'components/Button/Button',
   'components/ButtonBar/ButtonBar',
   'components/ButtonMenu/ButtonMenu',
-  'components/ToolBar/ToolBar',
+  'components/Card/Card',
   'components/DatePicker/DatePicker',
-  'components/Drawer/Drawer',
   'components/Dropdown/Dropdown',
   'components/Footer/Footer',
   'components/Form/Form',
+  'components/Grid/Grid',
   'components/Header/Header',
   'components/Input/Input',
   'components/Loading/Loading',
+  'components/Main/Main',
   'components/Modal/Modal',
   'components/Nav/Nav',
   'components/Pagination/Pagination',
@@ -45,6 +50,6 @@
   'components/SelectBox/SelectBox',
   'components/Table/Table',
   'components/Tabs/Tabs',
-  'components/Tile/Tile',
   'components/Title/Title',
-  'components/Toasts/Toasts';
+  'components/Toasts/Toasts',
+  'components/ToolBar/ToolBar';

@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import elementType from "prop-types-extra/lib/elementType";
 import { setCoreClass } from "../_utilities/CoreUtils";
-// import "./Modal.css";
+import "./Modal.css";
 
 class Modal extends React.Component {
   static propTypes = {

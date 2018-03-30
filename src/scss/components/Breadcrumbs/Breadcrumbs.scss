@@ -10,7 +10,7 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.breadcrumbs {
+.ui-breadcrumbs {
 	padding: 0 30px;
 	margin: 0;
 	display: block;
@@ -20,13 +20,13 @@
 	z-index: 56;
 	position: fixed;
 }
-.breadcrumbs-shim {
+.ui-breadcrumbs-shim {
 	display: block;
 	width: 100%;
 	padding: 0 0 50px;
 }
-.breadcrumb,
-.breadcrumb-right {
+.ui-breadcrumbs-crumb,
+.ui-breadcrumbs-crumb-right {
 	display: inline-block;
 	padding: $toolbar-padding;
 	// max-width: 100%;
@@ -34,11 +34,11 @@
 	font-weight: 300;
 	box-sizing: border-box;
 }
-.breadcrumb {
+.ui-breadcrumbs-crumb {
 	justify-content: start;
   	@include text-align-left();
 }
-.breadcrumb-right {
+.ui-breadcrumbs-crumb-right {
 	position: absolute;
 	top: 0;
 	left: 75%;

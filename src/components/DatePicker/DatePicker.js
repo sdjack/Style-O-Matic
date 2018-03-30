@@ -18,7 +18,7 @@ import {
 } from "../_utilities/CoreUtils";
 import Calendar from "./Calendar";
 import Dropdown from "../Dropdown/Dropdown";
-// import "./DatePicker.css";
+import "./DatePicker.css";
 
 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
@@ -810,4 +810,4 @@ class DatePicker extends React.Component {
   }
 }
 
-export default setCoreClass("datepicker", DatePicker);
+export default setCoreClass("ui-datepicker", DatePicker);

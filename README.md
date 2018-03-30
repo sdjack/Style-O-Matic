@@ -25,7 +25,7 @@ $ gulp
 **Start the local development environment:**
 
 ```
-$ npm run start
+$ npm start
 ```
 
 ## SCSS Compiling

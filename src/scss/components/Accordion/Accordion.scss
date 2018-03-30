@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.accordion {
+.ui-accordion {
     background-color: #fff;
 	border: 1px solid rgba(0,0,0,.13);
 	border-radius: 6px;
@@ -11,21 +11,21 @@
 	margin-bottom: 1em !important;
 	padding: 0 !important;
 
-	&.accordion-title:first-child {
+	&.ui-accordion-title:first-child {
 		border-top-left-radius: 6px;
 		border-top-right-radius: 6px;
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
 	}
 
-	&.accordion-title:last-child {
+	&.ui-accordion-title:last-child {
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
 		border-bottom-left-radius: 6px;
 		border-bottom-right-radius: 6px;
 	}
 
-	&.accordion-title:only-child {
+	&.ui-accordion-title:only-child {
 		border-top-left-radius: 6px;
 		border-top-right-radius: 6px;
 		border-bottom-left-radius: 6px;
@@ -33,7 +33,7 @@
 	}
 }
 
-.accordion-title {
+.ui-accordion-title {
     @include typo-title;
 	position: relative;
 	border-bottom: none;
@@ -65,13 +65,13 @@
 		&:active {
 			@include box-shadow(inset 8px 8px 22px rgba(0,0,0,.01), inset -8px -8px 22px rgba(0,0,0,.04));
 		}
-		& > .accordion-caret:before {
+		& > .ui-accordion-caret:before {
 	        content:"\f0d7"
 	    }
 	}
 }
 
-.accordion-content {
+.ui-accordion-content {
 	height: 0px;
 	padding: 0;
 	margin: 0;
@@ -89,7 +89,7 @@
 	}
 }
 
-.accordion-caret {
+.ui-accordion-caret {
     font-family: 'FontAwesome' !important;
     font-style: normal;
     position: absolute;

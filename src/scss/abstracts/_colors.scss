@@ -52,13 +52,13 @@ $color-violet-active: lighten($color-violet, 20%);
 /**
  * ROYGBIV DARKENED
  */
-$color-red-darkened: darken($color-red, 20%);
-$color-orange-darkened: darken($color-orange, 20%);
-$color-yellow-darkened: darken($color-yellow, 20%);
-$color-green-darkened: darken($color-green, 20%);
-$color-blue-darkened: darken($color-blue, 20%);
-$color-indigo-darkened: darken($color-indigo, 20%);
-$color-violet-darkened: darken($color-violet, 20%);
+$color-red-darkened: darken($color-red, 10%);
+$color-orange-darkened: darken($color-orange, 10%);
+$color-yellow-darkened: darken($color-yellow, 10%);
+$color-green-darkened: darken($color-green, 10%);
+$color-blue-darkened: darken($color-blue, 10%);
+$color-indigo-darkened: darken($color-indigo, 10%);
+$color-violet-darkened: darken($color-violet, 10%);
 /**
  * ROYGBIV CONTRAST ACTIVE
  */
@@ -72,23 +72,23 @@ $color-violet-contrast: #EDE7F6 !default;
 /**
  * ROYGBIV CONTRAST
  */
-$color-red-contrast-active: lighten($color-red-contrast, 20%);
-$color-orange-contrast-active: lighten($color-orange-contrast, 20%);
-$color-yellow-contrast-active: lighten($color-yellow-contrast, 20%);
-$color-green-contrast-active: lighten($color-green-contrast, 20%);
-$color-blue-contrast-active: lighten($color-blue-contrast, 20%);
-$color-indigo-contrast-active: lighten($color-indigo-contrast, 20%);
-$color-violet-contrast-active: lighten($color-violet-contrast, 20%);
+$color-red-contrast-active: lighten($color-red-contrast, 10%);
+$color-orange-contrast-active: lighten($color-orange-contrast, 10%);
+$color-yellow-contrast-active: lighten($color-yellow-contrast, 10%);
+$color-green-contrast-active: lighten($color-green-contrast, 10%);
+$color-blue-contrast-active: lighten($color-blue-contrast, 10%);
+$color-indigo-contrast-active: lighten($color-indigo-contrast, 10%);
+$color-violet-contrast-active: lighten($color-violet-contrast, 10%);
 /**
  * ROYGBIV CONTRAST DARKENED
  */
-$color-red-contrast-darkened: darken($color-red-contrast, 20%);
-$color-orange-contrast-darkened: darken($color-orange-contrast, 20%);
-$color-yellow-contrast-darkened: darken($color-yellow-contrast, 20%);
-$color-green-contrast-darkened: darken($color-green-contrast, 20%);
-$color-blue-contrast-darkened: darken($color-blue-contrast, 20%);
-$color-indigo-contrast-darkened: darken($color-indigo-contrast, 20%);
-$color-violet-contrast-darkened: darken($color-violet-contrast, 20%);
+$color-red-contrast-darkened: darken($color-red-contrast, 10%);
+$color-orange-contrast-darkened: darken($color-orange-contrast, 10%);
+$color-yellow-contrast-darkened: darken($color-yellow-contrast, 10%);
+$color-green-contrast-darkened: darken($color-green-contrast, 10%);
+$color-blue-contrast-darkened: darken($color-blue-contrast, 10%);
+$color-indigo-contrast-darkened: darken($color-indigo-contrast, 10%);
+$color-violet-contrast-darkened: darken($color-violet-contrast, 10%);
 /**
  * ONWARD
  */

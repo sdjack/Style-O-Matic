@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
 import classNames from "classnames";
 import { setCoreClass, isUsable } from "../_utilities/CoreUtils";
-// import "./Toasts.css";
+import "./Toasts.css";
 
 class Toasts extends React.Component {
   static propTypes = {
@@ -50,7 +50,7 @@ class Toasts extends React.Component {
     for (let i = 0; i < items.length; i++) {
       const msg = items[i];
       output.push(
-        <span className="toast" key={`toast-message_${i}`}>
+        <span className="ui-toasts-toast" key={`toast-message_${i}`}>
           {msg}
         </span>
       );
@@ -87,4 +87,4 @@ class Toasts extends React.Component {
   }
 }
 
-export default setCoreClass("toasts", Toasts);
+export default setCoreClass("ui-toasts", Toasts);

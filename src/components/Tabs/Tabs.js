@@ -7,57 +7,38 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import PropTypes from "prop-types";
-import elementType from "prop-types-extra/lib/elementType";
-import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
 import classNames from "classnames";
 import {
   setCoreClass,
   createChainedFunction,
   prefix
 } from "../_utilities/CoreUtils";
+import {
+  getValidProps,
+  getCorePropTypes,
+  getCorePropDefaults
+} from "../_utilities/PropUtils";
 import { Roles } from "../_utilities/Enum";
-import Button from "../Button/Button";
-import Minion from "../_common/Minion";
-// import "./Tabs.css";
-
-class Content extends Minion {
-  static defaultProps = {
-    uirole: "content",
-    uiclass: "",
-    className: "",
-    componentClass: "h2",
-    children: null
-  };
-}
+import TabContent from "./TabContent";
+import TabToggle from "./TabToggle";
+import "./Tabs.css";
 
 class Tabs extends React.Component {
-  static propTypes = {
-    id: isRequiredForA11y(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    ),
-    uiclass: PropTypes.string,
-    uirole: PropTypes.string,
-    className: PropTypes.string,
-    children: PropTypes.node,
-    componentClass: elementType,
-    disabled: PropTypes.bool,
-    automatic: PropTypes.bool,
-    smart: PropTypes.bool,
-    onSwitch: PropTypes.func
-  };
+  static propTypes = getCorePropTypes(
+    {
+      smart: "bool",
+      onSwitch: "func"
+    },
+    null,
+    true
+  );
 
-  static defaultProps = {
+  static defaultProps = getCorePropDefaults({
     componentClass: "div",
     uirole: "tabs",
-    uiclass: null,
-    className: null,
-    children: null,
-    disabled: false,
-    automatic: true,
     smart: false,
     onSwitch: null
-  };
+  });
 
   constructor(props, context) {
     super(props, context);
@@ -113,22 +94,12 @@ class Tabs extends React.Component {
       componentClass: Component,
       id,
       uiclass,
-      className,
       disabled,
       smart,
       automatic,
       children,
-      ...props
-    } = this.props;
-
-    delete props.uirole;
-    delete props.onSwitch;
-    delete props.smart;
-
-    const classes = {
-      [uiclass]: true,
-      disabled
-    };
+      props
+    } = getValidProps(this.props);
 
     const preSorted = { tabs: [], content: [] };
 
@@ -156,11 +127,7 @@ class Tabs extends React.Component {
       const columns = preSorted.tabs.length;
 
       return (
-        <Component
-          id={`tabs_${id}`}
-          {...props}
-          className={classNames(className, classes)}
-        >
+        <Component id={`tabs_${id}`} {...props}>
           <div
             className={classNames("tabs-container", {
               smart: smart && columns < 2
@@ -173,11 +140,7 @@ class Tabs extends React.Component {
       );
     }
     return (
-      <Component
-        id={`tabs_${id}`}
-        {...props}
-        className={classNames(className, classes)}
-      >
+      <Component id={`tabs_${id}`} {...props}>
         {React.Children.map(children, child => {
           switch (child.props.uirole) {
             case Roles.BUTTON: {
@@ -203,7 +166,7 @@ class Tabs extends React.Component {
   }
 }
 
-Tabs.Tab = Button;
-Tabs.Content = Content;
+Tabs.Tab = TabToggle;
+Tabs.Content = TabContent;
 
-export default setCoreClass("tabs", Tabs);
+export default setCoreClass("ui-tabs", Tabs);

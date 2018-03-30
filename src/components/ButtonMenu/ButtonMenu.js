@@ -13,7 +13,7 @@ import {
   isLeftClickEvent,
   isModifiedEvent
 } from "../_utilities/CoreUtils";
-// import "./ButtonMenu.css";
+import "./ButtonMenu.css";
 
 function getInitials(source) {
   if (typeof source !== "undefined" && source !== "Unassigned") {

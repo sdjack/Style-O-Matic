@@ -1,5 +1,7 @@
 import _Accordion from "./components/Accordion";
 
+import _Badge from "./components/Badge";
+
 import _Breadcrumbs from "./components/Breadcrumbs";
 
 import _ButtonBar from "./components/ButtonBar";
@@ -8,9 +10,9 @@ import _Button from "./components/Button";
 
 import _ButtonMenu from "./components/ButtonMenu";
 
-import _DatePicker from "./components/DatePicker";
+import _Card from "./components/Card";
 
-import _Drawer from "./components/Drawer";
+import _DatePicker from "./components/DatePicker";
 
 import _Dropdown from "./components/Dropdown";
 
@@ -24,7 +26,7 @@ import _Header from "./components/Header";
 
 import _Input from "./components/Input";
 
-import _Layout from "./components/Layout";
+import _Main from "./components/Main";
 
 import _Loading from "./components/Loading";
 
@@ -50,6 +52,8 @@ import _ToolBar from "./components/ToolBar";
 
 export { _Accordion as Accordion };
 
+export { _Badge as Badge };
+
 export { _Breadcrumbs as Breadcrumbs };
 
 export { _Button as Button };
@@ -58,9 +62,9 @@ export { _ButtonBar as ButtonBar };
 
 export { _ButtonMenu as ButtonMenu };
 
-export { _DatePicker as DatePicker };
+export { _Card as Card };
 
-export { _Drawer as Drawer };
+export { _DatePicker as DatePicker };
 
 export { _Dropdown as Dropdown };
 
@@ -74,7 +78,7 @@ export { _Header as Header };
 
 export { _Input as Input };
 
-export { _Layout as Layout };
+export { _Main as Main };
 
 export { _Loading as Loading };
 

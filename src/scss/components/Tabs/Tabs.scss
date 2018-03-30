@@ -1,16 +1,7 @@
-/***
- *    ████████╗ █████╗ ██████╗ ███████╗
- *    ╚══██╔══╝██╔══██╗██╔══██╗██╔════╝
- *       ██║   ███████║██████╔╝███████╗
- *       ██║   ██╔══██║██╔══██╗╚════██║
- *       ██║   ██║  ██║██████╔╝███████║
- *       ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚══════╝
- *
- */
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.tabs {
+.ui-tabs {
   display: block;
   justify-content: left;
   align-items: left;
@@ -18,7 +9,7 @@
   margin: 0 12px;
 }
 
-.tabs-wrapper {
+.ui-tabs-wrapper {
   display: none;
   position: absolute;
   top: 136px;
@@ -33,7 +24,7 @@
   }
 }
 
-.tabs-container {
+.ui-tabs-container {
   width: 100%;
   display: block;
 
@@ -42,7 +33,7 @@
   }
 }
 
-.tabs-tab-content {
+.ui-tabs-tab-content {
   display: none;
 
   &.active {
@@ -50,7 +41,7 @@
   }
 }
 
-.tabs-tab {
+.ui-tabs-tab {
   border: none;
   padding: 0 24px 0 24px;
   margin: 0 12px 12px 0;
@@ -92,7 +83,7 @@
 
 }
 
-.tabs-tab-button {
+.ui-tabs-tab-button {
   margin: 0 2px;
   border: none;
   padding: 18px 0;

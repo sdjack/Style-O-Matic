@@ -1,12 +1,12 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.tooltip {
+.ui-tooltip {
     position: relative;
     display: inline-block;
 }
 
-.tooltip-widget {
+.ui-tooltip-widget {
     visibility: hidden;
     position: absolute;
     top: 100%;
@@ -15,11 +15,11 @@
     z-index: 1;
 }
 
-.tooltip:hover .tooltip-widget {
+.ui-tooltip:hover .ui-tooltip-widget {
     visibility: visible;
 }
 
-.tooltip-content {
+.ui-tooltip-content {
   min-height: 20px;
   min-width: 120px;
   position: relative;
@@ -33,7 +33,7 @@
   @include shadow-tooltip();
 }
 
-.tooltip-content:after, .tooltip-content:before {
+.ui-tooltip-content:after, .ui-tooltip-content:before {
   bottom: 100%;
   left: 50%;
   border: solid transparent;
@@ -44,14 +44,14 @@
   pointer-events: none;
 }
 
-.tooltip-content:after {
+.ui-tooltip-content:after {
   border-color: rgba(255, 255, 255, 0);
   border-bottom-color: #ffffff;
   border-width: 8px;
   margin-left: -40px;
 }
 
-.tooltip-content:before {
+.ui-tooltip-content:before {
   border-color: rgba(240, 240, 240, 0);
   border-bottom-color: #cfcfcf;
   border-width: 10px;

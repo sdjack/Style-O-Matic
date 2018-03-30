@@ -10,23 +10,23 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.datepicker {
+.ui-datepicker {
   cursor: pointer;
   padding: 0;
   opacity: 1;
 
-  &.muted > .datepicker-text {
+  &.muted > .ui-datepicker-text {
     //background: none !important;
     //background-color: transparent !important;
     opacity: 0.5;
   }
 }
 
-.datepicker-text {
+.ui-datepicker-text {
   opacity: 1;
 }
 
-.datepicker-toggle {
+.ui-datepicker-toggle {
   width: 100%;
   height: 100%;
   font-size: $input-font-size;
@@ -45,34 +45,34 @@
   }
 }
 
-.datepicker-expired {
+.ui-datepicker-expired {
   color: #f00 !important;
 }
 
-.datepicker-range {
+.ui-datepicker-range {
   display: inline-block;
   padding: 0;
 
-  & > .datepicker-toggle {
+  & > .ui-datepicker-toggle {
     & > input {
       text-align: center !important;
     }
   }
 }
 
-.datepicker-icon {
+.ui-datepicker-icon {
   font-size: 26px !important;
 
   @include text-align-center();
 }
 
-.datepicker-window {
+.ui-datepicker-window {
   overflow: hidden;
   border: $gentle-border;
   width: auto !important;
 }
 
-.datepicker-clear {
+.ui-datepicker-clear {
   font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -81,7 +81,7 @@
   @include text-align-center();
 }
 
-.datepicker-table {
+.ui-datepicker-table {
   position: relative;
   width: 330px;
   height: 272px;
@@ -94,11 +94,11 @@
   font-size: 12px !important;
 }
 
-.datepicker-control-cell,
-.datepicker-header-cell,
-.datepicker-year-cell,
-.datepicker-month-cell,
-.datepicker-foot-cell {
+.ui-datepicker-control-cell,
+.ui-datepicker-header-cell,
+.ui-datepicker-year-cell,
+.ui-datepicker-month-cell,
+.ui-datepicker-foot-cell {
   padding: 0 !important;
   background: $color-dark-alpha-5;
 
@@ -110,34 +110,34 @@
   }
 }
 
-.datepicker-weekday-cell,
-.datepicker-day-cell {
+.ui-datepicker-weekday-cell,
+.ui-datepicker-day-cell {
   padding: 2px 0 !important;
 
   @include text-align-center();
 }
 
-.datepicker-control-cell,
-.datepicker-header-cell,
-.datepicker-foot-cell {
+.ui-datepicker-control-cell,
+.ui-datepicker-header-cell,
+.ui-datepicker-foot-cell {
   height: 32px !important;
 }
 
-.datepicker-year-cell {
+.ui-datepicker-year-cell {
   width: 25%;
 }
 
-.datepicker-month-cell {
+.ui-datepicker-month-cell {
   width: 33%;
 }
 
-.datepicker-weekday-cell {
+.ui-datepicker-weekday-cell {
   min-height: 18px;
   background: $color-dark-alpha-1;
   box-shadow: inset -1px -1px 1px $color-dark-alpha-2;
 }
 
-.datepicker-day-cell {
+.ui-datepicker-day-cell {
   width: 50px;
   height: 46px;
   background: $color-white;
@@ -148,15 +148,15 @@
     background: $common-text-color;
   }
 
-  &.datepicker-day-active {
+  &.ui-datepicker-day-active {
     background: $color-green;
   }
 }
 
-.datepicker-cell-disabled {
+.ui-datepicker-cell-disabled {
   background: $color-dark-alpha-2;
 
-  &.datepicker-day-active {
+  &.ui-datepicker-day-active {
     background: $color-green;
   }
 
@@ -166,23 +166,23 @@
   }
 }
 
-.datepicker-bordered-b {
+.ui-datepicker-bordered-b {
   box-shadow: inset 0 -1px 1px $color-dark-alpha-0;
 }
 
-.datepicker-bordered-r {
+.ui-datepicker-bordered-r {
   box-shadow: inset -1px 0 1px $color-dark-alpha-0;
 }
 
-.datepicker-bordered-b-r {
+.ui-datepicker-bordered-b-r {
   box-shadow: inset -1px -1px 1px $color-dark-alpha-0;
 }
 
-.datepicker-control,
-.datepicker-day,
-.datepicker-weekday,
-.datepicker-foot,
-.datepicker-clear {
+.ui-datepicker-control,
+.ui-datepicker-day,
+.ui-datepicker-weekday,
+.ui-datepicker-foot,
+.ui-datepicker-clear {
   display: inline-block;
   cursor: pointer;
   box-shadow: none !important;
@@ -191,16 +191,16 @@
   border-radius: 0 !important;
 }
 
-.datepicker-control,
-.datepicker-day,
-.datepicker-foot {
+.ui-datepicker-control,
+.ui-datepicker-day,
+.ui-datepicker-foot {
   font-size: 14px !important;
 }
 
-.datepicker-control,
-.datepicker-year,
-.datepicker-month,
-.datepicker-foot {
+.ui-datepicker-control,
+.ui-datepicker-year,
+.ui-datepicker-month,
+.ui-datepicker-foot {
   color: $color-white;
   background: transparent !important;
   border: none !important;
@@ -214,22 +214,22 @@
   }
 }
 
-.datepicker-control,
-.datepicker-year,
-.datepicker-month,
-.datepicker-weekday {
+.ui-datepicker-control,
+.ui-datepicker-year,
+.ui-datepicker-month,
+.ui-datepicker-weekday {
   padding: 0 !important;
   text-transform: uppercase;
 }
 
-.datepicker-weekday {
+.ui-datepicker-weekday {
   line-height: 16px !important;
   letter-spacing: 0;
   color: $color-dark-alpha-5;
   font-size: 10px !important;
 }
 
-.datepicker-day {
+.ui-datepicker-day {
   padding: 0 !important;
   line-height: 40px;
   color: $common-text-color;
@@ -240,15 +240,15 @@
 
   &:hover,
   &:focus,
-  &.datepicker-day-active {
+  &.ui-datepicker-day-active {
     color: $color-white;
   }
 }
 
-.datepicker-disabled {
+.ui-datepicker-disabled {
   opacity: 0.5;
 }
 
-.datepicker-foot {
+.ui-datepicker-foot {
   padding: 0 !important;
 }

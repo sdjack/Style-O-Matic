@@ -10,8 +10,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
 import classNames from "classnames";
-import { uID, isUsable } from "../_utilities/CoreUtils";
-// import "./Breadcrumbs.css";
+import { setCoreClass, isUsable, uID } from "../_utilities/CoreUtils";
+import "./Breadcrumbs.css";
 
 class Breadcrumbs extends React.Component {
   static propTypes = {
@@ -109,4 +109,4 @@ class Breadcrumbs extends React.Component {
   }
 }
 
-export default Breadcrumbs;
+export default setCoreClass("ui-breadcrumbs", Breadcrumbs);

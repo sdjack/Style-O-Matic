@@ -23,7 +23,7 @@ import {
 import { Roles } from "../_utilities/Enum";
 import AccordionTitle from "./AccordionTitle";
 import AccordionContent from "./AccordionContent";
-// import "./Accordion.css";
+import "./Accordion.css";
 
 class Accordion extends React.Component {
   static propTypes = getCorePropTypes();
@@ -52,7 +52,6 @@ class Accordion extends React.Component {
   handleOnClick = e => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(e.currentTarget.attributes);
     const { accordionindex } = e.currentTarget.attributes;
     const activeItem = accordionindex.value;
     if (activeItem === this.state.activeItem) {
@@ -138,4 +137,4 @@ class Accordion extends React.Component {
 Accordion.Title = AccordionTitle;
 Accordion.Content = AccordionContent;
 
-export default setCoreClass("accordion", Accordion);
+export default setCoreClass("ui-accordion", Accordion);

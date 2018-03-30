@@ -1,16 +1,7 @@
-/***
- *    ██████╗ ██████╗  ██████╗ ██████╗ ██████╗  ██████╗ ██╗    ██╗███╗   ██╗
- *    ██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██╔══██╗██╔═══██╗██║    ██║████╗  ██║
- *    ██║  ██║██████╔╝██║   ██║██████╔╝██║  ██║██║   ██║██║ █╗ ██║██╔██╗ ██║
- *    ██║  ██║██╔══██╗██║   ██║██╔═══╝ ██║  ██║██║   ██║██║███╗██║██║╚██╗██║
- *    ██████╔╝██║  ██║╚██████╔╝██║     ██████╔╝╚██████╔╝╚███╔███╔╝██║ ╚████║
- *    ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═════╝  ╚═════╝  ╚══╝╚══╝ ╚═╝  ╚═══╝
- *
- */
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.dropdown {
+.ui-dropdown {
     display: inline-block;
     position: relative;
     cursor: pointer !important;
@@ -24,7 +15,7 @@
     }
 
     &.open {
-        & > .dropdown-content {
+        & > .ui-dropdown-content {
             height: auto !important;
             max-height: 320px !important;
             overflow-y: auto !important;
@@ -34,7 +25,7 @@
     }
 }
 
-.dropdown-content {
+.ui-dropdown-content {
     display: block;
     position: absolute;
     padding: 0 !important;
@@ -52,8 +43,8 @@
     transition-property: height, border-shadow;
 }
 
-.dropdown-item,
-.dropdown-option {
+.ui-dropdown-item,
+.ui-dropdown-option {
     display: block;
     width: 100%;
     height: $input-size;
@@ -72,17 +63,17 @@
         font-weight: 700 !important;
     }
 
-    &:hover, &:focus, &.dropdown-item-selected, &.dropdown-option-selected {
+    &:hover, &:focus, &.ui-dropdown-item-selected, &.ui-dropdown-option-selected {
         background-color: $color-dark-alpha-2;
     }
 
     &.disabled {
-        &:hover, &:focus, &.dropdown-item-selected, &.dropdown-option-selected {
+        &:hover, &:focus, &.ui-dropdown-item-selected, &.ui-dropdown-option-selected {
           background-color: transparent !important;
         }
     }
 }
 
-.dropdown-active {
+.ui-dropdown-active {
     display: block;
 }

@@ -19,9 +19,9 @@ import {
   prefix
 } from "../_utilities/CoreUtils";
 import { Roles } from "../_utilities/Enum";
-// import { HexColor } from "../_utilities/ThemeUtils";
+import { HexColor } from "../_utilities/ThemeUtils";
 import Button from "../Button";
-// import "./ButtonBar.css";
+import "./ButtonBar.css";
 
 class ButtonBar extends React.Component {
   static propTypes = {
@@ -133,4 +133,4 @@ class ButtonBar extends React.Component {
 
 ButtonBar.Button = Button;
 
-export default setCoreClass("button-bar", ButtonBar);
+export default setCoreClass("ui-buttonbar", ButtonBar);

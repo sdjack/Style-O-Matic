@@ -20,7 +20,8 @@ import {
 } from "../_utilities/PropUtils";
 import { Roles } from "../_utilities/Enum";
 import FooterContent from "./FooterContent";
-// import "./Footer.css";
+import FooterDrawer from "./FooterDrawer";
+import "./Footer.css";
 
 class Footer extends React.Component {
   static propTypes = getCorePropTypes();
@@ -58,6 +59,7 @@ class Footer extends React.Component {
 
     if (fixed) {
       return [
+        <div className="ui-footer-bolster" key="footer-bolster" />,
         <Component {...props} key="footer">
           {React.Children.map(children, child => {
             if (
@@ -68,8 +70,7 @@ class Footer extends React.Component {
             }
             return child;
           })}
-        </Component>,
-        <div className="ui-footer-bolster" key="footer-bolster" />
+        </Component>
       ];
     }
     return (
@@ -79,7 +80,12 @@ class Footer extends React.Component {
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
-            return this.renderChild(child, { uiclass });
+            switch (child.props.uirole) {
+              case Roles.CONTENT || Roles.DRAWER:
+                return this.renderChild(child, { uiclass });
+              default:
+                return child;
+            }
           }
           return child;
         })}
@@ -89,5 +95,6 @@ class Footer extends React.Component {
 }
 
 Footer.Content = FooterContent;
+Footer.Drawer = FooterDrawer;
 
 export default setCoreClass("ui-footer", Footer);

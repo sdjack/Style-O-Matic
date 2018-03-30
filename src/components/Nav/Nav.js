@@ -22,7 +22,7 @@ import {
   getValidProps
 } from "../_utilities/PropUtils";
 import { Roles } from "../_utilities/Enum";
-// import "./Nav.css";
+import "./Nav.css";
 
 class Nav extends React.Component {
   static propTypes = getCorePropTypes();
@@ -87,4 +87,4 @@ class Nav extends React.Component {
 Nav.Item = NavItem;
 Nav.Folder = NavFolder;
 
-export default setCoreClass("nav", Nav);
+export default setCoreClass("ui-nav", Nav);

@@ -3,6 +3,7 @@ export const Roles = {
   DEFAULT: 'item',
   GROUP: 'group',
   CONTENT: 'content',
+  DRAWER: 'drawer',
   TITLE: 'title',
   SUBTITLE: 'subtitle',
   ITEM: 'item',
@@ -13,5 +14,6 @@ export const Roles = {
   NAV: 'nav',
   TABLE: 'table',
   CELL: 'cell',
-  ROW: 'row'
+  ROW: 'row',
+  COLUMN: 'column'
 };

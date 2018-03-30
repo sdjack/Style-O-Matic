@@ -23,7 +23,7 @@ import { Roles } from "../_utilities/Enum";
 import TitleContent from "./TitleContent";
 import TitleSubtitle from "./TitleSubtitle";
 import TitleIcon from "./TitleIcon";
-// import "./Title.css";
+import "./Title.css";
 
 class Title extends React.Component {
   static propTypes = getCorePropTypes({
@@ -128,4 +128,4 @@ Title.Content = TitleContent;
 Title.Subtitle = TitleSubtitle;
 Title.Icon = TitleIcon;
 
-export default setCoreClass("title", Title);
+export default setCoreClass("ui-title", Title);

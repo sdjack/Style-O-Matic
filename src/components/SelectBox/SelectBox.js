@@ -12,7 +12,7 @@ import classNames from "classnames";
 import Dropdown from "../Dropdown";
 import SelectBoxItem from "./SelectBoxItem";
 import { setCoreClass, uID } from "../_utilities/CoreUtils";
-// import "./SelectBox.css";
+import "./SelectBox.css";
 
 class SelectBox extends React.Component {
   static propTypes = {
@@ -225,5 +225,4 @@ class SelectBox extends React.Component {
   }
 }
 
-// export default setCoreClass('selectbox', withStyles(s)(SelectBox));
-export default setCoreClass("selectbox", SelectBox);
+export default setCoreClass("ui-selectbox", SelectBox);

@@ -25,18 +25,8 @@ import {
 } from "../_utilities/CoreUtils";
 import { Roles } from "../_utilities/Enum";
 import Button from "../Button/Button";
-import Minion from "../_common/Minion";
-// import "./Dropdown.css";
-
-class Content extends Minion {
-  static defaultProps = {
-    componentClass: "div",
-    uirole: "content",
-    uiclass: "",
-    className: "",
-    children: null
-  };
-}
+import DropdownContent from "./DropdownContent";
+import "./Dropdown.css";
 
 class Dropdown extends React.Component {
   static propTypes = {
@@ -303,10 +293,10 @@ class Dropdown extends React.Component {
   }
 }
 
-setCoreClass("dropdown", Dropdown);
+setCoreClass("ui-dropdown", Dropdown);
 
 const UncontrolledDropdown = uncontrollable(Dropdown, { open: "onToggle" });
 UncontrolledDropdown.Toggle = Button;
-UncontrolledDropdown.Content = Content;
+UncontrolledDropdown.Content = DropdownContent;
 
 export default UncontrolledDropdown;

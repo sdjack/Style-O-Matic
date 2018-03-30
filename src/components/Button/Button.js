@@ -23,7 +23,7 @@ import {
   getValidProps
 } from "../_utilities/PropUtils";
 import { Roles } from "../_utilities/Enum";
-// import "./Button.css";
+import "./Button.css";
 
 class Button extends React.Component {
   static propTypes = getCorePropTypes({
@@ -102,4 +102,4 @@ class Button extends React.Component {
   }
 }
 
-export default setCoreClass("button", Button);
+export default setCoreClass("ui-button", Button);

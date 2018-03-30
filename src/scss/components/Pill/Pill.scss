@@ -1,16 +1,7 @@
-/***
- *    ██████╗ ██╗██╗     ██╗     
- *    ██╔══██╗██║██║     ██║     
- *    ██████╔╝██║██║     ██║     
- *    ██╔═══╝ ██║██║     ██║     
- *    ██║     ██║███████╗███████╗
- *    ╚═╝     ╚═╝╚══════╝╚══════╝
- *                               
- */
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.pill {
+.ui-pill {
   display: inline-block;
   position: relative;
   height: $pill-height;
@@ -42,14 +33,14 @@
   }
 }
 
-.pill-text {
+.ui-pill-text {
   font-size: 12px;
   font-weight: 300;
   line-height: 28px;
 }
 
-.pill-close,
-.pill-action {
+.ui-pill-close,
+.ui-pill-action {
   display: block;
   height: $pill-action-size;
   width: $pill-action-size;
@@ -59,13 +50,13 @@
   cursor: pointer;
 }
 
-.pill-close {
+.ui-pill-close {
   position: absolute;
   top: 4px;
   right: 0;
 }
 
-.pill-action {
+.ui-pill-action {
   position: absolute;
   top: 4px;
   left: 0;

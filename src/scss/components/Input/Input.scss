@@ -142,18 +142,18 @@ input[type="submit"] {
 
 /* INPUT CONTAINERS AND ICONS */
 
-.input-icon,
-.input-text,
-.input-select,
-.input-password,
-.input-tel,
-.input-number,
-.input-date,
-.input-time,
-.input-file,
-.input-url,
-.input-checkbox,
-.input-radio {
+.ui-input-icon,
+.ui-input-text,
+.ui-input-select,
+.ui-input-password,
+.ui-input-tel,
+.ui-input-number,
+.ui-input-date,
+.ui-input-time,
+.ui-input-file,
+.ui-input-url,
+.ui-input-checkbox,
+.ui-input-radio {
   display: inline-block;
   padding-top: 0;
   padding-bottom: 0;
@@ -161,17 +161,17 @@ input[type="submit"] {
   padding-right: 0;
 }
 
-.input-text,
-.input-select,
-.input-password,
-.input-tel,
-.input-number,
-.input-date,
-.input-time,
-.input-file,
-.input-url,
-.input-checkbox,
-.input-radio {
+.ui-input-text,
+.ui-input-select,
+.ui-input-password,
+.ui-input-tel,
+.ui-input-number,
+.ui-input-date,
+.ui-input-time,
+.ui-input-file,
+.ui-input-url,
+.ui-input-checkbox,
+.ui-input-radio {
   position: relative;
 
   & > input,
@@ -186,15 +186,15 @@ input[type="submit"] {
   }
 }
 
-.input-text,
-.input-select,
-.input-password,
-.input-tel,
-.input-number,
-.input-date,
-.input-time,
-.input-file,
-.input-url {
+.ui-input-text,
+.ui-input-select,
+.ui-input-password,
+.ui-input-tel,
+.ui-input-number,
+.ui-input-date,
+.ui-input-time,
+.ui-input-file,
+.ui-input-url {
   width: 100%;
   height: $input-size;
   line-height: 1;
@@ -203,14 +203,14 @@ input[type="submit"] {
   border: $gentle-border;
 }
 
-.input-text,
-.input-select,
-.input-password,
-.input-tel,
-.input-number,
-.input-date,
-.input-time,
-.input-url {
+.ui-input-text,
+.ui-input-select,
+.ui-input-password,
+.ui-input-tel,
+.ui-input-number,
+.ui-input-date,
+.ui-input-time,
+.ui-input-url {
   & > input,
   & > select,
   & > textarea {
@@ -223,8 +223,8 @@ input[type="submit"] {
   }
 }
 
-.input-checkbox,
-.input-radio {
+.ui-input-checkbox,
+.ui-input-radio {
   margin: $input-component-offset;
   & > label {
   	height: $radio-label-height !important;
@@ -237,7 +237,7 @@ input[type="submit"] {
   }
 }
 
-.input-icon {
+.ui-input-icon {
   position: absolute;
   top: $input-offset;
   bottom: $input-offset;
@@ -260,7 +260,7 @@ input[type="submit"] {
 
 /* INPUT TYPE: NUMBER */
 
-.input-number {
+.ui-input-number {
   background-color: white;
   border-radius: $border-radius;
   border: $gentle-border;
@@ -276,8 +276,8 @@ input[type="submit"] {
   }
 }
 
-.input-number-up,
-.input-number-down {
+.ui-input-number-up,
+.ui-input-number-down {
   position: absolute;
   display: inline-block;
   right: ($input-component-size * -1);
@@ -303,7 +303,7 @@ input[type="submit"] {
   }
 }
 
-.input-number-up {
+.ui-input-number-up {
   top: 0;
   border-bottom: $gentle-border;
   border-radius: 0 $border-radius 0 0;
@@ -313,7 +313,7 @@ input[type="submit"] {
   }
 }
 
-.input-number-down {
+.ui-input-number-down {
   bottom: 0;
   border-radius: 0 0 $border-radius 0;
 }
@@ -324,7 +324,7 @@ input[type="submit"] {
 
 /* INPUT TYPE: FILE */
 
-.inputfile {
+.ui-inputfile {
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
@@ -332,7 +332,7 @@ input[type="submit"] {
 	position: absolute;
 	z-index: -1;
 }
-.input-file {
+.ui-input-file {
   & > label {
 		display: inline-block;
 		width: 100%;

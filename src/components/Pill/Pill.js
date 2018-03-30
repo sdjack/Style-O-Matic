@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
 import classNames from "classnames";
 import { setCoreClass } from "../_utilities/CoreUtils";
-// import "./Pill.css";
+import "./Pill.css";
 
 const REMOVE_ROLE = "remove";
 const ACTION_ROLE = "action";
@@ -116,4 +116,4 @@ class Pill extends React.Component {
   }
 }
 
-export default setCoreClass("pill", Pill);
+export default setCoreClass("ui-pill", Pill);

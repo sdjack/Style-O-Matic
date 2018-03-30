@@ -1,16 +1,7 @@
-/***
- *    ████████╗ █████╗ ██████╗ ██╗     ███████╗
- *    ╚══██╔══╝██╔══██╗██╔══██╗██║     ██╔════╝
- *       ██║   ███████║██████╔╝██║     █████╗
- *       ██║   ██╔══██║██╔══██╗██║     ██╔══╝
- *       ██║   ██║  ██║██████╔╝███████╗███████╗
- *       ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝
- *
- */
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.table {
+.ui-table {
   position: relative;
   width: 100%;
   max-width: 100%;
@@ -59,7 +50,7 @@
   }
 }
 
-.table-bordered {
+.ui-table-bordered {
   & > tbody {
     & > tr {
       border: 0px solid rgba(0,0,0,0);
@@ -71,11 +62,11 @@
   }
 }
 
-.table-padded {
+.ui-table-padded {
   padding: $padding;
 }
 
-.table-hover {
+.ui-table-hover {
   & > tbody {
     & > tr {
       @include animate-default(0.28s);
@@ -87,7 +78,7 @@
   }
 }
 
-.table-spaced {
+.ui-table-spaced {
   line-height: 20px;
   & > tbody {
     & > tr {
@@ -104,7 +95,7 @@
 }
 
 @media (min-width: 40em) {
-  .table {
+  .ui-table {
     font-size: 13px;
     & > th {
       font-size: 15px;

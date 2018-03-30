@@ -11,7 +11,7 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.button {
+.ui-button {
     min-width: $button-min-width;
     height: 36px;
     color: $button-text-color;
@@ -22,9 +22,10 @@
     line-height: 1;
     text-decoration: none;
     border: none;
+    border-radius: $border-radius;
     cursor: pointer;
     overflow: hidden;
-    @include button-skin();
+    @include button-shadow();
     @include typo-button();
     @include text-align-center();
     @include animate-default(0.2s);
@@ -66,6 +67,7 @@
     &.ui-black {
 	    background-color: $color-white !important;
 	    border: 1px solid $color-black-active !important;
+        @include button-shadow();
 	    &:hover,
 	    &:active {
 	    	background-color: $color-white !important;
@@ -74,72 +76,79 @@
 	}
 
 	&.ui-red {
-	    background-color: $color-red-contrast !important;
-	    border: 1px solid $color-black-active !important;
+	    background-color: $color-red-contrast-active !important;
+	    border: 1px solid $color-red !important;
+        @include button-shadow($color-red-contrast);
 	    &:hover,
 	    &:active {
-	    	background-color: $color-red-contrast-active !important;
-	    	border: 1px solid $color-red-active !important;
+	    	background-color: $color-red-contrast !important;
+	    	border: 1px solid $color-red-darkened !important;
 	    }
 	}
 
 	&.ui-orange {
-	    background-color: $color-orange-contrast !important;
+	    background-color: $color-orange-contrast-active !important;
 	    border: 1px solid $color-orange !important;
+        @include button-shadow($color-orange-contrast);
 	    &:hover,
 	    &:active {
-	    	background-color: $color-orange-contrast-active !important;
-	    	border: 1px solid $color-orange-active !important;
+	    	background-color: $color-orange-contrast !important;
+	    	border: 1px solid $color-orange-darkened !important;
 	    }
 	}
 
 	&.ui-yellow {
-	    background-color: $color-yellow-contrast !important;
+	    background-color: $color-yellow-contrast-active !important;
 	    border: 1px solid $color-yellow !important;
+        @include button-shadow($color-yellow-contrast);
 	    &:hover,
 	    &:active {
-	    	background-color: $color-yellow-contrast-active !important;
-	    	border: 1px solid $color-yellow-active !important;
+	    	background-color: $color-yellow-contrast !important;
+	    	border: 1px solid $color-yellow-darkened !important;
 	    }
 	}
 
 	&.ui-green {
-	    background-color: $color-green-contrast !important;
+	    background-color: $color-green-contrast-active !important;
 	    border: 1px solid $color-green !important;
+        @include button-shadow($color-green-contrast);
 	    &:hover,
 	    &:active {
-	    	background-color: $color-green-contrast-active !important;
-	    	border: 1px solid $color-green-active !important;
+	    	background-color: $color-green-contrast !important;
+	    	border: 1px solid $color-green-darkened !important;
 	    }
 	}
 
 	&.ui-blue {
-	    background-color: $color-blue-contrast !important;
+	    background-color: $color-blue-contrast-active !important;
 	    border: 1px solid $color-blue !important;
+        @include button-shadow($color-blue-contrast);
 	    &:hover,
 	    &:active {
-	    	background-color: $color-blue-contrast-active !important;
-	    	border: 1px solid $color-blue-active !important;
+	    	background-color: $color-blue-contrast !important;
+	    	border: 1px solid $color-blue-darkened !important;
 	    }
 	}
 
 	&.ui-indigo {
-	    background-color: $color-indigo-contrast !important;
+	    background-color: $color-indigo-contrast-active !important;
 	    border: 1px solid $color-indigo !important;
+        @include button-shadow($color-indigo-contrast);
 	    &:hover,
 	    &:active {
-	    	background-color: $color-indigo-contrast-active !important;
-	    	border: 1px solid $color-indigo-active !important;
+	    	background-color: $color-indigo-contrast !important;
+	    	border: 1px solid $color-indigo-darkened !important;
 	    }
 	}
 
 	&.ui-violet {
-	    background-color: $color-violet-contrast !important;
+	    background-color: $color-violet-contrast-active !important;
 	    border: 1px solid $color-violet !important;
+        @include button-shadow($color-violet-contrast);
 	    &:hover,
 	    &:active {
-	    	background-color: $color-violet-contrast-active !important;
-	    	border: 1px solid $color-violet-active !important;
+	    	background-color: $color-violet-contrast !important;
+	    	border: 1px solid $color-violet-darkened !important;
 	    }
 	}
 }

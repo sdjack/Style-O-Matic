@@ -21,7 +21,7 @@ import {
 import { Roles } from "../_utilities/Enum";
 import GridRow from "./GridRow";
 import GridColumn from "./GridColumn";
-// import "./Grid.css";
+import "./Grid.css";
 
 class Grid extends React.Component {
   static propTypes = getCorePropTypes();
@@ -32,7 +32,7 @@ class Grid extends React.Component {
   });
 
   renderChild = (child, props) => {
-    const role = child.props.uirole || Roles.COLUMN;
+    const role = child.props.uirole || Roles.ROW;
     let ref = c => {
       this[role] = c;
     };
@@ -62,14 +62,18 @@ class Grid extends React.Component {
     return (
       <Component {...props}>
         {React.Children.map(children, child => {
-          switch (child.props.uirole) {
-            case Roles.ROW:
-              return this.renderChild(child, { uiclass });
-            case Roles.COLUMN:
-              return this.renderChild(child, { uiclass });
-            default:
-              return child;
+          if (
+            typeof child.props !== "undefined" &&
+            typeof child.props.uirole !== "undefined"
+          ) {
+            switch (child.props.uirole) {
+              case Roles.ROW:
+                return this.renderChild(child, { uiclass });
+              default:
+                return child;
+            }
           }
+          return child;
         })}
       </Component>
     );
@@ -79,4 +83,4 @@ class Grid extends React.Component {
 Grid.Row = GridRow;
 Grid.Column = GridColumn;
 
-export default setCoreClass("grid", Grid);
+export default setCoreClass("ui-grid", Grid);

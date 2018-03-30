@@ -79,24 +79,23 @@ class NavFolder extends React.Component {
       active: path.indexOf(to) !== -1
     };
 
-    const caretClass = {
-      expanded: !minimized && expanded
-    };
+    const caretClass =
+      !minimized && expanded ? "fa fa-caret-down" : "fa fa-caret-right";
 
     return (
-      <div className="nav-flyout-wrapper">
-        <a className="nav-item" href={to} label={text}>
-          <i className={`nav-item-icon ${icon}`} />
-          <span className="nav-item-info">{text}</span>
+      <div className="ui-nav-flyout-wrapper">
+        <a className="ui-nav-item" href={to} label={text}>
+          <i className={`ui-nav-item-icon ${icon}`} />
+          <span className="ui-nav-item-info">{text}</span>
           <span
-            className={classNames("nav-item-caret", caretClass)}
+            className={`ui-nav-item-caret ${caretClass}`}
             role="presentation"
             onKeyDown={this.toggleExpansion}
             onClick={this.toggleExpansion}
           />
         </a>
         <Component {...props} className={classNames(className, classes)}>
-          <div className="nav-folder-title">{text}</div>
+          <div className="ui-nav-folder-title">{text}</div>
           {React.Children.map(children, child => {
             if (
               typeof child.props !== "undefined" &&

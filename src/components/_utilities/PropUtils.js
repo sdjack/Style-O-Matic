@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
-import classNames from "classnames";
 import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
+import classNames from "classnames";
 import { isUsable } from "./CoreUtils";
 import { objectClone } from "./DataUtils";
 
@@ -23,6 +23,7 @@ const nativeProps = [
 ];
 
 const DefaultPropTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   componentClass: elementType,
   className: PropTypes.string,
   role: PropTypes.string,
@@ -37,47 +38,16 @@ const DefaultPropTypes = {
   disabled: PropTypes.bool,
   active: PropTypes.bool,
   fixed: PropTypes.bool,
-  displaySize: PropTypes.oneOf([
-    "smallest",
-    "small",
-    "medium",
-    "large",
-    "largest"
+  color: PropTypes.oneOf([
+    "black",
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "indigo",
+    "violet"
   ]),
-  orientation: PropTypes.oneOf(["vertical", "horizontal"]),
-  textAlign: PropTypes.oneOf(["left", "right", "center"]),
-  contentAlign: PropTypes.oneOf(["left", "right", "center"]),
-  position: PropTypes.oneOf([
-    "left",
-    "before",
-    "right",
-    "after",
-    "top",
-    "above",
-    "bottom",
-    "below"
-  ]),
-  uidata: PropTypes.object
-};
-
-const A11yPropTypes = {
-  id: isRequiredForA11y(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-  ),
-  componentClass: elementType,
-  className: PropTypes.string,
-  role: PropTypes.string,
-  group: PropTypes.string,
-  children: PropTypes.node,
-  uiclass: PropTypes.string,
-  uirole: PropTypes.string,
-  path: PropTypes.string,
-  text: PropTypes.string,
-  icon: PropTypes.string,
-  to: PropTypes.string,
-  disabled: PropTypes.bool,
-  active: PropTypes.bool,
-  fixed: PropTypes.bool,
   displaySize: PropTypes.oneOf([
     "smallest",
     "small",
@@ -116,6 +86,7 @@ const DefaultPropValues = {
   disabled: false,
   active: false,
   fixed: null,
+  color: null,
   displaySize: null,
   orientation: null,
   textAlign: null,
@@ -125,7 +96,12 @@ const DefaultPropValues = {
 };
 
 export function getCorePropTypes(config, uidataConfig, A11y) {
-  const obj = A11y ? objectClone(A11yPropTypes) : objectClone(DefaultPropTypes);
+  const obj = objectClone(DefaultPropTypes);
+  if (A11y) {
+    obj.id = isRequiredForA11y(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    );
+  }
   if (typeof config !== "undefined" && config !== null) {
     Object.entries(config).forEach(([attr, prop]) => {
       if (typeof PropTypes[prop] !== "undefined") {
@@ -178,6 +154,7 @@ export function getUIClassString(props) {
     disabled,
     active,
     fixed,
+    color,
     orientation,
     textAlign,
     contentAlign,
@@ -190,6 +167,10 @@ export function getUIClassString(props) {
     active,
     fixed
   };
+
+  if (isUsable(color)) {
+    classes[`ui-${color}`] = true;
+  }
 
   if (isUsable(orientation)) {
     classes[`ui-orientation-${orientation}`] = true;

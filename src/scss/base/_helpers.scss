@@ -75,104 +75,104 @@
 .ui-black {
     color: $color-black !important;
     text-shadow: 0 0 0 rgba(0,0,0,0.01);
-    @include animate-default(0.5s);
-    transition-property: color, background-color, box-shadow, text-shadow !important;
+    @include animate-default(0.1s);
+    transition-property: color, background-color, box-shadow !important;
     &:hover,
     &:active,
     &:focus {
         color: $color-black-active !important;
-        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+        text-shadow: 0px 0px 1px $color-white;
     }
 }
 
 .ui-red {
     color: $color-red !important;
     text-shadow: 0 0 0 rgba(0,0,0,0.01);
-    @include animate-default(0.5s);
-    transition-property: color, background-color, box-shadow, text-shadow !important;
+    @include animate-default(0.1s);
+    transition-property: color, background-color, box-shadow !important;
     &:hover,
     &:active,
     &:focus {
-        color: $color-red-active !important;
-        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+        color: $color-red-darkened !important;
+        text-shadow: 0px 0px 1px $color-red-active;
     }
 }
 
 .ui-orange {
     color: $color-orange !important;
     text-shadow: 0 0 0 rgba(0,0,0,0.01);
-    @include animate-default(0.5s);
-    transition-property: color, background-color, box-shadow, text-shadow !important;
+    @include animate-default(0.1s);
+    transition-property: color, background-color, box-shadow !important;
     &:hover,
     &:active,
     &:focus {
-        color: $color-orange-active !important;
-        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+        color: $color-orange-darkened !important;
+        text-shadow: 0px 0px 1px $color-orange-active;
     }
 }
 
 .ui-yellow {
     color: $color-yellow !important;
     text-shadow: 0 0 0 rgba(0,0,0,0.01);
-    @include animate-default(0.5s);
-    transition-property: color, background-color, box-shadow, text-shadow !important;
+    @include animate-default(0.1s);
+    transition-property: color, background-color, box-shadow !important;
     &:hover,
     &:active,
     &:focus {
-        color: $color-yellow-active !important;
-        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+        color: $color-yellow-darkened !important;
+        text-shadow: 0px 0px 1px $color-yellow-active;
     }
 }
 
 .ui-green {
     color: $color-green !important;
     text-shadow: 0 0 0 rgba(0,0,0,0.01);
-    @include animate-default(0.5s);
-    transition-property: color, background-color, box-shadow, text-shadow !important;
+    @include animate-default(0.1s);
+    transition-property: color, background-color, box-shadow !important;
     &:hover,
     &:active,
     &:focus {
-        color: $color-green-active !important;
-        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+        color: $color-green-darkened !important;
+        text-shadow: 0px 0px 1px $color-green-active;
     }
 }
 
 .ui-blue {
     color: $color-blue !important;
     text-shadow: 0 0 0 rgba(0,0,0,0.01);
-    @include animate-default(0.5s);
-    transition-property: color, background-color, box-shadow, text-shadow !important;
+    @include animate-default(0.1s);
+    transition-property: color, background-color, box-shadow !important;
     &:hover,
     &:active,
     &:focus {
-        color: $color-blue-active !important;
-        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+        color: $color-blue-darkened !important;
+        text-shadow: 0px 0px 1px $color-blue-active;
     }
 }
 
 .ui-indigo {
     color: $color-indigo !important;
     text-shadow: 0 0 0 rgba(0,0,0,0.01);
-    @include animate-default(0.5s);
-    transition-property: color, background-color, box-shadow, text-shadow !important;
+    @include animate-default(0.1s);
+    transition-property: color, background-color, box-shadow !important;
     &:hover,
     &:active,
     &:focus {
-        color: $color-indigo-active !important;
-        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+        color: $color-indigo-darkened !important;
+        text-shadow: 0px 0px 1px $color-indigo-active;
     }
 }
 
 .ui-violet {
     color: $color-violet !important;
     text-shadow: 0 0 0 rgba(0,0,0,0.01);
-    @include animate-default(0.5s);
-    transition-property: color, background-color, box-shadow, text-shadow !important;
+    @include animate-default(0.1s);
+    transition-property: color, background-color, box-shadow !important;
     &:hover,
     &:active,
     &:focus {
-        color: $color-violet-active !important;
-        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+        color: $color-violet-darkened !important;
+        text-shadow: 0px 0px 1px $color-violet-active;
     }
 }
 

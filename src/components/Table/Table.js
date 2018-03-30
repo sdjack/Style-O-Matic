@@ -25,7 +25,7 @@ import TableBody from "./TableBody";
 import TableFoot from "./TableFoot";
 import TableRow from "./TableRow";
 import TableCell from "./TableCell";
-// import "./Table.css";
+import "./Table.css";
 
 class Table extends React.Component {
   static propTypes = getCorePropTypes();
@@ -98,4 +98,4 @@ Table.Foot = TableFoot;
 Table.Row = TableRow;
 Table.Cell = TableCell;
 
-export default setCoreClass("table", Table);
+export default setCoreClass("ui-table", Table);

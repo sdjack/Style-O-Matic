@@ -20,7 +20,8 @@ import {
 } from "../_utilities/PropUtils";
 import { Roles } from "../_utilities/Enum";
 import HeaderContent from "./HeaderContent";
-// import "./Header.css";
+import HeaderDrawer from "./HeaderDrawer";
+import "./Header.css";
 
 class Header extends React.Component {
   static propTypes = getCorePropTypes();
@@ -60,12 +61,18 @@ class Header extends React.Component {
       return [
         <Component {...props} key="header">
           {React.Children.map(children, child => {
-            switch (child.props.uirole) {
-              case Roles.CONTENT:
-                return this.renderChild(child, { uiclass });
-              default:
-                return child;
+            if (
+              typeof child.props !== "undefined" &&
+              typeof child.props.uirole !== "undefined"
+            ) {
+              switch (child.props.uirole) {
+                case Roles.CONTENT:
+                  return this.renderChild(child, { uiclass });
+                default:
+                  return child;
+              }
             }
+            return child;
           })}
         </Component>,
         <div className="ui-header-bolster" key="header-bolster" />
@@ -74,12 +81,18 @@ class Header extends React.Component {
     return (
       <Component {...props}>
         {React.Children.map(children, child => {
-          switch (child.props.uirole) {
-            case Roles.CONTENT:
-              return this.renderChild(child, { uiclass });
-            default:
-              return child;
+          if (
+            typeof child.props !== "undefined" &&
+            typeof child.props.uirole !== "undefined"
+          ) {
+            switch (child.props.uirole) {
+              case Roles.CONTENT || Roles.DRAWER:
+                return this.renderChild(child, { uiclass });
+              default:
+                return child;
+            }
           }
+          return child;
         })}
       </Component>
     );
@@ -87,5 +100,6 @@ class Header extends React.Component {
 }
 
 Header.Content = HeaderContent;
+Header.Drawer = HeaderDrawer;
 
 export default setCoreClass("ui-header", Header);

@@ -9,7 +9,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { uID } from "../_utilities/CoreUtils";
-// import "./Pagination.css";
+import "./Pagination.css";
 
 class Pagination extends React.Component {
   static propTypes = {

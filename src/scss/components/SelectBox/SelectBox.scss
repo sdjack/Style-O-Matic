@@ -1,16 +1,7 @@
-/***
- *    ███████╗███████╗██╗     ███████╗ ██████╗████████╗██████╗  ██████╗ ██╗  ██╗
- *    ██╔════╝██╔════╝██║     ██╔════╝██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗╚██╗██╔╝
- *    ███████╗█████╗  ██║     █████╗  ██║        ██║   ██████╔╝██║   ██║ ╚███╔╝ 
- *    ╚════██║██╔══╝  ██║     ██╔══╝  ██║        ██║   ██╔══██╗██║   ██║ ██╔██╗ 
- *    ███████║███████╗███████╗███████╗╚██████╗   ██║   ██████╔╝╚██████╔╝██╔╝ ██╗
- *    ╚══════╝╚══════╝╚══════╝╚══════╝ ╚═════╝   ╚═╝   ╚═════╝  ╚═════╝ ╚═╝  ╚═╝
- *                                                                              
- */
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.selectbox {
+.ui-selectbox {
   //width: 84%;
   //padding: $selectbox-padding !important;
   padding: 0;
@@ -19,7 +10,7 @@
   }
 }
 
-.selectbox-caret {
+.ui-selectbox-caret {
   display: inline-block;
   height: $input-size;
   width: $input-size;
@@ -43,14 +34,14 @@
 .dropdown {
   &.open {
     & > .dropdown-toggle {
-      & > .selectbox-caret:before {
+      & > .ui-selectbox-caret:before {
         content: "\f0d8";
       }
     }
   }
 }
 
-.selectbox-dropdown {
+.ui-selectbox-dropdown {
   display: block;
   position: absolute;
   top: $input-size;
@@ -74,7 +65,7 @@
   }
 }
 
-.selectbox-dropdown-item {
+.ui-selectbox-dropdown-item {
   display: block;
   margin: 0;
   padding: $dropdown-padding;

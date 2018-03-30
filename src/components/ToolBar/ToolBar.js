@@ -7,41 +7,28 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import PropTypes from "prop-types";
-import elementType from "prop-types-extra/lib/elementType";
-import classNames from "classnames";
+import warning from "warning";
 import {
   setCoreClass,
-  isUsable,
-  dataExists,
   createChainedFunction,
   prefix
 } from "../_utilities/CoreUtils";
+import {
+  getValidProps,
+  getCorePropTypes,
+  getCorePropDefaults
+} from "../_utilities/PropUtils";
 import { Roles } from "../_utilities/Enum";
-import Header from "../Header/Header";
-import Minion from "../_common/Minion";
-// import "./ToolBar.css";
-
-class Content extends Minion {
-  static defaultProps = {
-    uirole: "content",
-    uiclass: "",
-    className: "",
-    componentClass: "h2",
-    children: null
-  };
-}
+import ToolBarHeader from "./ToolBarHeader";
+import ToolBarContent from "./ToolBarContent";
+import "./ToolBar.css";
 
 class ToolBar extends React.Component {
-  static propTypes = {
-    disabled: PropTypes.bool,
-    children: PropTypes.node
-  };
+  static propTypes = getCorePropTypes();
 
-  static defaultProps = {
-    disabled: false,
-    children: null
-  };
+  static defaultProps = getCorePropDefaults({
+    uirole: "toolbar"
+  });
 
   renderHeader = (child, props) => {
     const role = child.props.uirole;
@@ -60,10 +47,10 @@ class ToolBar extends React.Component {
     });
   };
 
-  renderContent = (child, props) => {
-    const role = child.props.uirole;
+  renderChild = (child, props) => {
+    const role = child.props.uirole || Roles.CONTENT;
     let ref = c => {
-      this.content = c;
+      this[role] = c;
     };
     if (typeof child.ref === "string") {
       warning(false, "String refs are not supported on toolbar components.");
@@ -73,35 +60,35 @@ class ToolBar extends React.Component {
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, "content")
+      uiclass: prefix(props, role)
     });
   };
 
   render() {
-    const { uiclass, className, disabled, children, ...props } = this.props;
-    const classes = {
-      [uiclass]: true,
-      disabled
-    };
+    const {
+      componentClass: Component,
+      uiclass,
+      children,
+      props
+    } = getValidProps(this.props);
+
     return (
-      <div {...props} className={classNames(className, classes)}>
+      <Component {...props}>
         {React.Children.map(children, child => {
-          switch (child.props.uirole) {
-            case Roles.HEADER:
-              return this.renderHeader(child, { uiclass });
-            case Roles.CONTENT:
-              return this.renderContent(child, { uiclass });
-            default:
-              return child;
+          if (
+            typeof child.props !== "undefined" &&
+            typeof child.props.uirole !== "undefined"
+          ) {
+            return this.renderChild(child, { uiclass });
           }
+          return child;
         })}
-      </div>
+      </Component>
     );
   }
 }
 
-ToolBar.Header = Header;
-ToolBar.Content = Content;
+ToolBar.Header = ToolBarHeader;
+ToolBar.Content = ToolBarContent;
 
-// export default setCoreClass('toolbar', withStyles(s)(ToolBar));
-export default setCoreClass("toolbar", ToolBar);
+export default setCoreClass("ui-toolbar", ToolBar);
