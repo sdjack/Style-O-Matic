@@ -1,0 +1,13 @@
+{
+  "name": "DatePicker",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./DatePicker.js",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "prop-types": "^15.6.0",
+    "prop-types-extra": "^1.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.1.1"
+  }
+}

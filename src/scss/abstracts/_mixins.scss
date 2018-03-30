@@ -1,0 +1,641 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin content-align-center() {
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+@mixin content-align-left() {
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+@mixin content-align-right() {
+  justify-content: flex-end;
+  align-content: flex-end;
+}
+
+@mixin text-align-center() {
+  text-align: -webkit-center;
+  text-align: center;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+  align-items: center;
+  align-content: center;
+}
+
+@mixin text-align-left() {
+  text-align: -webkit-left;
+  text-align: left;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+  align-items: start;
+  align-content: start;
+}
+
+@mixin text-align-right() {
+  text-align: -webkit-right;
+  text-align: right;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+  align-items: end;
+  align-content: end;
+}
+
+@mixin text-horizontal-align-center() {
+  text-align: -webkit-center;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+@mixin text-horizontal-align-left() {
+  text-align: -webkit-left;
+  text-align: left;
+  align-items: start;
+  align-content: start;
+}
+
+@mixin text-horizontal-align-right() {
+  text-align: -webkit-right;
+  text-align: right;
+  align-items: end;
+  align-content: end;
+}
+
+@mixin text-vertical-align-middle() {
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+}
+
+@mixin typo-preferred-font($useTitleFont: true) {
+  @if $useTitleFont {
+    font-family: $title_font;
+  }
+}
+
+@mixin typo-display-4($colorContrast: false, $useTitleFont: true) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 112px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-display-3($colorContrast: false, $useTitleFont: true) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-display-2($colorContrast: false, $useTitleFont: true) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 1.1;
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-display-1($colorContrast: false, $useTitleFont: true) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.1;
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-headline($colorContrast: false, $useTitleFont: true) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+  -moz-osx-font-smoothing: greyscale;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-title-large($colorContrast: false, $useTitleFont: true) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  -moz-osx-font-smoothing: greyscale;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-title($colorContrast: false, $useTitleFont: true) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  -moz-osx-font-smoothing: greyscale;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-subhead($colorContrast: false, $useTitleFont: true) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-subhead-2($colorContrast: false, $useTitleFont: true) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-control-title($colorContrast: false, $useTitleFont: true) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 40px;
+  letter-spacing: 1px;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-body-2($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 14px;
+  @if $useTitleFont {
+    font-weight: 500;
+  } @else {
+    font-weight: bold;
+  }
+  line-height: 24px;
+  letter-spacing: 0;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-body-1($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-caption($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-blockquote($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  position: relative;
+  font-size: 24px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+
+  &:before {
+    position: absolute;
+    left: -0.5em;
+    content: '“';
+  }
+
+  &:after {
+    content: '”';
+    margin-left: -0.05em;
+  }
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-menu($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-button($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 14px;
+  font-weight: 500;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-text-button($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 2 !important;
+  letter-spacing: 0.04em;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-lists($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-lists-small($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-lists-medium($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-lists-large($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 22px;
+  font-weight: 100;
+  line-height: 40px;
+  letter-spacing: 0.02em;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-input($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: $input-font-size;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 1px;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin typo-input-button($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: $input-font-size;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+  text-align: -webkit-center;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+
+@mixin border-top-radius($radius) {
+  border-top-right-radius: $radius;
+   border-top-left-radius: $radius;
+}
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+     border-top-right-radius: $radius;
+}
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+   border-bottom-left-radius: $radius;
+}
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+     border-top-left-radius: $radius;
+}
+
+@mixin table-inner-borders() {
+  border-style: solid;
+  border-color: $table-border-color;
+  border-width: 1px 0px 1px 0px;
+}
+@mixin input-skin() {
+  //box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3), inset 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  border: solid 0.5px $gentle-text-color;
+}
+@mixin button-skin() {
+  border-radius: $border-radius;
+  box-shadow: 	0px 0px 2px 0px rgba(0,0,0,.2), 
+  				0px 1px 4px -1px rgba(0,0,0,.2);
+}
+@mixin pill-skin() {
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity);
+}
+@mixin typo-button($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+@mixin typo-button-uppercase($colorContrast: false, $useTitleFont: false) {
+  @include typo-preferred-font($useTitleFont);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0;
+
+  @if $colorContrast {
+    opacity: 0.87;
+  }
+}
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+          box-shadow: $shadow;
+}
+@mixin focus-shadow() {
+  box-shadow: 0 0px 2px rgba(0,0,0,.18),
+              0 3px 5px rgba(0,0,0,.36);
+}
+@mixin no-shadow() {
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+// @mixin shadow-hover() {
+//   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+//               0 2px 1px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity),
+//               0 1px 2px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
+// }
+
+@mixin shadow-removed() {
+    box-shadow: none;
+}
+@mixin shadow-dropdown() {
+  box-shadow: 0 0 2px -1px rgba(0,0,0,.07),
+              0px 3px 4px -3px rgba(0,0,0,.3),
+              3px 6px 6px -2px rgba(0,0,0,.12);
+}
+@mixin shadow-border() {
+  box-shadow: -1px -1px 1px 0px rgba(0,0,0,0.4),
+              1px -1px 1px 0px rgba(0,0,0,0.4),
+              1px 1px 1px 0px rgba(0,0,0,0.4),
+              -1px 1px 1px 0px rgba(0,0,0,0.4),
+              1px 2px 5px 1px rgba(0,0,0,.07), 
+              1px 2px 8px -3px rgba(0,0,0,.3)
+}
+@mixin shadow-basic() {
+  box-shadow: 1px 2px 5px 1px rgba(0,0,0,.07), 
+              1px 2px 8px -3px rgba(0,0,0,.3)
+}
+@mixin shadow-tooltip() {
+  box-shadow: 1px 1px 2px rgba(0,0,0,.07), 
+              0px 3px 8px -3px rgba(0,0,0,.3)
+}
+@mixin shadow-basic-dark() {
+  box-shadow: 1px 2px 5px 1px rgba(0,0,0,.3), 
+              1px 2px 8px -3px rgba(0,0,0,.5)
+}
+@mixin shadow-drawer() {
+  box-shadow: 0px -2px 3px 1px rgba(0,0,0,.8),
+              1px -2px 2px -1px rgba(0,0,0,.8)
+}
+@mixin shadow-inset-nested() {
+  box-shadow: inset -1px 2px 2px 0 rgba(0,0,0,.35),
+              inset -3px 1px 3px -1px rgba(0,0,0,.14),
+              inset -1px 0 6px -2px rgba(0,0,0,.25);
+}
+
+@mixin shadow-inset-left() {
+  box-shadow: inset -2px 0px 2px 0 rgba(0,0,0,.15),
+              inset -2px 0px 3px -1px rgba(0,0,0,0.14),
+              inset -1px 0px 8px -1px rgba(0,0,0,.25);
+}
+@mixin shadow-inset-right() {
+  box-shadow: inset 2px 0px 2px 0 rgba(0,0,0,.15),
+              inset 2px 0px 3px -1px rgba(0,0,0,0.14),
+              inset 1px 0px 8px -1px rgba(0,0,0,.25);
+}
+@mixin shadow-1dp() {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+              0 2px 1px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity),
+              0 1px 2px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
+}
+@mixin shadow-2dp() {
+  box-shadow: 0 0 3px 3px rgba(0,0,0,.07),
+              1px 2px 3px 0 rgba(0,0,0,.3),
+              0 1px 5px 0 rgba(0,0,0,.12);
+}
+@mixin shadow-3dp() {
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+              0 3px 3px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity),
+              0 1px 8px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
+}
+@mixin shadow-4dp() {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+              0 1px 10px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
+              0 2px 4px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity);
+}
+@mixin shadow-6dp() {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+              0 1px 18px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
+              0 3px 5px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity);
+}
+@mixin shadow-8dp() {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+              0 3px 14px 2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
+              0 5px 5px -3px rgba(0, 0, 0, $shadow-key-umbra-opacity);
+}
+
+@mixin shadow-16dp() {
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+              0  6px 30px 5px rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
+              0  8px 10px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity);
+}
+@mixin shadow-main() {
+    box-shadow: -3px 0px 6px -1px rgba(0,0,0,0.7);
+}
+@mixin glow-2dp() {
+  box-shadow: 0 2px 2px 0 rgba(255, 255, 255, $glow-key-penumbra-opacity),
+              0 3px 1px -2px rgba(255, 255, 255, $glow-key-umbra-opacity),
+              0 1px 5px 0 rgba(255, 255, 255, $glow-ambient-shadow-opacity);
+}
+
+@mixin shadow-hover-highlight() {
+  box-shadow: 0 0 2px 1px $color-green,
+              0 0 4px 2px $color-green,
+              0 0 5px -3px $color-green;
+}
+
+@mixin shadow-component() {
+  border: 1px solid $color-dark-alpha-0;
+  box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.25);
+}
+
+@mixin inset-glow() {
+  box-shadow: inset 0px 0px 12px #000000,
+              inset 0px 0px 2px #999999,
+              inset 0px 4px 20px -5px #555555;
+}
+
+@mixin animate-slow-out-fast-in($duration:0.2s) {
+  transition-duration: $duration;
+  transition-timing-function: $animation-curve-slow-out-fast-in;
+}
+
+@mixin animate-fast-out-slow-in($duration:0.2s) {
+  transition-duration: $duration;
+  transition-timing-function: $animation-curve-fast-out-slow-in;
+}
+
+@mixin animate-linear-out-slow-in($duration:0.2s) {
+  transition-duration: $duration;
+  transition-timing-function: $animation-curve-linear-out-slow-in;
+}
+
+@mixin animate-fast-out-linear-in($duration:0.2s) {
+  transition-duration: $duration;
+  transition-timing-function: $animation-curve-fast-out-linear-in;
+}
+
+@mixin animate-default($duration:0.2s) {
+  transition-duration: $duration;
+  transition-timing-function: $animation-curve-default;
+}
+
+@mixin animate-fadein($duration:1s) {
+    -webkit-animation: fadein $duration;
+       -moz-animation: fadein $duration;
+        -ms-animation: fadein $duration;
+         -o-animation: fadein $duration;
+            animation: fadein $duration;
+}
+
+@mixin animate-fadeout($duration:1s) {
+    -webkit-animation: fadeout $duration;
+       -moz-animation: fadeout $duration;
+        -ms-animation: fadeout $duration;
+         -o-animation: fadeout $duration;
+            animation: fadeout $duration;
+}

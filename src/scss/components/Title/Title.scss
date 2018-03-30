@@ -1,0 +1,47 @@
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+.title {
+	display: block;
+}
+
+.title-content,
+.title-subtitle,
+.title-icon {
+    display: block;
+}
+
+.title-content,
+.title-icon {
+    padding: 0 !important;
+    margin-bottom: 6px !important;
+}
+
+.title-subtitle,
+.title-icon {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.title-content,
+.title-subtitle {
+    & > .title-icon {
+        display: inline-block !important;
+        margin: 0 !important;
+    }
+}
+
+section > .title,
+header > .title,
+footer > .title,
+nav > .title,
+ul > .title,
+form > .title,
+.window > .title,
+.well > .title,
+.panel > .title {
+    & > .title-content,
+    & > .title-icon {
+        margin: 0 !important;
+    }
+}

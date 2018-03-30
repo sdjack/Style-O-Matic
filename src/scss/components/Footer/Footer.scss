@@ -1,0 +1,114 @@
+/***
+ *    ███████╗_██████╗__██████╗_████████╗███████╗██████╗_
+ *    ██╔════╝██╔═══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗
+ *    █████╗__██║___██║██║___██║___██║___█████╗__██████╔╝
+ *    ██╔══╝__██║___██║██║___██║___██║___██╔══╝__██╔══██╗
+ *    ██║_____╚██████╔╝╚██████╔╝___██║___███████╗██║__██║
+ *    ╚═╝______╚═════╝__╚═════╝____╚═╝___╚══════╝╚═╝__╚═╝
+ *    ___________________________________________________
+ */
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+
+.ui-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: space-around;
+  height: auto;
+  min-height: $footer-height;
+  margin: 0;
+  padding: 0 $footer-padding ;
+  border: none;
+  font-size: 11px;
+  background-color: $color-secondary-dark;
+  color: $text-color-secondary;
+
+  @include shadow-3dp();
+  @include animate-default();
+  transition-property: $layout-transition-properties;
+
+  @media screen and (max-width: $screen-size-threshold) {
+    min-height: $footer-height;
+  }
+
+  &.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 33;
+  }
+}
+
+.ui-footer-content {
+  min-height: $footer-height;
+  z-index: 8;
+  display: flex;
+  flex: 1 1 auto;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ui-footer-logo {
+  display: inline-block;
+  padding: 10px 20px !important;
+  margin: 0 !important;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+  & > img {
+    padding: 0 !important;
+    height: 100%;
+  }
+}
+
+.ui-footer-item {
+  display: inline-block;
+  position: relative;
+  justify-content: space-between;
+  padding: $footer-item-padding;
+  margin: 0 !important;
+  cursor: pointer;
+  border: none;
+  & > .fa {
+    font-size: $footer-icon-font-size !important;
+    padding: $footer-icon-padding !important;
+  }
+}
+
+.ui-footer-list {
+  display: inline-block;
+  padding: $footer-list-padding;
+  margin: $footer-list-margin;
+  list-style-type: none;
+  line-height: 16px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  @include text-align-right();
+}
+
+.ui-footer-icon {
+  display: inline-block;
+  font-size: $footer-icon-font-size !important;
+  padding: $footer-icon-padding;
+}
+
+.ui-footer-button {
+  display: inline-block;
+  padding: $footer-toggle-padding !important;
+  @include text-align-center();
+  & > .fa {
+    font-size: $footer-icon-font-size !important;
+    padding: $footer-icon-padding !important;
+  }
+}
+
+.ui-footer-bolster {
+  width: 100%;
+  height: $footer-height;
+  margin: 0;
+  padding: 0;
+}

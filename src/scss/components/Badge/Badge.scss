@@ -1,0 +1,58 @@
+/***
+ *    ██████╗..█████╗.██████╗..██████╗.███████╗
+ *    ██╔══██╗██╔══██╗██╔══██╗██╔════╝.██╔════╝
+ *    ██████╔╝███████║██║..██║██║..███╗█████╗..
+ *    ██╔══██╗██╔══██║██║..██║██║...██║██╔══╝..
+ *    ██████╔╝██║..██║██████╔╝╚██████╔╝███████╗
+ *    ╚═════╝.╚═╝..╚═╝╚═════╝..╚═════╝.╚══════╝
+ *    .........................................
+ */
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+
+.badge {
+  display: inline-block;
+  min-width: $badge-size;
+  height: $badge-size;
+  line-height: $badge-size + 2;
+  font-size: $badge-font-size;
+  border-radius: 20px !important;
+  border: none;
+  padding: 0;
+  @include text-horizontal-align-center();
+  & > .fa {
+    font-size: $badge-icon-font-size;
+  }
+}
+
+.badge-small {
+  display: inline-block;
+  min-width: $badge-size-small;
+  height: $badge-size-small;
+  line-height: $badge-size-small;
+  font-size: $badge-font-size;
+  border-radius: 20px !important;
+  border: none;
+  padding: 0;
+  @include text-horizontal-align-center();
+  & > .fa {
+    font-size: $badge-icon-font-size;
+  }
+}
+
+.badge-no-icon {
+  padding: 0 24px !important;
+}
+
+.badge-label {
+  display: inline-block;
+  min-width: $badge-size;
+  font-size: 12px;
+  border-radius: 4px !important;
+  border: none;
+  padding: 4px;
+	line-height: 1;
+  @include text-horizontal-align-center();
+	vertical-align: middle;
+}

@@ -1,0 +1,367 @@
+/***
+ *    ██╗███╗___██╗██████╗_██╗___██╗████████╗
+ *    ██║████╗__██║██╔══██╗██║___██║╚══██╔══╝
+ *    ██║██╔██╗_██║██████╔╝██║___██║___██║___
+ *    ██║██║╚██╗██║██╔═══╝_██║___██║___██║___
+ *    ██║██║_╚████║██║_____╚██████╔╝___██║___
+ *    ╚═╝╚═╝__╚═══╝╚═╝______╚═════╝____╚═╝___
+ *    _______________________________________
+ */
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+
+input::-webkit-autofill,
+input::-webkit-autofill:hover,
+input::-webkit-autofill:focus,
+input::-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+input, select, textarea {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  & > .fa {
+    line-height: $input-size !important;
+  }
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="url"],
+input[type="checkbox"],
+input[type="radio"],
+select,
+textarea {
+  text-indent: 6px;
+  background-color: white;
+  border-radius: 0 !important;
+  border: $gentle-border;
+
+  @include typo-input();
+
+  &:focus:not(:active) {
+    border: 1px solid rgba(0,0,0,0.35);
+  }
+}
+
+input[type="button"],
+input[type="submit"] {
+  padding: ($input-size / 4) $input-size;
+  text-decoration: none;
+  background-color: $color-dark-alpha-0;
+  border: none !important;
+  border-radius: $border-radius;
+  cursor: pointer;
+  min-width: $input-size;
+
+  @include typo-input-button();
+
+  &:hover,
+  &:focus:not(:active),
+  &:active {
+    background-color: $color-dark-alpha-2;
+  }
+}
+
+.invalid {
+  //color: rgb(235,77,55) !important;
+  border-color: rgb(235,77,55) !important;
+  background-color: rgba(235,77,55,0.1) !important;
+}
+
+.invalid-label {
+  color: #e32 !important;
+}
+
+.required-label {
+  &:after {
+    color: #e32;
+    content: ' *  ';
+    display: inline;
+    font-size: 18px;
+    vertical-align: text-bottom;
+    margin-right: 2px;
+  }
+}
+
+.prepend-icon {
+  padding-left: $input-size !important;
+}
+
+.append-icon {
+  padding-right: $input-size !important;
+}
+
+.prepend-button {
+  display: inline-block;
+  height: 100%;
+  float: left !important;
+  border-width: 0 1px 0 0 !important;
+  box-shadow: none !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.append-button {
+  display: inline-block;
+  height: 100%;
+  float: right !important;
+  border-width: 0 0 0 1px !important;
+  box-shadow: none !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.unstyled {
+  background-color: transparent !important;
+  background: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* INPUT CONTAINERS AND ICONS */
+
+.input-icon,
+.input-text,
+.input-select,
+.input-password,
+.input-tel,
+.input-number,
+.input-date,
+.input-time,
+.input-file,
+.input-url,
+.input-checkbox,
+.input-radio {
+  display: inline-block;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.input-text,
+.input-select,
+.input-password,
+.input-tel,
+.input-number,
+.input-date,
+.input-time,
+.input-file,
+.input-url,
+.input-checkbox,
+.input-radio {
+  position: relative;
+
+  & > input,
+  & > select,
+  & > textarea {
+    border-radius: $border-radius;
+
+    &:focus + label {
+      outline: 1px dotted #000;
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+  }
+}
+
+.input-text,
+.input-select,
+.input-password,
+.input-tel,
+.input-number,
+.input-date,
+.input-time,
+.input-file,
+.input-url {
+  width: 100%;
+  height: $input-size;
+  line-height: 1;
+  background-color: white;
+  border-radius: $border-radius;
+  border: $gentle-border;
+}
+
+.input-text,
+.input-select,
+.input-password,
+.input-tel,
+.input-number,
+.input-date,
+.input-time,
+.input-url {
+  & > input,
+  & > select,
+  & > textarea {
+    width: 100%;
+    height: 100%;
+    background-color: transparent !important;
+    background: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+}
+
+.input-checkbox,
+.input-radio {
+  margin: $input-component-offset;
+  & > label {
+  	height: $radio-label-height !important;
+  	line-height: 1 !important;
+  	font-size: 18px !important;
+  	& > input {
+	    width: $input-component-size;
+	    height: $input-component-size;
+	  }
+  }
+}
+
+.input-icon {
+  position: absolute;
+  top: $input-offset;
+  bottom: $input-offset;
+  width: $input-size;
+  height: $input-size;
+  line-height: $input-size !important;
+  text-align: center;
+  background: transparent !important;
+
+  &.prepended {
+    left: $input-offset;
+  }
+
+  &.appended {
+    right: $input-offset;
+  }
+}
+
+/* INPUT TYPE: TEXT */
+
+/* INPUT TYPE: NUMBER */
+
+.input-number {
+  background-color: white;
+  border-radius: $border-radius;
+  border: $gentle-border;
+  //padding-right: $input-component-size !important;
+
+  & > input,
+  & > select,
+  & > textarea {
+    background-color: transparent !important;
+    background: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+}
+
+.input-number-up,
+.input-number-down {
+  position: absolute;
+  display: inline-block;
+  right: ($input-component-size * -1);
+  height: $input-component-size - 1;
+  width: $input-component-size;
+  border-left: $gentle-border;
+  cursor: pointer;
+  text-align: center;
+  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  line-height: $input-component-size;
+  background-color: white;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
+  &:hover {
+    border-left: $color-dark-alpha-4;
+    background-color: $color-dark-alpha-2;
+  }
+}
+
+.input-number-up {
+  top: 0;
+  border-bottom: $gentle-border;
+  border-radius: 0 $border-radius 0 0;
+
+  &:hover {
+    border-bottom: $color-dark-alpha-4;
+  }
+}
+
+.input-number-down {
+  bottom: 0;
+  border-radius: 0 0 $border-radius 0;
+}
+
+/* INPUT TYPE: DATE */
+
+/* INPUT TYPE: TIME */
+
+/* INPUT TYPE: FILE */
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.input-file {
+  & > label {
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+	  position: relative;
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	  text-indent: 6px;
+    background-color: transparent !important;
+    background: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+
+	  @include typo-input();
+	  line-height: 2;
+
+	  & > .fa {
+	    line-height: $input-size !important;
+	  }
+	  & > input:focus {
+	    outline: 1px dotted #000;
+	    outline: -webkit-focus-ring-color auto 5px;
+	  }
+  }
+}
+
+/* INPUT TYPE: CHECKBOX */
+
+/* INPUT TYPE: RADIO */
+
+/* INPUT TYPE: URL */

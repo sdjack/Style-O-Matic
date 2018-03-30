@@ -1,16 +1,50 @@
-# Style-O-Matic
+# Style-O-Matic UI
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
+---
 
-Describe Style-O-Matic here.
+Experimental element-based CSS framework with accompanying React.js component library
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
+---
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+## Getting Started
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+Site code requires [node.js](http://nodejs.org). Make sure your have `v0.10` or higher installed before proceeding.
+
+**Install all necessary modules:**
+
+```
+$ npm install
+```
+
+**Compile SCSS using Gulp:**
+
+```
+$ gulp
+```
+
+**Start the local development environment:**
+
+```
+$ npm run start
+```
+
+## SCSS Compiling
+
+**Use Gulp for style building:**
+
+```
+$ gulp
+```
+
+
+## Build
+
+**Build for release:**
+
+```
+$ npm run build
+```
+
+
+### Full wiki coming soon.
+

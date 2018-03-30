@@ -1,0 +1,114 @@
+/***
+ *    ██╗..██╗███████╗.█████╗.██████╗.███████╗██████╗.
+ *    ██║..██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗
+ *    ███████║█████╗..███████║██║..██║█████╗..██████╔╝
+ *    ██╔══██║██╔══╝..██╔══██║██║..██║██╔══╝..██╔══██╗
+ *    ██║..██║███████╗██║..██║██████╔╝███████╗██║..██║
+ *    ╚═╝..╚═╝╚══════╝╚═╝..╚═╝╚═════╝.╚══════╝╚═╝..╚═╝
+ *    ................................................
+ */
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+
+.ui-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: space-around;
+  height: $header-height;
+  background-color: $color-black;
+  color: $color-white;
+  margin: 0;
+  padding: 0;
+  border: none;
+  @include shadow-basic();
+
+  @media screen and (max-width: $screen-size-threshold) {
+    min-height: $header-height;
+  }
+
+  &.fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 77;
+  }
+}
+
+.ui-header-content {
+  min-height: $header-height;
+  z-index: 8;
+  display: flex;
+  flex: 1 1 auto;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ui-header-logo {
+  display: inline-block;
+  padding: 10px 20px !important;
+  margin: 0 !important;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+  & > img {
+    padding: 0 !important;
+    height: 100%;
+  }
+}
+
+.ui-header-item {
+  display: inline-block;
+  position: relative;
+  justify-content: space-between;
+  padding: $header-item-padding;
+  margin: 0 !important;
+  cursor: pointer;
+  border: none;
+  & > .fa {
+    font-size: $header-icon-font-size !important;
+    padding: $header-icon-padding !important;
+  }
+}
+
+.ui-header-list {
+  display: inline-block;
+  padding: $header-list-padding;
+  margin: $header-list-margin;
+  list-style-type: none;
+  line-height: 16px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  @include text-align-right();
+}
+
+.ui-header-icon {
+  display: inline-block;
+  font-size: $header-icon-font-size !important;
+  padding: $header-icon-padding;
+}
+
+.ui-header-button {
+  color: $color-white !important;
+  background-color: transparent;
+  display: inline-block;
+  padding: $header-toggle-padding !important;
+  @include text-align-center();
+  & > .fa {
+    font-size: $header-icon-font-size !important;
+    padding: $header-icon-padding !important;
+  }
+  &:hover {
+    background-color: rgba(33, 150, 243, 0.5);
+  }
+}
+
+.ui-header-bolster {
+  width: 100%;
+  height: $header-height;
+  margin: 0;
+  padding: 0;
+}

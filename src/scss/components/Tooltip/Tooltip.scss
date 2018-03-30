@@ -1,0 +1,59 @@
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-widget {
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    margin-top: 12px;
+    margin-left: -24px;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltip-widget {
+    visibility: visible;
+}
+
+.tooltip-content {
+  min-height: 20px;
+  min-width: 120px;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  text-align: left;
+  border-radius: 0;
+  padding: 8px;
+  font-family: $text-font-stack !important;
+  line-height: 16px;
+  @include shadow-tooltip();
+}
+
+.tooltip-content:after, .tooltip-content:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.tooltip-content:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #ffffff;
+  border-width: 8px;
+  margin-left: -40px;
+}
+
+.tooltip-content:before {
+  border-color: rgba(240, 240, 240, 0);
+  border-bottom-color: #cfcfcf;
+  border-width: 10px;
+  margin-left: -42px;
+}

@@ -1,0 +1,41 @@
+/***
+ *    ████████╗ ██████╗  █████╗ ███████╗████████╗███████╗
+ *    ╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝╚══██╔══╝██╔════╝
+ *       ██║   ██║   ██║███████║███████╗   ██║   ███████╗
+ *       ██║   ██║   ██║██╔══██║╚════██║   ██║   ╚════██║
+ *       ██║   ╚██████╔╝██║  ██║███████║   ██║   ███████║
+ *       ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝
+ *
+ */
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+ .toasts {
+  border: none;
+  display: none;
+  padding: 0;
+  position: fixed;
+  top: $toasts-offset;
+  left: 20%;
+  right: 20%;
+  @include text-align-center();
+  z-index: 89;
+  &.active {
+    display: block;
+  }
+}
+
+.toast {
+  height: $toasts-height;
+  line-height: $toasts-height;
+  padding: $toasts-padding;
+  display: inline-block;
+  font-size: 1em;
+  //font-family: Arial;
+  font-weight: 900;
+  box-sizing: border-box;
+  border-radius: 20px;
+  @include text-align-center();
+  @include animate-default(0.2s);
+  transition-property: all;
+}

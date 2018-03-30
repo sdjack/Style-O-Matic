@@ -1,0 +1,113 @@
+/***
+ *    ████████╗ █████╗ ██████╗ ██╗     ███████╗
+ *    ╚══██╔══╝██╔══██╗██╔══██╗██║     ██╔════╝
+ *       ██║   ███████║██████╔╝██║     █████╗
+ *       ██║   ██╔══██║██╔══██╗██║     ██╔══╝
+ *       ██║   ██║  ██║██████╔╝███████╗███████╗
+ *       ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝
+ *
+ */
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+.table {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  border: none;
+  border-collapse: collapse;
+  white-space: wrap;
+  font-size: 12px;
+  line-height: 16px;
+  //font-family: Arial;
+
+  & > thead {
+    padding-bottom: 3px;
+    background-color: $color-secondary-lighter;
+
+    & > tr {
+      & > th, & > td {
+        padding: 8px 12px;
+        color: $color-primary-light !important;
+      }
+    }
+  }
+
+  & > tbody {
+    & > tr {
+      position: relative;
+      & > td {
+        position: relative;
+        padding: 2px 12px;
+        margin: 0;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  & > th {
+    position: relative;
+    padding: 2px 12px;
+    margin: 0;
+    height: $table-row-height;
+    box-sizing: border-box;
+    vertical-align: bottom;
+    @include text-horizontal-align-center();
+    text-overflow: ellipsis;
+    @include typo-body-2();
+    font-weight: bold;
+  }
+}
+
+.table-bordered {
+  & > tbody {
+    & > tr {
+      border: 0px solid rgba(0,0,0,0);
+      border-bottom: $table-borders;
+      &:hover {
+        background-color: rgba(0,0,0,0.033);
+      }
+    }
+  }
+}
+
+.table-padded {
+  padding: $padding;
+}
+
+.table-hover {
+  & > tbody {
+    & > tr {
+      @include animate-default(0.28s);
+      transition-property: background-color;
+      &:hover {
+        background-color: $data-table-hover-color;
+      }
+    }
+  }
+}
+
+.table-spaced {
+  line-height: 20px;
+  & > tbody {
+    & > tr {
+      & > td {
+        padding-top: $padding;
+      }
+    }
+  }
+}
+
+.sort-button {
+  padding: 0 4px;
+  float: right;
+}
+
+@media (min-width: 40em) {
+  .table {
+    font-size: 13px;
+    & > th {
+      font-size: 15px;
+    }
+  }
+}

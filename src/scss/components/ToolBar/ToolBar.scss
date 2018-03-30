@@ -1,0 +1,92 @@
+/***
+ *     ██████╗ ██████╗ ███╗   ██╗████████╗██████╗  ██████╗ ██╗         ██████╗  █████╗ ██████╗
+ *    ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔═══██╗██║         ██╔══██╗██╔══██╗██╔══██╗
+ *    ██║     ██║   ██║██╔██╗ ██║   ██║   ██████╔╝██║   ██║██║         ██████╔╝███████║██████╔╝
+ *    ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██╗██║   ██║██║         ██╔══██╗██╔══██║██╔══██╗
+ *    ╚██████╗╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╔╝███████╗    ██████╔╝██║  ██║██║  ██║
+ *     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚══════╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+ *
+ */
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+.toolbar {
+	margin: 0;
+	padding: 10px 10px 12px;
+}
+
+.toolbar-header,
+.toolbar-content {
+	display: inline-block;
+	width: 100%;
+	padding: 0;
+  	@include text-vertical-align-middle();
+}
+
+.toolbar-header {
+	margin: 0 0 20px;
+}
+
+.toolbar-content {
+	margin: 0;
+}
+
+.toolbar-title,
+.toolbar-badge {
+	float: left;
+}
+
+.toolbar-title {
+	display: inline-block;
+  	padding: 0 !important;
+  	margin: 0px 10px 0px 0px !important;
+  	vertical-align: middle;
+  	@include typo-control-title();
+  	@include text-align-left();
+}
+
+.toolbar-form {
+	display: flex;
+	flex-flow: row;
+	width: 100%;
+}
+
+.toolbar-table {
+	flex: auto;
+  	border-collapse: collapse;
+  	white-space: nowrap;
+  	@include text-align-left();
+  	&.toolbar-table-large {
+  		min-width: 55%;
+  	}
+}
+
+.toolbar-table-cell {
+	padding: 0 $padding 0 0;
+}
+
+.toolbar-table-footer {
+	padding: $padding $padding 0 0;
+}
+
+.toolbar-input,
+.toolbar-component {
+	width: 98% !important;
+	display: inline-block;
+	margin: 0px $padding-large 0px ($padding-large / 2);
+}
+
+.toolbar-component {
+  	@include text-align-center();
+}
+
+.toolbar-badge {
+	margin: 0px 2px 0px 2px;
+}
+
+.toolbar-divider {
+	height: 48px;
+	width: 1px;
+	background: rgb(151, 151, 151) none repeat scroll 0% 0%;
+	margin: 0px 0px 0px 16px;
+}

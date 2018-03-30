@@ -1,0 +1,329 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+$target-elements-directly: true !default;
+
+/// Regular font family
+/// @type List
+$text-font-stack: 'Roboto Condensed', 'Source Sans Pro', sans-serif !default;
+$common_font: $text-font-stack;
+$common-font-size: 14px;
+
+$title_font: $text-font-stack;
+$title-font-size: 24px;
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Source Sans Pro', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+/// Copy text color
+/// @type Color
+$text-color: $color-dark-alpha-5 !default;
+
+/// Container's maximum width
+/// @type Length
+$max-width: 1180px !default;
+
+$shadow-key-umbra-opacity: 0.2;
+$shadow-key-penumbra-opacity: 0.14;
+$shadow-ambient-shadow-opacity: 0.12;
+
+$glow-key-umbra-opacity: 0.3;
+$glow-key-penumbra-opacity: 0.24;
+$glow-ambient-shadow-opacity: 0.22;
+
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;
+
+$color-dark-contrast: $color-white !default;
+$color-light-contrast: $color-black !default;
+$trim-color-classes: false !default;
+
+$base-url: '/assets/' !default;
+
+$common-text-color: $color-dark-alpha-5;
+$common-border: 1px solid $color-dark-alpha-3;
+
+$gentle-text-color: $color-dark-alpha-7;
+$gentler-text-color: $color-dark-alpha-4;
+$gentlest-text-color: $color-dark-alpha-1;
+$gentle-border: 1px solid $color-dark-alpha-2;
+$gentle-heavy-border: 2px solid $color-dark-alpha-2;
+$gentler-border: 1px solid $color-dark-alpha-1;
+$gentler-heavy-border: 2px solid $color-dark-alpha-1;
+$gentlest-border: 1px solid $color-dark-alpha-0;
+$gentlest-heavy-border: 2px solid $color-dark-alpha-0;
+
+$component-transition-properties: display,color,background-color,border-color,box-shadow,width,height,border-radius;
+$layout-transition-properties: display,width,height,margin,padding;
+$button-menu-transition-properties: width;
+$dropdown-transition-properties: height,box-shadow,color,background-color;
+
+$transparent-border: 1px solid $color-dark-alpha-2;
+$faded-border: 1px solid $color-dark-alpha-5;
+$opaque-border: 1px solid $color-dark-alpha-8;
+$header-border: 1px solid $color-dark-alpha-0;
+$nav-border: 1px solid $color-dark-alpha-0;
+
+$general-border-radius: 3px !default;
+
+$color-input-background: $color-primary;
+$color-input-foreground: $color-primary-contrast;
+$color-input-hover: $color-primary-light;
+$color-input-border: $color-primary;
+
+$color-content-background: $color-primary;
+$color-content-foreground: $color-primary-contrast;
+$color-content-hover: $color-primary-light;
+$color-content-border: $color-primary;
+
+$color-loading-background: $color-primary !default;
+$color-loading-top: $color-secondary-light !default;
+$color-loading-right: $color-secondary-lighter !default;
+$color-loading-bottom: $color-secondary-lightest !default;
+
+$text-color-primary: $color-primary-contrast;
+$text-color-primary-hinted: $color-primary-contrast-hinted;
+$text-color-secondary: $color-secondary-contrast;
+$text-color-secondary-hinted: $color-secondary-contrast-hinted;
+$text-color-links: rgba(0,126,228,222) !default;
+
+$button-background-color: $color-dark-alpha-0 !default;
+$button-text-color: $color-dark-alpha-5 !default;
+$button-active-background-color: $color-dark-alpha-3 !default;
+$button-active-text-color: $color-light-alpha-5 !default;
+$button-background-color-disabled: $color-dark-alpha-2;
+$button-text-color-disabled: $color-light-alpha-0;
+$button-icon-color: $color-secondary-contrast-hinted !default;
+$button-icon-active-color: $button-active-background-color !default;
+
+$badge-font-size: 14px;
+$badge-icon-font-size: 18px;
+$badge-size: $badge-icon-font-size + 20;
+$badge-size-small: $badge-icon-font-size + 12;
+
+$content-height: 96vh;
+$screen-size-threshold: 1024px;
+$outer-frame-height: 64px !default;
+$outer-frame-width: 70px !default;
+
+$padding: 12px !default;
+$padding-xlarge: ($padding * 3) !default;
+$padding-large: ($padding * 2) !default;
+$padding-medium: ($padding * 1.5) !default;
+$padding-small: ($padding / 2) !default;
+$padding-smaller: ($padding / 3) !default;
+
+$border-radius: 3px !default;
+$border-radius-large: 5px !default;
+/**
+*  HEADER
+*/
+$header-height: $outer-frame-height !default;
+$header-item-height: ($header-height - ($padding * 2)) !default;
+$header-icon-height: ($header-height - ($padding * 2)) !default;
+$header-icon-font-size: 28px !default;
+$header-item-v-offset: (($header-height - $header-icon-font-size) / 2);
+$header-item-h-offset: (($outer-frame-width - $header-icon-font-size) / 2);
+$header-padding: 0px $padding 0px 0px !default;
+$header-item-padding: ($header-item-v-offset - 2) $padding $header-item-v-offset !default;
+$header-icon-padding: 0px 2px !default;
+$header-list-padding: 0px $padding-xlarge 0px 0px !default;
+$header-list-margin: 0px 0px 12px 0px !default;
+$header-toggle-size: $header-icon-font-size !default;
+$header-toggle-padding: $header-item-v-offset $header-item-h-offset !default;
+/**
+*  FOOTER
+*/
+$footer-height: 20px;
+$footer-item-height: ($footer-height - ($padding * 2)) !default;
+$footer-icon-height: ($footer-height - ($padding * 2)) !default;
+$footer-icon-font-size: 28px !default;
+$footer-item-v-offset: (($footer-height - $footer-icon-font-size) / 2);
+$footer-item-h-offset: (($outer-frame-width - $footer-icon-font-size) / 2);
+$footer-padding: 0px 6px 6px 6px !default;
+$footer-item-padding: ($footer-item-v-offset - 2) $padding $footer-item-v-offset !default;
+$footer-icon-padding: 0px 2px !default;
+$footer-list-padding: 0px $padding-xlarge 0px 0px !default;
+$footer-list-margin: 0px 0px 12px 0px !default;
+$footer-toggle-size: $footer-icon-font-size !default;
+$footer-toggle-padding: $footer-item-v-offset $footer-item-h-offset !default;
+/**
+*  NAV
+*/
+$nav-size: 225px;
+$nav-padding: $padding 24px;
+$nav-item-size: 18px;
+$nav-item-height: 54px;
+$nav-item-padding: 18px 21px;
+$nav-icon-size: 70px;
+$nav-icon-fontsize: 18px;
+$nav-icon-width: $outer-frame-width;
+$nav-caret-fontsize: $nav-icon-fontsize;
+$nav-caret-width: 17px;
+$nav-info-fontsize: 16px;
+$nav-info-width: ($nav-size - $outer-frame-width - 5);
+$nav-list-line-height: 20px;
+$nav-list-margin: -10px 0px 0px 0px;
+
+$nav-folder-item-font-color: $color-secondary-contrast;
+$nav-folder-item-font-color-hover: $color-light-alpha-1;
+$nav-folder-item-height: 36px;
+$nav-folder-icon-fontsize: 16px;
+$nav-folder-icon-line-height: 18px;
+$nav-folder-icon-padding: 1px 0px;
+$nav-folder-icon-margin: 8px 12px 8px 48px;
+$nav-folder-info-fontsize: 12px;
+$nav-folder-info-padding: 0;
+$nav-folder-caret-fontsize: $nav-caret-fontsize;
+$nav-folder-caret-padding: 17px 10px 17px 0;
+/**
+*  Title
+*/
+
+/**
+*  BUTTON
+*/
+$button-min-width: 32px !default;
+$button-height: 26px !default;
+$button-padding: 12px 24px !default;
+$button-margin: 4px !default;
+$button-fab-size: 56px !default;
+$button-fab-size-mini: 40px !default;
+$button-fab-font-size: 24px !default;
+$button-icon-size: 26px !default;
+$button-icon-size-mini: 24px !default;
+/**
+*  BUTTON MENU
+*/
+$button-menu-size: $badge-size;
+$button-menu-margin: 0px 0px 0px ($padding-large / 2) !default;
+$button-menu-padding-low-value: $button-menu-size / 2;
+$button-menu-padding-high-value: $button-menu-size + 5;
+$button-menu-active-padding: 0px $button-menu-padding-low-value 0px $button-menu-padding-low-value !default;
+$button-menu-enabled-padding: 0px $button-menu-padding-high-value 0px $button-menu-padding-low-value !default;
+$button-menu-font-size: 12px;
+$button-menu-font-large-size: $badge-font-size;
+$button-menu-caret-offset: ($padding-large / 2);
+/**
+*  PILL
+*/
+$pill-min-width: 32px !default;
+$pill-height: 28px !default;
+$pill-margin: 0px 0px 0px ($padding-large / 2) !default;
+$pill-padding-low-value: $pill-height / 2;
+$pill-padding-high-value: $pill-height - 2;
+$pill-padding: 0px $pill-padding-low-value 0px $pill-padding-low-value !default;
+$pill-action-padding: 0px $pill-padding-low-value 0px $pill-padding-high-value !default;
+$pill-remove-padding: 0px $pill-padding-high-value 0px $pill-padding-low-value !default;
+$pill-both-padding: 0px $pill-padding-high-value 0px $pill-padding-high-value !default;
+$pill-line-height: $pill-height;
+$pill-action-size: 24px !default;
+/**
+*  TOASTS
+*/
+$toasts-offset: 2px !default;
+$toasts-height: ($header-height - ($toasts-offset * 2));
+$toasts-padding: 0 24px;
+/**
+*  TABLE
+*/
+$table-border-color: rgba(#000, 0.12);
+$table-borders: 1px solid $table-border-color;
+$table-row-height: 32px;
+
+$data-table-header-color: rgba(#000, 0.54);
+$data-table-divider-color: rgba(#000, 0.12);
+$data-table-hover-color: #eeeeee;
+$data-table-selection-color: #e0e0e0;
+$data-table-dividers: 1px solid $data-table-divider-color;
+$data-table-row-height: 48px;
+$data-table-last-row-height: 56px;
+$data-table-header-height: 56px;
+$data-table-column-spacing: 36px;
+$data-table-column-padding: $data-table-column-spacing / 2;
+$data-table-tile-header-height: 64px;
+$data-table-tile-title-top: 20px;
+$data-table-tile-padding: 24px;
+$data-table-button-padding-right: 16px;
+$data-table-cell-top: $data-table-tile-padding / 2;
+/**
+*  INPUT
+*/
+$input-size: 36px !default;
+$input-offset: 1px;
+$input-padding: $input-offset !default;
+$input-font-size: 14px;
+$input-component-size: ($input-size / 2) !default;
+$input-component-offset: ($input-size / 4) !default;
+
+$radio-label-height: 24px;
+$radio-button-size: 16px;
+$radio-inner-margin: $radio-button-size / 4;
+$radio-padding: 8px;
+$radio-top-offset: ($radio-label-height - $radio-button-size) / 2 - 2px;
+
+$selectbox-padding: $input-offset ($input-size + 4) $input-offset $padding !default;
+$selectbox-font-size: 24px !default;
+/**
+*  TILE
+*/
+$tile-background-color: unquote("rgb(#{$color-white})") !default;
+$tile-image-placeholder-color: $common-text-color;
+$tile-body-actions-text-color: $common-text-color;
+$tile-border-color: rgba(0,0,0,0.1) !default;
+$tile-padding: 8px;
+$tile-margin: $padding;
+$tile-min-width: 20.5% !default;
+$tile-max-width: 24.1% !default;
+$tile-height: 325px;
+$tile-responsive-min-width: 300px;
+$tile-responsive-max-width: 380px;
+$tile-responsive-height: 380px;
+$tile-header-height: 40px;
+$tile-badge-offset: $tile-header-height + 30;
+$tile-body-height: 300px;
+$tile-horizontal-padding: 16px !default;
+$tile-vertical-padding: 16px !default;
+$tile-font-size: 16px !default;
+$tile-header-font-size: 20px !default;
+$tile-header-perspective-origin-x: 165px !default;
+$tile-header-perspective-origin-y: 56px !default;
+$tile-header-transform-origin-x: 165px !default;
+$tile-header-transform-origin-y: 56px !default;
+$tile-header-horizontal-padding: 0px !default;
+$tile-header-vertical-padding: 12px !default;
+$tile-header-text-transform-origin-x: 149px !default;
+$tile-header-text-transform-origin-y: 48px !default;
+$tile-header-text-font-weight: 300 !default;
+$tile-body-line-height: 18px !default;
+$tile-body-font-size: 13px !default;
+$tile-body-actions-font-size: 16px !default;
+$tile-body-horizontal-padding: 0px !default;
+$tile-body-vertical-padding: 8px !default;
+$tile-z-index: 1 !default;
+$tile-cover-image-height: 186px !default;
+$tile-background-image-url: '' !default;
+/**
+*  MISC
+*/
+$well-bg: #dfdfdf !default;
+$well-border: $color-dark-alpha-0 !default;
+
+$control-height: 46px !default;
+$control-padding: ($padding-large / 2) 0px !default;
+
+$dropdown-padding: 4px $padding !default;
+
+$animation-curve-fast-out-slow-in: cubic-bezier(0, 0.1, 0.4, 1) !default;
+$animation-curve-slow-out-fast-in: cubic-bezier(0.7, 0, 1, 0.7) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;
+
+$breadcrumbs-height: 45px !default;
+
+$toolbar-padding: 10px 4px !default;
+

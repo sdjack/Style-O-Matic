@@ -1,0 +1,132 @@
+/***
+ *    ████████╗ █████╗ ██████╗ ███████╗
+ *    ╚══██╔══╝██╔══██╗██╔══██╗██╔════╝
+ *       ██║   ███████║██████╔╝███████╗
+ *       ██║   ██╔══██║██╔══██╗╚════██║
+ *       ██║   ██║  ██║██████╔╝███████║
+ *       ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚══════╝
+ *
+ */
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+.tabs {
+  display: block;
+  justify-content: left;
+  align-items: left;
+  padding: 0;
+  margin: 0 12px;
+}
+
+.tabs-wrapper {
+  display: none;
+  position: absolute;
+  top: 136px;
+  left: 10px;
+  right: 10px;
+  bottom: 68px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &.active {
+    display: block;
+  }
+}
+
+.tabs-container {
+  width: 100%;
+  display: block;
+
+  &.smart {
+    display: none;
+  }
+}
+
+.tabs-tab-content {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.tabs-tab {
+  border: none;
+  padding: 0 24px 0 24px;
+  margin: 0 12px 12px 0;
+  float: left;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  height: 36px;
+  line-height: 36px;
+  font-weight: 500;
+  font-size: $common-font-size;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0);
+
+  @include text-align-center();
+
+  &.active {
+    border-bottom: 2px solid $common-text-color;
+		font-weight: 600;
+  }
+
+  &.active:after {
+    width: 100%;
+    display: inline;
+    background: none !important;
+    background: transparent !important;
+    animation: border-expand 0.2s cubic-bezier(0.4, 0.0, 0.4, 1) alternate forwards;
+    transition: all 1s cubic-bezier(0.4, 0.0, 1, 1);
+  }
+
+  &.alert {
+		border-color: rgb(235,77,55) !important;
+		&:after {
+			color: #e32;
+			content: ' *';
+		  font-size: 16px;
+	  }
+  }
+
+}
+
+.tabs-tab-button {
+  margin: 0 2px;
+  border: none;
+  padding: 18px 0;
+  float: left;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  width: 190px;
+  height: 58px;
+  line-height: 30px;
+  font-weight: 500;
+  font-size: $common-font-size;
+  overflow: hidden;
+
+  @include text-align-center();
+
+  &.active {
+    background: transparent;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
+
+@keyframes border-expand {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}

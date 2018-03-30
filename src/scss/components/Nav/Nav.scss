@@ -1,0 +1,300 @@
+/***
+ *    ███╗...██╗.█████╗.██╗...██╗
+ *    ████╗..██║██╔══██╗██║...██║
+ *    ██╔██╗.██║███████║██║...██║
+ *    ██║╚██╗██║██╔══██║╚██╗.██╔╝
+ *    ██║.╚████║██║..██║.╚████╔╝.
+ *    ╚═╝..╚═══╝╚═╝..╚═╝..╚═══╝..
+ *    ...........................
+ */
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+.nav {
+    height: 100%;
+    width: 100%;
+    color: inherit;
+    overflow: hidden;
+
+    &.minimized {
+        & > .nav-item {
+            & > .nav-item-info {
+                display: none;
+            }
+        }
+        & > .nav-flyout-wrapper {
+            & > .nav-item {
+                & > .nav-item-info {
+                    display: none;
+                }
+            }
+            & > .nav-folder {
+    			background-color: rgba(0, 0, 0, 0.8);
+                position: absolute !important;
+                &:hover,
+                &:focus {
+                    width: auto;
+                    max-width: 300px;
+                    border: $gentle-border;
+                    box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3), 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+                }
+                & > .nav-folder-item {
+                    padding: 0 60px 0 0;
+                    & > .nav-folder-item-icon {
+                        margin: 8px 0;
+                        float: right;
+                    }
+                    & > .nav-folder-item-info {
+                        width: $nav-info-width - 5;
+                        margin: 8px 0;
+                    }
+                }
+            }
+        }
+        & > .nav-flyout-wrapper:hover {
+            & > .nav-item {
+                font-weight: 600;
+            }
+            & > .nav-folder {
+                width: auto;
+                height: auto;
+                max-width: 300px;
+                border: $gentle-border;
+                box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3), 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+                & > .nav-folder-item {
+                    padding: 0 12px 0 40px;
+                    height: $nav-folder-item-height;
+                }
+                & > .nav-folder-title {
+                    padding: 20px 0 0 40px;
+                    height: $nav-item-height;
+                }
+            }
+        }
+    }
+
+    &.ui-orientation-vertical {
+    	&.minimized {
+    		width: $nav-icon-size;
+	        & > .nav-flyout-wrapper {
+	            & > .nav-folder {
+	                left: $outer-frame-width;
+	                margin-top: ($nav-item-height * -1);
+	            }
+	        }
+	    }
+
+	    &:not(.minimized) {
+	        & > .nav-flyout-wrapper {
+	            & > .nav-folder {
+	                &.expanded {
+	                    height: auto;
+	                    & > .nav-folder-item {
+	                        height: $nav-folder-item-height;
+	                    }
+	                }
+	            }
+	        }
+	    }
+    }
+
+    &.ui-orientation-horizontal {
+        & > .nav-item {
+            display: inline-block !important;
+        }
+    	&.minimized {
+    		height: $nav-icon-size;
+	        & > .nav-flyout-wrapper {
+	            & > .nav-folder {
+	                top: $outer-frame-width;
+                	margin-left: ($nav-item-height * -1);
+	            }
+	        }
+	    }
+    }
+}
+
+.nav-item {
+    display: block;
+    position: relative;
+    justify-content: space-between;
+    height: $nav-item-height;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    color: inherit !important;
+    background-color: rgba(0, 0, 0, 0);
+    @include animate-default(0.2s);
+    transition-property: all;
+    &.active {
+        font-weight: 600 !important;
+    }
+    & > .left {
+        left: $padding-medium;
+    }
+    & > .right {
+        right: $padding-medium;
+    }
+    & > ul,
+    & > ol {
+        list-style-type: none;
+        line-height: $nav-list-line-height;
+    }
+    &:hover,
+    &:focus {
+        font-weight: 600;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+.nav-item-icon,
+.nav-item-info,
+.nav-item-caret {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-item-icon {
+    width: $nav-icon-size;
+    text-align: center;
+    font-size: $nav-icon-fontsize !important;
+    line-height: $nav-item-height !important;
+    position: absolute;
+}
+
+.nav-item-info {
+    width: 100%;
+    height: 100%;
+    text-align: start;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    font-size: $nav-info-fontsize !important;
+    line-height: $nav-item-height !important;
+    text-indent: $nav-icon-size;
+}
+
+.nav-item-caret {
+    font-family: 'FontAwesome' !important;
+    font-size: $nav-caret-fontsize !important;
+    font-style: normal;
+    position: absolute;
+    top: 6px;
+    right: 0;
+    padding: 12px 10px;
+    &:before {
+        content:"\f0da"
+    }
+    &.expanded:before {
+        content:"\f0d7"
+    }
+}
+
+.nav-folder {
+    display: block;
+    height: auto;
+    font-size: $nav-folder-info-fontsize !important;
+    list-style-type: none;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    @include shadow-removed();
+    @include animate-default(0.1s);
+    transition-property: all;
+
+    &.expanded {
+        height: 0px;
+    }
+}
+
+.nav-folder-item,
+.nav-folder-title {
+    height: 0px;
+    border: none !important;
+    padding: 0;
+    color: inherit !important;
+    display: block;
+    @include animate-default(0.3s);
+    transition-property: width, height, padding;
+    overflow: hidden;
+}
+
+.nav-folder-title {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.nav-folder-item {
+    &:hover,
+    &:focus {
+        font-weight: 600;
+    	background-color: rgba(33, 150, 243, 0.8);
+    }
+}
+
+.nav-folder-item-icon,
+.nav-folder-item-info,
+.nav-folder-item-caret {
+    text-align: start;
+    vertical-align: middle;
+}
+
+.nav-folder-item-icon {
+    height: 20px;
+    min-width: 20px;
+    padding: $nav-folder-icon-padding;
+    font-size: $nav-folder-icon-fontsize !important;
+    line-height: $nav-folder-icon-line-height;
+    margin: $nav-folder-icon-margin;
+}
+
+.nav-folder-item-info {
+    display: inline-block;
+    height: 20px;
+    width: auto;
+    padding: $nav-folder-info-padding;
+    font-size: $nav-folder-info-fontsize !important;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.nav-folder-item-icon {
+    height: 20px;
+    min-width: 20px;
+    padding: $nav-folder-icon-padding;
+    margin: $nav-folder-icon-margin;
+    font-size: $nav-folder-icon-fontsize !important;
+    line-height: $nav-folder-icon-line-height;
+}
+
+.nav-folder-item-caret {
+    padding: $nav-folder-caret-padding;
+    font-size: $nav-folder-caret-fontsize !important;
+    line-height: $nav-folder-item-height;
+}
+
+.nav-folder-title,
+.nav-folder-item-info {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.nav-border {
+    border-bottom: $common-border;
+}
+
+.nav-flyout {
+    width: 200px !important;
+    border: $common-border;
+    position: absolute !important;
+    left: ($outer-frame-width - 1) !important;
+    top: 0;
+}
+
+.nav-flyout-wrapper {
+    display: block;
+    width: 100%;
+}

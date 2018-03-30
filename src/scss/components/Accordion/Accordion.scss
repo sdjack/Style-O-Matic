@@ -1,0 +1,100 @@
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+.accordion {
+    background-color: #fff;
+	border: 1px solid rgba(0,0,0,.13);
+	border-radius: 6px;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	margin-top: 1em !important;
+	margin-bottom: 1em !important;
+	padding: 0 !important;
+
+	&.accordion-title:first-child {
+		border-top-left-radius: 6px;
+		border-top-right-radius: 6px;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	&.accordion-title:last-child {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+	}
+
+	&.accordion-title:only-child {
+		border-top-left-radius: 6px;
+		border-top-right-radius: 6px;
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+	}
+}
+
+.accordion-title {
+    @include typo-title;
+	position: relative;
+	border-bottom: none;
+	border-radius: 6px 6px 0 0;
+	padding: 1em 1em !important;
+	text-decoration: none;
+	text-indent: 12px;
+	overflow: hidden;
+	transition: box-shadow 0.2s $animation-curve-fast-out-linear-in,
+	          background-color 0.2s $animation-curve-default,
+	          color 0.2s $animation-curve-default;
+	cursor: pointer;
+
+	&:hover,
+	&:active {
+		@include box-shadow(inset 8px 8px 22px rgba(0,0,0,.05), inset -8px -8px 22px rgba(0,0,0,.08));
+	}
+
+	& > .fa {
+		line-height: 32px;
+	}
+
+	&.active {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		border-bottom: 1px solid rgba(0,0,0,.18);
+		@include box-shadow(inset 8px 8px 22px rgba(0,0,0,.01), inset -8px -8px 22px rgba(0,0,0,.04));
+		&:hover,
+		&:active {
+			@include box-shadow(inset 8px 8px 22px rgba(0,0,0,.01), inset -8px -8px 22px rgba(0,0,0,.04));
+		}
+		& > .accordion-caret:before {
+	        content:"\f0d7"
+	    }
+	}
+}
+
+.accordion-content {
+	height: 0px;
+	padding: 0;
+	margin: 0;
+	background-color: rgba(0,0,0,.02);
+	overflow: hidden;
+	@include shadow-removed();
+    @include animate-default(0.2s);
+    transition-property: height, padding, box-shadow;
+
+	&.active {
+		height: auto;
+		padding: 1.5em;
+		margin: 0;
+		@include box-shadow(inset 0 2px 8px rgba(0,0,0,.15));
+	}
+}
+
+.accordion-caret {
+    font-family: 'FontAwesome' !important;
+    font-style: normal;
+    position: absolute;
+    left: 0px;
+    &:before {
+        content:"\f0da"
+    }
+}

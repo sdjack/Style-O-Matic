@@ -1,0 +1,223 @@
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+    clear: both;
+    content: '';
+    display: table;
+}
+/**
+ * Hidden Completely
+ */
+.ui-hidden {
+    display: none !important;
+}
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.ui-hidden-text {
+    overflow: hidden;
+    padding: 0;
+    /* 1 */
+    text-indent: 101%;
+    white-space: nowrap;
+}
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.ui-hidden-visually {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.ui-bordered {
+    border: $common-border;
+}
+
+.ui-padded {
+    padding: $padding;
+}
+
+.ui-underline {
+    text-decoration: underline !important;
+}
+
+.ui-bold {
+    font-weight: 600 !important;
+}
+
+.ui-rounded {
+    border-radius: 50px !important;
+}
+
+.ui-raised {
+    @include shadow-basic();
+}
+
+.ui-inset {
+    @include shadow-inset-left();
+}
+
+.ui-black {
+    color: $color-black !important;
+    text-shadow: 0 0 0 rgba(0,0,0,0.01);
+    @include animate-default(0.5s);
+    transition-property: color, background-color, box-shadow, text-shadow !important;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-black-active !important;
+        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+    }
+}
+
+.ui-red {
+    color: $color-red !important;
+    text-shadow: 0 0 0 rgba(0,0,0,0.01);
+    @include animate-default(0.5s);
+    transition-property: color, background-color, box-shadow, text-shadow !important;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-red-active !important;
+        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+    }
+}
+
+.ui-orange {
+    color: $color-orange !important;
+    text-shadow: 0 0 0 rgba(0,0,0,0.01);
+    @include animate-default(0.5s);
+    transition-property: color, background-color, box-shadow, text-shadow !important;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-orange-active !important;
+        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+    }
+}
+
+.ui-yellow {
+    color: $color-yellow !important;
+    text-shadow: 0 0 0 rgba(0,0,0,0.01);
+    @include animate-default(0.5s);
+    transition-property: color, background-color, box-shadow, text-shadow !important;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-yellow-active !important;
+        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+    }
+}
+
+.ui-green {
+    color: $color-green !important;
+    text-shadow: 0 0 0 rgba(0,0,0,0.01);
+    @include animate-default(0.5s);
+    transition-property: color, background-color, box-shadow, text-shadow !important;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-green-active !important;
+        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+    }
+}
+
+.ui-blue {
+    color: $color-blue !important;
+    text-shadow: 0 0 0 rgba(0,0,0,0.01);
+    @include animate-default(0.5s);
+    transition-property: color, background-color, box-shadow, text-shadow !important;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-blue-active !important;
+        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+    }
+}
+
+.ui-indigo {
+    color: $color-indigo !important;
+    text-shadow: 0 0 0 rgba(0,0,0,0.01);
+    @include animate-default(0.5s);
+    transition-property: color, background-color, box-shadow, text-shadow !important;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-indigo-active !important;
+        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+    }
+}
+
+.ui-violet {
+    color: $color-violet !important;
+    text-shadow: 0 0 0 rgba(0,0,0,0.01);
+    @include animate-default(0.5s);
+    transition-property: color, background-color, box-shadow, text-shadow !important;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-violet-active !important;
+        text-shadow: 1px 2px 1px rgba(0,0,0,0.15), -2px -3px 1px rgba(0,0,0,0.1);
+    }
+}
+
+.ui-unavailable {
+    opacity: 0.75;
+}
+
+.ui-reveal {
+	& > .ui-reveal-default,
+	& > .ui-reveal-hover {
+		display: block;
+	    text-align: center;
+	    -webkit-transition: all .2s ease-in-out;
+	    -moz-transition: all .2s ease-in-out;
+	    -ms-transition: all .2s ease-in-out;
+	    -o-transition: all .2s ease-in-out;
+	}
+
+	& > .ui-reveal-default, {
+		transform: scale(1);
+		opacity: 1;
+		height: auto;
+	}
+
+	& > .ui-reveal-hover {
+		transform: scale(1.5);
+		opacity: 0;
+	    height: 0;
+	}
+	
+	&:hover {
+        & > .ui-reveal-default, {
+        	transform: scale(0.1);
+			opacity: 0;
+			height: 0;
+		    -webkit-transition: all 0s;
+		    -moz-transition: all 0s;
+		    -ms-transition: all 0s;
+		    -o-transition: all 0s;
+		}
+
+		& > .ui-reveal-hover {
+			transform: scale(1);
+			opacity: 1;
+			height: auto;
+		}
+    }
+}
