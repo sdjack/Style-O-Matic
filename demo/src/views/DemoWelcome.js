@@ -104,7 +104,12 @@ class DemoWelcome extends React.Component {
               <Grid>
                 <Grid.Row>
                   <Grid.Column cols={2}>
-                    <Button color="red">Red Button</Button>
+                    <Button
+                      color="red"
+                      to="https://github.com/sdjack/Style-O-Matic"
+                    >
+                      Red Button
+                    </Button>
                   </Grid.Column>
                   <Grid.Column cols={2}>
                     <Button color="orange">Orange Button</Button>

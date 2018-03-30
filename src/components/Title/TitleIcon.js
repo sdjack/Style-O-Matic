@@ -7,12 +7,12 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { isUsable } from "../_utilities/CoreUtils";
+import { isUsable } from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
+} from "../_utilities/PropUtils.js";
 
 class TitleIcon extends React.Component {
   static propTypes = getCorePropTypes({

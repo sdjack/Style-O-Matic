@@ -15,8 +15,8 @@ import {
   dataExists,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
-import Input from "../Input";
+} from "../_utilities/CoreUtils.js";
+import Input from "../Input/Input.js";
 import "./Form.css";
 
 const INPUT_ROLE = Input.defaultProps.uirole;

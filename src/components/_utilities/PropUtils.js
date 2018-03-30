@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
 import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
 import classNames from "classnames";
-import { isUsable } from "./CoreUtils";
-import { objectClone } from "./DataUtils";
+import { isUsable } from "./CoreUtils.js";
+import { objectClone } from "./DataUtils.js";
 
 const nativeProps = [
   "id",

@@ -10,7 +10,7 @@ import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import elementType from "prop-types-extra/lib/elementType";
-import { setCoreClass } from "../_utilities/CoreUtils";
+import { setCoreClass } from "../_utilities/CoreUtils.js";
 import "./Modal.css";
 
 class Modal extends React.Component {

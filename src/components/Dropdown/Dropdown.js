@@ -22,10 +22,10 @@ import {
   isModifiedEvent,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
-import { Roles } from "../_utilities/Enum";
-import Button from "../Button/Button";
-import DropdownContent from "./DropdownContent";
+} from "../_utilities/CoreUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import Button from "../Button/Button.js";
+import DropdownContent from "./DropdownContent.js";
 import "./Dropdown.css";
 
 class Dropdown extends React.Component {

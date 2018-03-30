@@ -534,6 +534,16 @@ button {
     color: #263238 !important;
     text-shadow: 0px 0px 1px #F3F3F3; }
 
+.ui-white {
+  color: #F3F3F3 !important;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0.01);
+  transition-duration: 0.1s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: color, background-color, box-shadow !important; }
+  .ui-white:hover, .ui-white:active, .ui-white:focus {
+    color: #F3F3F3 !important;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); }
+
 .ui-red {
   color: #ea1c0d !important;
   text-shadow: 0 0 0 rgba(0, 0, 0, 0.01);
@@ -872,6 +882,8 @@ button {
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: color, background-color, box-shadow; }
+  .ui-button:hover, .ui-button:focus, .ui-button:active {
+    border: none; }
   .ui-button:hover, .ui-button:active {
     color: rgba(255, 255, 255, 0.533);
     background-color: rgba(0, 0, 0, 0.333); }
@@ -890,6 +902,13 @@ button {
     line-height: 32px; }
   .ui-button > i {
     color: inherit !important; }
+  .ui-button.ui-white {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid #F3F3F3 !important;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.233), 0px 1px 4px -1px rgba(0, 0, 0, 0.233); }
+    .ui-button.ui-white:hover, .ui-button.ui-white:active {
+      background-color: rgba(0, 0, 0, 0.4) !important;
+      border: 1px solid #F3F3F3 !important; }
   .ui-button.ui-black {
     background-color: #F3F3F3 !important;
     border: 1px solid #263238 !important;

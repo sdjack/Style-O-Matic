@@ -12,15 +12,15 @@ import {
   setCoreClass,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import HeaderContent from "./HeaderContent";
-import HeaderDrawer from "./HeaderDrawer";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import HeaderContent from "./HeaderContent.js";
+import HeaderDrawer from "./HeaderDrawer.js";
 import "./Header.css";
 
 class Header extends React.Component {

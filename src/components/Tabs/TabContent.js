@@ -11,7 +11,7 @@ import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
+} from "../_utilities/PropUtils.js";
 
 class TabContent extends React.Component {
   static propTypes = getCorePropTypes();

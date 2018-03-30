@@ -10,7 +10,7 @@ import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
 import classNames from "classnames";
-import { setCoreClass } from "../_utilities/CoreUtils";
+import { setCoreClass } from "../_utilities/CoreUtils.js";
 import "./Pill.css";
 
 const REMOVE_ROLE = "remove";

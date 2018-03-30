@@ -14,15 +14,15 @@ import {
   createChainedFunction,
   prefix,
   uID
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import AccordionTitle from "./AccordionTitle";
-import AccordionContent from "./AccordionContent";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import AccordionTitle from "./AccordionTitle.js";
+import AccordionContent from "./AccordionContent.js";
 import "./Accordion.css";
 
 class Accordion extends React.Component {

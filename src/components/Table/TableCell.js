@@ -8,13 +8,13 @@
 
 import React from "react";
 import classNames from "classnames";
-import { isUsable } from "../_utilities/CoreUtils";
+import { isUsable } from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
 
 class TableCell extends React.Component {
   static propTypes = getCorePropTypes(null, {

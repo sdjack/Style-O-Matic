@@ -12,15 +12,15 @@ import {
   setCoreClass,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import FooterContent from "./FooterContent";
-import FooterDrawer from "./FooterDrawer";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import FooterContent from "./FooterContent.js";
+import FooterDrawer from "./FooterDrawer.js";
 import "./Footer.css";
 
 class Footer extends React.Component {

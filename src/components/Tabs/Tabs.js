@@ -12,15 +12,15 @@ import {
   setCoreClass,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import TabContent from "./TabContent";
-import TabToggle from "./TabToggle";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import TabContent from "./TabContent.js";
+import TabToggle from "./TabToggle.js";
 import "./Tabs.css";
 
 class Tabs extends React.Component {

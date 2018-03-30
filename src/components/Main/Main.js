@@ -12,15 +12,15 @@ import {
   setCoreClass,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import MainDrawer from "./MainDrawer";
-import MainContent from "./MainContent";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import MainDrawer from "./MainDrawer.js";
+import MainContent from "./MainContent.js";
 import "./Main.css";
 
 class Main extends React.Component {

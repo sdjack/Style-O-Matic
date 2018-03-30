@@ -9,15 +9,15 @@
 import React, { cloneElement } from "react";
 import classNames from "classnames";
 import warning from "warning";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils";
+import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import Button from "../Button";
-import MainDrawerContent from "./MainDrawerContent";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import Button from "../Button/Button.js";
+import MainDrawerContent from "./MainDrawerContent.js";
 
 class MainDrawer extends React.Component {
   static propTypes = getCorePropTypes({

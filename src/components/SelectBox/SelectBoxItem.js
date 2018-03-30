@@ -8,7 +8,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { uID } from "../_utilities/CoreUtils";
+import { uID } from "../_utilities/CoreUtils.js";
 
 class SelectBoxItem extends React.Component {
   static propTypes = {

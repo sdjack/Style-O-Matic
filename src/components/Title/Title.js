@@ -13,15 +13,15 @@ import {
   isUsable,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import TitleContent from "./TitleContent";
-import TitleSubtitle from "./TitleSubtitle";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import TitleContent from "./TitleContent.js";
+import TitleSubtitle from "./TitleSubtitle.js";
 import TitleIcon from "./TitleIcon";
 import "./Title.css";
 

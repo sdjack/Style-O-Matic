@@ -12,13 +12,13 @@ import {
   setCoreClass,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
-import { Roles } from "../_utilities/Enum";
+} from "../_utilities/CoreUtils.js";
+import { Roles } from "../_utilities/Enum.js";
 import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps
-} from "../_utilities/PropUtils";
+} from "../_utilities/PropUtils.js";
 
 class Card extends React.Component {
   static propTypes = getCorePropTypes();

@@ -10,7 +10,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import elementType from "prop-types-extra/lib/elementType";
-import { setCoreClass, uID } from "../_utilities/CoreUtils";
+import { setCoreClass, uID } from "../_utilities/CoreUtils.js";
 import "./Input.css";
 
 class Input extends React.Component {

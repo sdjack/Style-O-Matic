@@ -9,19 +9,19 @@
 import React, { cloneElement } from "react";
 import classNames from "classnames";
 import warning from "warning";
-import NavItem from "./NavItem";
-import NavFolder from "./NavFolder";
+import NavItem from "./NavItem.js";
+import NavFolder from "./NavFolder.js";
 import {
   setCoreClass,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
 import "./Nav.css";
 
 class Nav extends React.Component {

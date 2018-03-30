@@ -9,9 +9,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Dropdown from "../Dropdown";
-import SelectBoxItem from "./SelectBoxItem";
-import { setCoreClass, uID } from "../_utilities/CoreUtils";
+import Dropdown from "../Dropdown/Dropdown.js";
+import SelectBoxItem from "./SelectBoxItem.js";
+import { setCoreClass, uID } from "../_utilities/CoreUtils.js";
 import "./SelectBox.css";
 
 class SelectBox extends React.Component {

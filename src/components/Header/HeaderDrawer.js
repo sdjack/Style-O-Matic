@@ -10,14 +10,14 @@ import React, { cloneElement } from "react";
 import classNames from "classnames";
 import warning from "warning";
 import uncontrollable from "uncontrollable";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils";
+import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import HeaderDrawerContent from "./HeaderDrawerContent";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import HeaderDrawerContent from "./HeaderDrawerContent.js";
 
 class HeaderDrawer extends React.Component {
   static propTypes = getCorePropTypes(null, {

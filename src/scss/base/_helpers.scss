@@ -85,6 +85,19 @@
     }
 }
 
+.ui-white {
+    color: $color-white !important;
+    text-shadow: 0 0 0 rgba(0,0,0,0.01);
+    @include animate-default(0.1s);
+    transition-property: color, background-color, box-shadow !important;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-white !important;
+        text-shadow: 0px 0px 1px rgba(0,0,0,0.1);
+    }
+}
+
 .ui-red {
     color: $color-red !important;
     text-shadow: 0 0 0 rgba(0,0,0,0.01);

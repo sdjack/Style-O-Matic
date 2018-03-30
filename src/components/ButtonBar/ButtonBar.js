@@ -17,10 +17,10 @@ import {
   setCoreClass,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
-import { Roles } from "../_utilities/Enum";
-import { HexColor } from "../_utilities/ThemeUtils";
-import Button from "../Button";
+} from "../_utilities/CoreUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import { HexColor } from "../_utilities/ThemeUtils.js";
+import Button from "../Button/Button.js";
 import "./ButtonBar.css";
 
 class ButtonBar extends React.Component {

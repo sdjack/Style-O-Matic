@@ -16,13 +16,13 @@ import {
   isModifiedEvent,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
 import "./Button.css";
 
 class Button extends React.Component {
@@ -80,24 +80,31 @@ class Button extends React.Component {
 
   render() {
     const {
-      componentClass: Component,
+      componentClass,
       uiclass,
       disabled,
       children,
+      to,
       props
     } = getValidProps(this.props);
 
-    const ActiveComponent = this.props.href ? "a" : Component;
-
+    const Component = to ? "a" : componentClass;
+    if (to) {
+      props.href = to;
+      props.target = "_blank";
+      props.onClick = null;
+    } else {
+      props.onClick = this.handleClick;
+    }
     return (
-      <ActiveComponent {...props} onClick={this.handleClick}>
+      <Component {...props}>
         {React.Children.map(children, child => {
           if (typeof child.props !== "undefined") {
             return this.renderChild(child, { uiclass, disabled });
           }
           return child;
         })}
-      </ActiveComponent>
+      </Component>
     );
   }
 }

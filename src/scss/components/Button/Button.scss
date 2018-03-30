@@ -31,6 +31,12 @@
     @include animate-default(0.2s);
     transition-property: color, background-color, box-shadow;
 
+	&:hover,
+    &:focus,
+    &:active {
+        border: none;
+    }
+    
     &:hover,
     &:active {
         color: $button-active-text-color;
@@ -63,6 +69,17 @@
     & > i {
     	color: inherit !important;
     }
+
+    &.ui-white {
+	    background-color: rgba(0,0,0,0.2) !important;
+	    border: 1px solid $color-white !important;
+        @include button-shadow();
+	    &:hover,
+	    &:active {
+	    	background-color: rgba(0,0,0,0.4) !important;
+	    	border: 1px solid $color-white !important;
+	    }
+	}
 
     &.ui-black {
 	    background-color: $color-white !important;

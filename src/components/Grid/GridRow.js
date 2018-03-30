@@ -8,13 +8,13 @@
 
 import React, { cloneElement } from "react";
 import warning from "warning";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils";
+import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
 
 class GridRow extends React.Component {
   static propTypes = getCorePropTypes();

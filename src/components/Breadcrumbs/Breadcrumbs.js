@@ -10,7 +10,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
 import classNames from "classnames";
-import { setCoreClass, isUsable, uID } from "../_utilities/CoreUtils";
+import { setCoreClass, isUsable, uID } from "../_utilities/CoreUtils.js";
 import "./Breadcrumbs.css";
 
 class Breadcrumbs extends React.Component {

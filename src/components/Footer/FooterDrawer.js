@@ -10,14 +10,14 @@ import React, { cloneElement } from "react";
 import classNames from "classnames";
 import warning from "warning";
 import uncontrollable from "uncontrollable";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils";
+import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import FooterDrawerContent from "./FooterDrawerContent";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import FooterDrawerContent from "./FooterDrawerContent.js";
 
 class FooterDrawer extends React.Component {
   static propTypes = getCorePropTypes(null, {

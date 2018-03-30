@@ -12,7 +12,7 @@ import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
+} from "../_utilities/PropUtils.js";
 
 class AccordionTitle extends React.Component {
   static propTypes = getCorePropTypes({ accordionindex: "string" });

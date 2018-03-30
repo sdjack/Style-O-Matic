@@ -15,9 +15,9 @@ import {
   uID,
   isUsable,
   dataExists
-} from "../_utilities/CoreUtils";
-import Calendar from "./Calendar";
-import Dropdown from "../Dropdown/Dropdown";
+} from "../_utilities/CoreUtils.js";
+import Calendar from "./Calendar.js";
+import Dropdown from "../Dropdown/Dropdown.js";
 import "./DatePicker.css";
 
 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;

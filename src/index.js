@@ -1,54 +1,54 @@
-import _Accordion from "./components/Accordion";
+import _Accordion from "./components/Accordion/Accordion.js";
 
-import _Badge from "./components/Badge";
+import _Badge from "./components/Badge/Badge.js";
 
-import _Breadcrumbs from "./components/Breadcrumbs";
+import _Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs.js";
 
-import _ButtonBar from "./components/ButtonBar";
+import _ButtonBar from "./components/ButtonBar/ButtonBar.js";
 
-import _Button from "./components/Button";
+import _Button from "./components/Button/Button.js";
 
-import _ButtonMenu from "./components/ButtonMenu";
+import _ButtonMenu from "./components/ButtonMenu/ButtonMenu.js";
 
-import _Card from "./components/Card";
+import _Card from "./components/Card/Card.js";
 
-import _DatePicker from "./components/DatePicker";
+import _DatePicker from "./components/DatePicker/DatePicker.js";
 
-import _Dropdown from "./components/Dropdown";
+import _Dropdown from "./components/Dropdown/Dropdown.js";
 
-import _Footer from "./components/Footer";
+import _Footer from "./components/Footer/Footer.js";
 
-import _Form from "./components/Form";
+import _Form from "./components/Form/Form.js";
 
-import _Grid from "./components/Grid";
+import _Grid from "./components/Grid/Grid.js";
 
-import _Header from "./components/Header";
+import _Header from "./components/Header/Header.js";
 
-import _Input from "./components/Input";
+import _Input from "./components/Input/Input.js";
 
-import _Main from "./components/Main";
+import _Main from "./components/Main/Main.js";
 
-import _Loading from "./components/Loading";
+import _Loading from "./components/Loading/Loading.js";
 
-import _Modal from "./components/Modal";
+import _Modal from "./components/Modal/Modal.js";
 
-import _Nav from "./components/Nav";
+import _Nav from "./components/Nav/Nav.js";
 
-import _Pagination from "./components/Pagination";
+import _Pagination from "./components/Pagination/Pagination.js";
 
-import _Pill from "./components/Pill";
+import _Pill from "./components/Pill/Pill.js";
 
-import _SelectBox from "./components/SelectBox";
+import _SelectBox from "./components/SelectBox/SelectBox.js";
 
-import _Table from "./components/Table";
+import _Table from "./components/Table/Table.js";
 
-import _Tabs from "./components/Tabs";
+import _Tabs from "./components/Tabs/Tabs.js";
 
-import _Title from "./components/Title";
+import _Title from "./components/Title/Title.js";
 
-import _Toasts from "./components/Toasts";
+import _Toasts from "./components/Toasts/Toasts.js";
 
-import _ToolBar from "./components/ToolBar";
+import _ToolBar from "./components/ToolBar/ToolBar.js";
 
 export { _Accordion as Accordion };
 

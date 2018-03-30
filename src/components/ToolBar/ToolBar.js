@@ -12,15 +12,15 @@ import {
   setCoreClass,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import ToolBarHeader from "./ToolBarHeader";
-import ToolBarContent from "./ToolBarContent";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import ToolBarHeader from "./ToolBarHeader.js";
+import ToolBarContent from "./ToolBarContent.js";
 import "./ToolBar.css";
 
 class ToolBar extends React.Component {

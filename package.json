@@ -11,7 +11,7 @@
         "umd"
     ],
     "scripts": {
-        "build": "nwb build-react-component",
+        "build": "nwb build-react-component && gulp",
         "clean": "nwb clean-module && nwb clean-demo",
         "start": "nwb serve-react-demo",
         "test": "nwb test-react",
@@ -121,8 +121,7 @@
     "author": "Steven Jackson [sdj.root@gmail.com]",
     "homepage": "http://stevejackson-studios.com",
     "license": "MIT",
-    "repository": "https://github.com/sdjack/Style-O-Matic-UI",
-    "private": true,
+    "repository": "https://github.com/sdjack/Style-O-Matic",
     "keywords": [
         "react",
         "reactjs",

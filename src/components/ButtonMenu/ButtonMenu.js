@@ -12,7 +12,7 @@ import {
   uID,
   isLeftClickEvent,
   isModifiedEvent
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import "./ButtonMenu.css";
 
 function getInitials(source) {

@@ -13,18 +13,18 @@ import {
   setCoreClass,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import TableHead from "./TableHead";
-import TableBody from "./TableBody";
-import TableFoot from "./TableFoot";
-import TableRow from "./TableRow";
-import TableCell from "./TableCell";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import TableHead from "./TableHead.js";
+import TableBody from "./TableBody.js";
+import TableFoot from "./TableFoot.js";
+import TableRow from "./TableRow.js";
+import TableCell from "./TableCell.js";
 import "./Table.css";
 
 class Table extends React.Component {

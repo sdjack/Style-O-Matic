@@ -9,7 +9,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { setCoreClass } from "../_utilities/CoreUtils";
+import { setCoreClass } from "../_utilities/CoreUtils.js";
 import "./Loading.css";
 
 class Loading extends React.Component {

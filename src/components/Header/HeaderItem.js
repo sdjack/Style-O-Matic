@@ -12,8 +12,8 @@ import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
 
 class HeaderItem extends React.Component {
   static propTypes = getCorePropTypes();

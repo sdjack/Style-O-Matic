@@ -12,15 +12,15 @@ import {
   setCoreClass,
   createChainedFunction,
   prefix
-} from "../_utilities/CoreUtils";
+} from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
-} from "../_utilities/PropUtils";
-import { Roles } from "../_utilities/Enum";
-import GridRow from "./GridRow";
-import GridColumn from "./GridColumn";
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
+import GridRow from "./GridRow.js";
+import GridColumn from "./GridColumn.js";
 import "./Grid.css";
 
 class Grid extends React.Component {
