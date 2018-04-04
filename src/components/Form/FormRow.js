@@ -8,70 +8,54 @@
 
 import React, { cloneElement } from "react";
 import warning from "warning";
-import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
+import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
   getCorePropDefaults
 } from "../_utilities/PropUtils.js";
 import { Roles } from "../_utilities/Enum.js";
-import Input from "../Input/Input.js";
-import FormRow from "./FormRow.js";
-import "./Form.css";
 
-class Form extends React.Component {
+class FormRow extends React.Component {
   static propTypes = getCorePropTypes();
 
   static defaultProps = getCorePropDefaults({
-    componentClass: "form",
-    uirole: Roles.FORM
+    uirole: Roles.ROW
   });
 
-  handleOnSubmit = e => {
-    e.preventDefault();
-    if (this.props.submit) {
-      this.props.submit(e);
-    }
-  };
+  fields = [];
 
   renderChild = (child, props) => {
-    const role = child.props.uirole;
     let ref = c => {
-      this[role] = c;
+      this.fields.push(c);
     };
     if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on header components.");
+      warning(false, "String refs are not supported on table-row components.");
     } else {
       ref = createChainedFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role)
+      uiclass: prefix(props, child.props.uirole)
     });
   };
 
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      children,
-      props
-    } = getValidProps(this.props);
+    const { uiclass, children, props } = getValidProps(this.props);
 
+    console.log(this.props);
+
+    this.fields = [];
     return (
-      <Component {...props}>
+      <div {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case Roles.ROW || Roles.INPUT:
+              case Roles.INPUT:
                 return this.renderChild(child, { uiclass });
               default:
                 return child;
@@ -79,12 +63,9 @@ class Form extends React.Component {
           }
           return child;
         })}
-      </Component>
+      </div>
     );
   }
 }
 
-Form.Row = FormRow;
-Form.Input = Input;
-
-export default setCoreClass("ui-form", Form);
+export default FormRow;

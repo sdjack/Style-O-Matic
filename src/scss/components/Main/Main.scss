@@ -13,6 +13,7 @@
   align-content: flex-start;
   margin: 0 !important;
   overflow: hidden;
+  position: relative;
 
   & > .scroll-wrapper {
     display: inline-block;
@@ -51,7 +52,6 @@
     transition-property: all;
     width: 0px;
     max-width: $nav-size;
-    height: 100%;
     & > .ui-main-drawer-flyout {
       height: 100%;
     }

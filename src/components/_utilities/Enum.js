@@ -15,5 +15,7 @@ export const Roles = {
   TABLE: 'table',
   CELL: 'cell',
   ROW: 'row',
-  COLUMN: 'column'
+  INPUT: 'input',
+  COLUMN: 'column',
+  WIDGET: 'widget'
 };

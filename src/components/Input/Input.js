@@ -7,54 +7,41 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
 import elementType from "prop-types-extra/lib/elementType";
 import { setCoreClass, uID } from "../_utilities/CoreUtils.js";
+import {
+  getCorePropTypes,
+  getCorePropDefaults,
+  getValidProps
+} from "../_utilities/PropUtils.js";
+import { Roles } from "../_utilities/Enum.js";
 import "./Input.css";
 
 class Input extends React.Component {
-  static propTypes = {
-    componentClass: elementType,
-    disabled: PropTypes.bool,
-    uiclass: PropTypes.string,
-    uirole: PropTypes.string,
-    className: PropTypes.string,
-    children: PropTypes.node,
-    value: PropTypes.string,
-    checked: PropTypes.bool,
-    name: PropTypes.string,
-    type: PropTypes.string,
-    onChange: PropTypes.func,
-    config: PropTypes.shape({
-      required: PropTypes.bool,
-      label: PropTypes.string,
-      validator: PropTypes.func,
-      validPattern: PropTypes.regexp,
-      maskPattern: PropTypes.regexp
-    })
-  };
+  static propTypes = getCorePropTypes(
+    {
+      required: "bool",
+      label: "string",
+      validator: "func",
+      validPattern: "regexp",
+      maskPattern: "regexp"
+    },
+    null,
+    true
+  );
 
-  static defaultProps = {
+  static defaultProps = getCorePropDefaults({
     componentClass: "input",
-    uirole: "input",
-    uiclass: null,
-    disabled: false,
-    className: null,
-    children: null,
-    value: "",
-    checked: false,
-    name: null,
+    uirole: Roles.INPUT,
     type: "text",
-    onChange: null,
-    config: {
-      required: false,
-      label: null,
-      validator: null,
-      validPattern: null,
-      maskPattern: null
-    }
-  };
+    checked: false,
+    required: false,
+    label: null,
+    validator: null,
+    validPattern: null,
+    maskPattern: null
+  });
 
   state = {
     renderKey: `input_${uID()}`,
@@ -110,13 +97,17 @@ class Input extends React.Component {
     this.setState({ value: newValue - 1 });
   };
 
-  renderLabel = (label, required) => {
+  renderLabel = (id, label, required) => {
     if (label !== null) {
       const validationClass = required ? " required" : "";
       return (
-        <span key={`label_${this.state.renderKey}`} className={validationClass}>
+        <label
+          key={`label_${this.state.renderKey}`}
+          htmlFor={id}
+          className={validationClass}
+        >
           {label}
-        </span>
+        </label>
       );
     }
     return <span />;
@@ -156,101 +147,92 @@ class Input extends React.Component {
       uiclass,
       className,
       type,
+      id,
+      required,
       disabled,
+      label,
       children,
-      config,
-      ...props
-    } = this.props;
-
-    const { required, label } = config;
+      props
+    } = getValidProps(this.props);
 
     const wrapperClasses = {
       disabled,
       invalid: !this.state.valid
     };
 
-    const classes = {
-      disabled,
-      required,
-      invalid: !this.state.valid
-    };
-
-    delete props.uirole;
-    delete props.type;
-
-    const preParsedClass =
-      className && className === "invalid"
-        ? `${className} input-${type}`
-        : `input-${type} theme-input`;
+    const preParsedClass = `ui-input-${type}`;
 
     if (type === "checkbox") {
       return (
-        <div
-          key={`wrapper_${this.state.renderKey}`}
-          className={classNames(preParsedClass, wrapperClasses)}
-        >
-          {this.renderLabel(label, required)}
-          <Component
-            key={this.state.renderKey}
-            {...props}
-            type={type}
-            className={classNames(className, classes)}
-            onChange={this.handleOnChecked}
-          />
-          {children}
-          {this.renderTypeComponents(type)}
+        <div className={className}>
+          {this.renderLabel(id, label, required)}
+          <div
+            key={`wrapper_${this.state.renderKey}`}
+            className={classNames(preParsedClass, wrapperClasses)}
+          >
+            <Component
+              key={this.state.renderKey}
+              {...props}
+              type={type}
+              onChange={this.handleOnChecked}
+            />
+            {children}
+            {this.renderTypeComponents(type)}
+          </div>
         </div>
       );
     } else if (type === "number") {
       return (
-        <div
-          key={`wrapper_${this.state.renderKey}`}
-          className={classNames(preParsedClass, wrapperClasses)}
-        >
-          {this.renderLabel(label, required)}
-          <Component
-            key={this.state.renderKey}
-            {...props}
-            type={type}
-            className={classNames(className, classes)}
-            onChange={this.handleOnChange}
-          />
-          {children}
+        <div className={className}>
+          {this.renderLabel(id, label, required)}
           <div
-            key={`number-button_${this.state.renderKey}_up`}
-            className="input-number-up"
-            onClick={() => {}}
-            onKeyDown={this.handleOnNumUp}
-            role="presentation"
+            key={`wrapper_${this.state.renderKey}`}
+            className={classNames(preParsedClass, wrapperClasses)}
           >
-            +
-          </div>
-          <div
-            key={`number-button_${this.state.renderKey}_down`}
-            className="input-number-down"
-            onClick={() => {}}
-            onKeyDown={this.handleOnNumDown}
-            role="presentation"
-          >
-            -
+            <Component
+              key={this.state.renderKey}
+              {...props}
+              type={type}
+              onChange={this.handleOnChange}
+            />
+            {children}
+            <div
+              key={`number-button_${this.state.renderKey}_up`}
+              className="input-number-up"
+              onClick={() => {}}
+              onKeyDown={this.handleOnNumUp}
+              role="presentation"
+            >
+              +
+            </div>
+            <div
+              key={`number-button_${this.state.renderKey}_down`}
+              className="input-number-down"
+              onClick={() => {}}
+              onKeyDown={this.handleOnNumDown}
+              role="presentation"
+            >
+              -
+            </div>
           </div>
         </div>
       );
     }
     return (
-      <div
-        key={`wrapper_${this.state.renderKey}`}
-        className={classNames(preParsedClass, wrapperClasses)}
-      >
-        {this.renderLabel(label, required)}
-        <Component
-          key={this.state.renderKey}
-          {...props}
-          type={type}
-          className={classNames(className, classes)}
-          onChange={this.handleOnChange}
-        />
-        {children}
+      <div className={className}>
+        {this.renderLabel(id, label, required)}
+        <div
+          key={`wrapper_${this.state.renderKey}`}
+          className={classNames(preParsedClass, wrapperClasses)}
+        >
+          <Component
+            key={this.state.renderKey}
+            {...props}
+            type={type}
+            onChange={this.handleOnChange}
+          />
+          {children}
+        </div>
       </div>
     );
   }

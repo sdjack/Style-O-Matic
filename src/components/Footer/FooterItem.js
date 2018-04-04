@@ -15,50 +15,55 @@ import {
 } from "../_utilities/PropUtils.js";
 import { Roles } from "../_utilities/Enum.js";
 
-class NavItem extends React.Component {
-  static propTypes = getCorePropTypes({
-    minimized: "bool"
-  });
+class FooterItem extends React.Component {
+  static propTypes = getCorePropTypes();
 
   static defaultProps = getCorePropDefaults({
-    componentClass: "a",
+    componentClass: "div",
     uirole: Roles.ITEM,
-    text: "",
-    minimized: false
+    text: ""
   });
 
   render() {
     const {
-      componentClass: Component,
+      componentClass,
       uiclass,
       className,
       to,
       path,
       text,
       icon,
-      minimized,
       children,
       props
     } = getValidProps(this.props);
 
     const classes = {
-      active: path.indexOf(to) !== -1,
-      minimized
+      active: path.indexOf(to) !== -1
     };
 
+    if (icon || text) {
+      const Component = "a";
+      return (
+        <Component
+          {...props}
+          className={classNames(className, classes)}
+          href={to}
+          label={text}
+        >
+          <i className={`${uiclass}-icon ${icon}`} />
+          <span className={`${uiclass}-info`}>{text}</span>
+          {children}
+        </Component>
+      );
+    }
+    const Component = componentClass;
+
     return (
-      <Component
-        {...props}
-        className={classNames(className, classes)}
-        href={to}
-        label={text}
-      >
-        <span className={`${uiclass}-icon ${icon}`} />
-        <span className={`${uiclass}-info`}>{text}</span>
+      <Component {...props} className={classNames(className, classes)}>
         {children}
       </Component>
     );
   }
 }
 
-export default NavItem;
+export default FooterItem;

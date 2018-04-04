@@ -19,20 +19,21 @@ class HeaderItem extends React.Component {
   static propTypes = getCorePropTypes();
 
   static defaultProps = getCorePropDefaults({
-    componentClass: "a",
+    componentClass: "div",
     uirole: Roles.ITEM,
     text: ""
   });
 
   render() {
     const {
-      componentClass: Component,
+      componentClass,
       uiclass,
       className,
       to,
       path,
       text,
       icon,
+      children,
       props
     } = getValidProps(this.props);
 
@@ -40,15 +41,26 @@ class HeaderItem extends React.Component {
       active: path.indexOf(to) !== -1
     };
 
+    if (icon || text) {
+      const Component = "a";
+      return (
+        <Component
+          {...props}
+          className={classNames(className, classes)}
+          href={to}
+          label={text}
+        >
+          <i className={`${uiclass}-icon ${icon}`} />
+          <span className={`${uiclass}-info`}>{text}</span>
+          {children}
+        </Component>
+      );
+    }
+    const Component = componentClass;
+
     return (
-      <Component
-        {...props}
-        className={classNames(className, classes)}
-        href={to}
-        label={text}
-      >
-        <i className={`${uiclass}-icon ${icon}`} />
-        <span className={`${uiclass}-info`}>{text}</span>
+      <Component {...props} className={classNames(className, classes)}>
+        {children}
       </Component>
     );
   }

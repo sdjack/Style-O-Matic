@@ -44,54 +44,44 @@
   flex-shrink: 1;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 0.25%;
+  padding-right: 0.25%;
 
   &.span-1 {
-    flex-basis: 8.3%;
-    max-width: 7.8%;
+    flex-basis: 7.8%;
   }
   &.span-2 {
-    flex-basis: 16.6%;
-    max-width: 16.1%;
+    flex-basis: 16.1%;
   }
   &.span-3 {
-    flex-basis: 25%;
-    max-width: 24.5%;
+    flex-basis: 24.5%;
   }
   &.span-4 {
-    flex-basis: 33%;
-    max-width: 32.5%;
+    flex-basis: 32.5%;
   }
   &.span-5 {
-    flex-basis: 41.6%;
-    max-width: 41.1%;
+    flex-basis: 41.1%;
   }
   &.span-6 {
-    flex-basis: 50%;
-    max-width: 49.5%;
+    flex-basis: 49.5%;
   }
   &.span-7 {
-    flex-basis: 58.3%;
-    max-width: 57.8%;
+    flex-basis: 57.8%;
   }
   &.span-8 {
-    flex-basis: 66%;
-    max-width: 65.5%;
+    flex-basis: 65.5%;
   }
   &.span-9 {
-    flex-basis: 75.1%;
-    max-width: 74.6%;
+    flex-basis: 74.6%;
   }
   &.span-10 {
-    flex-basis: 83.3%;
-    max-width: 82.8%;
+    flex-basis: 82.8%;
   }
   &.span-11 {
-    flex-basis: 91.7%;
-    max-width: 91.2%;
+    flex-basis: 91.2%;
   }
   &.span-12 {
-    flex-basis: 100%;
-    max-width: 99.5%;
+    flex-basis: 99.5%;
   }
 
   @media screen and (max-width: $grid-screen-threshold) {

@@ -21,6 +21,8 @@ import {
 import { Roles } from "../_utilities/Enum.js";
 import HeaderContent from "./HeaderContent.js";
 import HeaderDrawer from "./HeaderDrawer.js";
+import HeaderItem from "./HeaderItem.js";
+import Button from "../Button/Button.js";
 import "./Header.css";
 
 class Header extends React.Component {
@@ -101,5 +103,7 @@ class Header extends React.Component {
 
 Header.Content = HeaderContent;
 Header.Drawer = HeaderDrawer;
+Header.Item = HeaderItem;
+Header.Button = Button;
 
 export default setCoreClass("ui-header", Header);

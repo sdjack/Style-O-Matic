@@ -43,14 +43,13 @@ const AUTOPREFIXER_BROWSERS = [
 ];
 
 const componentList = [
-  "Layout",
   "Accordion",
   "Badge",
   "Breadcrumbs",
   "Button",
   "ButtonBar",
   "ButtonMenu",
-  "ToolBar",
+  "Card",
   "DatePicker",
   "Dropdown",
   "Footer",
@@ -67,9 +66,10 @@ const componentList = [
   "SelectBox",
   "Table",
   "Tabs",
-  "Card",
   "Title",
-  "Toasts"
+  "Toasts",
+  "ToolBar",
+  "ToolTip"
 ];
 // Base CSS [Componentized Version]
 gulp.task("all_styles", () =>

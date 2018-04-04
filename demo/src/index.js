@@ -3,8 +3,15 @@ import { render } from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import DemoWelcome from "./views/DemoWelcome";
 import Typeography from "./views/Typeography";
+import Forms from "./views/Forms";
 import NotFound from "./views/NotFound";
-import Layout from "./views/Layout";
+import LayoutView from "./views/LayoutView";
+import GridView from "./views/GridView";
+import NavigationView from "./views/NavigationView";
+import ButtonsView from "./views/ButtonsView";
+import TableView from "./views/TableView";
+import AccordionView from "./views/AccordionView";
+import PageWrapper from "./views/PageWrapper";
 import "../../css/style-o-matic.min.css";
 
 const RootElement = document.getElementById("demo");
@@ -16,27 +23,90 @@ render(
         path="/"
         exact
         render={props => (
-          <Layout {...props}>
+          <PageWrapper {...props}>
             <DemoWelcome {...props} />
-          </Layout>
+          </PageWrapper>
         )}
       />
       <Route
         path="/typography"
         exact
         render={props => (
-          <Layout {...props}>
+          <PageWrapper {...props}>
             <Typeography {...props} />
-          </Layout>
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/layout"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <LayoutView {...props} />
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/form"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <Forms {...props} />
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/grid"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <GridView {...props} />
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/navigation"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <NavigationView {...props} />
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/table"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <TableView {...props} />
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/buttons"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <ButtonsView {...props} />
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/accordion"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <AccordionView {...props} />
+          </PageWrapper>
         )}
       />
       <Route
         path="*"
         exact
         render={props => (
-          <Layout {...props}>
+          <PageWrapper {...props}>
             <NotFound {...props} />
-          </Layout>
+          </PageWrapper>
         )}
       />
     </Switch>

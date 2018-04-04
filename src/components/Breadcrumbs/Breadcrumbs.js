@@ -64,7 +64,10 @@ class Breadcrumbs extends React.Component {
             : bc.replace(/\W/g, " ");
           if (i > 0) {
             rows.push(
-              <span key={`breadcrumb-divider_${uID()}`} className="breadcrumb">
+              <span
+                key={`breadcrumb-divider_${uID()}`}
+                className="breadcrumb-divider"
+              >
                 &nbsp;/&nbsp;
               </span>
             );

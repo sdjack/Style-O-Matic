@@ -7,8 +7,19 @@ import { objectClone } from "./DataUtils.js";
 
 const nativeProps = [
   "id",
+  "name",
+  "type",
+  "value",
+  "checked",
+  "required",
   "className",
   "role",
+  "style",
+  "href",
+  "src",
+  "width",
+  "height",
+  "colspan",
   "children",
   "onClick",
   "onSelect",
@@ -24,6 +35,17 @@ const nativeProps = [
 
 const DefaultPropTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  name: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.string,
+  label: PropTypes.string,
+  checked: PropTypes.bool,
+  required: PropTypes.bool,
+  inset: PropTypes.bool,
+  raised: PropTypes.bool,
+  well: PropTypes.bool,
+  panel: PropTypes.bool,
+  masked: PropTypes.bool,
   componentClass: elementType,
   className: PropTypes.string,
   role: PropTypes.string,
@@ -75,6 +97,12 @@ const DefaultPropValues = {
   componentClass: "div",
   className: null,
   role: null,
+  name: null,
+  type: null,
+  label: null,
+  value: null,
+  checked: null,
+  required: null,
   group: null,
   children: null,
   uiclass: "",
@@ -82,6 +110,11 @@ const DefaultPropValues = {
   path: "/",
   text: null,
   icon: null,
+  inset: null,
+  raised: null,
+  well: null,
+  panel: null,
+  masked: null,
   to: null,
   disabled: false,
   active: false,
@@ -154,6 +187,11 @@ export function getUIClassString(props) {
     disabled,
     active,
     fixed,
+    inset,
+    raised,
+    well,
+    panel,
+    masked,
     color,
     orientation,
     textAlign,
@@ -165,25 +203,33 @@ export function getUIClassString(props) {
     [uiclass]: !className || className.indexOf(uiclass) === -1,
     disabled,
     active,
-    fixed
+    "ui-fixed": fixed,
+    "ui-inset": inset,
+    "ui-raised": raised,
+    "ui-well": well,
+    "ui-panel": panel,
+    "ui-masked": masked,
+    [`ui-${color}`]: color,
+    [`ui-position-${position}`]: position,
+    [`ui-orientation-${orientation}`]: orientation,
+    [`ui-content-align-${contentAlign}`]: contentAlign,
+    [`ui-text-align-${textAlign}`]: textAlign
   };
-
-  if (isUsable(color)) {
-    classes[`ui-${color}`] = true;
-  }
-
-  if (isUsable(orientation)) {
-    classes[`ui-orientation-${orientation}`] = true;
-  }
-  if (isUsable(position)) {
-    classes[`ui-position-${position}`] = true;
-  }
-  if (isUsable(contentAlign)) {
-    classes[`ui-content-align-${contentAlign}`] = true;
-  }
-  if (isUsable(textAlign)) {
-    classes[`ui-text-align-${textAlign}`] = true;
-  }
+  // if (isUsable(color)) {
+  //   classes[`ui-${color}`] = true;
+  // }
+  // if (isUsable(orientation)) {
+  //   classes[`ui-orientation-${orientation}`] = true;
+  // }
+  // if (isUsable(position)) {
+  //   classes[`ui-position-${position}`] = true;
+  // }
+  // if (isUsable(contentAlign)) {
+  //   classes[`ui-content-align-${contentAlign}`] = true;
+  // }
+  // if (isUsable(textAlign)) {
+  //   classes[`ui-text-align-${textAlign}`] = true;
+  // }
 
   return classNames(className, classes);
 }

@@ -21,6 +21,8 @@ import {
 import { Roles } from "../_utilities/Enum.js";
 import FooterContent from "./FooterContent.js";
 import FooterDrawer from "./FooterDrawer.js";
+import FooterItem from "./FooterItem.js";
+import Button from "../Button/Button.js";
 import "./Footer.css";
 
 class Footer extends React.Component {
@@ -96,5 +98,7 @@ class Footer extends React.Component {
 
 Footer.Content = FooterContent;
 Footer.Drawer = FooterDrawer;
+Footer.Item = FooterItem;
+Footer.Button = Button;
 
 export default setCoreClass("ui-footer", Footer);

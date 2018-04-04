@@ -84,7 +84,7 @@ class NavFolder extends React.Component {
 
     return (
       <div className="ui-nav-flyout-wrapper">
-        <a className="ui-nav-item" href={to} label={text}>
+        <a className="ui-nav-item ui-tooltip" href={to} label={text}>
           <i className={`ui-nav-item-icon ${icon}`} />
           <span className="ui-nav-item-info">{text}</span>
           <span

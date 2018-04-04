@@ -28,7 +28,8 @@ class Main extends React.Component {
 
   static defaultProps = getCorePropDefaults({
     componentClass: "main",
-    uirole: "main"
+    uirole: "main",
+    fixed: true
   });
 
   renderChild = (child, props) => {

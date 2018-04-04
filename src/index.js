@@ -50,6 +50,8 @@ import _Toasts from "./components/Toasts/Toasts.js";
 
 import _ToolBar from "./components/ToolBar/ToolBar.js";
 
+import _ToolTip from "./components/ToolTip/ToolTip.js";
+
 export { _Accordion as Accordion };
 
 export { _Badge as Badge };
@@ -101,3 +103,5 @@ export { _Title as Title };
 export { _Toasts as Toasts };
 
 export { _ToolBar as ToolBar };
+
+export { _ToolTip as ToolTip };

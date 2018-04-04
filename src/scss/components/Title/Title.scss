@@ -38,8 +38,11 @@ nav > .ui-title,
 ul > .ui-title,
 form > .ui-title,
 .window > .ui-title,
-.well > .ui-title,
-.panel > .ui-title {
+.ui-well > .ui-title,
+.ui-panel > .ui-title,
+.ui-inset > .ui-title,
+.ui-raised > .ui-title,
+.ui-grid-column > .ui-title {
     & > .ui-title-content,
     & > .ui-title-icon {
         margin: 0 !important;

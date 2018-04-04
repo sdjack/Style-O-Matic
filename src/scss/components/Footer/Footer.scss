@@ -21,8 +21,9 @@
   height: auto;
   min-height: $footer-height;
   margin: 0;
-  padding: $footer-padding ;
+  padding: 0;
   border: none;
+  overflow: hidden;
   font-size: 11px;
   background-color: $color-secondary-dark;
   color: $text-color-secondary;
@@ -35,8 +36,7 @@
     min-height: $footer-height;
   }
 
-  &.fixed {
-    position: fixed;
+  &.ui-fixed {
     bottom: 0;
     left: 0;
     z-index: 77;
@@ -97,12 +97,21 @@
 }
 
 .ui-footer-button {
+  height: auto !important;
+  color: $color-white !important;
+  background-color: transparent;
   display: inline-block;
   padding: $footer-toggle-padding !important;
+  border-radius: 0 !important;
+  font-size: 13px;
   @include text-align-center();
+  @include bar-button-skin();
   & > .fa {
     font-size: $footer-icon-font-size !important;
     padding: $footer-icon-padding !important;
+  }
+  &:hover {
+    background-color: rgba(33, 150, 243, 0.5);
   }
 }
 

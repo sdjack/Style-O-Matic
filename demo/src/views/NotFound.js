@@ -4,7 +4,6 @@
  * @author: Steven Jackson
  * ======================================================================== */
 import React from "react";
-import ReactDOM from "react-dom";
 import { Grid, Title } from "../../../src/index";
 
 class NotFound extends React.Component {
@@ -16,7 +15,7 @@ class NotFound extends React.Component {
       <Grid key="view-grid">
         <Grid.Row>
           <Grid.Column cols={12} textAlign="center">
-            <img alt="404" src="public/images/404.png" height="600px" />
+            <img alt="404" src="demo/src/views/404.png" />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -35,7 +34,3 @@ class NotFound extends React.Component {
 }
 
 export default NotFound;
-
-if (document.getElementById("collection-view")) {
-  ReactDOM.render(<NotFound />, document.getElementById("collection-view"));
-}

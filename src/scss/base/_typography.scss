@@ -97,3 +97,35 @@ button {
     border: 1px solid rgba(0,0,0,0.35);
   }
 }
+
+fieldset {
+  max-width: 100%;
+  display: block;
+  justify-content: space-around;
+  border: none;
+  padding: 2px;
+  padding-bottom: 16px;
+}
+
+label,
+legend {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding: $input-padding;
+  @include text-align-left();
+}
+
+label {
+  height: $input-size / 2;
+  font-size: $input-font-size;
+  line-height: $input-size / 4;
+}
+
+legend {
+  height: $input-size;
+  font-size: $input-font-size + 2;
+  font-weight: 700;
+  width: 100%;
+  line-height: $input-size;
+}

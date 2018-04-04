@@ -1,5 +1,5 @@
 {
-    "name": "Style-O-Matic",
+    "name": "style-o-matic",
     "version": "1.0.0",
     "description": "Experimental element-based CSS framework with accompanying React.js component library",
     "main": "lib/index.js",
