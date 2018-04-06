@@ -44,8 +44,6 @@ class FormRow extends React.Component {
   render() {
     const { uiclass, children, props } = getValidProps(this.props);
 
-    console.log(this.props);
-
     this.fields = [];
     return (
       <div {...props}>

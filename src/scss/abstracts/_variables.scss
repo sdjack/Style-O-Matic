@@ -262,8 +262,9 @@ $input-size: 36px !default;
 $input-offset: 1px;
 $input-padding: $input-offset !default;
 $input-font-size: 14px;
-$input-component-size: ($input-size / 2) !default;
-$input-component-offset: ($input-size / 4) !default;
+$input-component-size: 20px !default;
+$input-component-height: 34px !default;
+$input-component-offset: 10px !default;
 
 $radio-label-height: 24px;
 $radio-button-size: 16px;

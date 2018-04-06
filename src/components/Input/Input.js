@@ -8,7 +8,6 @@
 
 import React from "react";
 import classNames from "classnames";
-import elementType from "prop-types-extra/lib/elementType";
 import { setCoreClass, uID } from "../_utilities/CoreUtils.js";
 import {
   getCorePropTypes,
@@ -25,7 +24,8 @@ class Input extends React.Component {
       label: "string",
       validator: "func",
       validPattern: "regexp",
-      maskPattern: "regexp"
+      maskPattern: "regexp",
+      selectOptions: "array"
     },
     null,
     true
@@ -40,7 +40,8 @@ class Input extends React.Component {
     label: null,
     validator: null,
     validPattern: null,
-    maskPattern: null
+    maskPattern: null,
+    selectOptions: []
   });
 
   state = {
@@ -50,12 +51,16 @@ class Input extends React.Component {
   };
 
   handleOnChecked = e => {
+    e.preventDefault();
+    this.setState({ value: e.target.value });
     if (this.props.onChange) {
       this.props.onChange(e);
     }
   };
 
   handleOnChange = e => {
+    e.preventDefault();
+    this.setState({ value: e.target.value });
     if (this.props.onChange) {
       this.props.onChange(e);
     }
@@ -87,13 +92,19 @@ class Input extends React.Component {
     }
   };
 
-  handleOnNumUp = () => {
-    const newValue = parseInt(this.state.value || 0, 10);
+  handleOnNumUp = e => {
+    e.preventDefault();
+    const currentValue =
+      this.state.value && this.state.value !== "" ? this.state.value : 0;
+    const newValue = parseInt(currentValue, 10);
     this.setState({ value: newValue + 1 });
   };
 
-  handleOnNumDown = () => {
-    const newValue = parseInt(this.state.value || 0, 10);
+  handleOnNumDown = e => {
+    e.preventDefault();
+    const currentValue =
+      this.state.value && this.state.value !== "" ? this.state.value : 0;
+    const newValue = parseInt(currentValue, 10);
     this.setState({ value: newValue - 1 });
   };
 
@@ -113,38 +124,27 @@ class Input extends React.Component {
     return <span />;
   };
 
-  renderTypeComponents = type => {
-    if (type === "number") {
-      return [
-        <div
-          key={`number-button_${this.state.renderKey}_up`}
-          className="input-number-up"
-          onClick={this.handleOnNumUp}
-          onKeyDown={this.handleOnNumUp}
-          role="presentation"
+  renderSelectOptions = selectOptions => {
+    const output = [];
+    for (let i = 0; i < selectOptions.length; i++) {
+      const optionData = selectOptions[i];
+      output.push(
+        <option
+          key={`option_${i}_${this.state.renderKey}`}
+          id={`option_${i}`}
+          name={`option_${i}`}
+          value={optionData.Value}
         >
-          +
-        </div>,
-        <div
-          key={`number-button_${this.state.renderKey}_down`}
-          className="input-number-down"
-          onClick={this.handleOnNumDown}
-          onKeyDown={this.handleOnNumDown}
-          role="presentation"
-        >
-          -
-        </div>
-      ];
-    } else if (type === "test") {
-      return <i className="fa fa-times anchor-right" aria-hidden="true" />;
+          {optionData.Label}
+        </option>
+      );
     }
-    return null;
+    return output;
   };
 
   render() {
     const {
-      componentClass: Component,
-      uiclass,
+      componentClass,
       className,
       type,
       id,
@@ -152,6 +152,7 @@ class Input extends React.Component {
       disabled,
       label,
       children,
+      selectOptions,
       props
     } = getValidProps(this.props);
 
@@ -160,9 +161,12 @@ class Input extends React.Component {
       invalid: !this.state.valid
     };
 
+    const Component =
+      type === "select" || type === "textarea" ? type : componentClass;
+
     const preParsedClass = `ui-input-${type}`;
 
-    if (type === "checkbox") {
+    if (type === "select") {
       return (
         <div className={className}>
           {this.renderLabel(id, label, required)}
@@ -174,10 +178,31 @@ class Input extends React.Component {
               key={this.state.renderKey}
               {...props}
               type={type}
+              onChange={this.handleOnChange}
+              value={this.state.value}
+            >
+              {children}
+              {this.renderSelectOptions(selectOptions)}
+            </Component>
+          </div>
+        </div>
+      );
+    } else if (type === "checkbox") {
+      return (
+        <div className={className}>
+          {this.renderLabel(id, label, required)}
+          <div
+            key={`wrapper_${this.state.renderKey}`}
+            className={classNames(preParsedClass, wrapperClasses)}
+          >
+            <Component
+              key={this.state.renderKey}
+              {...props}
+              type={type}
+              value={this.state.value}
               onChange={this.handleOnChecked}
             />
             {children}
-            {this.renderTypeComponents(type)}
           </div>
         </div>
       );
@@ -194,26 +219,23 @@ class Input extends React.Component {
               {...props}
               type={type}
               onChange={this.handleOnChange}
+              value={this.state.value}
             />
             {children}
-            <div
+            <button
               key={`number-button_${this.state.renderKey}_up`}
-              className="input-number-up"
-              onClick={() => {}}
-              onKeyDown={this.handleOnNumUp}
-              role="presentation"
+              className="ui-input-number-up"
+              onClick={this.handleOnNumUp}
             >
               +
-            </div>
-            <div
+            </button>
+            <button
               key={`number-button_${this.state.renderKey}_down`}
-              className="input-number-down"
-              onClick={() => {}}
-              onKeyDown={this.handleOnNumDown}
-              role="presentation"
+              className="ui-input-number-down"
+              onClick={this.handleOnNumDown}
             >
               -
-            </div>
+            </button>
           </div>
         </div>
       );
@@ -230,6 +252,7 @@ class Input extends React.Component {
             {...props}
             type={type}
             onChange={this.handleOnChange}
+            value={this.state.value}
           />
           {children}
         </div>

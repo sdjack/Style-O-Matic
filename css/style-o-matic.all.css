@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.0.0
+ * @version v1.0.1
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Whiting House Group. All rights reserved.
@@ -2492,6 +2492,8 @@ input[type="password"],
 input[type="date"],
 input[type="time"],
 input[type="url"],
+input[type="email"],
+input[type="color"],
 input[type="checkbox"],
 input[type="radio"],
 select,
@@ -2513,6 +2515,8 @@ textarea {
   input[type="date"]:focus:not(:active),
   input[type="time"]:focus:not(:active),
   input[type="url"]:focus:not(:active),
+  input[type="email"]:focus:not(:active),
+  input[type="color"]:focus:not(:active),
   input[type="checkbox"]:focus:not(:active),
   input[type="radio"]:focus:not(:active),
   select:focus:not(:active),
@@ -2603,6 +2607,8 @@ input[type="submit"] {
 .ui-input-time,
 .ui-input-file,
 .ui-input-url,
+.ui-input-email,
+.ui-input-color,
 .ui-input-checkbox,
 .ui-input-radio {
   display: inline-block;
@@ -2620,6 +2626,8 @@ input[type="submit"] {
 .ui-input-time,
 .ui-input-file,
 .ui-input-url,
+.ui-input-email,
+.ui-input-color,
 .ui-input-checkbox,
 .ui-input-radio {
   position: relative; }
@@ -2650,6 +2658,12 @@ input[type="submit"] {
   .ui-input-url > input,
   .ui-input-url > select,
   .ui-input-url > textarea,
+  .ui-input-email > input,
+  .ui-input-email > select,
+  .ui-input-email > textarea,
+  .ui-input-color > input,
+  .ui-input-color > select,
+  .ui-input-color > textarea,
   .ui-input-checkbox > input,
   .ui-input-checkbox > select,
   .ui-input-checkbox > textarea,
@@ -2684,6 +2698,12 @@ input[type="submit"] {
     .ui-input-url > input:focus + label,
     .ui-input-url > select:focus + label,
     .ui-input-url > textarea:focus + label,
+    .ui-input-email > input:focus + label,
+    .ui-input-email > select:focus + label,
+    .ui-input-email > textarea:focus + label,
+    .ui-input-color > input:focus + label,
+    .ui-input-color > select:focus + label,
+    .ui-input-color > textarea:focus + label,
     .ui-input-checkbox > input:focus + label,
     .ui-input-checkbox > select:focus + label,
     .ui-input-checkbox > textarea:focus + label,
@@ -2701,7 +2721,9 @@ input[type="submit"] {
 .ui-input-date,
 .ui-input-time,
 .ui-input-file,
-.ui-input-url {
+.ui-input-url,
+.ui-input-email,
+.ui-input-color {
   width: 100%;
   height: 36px;
   line-height: 1;
@@ -2732,7 +2754,13 @@ input[type="submit"] {
 .ui-input-time > textarea,
 .ui-input-url > input,
 .ui-input-url > select,
-.ui-input-url > textarea {
+.ui-input-url > textarea,
+.ui-input-email > input,
+.ui-input-email > select,
+.ui-input-email > textarea,
+.ui-input-color > input,
+.ui-input-color > select,
+.ui-input-color > textarea {
   width: 100%;
   height: 100%;
   background-color: transparent !important;
@@ -2742,7 +2770,7 @@ input[type="submit"] {
 
 .ui-input-checkbox,
 .ui-input-radio {
-  margin: 9px; }
+  margin: 10px; }
   .ui-input-checkbox > label,
   .ui-input-radio > label {
     height: 24px !important;
@@ -2750,8 +2778,8 @@ input[type="submit"] {
     font-size: 18px !important; }
     .ui-input-checkbox > label > input,
     .ui-input-radio > label > input {
-      width: 18px;
-      height: 18px; }
+      width: 20px;
+      height: 20px; }
 
 .ui-input-icon {
   position: absolute;
@@ -2774,6 +2802,12 @@ input[type="submit"] {
   .ui-input-number > input,
   .ui-input-number > select,
   .ui-input-number > textarea {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 22px;
     background-color: transparent !important;
     background: none !important;
     border-radius: 0 !important;
@@ -2783,14 +2817,14 @@ input[type="submit"] {
 .ui-input-number-down {
   position: absolute;
   display: inline-block;
-  right: -18px;
+  right: -20px;
   height: 17px;
-  width: 18px;
+  width: 20px;
   border-left: 1px solid rgba(0, 0, 0, 0.233);
   cursor: pointer;
   text-align: center;
   font-family: "Trebuchet MS", Helvetica, sans-serif !important;
-  line-height: 18px;
+  line-height: 1;
   background-color: white;
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);

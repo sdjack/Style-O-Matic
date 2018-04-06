@@ -24,14 +24,46 @@ class Forms extends React.Component {
             <Form>
               <Form.Row>
                 <Form.Input id="demo-input1" label="Text Input 1" />
-                <Form.Input id="demo-input2" label="Text Input 2" />
-                <Form.Input id="demo-input3" label="Text Input 3" />
+                <Form.Input
+                  id="demo-input2"
+                  label="Text Input 2"
+                  type="password"
+                />
+                <Form.Input
+                  id="demo-input3"
+                  label="Text Input 3"
+                  type="color"
+                />
               </Form.Row>
               <Form.Row>
-                <Form.Input id="demo-input4" label="Text Input 4" />
-                <Form.Input id="demo-input5" label="Text Input 5" />
-                <Form.Input id="demo-input6" label="Text Input 6" />
-                <Form.Input id="demo-input7" label="Text Input 7" />
+                <Form.Input
+                  id="demo-input4"
+                  label="Text Input 4"
+                  type="select"
+                  selectOptions={[
+                    { Value: "Option1", Label: "Select Option 1" },
+                    { Value: "Option2", Label: "Select Option 2" },
+                    { Value: "Option3", Label: "Select Option 3" },
+                    { Value: "Option4", Label: "Select Option 4" },
+                    { Value: "Option5", Label: "Select Option 5" },
+                    { Value: "Option6", Label: "Select Option 6" },
+                    { Value: "Option7", Label: "Select Option 7" }
+                  ]}
+                />
+                <Form.Input id="demo-input5" label="Text Input 5" type="date" />
+                <Form.Input id="demo-input6" label="Text Input 6" type="time" />
+                <Form.Input
+                  id="demo-input7"
+                  label="Text Input 7"
+                  type="number"
+                />
+              </Form.Row>
+              <Form.Row>
+                <Form.Input
+                  id="demo-input8"
+                  label="Text Input 8"
+                  type="textarea"
+                />
               </Form.Row>
             </Form>
           </Grid.Column>
