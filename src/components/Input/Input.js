@@ -20,6 +20,7 @@ import "./Input.css";
 class Input extends React.Component {
   static propTypes = getCorePropTypes(
     {
+      id: "string!",
       required: "bool",
       label: "string",
       validator: "func",
@@ -44,13 +45,39 @@ class Input extends React.Component {
     selectOptions: []
   });
 
-  state = {
-    renderKey: `input_${uID()}`,
-    value: "",
-    valid: true
-  };
+  constructor(props) {
+    super(props);
+    let defaultValue = props.value;
+    const renderKey = `input_${uID()}`;
+    if (!defaultValue) {
+      switch (props.type) {
+        case "select":
+          defaultValue = props.selectOptions[0]
+            ? props.selectOptions[0].Value
+            : "";
+          break;
+        case "number":
+          defaultValue = 0;
+          break;
+        case "color":
+          defaultValue = "#263646";
+          break;
+        default:
+          defaultValue = "";
+          break;
+      }
+    }
+    this.state = {
+      renderKey,
+      value: defaultValue,
+      valid: true
+    };
+  }
+
+  getValue = () => this.state.value;
 
   handleOnChecked = e => {
+    console.log(e.target.value);
     e.preventDefault();
     this.setState({ value: e.target.value });
     if (this.props.onChange) {
@@ -148,13 +175,20 @@ class Input extends React.Component {
       className,
       type,
       id,
+      name,
       required,
       disabled,
       label,
       children,
       selectOptions,
+      value,
       props
     } = getValidProps(this.props);
+
+    const fieldName = name || id || this.state.renderKey;
+    const fieldId = id || this.state.renderKey;
+    delete props.name;
+    delete props.id;
 
     const wrapperClasses = {
       disabled,
@@ -166,10 +200,9 @@ class Input extends React.Component {
 
     const preParsedClass = `ui-input-${type}`;
 
-    if (type === "select") {
+    if (type === "submit" || type === "button") {
       return (
         <div className={className}>
-          {this.renderLabel(id, label, required)}
           <div
             key={`wrapper_${this.state.renderKey}`}
             className={classNames(preParsedClass, wrapperClasses)}
@@ -177,6 +210,28 @@ class Input extends React.Component {
             <Component
               key={this.state.renderKey}
               {...props}
+              id={fieldId}
+              name={fieldName}
+              type={type}
+              value={label}
+            />
+            {children}
+          </div>
+        </div>
+      );
+    } else if (type === "select") {
+      return (
+        <div className={className}>
+          {this.renderLabel(fieldId, label, required)}
+          <div
+            key={`wrapper_${this.state.renderKey}`}
+            className={classNames(preParsedClass, wrapperClasses)}
+          >
+            <Component
+              key={this.state.renderKey}
+              {...props}
+              id={fieldId}
+              name={fieldName}
               type={type}
               onChange={this.handleOnChange}
               value={this.state.value}
@@ -187,10 +242,11 @@ class Input extends React.Component {
           </div>
         </div>
       );
-    } else if (type === "checkbox") {
+    } else if (type === "radio" || type === "checkbox") {
+      delete props.checked;
       return (
         <div className={className}>
-          {this.renderLabel(id, label, required)}
+          {this.renderLabel(fieldId, label, required)}
           <div
             key={`wrapper_${this.state.renderKey}`}
             className={classNames(preParsedClass, wrapperClasses)}
@@ -198,18 +254,19 @@ class Input extends React.Component {
             <Component
               key={this.state.renderKey}
               {...props}
+              id={fieldId}
+              name={fieldName}
               type={type}
-              value={this.state.value}
-              onChange={this.handleOnChecked}
+              defaultChecked={value === this.state.value}
+              onClick={this.handleOnChange}
             />
-            {children}
           </div>
         </div>
       );
     } else if (type === "number") {
       return (
         <div className={className}>
-          {this.renderLabel(id, label, required)}
+          {this.renderLabel(fieldId, label, required)}
           <div
             key={`wrapper_${this.state.renderKey}`}
             className={classNames(preParsedClass, wrapperClasses)}
@@ -217,6 +274,8 @@ class Input extends React.Component {
             <Component
               key={this.state.renderKey}
               {...props}
+              id={fieldId}
+              name={fieldName}
               type={type}
               onChange={this.handleOnChange}
               value={this.state.value}
@@ -239,10 +298,22 @@ class Input extends React.Component {
           </div>
         </div>
       );
+    } else if (type === "hidden") {
+      return (
+        <Component
+          key={this.state.renderKey}
+          {...props}
+          id={fieldId}
+          name={fieldName}
+          type={type}
+          onChange={this.handleOnChange}
+          value={this.state.value}
+        />
+      );
     }
     return (
       <div className={className}>
-        {this.renderLabel(id, label, required)}
+        {this.renderLabel(fieldId, label, required)}
         <div
           key={`wrapper_${this.state.renderKey}`}
           className={classNames(preParsedClass, wrapperClasses)}
@@ -250,6 +321,8 @@ class Input extends React.Component {
           <Component
             key={this.state.renderKey}
             {...props}
+            id={fieldId}
+            name={fieldName}
             type={type}
             onChange={this.handleOnChange}
             value={this.state.value}

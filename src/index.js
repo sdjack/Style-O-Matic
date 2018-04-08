@@ -38,11 +38,15 @@ import _Pagination from "./components/Pagination/Pagination.js";
 
 import _Pill from "./components/Pill/Pill.js";
 
-import _SelectBox from "./components/SelectBox/SelectBox.js";
+import _Radio from "./components/Radio/Radio.js";
+
+import _Select from "./components/Select/Select.js";
 
 import _Table from "./components/Table/Table.js";
 
 import _Tabs from "./components/Tabs/Tabs.js";
+
+import _Textarea from "./components/Textarea/Textarea.js";
 
 import _Title from "./components/Title/Title.js";
 
@@ -92,11 +96,15 @@ export { _Pagination as Pagination };
 
 export { _Pill as Pill };
 
-export { _SelectBox as SelectBox };
+export { _Radio as Radio };
+
+export { _Select as Select };
 
 export { _Table as Table };
 
 export { _Tabs as Tabs };
+
+export { _Textarea as Textarea };
 
 export { _Title as Title };
 

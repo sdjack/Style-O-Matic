@@ -23,11 +23,33 @@ class FormRow extends React.Component {
     uirole: Roles.ROW
   });
 
+  getFieldValue = fieldKey => {
+    let value = null;
+    this.fields.map(field => {
+      if (field.key === fieldKey) {
+        value = field.element.getValue();
+      }
+      return null;
+    });
+    return value;
+  };
+
+  getAllFieldValues = () => {
+    const output = [];
+    this.fields.map(field => {
+      output.push({ key: field.key, value: field.element.getValue() });
+      return null;
+    });
+    return output;
+  };
+
   fields = [];
 
   renderChild = (child, props) => {
+    const role = child.props.uirole || Roles.INPUT;
+    const key = child.props.name || child.props.id;
     let ref = c => {
-      this.fields.push(c);
+      this.fields.push({ key, element: c });
     };
     if (typeof child.ref === "string") {
       warning(false, "String refs are not supported on table-row components.");
@@ -37,7 +59,7 @@ class FormRow extends React.Component {
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, child.props.uirole)
+      uiclass: prefix(props, role)
     });
   };
 

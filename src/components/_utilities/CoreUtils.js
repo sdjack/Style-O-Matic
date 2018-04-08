@@ -29,6 +29,13 @@ export function uID() {
   )}-${s4()}-${s4()}${s4()}${s4()}`;
 }
 
+export function GUID(prefixString) {
+  return `${prefixString}_${s4() + s4()}-${s4()}-4${s4().substr(
+    0,
+    3
+  )}-${s4()}-${s4()}${s4()}${s4()}`;
+}
+
 export function isUsable(value) {
   if (typeof value !== "undefined" && value !== null) {
     if (typeof value === "string") {

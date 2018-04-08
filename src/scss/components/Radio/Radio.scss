@@ -1,0 +1,48 @@
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+
+/* INPUT TYPE: RADIO */
+
+.ui-radio {
+	display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: space-around;
+  max-width: 100%;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	line-height: 1;
+  margin: $input-component-offset;
+
+  & > label {
+    display: inline-block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto !important;
+    height: $radio-label-height !important;
+    line-height: 1 !important;
+    font-size: 18px !important;
+
+    & > input {
+      width: $input-component-size;
+      height: $input-component-size;
+      border-radius: $border-radius;
+      margin-right: 6px;
+      
+      &:focus + label {
+        outline: 1px dotted #000;
+        outline: -webkit-focus-ring-color auto 5px;
+      }
+    }
+  }
+}
+

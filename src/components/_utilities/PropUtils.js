@@ -30,7 +30,8 @@ const nativeProps = [
   "onMouseUp",
   "onKeyDown",
   "onKeyUp",
-  "onToggle"
+  "onToggle",
+  "onSubmit"
 ];
 
 const DefaultPropTypes = {
@@ -136,17 +137,23 @@ export function getCorePropTypes(config, uidataConfig, A11y) {
     );
   }
   if (typeof config !== "undefined" && config !== null) {
-    Object.entries(config).forEach(([attr, prop]) => {
+    Object.entries(config).forEach(([attr, propString]) => {
+      const required = String(propString).indexOf("!") !== -1;
+      const prop = String(propString).replace("!", "");
+      // console.log(attr, propString, prop, required);
       if (typeof PropTypes[prop] !== "undefined") {
-        obj[attr] = PropTypes[prop];
+        obj[attr] = required ? PropTypes[prop].isRequired : PropTypes[prop];
       }
     });
   }
   if (typeof uidataConfig !== "undefined" && uidataConfig !== null) {
     const uidata = {};
-    Object.entries(uidataConfig).forEach(([attr, prop]) => {
+    Object.entries(uidataConfig).forEach(([attr, propString]) => {
+      const required = String(propString).indexOf("!") !== -1;
+      const prop = String(propString).replace("!", "");
+      // console.log(attr, propString, prop, required);
       if (typeof PropTypes[prop] !== "undefined") {
-        uidata[attr] = PropTypes[prop];
+        uidata[attr] = required ? PropTypes[prop].isRequired : PropTypes[prop];
       }
     });
     obj.uidata = PropTypes.shape(uidata);
