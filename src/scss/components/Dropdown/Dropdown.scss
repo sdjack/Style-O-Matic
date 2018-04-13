@@ -8,19 +8,9 @@
     transition-property: $dropdown-transition-properties;
     @include animate-default(0.2s);
 
-    &:hover, &:focus, &.active {
+    &:hover, &:focus, &.open {
         & > .show-on-hover {
             display: block;
-        }
-    }
-
-    &.active {
-        & > .ui-dropdown-content {
-            height: auto !important;
-            max-height: 320px !important;
-            overflow-y: auto !important;
-            border: $gentle-border;
-            @include shadow-basic();
         }
     }
 }
@@ -38,12 +28,22 @@
     cursor: pointer;
     transition-property: $dropdown-transition-properties;
     @include animate-default(0.2s);
+    @include button-shadow();
 
-    &:hover, &:focus, &.active {
+    &:hover, &:focus, &.open {
         & > .show-on-hover {
             display: block;
         }
     }
+}
+
+.ui-dropdown-caret {
+    font-size: 16px;
+    padding: 0;
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    margin-top: -8px;
 }
 
 .ui-dropdown-content {
@@ -53,7 +53,7 @@
     margin: 0 !important;
     background-color: white;
     border: none;
-    min-width: 100px;
+    min-width: 100%;
     list-style: none;
     height: 0;
     overflow: hidden;
@@ -62,19 +62,25 @@
     @include shadow-removed();
     @include animate-default(0.2s);
     transition-property: height, border-shadow;
+
+    &.open {
+        height: auto !important;
+        max-height: 320px !important;
+        overflow-y: auto !important;
+        border: $gentle-border;
+        @include shadow-basic();
+    }
 }
 
 .ui-dropdown-item,
 .ui-dropdown-option {
     display: block;
     width: 100%;
-    height: $input-size;
     margin: 0;
-    padding: 0;
+    padding: 6px 20px 8px;
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
-    text-indent: 12px;
     border-width: 0 0 1px 0 !important; 
     border-style: solid;
     border-color: $color-invisible $color-invisible $color-dark-alpha-2 $color-invisible !important;

@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
 import warning from "warning";
 import {
+  uID,
   setCoreClass,
   isLeftClickEvent,
   isModifiedEvent,
@@ -23,18 +24,23 @@ import {
   getValidProps
 } from "../_utilities/PropUtils.js";
 import { Roles } from "../_utilities/Enum.js";
+import Dropdown from "../Dropdown/Dropdown.js";
 import "./Button.css";
 
 class Button extends React.Component {
-  static propTypes = getCorePropTypes({
-    id: isRequiredForA11y(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    )
-  });
+  static propTypes = getCorePropTypes(
+    {
+      dropdown: "bool"
+    },
+    null,
+    true
+  );
 
   static defaultProps = getCorePropDefaults({
     componentClass: "button",
-    uirole: "button"
+    uirole: "button",
+    id: `button_${uID()}`,
+    dropdown: false
   });
 
   handleClick = e => {
@@ -79,6 +85,25 @@ class Button extends React.Component {
   };
 
   render() {
+    if (this.props.dropdown) {
+      const { className, style, id, label, children } = this.props;
+      return (
+        <Dropdown
+          uiclass="ui-dropdown"
+          style={style}
+          id={id || "dropdown-button"}
+        >
+          <Dropdown.Toggle
+            className={className}
+            id={id || "dropdown-button-toggle"}
+          >
+            {label}
+          </Dropdown.Toggle>
+          <Dropdown.Content>{children}</Dropdown.Content>
+        </Dropdown>
+      );
+    }
+
     const {
       componentClass,
       uiclass,
@@ -96,6 +121,7 @@ class Button extends React.Component {
     } else {
       props.onClick = this.handleClick;
     }
+
     return (
       <Component {...props}>
         {React.Children.map(children, child => {

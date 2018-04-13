@@ -26,7 +26,12 @@ class DropdownToggle extends React.Component {
       this.props
     );
 
-    return <Component {...props}>{children}</Component>;
+    return (
+      <Component {...props}>
+        {children}
+        <span className="ui-dropdown-caret fa fa-caret-right" />
+      </Component>
+    );
   }
 }
 

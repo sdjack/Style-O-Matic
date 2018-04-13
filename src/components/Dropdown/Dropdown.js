@@ -13,7 +13,6 @@ import keycode from "keycode";
 import warning from "warning";
 import PropTypes from "prop-types";
 import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
-import uncontrollable from "uncontrollable";
 import {
   setCoreClass,
   isLeftClickEvent,
@@ -32,11 +31,7 @@ import DropdownContent from "./DropdownContent.js";
 import "./Dropdown.css";
 
 class Dropdown extends React.Component {
-  static propTypes = getCorePropTypes({
-    id: isRequiredForA11y(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    )
-  });
+  static propTypes = getCorePropTypes(null, null, true);
 
   static defaultProps = getCorePropDefaults({
     componentClass: "div",
@@ -45,6 +40,9 @@ class Dropdown extends React.Component {
 
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      open: false
+    };
     this.focusInDropdown = false;
     this.lastOpenEventType = null;
   }
@@ -57,15 +55,15 @@ class Dropdown extends React.Component {
     this.focusNextOnOpen();
   }
 
-  componentWillUpdate(nextProps) {
-    if (!nextProps.open && this.props.open) {
+  componentWillUpdate(nextProps, nextState) {
+    if (!nextState.open && this.state.open) {
       this.focusInDropdown = contains(this.content, activeElement(document));
     }
   }
 
-  componentDidUpdate(prevProps) {
-    const { open } = this.props;
-    const prevOpen = prevProps.open;
+  componentDidUpdate(prevProps, prevState) {
+    const { open } = this.state;
+    const prevOpen = prevState.open;
     if (open && !prevOpen) {
       this.focusNextOnOpen();
     }
@@ -86,7 +84,7 @@ class Dropdown extends React.Component {
   };
 
   handleOnToggle = e => {
-    if (isModifiedEvent(e) || !isLeftClickEvent(e) || !this.props.open) {
+    if (isModifiedEvent(e) || !isLeftClickEvent(e) || !this.state.open) {
       return;
     }
     if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
@@ -121,7 +119,7 @@ class Dropdown extends React.Component {
   };
 
   handleClose = (event, eventDetails) => {
-    if (!this.props.open) {
+    if (!this.state.open) {
       return;
     }
     this.toggleOpen(event, eventDetails);
@@ -133,7 +131,7 @@ class Dropdown extends React.Component {
     }
     switch (event.keyCode) {
       case keycode.codes.down:
-        if (!this.props.open) {
+        if (!this.state.open) {
           this.toggleOpen(event, { source: "keydown" });
         } else if (this.content.focusNext) {
           this.content.focusNext();
@@ -148,12 +146,13 @@ class Dropdown extends React.Component {
   };
 
   toggleOpen = (event, eventDetails) => {
-    const open = !this.props.open;
+    const open = !this.state.open;
     if (open) {
       this.lastOpenEventType = eventDetails.source;
     } else if (this.props.onClose) {
       this.props.onClose(event);
     }
+    this.setState({ open });
     if (this.props.onToggle) {
       this.props.onToggle(open, event, eventDetails);
     }
@@ -213,7 +212,6 @@ class Dropdown extends React.Component {
       id,
       uiclass,
       disabled,
-      open,
       children,
       rootcloseevent,
       onSelect,
@@ -222,6 +220,8 @@ class Dropdown extends React.Component {
 
     delete props.onToggle;
     delete props.onClose;
+
+    const { open } = this.state;
 
     return (
       <Component {...props} ref={this.setWrapperRef}>
@@ -233,6 +233,13 @@ class Dropdown extends React.Component {
                 disabled,
                 open,
                 uiclass
+              });
+            case Roles.BUTTON:
+              return this.renderToggle(child, {
+                id,
+                disabled,
+                open,
+                uiclass: "ui-dropdown"
               });
             case Roles.CONTENT:
               return this.renderContent(child, {
@@ -251,10 +258,7 @@ class Dropdown extends React.Component {
   }
 }
 
-setCoreClass("ui-dropdown", Dropdown);
+Dropdown.Toggle = DropdownToggle;
+Dropdown.Content = DropdownContent;
 
-const UncontrolledDropdown = uncontrollable(Dropdown, { open: "onToggle" });
-UncontrolledDropdown.Toggle = DropdownToggle;
-UncontrolledDropdown.Content = DropdownContent;
-
-export default UncontrolledDropdown;
+export default setCoreClass("ui-dropdown", Dropdown);

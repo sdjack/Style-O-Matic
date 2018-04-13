@@ -55,10 +55,7 @@ class ButtonsView extends React.Component {
               <Grid.Row>
                 <Grid.Column textAlign="center">
                   <Dropdown color="red" id="dd1">
-                    <Dropdown.Toggle>
-                      Example Dropdown
-                      <span className="fa selectbox-caret" />
-                    </Dropdown.Toggle>
+                    <Dropdown.Toggle>Example Dropdown</Dropdown.Toggle>
                     <Dropdown.Content>
                       <span>Option 1</span>
                       <span>Option 2</span>
@@ -72,20 +69,19 @@ class ButtonsView extends React.Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Dropdown color="black" id="dd2">
-                    <Dropdown.Toggle>
-                      Example Dropdown
-                      <span className="fa selectbox-caret" />
-                    </Dropdown.Toggle>
-                    <Dropdown.Content>
-                      <span>Option 1</span>
-                      <span>Option 2</span>
-                      <span>Option 3</span>
-                      <span>Option 4</span>
-                      <span>Option 5</span>
-                      <span>Option 6</span>
-                    </Dropdown.Content>
-                  </Dropdown>
+                  <Button
+                    className="ui-black"
+                    id="dd2"
+                    dropdown
+                    label="Example Dropdown"
+                  >
+                    <span>Option 1</span>
+                    <span>Option 2</span>
+                    <span>Option 3</span>
+                    <span>Option 4</span>
+                    <span>Option 5</span>
+                    <span>Option 6</span>
+                  </Button>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

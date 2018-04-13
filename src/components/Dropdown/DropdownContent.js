@@ -6,7 +6,8 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React from "react";
+import React, { cloneElement } from "react";
+import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
   getValidProps,
   getCorePropTypes,
@@ -21,12 +22,35 @@ class DropdownContent extends React.Component {
     uirole: "content"
   });
 
-  render() {
-    const { componentClass: Component, children, props } = getValidProps(
-      this.props
-    );
+  renderChildren = (child, { ...props }) => {
+    let ref = c => {
+      this.content = c;
+    };
+    if (typeof child.ref !== "string") {
+      ref = createChainedFunction(child.ref, ref);
+    }
+    return cloneElement(child, {
+      ...props,
+      ref,
+      className: prefix(props, "item")
+    });
+  };
 
-    return <Component {...props}>{children}</Component>;
+  render() {
+    const {
+      componentClass: Component,
+      uiclass,
+      children,
+      props
+    } = getValidProps(this.props);
+
+    return (
+      <Component {...props}>
+        {React.Children.map(children, child =>
+          this.renderChildren(child, { uiclass: "ui-dropdown" })
+        )}
+      </Component>
+    );
   }
 }
 
