@@ -8,19 +8,40 @@
     transition-property: $dropdown-transition-properties;
     @include animate-default(0.2s);
 
-    &:hover, &:focus, &.open {
+    &:hover, &:focus, &.active {
         & > .show-on-hover {
             display: block;
         }
     }
 
-    &.open {
+    &.active {
         & > .ui-dropdown-content {
             height: auto !important;
             max-height: 320px !important;
             overflow-y: auto !important;
             border: $gentle-border;
             @include shadow-basic();
+        }
+    }
+}
+
+.ui-dropdown-toggle {
+    color: $button-text-color;
+    background-color: $button-background-color;
+    position: relative;
+    padding: $button-padding;
+    display: inline-block;
+    line-height: 1;
+    text-decoration: none;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition-property: $dropdown-transition-properties;
+    @include animate-default(0.2s);
+
+    &:hover, &:focus, &.active {
+        & > .show-on-hover {
+            display: block;
         }
     }
 }

@@ -28,6 +28,8 @@ const nativeProps = [
   "onFocus",
   "onMouseDown",
   "onMouseUp",
+  "onMouseEnter",
+  "onMouseLeave",
   "onKeyDown",
   "onKeyUp",
   "onToggle",

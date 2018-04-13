@@ -7,7 +7,7 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Button, Grid, Title } from "../../../src/index";
+import { Button, Dropdown, Grid, Title } from "../../../src/index";
 
 class ButtonsView extends React.Component {
   render() {
@@ -19,7 +19,7 @@ class ButtonsView extends React.Component {
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
             <Title showAs="h2" textAlign="center" key="view-title">
-              <Title.Content>Buttons</Title.Content>
+              <Title.Content>Button</Title.Content>
             </Title>
             <hr />
             <br />
@@ -39,6 +39,53 @@ class ButtonsView extends React.Component {
                 <Grid.Column textAlign="center">
                   <Button color="black">BLACK</Button>&nbsp;&nbsp;
                   <Button>DEFAULT</Button>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column textAlign="center" panel>
+            <Title showAs="h2" textAlign="center" key="view-title">
+              <Title.Content>Dropdown</Title.Content>
+            </Title>
+            <hr />
+            <br />
+            <Grid>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <Dropdown color="red" id="dd1">
+                    <Dropdown.Toggle>
+                      Example Dropdown
+                      <span className="fa selectbox-caret" />
+                    </Dropdown.Toggle>
+                    <Dropdown.Content>
+                      <span>Option 1</span>
+                      <span>Option 2</span>
+                      <span>Option 3</span>
+                      <span>Option 4</span>
+                      <span>Option 5</span>
+                      <span>Option 6</span>
+                    </Dropdown.Content>
+                  </Dropdown>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <Dropdown color="black" id="dd2">
+                    <Dropdown.Toggle>
+                      Example Dropdown
+                      <span className="fa selectbox-caret" />
+                    </Dropdown.Toggle>
+                    <Dropdown.Content>
+                      <span>Option 1</span>
+                      <span>Option 2</span>
+                      <span>Option 3</span>
+                      <span>Option 4</span>
+                      <span>Option 5</span>
+                      <span>Option 6</span>
+                    </Dropdown.Content>
+                  </Dropdown>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

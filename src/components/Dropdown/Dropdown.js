@@ -12,9 +12,7 @@ import contains from "dom-helpers/query/contains";
 import keycode from "keycode";
 import warning from "warning";
 import PropTypes from "prop-types";
-import elementType from "prop-types-extra/lib/elementType";
 import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
-import classNames from "classnames";
 import uncontrollable from "uncontrollable";
 import {
   setCoreClass,
@@ -23,51 +21,27 @@ import {
   createChainedFunction,
   prefix
 } from "../_utilities/CoreUtils.js";
+import {
+  getCorePropTypes,
+  getCorePropDefaults,
+  getValidProps
+} from "../_utilities/PropUtils.js";
 import { Roles } from "../_utilities/Enum.js";
-import Button from "../Button/Button.js";
+import DropdownToggle from "./DropdownToggle.js";
 import DropdownContent from "./DropdownContent.js";
 import "./Dropdown.css";
 
 class Dropdown extends React.Component {
-  static propTypes = {
+  static propTypes = getCorePropTypes({
     id: isRequiredForA11y(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    ),
-    children: PropTypes.node,
-    componentClass: elementType,
-    className: PropTypes.string,
-    uiclass: PropTypes.string,
-    uirole: PropTypes.string,
-    disabled: PropTypes.bool,
-    open: PropTypes.bool,
-    defaultOpen: PropTypes.bool,
-    role: PropTypes.string,
-    rootcloseevent: PropTypes.oneOf(["click", "mousedown"]),
-    onClose: PropTypes.func,
-    onToggle: PropTypes.func,
-    onSelect: PropTypes.func,
-    onMouseEnter: PropTypes.func,
-    onMouseLeave: PropTypes.func
-  };
+    )
+  });
 
-  static defaultProps = {
-    id: "dropdown_0",
+  static defaultProps = getCorePropDefaults({
     componentClass: "div",
-    className: null,
-    uiclass: "dropdown",
-    uirole: "dropdown",
-    children: null,
-    disabled: false,
-    open: false,
-    defaultOpen: false,
-    role: null,
-    rootcloseevent: "mousedown",
-    onClose: null,
-    onToggle: null,
-    onSelect: null,
-    onMouseEnter: null,
-    onMouseLeave: null
-  };
+    uirole: "dropdown"
+  });
 
   constructor(props, context) {
     super(props, context);
@@ -238,33 +212,19 @@ class Dropdown extends React.Component {
       componentClass: Component,
       id,
       uiclass,
-      className,
       disabled,
       open,
-      onSelect,
-      role,
       children,
       rootcloseevent,
-      ...props
-    } = this.props;
+      onSelect,
+      props
+    } = getValidProps(this.props);
 
-    delete props.uirole;
     delete props.onToggle;
     delete props.onClose;
 
-    const classes = {
-      [uiclass]: true,
-      disabled,
-      open
-    };
-
     return (
-      <Component
-        id={`dropdown_${id}`}
-        {...props}
-        className={classNames(className, classes)}
-        ref={this.setWrapperRef}
-      >
+      <Component {...props} ref={this.setWrapperRef}>
         {React.Children.map(children, child => {
           switch (child.props.uirole) {
             case Roles.TOGGLE:
@@ -272,7 +232,6 @@ class Dropdown extends React.Component {
                 id,
                 disabled,
                 open,
-                role,
                 uiclass
               });
             case Roles.CONTENT:
@@ -281,7 +240,6 @@ class Dropdown extends React.Component {
                 onSelect,
                 rootcloseevent,
                 open,
-                role,
                 uiclass
               });
             default:
@@ -296,7 +254,7 @@ class Dropdown extends React.Component {
 setCoreClass("ui-dropdown", Dropdown);
 
 const UncontrolledDropdown = uncontrollable(Dropdown, { open: "onToggle" });
-UncontrolledDropdown.Toggle = Button;
+UncontrolledDropdown.Toggle = DropdownToggle;
 UncontrolledDropdown.Content = DropdownContent;
 
 export default UncontrolledDropdown;
