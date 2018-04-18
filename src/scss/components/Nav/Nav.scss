@@ -69,7 +69,7 @@
     		width: $nav-icon-size;
 	        & > .ui-nav-flyout-wrapper {
 	            & > .ui-nav-folder {
-	                left: $outer-frame-width;
+	                left: $outer-frame-size;
 	                margin-top: ($nav-item-height * -1);
 	            }
 	        }
@@ -97,7 +97,7 @@
     		height: $nav-icon-size;
 	        & > .ui-nav-flyout-wrapper {
 	            & > .ui-nav-folder {
-	                top: $outer-frame-width;
+	                top: $outer-frame-size;
                 	margin-left: ($nav-item-height * -1);
 	            }
 	        }
@@ -274,7 +274,7 @@
     width: 200px !important;
     border: $common-border;
     position: absolute !important;
-    left: ($outer-frame-width - 1) !important;
+    left: ($outer-frame-size - 1) !important;
     top: 0;
 }
 

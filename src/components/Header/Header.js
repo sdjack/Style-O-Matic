@@ -6,53 +6,38 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React, { cloneElement } from "react";
-import warning from "warning";
+import React from "react";
 import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
+  CoreComponent,
+  getValidProps,
   getCorePropTypes,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  ROLE
+} from "../../lib";
 import HeaderContent from "./HeaderContent.js";
 import HeaderDrawer from "./HeaderDrawer.js";
 import HeaderItem from "./HeaderItem.js";
+import HeaderTitle from "./HeaderTitle.js";
+import HeaderText from "./HeaderText.js";
 import Button from "../Button/Button.js";
 import "./Header.css";
 
-class Header extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class Header extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "header",
+    renderAs: "header",
     uirole: "header"
   });
 
-  renderChild = (child, props) => {
-    const role = child.props.uirole;
-    let ref = c => {
-      this[role] = c;
-    };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on header components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
-    }
-    return cloneElement(child, {
-      ...props,
-      ref,
-      uiclass: prefix(props, "content")
-    });
-  };
+  static Content = HeaderContent;
+  static Drawer = HeaderDrawer;
+  static Item = HeaderItem;
+  static Title = HeaderTitle;
+  static Button = Button;
+  static Text = HeaderText;
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       uiclass,
       fixed,
       children,
@@ -68,7 +53,7 @@ class Header extends React.Component {
               typeof child.props.uirole !== "undefined"
             ) {
               switch (child.props.uirole) {
-                case Roles.CONTENT:
+                case ROLE.CONTENT:
                   return this.renderChild(child, { uiclass });
                 default:
                   return child;
@@ -88,7 +73,7 @@ class Header extends React.Component {
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case Roles.CONTENT || Roles.DRAWER:
+              case ROLE.CONTENT || ROLE.DRAWER:
                 return this.renderChild(child, { uiclass });
               default:
                 return child;
@@ -101,9 +86,4 @@ class Header extends React.Component {
   }
 }
 
-Header.Content = HeaderContent;
-Header.Drawer = HeaderDrawer;
-Header.Item = HeaderItem;
-Header.Button = Button;
-
-export default setCoreClass("ui-header", Header);
+export default Header;

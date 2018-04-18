@@ -7,23 +7,22 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import classNames from "classnames";
-import { isUsable } from "../_utilities/CoreUtils.js";
 import {
-  getValidProps,
+  CoreComponent,
+  getCorePropDefaults,
   getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 
-class TableCell extends React.Component {
+class TableCell extends CoreComponent {
   static propTypes = getCorePropTypes(null, {
     isHeader: "bool"
   });
 
   static defaultProps = getCorePropDefaults(
     {
-      uirole: Roles.CELL
+      uirole: ROLE.CELL
     },
     {
       isHeader: false
@@ -31,40 +30,15 @@ class TableCell extends React.Component {
   );
 
   render() {
-    const {
-      uiclass,
-      className,
-      textAlign,
-      uidata,
-      children,
-      props
-    } = getValidProps(this.props);
+    const { uidata, children, props } = getValidProps(this.props);
 
     const { isHeader } = uidata;
 
-    const classes = {
-      [uiclass]: true
-    };
-
-    if (isUsable(textAlign)) {
-      classes[`ui-align-${textAlign}`] = true;
-    }
-
-    delete props.uirole;
-
     if (isHeader) {
-      return (
-        <th {...props} className={classNames(className, classes)}>
-          {children}
-        </th>
-      );
+      return <th {...props}>{children}</th>;
     }
 
-    return (
-      <td {...props} className={classNames(className, classes)}>
-        {children}
-      </td>
-    );
+    return <td {...props}>{children}</td>;
   }
 }
 

@@ -1,0 +1,22 @@
+{
+  "name": "lib",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./index.js",
+  "files": [
+      "./getElementType.js",
+      "./getUnhandledProps.js",
+      "./coreUtilities.js",
+      "./propUtilities.js",
+      "./ROLE.js",
+      "./UI.js",
+      "./CoreComponent.js"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "classnames": "^2.2.5",
+    "react": "^16.2.0",
+    "prop-types": "^15.6.0",
+    "prop-types-extra": "^1.0.1"
+  }
+}

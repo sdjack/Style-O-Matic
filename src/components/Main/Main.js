@@ -7,55 +7,45 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import warning from "warning";
 import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
-  getCorePropTypes,
+  CoreComponent,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 import MainDrawer from "./MainDrawer.js";
 import MainContent from "./MainContent.js";
 import "./Main.css";
 
-class Main extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class Main extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "main",
+    renderAs: "main",
     uirole: "main",
     fixed: true
   });
+
+  static Content = MainContent;
+  static Drawer = MainDrawer;
 
   renderChild = (child, props) => {
     const role = child.props.uirole;
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on header components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role)
+      uiclass: this.childPrefix(role)
     });
   };
 
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      children,
-      props
-    } = getValidProps(this.props);
+    const { renderAs: Component, uiclass, children, props } = getValidProps(
+      this.props
+    );
 
     return (
       <Component {...props}>
@@ -65,9 +55,9 @@ class Main extends React.Component {
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case Roles.CONTENT:
+              case ROLE.CONTENT:
                 return this.renderChild(child, { uiclass });
-              case Roles.DRAWER:
+              case ROLE.DRAWER:
                 return this.renderChild(child, { uiclass });
               default:
                 return child;
@@ -80,7 +70,4 @@ class Main extends React.Component {
   }
 }
 
-Main.Content = MainContent;
-Main.Drawer = MainDrawer;
-
-export default setCoreClass("ui-main", Main);
+export default Main;

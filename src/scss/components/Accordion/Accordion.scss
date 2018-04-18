@@ -90,11 +90,10 @@
 }
 
 .ui-accordion-caret {
-    font-family: 'FontAwesome' !important;
     font-style: normal;
     position: absolute;
     left: 0px;
-    &:before {
-        content:"\f0da"
-    }
+    height: 32px;
+    top: 50%;
+    margin-top: -16px;
 }

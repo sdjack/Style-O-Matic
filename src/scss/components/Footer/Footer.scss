@@ -19,15 +19,12 @@
   justify-content: space-around;
   align-content: space-around;
   height: auto;
-  min-height: $footer-height;
+  background-color: $color-secondary-dark;
+  color: $text-color-secondary;
   margin: 0;
   padding: 0;
   border: none;
   overflow: hidden;
-  font-size: 11px;
-  background-color: $color-secondary-dark;
-  color: $text-color-secondary;
-
   @include shadow-3dp();
   @include animate-default();
   transition-property: $layout-transition-properties;
@@ -44,7 +41,7 @@
 }
 
 .ui-footer-content {
-  min-height: $footer-height;
+  height: $footer-height;
   z-index: 8;
   display: flex;
   flex: 1 1 auto;
@@ -65,17 +62,44 @@
   }
 }
 
-.ui-footer-item {
+.ui-footer-item,
+.ui-footer-text,
+.ui-footer-button {
   display: inline-block;
   position: relative;
   justify-content: space-between;
-  padding: $footer-item-padding;
   margin: 0 !important;
-  cursor: pointer;
-  border: none;
+  border-radius: 0 !important;
+  font-size: $footer-font-size;
+  line-height: 1;
+  color: $color-white !important;
+  background-color: transparent;
+  @include text-horizontal-align-center();
+  @include bar-button-skin();
   & > .fa {
     font-size: $footer-icon-font-size !important;
     padding: $footer-icon-padding !important;
+  }
+}
+
+.ui-footer-item,
+.ui-footer-text {
+  cursor: pointer;
+  border: none;
+}
+
+.ui-footer-item {
+  padding: $footer-item-padding !important;
+}
+
+.ui-footer-text {
+  padding: $footer-text-padding !important;
+}
+
+.ui-footer-button {
+  padding: $footer-button-padding !important;
+  &:hover {
+    background-color: rgba(33, 150, 243, 0.5);
   }
 }
 
@@ -84,9 +108,9 @@
   padding: $footer-list-padding;
   margin: $footer-list-margin;
   list-style-type: none;
-  line-height: 16px;
+  line-height: 1;
   letter-spacing: 1px;
-  font-size: 14px;
+  font-size: $footer-font-size;
   @include text-align-right();
 }
 
@@ -94,25 +118,6 @@
   display: inline-block;
   font-size: $footer-icon-font-size !important;
   padding: $footer-icon-padding;
-}
-
-.ui-footer-button {
-  height: auto !important;
-  color: $color-white !important;
-  background-color: transparent;
-  display: inline-block;
-  padding: $footer-toggle-padding !important;
-  border-radius: 0 !important;
-  font-size: 13px;
-  @include text-align-center();
-  @include bar-button-skin();
-  & > .fa {
-    font-size: $footer-icon-font-size !important;
-    padding: $footer-icon-padding !important;
-  }
-  &:hover {
-    background-color: rgba(33, 150, 243, 0.5);
-  }
 }
 
 .ui-footer-bolster {
@@ -151,9 +156,9 @@
     }
 
     &.minimized {
-      height: $outer-frame-width !important;
-      min-height: $outer-frame-width !important;
-      max-height: $outer-frame-width !important;
+      height: $outer-frame-size !important;
+      min-height: $outer-frame-size !important;
+      max-height: $outer-frame-size !important;
       overflow-x: auto !important;
       overflow-y: hidden !important;
       @include shadow-drawer();

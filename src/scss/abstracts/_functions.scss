@@ -1,7 +1,6 @@
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass functions.
 // -----------------------------------------------------------------------------
-
 /// Native `url(..)` function wrapper
 /// @param {String} $base - base URL for the asset
 /// @param {String} $type - asset type folder (e.g. `fonts/`)
@@ -31,4 +30,21 @@
 
 @function strip-units($number) {
   @return $number / ($number * 0 + 1);
+}
+
+@function color-contrast($n, $inverted: false) {
+  $light: $color-white;
+  $dark: $color-black;
+  @if $inverted {
+    $light: $color-black;
+    $dark: $color-white;
+  }
+  $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
+  $light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
+  
+  @if abs($color-brightness) < ($light-color/2){
+    @return $light;
+  }
+
+  @return $dark;
 }

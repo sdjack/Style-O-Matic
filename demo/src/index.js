@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import DemoWelcome from "./views/DemoWelcome";
 import Typeography from "./views/Typeography";
-import Forms from "./views/Forms";
+import FormsView from "./views/FormsView";
 import NotFound from "./views/NotFound";
 import LayoutView from "./views/LayoutView";
 import GridView from "./views/GridView";
@@ -51,7 +51,7 @@ render(
         exact
         render={props => (
           <PageWrapper {...props}>
-            <Forms {...props} />
+            <FormsView {...props} />
           </PageWrapper>
         )}
       />

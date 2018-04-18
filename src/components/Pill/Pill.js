@@ -10,15 +10,15 @@ import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
 import classNames from "classnames";
-import { setCoreClass } from "../_utilities/CoreUtils.js";
+import { CoreComponent } from "../../lib";
 import "./Pill.css";
 
 const REMOVE_ROLE = "remove";
 const ACTION_ROLE = "action";
 
-class Pill extends React.Component {
+class Pill extends CoreComponent {
   static propTypes = {
-    componentClass: elementType,
+    renderAs: elementType,
     disabled: PropTypes.bool,
     config: PropTypes.shape({
       label: PropTypes.string,
@@ -31,7 +31,7 @@ class Pill extends React.Component {
 
   static defaultProps = {
     uirole: "pill",
-    componentClass: "div",
+    renderAs: "div",
     disabled: false,
     config: {
       label: "...",
@@ -82,7 +82,7 @@ class Pill extends React.Component {
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       uiclass,
       className,
       disabled,
@@ -116,4 +116,4 @@ class Pill extends React.Component {
   }
 }
 
-export default setCoreClass("ui-pill", Pill);
+export default Pill;

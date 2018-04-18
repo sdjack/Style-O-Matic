@@ -9,24 +9,22 @@
 import React from "react";
 import classNames from "classnames";
 import {
+  CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getElementType,
+  getCorePropDefaults,
+  ROLE
+} from "../../lib";
 
-class HeaderItem extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class HeaderItem extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "div",
-    uirole: Roles.ITEM,
+    renderAs: "div",
+    uirole: ROLE.ITEM,
     text: ""
   });
 
   render() {
     const {
-      componentClass,
       uiclass,
       className,
       to,
@@ -37,14 +35,15 @@ class HeaderItem extends React.Component {
       props
     } = getValidProps(this.props);
 
+    const ElementType = getElementType(HeaderItem, this.props);
+
     const classes = {
       active: path.indexOf(to) !== -1
     };
 
     if (icon || text) {
-      const Component = "a";
       return (
-        <Component
+        <ElementType
           {...props}
           className={classNames(className, classes)}
           href={to}
@@ -53,15 +52,14 @@ class HeaderItem extends React.Component {
           <i className={`${uiclass}-icon ${icon}`} />
           <span className={`${uiclass}-info`}>{text}</span>
           {children}
-        </Component>
+        </ElementType>
       );
     }
-    const Component = componentClass;
 
     return (
-      <Component {...props} className={classNames(className, classes)}>
+      <ElementType {...props} className={classNames(className, classes)}>
         {children}
-      </Component>
+      </ElementType>
     );
   }
 }

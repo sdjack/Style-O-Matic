@@ -9,27 +9,28 @@
 import React from "react";
 import classNames from "classnames";
 import {
-  getValidProps,
+  CoreComponent,
+  getCorePropDefaults,
   getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 
-class NavItem extends React.Component {
+class NavItem extends CoreComponent {
   static propTypes = getCorePropTypes({
     minimized: "bool"
   });
 
   static defaultProps = getCorePropDefaults({
-    componentClass: "a",
-    uirole: Roles.ITEM,
+    renderAs: "a",
+    uirole: ROLE.ITEM,
     text: "",
     minimized: false
   });
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       uiclass,
       className,
       to,
@@ -53,8 +54,8 @@ class NavItem extends React.Component {
         href={to}
         label={text}
       >
-        <span className={`${uiclass}-icon ${icon}`} />
-        <span className={`${uiclass}-info`}>{text}</span>
+        <span className={`ui-${uiclass}-icon ${icon}`} />
+        <span className={`ui-${uiclass}-info`}>{text}</span>
         {children}
       </Component>
     );

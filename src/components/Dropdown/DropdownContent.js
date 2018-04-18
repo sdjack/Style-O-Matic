@@ -7,47 +7,45 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
+  CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
+  getCorePropDefaults,
+  ROLE
+} from "../../lib";
 
-class DropdownContent extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class DropdownContent extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "div",
-    uirole: "content"
+    renderAs: "div",
+    uirole: ROLE.CONTENT
   });
 
-  renderChildren = (child, { ...props }) => {
+  items = [];
+
+  renderChild = (child, props) => {
     let ref = c => {
-      this.content = c;
+      this.items.push(c);
     };
     if (typeof child.ref !== "string") {
-      ref = createChainedFunction(child.ref, ref);
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
-      ...props,
       ref,
-      className: prefix(props, "item")
+      className: "ui-dropdown-item"
     });
   };
 
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      children,
-      props
-    } = getValidProps(this.props);
+    const { renderAs: Component, children, props, inherited } = getValidProps(
+      this.props
+    );
+
+    this.items = [];
 
     return (
       <Component {...props}>
         {React.Children.map(children, child =>
-          this.renderChildren(child, { uiclass: "ui-dropdown" })
+          this.renderChild(child, inherited)
         )}
       </Component>
     );

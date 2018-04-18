@@ -5,68 +5,43 @@
  * ======================================================================== */
 
 /* eslint "react/prop-types": [0] */
-
+import _ from "lodash";
 import React from "react";
-import PropTypes from "prop-types";
-import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
-import classNames from "classnames";
 import {
-  setCoreClass,
-  uID,
-  isUsable,
-  dataExists
-} from "../_utilities/CoreUtils.js";
+  CoreComponent,
+  getValidProps,
+  getPropTypesA11y,
+  getCorePropDefaults
+} from "../../lib";
 import Calendar from "./Calendar.js";
 import Dropdown from "../Dropdown/Dropdown.js";
 import "./DatePicker.css";
 
 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-class DatePicker extends React.Component {
-  static propTypes = {
-    id: isRequiredForA11y(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    ),
-    uiclass: PropTypes.string,
-    uirole: PropTypes.string,
-    className: PropTypes.string,
-    children: PropTypes.node,
-    disabled: PropTypes.bool,
-    config: PropTypes.shape({
-      name: PropTypes.string,
-      value: PropTypes.string,
-      invalid: PropTypes.bool,
-      inputenabled: PropTypes.bool,
-      iconenabled: PropTypes.bool,
-      expiredlock: PropTypes.bool,
-      onSelect: PropTypes.func
-    })
-  };
+class DatePicker extends CoreComponent {
+  static propTypes = getPropTypesA11y({
+    inputenabled: "bool",
+    iconenabled: "bool",
+    expiredlock: "bool"
+  });
 
-  static defaultProps = {
+  static defaultProps = getCorePropDefaults({
+    renderAs: "Dropdown",
     uirole: "datepicker",
-    uiclass: null,
-    disabled: false,
-    className: null,
-    children: null,
-    config: {
-      name: "datepicker_element",
-      value: "",
-      invalid: false,
-      inputenabled: false,
-      iconenabled: false,
-      expiredlock: false,
-      onSelect: null
-    }
-  };
+    id: `datepicker_${this.GUID}`,
+    inputenabled: false,
+    iconenabled: false,
+    expiredlock: false
+  });
 
   constructor(props) {
     super(props);
-    const { value } = this.props.config;
+    const { value } = props;
     let date;
     let dateLocale;
     let selected;
-    if (isUsable(value) && value.indexOf) {
+    if (!_.isNil(value) && value.indexOf) {
       const dateString = value.indexOf("Z") !== -1 ? value : `${value}Z`;
       date = new Date(dateString);
       dateLocale = date.toLocaleDateString({ timeZone: tz });
@@ -95,7 +70,7 @@ class DatePicker extends React.Component {
   }
 
   componentWillReceiveProps = nextProps => {
-    const { value } = nextProps.config;
+    const { value } = nextProps;
     this.reset(value);
   };
 
@@ -103,7 +78,7 @@ class DatePicker extends React.Component {
     let date;
     let dateLocale;
     let selected;
-    if (isUsable(defaultDate) && defaultDate.indexOf) {
+    if (!_.isNil(defaultDate) && defaultDate.indexOf) {
       const dateProp = defaultDate;
       const dateString =
         dateProp.indexOf("Z") !== -1 ? dateProp : `${dateProp}Z`;
@@ -132,7 +107,7 @@ class DatePicker extends React.Component {
   };
 
   updateDateValues = (date, viewType, keepOpen) => {
-    const { name, onSelect } = this.props.config;
+    const { name, onSelect } = this.props;
     const value = date.toLocaleDateString({ timeZone: tz });
     const newData = this.state;
     newData.loadedDate = date;
@@ -156,14 +131,14 @@ class DatePicker extends React.Component {
   };
 
   handleOnClosed = () => {
-    const { value } = this.props.config;
+    const { value } = this.props;
     if (value) {
       this.reset(value);
     }
   };
 
   handleOnClear = () => {
-    const { name, onSelect } = this.props.config;
+    const { name, onSelect } = this.props;
     if (onSelect) {
       onSelect(null, name);
     }
@@ -171,7 +146,7 @@ class DatePicker extends React.Component {
   };
 
   handleOnChange = e => {
-    const { name, onSelect } = this.props.config;
+    const { name, onSelect } = this.props;
     if (onSelect) {
       onSelect(e.target.value, name);
     }
@@ -261,7 +236,7 @@ class DatePicker extends React.Component {
   };
 
   renderSingleDay = (monthVal, data) => {
-    const { expiredlock } = this.props.config;
+    const { expiredlock } = this.props;
     const sd = this.state.selectedDate;
     const keyName = `${data.day}-${data.month}-${data.year}`;
     const selectedClass =
@@ -318,7 +293,7 @@ class DatePicker extends React.Component {
 
   renderCalendar = (monthVal, yearVal) => {
     const output = [];
-    if (isUsable(yearVal) && dataExists(Calendar.data[yearVal])) {
+    if (!_.isNil(yearVal) && !_.isNil(Calendar.data[yearVal])) {
       const monthData = Calendar.data[yearVal][monthVal];
       if (monthData) {
         for (let i = 0; i < 5; i += 1) {
@@ -455,7 +430,7 @@ class DatePicker extends React.Component {
     if (disabled) {
       return <span />;
     }
-    const activeDate = isUsable(this.state.loadedDate)
+    const activeDate = !_.isNil(this.state.loadedDate)
       ? this.state.loadedDate
       : Calendar.today;
     const viewMonth = activeDate.getMonth();
@@ -470,7 +445,7 @@ class DatePicker extends React.Component {
       years.push(this.renderYearRow(viewYear + 12));
       years.push(this.renderYearRow(viewYear + 16));
       years.push(this.renderYearRow(viewYear + 20));
-      if (isUsable(this.state.loadedValue)) {
+      if (!_.isNil(this.state.loadedValue)) {
         footer.push(
           <tfoot key={uID()}>
             <tr>
@@ -529,7 +504,7 @@ class DatePicker extends React.Component {
       months.push(this.renderMonthRow(3));
       months.push(this.renderMonthRow(6));
       months.push(this.renderMonthRow(9));
-      if (isUsable(this.state.loadedValue)) {
+      if (!_.isNil(this.state.loadedValue)) {
         footer.push(
           <tfoot key={uID()}>
             <tr>
@@ -590,7 +565,7 @@ class DatePicker extends React.Component {
       );
     }
     const headerText = `${Calendar.monthName[viewMonth]} ${viewYear}`;
-    if (isUsable(this.state.loadedValue)) {
+    if (!_.isNil(this.state.loadedValue)) {
       footer.push(
         <tfoot key={uID()}>
           <tr>
@@ -689,7 +664,7 @@ class DatePicker extends React.Component {
   };
 
   renderToggle = (id, iconenabled, inputenabled, disabled, invalid) => {
-    const { expiredlock } = this.props.config;
+    const { expiredlock } = this.props;
     const icon = [];
     const themeClass = invalid ? "" : " theme-input";
     const invalidClass = invalid ? " invalid" : "";
@@ -699,7 +674,7 @@ class DatePicker extends React.Component {
       expiredClass = " datepicker-expired";
     }
     if (disabled) {
-      const label = isUsable(this.state.loadedValue)
+      const label = !_.isNil(this.state.loadedValue)
         ? this.state.loadedValue
         : "MM/DD/YYYY";
       return (
@@ -715,7 +690,7 @@ class DatePicker extends React.Component {
         icon.push(
           <i
             key={`datepicker-icon_${id}`}
-            id={`datepicker-icon_${uID()}`}
+            id={`datepicker-icon_${this.GUID}`}
             className="fa fa-calendar input-icon prepended"
             aria-hidden="true"
           />
@@ -724,14 +699,14 @@ class DatePicker extends React.Component {
       return (
         <Dropdown.Toggle
           key={`datepicker-toggle_${id}`}
-          id={`datepicker-toggle_${uID()}`}
+          id={`datepicker-toggle_${this.GUID}`}
           className={`input-text ${themeClass}${expiredClass}${iconClass}${invalidClass}`}
-          componentClass="div"
+          renderAs="div"
         >
           {icon}
           <input
             key={`datepicker-input_${id}`}
-            id={`datepicker-input_${uID()}`}
+            id={`datepicker-input_${this.GUID}`}
             type="text"
             className={`datepicker-text ${invalidClass}`}
             onChange={this.handleOnChange}
@@ -745,19 +720,19 @@ class DatePicker extends React.Component {
       icon.push(
         <i
           key={`datepicker-icon_${id}`}
-          id={`datepicker-icon_${uID()}`}
+          id={`datepicker-icon_${this.GUID}`}
           className="fa fa-calendar"
           aria-hidden="true"
         />
       );
     }
-    const label = isUsable(this.state.loadedValue)
+    const label = !_.isNil(this.state.loadedValue)
       ? this.state.loadedValue
       : "MM/DD/YYYY";
     return (
       <Dropdown.Toggle
         key={`datepicker-toggle_${id}`}
-        id={`datepicker-toggle_${uID()}`}
+        id={`datepicker-toggle_${this.GUID}`}
         className={`datepicker-toggle theme-input_text ${expiredClass}`}
       >
         {icon}
@@ -768,46 +743,30 @@ class DatePicker extends React.Component {
 
   render() {
     const {
-      uiclass,
+      renderAs: Component,
       id,
-      className,
       disabled,
-      config,
+      iconenabled,
+      inputenabled,
+      invalid,
       children,
-      ...props
-    } = this.props;
-
-    const { iconenabled, inputenabled, invalid } = config;
-
-    const hasValue = isUsable(this.state.loadedValue);
-
-    const classes = {
-      [uiclass]: true,
-      disabled,
-      muted: hasValue === false
-    };
-
-    delete props.uirole;
-    delete props.change;
+      props,
+      inherited
+    } = getValidProps(this.props);
 
     return (
-      <Dropdown
-        id={id}
-        {...props}
-        className={classNames(className, classes)}
-        onClose={this.handleOnClosed}
-      >
+      <Component {...props} onClose={this.handleOnClosed}>
         {this.renderToggle(id, iconenabled, inputenabled, disabled, invalid)}
-        <Dropdown.Content
+        <Component.Content
           key={`datepicker-window_${id}`}
-          id={`datepicker-window_${uID()}`}
+          id={`datepicker-window_${this.GUID}`}
           className="datepicker-window theme-input"
         >
           {this.renderWindow(disabled)}
-        </Dropdown.Content>
-      </Dropdown>
+        </Component.Content>
+      </Component>
     );
   }
 }
 
-export default setCoreClass("ui-datepicker", DatePicker);
+export default DatePicker;

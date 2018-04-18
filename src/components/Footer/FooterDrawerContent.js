@@ -7,24 +7,16 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import {
-  getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
+import { CoreComponent, getCorePropDefaults, getValidProps } from "../../lib";
 
-class FooterDrawerContent extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class FooterDrawerContent extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "div",
+    renderAs: "div",
     uirole: "content"
   });
 
   render() {
-    const { componentClass: Component, children, props } = getValidProps(
-      this.props
-    );
+    const { renderAs: Component, children, props } = getValidProps(this.props);
 
     return <Component {...props}>{children}</Component>;
   }

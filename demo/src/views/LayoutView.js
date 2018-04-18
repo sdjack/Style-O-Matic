@@ -12,10 +12,10 @@ import { Header, Footer, Main, Grid, Title } from "../../../src/index";
 class LayoutView extends React.Component {
   render() {
     return [
-      <Title showAs="h1" textAlign="center" key="view-title">
-        <Title.Content>Layout</Title.Content>
+      <Title showAs="h1" textAlign="center" key="view-title-header">
+        <Title.Content dispatch="scroll">Layout - Header</Title.Content>
       </Title>,
-      <Grid key="view-grid">
+      <Grid key="view-grid-header">
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
             <Title showAs="h2" textAlign="center" key="view-title">
@@ -26,13 +26,19 @@ class LayoutView extends React.Component {
             <br />
             <Header raised>
               <Header.Content>
+                <Header.Title>TITLE</Header.Title>
                 <Header.Button>Header Button</Header.Button>
                 <Header.Button>Header Button</Header.Button>
-                <Header.Item>Header Item</Header.Item>
+                <Header.Text>Header Text</Header.Text>
               </Header.Content>
             </Header>
           </Grid.Column>
         </Grid.Row>
+      </Grid>,
+      <Title showAs="h1" textAlign="center" key="view-title-main">
+        <Title.Content dispatch="scroll">Layout - Main</Title.Content>
+      </Title>,
+      <Grid key="view-grid-main">
         <Grid.Row>
           <Grid.Column>
             <Grid panel>
@@ -56,6 +62,11 @@ class LayoutView extends React.Component {
             </Grid>
           </Grid.Column>
         </Grid.Row>
+      </Grid>,
+      <Title showAs="h1" textAlign="center" key="view-title-footer">
+        <Title.Content dispatch="scroll">Layout - Footer</Title.Content>
+      </Title>,
+      <Grid key="view-grid-footer">
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
             <Title showAs="h2" textAlign="center" key="view-title">
@@ -68,7 +79,7 @@ class LayoutView extends React.Component {
               <Footer.Content>
                 <Footer.Button>Footer Button</Footer.Button>
                 <Footer.Button>Footer Button</Footer.Button>
-                <Footer.Item>Footer Item</Footer.Item>
+                <Footer.Text>Footer Text</Footer.Text>
               </Footer.Content>
             </Footer>
           </Grid.Column>

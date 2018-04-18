@@ -7,38 +7,37 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import classNames from "classnames";
-import warning from "warning";
 import {
-  setCoreClass,
-  createChainedFunction,
-  prefix,
-  uID
-} from "../_utilities/CoreUtils.js";
-import {
+  CoreComponent,
   getValidProps,
   getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getPropDefaultsAutoId,
+  ROLE
+} from "../../lib";
 import AccordionTitle from "./AccordionTitle.js";
 import AccordionContent from "./AccordionContent.js";
 import "./Accordion.css";
 
-class Accordion extends React.Component {
-  static propTypes = getCorePropTypes();
-
-  static defaultProps = getCorePropDefaults({
-    componentClass: "dl",
-    uirole: "accordion"
+class Accordion extends CoreComponent {
+  static propProps = getCorePropTypes({
+    caret: "bool"
   });
+
+  static defaultProps = getPropDefaultsAutoId({
+    renderAs: "dl",
+    uirole: "accordion",
+    caret: false
+  });
+
+  static Title = AccordionTitle;
+
+  static Content = AccordionContent;
 
   constructor(props) {
     super(props);
-    this.GUID = uID();
     this.maxIndex = -1;
     this.state = {
-      activeItem: `accordion_${this.GUID}_item_0`
+      activeItem: `${props.id}_item_0`
     };
   }
 
@@ -68,58 +67,57 @@ class Accordion extends React.Component {
     let ref = c => {
       this[activeItem] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on accordion components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
-    return cloneElement(child, {
-      ...props,
-      ref,
-      accordionindex: activeItem,
-      active: activeItem === this.state.activeItem,
-      uiclass: prefix(props, role)
-    });
+    return cloneElement(
+      child,
+      this.setChildProps(role, ref, {
+        ...props,
+        accordionindex: activeItem,
+        active: activeItem === this.state.activeItem
+      })
+    );
   };
 
   render() {
     const {
-      componentClass: Component,
-      uiclass,
-      className,
+      renderAs: Component,
+      id,
+      caret,
       children,
-      props
+      props,
+      inherited
     } = getValidProps(this.props);
 
-    const classes = {
-      [uiclass]: true
-    };
-
     this.maxIndex = -1;
-    const id = `accordion_${this.GUID}`;
 
     return (
-      <Component {...props} className={classNames(className, classes)} id={id}>
+      <Component {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case Roles.TITLE:
+              case ROLE.TITLE:
                 return this.renderChild(
                   child,
                   {
-                    uiclass,
+                    ...inherited,
+                    caret,
                     onClick: this.handleOnClick
                   },
                   id,
                   this.getTitleIndex
                 );
-              case Roles.CONTENT:
+              case ROLE.CONTENT:
                 return this.renderChild(
                   child,
-                  { uiclass },
+                  {
+                    ...inherited,
+                    caret
+                  },
                   id,
                   this.getContentIndex
                 );
@@ -134,7 +132,4 @@ class Accordion extends React.Component {
   }
 }
 
-Accordion.Title = AccordionTitle;
-Accordion.Content = AccordionContent;
-
-export default setCoreClass("ui-accordion", Accordion);
+export default Accordion;

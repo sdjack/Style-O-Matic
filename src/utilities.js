@@ -2,7 +2,7 @@ import _CoreUtils from "./components/_utilities/CoreUtils";
 
 import _DataUtils from "./components/_utilities/DataUtils";
 
-import _Enum from "./components/_utilities/Enum";
+import _ENUM from "./components/_utilities/ENUM";
 
 import _MathUtils from "./components/_utilities/MathUtils";
 
@@ -14,7 +14,7 @@ export { _CoreUtils as CoreUtils };
 
 export { _DataUtils as DataUtils };
 
-export { _Enum as Enum };
+export { _ENUM as ENUM };
 
 export { _MathUtils as MathUtils };
 

@@ -7,46 +7,50 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import elementType from "prop-types-extra/lib/elementType";
-import { setCoreClass } from "../_utilities/CoreUtils.js";
+import {
+  CoreComponent,
+  getCorePropDefaults,
+  getValidProps,
+  ROLE
+} from "../../lib";
 import "./Modal.css";
 
-class Modal extends React.Component {
-  static propTypes = {
-    componentClass: elementType,
-    open: PropTypes.bool
+class Modal extends CoreComponent {
+  static defaultProps = getCorePropDefaults({
+    renderAs: "div",
+    uirole: ROLE.MODAL
+  });
+
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      open: false
+    };
+  }
+
+  openModal = () => {
+    this.setState({ open: true });
   };
 
-  static defaultProps = {
-    uirole: "modal",
-    componentClass: "div",
-    open: false
+  closeModal = () => {
+    this.setState({ open: false });
+  };
+
+  toggleModal = () => {
+    this.setState({ open: !this.state.open });
   };
 
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      className,
-      children,
-      open,
-      ...props
-    } = this.props;
+    const { renderAs: Component, children, props } = getValidProps(this.props);
 
-    delete props.uirole;
-
-    const preParsedClass = open ? `${uiclass} open` : uiclass;
+    const { open } = this.state;
 
     return (
-      <div className={preParsedClass}>
-        <Component {...props} className="modal-dialog theme-content">
-          {children}
-        </Component>
-      </div>
+      <Component {...props} open={open}>
+        {children}
+      </Component>
     );
   }
 }
 
-export default setCoreClass("modal", Modal);
+export default Modal;

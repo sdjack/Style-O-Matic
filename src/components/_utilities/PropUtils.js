@@ -1,8 +1,8 @@
+import _ from "lodash";
 import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
 import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
 import classNames from "classnames";
-import { isUsable } from "./CoreUtils.js";
 import { objectClone } from "./DataUtils.js";
 
 const nativeProps = [
@@ -74,6 +74,8 @@ const DefaultPropTypes = {
     "indigo",
     "violet"
   ]),
+  colorStyle: PropTypes.oneOf(["fill", "outline", "text"]),
+  colorHover: PropTypes.bool,
   displaySize: PropTypes.oneOf([
     "smallest",
     "small",
@@ -125,6 +127,8 @@ const DefaultPropValues = {
   active: false,
   fixed: null,
   color: null,
+  colorStyle: null,
+  colorHover: null,
   displaySize: null,
   orientation: null,
   textAlign: null,
@@ -205,6 +209,8 @@ export function getUIClassString(props) {
     panel,
     masked,
     color,
+    colorStyle,
+    colorHover,
     orientation,
     textAlign,
     contentAlign,
@@ -222,25 +228,31 @@ export function getUIClassString(props) {
     "ui-well": well,
     "ui-panel": panel,
     "ui-masked": masked,
-    [`ui-${color}`]: color,
     [`ui-position-${position}`]: position,
     [`ui-orientation-${orientation}`]: orientation,
     [`ui-content-align-${contentAlign}`]: contentAlign,
     [`ui-text-align-${textAlign}`]: textAlign
   };
-  // if (isUsable(color)) {
-  //   classes[`ui-${color}`] = true;
-  // }
-  // if (isUsable(orientation)) {
+  if (!_.isNil(color)) {
+    let colorClass = `ui-color ui-${color}`;
+    if (!_.isNil(colorStyle)) {
+      colorClass += `-${colorStyle}`;
+    }
+    if (!_.isNil(colorHover)) {
+      colorClass += "-hover";
+    }
+    classes[colorClass] = true;
+  }
+  // if (!_.isNil(orientation)) {
   //   classes[`ui-orientation-${orientation}`] = true;
   // }
-  // if (isUsable(position)) {
+  // if (!_.isNil(position)) {
   //   classes[`ui-position-${position}`] = true;
   // }
-  // if (isUsable(contentAlign)) {
+  // if (!_.isNil(contentAlign)) {
   //   classes[`ui-content-align-${contentAlign}`] = true;
   // }
-  // if (isUsable(textAlign)) {
+  // if (!_.isNil(textAlign)) {
   //   classes[`ui-text-align-${textAlign}`] = true;
   // }
 

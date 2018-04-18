@@ -7,69 +7,61 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import warning from "warning";
 import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
+  CoreComponent,
+  getCorePropDefaults,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  ROLE
+} from "../../lib";
 import ToolBarHeader from "./ToolBarHeader.js";
 import ToolBarContent from "./ToolBarContent.js";
 import "./ToolBar.css";
 
-class ToolBar extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class ToolBar extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     uirole: "toolbar"
   });
+
+  static Header = ToolBarHeader;
+  static Content = ToolBarContent;
 
   renderHeader = (child, props) => {
     const role = child.props.uirole;
     let ref = c => {
       this.header = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on toolbar components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role)
+      uiclass: this.childPrefix(role)
     });
   };
 
   renderChild = (child, props) => {
-    const role = child.props.uirole || Roles.CONTENT;
+    const role = child.props.uirole || ROLE.CONTENT;
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on toolbar components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role)
+      uiclass: this.childPrefix(role)
     });
   };
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       uiclass,
       children,
-      props
+      props,
+      inherited
     } = getValidProps(this.props);
 
     return (
@@ -79,7 +71,7 @@ class ToolBar extends React.Component {
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
-            return this.renderChild(child, { uiclass });
+            return this.renderChild(child, inherited);
           }
           return child;
         })}
@@ -88,7 +80,4 @@ class ToolBar extends React.Component {
   }
 }
 
-ToolBar.Header = ToolBarHeader;
-ToolBar.Content = ToolBarContent;
-
-export default setCoreClass("ui-toolbar", ToolBar);
+export default ToolBar;

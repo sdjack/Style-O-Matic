@@ -7,27 +7,33 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import PropTypes from "prop-types";
-import { uID } from "../_utilities/CoreUtils.js";
+import {
+  CoreComponent,
+  getCorePropDefaults,
+  getPropTypesA11y,
+  getValidProps,
+  ROLE
+} from "../../lib";
 import "./Pagination.css";
 
-class Pagination extends React.Component {
-  static propTypes = {
-    disabled: PropTypes.bool,
-    config: PropTypes.shape({
-      pageNum: PropTypes.number,
-      pageTotal: PropTypes.number,
-      onPageChange: PropTypes.func
-    })
-  };
+class Pagination extends CoreComponent {
+  static propTypes = getPropTypesA11y(null, {
+    pageNum: "number",
+    pageTotal: "number",
+    onPageChange: "func"
+  });
 
-  static defaultProps = {
-    disabled: false,
-    config: {
+  static defaultProps = getCorePropDefaults(
+    {
+      renderAs: "div",
+      uirole: "pagination"
+    },
+    {
       pageNum: 0,
-      pageTotal: 0
+      pageTotal: 0,
+      onPageChange: null
     }
-  };
+  );
 
   handlePageClick = (e, pageRequest) => {
     e.preventDefault();
@@ -87,17 +93,16 @@ class Pagination extends React.Component {
 
   renderCurrentPages = (pageNum, pageTotal) => {
     const output = [];
-    const itemGUID = uID();
     const prevPage = pageNum === 1 ? 1 : pageNum - 1;
     const nextPage = pageNum === pageTotal ? pageTotal : pageNum + 1;
     if (pageNum === 1) {
       output.push(
-        <li key={`pagination-page1_${itemGUID}`} className="theme-page_text">
+        <li key={`pagination-page1_${this.GUID}`} className="theme-page_text">
           <a className="pagination-spacer-page">&nbsp;</a>
         </li>
       );
       output.push(
-        <li key={`pagination-page2_${itemGUID}`} className="theme-page_text">
+        <li key={`pagination-page2_${this.GUID}`} className="theme-page_text">
           <a
             href="#"
             className="pagination-current-page theme-button"
@@ -108,7 +113,7 @@ class Pagination extends React.Component {
         </li>
       );
       output.push(
-        <li key={`pagination-page3_${itemGUID}`} className="theme-page_text">
+        <li key={`pagination-page3_${this.GUID}`} className="theme-page_text">
           <a
             href="#"
             className="pagination-other-page theme-button"
@@ -120,7 +125,7 @@ class Pagination extends React.Component {
       );
     } else if (pageNum === pageTotal) {
       output.push(
-        <li key={`pagination-page1_${itemGUID}`} className="theme-page_text">
+        <li key={`pagination-page1_${this.GUID}`} className="theme-page_text">
           <a
             href="#"
             className="pagination-other-page theme-button"
@@ -131,7 +136,7 @@ class Pagination extends React.Component {
         </li>
       );
       output.push(
-        <li key={`pagination-page2_${itemGUID}`} className="theme-page_text">
+        <li key={`pagination-page2_${this.GUID}`} className="theme-page_text">
           <a
             href="#"
             className="pagination-current-page theme-button"
@@ -142,13 +147,13 @@ class Pagination extends React.Component {
         </li>
       );
       output.push(
-        <li key={`pagination-page3_${itemGUID}`} className="theme-page_text">
+        <li key={`pagination-page3_${this.GUID}`} className="theme-page_text">
           <a className="pagination-spacer-page">&nbsp;</a>
         </li>
       );
     } else {
       output.push(
-        <li key={`pagination-page1_${itemGUID}`} className="theme-page_text">
+        <li key={`pagination-page1_${this.GUID}`} className="theme-page_text">
           <a
             href="#"
             className="pagination-other-page theme-button"
@@ -159,7 +164,7 @@ class Pagination extends React.Component {
         </li>
       );
       output.push(
-        <li key={`pagination-page2_${itemGUID}`} className="theme-page_text">
+        <li key={`pagination-page2_${this.GUID}`} className="theme-page_text">
           <a
             href="#"
             className="pagination-current-page theme-button"
@@ -170,7 +175,7 @@ class Pagination extends React.Component {
         </li>
       );
       output.push(
-        <li key={`pagination-page3_${itemGUID}`} className="theme-page_text">
+        <li key={`pagination-page3_${this.GUID}`} className="theme-page_text">
           <a
             href="#"
             className="pagination-other-page theme-button"
@@ -185,7 +190,7 @@ class Pagination extends React.Component {
   };
 
   render() {
-    const { pageNum, pageTotal } = this.props.config;
+    const { pageNum, pageTotal } = this.props;
     if (!this.props.disabled && pageTotal > 1) {
       const prevClass =
         pageNum < 2 ? " pagination-disabled" : " theme-page_text";

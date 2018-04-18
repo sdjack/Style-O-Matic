@@ -9,24 +9,22 @@
 import React from "react";
 import classNames from "classnames";
 import {
+  CoreComponent,
+  getCorePropDefaults,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  ROLE
+} from "../../lib";
 
-class FooterItem extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class FooterItem extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "div",
-    uirole: Roles.ITEM,
+    renderAs: "div",
+    uirole: ROLE.ITEM,
     text: ""
   });
 
   render() {
     const {
-      componentClass,
+      renderAs,
       uiclass,
       className,
       to,
@@ -56,7 +54,7 @@ class FooterItem extends React.Component {
         </Component>
       );
     }
-    const Component = componentClass;
+    const Component = renderAs;
 
     return (
       <Component {...props} className={classNames(className, classes)}>

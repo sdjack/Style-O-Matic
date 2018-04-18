@@ -6,7 +6,7 @@
 import React from "react";
 import { Form, Grid, Title } from "../../../src/index";
 
-class Forms extends React.Component {
+class FormsView extends React.Component {
   handleOnSubmit = (e, formData) => {
     e.preventDefault();
     // console.log(formData);
@@ -71,7 +71,52 @@ class Forms extends React.Component {
                 />
               </Form.Row>
               <Form.Row>
-                <Form.Textarea id="demo-input12" label="Text Area" />
+                <Form.Input
+                  id="demo-input12"
+                  label="Checkbox 1"
+                  type="checkbox"
+                  value="Check"
+                  required
+                />
+                <Form.Input
+                  id="demo-input13"
+                  label="Checkbox 2"
+                  type="checkbox"
+                  value="Check"
+                />
+                <Form.Input
+                  id="demo-input14"
+                  label="Checkbox 3"
+                  type="checkbox"
+                  value="Check"
+                />
+                <Form.Input
+                  id="demo-input15"
+                  label="Checkbox 4"
+                  type="checkbox"
+                  value="Check"
+                />
+                <Form.Input
+                  id="demo-input16"
+                  label="Checkbox 5"
+                  type="checkbox"
+                  value="Check"
+                />
+                <Form.Input
+                  id="demo-input17"
+                  label="Checkbox 6"
+                  type="checkbox"
+                  value="Check"
+                />
+                <Form.Input
+                  id="demo-input18"
+                  label="Checkbox 7"
+                  type="checkbox"
+                  value="Check"
+                />
+              </Form.Row>
+              <Form.Row>
+                <Form.Textarea id="demo-input99" label="Text Area" />
               </Form.Row>
               <Form.Row>
                 <Form.Input
@@ -89,4 +134,4 @@ class Forms extends React.Component {
   }
 }
 
-export default Forms;
+export default FormsView;

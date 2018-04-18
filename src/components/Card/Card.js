@@ -7,22 +7,15 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import warning from "warning";
 import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import { Roles } from "../_utilities/Enum.js";
-import {
-  getCorePropTypes,
+  CoreComponent,
+  getValidProps,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
+  ROLE
+} from "../../lib";
+import "./Card.css";
 
-class Card extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class Card extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     uirole: "card"
   });
@@ -32,25 +25,20 @@ class Card extends React.Component {
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on header components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, "content")
+      uiclass: this.childPrefix(role)
     });
   };
 
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      children,
-      props
-    } = getValidProps(this.props);
+    const { renderAs: Component, children, props, inherited } = getValidProps(
+      this.props
+    );
 
     return (
       <Component {...props}>
@@ -60,8 +48,8 @@ class Card extends React.Component {
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case Roles.CONTENT:
-                return this.renderChild(child, { uiclass });
+              case ROLE.CONTENT:
+                return this.renderChild(child, inherited);
               default:
                 return child;
             }
@@ -73,4 +61,4 @@ class Card extends React.Component {
   }
 }
 
-export default setCoreClass("ui-card", Card);
+export default Card;

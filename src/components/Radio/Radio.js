@@ -8,31 +8,27 @@
 
 import React from "react";
 import classNames from "classnames";
-import { setCoreClass, uID } from "../_utilities/CoreUtils.js";
 import {
-  getCorePropTypes,
+  CoreComponent,
+  getPropTypesA11y,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 import "./Radio.css";
 
-class Radio extends React.Component {
-  static propTypes = getCorePropTypes(
-    {
-      id: "string!",
-      required: "bool",
-      label: "string",
-      validator: "func",
-      options: "array"
-    },
-    null,
-    true
-  );
+class Radio extends CoreComponent {
+  static propTypes = getPropTypesA11y({
+    id: "string!",
+    required: "bool",
+    label: "string",
+    validator: "func",
+    options: "array"
+  });
 
   static defaultProps = getCorePropDefaults({
-    componentClass: "div",
-    uirole: Roles.INPUT,
+    renderAs: "div",
+    uirole: ROLE.INPUT,
     type: "text",
     checked: false,
     required: false,
@@ -60,19 +56,15 @@ class Radio extends React.Component {
 
   fields = [];
   valid = true;
-  renderKey = `radio_${uID()}`;
+  renderKey = `radio_${this.GUID}`;
 
   renderLabel = (id, label, required) => {
     if (label !== null) {
-      const validationClass = required ? " required" : "";
+      const validationClass = required ? "label required-label" : "label";
       return (
-        <label
-          key={`label_${this.renderKey}`}
-          htmlFor={id}
-          className={validationClass}
-        >
+        <span key={`label_${this.state.renderKey}`} className={validationClass}>
           {label}
-        </label>
+        </span>
       );
     }
     return <span />;
@@ -80,7 +72,7 @@ class Radio extends React.Component {
 
   renderRadioOptions = (parentKey, options) => {
     const output = [];
-    for (let i = 0; i < options.length; i++) {
+    for (let i = 0; i < options.length; i += 1) {
       const optionData = options[i];
       const optionId = `${parentKey}_${i}`;
       output.push(
@@ -101,7 +93,7 @@ class Radio extends React.Component {
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       className,
       id,
       name,
@@ -141,4 +133,4 @@ class Radio extends React.Component {
   }
 }
 
-export default setCoreClass("ui-radio", Radio);
+export default Radio;

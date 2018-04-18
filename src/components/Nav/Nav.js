@@ -8,58 +8,50 @@
 
 import React, { cloneElement } from "react";
 import classNames from "classnames";
-import warning from "warning";
+import {
+  CoreComponent,
+  getCorePropDefaults,
+  getValidProps,
+  ROLE
+} from "../../lib";
 import NavItem from "./NavItem.js";
 import NavFolder from "./NavFolder.js";
-import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
-  getCorePropTypes,
-  getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
 import "./Nav.css";
 
-class Nav extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class Nav extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "nav",
-    uirole: "nav",
+    renderAs: "nav",
+    uirole: ROLE.NAV,
     orientation: "vertical"
   });
 
+  static Item = NavItem;
+  static Folder = NavFolder;
+
   renderChild = (child, props) => {
-    const role = child.props.uirole || Roles.ITEM;
+    const role = child.props.uirole || ROLE.ITEM;
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on nav components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role),
-      onClick: createChainedFunction(child.props.onClick, this.handleOnClick)
+      uiclass: this.childPrefix(role),
+      onClick: this.chainFunction(child.props.onClick, this.handleOnClick)
     });
   };
 
   render() {
     const {
-      componentClass: Component,
-      uiclass,
+      renderAs: Component,
       className,
-      path,
       active,
       children,
-      props
+      props,
+      inherited
     } = getValidProps(this.props);
 
     const minimized = !active;
@@ -75,7 +67,7 @@ class Nav extends React.Component {
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
-            return this.renderChild(child, { uiclass, path, minimized });
+            return this.renderChild(child, { ...inherited, minimized });
           }
           return child;
         })}
@@ -84,7 +76,4 @@ class Nav extends React.Component {
   }
 }
 
-Nav.Item = NavItem;
-Nav.Folder = NavFolder;
-
-export default setCoreClass("ui-nav", Nav);
+export default Nav;

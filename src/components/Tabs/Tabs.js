@@ -9,36 +9,31 @@
 import React, { cloneElement } from "react";
 import classNames from "classnames";
 import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
+  CoreComponent,
+  getCorePropDefaults,
+  getPropTypesA11y,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  ROLE
+} from "../../lib";
 import TabContent from "./TabContent.js";
 import TabToggle from "./TabToggle.js";
 import "./Tabs.css";
 
-class Tabs extends React.Component {
-  static propTypes = getCorePropTypes(
-    {
-      smart: "bool",
-      onSwitch: "func"
-    },
-    null,
-    true
-  );
+class Tabs extends CoreComponent {
+  static propTypes = getPropTypesA11y({
+    smart: "bool",
+    onSwitch: "func"
+  });
 
   static defaultProps = getCorePropDefaults({
-    componentClass: "div",
+    renderAs: "div",
     uirole: "tabs",
     smart: false,
     onSwitch: null
   });
+
+  static Tab = TabToggle;
+  static Content = TabContent;
 
   constructor(props, context) {
     super(props, context);
@@ -71,8 +66,8 @@ class Tabs extends React.Component {
       ...props,
       ref: child.ref,
       id,
-      uiclass: prefix(props, activeClass),
-      onClick: createChainedFunction(child.props.onClick, this.handleClick)
+      uiclass: this.childPrefix(activeClass),
+      onClick: this.chainFunction(child.props.onClick, this.handleClick)
     });
   };
 
@@ -85,20 +80,21 @@ class Tabs extends React.Component {
       ...props,
       ref: child.ref,
       id,
-      uiclass: prefix(props, activeClass)
+      uiclass: this.childPrefix(activeClass)
     });
   };
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       id,
       uiclass,
       disabled,
       smart,
       automatic,
       children,
-      props
+      props,
+      inherited
     } = getValidProps(this.props);
 
     const preSorted = { tabs: [], content: [] };
@@ -106,17 +102,17 @@ class Tabs extends React.Component {
     if (automatic) {
       React.Children.map(children, child => {
         switch (child.props.uirole) {
-          case Roles.BUTTON: {
+          case ROLE.BUTTON: {
             const tindex = preSorted.tabs.length + 1;
             preSorted.tabs.push(
-              this.renderToggle(child, tindex, id, { disabled, uiclass })
+              this.renderToggle(child, tindex, id, inherited)
             );
             break;
           }
-          case Roles.CONTENT: {
+          case ROLE.CONTENT: {
             const cindex = preSorted.content.length + 1;
             preSorted.content.push(
-              this.renderContent(child, cindex, id, { disabled, uiclass })
+              this.renderContent(child, cindex, id, inherited)
             );
             break;
           }
@@ -143,19 +139,13 @@ class Tabs extends React.Component {
       <Component id={`tabs_${id}`} {...props}>
         {React.Children.map(children, child => {
           switch (child.props.uirole) {
-            case Roles.BUTTON: {
+            case ROLE.BUTTON: {
               const tindex = preSorted.tabs.length + 1;
-              return this.renderToggle(child, tindex, id, {
-                disabled,
-                uiclass
-              });
+              return this.renderToggle(child, tindex, id, inherited);
             }
-            case Roles.CONTENT: {
+            case ROLE.CONTENT: {
               const cindex = preSorted.content.length + 1;
-              return this.renderContent(child, cindex, id, {
-                disabled,
-                uiclass
-              });
+              return this.renderContent(child, cindex, id, inherited);
             }
             default:
               return child;
@@ -166,7 +156,4 @@ class Tabs extends React.Component {
   }
 }
 
-Tabs.Tab = TabToggle;
-Tabs.Content = TabContent;
-
-export default setCoreClass("ui-tabs", Tabs);
+export default Tabs;

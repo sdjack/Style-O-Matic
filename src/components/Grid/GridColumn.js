@@ -5,42 +5,36 @@
  * ======================================================================== */
 
 /* eslint "react/prop-types": [0] */
-
+import _ from "lodash";
 import React from "react";
 import classNames from "classnames";
-import { isUsable } from "../_utilities/CoreUtils.js";
 import {
+  CoreComponent,
   getValidProps,
   getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getCorePropDefaults,
+  ROLE
+} from "../../lib";
 
-class GridColumn extends React.Component {
+class GridColumn extends CoreComponent {
   static propTypes = getCorePropTypes({
     cols: "number"
   });
 
   static defaultProps = getCorePropDefaults({
-    uirole: Roles.COLUMN,
+    uirole: ROLE.COLUMN,
     cols: 12,
     textAlign: "left"
   });
 
   render() {
-    const {
-      componentClass: Component,
-      className,
-      children,
-      props
-    } = getValidProps(this.props);
-
-    // console.log(this.props);
-    // console.log(props);
+    const { renderAs: Component, className, children, props } = getValidProps(
+      this.props
+    );
 
     const classes = {};
 
-    if (isUsable(this.props.cols)) {
+    if (!_.isNil(this.props.cols)) {
       classes[`span-${this.props.cols}`] = true;
     }
 

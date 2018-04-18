@@ -8,23 +8,20 @@
 
 import React from "react";
 import {
+  CoreComponent,
+  getCorePropDefaults,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
+  ROLE
+} from "../../lib";
 
-class ToolBarHeader extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class ToolBarHeader extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "h2",
-    uirole: "header"
+    renderAs: "h2",
+    uirole: ROLE.HEADER
   });
 
   render() {
-    const { componentClass: Component, children, props } = getValidProps(
-      this.props
-    );
+    const { renderAs: Component, children, props } = getValidProps(this.props);
 
     return <Component {...props}>{children}</Component>;
   }

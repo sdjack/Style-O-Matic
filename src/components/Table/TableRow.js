@@ -7,21 +7,16 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import classNames from "classnames";
-import warning from "warning";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
+  CoreComponent,
+  getCorePropDefaults,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  ROLE
+} from "../../lib";
 
-class TableRow extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class TableRow extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    uirole: Roles.ROW
+    uirole: ROLE.ROW
   });
 
   cells = [];
@@ -30,36 +25,30 @@ class TableRow extends React.Component {
     let ref = c => {
       this.cells.push(c);
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on table-row components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, child.props.uirole)
+      uiclass: this.childPrefix(child.props.uirole)
     });
   };
 
   render() {
-    const { uiclass, className, children, props } = getValidProps(this.props);
+    const { children, props, inherited } = getValidProps(this.props);
 
-    const classes = {
-      [uiclass]: true
-    };
-
-    delete props.uirole;
     this.cells = [];
+
     return (
-      <tr {...props} className={classNames(className, classes)}>
+      <tr {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined" &&
-            child.props.uirole === Roles.CELL
+            child.props.uirole === ROLE.CELL
           ) {
-            return this.renderChild(child, { uiclass });
+            return this.renderChild(child, inherited);
           }
           return child;
         })}

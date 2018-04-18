@@ -22,25 +22,15 @@ $color-grey-contrast: $color-white;
 /**
  * ROYGBIV
  */
-$roygbiv-red: #F44336 !default;
-$roygbiv-orange: #FF9800 !default;
-$roygbiv-yellow: #FFEB3B !default;
-$roygbiv-green: #4CAF50 !default;
-$roygbiv-blue: #2196F3 !default;
-$roygbiv-indigo: #3F51B5 !default;
-$roygbiv-violet: #673AB7 !default;
+$color-red: #D32F2F !default;
+$color-orange: #F57C00 !default;
+$color-yellow: #FBC02D !default;
+$color-green: #388E3C !default;
+$color-blue: #1976D2 !default;
+$color-indigo: #303F9F !default;
+$color-violet: #7B1FA2 !default;
 /**
  * ROYGBIV ACTIVE
- */
-$color-red: darken($roygbiv-red, 10%);
-$color-orange: darken($roygbiv-orange, 10%);
-$color-yellow: darken($roygbiv-yellow, 10%);
-$color-green: darken($roygbiv-green, 10%);
-$color-blue: darken($roygbiv-blue, 10%);
-$color-indigo: darken($roygbiv-indigo, 10%);
-$color-violet: darken($roygbiv-violet, 10%);
-/**
- * ROYGBIV
  */
 $color-red-active: lighten($color-red, 20%);
 $color-orange-active: lighten($color-orange, 20%);

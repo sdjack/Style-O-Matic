@@ -8,25 +8,22 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import classNames from "classnames";
-import { setCoreClass } from "../_utilities/CoreUtils.js";
 import {
+  CoreComponent,
+  getCorePropDefaults,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
+  ROLE
+} from "../../lib";
 import "./ToolTip.css";
 
-class ToolTip extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class ToolTip extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     uirole: "tooltip",
     position: "right"
   });
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       clientWidth: 1,
       clientHeight: 1
@@ -41,9 +38,7 @@ class ToolTip extends React.Component {
   render() {
     const { position, ...sorceProps } = this.props;
     const { clientWidth, clientHeight } = this.state;
-    const { componentClass: Component, children, props } = getValidProps(
-      sorceProps
-    );
+    const { renderAs: Component, children, props } = getValidProps(sorceProps);
 
     let widgetClass = "ui-tooltip-widget ";
     const tipDimensions = {
@@ -69,4 +64,4 @@ class ToolTip extends React.Component {
   }
 }
 
-export default setCoreClass("ui-tooltip", ToolTip);
+export default ToolTip;

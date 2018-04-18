@@ -7,43 +7,32 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import classNames from "classnames";
 import {
+  CoreComponent,
   getValidProps,
   getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
+  getCorePropDefaults,
+  ROLE
+} from "../../lib";
 
-class AccordionContent extends React.Component {
+class AccordionContent extends CoreComponent {
   static propTypes = getCorePropTypes({ accordionindex: "string" });
 
   static defaultProps = getCorePropDefaults({
-    componentClass: "dd",
-    uirole: "content"
+    renderAs: "dd",
+    uirole: ROLE.CONTENT
   });
 
   render() {
     const {
-      componentClass: Component,
-      uiclass,
-      className,
-      active,
+      renderAs: Component,
       accordionindex,
       children,
       props
     } = getValidProps(this.props);
 
-    const classes = {
-      [uiclass]: true,
-      active
-    };
-
     return (
-      <Component
-        {...props}
-        className={classNames(className, classes)}
-        accordionindex={accordionindex}
-      >
+      <Component {...props} accordionindex={accordionindex}>
         {children}
       </Component>
     );

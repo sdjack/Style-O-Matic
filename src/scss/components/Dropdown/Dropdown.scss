@@ -16,19 +16,19 @@
 }
 
 .ui-dropdown-toggle {
-    color: $button-text-color;
-    background-color: $button-background-color;
+    color: $dropdown-text-color;
+    background-color: $dropdown-background-color;
     position: relative;
-    padding: $button-padding;
+    padding: $dropdown-toggle-padding;
     display: inline-block;
     line-height: 1;
     text-decoration: none;
-    border: none;
+    border: 1px solid transparent;
     border-radius: $border-radius;
     cursor: pointer;
     transition-property: $dropdown-transition-properties;
     @include animate-default(0.2s);
-    @include button-shadow();
+    @include dropdown-shadow();
 
     &:hover, &:focus, &.open {
         & > .show-on-hover {
@@ -41,7 +41,7 @@
     font-size: 16px;
     padding: 0;
     position: absolute;
-    right: 4px;
+    right: 8px;
     top: 50%;
     margin-top: -8px;
 }

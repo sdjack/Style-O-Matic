@@ -7,39 +7,27 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import PropTypes from "prop-types";
-import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
-import warning from "warning";
 import {
-  uID,
-  setCoreClass,
-  isLeftClickEvent,
   isModifiedEvent,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
-  getCorePropTypes,
-  getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  isLeftClickEvent,
+  CoreComponent,
+  getPropTypesA11y,
+  getPropDefaultsAutoId,
+  getValidProps,
+  getElementType,
+  ROLE
+} from "../../lib";
 import Dropdown from "../Dropdown/Dropdown.js";
 import "./Button.css";
 
-class Button extends React.Component {
-  static propTypes = getCorePropTypes(
-    {
-      dropdown: "bool"
-    },
-    null,
-    true
-  );
+class Button extends CoreComponent {
+  static propTypes = getPropTypesA11y({
+    dropdown: "bool"
+  });
 
-  static defaultProps = getCorePropDefaults({
-    componentClass: "button",
-    uirole: "button",
-    id: `button_${uID()}`,
+  static defaultProps = getPropDefaultsAutoId({
+    renderAs: "button",
+    uirole: ROLE.BUTTON,
     dropdown: false
   });
 
@@ -65,34 +53,11 @@ class Button extends React.Component {
     }
   };
 
-  renderChild = (child, props) => {
-    const role = child.props.uirole || Roles.DEFAULT;
-    let ref = c => {
-      this[role] = c;
-    };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on dropdown components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
-    }
-    return cloneElement(child, {
-      ...props,
-      ref,
-      uiclass: prefix(props, role),
-      onClick: createChainedFunction(child.props.onClick, () => {}),
-      onKeyDown: createChainedFunction(child.props.onKeyDown, () => {})
-    });
-  };
-
   render() {
     if (this.props.dropdown) {
       const { className, style, id, label, children } = this.props;
       return (
-        <Dropdown
-          uiclass="ui-dropdown"
-          style={style}
-          id={id || "dropdown-button"}
-        >
+        <Dropdown style={style} id={id || "dropdown-button"}>
           <Dropdown.Toggle
             className={className}
             id={id || "dropdown-button-toggle"}
@@ -104,35 +69,35 @@ class Button extends React.Component {
       );
     }
 
-    const {
-      componentClass,
-      uiclass,
-      disabled,
-      children,
-      to,
-      props
-    } = getValidProps(this.props);
+    const { children, to, props, inherited } = getValidProps(this.props);
 
-    const Component = to ? "a" : componentClass;
+    const ElementType = getElementType(Button, this.props);
     if (to) {
-      props.href = to;
-      props.target = "_blank";
+      props.href = props.href || to;
+      props.target = props.target || "_blank";
       props.onClick = null;
     } else {
       props.onClick = this.handleClick;
     }
 
     return (
-      <Component {...props}>
+      <ElementType {...props}>
         {React.Children.map(children, child => {
-          if (typeof child.props !== "undefined") {
-            return this.renderChild(child, { uiclass, disabled });
+          if (
+            typeof child.props !== "undefined" &&
+            typeof child.props.uirole !== "undefined"
+          ) {
+            return this.renderChild(child, {
+              ...inherited,
+              onClick: this.chainFunction(child.props.onClick, () => {}),
+              onKeyDown: this.chainFunction(child.props.onKeyDown, () => {})
+            });
           }
           return child;
         })}
-      </Component>
+      </ElementType>
     );
   }
 }
 
-export default setCoreClass("ui-button", Button);
+export default Button;

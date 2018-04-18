@@ -8,28 +8,28 @@
 
 import React, { cloneElement } from "react";
 import classNames from "classnames";
-import warning from "warning";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
+  CoreComponent,
   getCorePropTypes,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
-import Button from "../Button/Button.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 import MainDrawerContent from "./MainDrawerContent.js";
 
-class MainDrawer extends React.Component {
+class MainDrawer extends CoreComponent {
   static propTypes = getCorePropTypes({
     minimizable: "bool",
     defaultOpen: "bool"
   });
 
   static defaultProps = getCorePropDefaults({
-    uirole: Roles.DRAWER,
+    uirole: ROLE.DRAWER,
     minimizable: true,
     defaultOpen: false
   });
+
+  static Content = MainDrawerContent;
 
   constructor(props) {
     super(props);
@@ -45,25 +45,23 @@ class MainDrawer extends React.Component {
   };
 
   renderChild = (child, props) => {
-    const role = child.props.uirole || Roles.CONTENT;
+    const role = child.props.uirole || ROLE.CONTENT;
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on drawer components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role)
+      uiclass: this.childPrefix(role)
     });
   };
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       uiclass,
       className,
       disabled,
@@ -72,7 +70,6 @@ class MainDrawer extends React.Component {
       props
     } = getValidProps(this.props);
 
-    delete props.onToggle;
     const active = this.state.navActive;
     const classes = {
       active,
@@ -104,7 +101,5 @@ class MainDrawer extends React.Component {
     );
   }
 }
-
-MainDrawer.Content = MainDrawerContent;
 
 export default MainDrawer;

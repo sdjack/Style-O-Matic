@@ -6,58 +6,30 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React, { cloneElement } from "react";
-import warning from "warning";
+import React from "react";
 import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
+  CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getCorePropDefaults,
+  ROLE
+} from "../../lib";
 import GridRow from "./GridRow.js";
 import GridColumn from "./GridColumn.js";
 import "./Grid.css";
 
-class Grid extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class Grid extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "div",
+    renderAs: "div",
     uirole: "grid"
   });
 
-  renderChild = (child, props) => {
-    const role = child.props.uirole || Roles.ROW;
-    let ref = c => {
-      this[role] = c;
-    };
-    if (typeof child.ref === "string") {
-      warning(
-        false,
-        `String refs are not supported on grid-${role} components.`
-      );
-    } else {
-      ref = createChainedFunction(child.ref, ref);
-    }
-    return cloneElement(child, {
-      ...props,
-      ref,
-      uiclass: prefix(props, role)
-    });
-  };
+  static Row = GridRow;
+  static Column = GridColumn;
 
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      children,
-      props
-    } = getValidProps(this.props);
+    const { renderAs: Component, children, props, inherited } = getValidProps(
+      this.props
+    );
 
     return (
       <Component {...props}>
@@ -67,8 +39,8 @@ class Grid extends React.Component {
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case Roles.ROW:
-                return this.renderChild(child, { uiclass });
+              case ROLE.ROW:
+                return this.renderChild(child, inherited);
               default:
                 return child;
             }
@@ -80,7 +52,4 @@ class Grid extends React.Component {
   }
 }
 
-Grid.Row = GridRow;
-Grid.Column = GridColumn;
-
-export default setCoreClass("ui-grid", Grid);
+export default Grid;

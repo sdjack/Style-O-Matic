@@ -6,15 +6,16 @@ $target-elements-directly: true !default;
 
 /// Regular font family
 /// @type List
-$text-font-stack: 'Roboto Condensed', 'Source Sans Pro', sans-serif !default;
+$text-font-stack: 'Helvetica', 'Arial', sans-serif !default;
 $common_font: $text-font-stack;
 $common-font-size: 14px;
+$layout-font-size: 15px;
 
 $title_font: $text-font-stack;
 $title-font-size: 24px;
 /// Code (monospace) font family
 /// @type List
-$code-font-stack: 'Source Sans Pro', 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
 $icon-font-stack: 'Font Awesome 5 Free' !default;
 
 /// Copy text color
@@ -91,70 +92,66 @@ $text-color-secondary: $color-secondary-contrast;
 $text-color-secondary-hinted: $color-secondary-contrast-hinted;
 $text-color-links: rgba(0,126,228,222) !default;
 
-$button-background-color: $color-dark-alpha-0 !default;
-$button-text-color: $color-dark-alpha-5 !default;
-$button-active-background-color: $color-dark-alpha-3 !default;
-$button-active-text-color: $color-light-alpha-5 !default;
-$button-background-color-disabled: $color-dark-alpha-2;
-$button-text-color-disabled: $color-light-alpha-0;
-$button-icon-color: $color-secondary-contrast-hinted !default;
-$button-icon-active-color: $button-active-background-color !default;
-
 $badge-font-size: 14px;
 $badge-icon-font-size: 18px;
 $badge-size: $badge-icon-font-size + 20;
 $badge-size-small: $badge-icon-font-size + 12;
 
-$content-height: 96vh;
 $screen-size-threshold: 1024px;
-$outer-frame-height: 64px !default;
-$outer-frame-width: 70px !default;
+$outer-frame-size: 40px !default;
 
 $padding: 12px !default;
 $padding-xlarge: ($padding * 3) !default;
 $padding-large: ($padding * 2) !default;
-$padding-medium: ($padding * 1.5) !default;
-$padding-small: ($padding / 2) !default;
-$padding-smaller: ($padding / 3) !default;
+$padding-medium: floor($padding * 1.5) !default;
+$padding-small: floor($padding / 2) !default;
+$padding-smaller: floor($padding / 3) !default;
 
 $border-radius: 3px !default;
 $border-radius-large: 5px !default;
 
 $toggle-size: 28px !default;
-$toggle-v-offset: (($outer-frame-height - $toggle-size) / 2);
-$toggle-h-offset: (($outer-frame-width - $toggle-size) / 2);
+$toggle-v-offset: floor(($outer-frame-size - $toggle-size) / 2);
+$toggle-h-offset: floor(($outer-frame-size - $toggle-size) / 2);
 $toggle-padding: $toggle-v-offset $toggle-h-offset !default;
 /**
 *  HEADER
 */
-$header-height: $outer-frame-height !default;
+$header-height: $outer-frame-size !default;
+$header-inner-height: 27px !default;
+$header-item-v-offset: floor(($header-height - $header-inner-height) / 2);
+$header-item-h-offset: floor($header-inner-height / 2);
+$header-font-size: $layout-font-size !default;
 $header-item-height: ($header-height - ($padding * 2)) !default;
+$header-text-padding: $padding $header-item-h-offset !default;
+$header-item-padding: $header-item-v-offset $padding !default;
+$header-button-padding: 7px $header-item-h-offset 9px !default;
+$header-title-padding: $header-item-v-offset $padding-xlarge !default;
+$header-title-font-size: $header-inner-height;
 $header-icon-height: ($header-height - ($padding * 2)) !default;
-$header-icon-font-size: 28px !default;
-$header-item-v-offset: (($header-height - $header-icon-font-size) / 2);
-$header-item-h-offset: (($outer-frame-width - $header-icon-font-size) / 2);
-$header-padding: 0px $padding 0px 0px !default;
-$header-item-padding: ($header-item-v-offset - 2) $padding $header-item-v-offset !default;
+$header-icon-font-size: $header-inner-height;
 $header-icon-padding: 0px 2px !default;
-$header-list-padding: 0px $padding-xlarge 0px 0px !default;
-$header-list-margin: 0px 0px 12px 0px !default;
-$header-toggle-size: $header-icon-font-size !default;
-$header-toggle-padding: $header-item-v-offset $header-item-h-offset !default;
+$header-list-padding: 0px $padding !default;
+$header-list-font-size: $header-font-size;
+$header-toggle-size: $header-inner-height !default;
 /**
 *  FOOTER
 */
-$footer-height: 20px;
+$footer-height: 30px;
+$footer-inner-height: 26px !default;
+$footer-item-v-offset: floor(($footer-height - $footer-inner-height) / 2);
+$footer-item-h-offset: floor($footer-inner-height / 2);
+$footer-font-size: $layout-font-size !default;
 $footer-item-height: ($footer-height - ($padding * 2)) !default;
+$footer-item-padding: $footer-item-v-offset $padding !default;
+$footer-text-padding: 8px $padding !default;
+$footer-button-padding: $footer-item-v-offset $footer-item-h-offset !default;
 $footer-icon-height: ($footer-height - ($padding * 2)) !default;
-$footer-icon-font-size: 28px !default;
-$footer-item-v-offset: (($footer-height - $footer-icon-font-size) / 2);
-$footer-item-h-offset: (($outer-frame-width - $footer-icon-font-size) / 2);
-$footer-padding: 0px 6px 6px 6px !default;
-$footer-item-padding: ($footer-item-v-offset - 2) $padding $footer-item-v-offset !default;
+$footer-icon-font-size: $footer-inner-height;
 $footer-icon-padding: 0px 2px !default;
 $footer-list-padding: 0px $padding-xlarge 0px 0px !default;
 $footer-list-margin: 0px 0px 12px 0px !default;
-$footer-toggle-size: $footer-icon-font-size !default;
+$footer-toggle-size: $footer-inner-height !default;
 $footer-toggle-padding: $footer-item-v-offset $footer-item-h-offset !default;
 /**
 *  NAV
@@ -164,13 +161,13 @@ $nav-padding: $padding 24px;
 $nav-item-size: 18px;
 $nav-item-height: 54px;
 $nav-item-padding: 18px 21px;
-$nav-icon-size: 70px;
+$nav-icon-size: $outer-frame-size;
 $nav-icon-fontsize: 18px;
-$nav-icon-width: $outer-frame-width;
+$nav-icon-width: $outer-frame-size;
 $nav-caret-fontsize: $nav-icon-fontsize;
 $nav-caret-width: 17px;
 $nav-info-fontsize: 16px;
-$nav-info-width: ($nav-size - $outer-frame-width - 5);
+$nav-info-width: ($nav-size - $outer-frame-size - 5);
 $nav-list-line-height: 20px;
 $nav-list-margin: -10px 0px 0px 0px;
 
@@ -190,8 +187,22 @@ $nav-folder-caret-padding: 17px 10px 17px 0;
 */
 
 /**
+*  Dropdown
+*/
+$dropdown-text-color: $color-dark-alpha-5 !default;
+$dropdown-background-color: $color-dark-alpha-0 !default;
+$dropdown-toggle-padding: 10px 24px 10px 12px !default;
+/**
 *  BUTTON
 */
+$button-background-color: $color-dark-alpha-0 !default;
+$button-text-color: $color-dark-alpha-5 !default;
+$button-active-background-color: $color-dark-alpha-3 !default;
+$button-active-text-color: $color-light-alpha-5 !default;
+$button-background-color-disabled: $color-dark-alpha-2;
+$button-text-color-disabled: $color-light-alpha-0;
+$button-icon-color: $color-secondary-contrast-hinted !default;
+$button-icon-active-color: $button-active-background-color !default;
 $button-min-width: 32px !default;
 $button-height: 26px !default;
 $button-padding: ($padding - 2) ($padding * 2) ($padding + 2) !default;

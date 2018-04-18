@@ -7,7 +7,7 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Grid, Title } from "../../../src/index";
+import { Grid, Table, Title } from "../../../src/index";
 
 class TableView extends React.Component {
   render() {

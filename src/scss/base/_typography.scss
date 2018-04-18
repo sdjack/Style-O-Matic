@@ -108,6 +108,7 @@ fieldset {
 }
 
 label,
+span.label,
 legend {
   display: inline-block;
   width: 100%;
@@ -116,7 +117,8 @@ legend {
   @include text-align-left();
 }
 
-label {
+label,
+span.label {
   height: $input-size / 2;
   font-size: $input-font-size;
   line-height: $input-size / 4;
@@ -128,4 +130,74 @@ legend {
   font-weight: 700;
   width: 100%;
   line-height: $input-size;
+}
+
+input::-webkit-autofill,
+input::-webkit-autofill:hover,
+input::-webkit-autofill:focus,
+input::-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+input, select, textarea {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="url"],
+input[type="email"],
+input[type="color"],
+input[type="checkbox"],
+input[type="radio"],
+select,
+textarea {
+  border-radius: $border-radius;
+  background-color: white;
+  border: $gentle-border;
+
+  @include typo-input();
+
+  &:focus:not(:active) {
+    border: 1px solid rgba(0,0,0,0.35);
+  }
+}
+
+input[type="button"],
+input[type="submit"] {
+  padding: ($input-size / 4) $input-size;
+  text-decoration: none;
+  background-color: $color-dark-alpha-0;
+  border: none !important;
+  border-radius: $border-radius;
+  cursor: pointer;
+  min-width: $input-size;
+
+  @include typo-input-button();
+
+  &:hover,
+  &:focus:not(:active),
+  &:active {
+    background-color: $color-dark-alpha-2;
+  }
 }

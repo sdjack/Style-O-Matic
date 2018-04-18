@@ -5,25 +5,27 @@
  * ======================================================================== */
 
 /* eslint "react/prop-types": [0] */
-
+import _ from "lodash";
 import React, { cloneElement } from "react";
-import PropTypes from "prop-types";
-import elementType from "prop-types-extra/lib/elementType";
-import classNames from "classnames";
-import { setCoreClass, isUsable } from "../_utilities/CoreUtils.js";
+import {
+  CoreComponent,
+  getCorePropDefaults,
+  getCorePropTypes,
+  getValidProps,
+  ROLE
+} from "../../lib";
 import "./Toasts.css";
 
-class Toasts extends React.Component {
-  static propTypes = {
-    componentClass: elementType,
-    messages: PropTypes.array
-  };
+class Toasts extends CoreComponent {
+  static propTypes = getCorePropTypes({
+    messages: "array"
+  });
 
-  static defaultProps = {
+  static defaultProps = getCorePropDefaults({
+    renderAs: "div",
     uirole: "toasts",
-    componentClass: "div",
     messages: []
-  };
+  });
 
   constructor(props) {
     super(props);
@@ -40,7 +42,7 @@ class Toasts extends React.Component {
       if (this.removalTimer) {
         clearTimeout(this.removalTimer);
       }
-      this.setState({ messages });
+      this.setState({ messages: nextProps.messages });
     }
   }
 
@@ -59,7 +61,7 @@ class Toasts extends React.Component {
       clearTimeout(this.removalTimer);
     }
     this.removalTimer = setTimeout(() => {
-      const messages = this.state.messages;
+      const { messages } = this.state;
       messages.pop();
       this.setState({ messages });
     }, 5000);
@@ -67,24 +69,10 @@ class Toasts extends React.Component {
   };
 
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      className,
-      ...props
-    } = this.props;
+    const { renderAs: Component, props } = getValidProps(this.props);
 
-    const classes = {
-      [uiclass]: true,
-      active: this.state.messages.length > 0
-    };
-
-    return (
-      <Component {...props} className={classNames(className, classes)}>
-        {this.renderToasts()}
-      </Component>
-    );
+    return <Component {...props}>{this.renderToasts()}</Component>;
   }
 }
 
-export default setCoreClass("ui-toasts", Toasts);
+export default Toasts;

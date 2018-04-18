@@ -451,6 +451,10 @@
   box-shadow:   0px 0px 2px 0px $shadowColor, 
           0px 1px 4px -1px $shadowColor;
 }
+@mixin dropdown-shadow($shadowColor: $color-dark-alpha-2) {
+  box-shadow:   0px 0px 2px 0px $shadowColor, 
+          0px 1px 4px -1px $shadowColor;
+}
 @mixin pill-skin() {
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity);
 }
@@ -611,6 +615,65 @@
   box-shadow: inset 0px 0px 12px #000000,
               inset 0px 0px 2px #999999,
               inset 0px 4px 20px -5px #555555;
+}
+
+@mixin inset-text() {
+  text-shadow: 0px -1px 0px rgba(0,0,0,0.3), 0px 1px 0px rgba(255,255,255,0.3);
+}
+
+@mixin ui-color($colorName:'black',$color:$color-black,$inverted: false) {
+  .ui-#{$colorName} {
+    background-color: $color !important;
+    border-color: $color !important;
+    color: color-contrast($color,$inverted) !important;
+  }
+  .ui-#{$colorName},
+  .ui-#{$colorName}-hover {
+    &:hover,
+    &:active {
+      background-color: lighten($color,10%) !important;
+      border-color: lighten($color,5%) !important;
+      color: color-contrast($color,$inverted) !important;
+    }
+  }
+  .ui-#{$colorName}-fill {
+    background-color: $color !important;
+    border: 1px solid darken($color,15%) !important;
+    color: color-contrast($color,$inverted) !important;
+  }
+  .ui-#{$colorName}-fill,
+  .ui-#{$colorName}-fill-hover {
+    &:hover,
+    &:active {
+      background-color: color-contrast($color,$inverted) !important;
+      border: 1px solid $color !important;
+      color: $color !important;
+    }
+  }
+  .ui-#{$colorName}-outline {
+    background-color: color-contrast($color,$inverted) !important;
+    border: 1px solid $color !important;
+    color: $color !important;
+  }
+  .ui-#{$colorName}-outline,
+  .ui-#{$colorName}-outline-hover {
+    &:hover,
+    &:active {
+      background-color: $color !important;
+      border: 1px solid darken($color,15%) !important;
+      color: color-contrast($color,$inverted) !important;
+    }
+  }
+  .ui-#{$colorName}-text {
+    color: $color !important;
+  }
+  .ui-#{$colorName}-text,
+  .ui-#{$colorName}-text-hover {
+    &:hover,
+    &:active {
+      color: lighten($color,5%) !important;
+    }
+  }
 }
 
 @mixin animate-slow-out-fast-in($duration:0.2s) {

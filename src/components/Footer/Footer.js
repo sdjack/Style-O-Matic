@@ -7,52 +7,49 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import warning from "warning";
 import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
-  getCorePropTypes,
+  CoreComponent,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 import FooterContent from "./FooterContent.js";
 import FooterDrawer from "./FooterDrawer.js";
 import FooterItem from "./FooterItem.js";
+import FooterText from "./FooterText.js";
 import Button from "../Button/Button.js";
 import "./Footer.css";
 
-class Footer extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class Footer extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "footer",
+    renderAs: "footer",
     uirole: "footer"
   });
 
+  static Content = FooterContent;
+  static Drawer = FooterDrawer;
+  static Item = FooterItem;
+  static Button = Button;
+  static Text = FooterText;
+
   renderChild(child, props) {
-    const role = child.props.uirole || Roles.DEFAULT;
+    const role = child.props.uirole || ROLE.DEFAULT;
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on footer components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role)
+      uiclass: this.childPrefix(role)
     });
   }
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       uiclass,
       fixed,
       children,
@@ -83,7 +80,7 @@ class Footer extends React.Component {
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case Roles.CONTENT || Roles.DRAWER:
+              case ROLE.CONTENT || ROLE.DRAWER:
                 return this.renderChild(child, { uiclass });
               default:
                 return child;
@@ -96,9 +93,4 @@ class Footer extends React.Component {
   }
 }
 
-Footer.Content = FooterContent;
-Footer.Drawer = FooterDrawer;
-Footer.Item = FooterItem;
-Footer.Button = Button;
-
-export default setCoreClass("ui-footer", Footer);
+export default Footer;

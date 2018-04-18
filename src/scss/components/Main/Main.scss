@@ -66,9 +66,9 @@
     }
 
     &.minimized {
-      width: $outer-frame-width !important;
-      min-width: $outer-frame-width !important;
-      max-width: $outer-frame-width !important;
+      width: $outer-frame-size !important;
+      min-width: $outer-frame-size !important;
+      max-width: $outer-frame-size !important;
       background-color: $color-darker-grey;
       // overflow-x: hidden !important;
       // overflow-y: auto !important;

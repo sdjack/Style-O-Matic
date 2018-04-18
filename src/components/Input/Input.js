@@ -8,33 +8,29 @@
 
 import React from "react";
 import classNames from "classnames";
-import { setCoreClass, uID } from "../_utilities/CoreUtils.js";
 import {
-  getCorePropTypes,
+  CoreComponent,
+  getPropTypesA11y,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 import "./Input.css";
 
-class Input extends React.Component {
-  static propTypes = getCorePropTypes(
-    {
-      id: "string!",
-      required: "bool",
-      label: "string",
-      validator: "func",
-      validPattern: "regexp",
-      maskPattern: "regexp",
-      selectOptions: "array"
-    },
-    null,
-    true
-  );
+class Input extends CoreComponent {
+  static propTypes = getPropTypesA11y({
+    id: "string!",
+    required: "bool",
+    label: "string",
+    validator: "func",
+    validPattern: "regexp",
+    maskPattern: "regexp",
+    selectOptions: "array"
+  });
 
   static defaultProps = getCorePropDefaults({
-    componentClass: "input",
-    uirole: Roles.INPUT,
+    renderAs: "input",
+    uirole: ROLE.INPUT,
     type: "text",
     checked: false,
     required: false,
@@ -48,7 +44,7 @@ class Input extends React.Component {
   constructor(props) {
     super(props);
     let defaultValue = props.value;
-    const renderKey = `input_${uID()}`;
+    const renderKey = `input_${this.GUID}`;
     if (!defaultValue) {
       switch (props.type) {
         case "select":
@@ -77,7 +73,6 @@ class Input extends React.Component {
   getValue = () => this.state.value;
 
   handleOnChecked = e => {
-    console.log(e.target.value);
     e.preventDefault();
     this.setState({ value: e.target.value });
     if (this.props.onChange) {
@@ -137,15 +132,11 @@ class Input extends React.Component {
 
   renderLabel = (id, label, required) => {
     if (label !== null) {
-      const validationClass = required ? " required" : "";
+      const validationClass = required ? "label required-label" : "label";
       return (
-        <label
-          key={`label_${this.state.renderKey}`}
-          htmlFor={id}
-          className={validationClass}
-        >
+        <span key={`label_${this.state.renderKey}`} className={validationClass}>
           {label}
-        </label>
+        </span>
       );
     }
     return <span />;
@@ -153,7 +144,7 @@ class Input extends React.Component {
 
   renderSelectOptions = selectOptions => {
     const output = [];
-    for (let i = 0; i < selectOptions.length; i++) {
+    for (let i = 0; i < selectOptions.length; i += 1) {
       const optionData = selectOptions[i];
       output.push(
         <option
@@ -171,8 +162,10 @@ class Input extends React.Component {
 
   render() {
     const {
-      componentClass,
+      renderAs,
       className,
+      coreClassName,
+      styleClassName,
       type,
       id,
       name,
@@ -196,13 +189,14 @@ class Input extends React.Component {
     };
 
     const Component =
-      type === "select" || type === "textarea" ? type : componentClass;
+      type === "select" || type === "textarea" ? type : renderAs;
 
     const preParsedClass = `ui-input-${type}`;
+    const validationClass = required ? " required" : "";
 
     if (type === "submit" || type === "button") {
       return (
-        <div className={className}>
+        <div className={coreClassName}>
           <div
             key={`wrapper_${this.state.renderKey}`}
             className={classNames(preParsedClass, wrapperClasses)}
@@ -210,6 +204,7 @@ class Input extends React.Component {
             <Component
               key={this.state.renderKey}
               {...props}
+              className={styleClassName}
               id={fieldId}
               name={fieldName}
               type={type}
@@ -251,15 +246,22 @@ class Input extends React.Component {
             key={`wrapper_${this.state.renderKey}`}
             className={classNames(preParsedClass, wrapperClasses)}
           >
-            <Component
-              key={this.state.renderKey}
-              {...props}
-              id={fieldId}
-              name={fieldName}
-              type={type}
-              defaultChecked={value === this.state.value}
-              onClick={this.handleOnChange}
-            />
+            <label
+              key={`label_${this.state.renderKey}`}
+              htmlFor={fieldId}
+              className={validationClass}
+            >
+              <Component
+                key={this.state.renderKey}
+                {...props}
+                id={fieldId}
+                name={fieldName}
+                type={type}
+                defaultChecked={value === this.state.value}
+                onClick={this.handleOnChange}
+              />
+              {value}
+            </label>
           </div>
         </div>
       );
@@ -334,4 +336,4 @@ class Input extends React.Component {
   }
 }
 
-export default setCoreClass("ui-input", Input);
+export default Input;

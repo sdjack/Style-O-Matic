@@ -8,31 +8,27 @@
 
 import React from "react";
 import classNames from "classnames";
-import { setCoreClass, uID } from "../_utilities/CoreUtils.js";
 import {
-  getCorePropTypes,
+  CoreComponent,
+  getPropTypesA11y,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 import "./Select.css";
 
-class Select extends React.Component {
-  static propTypes = getCorePropTypes(
-    {
-      id: "string!",
-      required: "bool",
-      label: "string",
-      validator: "func",
-      options: "array"
-    },
-    null,
-    true
-  );
+class Select extends CoreComponent {
+  static propTypes = getPropTypesA11y({
+    id: "string!",
+    required: "bool",
+    label: "string",
+    validator: "func",
+    options: "array"
+  });
 
   static defaultProps = getCorePropDefaults({
-    componentClass: "select",
-    uirole: Roles.INPUT,
+    renderAs: "select",
+    uirole: ROLE.INPUT,
     required: false,
     label: null,
     validator: null,
@@ -42,7 +38,7 @@ class Select extends React.Component {
   constructor(props) {
     super(props);
     let defaultValue = props.value;
-    const renderKey = `select_${uID()}`;
+    const renderKey = `select_${this.GUID}`;
     if (!defaultValue) {
       defaultValue = props.options[0] ? props.options[0].Value : "";
     }
@@ -99,7 +95,7 @@ class Select extends React.Component {
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       className,
       id,
       name,
@@ -146,4 +142,4 @@ class Select extends React.Component {
   }
 }
 
-export default setCoreClass("ui-select", Select);
+export default Select;

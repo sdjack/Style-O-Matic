@@ -39,7 +39,8 @@
   }
 }
 
-.ui-grid-column {
+.ui-grid-column,
+.ui-grid-row-column {
   display: inline-block;
   flex-grow: 1;
   flex-shrink: 1;

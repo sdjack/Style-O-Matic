@@ -8,18 +8,16 @@
 
 import React, { cloneElement } from "react";
 import classNames from "classnames";
-import warning from "warning";
-import uncontrollable from "uncontrollable";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
+  CoreComponent,
   getCorePropTypes,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 import FooterDrawerContent from "./FooterDrawerContent.js";
 
-class FooterDrawer extends React.Component {
+class FooterDrawer extends CoreComponent {
   static propTypes = getCorePropTypes(null, {
     minimizable: "bool",
     defaultOpen: "bool"
@@ -27,13 +25,15 @@ class FooterDrawer extends React.Component {
 
   static defaultProps = getCorePropDefaults(
     {
-      uirole: Roles.DRAWER
+      uirole: ROLE.DRAWER
     },
     {
       minimizable: false,
       defaultOpen: false
     }
   );
+
+  static Content = FooterDrawerContent;
 
   handleOnToggle = e => {
     e.preventDefault();
@@ -44,25 +44,23 @@ class FooterDrawer extends React.Component {
   };
 
   renderChild = (child, props) => {
-    const role = child.props.uirole || Roles.CONTENT;
+    const role = child.props.uirole || ROLE.CONTENT;
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on drawer components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role)
+      uiclass: this.childPrefix(role)
     });
   };
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       uiclass,
       className,
       active,
@@ -99,6 +97,4 @@ class FooterDrawer extends React.Component {
   }
 }
 
-FooterDrawer.Content = FooterDrawerContent;
-
-export default uncontrollable(FooterDrawer, { open: "onToggle" });
+export default FooterDrawer;

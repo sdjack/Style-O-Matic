@@ -5,39 +5,15 @@
  * ======================================================================== */
 
 /* eslint "react/prop-types": [0] */
-
+import _ from "lodash";
 import React from "react";
-import PropTypes from "prop-types";
-import elementType from "prop-types-extra/lib/elementType";
-import classNames from "classnames";
-import { setCoreClass, isUsable, uID } from "../_utilities/CoreUtils.js";
+import { CoreComponent, getValidProps, getCorePropDefaults } from "../../lib";
 import "./Breadcrumbs.css";
 
-class Breadcrumbs extends React.Component {
-  static propTypes = {
-    componentClass: elementType,
-    uirole: PropTypes.string,
-    uiclass: PropTypes.string,
-    className: PropTypes.string,
-    children: PropTypes.node,
-    path: PropTypes.string,
-    pathnames: PropTypes.arrayOf(PropTypes.string)
-  };
-
-  static defaultProps = {
-    uirole: "group",
-    uiclass: "group",
-    className: null,
-    componentClass: "div",
-    children: null,
-    path: "",
-    pathnames: []
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+class Breadcrumbs extends CoreComponent {
+  static defaultProps = getCorePropDefaults({
+    uirole: "breadcrumbs"
+  });
 
   renderItem = (target, name) => {
     // console.log(target);
@@ -53,19 +29,19 @@ class Breadcrumbs extends React.Component {
 
   renderItems = path => {
     const rows = [];
-    if (isUsable(path)) {
+    if (!_.isNil(path)) {
       const crumbs = path.match(/(\/\w+)\/([^/A-Za-z]+)/g);
       if (crumbs && crumbs.length > 0) {
         let directPath = "";
         for (let i = 0; i < crumbs.length; i += 1) {
           const bc = crumbs[i];
-          const label = isUsable(this.props.pathnames[bc])
+          const label = !_.isNil(this.props.pathnames[bc])
             ? this.props.pathnames[bc]
             : bc.replace(/\W/g, " ");
           if (i > 0) {
             rows.push(
               <span
-                key={`breadcrumb-divider_${uID()}`}
+                key={`breadcrumb-divider_${this.GUID}`}
                 className="breadcrumb-divider"
               >
                 &nbsp;/&nbsp;
@@ -88,23 +64,12 @@ class Breadcrumbs extends React.Component {
   };
 
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      className,
-      path,
-      children,
-      ...props
-    } = this.props;
-
-    delete props.uirole;
-
-    const classes = {
-      [uiclass]: true
-    };
+    const { renderAs: Component, path, children, ...props } = getValidProps(
+      this.props
+    );
 
     return (
-      <Component {...props} className={classNames(className, classes)}>
+      <Component {...props}>
         {this.renderItems(path)}
         {children}
       </Component>
@@ -112,4 +77,4 @@ class Breadcrumbs extends React.Component {
   }
 }
 
-export default setCoreClass("ui-breadcrumbs", Breadcrumbs);
+export default Breadcrumbs;

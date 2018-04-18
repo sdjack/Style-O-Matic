@@ -8,30 +8,26 @@
 
 import React from "react";
 import classNames from "classnames";
-import { setCoreClass, uID } from "../_utilities/CoreUtils.js";
 import {
-  getCorePropTypes,
+  CoreComponent,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getPropTypesA11y,
+  getValidProps,
+  ROLE
+} from "../../lib";
 import "./Textarea.css";
 
-class Textarea extends React.Component {
-  static propTypes = getCorePropTypes(
-    {
-      id: "string!",
-      required: "bool",
-      label: "string",
-      validator: "func"
-    },
-    null,
-    true
-  );
+class Textarea extends CoreComponent {
+  static propTypes = getPropTypesA11y({
+    id: "string!",
+    required: "bool",
+    label: "string",
+    validator: "func"
+  });
 
   static defaultProps = getCorePropDefaults({
-    componentClass: "textarea",
-    uirole: Roles.INPUT,
+    renderAs: "textarea",
+    uirole: ROLE.INPUT,
     required: false,
     label: null,
     validator: null
@@ -40,7 +36,7 @@ class Textarea extends React.Component {
   constructor(props) {
     super(props);
     const defaultValue = props.value || "";
-    const renderKey = `textarea_${uID()}`;
+    const renderKey = `textarea_${this.GUID}`;
     this.state = {
       renderKey,
       value: defaultValue,
@@ -76,7 +72,7 @@ class Textarea extends React.Component {
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       className,
       id,
       name,
@@ -121,4 +117,4 @@ class Textarea extends React.Component {
   }
 }
 
-export default setCoreClass("ui-textarea", Textarea);
+export default Textarea;

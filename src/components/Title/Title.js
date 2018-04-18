@@ -5,95 +5,81 @@
  * ======================================================================== */
 
 /* eslint "react/prop-types": [0] */
-
+import _ from "lodash";
 import React, { cloneElement } from "react";
-import warning from "warning";
 import {
-  setCoreClass,
-  isUsable,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
+  CoreComponent,
+  getCorePropDefaults,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  ROLE
+} from "../../lib";
 import TitleContent from "./TitleContent.js";
 import TitleSubtitle from "./TitleSubtitle.js";
 import TitleIcon from "./TitleIcon";
 import "./Title.css";
 
-class Title extends React.Component {
-  static propTypes = getCorePropTypes({
-    showAs: "string"
-  });
-
+class Title extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "div",
+    renderAs: "div",
     uirole: "title",
     showAs: "h2"
   });
 
+  static Content = TitleContent;
+  static Subtitle = TitleSubtitle;
+  static Icon = TitleIcon;
+
   renderChild = (child, props) => {
-    const role = child.props.uirole || Roles.CONTENT;
+    const role = child.props.uirole || ROLE.CONTENT;
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on title components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role)
+      uiclass: this.childPrefix(role)
     });
   };
 
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      showAs,
-      children,
-      props
-    } = getValidProps(this.props);
+    const { renderAs, uiclass, children, props, inherited } = getValidProps(
+      this.props
+    );
 
     let contentElement = "h2";
     let subtitleElement = "h5";
 
-    if (isUsable(showAs)) {
-      switch (showAs) {
-        case "h1":
-          contentElement = "h1";
-          subtitleElement = "h4";
-          break;
-        case "h3":
-          contentElement = "h3";
-          subtitleElement = "h6";
-          break;
-        case "h4":
-          contentElement = "h4";
-          subtitleElement = "h6";
-          break;
-        case "h5":
-          contentElement = "h5";
-          subtitleElement = "small";
-          break;
-        case "h6":
-          contentElement = "h6";
-          subtitleElement = "small";
-          break;
-        default:
-          contentElement = "h2";
-          subtitleElement = "h5";
-          break;
-      }
+    switch (renderAs) {
+      case "h1":
+        contentElement = "h1";
+        subtitleElement = "h4";
+        break;
+      case "h3":
+        contentElement = "h3";
+        subtitleElement = "h6";
+        break;
+      case "h4":
+        contentElement = "h4";
+        subtitleElement = "h6";
+        break;
+      case "h5":
+        contentElement = "h5";
+        subtitleElement = "small";
+        break;
+      case "h6":
+        contentElement = "h6";
+        subtitleElement = "small";
+        break;
+      default:
+        contentElement = "h2";
+        subtitleElement = "h5";
+        break;
     }
 
+    const Component = renderAs;
     return (
       <Component {...props}>
         {React.Children.map(children, child => {
@@ -102,15 +88,15 @@ class Title extends React.Component {
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case Roles.SUBTITLE:
+              case ROLE.SUBTITLE:
                 return this.renderChild(child, {
-                  uiclass,
-                  componentClass: subtitleElement
+                  ...inherited,
+                  renderAs: subtitleElement
                 });
-              case Roles.CONTENT || Roles.ICON:
+              case ROLE.CONTENT || ROLE.ICON:
                 return this.renderChild(child, {
-                  uiclass,
-                  componentClass: contentElement
+                  ...inherited,
+                  renderAs: contentElement
                 });
               default:
                 return child;
@@ -124,8 +110,4 @@ class Title extends React.Component {
   }
 }
 
-Title.Content = TitleContent;
-Title.Subtitle = TitleSubtitle;
-Title.Icon = TitleIcon;
-
-export default setCoreClass("ui-title", Title);
+export default Title;

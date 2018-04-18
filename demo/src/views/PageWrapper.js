@@ -16,25 +16,37 @@ class PageWrapper extends React.Component {
 
     return [
       <Header fixed key="layout-header">
+        <Header.Content contentAlign="left">
+          <Header.Title observe="scroll">Style-O-Matic</Header.Title>
+          <Header.Button>OP1</Header.Button>
+          <Header.Button>OP2</Header.Button>
+        </Header.Content>
         <Header.Content contentAlign="right">
-          <div className="ui-header-item">
+          <Header.Item>
             <ul className="ui-header-list">
               <li>Guest</li>
               <li>email@email.com</li>
             </ul>
             <span className="fa fa-user" aria-hidden="true" />
-          </div>
+          </Header.Item>
         </Header.Content>
       </Header>,
       <Main key="layout-main">
         <Main.Drawer minimizable>
           <Navigation />
         </Main.Drawer>
-        <Main.Content>{children}</Main.Content>
+        <Main.Content>
+          {children}
+          <div style={{ height: "1000px" }} key="view-bolster" />
+        </Main.Content>
       </Main>,
       <Footer fixed key="layout-footer">
         <Footer.Content contentAlign="left">
-          <div className="ui-footer-item">Style-O-Matic UI DEMO</div>
+          <Footer.Text>Style-O-Matic UI DEMO</Footer.Text>
+        </Footer.Content>
+        <Footer.Content contentAlign="right">
+          <Footer.Button>Footer Button</Footer.Button>
+          <Footer.Button>Footer Button</Footer.Button>
         </Footer.Content>
       </Footer>
     ];

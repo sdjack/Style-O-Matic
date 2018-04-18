@@ -8,20 +8,17 @@
 
 import React, { cloneElement } from "react";
 import classNames from "classnames";
-import warning from "warning";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
-  getValidProps,
+  CoreComponent,
+  getCorePropDefaults,
   getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 
-class TableFoot extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class TableFoot extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "tfoot",
+    renderAs: "tfoot",
     uirole: "tfoot"
   });
 
@@ -31,42 +28,32 @@ class TableFoot extends React.Component {
     let ref = c => {
       this.rows.push(c);
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on table components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, child.props.uirole)
+      uiclass: this.childPrefix(child.props.uirole)
     });
   };
 
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      className,
-      children,
-      props
-    } = getValidProps(this.props);
+    const { renderAs: Component, children, props, inherited } = getValidProps(
+      this.props
+    );
 
-    const classes = {
-      [uiclass]: true
-    };
-
-    delete props.uirole;
     this.rows = [];
+
     return (
-      <Component {...props} className={classNames(className, classes)}>
+      <Component {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined" &&
-            child.props.uirole === Roles.ROW
+            child.props.uirole === ROLE.ROW
           ) {
-            return this.renderChild(child, { uiclass });
+            return this.renderChild(child, inherited);
           }
           return child;
         })}

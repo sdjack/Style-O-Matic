@@ -18,7 +18,7 @@
   flex-wrap: nowrap;
   justify-content: space-around;
   align-content: space-around;
-  height: $header-height;
+  height: auto;
   background-color: $color-black;
   color: $color-white;
   margin: 0;
@@ -47,6 +47,59 @@
   padding: 0 !important;
 }
 
+.ui-header-title {
+  display: inline-block;
+  position: relative;
+  justify-content: space-between;
+  padding: $header-title-padding;
+  font-size: $header-title-font-size;
+  line-height: 1;
+  margin: 0 !important;
+  border: none;
+  @include bar-button-skin();
+}
+
+.ui-header-item,
+.ui-header-text,
+.ui-header-button {
+  display: inline-block;
+  position: relative;
+  justify-content: space-between;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  font-size: $header-font-size;
+  line-height: 1;
+  color: $color-white !important;
+  background-color: transparent;
+  @include text-horizontal-align-center();
+  @include bar-button-skin();
+  & > .fa {
+    font-size: $header-icon-font-size !important;
+    padding: $header-icon-padding !important;
+  }
+}
+
+.ui-header-item,
+.ui-header-text {
+  cursor: pointer;
+  border: none;
+}
+
+.ui-header-item {
+  padding: $header-item-padding !important;
+}
+
+.ui-header-text {
+  padding: $header-text-padding !important;
+}
+
+.ui-header-button {
+  padding: $header-button-padding !important;
+  &:hover {
+    background-color: rgba(33, 150, 243, 0.5);
+  }
+}
+
 .ui-header-logo {
   display: inline-block;
   padding: 10px 20px !important;
@@ -60,55 +113,21 @@
   }
 }
 
-.ui-header-item {
-  display: inline-block;
-  position: relative;
-  justify-content: space-between;
-  padding: $header-item-padding;
-  line-height: ($header-height / 2);
-  margin: 0 !important;
-  cursor: pointer;
-  border: none;
-  & > .fa {
-    font-size: $header-icon-font-size !important;
-    padding: $header-icon-padding !important;
-  }
-}
-
 .ui-header-list {
   display: inline-block;
   padding: $header-list-padding;
-  margin: $header-list-margin;
-  list-style-type: none;
-  line-height: 16px;
+  margin: 0;
   letter-spacing: 1px;
-  font-size: 14px;
-  @include text-align-right();
+  font-size: $header-list-font-size;
+  line-height: 1;
+  list-style-type: none;
+  @include text-horizontal-align-right();
 }
 
 .ui-header-icon {
   display: inline-block;
   font-size: $header-icon-font-size !important;
   padding: $header-icon-padding;
-}
-
-.ui-header-button {
-  height: auto !important;
-  color: $color-white !important;
-  background-color: transparent;
-  display: inline-block;
-  padding: $header-toggle-padding !important;
-  border-radius: 0 !important;
-  font-size: 13px;
-  @include text-align-center();
-  @include bar-button-skin();
-  & > .fa {
-    font-size: $header-icon-font-size !important;
-    padding: $header-icon-padding !important;
-  }
-  &:hover {
-    background-color: rgba(33, 150, 243, 0.5);
-  }
 }
 
 .ui-header-bolster {
@@ -147,9 +166,9 @@
     }
 
     &.minimized {
-      height: $outer-frame-width !important;
-      min-height: $outer-frame-width !important;
-      max-height: $outer-frame-width !important;
+      height: $outer-frame-size !important;
+      min-height: $outer-frame-size !important;
+      max-height: $outer-frame-size !important;
       overflow-x: auto !important;
       overflow-y: hidden !important;
       @include shadow-drawer();

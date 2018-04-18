@@ -7,45 +7,36 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import warning from "warning";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
+  CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getCorePropDefaults,
+  ROLE
+} from "../../lib";
 
-class HeaderContent extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class HeaderContent extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "div",
-    uirole: "content"
+    renderAs: "div",
+    uirole: ROLE.CONTENT
   });
 
   renderChild = (child, props) => {
-    const role = child.props.uirole;
+    const role = child.props.uirole || ROLE.CONTENT;
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(
-        false,
-        `String refs are not supported on grid-${role} components.`
-      );
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role)
+      uiclass: this.childPrefix(role)
     });
   };
 
   render() {
-    const { componentClass: Component, children, props } = getValidProps(
+    const { renderAs: Component, children, props, inherited } = getValidProps(
       this.props
     );
 
@@ -56,7 +47,7 @@ class HeaderContent extends React.Component {
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
-            return this.renderChild(child, { uiclass: "ui-header" });
+            return this.renderChild(child, inherited);
           }
           return child;
         })}

@@ -7,19 +7,12 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import classNames from "classnames";
-import warning from "warning";
 import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
+  CoreComponent,
+  getCorePropDefaults,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  ROLE
+} from "../../lib";
 import TableHead from "./TableHead.js";
 import TableBody from "./TableBody.js";
 import TableFoot from "./TableFoot.js";
@@ -27,38 +20,41 @@ import TableRow from "./TableRow.js";
 import TableCell from "./TableCell.js";
 import "./Table.css";
 
-class Table extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class Table extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    componentClass: "table",
-    uirole: "table"
+    renderAs: "table",
+    uirole: ROLE.TABLE
   });
+
+  static Head = TableHead;
+  static Body = TableBody;
+  static Foot = TableFoot;
+  static Row = TableRow;
+  static Cell = TableCell;
 
   renderChild = (child, props) => {
     const role = child.props.role;
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on table components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, child.props.uirole)
+      uiclass: this.childPrefix(child.props.uirole)
     });
   };
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       uiclass,
       className,
       children,
-      props
+      props,
+      inherited
     } = getValidProps(this.props);
 
     const classes = {
@@ -76,11 +72,11 @@ class Table extends React.Component {
           ) {
             switch (child.props.uirole) {
               case TableHead.defaultProps.uirole:
-                return this.renderChild(child, { uiclass });
+                return this.renderChild(child, inherited);
               case TableBody.defaultProps.uirole:
-                return this.renderChild(child, { uiclass });
+                return this.renderChild(child, inherited);
               case TableFoot.defaultProps.uirole:
-                return this.renderChild(child, { uiclass });
+                return this.renderChild(child, inherited);
               default:
                 return child;
             }
@@ -92,10 +88,4 @@ class Table extends React.Component {
   }
 }
 
-Table.Head = TableHead;
-Table.Body = TableBody;
-Table.Foot = TableFoot;
-Table.Row = TableRow;
-Table.Cell = TableCell;
-
-export default setCoreClass("ui-table", Table);
+export default Table;

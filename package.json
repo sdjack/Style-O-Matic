@@ -1,6 +1,6 @@
 {
     "name": "style-o-matic",
-    "version": "1.0.3",
+    "version": "1.0.5",
     "description": "Experimental element-based CSS framework with accompanying React.js component library",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -25,7 +25,11 @@
         "fix-css": "yarn run lint-css --fix",
         "fix": "yarn run fix-js && yarn run fix-css"
     },
-    "dependencies": {},
+    "dependencies": {
+        "compass": "^0.1.1",
+        "lodash": "^4.17.5",
+        "mathsass": "^0.10.1"
+    },
     "peerDependencies": {
         "react": "15.x"
     },

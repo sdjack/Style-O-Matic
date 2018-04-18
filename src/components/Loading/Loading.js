@@ -7,44 +7,22 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { setCoreClass } from "../_utilities/CoreUtils.js";
+import { CoreComponent, getCorePropDefaults, getValidProps } from "../../lib";
 import "./Loading.css";
 
-class Loading extends React.Component {
-  static propTypes = {
-    closed: PropTypes.bool
-  };
-
-  static defaultProps = {
-    uirole: "loading",
-    closed: false
-  };
+class Loading extends CoreComponent {
+  static defaultProps = getCorePropDefaults({
+    renderAs: "div",
+    uirole: "loading"
+  });
 
   render() {
-    const {
-      uiclass,
-      className,
-      closed,
-      overlay,
-      message,
-      ...props
-    } = this.props;
-
-    delete props.uirole;
-    delete props.onToggle;
-
-    const classes = {
-      [uiclass]: true,
-      closed,
-      overlay
-    };
+    const { children, props } = getValidProps(this.props);
 
     return (
-      <div {...props} className={classNames(className, classes)}>
+      <div {...props}>
         <div className="loading-content">
-          <div className="loading-message">{message}</div>
+          <div className="loading-message">{children}</div>
           <div className="loading-ring">
             <div className="loading-ring-dot loading-ring1" />
             <div className="loading-ring-dot loading-ring2" />
@@ -65,4 +43,4 @@ class Loading extends React.Component {
   }
 }
 
-export default setCoreClass("loading", Loading);
+export default Loading;

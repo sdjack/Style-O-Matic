@@ -7,20 +7,16 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
-import warning from "warning";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
+  CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getCorePropDefaults,
+  ROLE
+} from "../../lib";
 
-class FormRow extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class FormRow extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    uirole: Roles.ROW
+    uirole: ROLE.ROW
   });
 
   getFieldValue = fieldKey => {
@@ -45,38 +41,50 @@ class FormRow extends React.Component {
 
   fields = [];
 
+  renderLabel = label => {
+    if (label !== null) {
+      return (
+        <span key={`label_${this.state.renderKey}`} className="label">
+          {label}
+        </span>
+      );
+    }
+    return <span />;
+  };
+
   renderChild = (child, props) => {
-    const role = child.props.uirole || Roles.INPUT;
+    const role = child.props.uirole || ROLE.INPUT;
     const key = child.props.name || child.props.id;
     let ref = c => {
       this.fields.push({ key, element: c });
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on table-row components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role)
+      uiclass: this.childPrefix(role)
     });
   };
 
   render() {
-    const { uiclass, children, props } = getValidProps(this.props);
+    const { children, className, label, props, inherited } = getValidProps(
+      this.props
+    );
 
     this.fields = [];
     return (
       <div {...props}>
+        {this.renderLabel(label)}
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case Roles.INPUT:
-                return this.renderChild(child, { uiclass });
+              case ROLE.INPUT:
+                return this.renderChild(child, inherited);
               default:
                 return child;
             }

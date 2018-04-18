@@ -10,33 +10,29 @@ import React, { cloneElement } from "react";
 import activeElement from "dom-helpers/activeElement";
 import contains from "dom-helpers/query/contains";
 import keycode from "keycode";
-import warning from "warning";
-import PropTypes from "prop-types";
-import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
 import {
-  setCoreClass,
-  isLeftClickEvent,
+  CoreComponent,
   isModifiedEvent,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import {
-  getCorePropTypes,
-  getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  isLeftClickEvent,
+  getValidProps,
+  getPropTypesA11y,
+  getPropDefaultsAutoId,
+  ROLE
+} from "../../lib";
 import DropdownToggle from "./DropdownToggle.js";
 import DropdownContent from "./DropdownContent.js";
 import "./Dropdown.css";
 
-class Dropdown extends React.Component {
-  static propTypes = getCorePropTypes(null, null, true);
+class Dropdown extends CoreComponent {
+  static propTypes = getPropTypesA11y();
 
-  static defaultProps = getCorePropDefaults({
-    componentClass: "div",
+  static defaultProps = getPropDefaultsAutoId({
+    renderAs: "div",
     uirole: "dropdown"
   });
+
+  static Toggle = DropdownToggle;
+  static Content = DropdownContent;
 
   constructor(props, context) {
     super(props, context);
@@ -45,10 +41,6 @@ class Dropdown extends React.Component {
     };
     this.focusInDropdown = false;
     this.lastOpenEventType = null;
-  }
-
-  componentWillMount() {
-    document.addEventListener("mousedown", this.handleOnToggle, false);
   }
 
   componentDidMount() {
@@ -75,7 +67,11 @@ class Dropdown extends React.Component {
     }
   }
 
-  componentWillUnmount() {
+  WillMount() {
+    document.addEventListener("mousedown", this.handleOnToggle, false);
+  }
+
+  WillUnmount() {
     document.removeEventListener("mousedown", this.handleOnToggle, false);
   }
 
@@ -162,21 +158,16 @@ class Dropdown extends React.Component {
     let ref = c => {
       this.toggle = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on dropdown components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
       id: `toggle_${id}`,
-      uiclass: prefix(props, "toggle"),
-      onClick: createChainedFunction(child.props.onClick, this.handleClick),
-      onKeyDown: createChainedFunction(
-        child.props.onKeyDown,
-        this.handleKeyDown
-      )
+      uiclass: this.childPrefix("toggle"),
+      onClick: this.chainFunction(child.props.onClick, this.handleClick),
+      onKeyDown: this.chainFunction(child.props.onKeyDown, this.handleKeyDown)
     });
   };
 
@@ -184,21 +175,19 @@ class Dropdown extends React.Component {
     let ref = c => {
       this.content = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on dropdown components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
       id: `content_${id}`,
-      uiclass: prefix(props, "content"),
+      uiclass: this.childPrefix("content"),
       onMouseDown(e) {
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
       },
-      onSelect: createChainedFunction(
+      onSelect: this.chainFunction(
         child.props.onSelect,
         onSelect,
         (key, event) => this.handleClose(event, { source: "select" })
@@ -208,7 +197,7 @@ class Dropdown extends React.Component {
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       id,
       uiclass,
       disabled,
@@ -218,30 +207,27 @@ class Dropdown extends React.Component {
       props
     } = getValidProps(this.props);
 
-    delete props.onToggle;
-    delete props.onClose;
-
     const { open } = this.state;
 
     return (
       <Component {...props} ref={this.setWrapperRef}>
         {React.Children.map(children, child => {
           switch (child.props.uirole) {
-            case Roles.TOGGLE:
+            case ROLE.TOGGLE:
               return this.renderToggle(child, {
                 id,
                 disabled,
                 open,
                 uiclass
               });
-            case Roles.BUTTON:
+            case ROLE.BUTTON:
               return this.renderToggle(child, {
                 id,
                 disabled,
                 open,
                 uiclass: "ui-dropdown"
               });
-            case Roles.CONTENT:
+            case ROLE.CONTENT:
               return this.renderContent(child, {
                 id,
                 onSelect,
@@ -258,7 +244,4 @@ class Dropdown extends React.Component {
   }
 }
 
-Dropdown.Toggle = DropdownToggle;
-Dropdown.Content = DropdownContent;
-
-export default setCoreClass("ui-dropdown", Dropdown);
+export default Dropdown;

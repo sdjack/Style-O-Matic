@@ -6,51 +6,24 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React, { cloneElement } from "react";
-import warning from "warning";
+import React from "react";
 import {
-  setCoreClass,
-  createChainedFunction,
-  prefix
-} from "../_utilities/CoreUtils.js";
-import { Roles } from "../_utilities/Enum.js";
-import {
-  getCorePropTypes,
+  CoreComponent,
+  getValidProps,
   getCorePropDefaults,
-  getValidProps
-} from "../_utilities/PropUtils.js";
+  ROLE
+} from "../../lib";
+import "./Badge.css";
 
-class Badge extends React.Component {
-  static propTypes = getCorePropTypes();
-
+class Badge extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     uirole: "badge"
   });
 
-  renderChild = (child, props) => {
-    const role = child.props.uirole;
-    let ref = c => {
-      this[role] = c;
-    };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on header components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
-    }
-    return cloneElement(child, {
-      ...props,
-      ref,
-      uiclass: prefix(props, "content")
-    });
-  };
-
   render() {
-    const {
-      componentClass: Component,
-      uiclass,
-      children,
-      props
-    } = getValidProps(this.props);
+    const { renderAs: Component, children, props, inherited } = getValidProps(
+      this.props
+    );
 
     return (
       <Component {...props}>
@@ -60,8 +33,8 @@ class Badge extends React.Component {
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case Roles.CONTENT:
-                return this.renderChild(child, { uiclass });
+              case ROLE.CONTENT:
+                return this.renderChild(child, inherited);
               default:
                 return child;
             }
@@ -73,4 +46,4 @@ class Badge extends React.Component {
   }
 }
 
-export default setCoreClass("ui-badge", Badge);
+export default Badge;

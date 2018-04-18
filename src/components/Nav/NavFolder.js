@@ -8,22 +8,21 @@
 
 import React, { cloneElement } from "react";
 import classNames from "classnames";
-import warning from "warning";
-import { createChainedFunction, prefix } from "../_utilities/CoreUtils.js";
 import {
-  getValidProps,
+  CoreComponent,
+  getCorePropDefaults,
   getCorePropTypes,
-  getCorePropDefaults
-} from "../_utilities/PropUtils.js";
-import { Roles } from "../_utilities/Enum.js";
+  getValidProps,
+  ROLE
+} from "../../lib";
 
-class NavFolder extends React.Component {
+class NavFolder extends CoreComponent {
   static propTypes = getCorePropTypes({
     minimized: "bool"
   });
 
   static defaultProps = getCorePropDefaults({
-    uirole: Roles.FOLDER,
+    uirole: ROLE.FOLDER,
     text: "",
     minimized: false
   });
@@ -40,26 +39,24 @@ class NavFolder extends React.Component {
   };
 
   renderChild = (child, props) => {
-    const role = child.props.uirole || Roles.ITEM;
+    const role = child.props.uirole || ROLE.ITEM;
     let ref = c => {
       this[role] = c;
     };
-    if (typeof child.ref === "string") {
-      warning(false, "String refs are not supported on nav components.");
-    } else {
-      ref = createChainedFunction(child.ref, ref);
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
     }
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: prefix(props, role),
-      onClick: createChainedFunction(child.props.onClick, this.handleOnClick)
+      uiclass: this.childPrefix(role),
+      onClick: this.chainFunction(child.props.onClick, this.handleOnClick)
     });
   };
 
   render() {
     const {
-      componentClass: Component,
+      renderAs: Component,
       uiclass,
       className,
       to,
@@ -68,7 +65,8 @@ class NavFolder extends React.Component {
       icon,
       minimized,
       children,
-      props
+      props,
+      inherited
     } = getValidProps(this.props);
 
     const { expanded } = this.state;
@@ -84,7 +82,7 @@ class NavFolder extends React.Component {
 
     return (
       <div className="ui-nav-flyout-wrapper">
-        <a className="ui-nav-item ui-tooltip" href={to} label={text}>
+        <a className="ui-nav-item" href={to} label={text}>
           <i className={`ui-nav-item-icon ${icon}`} />
           <span className="ui-nav-item-info">{text}</span>
           <span
@@ -101,7 +99,7 @@ class NavFolder extends React.Component {
               typeof child.props !== "undefined" &&
               typeof child.props.uirole !== "undefined"
             ) {
-              return this.renderChild(child, { uiclass });
+              return this.renderChild(child, inherited);
             }
             return child;
           })}

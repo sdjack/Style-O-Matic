@@ -36,29 +36,6 @@ export function GUID(prefixString) {
   )}-${s4()}-${s4()}${s4()}${s4()}`;
 }
 
-export function isUsable(value) {
-  if (typeof value !== "undefined" && value !== null) {
-    if (typeof value === "string") {
-      return /\S/.test(value);
-    }
-    return true;
-  }
-  return false;
-}
-
-export function dataExists(obj, failMessage) {
-  const exists = typeof obj !== "undefined" && obj !== null;
-  if (
-    !exists &&
-    DEBUG &&
-    typeof failMessage !== "undefined" &&
-    failMessage !== null
-  ) {
-    debugMessage("NOT FOUND", failMessage, obj);
-  }
-  return typeof obj !== "undefined" && obj !== null;
-}
-
 export function createChainedFunction(...funcs) {
   return funcs.filter(f => f != null).reduce((acc, f) => {
     if (typeof f !== "function") {
