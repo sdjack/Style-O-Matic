@@ -127,6 +127,7 @@ const DefaultPropTypes = {
   ]),
   observe: PropTypes.oneOf(OBSERVABLE_EVENTS),
   dispatch: PropTypes.oneOf(OBSERVABLE_EVENTS),
+  style: PropTypes.oneOf([PropTypes.object, PropTypes.array]),
   uidata: PropTypes.object
 };
 
@@ -171,6 +172,7 @@ const DefaultPropValues = {
   position: null,
   observe: null,
   dispatch: null,
+  style: null,
   uidata: {}
 };
 
