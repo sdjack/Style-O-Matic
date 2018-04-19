@@ -9,7 +9,7 @@ import { Grid, Title } from "../../../src/index";
 class NotFound extends React.Component {
   render() {
     return [
-      <Title showAs="h1" textAlign="center" key="view-title">
+      <Title renderAs="h1" textAlign="center" key="view-title">
         <Title.Content>BOGUS!</Title.Content>
       </Title>,
       <Grid key="view-grid">
@@ -20,7 +20,7 @@ class NotFound extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column cols={12} textAlign="center">
-            <Title showAs="h1" textAlign="center" key="view-title">
+            <Title renderAs="h1" textAlign="center" key="view-title">
               <Title.Subtitle>Strange things are afoot...</Title.Subtitle>
               <Title.Subtitle>
                 The page you requested was not found

@@ -33,7 +33,7 @@ class Table extends CoreComponent {
   static Cell = TableCell;
 
   renderChild = (child, props) => {
-    const role = child.props.role;
+    const role = child.props.uirole;
     let ref = c => {
       this[role] = c;
     };
@@ -51,20 +51,13 @@ class Table extends CoreComponent {
     const {
       renderAs: Component,
       uiclass,
-      className,
       children,
       props,
       inherited
     } = getValidProps(this.props);
 
-    const classes = {
-      [uiclass]: true
-    };
-
-    delete props.uirole;
-
     return (
-      <Component {...props} className={classNames(className, classes)}>
+      <Component {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&

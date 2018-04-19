@@ -21,8 +21,7 @@ import "./Title.css";
 class Title extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: "title",
-    showAs: "h2"
+    uirole: "title"
   });
 
   static Content = TitleContent;
@@ -79,9 +78,8 @@ class Title extends CoreComponent {
         break;
     }
 
-    const Component = renderAs;
     return (
-      <Component {...props}>
+      <div {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
@@ -105,7 +103,7 @@ class Title extends CoreComponent {
             return child;
           }
         })}
-      </Component>
+      </div>
     );
   }
 }

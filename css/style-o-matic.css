@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.0.5
+ * @version v1.0.74
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Whiting House Group. All rights reserved.
@@ -529,6 +529,9 @@ input[type="submit"] {
 
 .ui-fixed {
   position: fixed; }
+
+.ui-overlay {
+  position: absolute; }
 
 .i-close:before {
   content: "\00d7"; }

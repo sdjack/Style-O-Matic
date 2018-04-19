@@ -12,13 +12,13 @@ import { Button, Dropdown, Grid, Title } from "../../../src/index";
 class ButtonsView extends React.Component {
   render() {
     return [
-      <Title showAs="h1" textAlign="center" key="view-title">
+      <Title renderAs="h1" textAlign="center" key="view-title">
         <Title.Content>Buttons</Title.Content>
       </Title>,
       <Grid key="view-grid">
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title showAs="h2" textAlign="center">
+            <Title renderAs="h2" textAlign="center">
               <Title.Content>Default</Title.Content>
             </Title>
             <hr />
@@ -38,7 +38,7 @@ class ButtonsView extends React.Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Title showAs="h2" textAlign="center">
+            <Title renderAs="h2" textAlign="center">
               <Title.Content>Filled</Title.Content>
             </Title>
             <hr />
@@ -73,7 +73,7 @@ class ButtonsView extends React.Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Title showAs="h2" textAlign="center">
+            <Title renderAs="h2" textAlign="center">
               <Title.Content>Outlined</Title.Content>
             </Title>
             <hr />
@@ -108,7 +108,7 @@ class ButtonsView extends React.Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Title showAs="h2" textAlign="center">
+            <Title renderAs="h2" textAlign="center">
               <Title.Content>Bonus Features</Title.Content>
             </Title>
             <hr />
@@ -135,7 +135,7 @@ class ButtonsView extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title showAs="h2" textAlign="center">
+            <Title renderAs="h2" textAlign="center">
               <Title.Content>Dropdown</Title.Content>
             </Title>
             <hr />

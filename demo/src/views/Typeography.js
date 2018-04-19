@@ -9,13 +9,13 @@ import { Grid, Title } from "../../../src/index";
 class Typeography extends React.Component {
   render() {
     return [
-      <Title showAs="h1" textAlign="center" key="view-title">
+      <Title renderAs="h1" textAlign="center" key="view-title">
         <Title.Content>Typography</Title.Content>
       </Title>,
       <Grid key="view-grid">
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title showAs="h2" textAlign="center" key="view-title">
+            <Title renderAs="h2" textAlign="center" key="view-title">
               <Title.Content>Header Elements</Title.Content>
               <Title.Subtitle>h1 - h6</Title.Subtitle>
             </Title>
@@ -105,7 +105,7 @@ class Typeography extends React.Component {
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
             <section>
-              <Title showAs="h2" textAlign="center" key="view-title">
+              <Title renderAs="h2" textAlign="center" key="view-title">
                 <Title.Content>Titles</Title.Content>
               </Title>
               <p className="well">Titles</p>
@@ -115,7 +115,7 @@ class Typeography extends React.Component {
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
             <section>
-              <Title showAs="h2" textAlign="center" key="view-title">
+              <Title renderAs="h2" textAlign="center" key="view-title">
                 <Title.Content>Blockquotes</Title.Content>
               </Title>
               <p className="well">Blockquotes</p>

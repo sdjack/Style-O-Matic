@@ -12,11 +12,11 @@ import { Grid, Title } from "../../../src/index";
 class GridView extends React.Component {
   render() {
     return [
-      <Title showAs="h1" textAlign="center" key="view-title">
+      <Title renderAs="h1" textAlign="center" key="view-title">
         <Title.Content>Grids</Title.Content>
       </Title>,
       <section className="ui-panel">
-        <Title showAs="h3" textAlign="center" key="view-title">
+        <Title renderAs="h3" textAlign="center" key="view-title">
           <Title.Content>Grid</Title.Content>
         </Title>
         <hr />
@@ -24,7 +24,7 @@ class GridView extends React.Component {
         <Grid key="view-grid">
           <Grid.Row>
             <Grid.Column textAlign="center" panel>
-              <Title showAs="h2" textAlign="center" key="view-title">
+              <Title renderAs="h2" textAlign="center" key="view-title">
                 <Title.Content>Grid Column</Title.Content>
               </Title>
               <hr />

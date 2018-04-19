@@ -12,13 +12,13 @@ import { Header, Footer, Main, Grid, Title } from "../../../src/index";
 class LayoutView extends React.Component {
   render() {
     return [
-      <Title showAs="h1" textAlign="center" key="view-title-header">
+      <Title renderAs="h1" textAlign="center" key="view-title-header">
         <Title.Content dispatch="scroll">Layout - Header</Title.Content>
       </Title>,
       <Grid key="view-grid-header">
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title showAs="h2" textAlign="center" key="view-title">
+            <Title renderAs="h2" textAlign="center" key="view-title">
               <Title.Content>Header</Title.Content>
               <Title.Subtitle>Standard or Fixed</Title.Subtitle>
             </Title>
@@ -35,7 +35,7 @@ class LayoutView extends React.Component {
           </Grid.Column>
         </Grid.Row>
       </Grid>,
-      <Title showAs="h1" textAlign="center" key="view-title-main">
+      <Title renderAs="h1" textAlign="center" key="view-title-main">
         <Title.Content dispatch="scroll">Layout - Main</Title.Content>
       </Title>,
       <Grid key="view-grid-main">
@@ -44,7 +44,7 @@ class LayoutView extends React.Component {
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title showAs="h2" textAlign="center" key="view-title">
+                  <Title renderAs="h2" textAlign="center" key="view-title">
                     <Title.Content>Main</Title.Content>
                     <Title.Subtitle>With or without drawers</Title.Subtitle>
                   </Title>
@@ -63,13 +63,13 @@ class LayoutView extends React.Component {
           </Grid.Column>
         </Grid.Row>
       </Grid>,
-      <Title showAs="h1" textAlign="center" key="view-title-footer">
+      <Title renderAs="h1" textAlign="center" key="view-title-footer">
         <Title.Content dispatch="scroll">Layout - Footer</Title.Content>
       </Title>,
       <Grid key="view-grid-footer">
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title showAs="h2" textAlign="center" key="view-title">
+            <Title renderAs="h2" textAlign="center" key="view-title">
               <Title.Content>Footer</Title.Content>
               <Title.Subtitle>Standard or Fixed</Title.Subtitle>
             </Title>

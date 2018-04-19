@@ -7,7 +7,7 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Header, Footer, Main } from "../../../src/index";
+import { Header, Footer, Main, Loading } from "../../../src/index";
 import Navigation from "./Navigation";
 
 class PageWrapper extends React.Component {
@@ -35,10 +35,7 @@ class PageWrapper extends React.Component {
         <Main.Drawer minimizable>
           <Navigation />
         </Main.Drawer>
-        <Main.Content>
-          {children}
-          <div style={{ height: "1000px" }} key="view-bolster" />
-        </Main.Content>
+        <Main.Content>{children}</Main.Content>
       </Main>,
       <Footer fixed key="layout-footer">
         <Footer.Content contentAlign="left">

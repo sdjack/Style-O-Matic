@@ -21,22 +21,16 @@ class Loading extends CoreComponent {
 
     return (
       <div {...props}>
-        <div className="loading-content">
-          <div className="loading-message">{children}</div>
-          <div className="loading-ring">
-            <div className="loading-ring-dot loading-ring1" />
-            <div className="loading-ring-dot loading-ring2" />
-            <div className="loading-ring-dot loading-ring3" />
-            <div className="loading-ring-dot loading-ring4" />
-            <div className="loading-ring-dot loading-ring5" />
-            <div className="loading-ring-dot loading-ring6" />
-            <div className="loading-ring-dot loading-ring7" />
-            <div className="loading-ring-dot loading-ring8" />
-            <div className="loading-ring-dot loading-ring9" />
-            <div className="loading-ring-dot loading-ring10" />
-            <div className="loading-ring-dot loading-ring11" />
-            <div className="loading-ring-dot loading-ring12" />
-          </div>
+        <div className="loading-cube">
+          <div className="cube cube1" />
+          <div className="cube cube2" />
+          <div className="cube cube3" />
+          <div className="cube cube4" />
+          <div className="cube cube5" />
+          <div className="cube cube6" />
+          <div className="cube cube7" />
+          <div className="cube cube8" />
+          <div className="cube cube9" />
         </div>
       </div>
     );

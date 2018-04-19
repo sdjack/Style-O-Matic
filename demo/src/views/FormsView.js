@@ -14,13 +14,13 @@ class FormsView extends React.Component {
 
   render() {
     return [
-      <Title showAs="h1" textAlign="center" key="view-title">
+      <Title renderAs="h1" textAlign="center" key="view-title">
         <Title.Content>Forms</Title.Content>
       </Title>,
       <Grid key="view-grid">
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title showAs="h2" textAlign="center" key="view-title">
+            <Title renderAs="h2" textAlign="center" key="view-title">
               <Title.Content>Basic Form</Title.Content>
               <Title.Subtitle>Standard usage html form</Title.Subtitle>
             </Title>
