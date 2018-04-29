@@ -4,14 +4,14 @@
 .ui-main {
   width: 100%;
   height: 100%;
-  padding: 0 !important;
+  padding: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-content: flex-start;
-  margin: 0 !important;
+  margin: 0;
   overflow: hidden;
   position: relative;
 
@@ -20,8 +20,8 @@
     flex-wrap: wrap;
     flex-grow: 1;
     flex-shrink: 1;
-    margin: 0px !important;
-    padding: 0px !important;
+    margin: 0px;
+    padding: 0px;
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
@@ -32,8 +32,8 @@
 .ui-main-content {
   width: 100%;
   display: block;
-  margin: 0px !important;
-  padding: 0px 0px 128px 0px !important;
+  margin: 0px;
+  padding: 0px 0px 128px 0px;
 }
 
 .ui-main-drawer,
@@ -78,13 +78,13 @@
     & > .drawer-toggle-button {
       height: 60px !important;
       width: 100% !important;
-      color: $color-white !important;
+      color: $color-white;
       background-color: transparent;
       display: inline-block;
-      padding: 2px !important;
-      font-size: $toggle-size !important;
-      border: none !important;
-      border-radius: 0 !important;
+      padding: 2px;
+      font-size: $toggle-size;
+      border: none;
+      border-radius: 0;
       @include text-align-center();
       @include shadow-removed();
       &:hover {

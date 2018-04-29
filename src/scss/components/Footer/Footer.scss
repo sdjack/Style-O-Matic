@@ -45,19 +45,19 @@
   z-index: 8;
   display: flex;
   flex: 1 1 auto;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0;
+  padding: 0;
 }
 
 .ui-footer-logo {
   display: inline-block;
-  padding: 10px 20px !important;
-  margin: 0 !important;
+  padding: 10px 20px;
+  margin: 0;
   height: 100%;
   cursor: pointer;
   border: none;
   & > img {
-    padding: 0 !important;
+    padding: 0;
     height: 100%;
   }
 }
@@ -68,11 +68,11 @@
   display: inline-block;
   position: relative;
   justify-content: space-between;
-  margin: 0 !important;
-  border-radius: 0 !important;
+  margin: 0;
+  border-radius: 0;
   font-size: $footer-font-size;
   line-height: 1;
-  color: $color-white !important;
+  color: $color-white;
   background-color: transparent;
   @include text-horizontal-align-center();
   @include bar-button-skin();
@@ -89,15 +89,15 @@
 }
 
 .ui-footer-item {
-  padding: $footer-item-padding !important;
+  padding: $footer-item-padding;
 }
 
 .ui-footer-text {
-  padding: $footer-text-padding !important;
+  padding: $footer-text-padding;
 }
 
 .ui-footer-button {
-  padding: $footer-button-padding !important;
+  padding: $footer-button-padding;
   &:hover {
     background-color: rgba(33, 150, 243, 0.5);
   }
@@ -116,7 +116,7 @@
 
 .ui-footer-icon {
   display: inline-block;
-  font-size: $footer-icon-font-size !important;
+  font-size: $footer-icon-font-size;
   padding: $footer-icon-padding;
 }
 

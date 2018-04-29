@@ -44,9 +44,7 @@ class Title extends CoreComponent {
   };
 
   render() {
-    const { renderAs, uiclass, children, props, inherited } = getValidProps(
-      this.props
-    );
+    const { renderAs, children, props, inherited } = getValidProps(this.props);
 
     let contentElement = "h2";
     let subtitleElement = "h5";

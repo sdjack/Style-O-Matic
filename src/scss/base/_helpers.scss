@@ -68,24 +68,24 @@
 }
 
 .ui-underline {
-  text-decoration: underline !important;
+  text-decoration: underline;
 }
 
 .ui-bold {
-  font-weight: 600 !important;
+  font-weight: 600;
 }
 
 .ui-rounded {
-  border-radius: 50px !important;
+  border-radius: 50px;
 }
 
 .ui-raised {
-  border-radius: 4px !important;
+  border-radius: 4px;
   @include shadow-raised();
 }
 
 .ui-inset {
-  border-radius: 4px !important;
+  border-radius: 4px;
   @include shadow-inset();
 }
 
@@ -106,20 +106,20 @@
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, .05);
   border-radius: 6px;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-top: 1em !important;
-  margin-bottom: 1em !important;
-  padding: 1em 1em !important;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em 1em;
   @include shadow-basic();
   &>.well {
-    background-color: rgba(0, 0, 0, .03) !important;
+    background-color: rgba(0, 0, 0, .03);
   }
 }
 
 .ui-masked {
   display: block;
-  padding: 0 !important;
+  padding: 0;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;

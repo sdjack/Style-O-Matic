@@ -91,7 +91,7 @@
 
     &.ui-orientation-horizontal {
         & > .ui-nav-item {
-            display: inline-block !important;
+            display: inline-block;
         }
     	&.minimized {
     		height: $nav-icon-size;
@@ -119,7 +119,7 @@
     @include animate-default(0.2s);
     transition-property: all;
     &.active {
-        font-weight: 600 !important;
+        font-weight: 600;
     }
     & > .left {
         left: $padding-medium;
@@ -149,8 +149,8 @@
 .ui-nav-item-icon {
     width: $nav-icon-size;
     text-align: center;
-    font-size: $nav-icon-fontsize !important;
-    line-height: $nav-item-height !important;
+    font-size: $nav-icon-fontsize;
+    line-height: $nav-item-height;
     position: absolute;
 }
 
@@ -158,16 +158,16 @@
     width: 100%;
     height: 100%;
     text-align: start;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    font-size: $nav-info-fontsize !important;
-    line-height: $nav-item-height !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: $nav-info-fontsize;
+    line-height: $nav-item-height;
     text-indent: $nav-icon-size;
 }
 
 .ui-nav-item-caret {
-    font-size: $nav-caret-fontsize !important;
+    font-size: $nav-caret-fontsize;
     font-style: normal;
     position: absolute;
     top: 6px;
@@ -178,7 +178,7 @@
 .ui-nav-folder {
     display: block;
     height: auto;
-    font-size: $nav-folder-info-fontsize !important;
+    font-size: $nav-folder-info-fontsize;
     list-style-type: none;
     line-height: 1;
     padding: 0;
@@ -197,9 +197,9 @@
 .ui-nav-folder-item,
 .ui-nav-folder-title {
     height: 0px;
-    border: none !important;
+    border: none;
     padding: 0;
-    color: inherit !important;
+    color: inherit;
     display: block;
     @include animate-default(0.3s);
     transition-property: width, height, padding;
@@ -229,7 +229,7 @@
     height: 20px;
     min-width: 20px;
     padding: $nav-folder-icon-padding;
-    font-size: $nav-folder-icon-fontsize !important;
+    font-size: $nav-folder-icon-fontsize;
     line-height: $nav-folder-icon-line-height;
     margin: $nav-folder-icon-margin;
 }
@@ -239,7 +239,7 @@
     height: 20px;
     width: auto;
     padding: $nav-folder-info-padding;
-    font-size: $nav-folder-info-fontsize !important;
+    font-size: $nav-folder-info-fontsize;
     font-weight: 600;
     line-height: 20px;
 }
@@ -249,21 +249,21 @@
     min-width: 20px;
     padding: $nav-folder-icon-padding;
     margin: $nav-folder-icon-margin;
-    font-size: $nav-folder-icon-fontsize !important;
+    font-size: $nav-folder-icon-fontsize;
     line-height: $nav-folder-icon-line-height;
 }
 
 .ui-nav-folder-item-caret {
     padding: $nav-folder-caret-padding;
-    font-size: $nav-folder-caret-fontsize !important;
+    font-size: $nav-folder-caret-fontsize;
     line-height: $nav-folder-item-height;
 }
 
 .ui-nav-folder-title,
 .ui-nav-folder-item-info {
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .ui-nav-border {
@@ -271,10 +271,10 @@
 }
 
 .ui-nav-flyout {
-    width: 200px !important;
+    width: 200px;
     border: $common-border;
-    position: absolute !important;
-    left: ($outer-frame-size - 1) !important;
+    position: absolute;
+    left: ($outer-frame-size - 1);
     top: 0;
 }
 

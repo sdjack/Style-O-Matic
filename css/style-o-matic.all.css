@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.0.77
+ * @version v1.0.85
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Whiting House Group. All rights reserved.
@@ -610,20 +610,20 @@ input[type="submit"] {
   padding: 12px; }
 
 .ui-underline {
-  text-decoration: underline !important; }
+  text-decoration: underline; }
 
 .ui-bold {
-  font-weight: 600 !important; }
+  font-weight: 600; }
 
 .ui-rounded {
-  border-radius: 50px !important; }
+  border-radius: 50px; }
 
 .ui-raised {
-  border-radius: 4px !important;
+  border-radius: 4px;
   box-shadow: 3px 2px 8px -2px rgba(0, 0, 0, 0.5), -2px 4px 8px -2px rgba(0, 0, 0, 0.5); }
 
 .ui-inset {
-  border-radius: 4px !important;
+  border-radius: 4px;
   box-shadow: inset 2px 3px 1px 0 rgba(88, 88, 88, 0.75), inset -2px -1px 1px 0px rgba(220, 220, 220, 0.8), inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5); }
 
 .ui-well {
@@ -642,18 +642,18 @@ input[type="submit"] {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 6px;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-top: 1em !important;
-  margin-bottom: 1em !important;
-  padding: 1em 1em !important;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em 1em;
   box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.07), 1px 2px 8px -3px rgba(0, 0, 0, 0.3); }
   .ui-panel > .well {
-    background-color: rgba(0, 0, 0, 0.03) !important; }
+    background-color: rgba(0, 0, 0, 0.03); }
 
 .ui-masked {
   display: block;
-  padding: 0 !important;
+  padding: 0;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
@@ -2277,18 +2277,18 @@ input[type="submit"] {
   -webkit-flex: 1 1 auto;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  margin: 0 !important;
-  padding: 0 !important; }
+  margin: 0;
+  padding: 0; }
 
 .ui-footer-logo {
   display: inline-block;
-  padding: 10px 20px !important;
-  margin: 0 !important;
+  padding: 10px 20px;
+  margin: 0;
   height: 100%;
   cursor: pointer;
   border: none; }
   .ui-footer-logo > img {
-    padding: 0 !important;
+    padding: 0;
     height: 100%; }
 
 .ui-footer-item,
@@ -2299,11 +2299,11 @@ input[type="submit"] {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 0 !important;
-  border-radius: 0 !important;
+  margin: 0;
+  border-radius: 0;
   font-size: 15px;
   line-height: 1;
-  color: #F3F3F3 !important;
+  color: #F3F3F3;
   background-color: transparent;
   text-align: -webkit-center;
   text-align: center;
@@ -2328,13 +2328,13 @@ input[type="submit"] {
   border: none; }
 
 .ui-footer-item {
-  padding: 2px 12px !important; }
+  padding: 2px 12px; }
 
 .ui-footer-text {
-  padding: 8px 12px !important; }
+  padding: 8px 12px; }
 
 .ui-footer-button {
-  padding: 2px 13px !important; }
+  padding: 2px 13px; }
   .ui-footer-button:hover {
     background-color: rgba(33, 150, 243, 0.5); }
 
@@ -2359,7 +2359,7 @@ input[type="submit"] {
 
 .ui-footer-icon {
   display: inline-block;
-  font-size: 26px !important;
+  font-size: 26px;
   padding: 0px 2px; }
 
 .ui-footer-bolster {
@@ -2666,8 +2666,8 @@ input[type="submit"] {
   -webkit-flex: 1 1 auto;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  margin: 0 !important;
-  padding: 0 !important; }
+  margin: 0;
+  padding: 0; }
 
 .ui-header-title {
   display: inline-block;
@@ -2678,7 +2678,7 @@ input[type="submit"] {
   padding: 6px 36px;
   font-size: 27px;
   line-height: 1;
-  margin: 0 !important;
+  margin: 0;
   border: none;
   border-right-color: rgba(255, 255, 255, 0.05);
   border-left-color: rgba(0, 0, 0, 0.1);
@@ -2692,11 +2692,10 @@ input[type="submit"] {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 0 !important;
-  border-radius: 0 !important;
+  margin: 0;
+  border-radius: 0;
   font-size: 15px;
-  line-height: 1;
-  color: #F3F3F3 !important;
+  color: #F3F3F3;
   background-color: transparent;
   text-align: -webkit-center;
   text-align: center;
@@ -2715,31 +2714,35 @@ input[type="submit"] {
     font-size: 27px !important;
     padding: 0px 2px !important; }
 
+.ui-header-button {
+  line-height: 22px; }
+
 .ui-header-item,
 .ui-header-text {
   cursor: pointer;
-  border: none; }
+  border: none;
+  line-height: 1; }
 
 .ui-header-item {
-  padding: 6px 12px !important; }
+  padding: 6px 12px; }
 
 .ui-header-text {
-  padding: 12px 13px !important; }
+  padding: 12px 13px; }
 
 .ui-header-button {
-  padding: 7px 13px 9px !important; }
+  padding: 7px 13px 9px; }
   .ui-header-button:hover {
     background-color: rgba(33, 150, 243, 0.5); }
 
 .ui-header-logo {
   display: inline-block;
-  padding: 10px 20px !important;
-  margin: 0 !important;
+  padding: 10px 20px;
+  margin: 0;
   height: 100%;
   cursor: pointer;
   border: none; }
   .ui-header-logo > img {
-    padding: 0 !important;
+    padding: 0;
     height: 100%; }
 
 .ui-header-list {
@@ -2806,7 +2809,7 @@ input[type="submit"] {
   .ui-header-drawer > .drawer-toggle-button {
     height: 100% !important;
     width: 70px !important;
-    color: #F3F3F3 !important;
+    color: #F3F3F3;
     background-color: transparent;
     display: inline-block;
     padding: 2px !important;
@@ -3301,7 +3304,7 @@ input[type="submit"] {
 .ui-main {
   width: 100%;
   height: 100%;
-  padding: 0 !important;
+  padding: 0;
   box-sizing: border-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3318,7 +3321,7 @@ input[type="submit"] {
   -webkit-align-content: flex-start;
       -ms-flex-line-pack: start;
           align-content: flex-start;
-  margin: 0 !important;
+  margin: 0;
   overflow: hidden;
   position: relative; }
   .ui-main > .scroll-wrapper {
@@ -3332,8 +3335,8 @@ input[type="submit"] {
     -webkit-flex-shrink: 1;
         -ms-flex-negative: 1;
             flex-shrink: 1;
-    margin: 0px !important;
-    padding: 0px !important;
+    margin: 0px;
+    padding: 0px;
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
@@ -3342,8 +3345,8 @@ input[type="submit"] {
 .ui-main-content {
   width: 100%;
   display: block;
-  margin: 0px !important;
-  padding: 0px 0px 128px 0px !important; }
+  margin: 0px;
+  padding: 0px 0px 128px 0px; }
 
 .ui-main-drawer,
 .ui-main-drawer-flyout {
@@ -3377,13 +3380,13 @@ input[type="submit"] {
   .ui-main-drawer > .drawer-toggle-button {
     height: 60px !important;
     width: 100% !important;
-    color: #F3F3F3 !important;
+    color: #F3F3F3;
     background-color: transparent;
     display: inline-block;
-    padding: 2px !important;
-    font-size: 28px !important;
-    border: none !important;
-    border-radius: 0 !important;
+    padding: 2px;
+    font-size: 28px;
+    border: none;
+    border-radius: 0;
     text-align: -webkit-center;
     text-align: center;
     vertical-align: -webkit-baseline-middle;
@@ -3537,7 +3540,7 @@ input[type="submit"] {
     .ui-nav.ui-orientation-vertical:not(.minimized) > .ui-nav-flyout-wrapper > .ui-nav-folder.expanded > .ui-nav-folder-item {
       height: 36px; }
   .ui-nav.ui-orientation-horizontal > .ui-nav-item {
-    display: inline-block !important; }
+    display: inline-block; }
   .ui-nav.ui-orientation-horizontal.minimized {
     height: 40px; }
     .ui-nav.ui-orientation-horizontal.minimized > .ui-nav-flyout-wrapper > .ui-nav-folder {
@@ -3561,7 +3564,7 @@ input[type="submit"] {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: all; }
   .ui-nav-item.active {
-    font-weight: 600 !important; }
+    font-weight: 600; }
   .ui-nav-item > .left {
     left: 18px; }
   .ui-nav-item > .right {
@@ -3583,23 +3586,23 @@ input[type="submit"] {
 .ui-nav-item-icon {
   width: 40px;
   text-align: center;
-  font-size: 18px !important;
-  line-height: 54px !important;
+  font-size: 18px;
+  line-height: 54px;
   position: absolute; }
 
 .ui-nav-item-info {
   width: 100%;
   height: 100%;
   text-align: start;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  font-size: 16px !important;
-  line-height: 54px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  line-height: 54px;
   text-indent: 40px; }
 
 .ui-nav-item-caret {
-  font-size: 18px !important;
+  font-size: 18px;
   font-style: normal;
   position: absolute;
   top: 6px;
@@ -3609,7 +3612,7 @@ input[type="submit"] {
 .ui-nav-folder {
   display: block;
   height: auto;
-  font-size: 12px !important;
+  font-size: 12px;
   list-style-type: none;
   line-height: 1;
   padding: 0;
@@ -3626,9 +3629,9 @@ input[type="submit"] {
 .ui-nav-folder-item,
 .ui-nav-folder-title {
   height: 0px;
-  border: none !important;
+  border: none;
   padding: 0;
-  color: inherit !important;
+  color: inherit;
   display: block;
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -3652,7 +3655,7 @@ input[type="submit"] {
   height: 20px;
   min-width: 20px;
   padding: 1px 0px;
-  font-size: 16px !important;
+  font-size: 16px;
   line-height: 18px;
   margin: 8px 12px 8px 48px; }
 
@@ -3661,7 +3664,7 @@ input[type="submit"] {
   height: 20px;
   width: auto;
   padding: 0;
-  font-size: 12px !important;
+  font-size: 12px;
   font-weight: 600;
   line-height: 20px; }
 
@@ -3670,28 +3673,28 @@ input[type="submit"] {
   min-width: 20px;
   padding: 1px 0px;
   margin: 8px 12px 8px 48px;
-  font-size: 16px !important;
+  font-size: 16px;
   line-height: 18px; }
 
 .ui-nav-folder-item-caret {
   padding: 17px 10px 17px 0;
-  font-size: 18px !important;
+  font-size: 18px;
   line-height: 36px; }
 
 .ui-nav-folder-title,
 .ui-nav-folder-item-info {
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important; }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .ui-nav-border {
   border-bottom: 1px solid rgba(0, 0, 0, 0.333); }
 
 .ui-nav-flyout {
-  width: 200px !important;
+  width: 200px;
   border: 1px solid rgba(0, 0, 0, 0.333);
-  position: absolute !important;
-  left: 39px !important;
+  position: absolute;
+  left: 39px;
   top: 0; }
 
 .ui-nav-flyout-wrapper {

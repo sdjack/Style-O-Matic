@@ -43,8 +43,8 @@
   z-index: 8;
   display: flex;
   flex: 1 1 auto;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0;
+  padding: 0;
 }
 
 .ui-header-title {
@@ -54,7 +54,7 @@
   padding: $header-title-padding;
   font-size: $header-title-font-size;
   line-height: 1;
-  margin: 0 !important;
+  margin: 0;
   border: none;
   @include bar-button-skin();
 }
@@ -65,11 +65,10 @@
   display: inline-block;
   position: relative;
   justify-content: space-between;
-  margin: 0 !important;
-  border-radius: 0 !important;
+  margin: 0;
+  border-radius: 0;
   font-size: $header-font-size;
-  line-height: 1;
-  color: $color-white !important;
+  color: $color-white;
   background-color: transparent;
   @include text-horizontal-align-center();
   @include bar-button-skin();
@@ -79,22 +78,27 @@
   }
 }
 
+.ui-header-button {
+  line-height: 22px;
+}
+
 .ui-header-item,
 .ui-header-text {
   cursor: pointer;
   border: none;
+  line-height: 1;
 }
 
 .ui-header-item {
-  padding: $header-item-padding !important;
+  padding: $header-item-padding;
 }
 
 .ui-header-text {
-  padding: $header-text-padding !important;
+  padding: $header-text-padding;
 }
 
 .ui-header-button {
-  padding: $header-button-padding !important;
+  padding: $header-button-padding;
   &:hover {
     background-color: rgba(33, 150, 243, 0.5);
   }
@@ -102,13 +106,13 @@
 
 .ui-header-logo {
   display: inline-block;
-  padding: 10px 20px !important;
-  margin: 0 !important;
+  padding: 10px 20px;
+  margin: 0;
   height: 100%;
   cursor: pointer;
   border: none;
   & > img {
-    padding: 0 !important;
+    padding: 0;
     height: 100%;
   }
 }
@@ -181,7 +185,7 @@
     & > .drawer-toggle-button {
       height: 100% !important;
       width: 70px !important;
-      color: $color-white !important;
+      color: $color-white;
       background-color: transparent;
       display: inline-block;
       padding: 2px !important;
