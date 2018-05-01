@@ -5,11 +5,11 @@
     background-color: #fff;
 	border: 1px solid rgba(0,0,0,.13);
 	border-radius: 6px;
-	margin-left: auto !important;
-	margin-right: auto !important;
-	margin-top: 1em !important;
-	margin-bottom: 1em !important;
-	padding: 0 !important;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding: 0;
 
 	&.ui-accordion-title:first-child {
 		border-top-left-radius: 6px;
@@ -38,7 +38,7 @@
 	position: relative;
 	border-bottom: none;
 	border-radius: 6px 6px 0 0;
-	padding: 1em 1em !important;
+	padding: 1em 1em;
 	text-decoration: none;
 	text-indent: 12px;
 	overflow: hidden;

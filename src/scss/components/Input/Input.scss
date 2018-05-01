@@ -12,12 +12,12 @@
 // -----------------------------------------------------------------------------
 .invalid {
   //color: rgb(235,77,55) !important;
-  border-color: rgb(235,77,55) !important;
-  background-color: rgba(235,77,55,0.1) !important;
+  border-color: rgb(235,77,55);
+  background-color: rgba(235,77,55,0.1);
 }
 
 .invalid-label {
-	color: #e32 !important;
+	color: #e32;
 }
 
 .required-label {
@@ -32,31 +32,31 @@
 }
 
 .prepend-icon {
-	padding-left: $input-size !important;
+	padding-left: $input-size;
 }
 
 .append-icon {
-	padding-right: $input-size !important;
+	padding-right: $input-size;
 }
 
 .prepend-button {
 	display: inline-block;
 	height: 100%;
-	float: left !important;
-	border-width: 0 1px 0 0 !important;
-	box-shadow: none !important;
-	padding-top: 0 !important;
-	padding-bottom: 0 !important;
+	float: left;
+	border-width: 0 1px 0 0;
+	box-shadow: none;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 .append-button {
 	display: inline-block;
 	height: 100%;
-	float: right !important;
-	border-width: 0 0 0 1px !important;
-	box-shadow: none !important;
-	padding-top: 0 !important;
-	padding-bottom: 0 !important;
+	float: right;
+	border-width: 0 0 0 1px;
+	box-shadow: none;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 .unstyled {
@@ -77,9 +77,9 @@
 	bottom: $input-offset;
 	width: $input-size;
 	height: $input-size;
-	line-height: $input-size !important;
+	line-height: $input-size;
 	text-align: center;
-	background: transparent !important;
+	background: transparent;
 
 	&.prepended {
 		left: $input-offset;
@@ -206,7 +206,7 @@
 	border-left: $gentle-border;
 	cursor: pointer;
 	text-align: center;
-	font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	line-height: 1;
 	background-color: white;
 	-webkit-transform: translateX(-100%);

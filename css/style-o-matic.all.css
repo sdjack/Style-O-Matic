@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.0.85
+ * @version v1.0.88
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Whiting House Group. All rights reserved.
@@ -77,8 +77,6 @@ html, body {
   padding: 0 !important; }
 
 body {
-  color: rgba(0, 0, 0, 0.533);
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
@@ -89,7 +87,6 @@ hr {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
 
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 56px;
   font-weight: 400;
   line-height: 1.1;
@@ -98,26 +95,22 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-size: 0.6em; }
 
 h1 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 56px;
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.02em; }
 
 h2 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 45px;
   font-weight: 400;
   line-height: 1.1; }
 
 h3 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 34px;
   font-weight: 500;
   line-height: 1.1; }
 
 h4 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 24px;
   font-weight: 500;
   line-height: 28px;
@@ -125,7 +118,6 @@ h4 {
   -moz-osx-font-smoothing: greyscale; }
 
 h5 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
@@ -133,7 +125,6 @@ h5 {
   -moz-osx-font-smoothing: greyscale; }
 
 h6 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 200;
   line-height: 20px;
@@ -1104,11 +1095,11 @@ input[type="submit"] {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.13);
   border-radius: 6px;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-top: 1em !important;
-  margin-bottom: 1em !important;
-  padding: 0 !important; }
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 0; }
   .ui-accordion.ui-accordion-title:first-child {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -1126,7 +1117,6 @@ input[type="submit"] {
     border-bottom-right-radius: 6px; }
 
 .ui-accordion-title {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
@@ -1135,7 +1125,7 @@ input[type="submit"] {
   position: relative;
   border-bottom: none;
   border-radius: 6px 6px 0 0;
-  padding: 1em 1em !important;
+  padding: 1em 1em;
   text-decoration: none;
   text-indent: 12px;
   overflow: hidden;
@@ -1628,7 +1618,6 @@ input[type="submit"] {
 
 .ui-card-title,
 .ui-card-label-large {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
@@ -1638,7 +1627,6 @@ input[type="submit"] {
 .ui-card-subtitle,
 .ui-card-label,
 .ui-card-label-small {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 200;
   line-height: 20px;
@@ -1845,7 +1833,6 @@ input[type="submit"] {
   line-height: 38px;
   margin-left: 70px;
   margin-right: 70px;
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -1856,7 +1843,6 @@ input[type="submit"] {
   height: 20px;
   line-height: 20px;
   margin-left: 70px;
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 200;
   line-height: 20px;
@@ -1901,7 +1887,7 @@ input[type="submit"] {
   width: 100%;
   height: 100%;
   font-size: 14px;
-  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
   padding: 0; }
   .ui-datepicker-toggle > input {
     height: 100%;
@@ -1963,7 +1949,7 @@ input[type="submit"] {
   white-space: nowrap;
   line-height: 20px;
   background: #F3F3F3;
-  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-size: 12px !important; }
 
 .ui-datepicker-control-cell,
@@ -2345,7 +2331,7 @@ input[type="submit"] {
   list-style-type: none;
   line-height: 1;
   letter-spacing: 1px;
-  font-size: 15px;
+  font-size: 15px !important;
   text-align: -webkit-right;
   text-align: right;
   vertical-align: -webkit-baseline-middle;
@@ -2359,7 +2345,7 @@ input[type="submit"] {
 
 .ui-footer-icon {
   display: inline-block;
-  font-size: 26px;
+  font-size: 26px !important;
   padding: 0px 2px; }
 
 .ui-footer-bolster {
@@ -2501,8 +2487,8 @@ input[type="submit"] {
   display: block;
   padding: 0;
   max-width: 1200px;
-  margin-left: auto !important;
-  margin-right: auto !important; }
+  margin-left: auto;
+  margin-right: auto; }
 
 .ui-grid-row {
   display: -webkit-flex;
@@ -2525,7 +2511,7 @@ input[type="submit"] {
   padding-right: 20px;
   margin-bottom: 20px; }
   .ui-grid-row > .ui-grid-row {
-    padding: 12px 0 12px 24px !important; }
+    padding: 12px 0 12px 24px; }
 
 .ui-grid-column,
 .ui-grid-row-column {
@@ -2603,9 +2589,9 @@ input[type="submit"] {
   @media screen and (max-width: 1245px) {
     .ui-grid-column,
     .ui-grid-row-column {
-      -webkit-flex-basis: auto !important;
-          -ms-flex-preferred-size: auto !important;
-              flex-basis: auto !important; } }
+      -webkit-flex-basis: auto;
+          -ms-flex-preferred-size: auto;
+              flex-basis: auto; } }
 
 .ui-grid-divider {
   padding: 2px 14px 2px 2px;
@@ -2862,11 +2848,11 @@ input[type="submit"] {
   box-shadow: 0 0 0 0 transparent; }
 
 .invalid {
-  border-color: #eb4d37 !important;
-  background-color: rgba(235, 77, 55, 0.1) !important; }
+  border-color: #eb4d37;
+  background-color: rgba(235, 77, 55, 0.1); }
 
 .invalid-label {
-  color: #e32 !important; }
+  color: #e32; }
 
 .required-label:after {
   color: #e32;
@@ -2877,28 +2863,28 @@ input[type="submit"] {
   margin-right: 2px; }
 
 .prepend-icon {
-  padding-left: 36px !important; }
+  padding-left: 36px; }
 
 .append-icon {
-  padding-right: 36px !important; }
+  padding-right: 36px; }
 
 .prepend-button {
   display: inline-block;
   height: 100%;
-  float: left !important;
-  border-width: 0 1px 0 0 !important;
-  box-shadow: none !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important; }
+  float: left;
+  border-width: 0 1px 0 0;
+  box-shadow: none;
+  padding-top: 0;
+  padding-bottom: 0; }
 
 .append-button {
   display: inline-block;
   height: 100%;
-  float: right !important;
-  border-width: 0 0 0 1px !important;
-  box-shadow: none !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important; }
+  float: right;
+  border-width: 0 0 0 1px;
+  box-shadow: none;
+  padding-top: 0;
+  padding-bottom: 0; }
 
 .unstyled {
   background-color: transparent !important;
@@ -2917,9 +2903,9 @@ input[type="submit"] {
   bottom: 1px;
   width: 36px;
   height: 36px;
-  line-height: 36px !important;
+  line-height: 36px;
   text-align: center;
-  background: transparent !important; }
+  background: transparent; }
   .ui-input-icon.prepended {
     left: 1px; }
   .ui-input-icon.appended {
@@ -3121,7 +3107,7 @@ input[type="submit"] {
   border-left: 1px solid rgba(0, 0, 0, 0.233);
   cursor: pointer;
   text-align: center;
-  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
   line-height: 1;
   background-color: white;
   -webkit-transform: translateX(-100%);
@@ -3375,12 +3361,11 @@ input[type="submit"] {
     width: 40px !important;
     min-width: 40px !important;
     max-width: 40px !important;
-    background-color: #484848;
     box-shadow: 0px -2px 3px 1px rgba(0, 0, 0, 0.8), 1px -2px 2px -1px rgba(0, 0, 0, 0.8); }
   .ui-main-drawer > .drawer-toggle-button {
     height: 60px !important;
     width: 100% !important;
-    color: #F3F3F3;
+    color: inherit;
     background-color: transparent;
     display: inline-block;
     padding: 2px;
@@ -3405,7 +3390,7 @@ input[type="submit"] {
   display: block;
   width: 100%;
   height: 100%;
-  color: #F3F3F3;
+  color: inherit;
   background-color: #333333; }
 
 .ui-main-drawer-flyout {
@@ -3415,7 +3400,7 @@ input[type="submit"] {
   overflow-x: hidden;
   overflow-y: auto;
   max-height: 100%;
-  color: #F3F3F3;
+  color: inherit;
   background-color: #333333; }
 
 .ui-main-drawer-collapsed {
@@ -3572,7 +3557,7 @@ input[type="submit"] {
   .ui-nav-item > ul,
   .ui-nav-item > ol {
     list-style-type: none;
-    line-height: 20px; }
+    line-height: 20px !important; }
   .ui-nav-item:hover, .ui-nav-item:focus {
     font-weight: 600;
     background-color: rgba(255, 255, 255, 0.05); }
@@ -3586,8 +3571,8 @@ input[type="submit"] {
 .ui-nav-item-icon {
   width: 40px;
   text-align: center;
-  font-size: 18px;
-  line-height: 54px;
+  font-size: 18px !important;
+  line-height: 54px !important;
   position: absolute; }
 
 .ui-nav-item-info {
@@ -3597,12 +3582,12 @@ input[type="submit"] {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 16px;
-  line-height: 54px;
+  font-size: 16px !important;
+  line-height: 54px !important;
   text-indent: 40px; }
 
 .ui-nav-item-caret {
-  font-size: 18px;
+  font-size: 18px !important;
   font-style: normal;
   position: absolute;
   top: 6px;
@@ -3612,7 +3597,7 @@ input[type="submit"] {
 .ui-nav-folder {
   display: block;
   height: auto;
-  font-size: 12px;
+  font-size: 12px !important;
   list-style-type: none;
   line-height: 1;
   padding: 0;
@@ -3655,8 +3640,8 @@ input[type="submit"] {
   height: 20px;
   min-width: 20px;
   padding: 1px 0px;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 16px !important;
+  line-height: 18px !important;
   margin: 8px 12px 8px 48px; }
 
 .ui-nav-folder-item-info {
@@ -3664,7 +3649,7 @@ input[type="submit"] {
   height: 20px;
   width: auto;
   padding: 0;
-  font-size: 12px;
+  font-size: 12px !important;
   font-weight: 600;
   line-height: 20px; }
 
@@ -3673,13 +3658,13 @@ input[type="submit"] {
   min-width: 20px;
   padding: 1px 0px;
   margin: 8px 12px 8px 48px;
-  font-size: 16px;
-  line-height: 18px; }
+  font-size: 16px !important;
+  line-height: 18px !important; }
 
 .ui-nav-folder-item-caret {
   padding: 17px 10px 17px 0;
-  font-size: 18px;
-  line-height: 36px; }
+  font-size: 18px !important;
+  line-height: 36px !important; }
 
 .ui-nav-folder-title,
 .ui-nav-folder-item-info {
@@ -3927,10 +3912,11 @@ ul.pages > li {
   line-height: 16px; }
   .ui-table > thead {
     padding-bottom: 3px;
-    background-color: #616161; }
+    background-color: #616161;
+    color: #EEEEEE; }
     .ui-table > thead > tr > th, .ui-table > thead > tr > td {
       padding: 8px 12px;
-      color: #EEEEEE !important; }
+      color: inherit; }
   .ui-table > tbody > tr {
     position: relative; }
     .ui-table > tbody > tr > td {
@@ -4261,7 +4247,6 @@ form > .ui-title > .ui-title-icon,
   padding: 0 !important;
   margin: 0px 10px 0px 0px !important;
   vertical-align: middle;
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 22px;
   font-weight: 300;
   line-height: 40px;
@@ -4351,7 +4336,8 @@ form > .ui-title > .ui-title-icon,
 
 .ui-tooltip-widget {
   display: none;
-  position: absolute; }
+  position: absolute;
+  z-index: 999; }
   .ui-tooltip-widget.ui-tooltip-left {
     top: 50%;
     right: 100%;
@@ -4422,7 +4408,6 @@ form > .ui-title > .ui-title-icon,
   text-align: left;
   border-radius: 0;
   padding: 8px;
-  font-family: "Helvetica", "Arial", sans-serif !important;
   line-height: 16px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.07), 0px 3px 8px -3px rgba(0, 0, 0, 0.3); }
   .ui-tooltip-content:before, .ui-tooltip-content:after {

@@ -130,7 +130,7 @@
     & > ul,
     & > ol {
         list-style-type: none;
-        line-height: $nav-list-line-height;
+        line-height: $nav-list-line-height !important;
     }
     &:hover,
     &:focus {
@@ -149,8 +149,8 @@
 .ui-nav-item-icon {
     width: $nav-icon-size;
     text-align: center;
-    font-size: $nav-icon-fontsize;
-    line-height: $nav-item-height;
+    font-size: $nav-icon-fontsize !important;
+    line-height: $nav-item-height !important;
     position: absolute;
 }
 
@@ -161,13 +161,13 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: $nav-info-fontsize;
-    line-height: $nav-item-height;
+    font-size: $nav-info-fontsize !important;
+    line-height: $nav-item-height !important;
     text-indent: $nav-icon-size;
 }
 
 .ui-nav-item-caret {
-    font-size: $nav-caret-fontsize;
+    font-size: $nav-caret-fontsize !important;
     font-style: normal;
     position: absolute;
     top: 6px;
@@ -178,7 +178,7 @@
 .ui-nav-folder {
     display: block;
     height: auto;
-    font-size: $nav-folder-info-fontsize;
+    font-size: $nav-folder-info-fontsize !important;
     list-style-type: none;
     line-height: 1;
     padding: 0;
@@ -229,8 +229,8 @@
     height: 20px;
     min-width: 20px;
     padding: $nav-folder-icon-padding;
-    font-size: $nav-folder-icon-fontsize;
-    line-height: $nav-folder-icon-line-height;
+    font-size: $nav-folder-icon-fontsize !important;
+    line-height: $nav-folder-icon-line-height !important;
     margin: $nav-folder-icon-margin;
 }
 
@@ -239,7 +239,7 @@
     height: 20px;
     width: auto;
     padding: $nav-folder-info-padding;
-    font-size: $nav-folder-info-fontsize;
+    font-size: $nav-folder-info-fontsize !important;
     font-weight: 600;
     line-height: 20px;
 }
@@ -249,14 +249,14 @@
     min-width: 20px;
     padding: $nav-folder-icon-padding;
     margin: $nav-folder-icon-margin;
-    font-size: $nav-folder-icon-fontsize;
-    line-height: $nav-folder-icon-line-height;
+    font-size: $nav-folder-icon-fontsize !important;
+    line-height: $nav-folder-icon-line-height !important;
 }
 
 .ui-nav-folder-item-caret {
     padding: $nav-folder-caret-padding;
-    font-size: $nav-folder-caret-fontsize;
-    line-height: $nav-folder-item-height;
+    font-size: $nav-folder-caret-fontsize !important;
+    line-height: $nav-folder-item-height !important;
 }
 
 .ui-nav-folder-title,

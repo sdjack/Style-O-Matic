@@ -110,13 +110,13 @@
   list-style-type: none;
   line-height: 1;
   letter-spacing: 1px;
-  font-size: $footer-font-size;
+  font-size: $footer-font-size !important;
   @include text-align-right();
 }
 
 .ui-footer-icon {
   display: inline-block;
-  font-size: $footer-icon-font-size;
+  font-size: $footer-icon-font-size !important;
   padding: $footer-icon-padding;
 }
 

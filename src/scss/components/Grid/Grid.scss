@@ -19,8 +19,8 @@
   display: block;
   padding: 0;
   max-width: 1200px;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ui-grid-row {
@@ -35,7 +35,7 @@
   margin-bottom: 20px;
 
   & > .ui-grid-row {
-    padding: ($padding-large / 2) 0 ($padding-large / 2) $padding-large !important;
+    padding: ($padding-large / 2) 0 ($padding-large / 2) $padding-large;
   }
 }
 
@@ -87,7 +87,7 @@
   }
 
   @media screen and (max-width: $grid-screen-threshold) {
-    flex-basis: auto !important;
+    flex-basis: auto;
   }
 }
 

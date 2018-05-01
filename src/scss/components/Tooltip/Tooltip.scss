@@ -2,15 +2,15 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 .ui-tooltip {
-    position: fixed;
-    z-index: 99;
-    &:hover {
-        & > .ui-tooltip-wrapper {
+  position: fixed;
+  z-index: 99;
+  &:hover {
+    & > .ui-tooltip-wrapper {
 			& > .ui-tooltip-widget {
 				display: block;
 			}
 		}
-    }
+  }
 }
 
 .ui-tooltip-wrapper {
@@ -21,9 +21,10 @@
 
 .ui-tooltip-widget {
 	display: none;
-    position: absolute;
+  position: absolute;
+  z-index: 999;
 
-    &.ui-tooltip-left {
+  &.ui-tooltip-left {
 		top: 50%;
 		right: 100%;
 		margin-right: 10px;
@@ -113,7 +114,6 @@
 	text-align: left;
 	border-radius: 0;
 	padding: 8px;
-	font-family: $text-font-stack !important;
 	line-height: 16px;
 	@include shadow-tooltip();
 

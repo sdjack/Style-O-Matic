@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.0.85
+ * @version v1.0.88
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Whiting House Group. All rights reserved.
@@ -77,8 +77,6 @@ html, body {
   padding: 0 !important; }
 
 body {
-  color: rgba(0, 0, 0, 0.533);
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
@@ -89,7 +87,6 @@ hr {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
 
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 56px;
   font-weight: 400;
   line-height: 1.1;
@@ -98,26 +95,22 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-size: 0.6em; }
 
 h1 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 56px;
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.02em; }
 
 h2 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 45px;
   font-weight: 400;
   line-height: 1.1; }
 
 h3 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 34px;
   font-weight: 500;
   line-height: 1.1; }
 
 h4 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 24px;
   font-weight: 500;
   line-height: 28px;
@@ -125,7 +118,6 @@ h4 {
   -moz-osx-font-smoothing: greyscale; }
 
 h5 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
@@ -133,7 +125,6 @@ h5 {
   -moz-osx-font-smoothing: greyscale; }
 
 h6 {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 200;
   line-height: 20px;

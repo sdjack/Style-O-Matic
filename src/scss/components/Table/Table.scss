@@ -10,16 +10,16 @@
   white-space: wrap;
   font-size: 12px;
   line-height: 16px;
-  //font-family: Arial;
 
   & > thead {
     padding-bottom: 3px;
     background-color: $color-secondary-lighter;
+    color: $color-primary-light;
 
     & > tr {
       & > th, & > td {
         padding: 8px 12px;
-        color: $color-primary-light !important;
+        color: inherit;
       }
     }
   }
