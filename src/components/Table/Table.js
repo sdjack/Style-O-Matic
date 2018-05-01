@@ -7,8 +7,10 @@
 /* eslint "react/prop-types": [0] */
 
 import React, { cloneElement } from "react";
+import cx from "classnames";
 import {
   CoreComponent,
+  getCorePropTypes,
   getCorePropDefaults,
   getValidProps,
   ROLE
@@ -21,9 +23,22 @@ import TableCell from "./TableCell.js";
 import "./Table.css";
 
 class Table extends CoreComponent {
+  static propTypes = getCorePropTypes({
+    bordered: "bool",
+    padded: "bool",
+    hover: "bool",
+    spaced: "bool",
+    striped: "bool"
+  });
+
   static defaultProps = getCorePropDefaults({
     renderAs: "table",
-    uirole: ROLE.TABLE
+    uirole: ROLE.TABLE,
+    bordered: false,
+    padded: false,
+    hover: false,
+    spaced: false,
+    striped: false
   });
 
   static Head = TableHead;
@@ -50,14 +65,29 @@ class Table extends CoreComponent {
   render() {
     const {
       renderAs: Component,
-      uiclass,
+      className,
+      bordered,
+      padded,
+      hover,
+      spaced,
+      striped,
       children,
       props,
       inherited
     } = getValidProps(this.props);
 
+    const classes = {
+      "ui-table-bordered": bordered,
+      "ui-table-padded": padded,
+      "ui-table-hover": hover,
+      "ui-table-spaced": spaced,
+      "ui-table-striped": striped
+    };
+
+    const uiClassCore = cx(className, classes);
+    delete props.className;
     return (
-      <Component {...props}>
+      <Component className={uiClassCore} {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&

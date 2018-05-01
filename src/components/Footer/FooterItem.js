@@ -36,7 +36,7 @@ class FooterItem extends CoreComponent {
     } = getValidProps(this.props);
 
     const classes = {
-      active: path.indexOf(to) !== -1
+      active: to && to === path
     };
 
     if (icon || text) {

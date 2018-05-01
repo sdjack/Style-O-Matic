@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.0.88
+ * @version v1.0.897
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Whiting House Group. All rights reserved.
@@ -80,6 +80,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
+  font-family: sans-serif;
   line-height: 20px; }
 
 hr {

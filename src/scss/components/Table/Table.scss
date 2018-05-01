@@ -51,12 +51,26 @@
 }
 
 .ui-table-bordered {
+  border-right: $table-borders;
   & > tbody {
     & > tr {
       border: 0px solid rgba(0,0,0,0);
       border-bottom: $table-borders;
-      &:hover {
-        background-color: rgba(0,0,0,0.033);
+      & > td,
+      & > th {
+        border: 0px solid rgba(0,0,0,0);
+        border-left: $table-borders;
+      }
+    }
+  }
+  & > tfoot {
+    & > tr {
+      border: 0px solid rgba(0,0,0,0);
+      border-bottom: $table-borders;
+      & > td,
+      & > th {
+        border: 0px solid rgba(0,0,0,0);
+        border-left: $table-borders;
       }
     }
   }
@@ -64,15 +78,52 @@
 
 .ui-table-padded {
   padding: $padding;
+  & > tbody {
+    & > tr {
+      & > td,
+      & > th {
+        padding: $padding;
+      }
+    }
+  }
+  & > tfoot {
+    & > tr {
+      & > td,
+      & > th {
+        padding: $padding;
+      }
+    }
+  }
 }
 
 .ui-table-hover {
   & > tbody {
     & > tr {
-      @include animate-default(0.28s);
-      transition-property: background-color;
       &:hover {
-        background-color: $data-table-hover-color;
+        background-color: rgba(0,180,255,0.08) !important;
+      }
+      & > td,
+      & > th {
+        @include animate-default(0.28s);
+        transition-property: background-color;
+        &:hover {
+          background-color: rgba(0,0,0,0.033);
+        }
+      }
+    }
+  }
+  & > tfoot {
+    & > tr {
+      &:hover {
+        background-color: rgba(0,180,255,0.08) !important;
+      }
+      & > td,
+      & > th {
+        @include animate-default(0.28s);
+        transition-property: background-color;
+        &:hover {
+          background-color: rgba(0,0,0,0.033);
+        }
       }
     }
   }
@@ -82,9 +133,27 @@
   line-height: 20px;
   & > tbody {
     & > tr {
-      & > td {
+      & > td,
+      & > th {
         padding-top: $padding;
       }
+    }
+  }
+  & > tfoot {
+    & > tr {
+      & > td,
+      & > th {
+        padding-top: $padding;
+      }
+    }
+  }
+}
+
+.ui-table-striped {
+  line-height: 20px;
+  & > tbody {
+    tr:nth-child(odd) {
+      background-color: rgba(0,0,0,0.033);
     }
   }
 }

@@ -9,19 +9,25 @@
 import React, { cloneElement } from "react";
 import {
   CoreComponent,
+  getCorePropTypes,
   getCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class TableRow extends CoreComponent {
+  static propTypes = getCorePropTypes({
+    rowtype: "string"
+  });
+
   static defaultProps = getCorePropDefaults({
-    uirole: ROLE.ROW
+    uirole: ROLE.ROW,
+    rowtype: "body"
   });
 
   cells = [];
 
-  renderChild = (child, props) => {
+  renderChild = (child, props, rowtype) => {
     let ref = c => {
       this.cells.push(c);
     };
@@ -31,12 +37,13 @@ class TableRow extends CoreComponent {
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: this.childPrefix(child.props.uirole)
+      uiclass: this.childPrefix(child.props.uirole),
+      rowtype
     });
   };
 
   render() {
-    const { children, props, inherited } = getValidProps(this.props);
+    const { rowtype, children, props, inherited } = getValidProps(this.props);
 
     this.cells = [];
 
@@ -48,7 +55,7 @@ class TableRow extends CoreComponent {
             typeof child.props.uirole !== "undefined" &&
             child.props.uirole === ROLE.CELL
           ) {
-            return this.renderChild(child, inherited);
+            return this.renderChild(child, inherited, rowtype);
           }
           return child;
         })}

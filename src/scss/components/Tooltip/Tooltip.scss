@@ -3,7 +3,6 @@
 // -----------------------------------------------------------------------------
 .ui-tooltip {
   position: fixed;
-  z-index: 99;
   &:hover {
     & > .ui-tooltip-wrapper {
 			& > .ui-tooltip-widget {

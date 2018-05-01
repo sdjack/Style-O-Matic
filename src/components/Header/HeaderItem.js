@@ -38,7 +38,7 @@ class HeaderItem extends CoreComponent {
     const ElementType = getElementType(HeaderItem, this.props);
 
     const classes = {
-      active: path.indexOf(to) !== -1
+      active: to && to === path
     };
 
     if (icon || text) {

@@ -16,25 +16,19 @@ import {
 } from "../../lib";
 
 class TableCell extends CoreComponent {
-  static propTypes = getCorePropTypes(null, {
-    isHeader: "bool"
+  static propTypes = getCorePropTypes({
+    rowtype: "string"
   });
 
-  static defaultProps = getCorePropDefaults(
-    {
-      uirole: ROLE.CELL
-    },
-    {
-      isHeader: false
-    }
-  );
+  static defaultProps = getCorePropDefaults({
+    uirole: ROLE.CELL,
+    rowtype: "body"
+  });
 
   render() {
-    const { uidata, children, props } = getValidProps(this.props);
+    const { rowtype, children, props } = getValidProps(this.props);
 
-    const { isHeader } = uidata;
-
-    if (isHeader) {
+    if (rowtype && rowtype === "head") {
       return <th {...props}>{children}</th>;
     }
 

@@ -56,7 +56,6 @@ const INHERITED_PROPS = [
   "path",
   "disabled",
   "open",
-  "active",
   "uidata",
   "invalid"
 ];

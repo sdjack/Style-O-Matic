@@ -32,7 +32,8 @@ class TableBody extends CoreComponent {
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: this.childPrefix(child.props.uirole)
+      uiclass: this.childPrefix(child.props.uirole),
+      rowtype: "body"
     });
   };
 
