@@ -9,8 +9,8 @@
 import React from "react";
 import {
   CoreComponent,
-  getCorePropDefaults,
   getValidProps,
+  getCorePropDefaults,
   ROLE
 } from "../../lib";
 
@@ -21,9 +21,23 @@ class ToolBarContent extends CoreComponent {
   });
 
   render() {
-    const { renderAs: Component, children, props } = getValidProps(this.props);
+    const { renderAs: Component, children, props, inherited } = getValidProps(
+      this.props
+    );
 
-    return <Component {...props}>{children}</Component>;
+    return (
+      <Component {...props}>
+        {React.Children.map(children, child => {
+          if (
+            typeof child.props !== "undefined" &&
+            typeof child.props.uirole !== "undefined"
+          ) {
+            return this.renderChild(child, inherited);
+          }
+          return child;
+        })}
+      </Component>
+    );
   }
 }
 

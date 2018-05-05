@@ -69,8 +69,8 @@
 }
 
 @mixin text-align-left() {
-  text-align: -webkit-left;
-  text-align: left;
+  text-align: -webkit-start;
+  text-align: start;
   vertical-align: -webkit-baseline-middle;
   vertical-align: middle;
   align-items: start;
@@ -78,8 +78,8 @@
 }
 
 @mixin text-align-right() {
-  text-align: -webkit-right;
-  text-align: right;
+  text-align: -webkit-end;
+  text-align: end;
   vertical-align: -webkit-baseline-middle;
   vertical-align: middle;
   align-items: end;
@@ -94,15 +94,15 @@
 }
 
 @mixin text-horizontal-align-left() {
-  text-align: -webkit-left;
-  text-align: left;
+  text-align: -webkit-start;
+  text-align: start;
   align-items: start;
   align-content: start;
 }
 
 @mixin text-horizontal-align-right() {
-  text-align: -webkit-right;
-  text-align: right;
+  text-align: -webkit-end;
+  text-align: end;
   align-items: end;
   align-content: end;
 }
@@ -118,7 +118,7 @@
   }
 }
 
-@mixin typo-display-4($colorContrast: false, $useTitleFont: true) {
+@mixin typo-massive($colorContrast: false, $useTitleFont: true) {
   font-size: 112px;
   font-weight: 300;
   line-height: 1.1;
@@ -129,7 +129,18 @@
   }
 }
 
-@mixin typo-display-3($colorContrast: false, $useTitleFont: true) {
+@mixin typo-small($colorContrast: false, $useTitleFont: true) {
+  font-size: 0.6em;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+
+  @if $colorContrast {
+    opacity: 0.54;
+  }
+}
+
+@mixin typo-h1($colorContrast: false, $useTitleFont: true) {
   font-size: 56px;
   font-weight: 400;
   line-height: 1.1;
@@ -140,7 +151,7 @@
   }
 }
 
-@mixin typo-display-2($colorContrast: false, $useTitleFont: true) {
+@mixin typo-h2($colorContrast: false, $useTitleFont: true) {
   font-size: 45px;
   font-weight: 400;
   line-height: 1.1;
@@ -150,7 +161,7 @@
   }
 }
 
-@mixin typo-display-1($colorContrast: false, $useTitleFont: true) {
+@mixin typo-h3($colorContrast: false, $useTitleFont: true) {
   font-size: 34px;
   font-weight: 500;
   line-height: 1.1;
@@ -172,19 +183,8 @@
   }
 }
 
-@mixin typo-title-large($colorContrast: false, $useTitleFont: true) {
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  -moz-osx-font-smoothing: greyscale;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
 @mixin typo-title($colorContrast: false, $useTitleFont: true) {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.02em;
@@ -196,7 +196,7 @@
 }
 
 @mixin typo-subhead($colorContrast: false, $useTitleFont: true) {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 200;
   line-height: 20px;
   letter-spacing: 0.3px;
@@ -206,36 +206,14 @@
   }
 }
 
-@mixin typo-subhead-2($colorContrast: false, $useTitleFont: true) {
-  font-size: 16px;
-  font-weight: 100;
-  line-height: 28px;
-  letter-spacing: 0.02em;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
-@mixin typo-control-title($colorContrast: false, $useTitleFont: true) {
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 40px;
-  letter-spacing: 1px;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
-@mixin typo-body-2($colorContrast: false, $useTitleFont: false) {
+@mixin typo-table-header($colorContrast: false, $useTitleFont: false) {
   font-size: 14px;
   @if $useTitleFont {
     font-weight: 500;
   } @else {
     font-weight: bold;
   }
-  line-height: 24px;
+  line-height: 1.4;
   letter-spacing: 0.05em;
 
   @if $colorContrast {
@@ -243,7 +221,7 @@
   }
 }
 
-@mixin typo-body-1($colorContrast: false, $useTitleFont: false) {
+@mixin typo-paragraph($colorContrast: false, $useTitleFont: false) {
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
@@ -365,7 +343,7 @@
 }
 
 @mixin typo-input($colorContrast: false, $useTitleFont: false) {
-  font-size: $input-font-size;
+  font-size: $widget-font-size;
   font-weight: 300;
   line-height: 1;
   letter-spacing: 0.05em;
@@ -378,7 +356,7 @@
 }
 
 @mixin typo-input-button($colorContrast: false, $useTitleFont: false) {
-  font-size: $input-font-size;
+  font-size: $widget-font-size;
   font-weight: 500;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -418,7 +396,7 @@
 }
 @mixin input-skin() {
   //box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3), inset 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-  border: solid 0.5px $gentle-text-color;
+  border: solid 0.5px $text-color;
 }
 @mixin button-skin($shadowColor: $color-dark-alpha-2) {
   box-shadow: 	0px 0px 2px 0px $shadowColor, 
@@ -473,20 +451,19 @@
 
 @mixin bar-button-skin() {
 	border-right-color: rgba(255,255,255,0.05);
-    border-left-color: rgba(0,0,0,0.1);
-    box-shadow: -1px 0 3px -2px rgba(0,0,0,.5), 1px 0 3px -2px rgba(255,255,255,.5);
+  border-left-color: rgba(0,0,0,0.1);
+  box-shadow: 0 0 1px 0px rgba(0,0,0,.2);
 }
 @mixin shadow-removed() {
     box-shadow: none;
 }
 @mixin shadow-raised() {
-  box-shadow: 3px 2px 8px -2px rgba(0,0,0,.5), 
-  			-2px 4px 8px -2px rgba(0,0,0,.5);
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,.04),
+              1px 2px 6px -2px rgba(0,0,0,.14);
 }
 @mixin shadow-inset() {
-  box-shadow: inset 2px 3px 1px 0 rgba(88,88,88,.75), 
-  			inset -2px -1px 1px 0px rgba(220,220,220,.8), 
-  			inset -1px -1px 2px 0 rgba(255,255,255,0.5);
+  box-shadow: inset 1px 2px 2px rgba(50, 50, 50, .15), 
+              inset -1px -2px 2px #ffffff;
 }
 @mixin shadow-dropdown() {
   box-shadow: 3px 2px 8px -2px rgba(0,0,0,.5), -2px 4px 8px -2px rgba(0,0,0,.5);
@@ -497,23 +474,29 @@
               1px 1px 1px 0px rgba(0,0,0,0.4),
               -1px 1px 1px 0px rgba(0,0,0,0.4),
               1px 2px 5px 1px rgba(0,0,0,.07), 
-              1px 2px 8px -3px rgba(0,0,0,.3)
+              1px 2px 8px -3px rgba(0,0,0,.3);
 }
 @mixin shadow-basic() {
   box-shadow: 1px 2px 5px 1px rgba(0,0,0,.07), 
-              1px 2px 8px -3px rgba(0,0,0,.3)
+              1px 2px 8px -3px rgba(0,0,0,.3);
 }
 @mixin shadow-tooltip() {
   box-shadow: 1px 1px 2px rgba(0,0,0,.07), 
-              0px 3px 8px -3px rgba(0,0,0,.3)
+              0px 3px 8px -3px rgba(0,0,0,.3);
+}
+@mixin shadow-card() {
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,.04),1px 2px 6px -2px rgba(0,0,0,.14);
 }
 @mixin shadow-basic-dark() {
   box-shadow: 1px 2px 5px 1px rgba(0,0,0,.3), 
-              1px 2px 8px -3px rgba(0,0,0,.5)
+              1px 2px 8px -3px rgba(0,0,0,.5);
+}
+@mixin shadow-titlebar() {
+  box-shadow: 0px -2px 3px 1px rgba(0,0,0,.8),
+              0px -2px 2px -1px rgba(0,0,0,.8);
 }
 @mixin shadow-drawer() {
-  box-shadow: 0px -2px 3px 1px rgba(0,0,0,.8),
-              1px -2px 2px -1px rgba(0,0,0,.8)
+  box-shadow: -1px 0px 2px 1px rgba(0,0,0,.23),1px 1px 2px 1px rgba(0,0,0,.23);
 }
 @mixin shadow-inset-nested() {
   box-shadow: inset -1px 2px 2px 0 rgba(0,0,0,.35),
@@ -536,9 +519,9 @@
               0 1px 2px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
 }
 @mixin shadow-2dp() {
-  box-shadow: 0 0 3px 3px rgba(0,0,0,.07),
-              1px 2px 3px 0 rgba(0,0,0,.3),
-              0 1px 5px 0 rgba(0,0,0,.12);
+  box-shadow: 0 0 3px 3px rgba(0,0,0,$shadow-key-penumbra-opacity),
+              1px 2px 3px 0 rgba(0,0,0,$shadow-key-umbra-opacity),
+              0 1px 5px 0 rgba(0,0,0,$shadow-ambient-shadow-opacity);
 }
 @mixin shadow-3dp() {
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
@@ -596,8 +579,9 @@
   text-shadow: 0px -1px 0px rgba(0,0,0,0.3), 0px 1px 0px rgba(255,255,255,0.3);
 }
 
-@mixin ui-color($colorName:'black',$color:$color-black,$inverted: false) {
-  .ui-#{$colorName} {
+@mixin ui-color($colorName:'black',$color:$color-dark,$inverted: false) {
+  .ui-#{$colorName},
+  .ui-#{$colorName}-no-hover {
     background-color: $color !important;
     border-color: $color !important;
     color: color-contrast($color,$inverted) !important;
@@ -611,7 +595,8 @@
       color: color-contrast($color,$inverted) !important;
     }
   }
-  .ui-#{$colorName}-fill {
+  .ui-#{$colorName}-fill,
+  .ui-#{$colorName}-fill-no-hover {
     background-color: $color !important;
     border: 1px solid darken($color,15%) !important;
     color: color-contrast($color,$inverted) !important;
@@ -625,7 +610,8 @@
       color: $color !important;
     }
   }
-  .ui-#{$colorName}-outline {
+  .ui-#{$colorName}-outline,
+  .ui-#{$colorName}-outline-no-hover {
     background-color: color-contrast($color,$inverted) !important;
     border: 1px solid $color !important;
     color: $color !important;
@@ -639,7 +625,8 @@
       color: color-contrast($color,$inverted) !important;
     }
   }
-  .ui-#{$colorName}-text {
+  .ui-#{$colorName}-text,
+  .ui-#{$colorName}-text-no-hover {
     color: $color !important;
   }
   .ui-#{$colorName}-text,

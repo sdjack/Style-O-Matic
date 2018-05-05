@@ -1,6 +1,10 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
+
+ @import 'config';
+
+ 
 .ui-dropdown {
     display: inline-block;
     position: relative;
@@ -67,7 +71,7 @@
         height: auto !important;
         max-height: 320px !important;
         overflow-y: auto !important;
-        border: $gentle-border;
+        border: $common-border;
         @include shadow-basic();
     }
 }

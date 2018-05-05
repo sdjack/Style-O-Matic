@@ -11,19 +11,38 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 
+ @import 'config';
+
+ 
 .ui-badge {
   display: inline-block;
   min-width: $badge-size;
   height: $badge-size;
-  line-height: $badge-size + 2;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0);
+  padding: 0;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.066);
+  @include text-horizontal-align-center();
+  &:hover {
+    background-color: rgba(0,0,0,0.033);
+  }
+}
+
+.ui-badge-content {
+  display: inline-block;
+  line-height: $badge-size;
   font-size: $badge-font-size;
-  border-radius: 20px !important;
   border: none;
   padding: 0;
-  @include text-horizontal-align-center();
-  & > .fa {
-    font-size: $badge-icon-font-size;
-  }
+}
+
+.ui-badge-icon {
+  display: inline-block;
+  line-height: $badge-size;
+  font-size: $badge-icon-font-size;
+  border: none;
+  padding: 0;
 }
 
 .ui-badge-small {
@@ -32,27 +51,28 @@
   height: $badge-size-small;
   line-height: $badge-size-small;
   font-size: $badge-font-size;
-  border-radius: 20px !important;
+  border-radius: 20px;
   border: none;
   padding: 0;
+  background-color: rgba(0,0,0,0.066);
   @include text-horizontal-align-center();
-  & > .fa {
-    font-size: $badge-icon-font-size;
+  &:hover {
+    background-color: rgba(0,0,0,0.033);
   }
-}
-
-.ui-badge-no-icon {
-  padding: 0 24px !important;
 }
 
 .ui-badge-label {
   display: inline-block;
   min-width: $badge-size;
   font-size: 12px;
-  border-radius: 4px !important;
+  border-radius: 4px;
   border: none;
   padding: 4px;
 	line-height: 1;
+  background-color: rgba(0,0,0,0.066);
   @include text-horizontal-align-center();
 	vertical-align: middle;
+  &:hover {
+    background-color: rgba(0,0,0,0.033);
+  }
 }

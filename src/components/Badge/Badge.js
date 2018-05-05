@@ -13,12 +13,17 @@ import {
   getCorePropDefaults,
   ROLE
 } from "../../lib";
+import BadgeContent from "./BadgeContent";
+import BadgeIcon from "./BadgeIcon";
 import "./Badge.css";
 
 class Badge extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    uirole: "badge"
+    uirole: ROLE.BADGE
   });
+
+  static Content = BadgeContent;
+  static Icon = BadgeIcon;
 
   render() {
     const { renderAs: Component, children, props, inherited } = getValidProps(
@@ -32,12 +37,7 @@ class Badge extends CoreComponent {
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
-            switch (child.props.uirole) {
-              case ROLE.CONTENT:
-                return this.renderChild(child, inherited);
-              default:
-                return child;
-            }
+            return this.renderChild(child, inherited);
           }
           return child;
         })}

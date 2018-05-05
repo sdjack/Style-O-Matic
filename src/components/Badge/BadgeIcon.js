@@ -9,23 +9,26 @@
 import React from "react";
 import {
   CoreComponent,
-  getValidProps,
   getCorePropDefaults,
+  getValidProps,
   ROLE
 } from "../../lib";
 
-class FooterText extends CoreComponent {
+class BadgeIcon extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    renderAs: "div",
-    uirole: ROLE.TEXT,
-    text: ""
+    renderAs: "span",
+    uirole: ROLE.ICON
   });
 
   render() {
     const { renderAs: Component, children, props } = getValidProps(this.props);
 
-    return <Component {...props}>{children}</Component>;
+    return (
+      <Component {...props} role="img">
+        {children}
+      </Component>
+    );
   }
 }
 
-export default FooterText;
+export default BadgeIcon;

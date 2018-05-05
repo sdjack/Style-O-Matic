@@ -27,8 +27,8 @@ class Navigation extends React.Component {
         <Nav.Item to="/grid" icon="fa fa-th" text="Grid">
           <ToolTip>Grid</ToolTip>
         </Nav.Item>
-        <Nav.Item to="/navigation" icon="fa fa-sitemap" text="Navigation">
-          <ToolTip>Navigation</ToolTip>
+        <Nav.Item to="/cards" icon="fa fa-window-restore" text="Cards">
+          <ToolTip>Cards</ToolTip>
         </Nav.Item>
         <Nav.Item to="/buttons" icon="fa fa-cube" text="Buttons">
           <ToolTip>Buttons</ToolTip>
@@ -43,15 +43,11 @@ class Navigation extends React.Component {
           <ToolTip>Accordion</ToolTip>
         </Nav.Item>
         <Nav.Folder to="/misc" icon="fa fa-folder" text="Misc">
-          <Nav.Item
-            to="/breadcrumbs"
-            icon="fa fa-angle-double-right"
-            text="Breadcrumbs"
-          />
-          <Nav.Item to="/modal" icon="fa fa-window-restore" text="Modal" />
-          <Nav.Item to="/toolbar" icon="fa fa-cogs" text="ToolBar" />
-          <Nav.Item to="/tabs" icon="fa fa-bookmark" text="Tabs" />
-          <Nav.Item to="/toasts" icon="fa fa-comment" text="Toasts" />
+          <Nav.Item to="/" icon="fa fa-angle-double-right" text="Breadcrumbs" />
+          <Nav.Item to="/" icon="fa fa-window-restore" text="Modal" />
+          <Nav.Item to="/" icon="fa fa-cogs" text="ToolBar" />
+          <Nav.Item to="/" icon="fa fa-bookmark" text="Tabs" />
+          <Nav.Item to="/" icon="fa fa-comment" text="Toasts" />
         </Nav.Folder>
       </Nav>
     );

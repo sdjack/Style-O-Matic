@@ -2,8 +2,9 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 
-/* INPUT TYPE: RADIO */
+ @import 'config';
 
+ 
 .ui-radio {
 	display: flex;
   flex-direction: row;
@@ -16,7 +17,7 @@
 	padding-left: 0;
 	padding-right: 0;
 	line-height: 1;
-  margin: $input-component-offset;
+  margin: $widget-component-offset;
 
   & > label {
     display: inline-block;
@@ -33,8 +34,8 @@
     font-size: 18px !important;
 
     & > input {
-      width: $input-component-size;
-      height: $input-component-size;
+      width: $widget-component-size;
+      height: $widget-component-size;
       border-radius: $border-radius;
       margin-right: 6px;
       

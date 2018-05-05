@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// This file contains all component specific Sass mixins.
+// -----------------------------------------------------------------------------
+
+// VARIABLES
+
+$button-menu-size: $widget-size;
+$button-menu-margin: 0px 0px 0px ($padding-large / 2) !default;
+$button-menu-padding-low-value: $button-menu-size / 2;
+$button-menu-padding-high-value: $button-menu-size + 5;
+$button-menu-active-padding: 0px $button-menu-padding-low-value 0px $button-menu-padding-low-value !default;
+$button-menu-enabled-padding: 0px $button-menu-padding-high-value 0px $button-menu-padding-low-value !default;
+$button-menu-font-size: 12px;
+$button-menu-font-large-size: $widget-font-size;
+$button-menu-caret-offset: ($padding-large / 2);
+$button-menu-transition-properties: width;

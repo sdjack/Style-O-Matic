@@ -5,11 +5,12 @@
  * ======================================================================== */
 
 /* eslint "react/prop-types": [0] */
-import _ from "lodash";
 import React, { cloneElement } from "react";
+import cx from "classnames";
 import {
   CoreComponent,
   getCorePropDefaults,
+  getCorePropTypes,
   getValidProps,
   ROLE
 } from "../../lib";
@@ -19,9 +20,14 @@ import TitleIcon from "./TitleIcon";
 import "./Title.css";
 
 class Title extends CoreComponent {
+  static propTypes = getCorePropTypes({
+    sticky: "bool"
+  });
+
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: "title"
+    uirole: ROLE.TITLE,
+    sticky: false
   });
 
   static Content = TitleContent;
@@ -44,7 +50,20 @@ class Title extends CoreComponent {
   };
 
   render() {
-    const { renderAs, children, props, inherited } = getValidProps(this.props);
+    const {
+      renderAs,
+      className,
+      sticky,
+      children,
+      props,
+      inherited
+    } = getValidProps(this.props);
+    const classes = {
+      "ui-sticky": sticky
+    };
+
+    const uiClassCore = cx(className, classes);
+    delete props.className;
 
     let contentElement = "h2";
     let subtitleElement = "h5";
@@ -77,7 +96,7 @@ class Title extends CoreComponent {
     }
 
     return (
-      <div {...props}>
+      <div {...props} className={uiClassCore}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&

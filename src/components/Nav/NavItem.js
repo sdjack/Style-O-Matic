@@ -43,7 +43,7 @@ class NavItem extends CoreComponent {
     } = getValidProps(this.props);
 
     const classes = {
-      active: to && to === path,
+      active: to && path.indexOf(to) !== -1,
       minimized
     };
 

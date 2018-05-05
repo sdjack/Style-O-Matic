@@ -24,7 +24,7 @@ class MainContent extends CoreComponent {
     const { renderAs: Component, children, props } = getValidProps(this.props);
 
     return (
-      <div className="scroll-wrapper">
+      <div uirole={ROLE.CONTENT} className="scroll-wrapper">
         <Component {...props}>{children}</Component>
       </div>
     );

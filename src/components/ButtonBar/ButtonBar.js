@@ -21,8 +21,8 @@ class ButtonBar extends CoreComponent {
   static propTypes = getPropTypesA11y();
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: "buttonbar",
-    id: `buttonbar_${this.GUID}`,
+    uirole: ROLE.BUTTONBAR,
+    id: "buttonbar_id",
     dropdown: false
   });
 

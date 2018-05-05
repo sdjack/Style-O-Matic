@@ -20,7 +20,7 @@ export class ButtonMenu extends CoreComponent {
   static propTypes = getPropTypesA11y();
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: "buttonmenu",
+    uirole: ROLE.BUTTONMENU,
     id: `buttonmenu_${this.GUID}`
   });
 

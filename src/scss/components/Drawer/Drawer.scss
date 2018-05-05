@@ -1,0 +1,143 @@
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+.ui-drawer,
+.ui-drawer-flyout {
+    padding: 0px;
+    margin: 0px;
+}
+
+.ui-drawer {
+    z-index: 70;
+    color: $color-light;
+    background-color: $color-darker;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: space-around;
+    overflow: hidden;
+    @include no-shadow();
+    @include animate-default(0.2s);
+    transition-property: all;
+
+    &.active {
+      @include shadow-drawer();
+    }
+
+    &.minimized {
+      @include shadow-drawer();
+    }
+}
+
+.ui-drawer-content {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  background-color: inherit;
+  @include animate-default(0.2s);
+  transition-property: all;
+}
+
+.ui-drawer-row {
+  display: block;
+  width: 100%;
+}
+
+.ui-drawer-flyout {
+  display: block;
+  width: 100%;
+  float: left;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+  color: inherit;
+  background-color: inherit;
+}
+
+.ui-drawer-collapsed {
+  width: 0px;
+  overflow: hidden;
+  @include no-shadow();
+}
+
+.ui-drawer-flyout-collapsed {
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  @include no-shadow();
+}
+
+.ui-drawer-toggle {
+  //height: $outer-frame-size;
+  //width: 100%;
+  display: inline-block;
+  @include text-horizontal-align-left();
+  &:hover {
+    background-color: $color-blue-highlight;
+  }
+}
+
+.ui-drawer-toggle-button {
+  width: $outer-frame-size;
+  width: $outer-frame-size;
+  color: $color-light;
+  background-color: transparent;
+  padding: 2px;
+  font-size: $toggle-size;
+  border: none;
+  border-radius: 0;
+  @include shadow-removed();
+  &:hover, &:focus, &:active {
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.ui-drawer-left,
+.ui-drawer-right {
+    width: 0px;
+    flex-direction: column;
+    max-width: $inner-frame-size;
+    & > .ui-drawer-flyout {
+      height: 100%;
+    }
+
+    & > .ui-drawer-row {
+      height: 100%;
+    }
+
+    &.active {
+      width: 100% !important;
+      min-width: ($outer-frame-size * 2) !important;
+      max-width: $inner-frame-size !important;
+    }
+
+    &.minimized {
+      width: $outer-frame-size !important;
+      min-width: $outer-frame-size !important;
+      max-width: $outer-frame-size !important;
+    }
+}
+
+.ui-drawer-top,
+.ui-drawer-bottom {
+    height: 0px;
+    flex-direction: row;
+    max-height: $inner-frame-size;
+    & > .ui-drawer-flyout {
+      width: 100%;
+    }
+
+    &.active {
+      height: 100% !important;
+      min-height: ($outer-frame-size * 2) !important;
+      max-height: $inner-frame-size !important;
+    }
+
+    &.minimized {
+      height: $outer-frame-size !important;
+      min-height: $outer-frame-size !important;
+      max-height: $outer-frame-size !important;
+    }
+}

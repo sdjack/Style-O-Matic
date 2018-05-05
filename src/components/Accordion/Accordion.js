@@ -25,7 +25,7 @@ class Accordion extends CoreComponent {
 
   static defaultProps = getPropDefaultsAutoId({
     renderAs: "dl",
-    uirole: "accordion",
+    uirole: ROLE.ACCORDION,
     caret: false
   });
 

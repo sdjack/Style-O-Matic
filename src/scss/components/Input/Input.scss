@@ -10,6 +10,7 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
+
 .invalid {
   //color: rgb(235,77,55) !important;
   border-color: rgb(235,77,55);
@@ -32,11 +33,11 @@
 }
 
 .prepend-icon {
-	padding-left: $input-size;
+	padding-left: $widget-size;
 }
 
 .append-icon {
-	padding-right: $input-size;
+	padding-right: $widget-size;
 }
 
 .prepend-button {
@@ -73,20 +74,20 @@
 	padding-left: 0;
 	padding-right: 0;
 	position: absolute;
-	top: $input-offset;
-	bottom: $input-offset;
-	width: $input-size;
-	height: $input-size;
-	line-height: $input-size;
+	top: $widget-offset;
+	bottom: $widget-offset;
+	width: $widget-size;
+	height: $widget-size;
+	line-height: $widget-size;
 	text-align: center;
 	background: transparent;
 
 	&.prepended {
-		left: $input-offset;
+		left: $widget-offset;
 	}
 
 	&.appended {
-		right: $input-offset;
+		right: $widget-offset;
 	}
 }
 
@@ -139,10 +140,10 @@
 .ui-input-color {
 	width: 100%;
 	max-width: 100%;
-	height: $input-size;
+	height: $widget-size;
 	background-color: white;
 	border-radius: $border-radius;
-	border: $gentle-border;
+	border: $common-border;
 
 	& > input,
 	& > select {
@@ -161,12 +162,12 @@
 	max-width: 100%;
 	background-color: white;
 	border-radius: $border-radius;
-	border: $gentle-border;
+	border: $common-border;
 
 	& > textarea {
 		width: 100%;
 		height: 100%;
-		min-height: $input-size;
+		min-height: $widget-size;
 		background-color: transparent !important;
 		background: none !important;
 		border: none !important;
@@ -180,7 +181,7 @@
 .ui-input-number {
 	background-color: white;
 	border-radius: $border-radius;
-	border: $gentle-border;
+	border: $common-border;
 
 	& > input {
 		position: absolute;
@@ -188,7 +189,7 @@
 		left: 0;
 		top: 0;
 		bottom: 0;
-		right: $input-component-size + 2;
+		right: $widget-component-size + 2;
 		background-color: transparent !important;
 		background: none !important;
 		border-radius: 0 !important;
@@ -200,10 +201,10 @@
 .ui-input-number-down {
 	position: absolute;
 	display: inline-block;
-	right: ($input-component-size * -1);
-	height: ($input-component-height / 2);
-	width: $input-component-size;
-	border-left: $gentle-border;
+	right: ($widget-component-size * -1);
+	height: ($widget-component-height / 2);
+	width: $widget-component-size;
+	border-left: $common-border;
 	cursor: pointer;
 	text-align: center;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -225,7 +226,7 @@
 
 .ui-input-number-up {
 	top: 0;
-	border-bottom: $gentle-border;
+	border-bottom: $common-border;
 	border-radius: 0 $border-radius 0 0;
 
 	&:hover {
@@ -271,7 +272,7 @@
 		line-height: 2;
 
 		& > .fa {
-			line-height: $input-size !important;
+			line-height: $widget-size !important;
 		}
 		& > input:focus {
 			outline: 1px dotted #000;
@@ -284,14 +285,13 @@
 
 .ui-input-checkbox,
 .ui-input-radio {
-	margin: $input-component-offset;
+	margin: $widget-component-offset;
 	& > label {
-		height: $radio-label-height !important;
-		line-height: 1 !important;
-		font-size: 18px !important;
+		line-height: 1;
+		font-size: 18px;
 		& > input {
-			width: $input-component-size;
-			height: $input-component-size;
+			width: $widget-component-size;
+			height: $widget-component-size;
 		}
 	}
 }

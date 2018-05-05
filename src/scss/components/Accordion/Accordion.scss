@@ -2,7 +2,9 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 .ui-accordion {
-    background-color: #fff;
+  font-family: inherit;
+  color: inherit;
+  background-color: inherit;
 	border: 1px solid rgba(0,0,0,.13);
 	border-radius: 6px;
 	margin-left: auto;
@@ -34,11 +36,14 @@
 }
 
 .ui-accordion-title {
-    @include typo-title;
 	position: relative;
 	border-bottom: none;
 	border-radius: 6px 6px 0 0;
 	padding: 1em 1em;
+  font-family: inherit;
+  color: inherit;
+  background-color: inherit;
+  @include typo-title;
 	text-decoration: none;
 	text-indent: 12px;
 	overflow: hidden;
@@ -75,6 +80,8 @@
 	height: 0px;
 	padding: 0;
 	margin: 0;
+  font-family: inherit;
+  color: inherit;
 	background-color: rgba(0,0,0,.02);
 	overflow: hidden;
 	@include shadow-removed();

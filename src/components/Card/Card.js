@@ -6,53 +6,58 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React, { cloneElement } from "react";
+import React from "react";
+import cx from "classnames";
 import {
   CoreComponent,
   getValidProps,
+  getCorePropTypes,
   getCorePropDefaults,
   ROLE
 } from "../../lib";
+import CardHeader from "./CardHeader";
+import CardContent from "./CardContent";
+import CardFooter from "./CardFooter";
 import "./Card.css";
 
 class Card extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
-    uirole: "card"
+  static propTypes = getCorePropTypes({
+    striped: "bool"
   });
 
-  renderChild = (child, props) => {
-    const role = child.props.uirole;
-    let ref = c => {
-      this[role] = c;
-    };
-    if (typeof child.ref !== "string") {
-      ref = this.chainFunction(child.ref, ref);
-    }
-    return cloneElement(child, {
-      ...props,
-      ref,
-      uiclass: this.childPrefix(role)
-    });
-  };
+  static defaultProps = getCorePropDefaults({
+    renderAs: "div",
+    uirole: ROLE.CARD,
+    striped: false
+  });
+
+  static Header = CardHeader;
+  static Content = CardContent;
+  static Footer = CardFooter;
 
   render() {
-    const { renderAs: Component, children, props, inherited } = getValidProps(
-      this.props
-    );
+    const {
+      renderAs: Component,
+      className,
+      striped,
+      children,
+      props,
+      inherited
+    } = getValidProps(this.props);
+    const classes = {
+      "ui-card-striped": striped
+    };
 
+    const uiClassCore = cx(className, classes);
+    delete props.className;
     return (
-      <Component {...props}>
+      <Component {...props} className={uiClassCore}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
-            switch (child.props.uirole) {
-              case ROLE.CONTENT:
-                return this.renderChild(child, inherited);
-              default:
-                return child;
-            }
+            return this.renderChild(child, inherited);
           }
           return child;
         })}

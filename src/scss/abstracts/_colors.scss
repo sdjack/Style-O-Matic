@@ -5,14 +5,15 @@
  * NEUTRALS
  */
 $color-black: #000000;
-$color-black-active: #263238;
-$color-white: #F3F3F3;
-$color-white-active: #FFFFFF;
-$color-light-grey: #EEEEEE;
-$color-grey: #BDBDBD;
-$color-dark-grey: #757575;
-$color-darker-grey: #484848;
-$color-darkest-grey: #333333;
+$color-white: #FFFFFF;
+$color-grey: #DFDFDF;
+
+$color-dark: #3F4348;
+$color-darker: #2F3338;
+$color-darkest: #1F2328;
+$color-light: #CFD3D8;
+$color-lighter: #DFE3E8;
+$color-lightest: #EFF3F8;
 /**
  * NEUTRALS CONTRAST
  */
@@ -82,23 +83,9 @@ $color-violet-contrast-darkened: darken($color-violet-contrast, 10%);
 /**
  * ONWARD
  */
-$color-blue-shadow: rgba($color-blue, 0.33);
-$color-red-shadow: rgba($color-red, 0.33);
-$color-green-shadow: rgba($color-green, 0.33);
-
-$color-primary: $color-grey !default;
-$color-primary-light: $color-light-grey !default;
-$color-primary-dark: $color-dark-grey !default;
-$color-primary-contrast: rgba(13,13,13,0.7) !default;
-$color-primary-contrast-hinted: rgba(48,48,48,0.7) !default;
-
-$color-secondary: rgba(32,32,32,1) !default;
-$color-secondary-light: rgba(48,48,48,1) !default;
-$color-secondary-lighter: rgba(97,97,97,1) !default;
-$color-secondary-lightest: rgba(128,128,128,1) !default;
-$color-secondary-dark: rgba(13,13,13,1) !default;
-$color-secondary-contrast: rgba(239,239,239,0.7) !default;
-$color-secondary-contrast-hinted: rgba(128,128,128,0.7) !default;
+$color-blue-highlight: rgba($color-blue, 0.5);
+$color-red-highlight: rgba($color-red, 0.5);
+$color-green-highlight: rgba($color-green, 0.5);
 
 $color-invisible: rgba(0,0,0,0) !default;
 
@@ -126,21 +113,3 @@ $color-light-alpha-9: rgba(255,255,255,0.933) !default;
 
 $color-dark-alpha-0-medium: rgba(151,151,151,1) !default;
 $color-dark-alpha-0-light: rgba(255,255,255,0.75) !default;
-$color-dark-contrast: $color-white !default;
-$color-light-contrast: $color-black !default;
-
-/// Main brand color
-/// @type Color
-$brand-color: rgb(229, 0, 80) !default;
-
-/// Light grey
-/// @type Color
-$light-grey: rgb(237, 237, 237) !default;
-
-/// Medium grey
-/// @type Color
-$mid-grey: rgb(153, 153, 153) !default;
-
-/// Dark grey
-/// @type Color
-$dark-grey: rgb(68, 68, 68) !default;

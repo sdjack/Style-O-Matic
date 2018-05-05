@@ -1,6 +1,10 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
+
+ @import 'config';
+
+ 
 .ui-table {
   position: relative;
   width: 100%;
@@ -10,65 +14,30 @@
   white-space: wrap;
   font-size: 12px;
   line-height: 16px;
+}
 
-  & > thead {
-    padding-bottom: 3px;
-    background-color: $color-secondary-lighter;
-    color: $color-primary-light;
-
-    & > tr {
-      & > th, & > td {
-        padding: 8px 12px;
-        color: inherit;
-      }
-    }
-  }
-
-  & > tbody {
-    & > tr {
-      position: relative;
-      & > td {
-        position: relative;
-        padding: 2px 12px;
-        margin: 0;
-        box-sizing: border-box;
-      }
-    }
-  }
-
-  & > th {
-    position: relative;
-    padding: 2px 12px;
-    margin: 0;
-    height: $table-row-height;
-    box-sizing: border-box;
-    vertical-align: bottom;
-    @include text-horizontal-align-center();
-    text-overflow: ellipsis;
-    @include typo-body-2();
-    font-weight: bold;
-  }
+.ui-table-thead {
+  background-color: $color-dark;
+  color: $color-light;
 }
 
 .ui-table-bordered {
   border-right: $table-borders;
-  & > tbody {
-    & > tr {
+  & > .ui-table-tbody {
+    & > .ui-table-tbody-row {
       border: 0px solid rgba(0,0,0,0);
       border-bottom: $table-borders;
-      & > td,
-      & > th {
+      & > .ui-table-cell {
         border: 0px solid rgba(0,0,0,0);
         border-left: $table-borders;
       }
     }
   }
-  & > tfoot {
-    & > tr {
+  & > .ui-table-tfoot {
+    & > .ui-table-tfoot-row {
       border: 0px solid rgba(0,0,0,0);
       border-bottom: $table-borders;
-      & > td,
-      & > th {
+      & > .ui-table-cell {
         border: 0px solid rgba(0,0,0,0);
         border-left: $table-borders;
       }
@@ -78,18 +47,16 @@
 
 .ui-table-padded {
   padding: $padding;
-  & > tbody {
-    & > tr {
-      & > td,
-      & > th {
+  & > .ui-table-tbody {
+    & > .ui-table-tbody-row {
+      & > .ui-table-cell {
         padding: $padding;
       }
     }
   }
-  & > tfoot {
-    & > tr {
-      & > td,
-      & > th {
+  & > .ui-table-tfoot {
+    & > .ui-table-tfoot-row {
+      & > .ui-table-cell {
         padding: $padding;
       }
     }
@@ -97,13 +64,12 @@
 }
 
 .ui-table-hover {
-  & > tbody {
-    & > tr {
+  & > .ui-table-tbody {
+    & > .ui-table-tbody-row {
       &:hover {
         background-color: rgba(0,180,255,0.08) !important;
       }
-      & > td,
-      & > th {
+      & > .ui-table-cell {
         @include animate-default(0.28s);
         transition-property: background-color;
         &:hover {
@@ -112,13 +78,12 @@
       }
     }
   }
-  & > tfoot {
-    & > tr {
+  & > .ui-table-tfoot {
+    & > .ui-table-tfoot-row {
       &:hover {
         background-color: rgba(0,180,255,0.08) !important;
       }
-      & > td,
-      & > th {
+      & > .ui-table-cell {
         @include animate-default(0.28s);
         transition-property: background-color;
         &:hover {
@@ -131,18 +96,16 @@
 
 .ui-table-spaced {
   line-height: 20px;
-  & > tbody {
-    & > tr {
-      & > td,
-      & > th {
+  & > .ui-table-tbody {
+    & > .ui-table-tbody-row {
+      & > .ui-table-cell {
         padding-top: $padding;
       }
     }
   }
-  & > tfoot {
-    & > tr {
-      & > td,
-      & > th {
+  & > .ui-table-tfoot {
+    & > .ui-table-tfoot-row {
+      & > .ui-table-cell {
         padding-top: $padding;
       }
     }
@@ -151,8 +114,8 @@
 
 .ui-table-striped {
   line-height: 20px;
-  & > tbody {
-    tr:nth-child(odd) {
+  & > .ui-table-tbody {
+    .ui-table-tbody-row:nth-child(odd) {
       background-color: rgba(0,0,0,0.033);
     }
   }
@@ -166,8 +129,5 @@
 @media (min-width: 40em) {
   .ui-table {
     font-size: 13px;
-    & > th {
-      font-size: 15px;
-    }
   }
 }

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
 import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
 import cx from "classnames";
-import { getInheritedClass } from "./ROLE.js";
+import { getParentClass } from "./ROLE.js";
 import { uID } from "./coreUtilities.js";
 
 const OBSERVABLE_EVENTS = [
@@ -74,6 +74,8 @@ const DefaultPropTypes = {
   reveal: PropTypes.bool,
   well: PropTypes.bool,
   panel: PropTypes.bool,
+  rounded: PropTypes.bool,
+  circular: PropTypes.bool,
   masked: PropTypes.bool,
   renderAs: elementType,
   className: PropTypes.string,
@@ -82,6 +84,7 @@ const DefaultPropTypes = {
   tooltip: PropTypes.string,
   children: PropTypes.node,
   uiclass: PropTypes.string,
+  theme: PropTypes.string,
   uirole: PropTypes.string,
   path: PropTypes.string,
   text: PropTypes.string,
@@ -93,6 +96,7 @@ const DefaultPropTypes = {
   overlay: PropTypes.bool,
   fixed: PropTypes.bool,
   color: PropTypes.oneOf([
+    "grey",
     "black",
     "red",
     "orange",
@@ -100,7 +104,16 @@ const DefaultPropTypes = {
     "green",
     "blue",
     "indigo",
-    "violet"
+    "violet",
+    "!grey",
+    "!black",
+    "!red",
+    "!orange",
+    "!yellow",
+    "!green",
+    "!blue",
+    "!indigo",
+    "!violet"
   ]),
   colorStyle: PropTypes.oneOf(["fill", "outline", "text"]),
   colorHover: PropTypes.bool,
@@ -114,6 +127,7 @@ const DefaultPropTypes = {
   orientation: PropTypes.oneOf(["vertical", "horizontal"]),
   textAlign: PropTypes.oneOf(["left", "right", "center"]),
   contentAlign: PropTypes.oneOf(["left", "right", "center"]),
+  attach: PropTypes.oneOf(["left", "right", "top", "bottom"]),
   position: PropTypes.oneOf([
     "left",
     "before",
@@ -144,8 +158,10 @@ const DefaultPropValues = {
   tooltip: null,
   children: null,
   uiclass: null,
+  theme: null,
   uirole: "",
   path: "/",
+  attach: null,
   text: null,
   icon: null,
   inset: null,
@@ -153,6 +169,8 @@ const DefaultPropValues = {
   reveal: null,
   well: null,
   panel: null,
+  rounded: null,
+  circular: null,
   masked: null,
   to: null,
   disabled: false,
@@ -254,6 +272,7 @@ export function getPropDefaultsAutoId(config, uidataConfig) {
 export function getUIClassString(props) {
   const {
     uiclass,
+    theme,
     className,
     disabled,
     active,
@@ -265,6 +284,8 @@ export function getUIClassString(props) {
     reveal,
     well,
     panel,
+    rounded,
+    circular,
     masked,
     invalid,
     color,
@@ -276,34 +297,44 @@ export function getUIClassString(props) {
     position
   } = props;
 
+  const sUIclass = `ui-${uiclass}`;
+  const hasUIclass = !className || className.indexOf(sUIclass) === -1;
+
   const coreClasses = {
-    [`ui-${uiclass}`]: !className || className.indexOf(`ui-${uiclass}`) === -1,
-    disabled,
-    active,
-    open,
-    invalid,
-    "ui-overlay": overlay,
-    "ui-fixed": fixed,
+    [sUIclass]: hasUIclass,
     [`ui-position-${position}`]: position,
     [`ui-orientation-${orientation}`]: orientation,
     [`ui-content-align-${contentAlign}`]: contentAlign,
-    [`ui-text-align-${textAlign}`]: textAlign
-  };
-
-  const styleClasses = {
+    [`ui-text-align-${textAlign}`]: textAlign,
+    "ui-overlay": overlay,
+    "ui-fixed": fixed,
     "ui-inset": inset,
     "ui-raised": raised,
     "ui-reveal": reveal,
+    "ui-rounded": rounded,
+    "ui-circular": circular,
     "ui-well": well,
     "ui-panel": panel,
-    "ui-masked": masked
+    "ui-masked": masked,
+    disabled,
+    active,
+    open,
+    invalid
+  };
+
+  const styleClasses = {
+    [`ui-theme-${theme}`]: theme
   };
   if (!_.isNil(color)) {
-    let colorClass = `ui-${color}`;
+    const nohover = String(color).indexOf("!") !== -1;
+    const cleanColor = String(color).replace("!", "");
+    let colorClass = `ui-${cleanColor}`;
     if (!_.isNil(colorStyle)) {
       colorClass += `-${colorStyle}`;
     }
-    if (!_.isNil(colorHover)) {
+    if (nohover) {
+      colorClass += "-no-hover";
+    } else if (!_.isNil(colorHover)) {
       colorClass += "-hover";
     }
     styleClasses[colorClass] = true;
@@ -328,19 +359,32 @@ export function getUIClassString(props) {
 
 export function getValidProps(source) {
   const obj = { props: {}, inherited: {} };
-  Object.entries(source).forEach(([attr, value]) => {
-    if (NATIVE_PROPS.indexOf(attr) !== -1 && value !== null) {
-      obj[attr] = value;
-      obj.props[attr] = value;
-    } else if (attr !== "uidata" && attr !== "privatedata") {
-      if (typeof value === "object") {
-        obj[attr] = _.clone(value);
+  if (source.style) {
+    const uiStyle = {};
+    Object.entries(source.style).forEach(([attr, prop]) => {
+      if (typeof prop === "object") {
+        uiStyle[attr] = _.clone(prop);
       } else {
-        obj[attr] = value;
+        uiStyle[attr] = prop;
       }
-    }
-    if (INHERITED_PROPS.indexOf(attr) !== -1 && !_.isNil(value)) {
-      obj.inherited[attr] = value;
+    });
+    obj.props.style = uiStyle;
+  }
+  Object.entries(source).forEach(([attr, value]) => {
+    if (attr !== "style") {
+      if (NATIVE_PROPS.indexOf(attr) !== -1 && value !== null) {
+        obj[attr] = value;
+        obj.props[attr] = value;
+      } else if (attr !== "uidata" && attr !== "privatedata") {
+        if (typeof value === "object") {
+          obj[attr] = _.clone(value);
+        } else {
+          obj[attr] = value;
+        }
+      }
+      if (INHERITED_PROPS.indexOf(attr) !== -1 && !_.isNil(value)) {
+        obj.inherited[attr] = value;
+      }
     }
   });
   if (typeof source.privatedata !== "undefined") {
@@ -352,7 +396,7 @@ export function getValidProps(source) {
   obj.styleClassName = uiClassNames[2];
   obj.props.className = uiClassNames[0];
   if (_.isNil(obj.parentclass)) {
-    obj.parentclass = getInheritedClass(obj);
+    obj.parentclass = getParentClass(obj);
   }
   obj.inherited.parentclass = obj.parentclass;
   if (_.isNil(obj.inherited.uiclass)) {

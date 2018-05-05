@@ -13,19 +13,19 @@ import {
   getValidProps,
   ROLE
 } from "../../lib";
-import MainDrawer from "./MainDrawer.js";
+import Drawer from "../Drawer/Drawer.js";
 import MainContent from "./MainContent.js";
 import "./Main.css";
 
 class Main extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "main",
-    uirole: "main",
-    fixed: true
+    uirole: ROLE.MAIN,
+    fixed: false
   });
 
+  static Drawer = Drawer;
   static Content = MainContent;
-  static Drawer = MainDrawer;
 
   renderChild = (child, props) => {
     const role = child.props.uirole;
@@ -56,8 +56,6 @@ class Main extends CoreComponent {
           ) {
             switch (child.props.uirole) {
               case ROLE.CONTENT:
-                return this.renderChild(child, { uiclass });
-              case ROLE.DRAWER:
                 return this.renderChild(child, { uiclass });
               default:
                 return child;

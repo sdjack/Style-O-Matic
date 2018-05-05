@@ -1,6 +1,10 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
+
+ @import 'config';
+
+ 
 .button-menu {
   display: inline-block;
   position: relative;
@@ -33,7 +37,7 @@
         }
       }
       & > .button-menu-dropdown {
-        border: $gentle-border;
+        border: $common-border;
         @include shadow-basic();
         height: auto !important;
       }
@@ -91,7 +95,7 @@
 }
 
 .button-menu-input-item {
-  border-bottom: $gentle-heavy-border;
+  border-bottom: $common-heavy-border;
   & > input {
     height: 36px;
   }
@@ -127,7 +131,7 @@
   display: block;
   position: relative;
   width: 100%;
-  height: $input-size;
+  height: $widget-size;
   margin: 0;
   padding: 0;
   text-decoration: none;

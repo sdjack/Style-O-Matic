@@ -3,16 +3,14 @@
  *
  * @author: Steven Jackson
  * ======================================================================== */
-/* eslint "react/prop-types": [0] */
-
+/* eslint-disable */
 import { Component, cloneElement } from "react";
 import { uID } from "./coreUtilities.js";
 import { getCorePropTypes, getCorePropDefaults } from "./propUtilities.js";
-import { ROLE, getInheritedClass } from "./ROLE.js";
-import UI from "./UI.js";
-
-const getChildClass = (uiclass, role) =>
-  (uiclass ? `${uiclass}-` : "") + (role ? `${role}` : "");
+import { ROLE, getParentClass, getChildClass } from "./ROLE.js";
+import EventManager from "./EventManager.js";
+/* eslint-enable */
+/* eslint "react/prop-types": [0] */
 
 export default class CoreComponent extends Component {
   static propTypes = getCorePropTypes();
@@ -29,10 +27,10 @@ export default class CoreComponent extends Component {
 
   componentWillMount() {
     if (this.props.observe) {
-      UI.registerObserver(this, this.props.observe);
+      EventManager.registerObserver(this, this.props.observe);
     }
     if (this.props.dispatch) {
-      UI.registerDispatcher(this, this.props.dispatch);
+      EventManager.registerDispatcher(this, this.props.dispatch);
     }
     if (this.WillMount) {
       this.WillMount();
@@ -41,10 +39,10 @@ export default class CoreComponent extends Component {
 
   componentWillUnmount() {
     if (this.props.observe) {
-      UI.unregisterObserver(this, this.props.observe);
+      EventManager.unregisterObserver(this, this.props.observe);
     }
     if (this.props.dispatch) {
-      UI.unregisterDispatcher(this, this.props.dispatch);
+      EventManager.unregisterDispatcher(this, this.props.dispatch);
     }
     if (this.WillUnmount) {
       this.WillUnmount();
@@ -55,13 +53,23 @@ export default class CoreComponent extends Component {
     this.uiRef = ref;
   };
 
+  /* eslint-disable */
   onEventDispatch = (eventName, eventData, eventSenders) => {
     // console.log(`${eventName} - ${eventData}`);
     // console.log(eventSenders);
   };
+  /* eslint-enable */
 
-  childPrefix = variant =>
-    getInheritedClass(this.props) + (variant ? `-${variant}` : "");
+  setChildProps = (role, ref, props) => {
+    const parentClass = getParentClass(this.props);
+    const childClass = getChildClass(parentClass, role);
+    return {
+      ...props,
+      ref,
+      parentclass: parentClass,
+      uiclass: childClass
+    };
+  };
 
   chainFunction = (...funcs) =>
     funcs.filter(f => f != null).reduce((acc, f) => {
@@ -81,27 +89,22 @@ export default class CoreComponent extends Component {
       };
     }, null);
 
-  setChildProps = (role, ref, props) => {
-    const parentClass = getInheritedClass(this.props);
-    const childClass = getChildClass(parentClass, role);
-    return {
-      ...props,
-      ref,
-      parentclass: parentClass,
-      uiclass: childClass
-    };
-  };
+  childPrefix = variant =>
+    getParentClass(this.props) + (variant ? `-${variant}` : "");
 
   renderChild = (child, props) => {
-    const role = child.props.uirole || ROLE.CONTENT;
-    let ref = c => {
-      this[role] = c;
-    };
-    if (typeof child.ref === "string") {
-      throw new Error("Child components cannot set ref to string.");
-    } else {
-      ref = this.chainFunction(child.ref, ref);
+    if (child.props) {
+      const role = child.props.uirole || ROLE.CONTENT;
+      let ref = c => {
+        this[role] = c;
+      };
+      if (typeof child.ref === "string") {
+        throw new Error("Child components cannot set ref to string.");
+      } else {
+        ref = this.chainFunction(child.ref, ref);
+      }
+      return cloneElement(child, this.setChildProps(role, ref, props));
     }
-    return cloneElement(child, this.setChildProps(role, ref, props));
+    return child;
   };
 }

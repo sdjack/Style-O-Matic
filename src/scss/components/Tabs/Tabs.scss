@@ -59,7 +59,7 @@
   @include text-align-center();
 
   &.active {
-    border-bottom: 2px solid $common-text-color;
+    border-bottom: 2px solid $text-color;
 		font-weight: 600;
   }
 

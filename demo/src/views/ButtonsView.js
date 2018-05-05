@@ -12,7 +12,7 @@ import { Button, Dropdown, Grid, Title } from "../../../src/index";
 class ButtonsView extends React.Component {
   render() {
     return [
-      <Title renderAs="h1" textAlign="center" key="view-title">
+      <Title renderAs="h1" textAlign="center" key="view-title" sticky>
         <Title.Content>Buttons</Title.Content>
       </Title>,
       <Grid key="view-grid">

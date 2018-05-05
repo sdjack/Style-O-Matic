@@ -7,41 +7,41 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Header, Footer, Main, Grid, Title } from "../../../src/index";
+import { Header, Footer, ToolBar, Main, Grid, Title } from "../../../src/index";
 
 class LayoutView extends React.Component {
   render() {
     return [
-      <Title renderAs="h1" textAlign="center" key="view-title-header">
+      <Title renderAs="h1" textAlign="center" key="view-title-header" panel>
         <Title.Content dispatch="scroll">Layout - Header</Title.Content>
       </Title>,
-      <Grid key="view-grid-header">
+      <Grid key="view-grid-header" panel>
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
+          <Grid.Column textAlign="center">
             <Title renderAs="h2" textAlign="center" key="view-title">
               <Title.Content>Header</Title.Content>
               <Title.Subtitle>Standard or Fixed</Title.Subtitle>
             </Title>
             <hr />
             <br />
-            <Header raised>
-              <Header.Content>
-                <Header.Title>TITLE</Header.Title>
-                <Header.Button>Header Button</Header.Button>
-                <Header.Button>Header Button</Header.Button>
-                <Header.Text>Header Text</Header.Text>
-              </Header.Content>
-            </Header>
+            <ToolBar raised>
+              <ToolBar.Content>
+                <ToolBar.Title>TITLE</ToolBar.Title>
+                <ToolBar.Button>ToolBar Button</ToolBar.Button>
+                <ToolBar.Button>ToolBar Button</ToolBar.Button>
+                <ToolBar.Text>ToolBar Text</ToolBar.Text>
+              </ToolBar.Content>
+            </ToolBar>
           </Grid.Column>
         </Grid.Row>
       </Grid>,
-      <Title renderAs="h1" textAlign="center" key="view-title-main">
+      <Title renderAs="h1" textAlign="center" key="view-title-main" panel>
         <Title.Content dispatch="scroll">Layout - Main</Title.Content>
       </Title>,
-      <Grid key="view-grid-main">
+      <Grid key="view-grid-main" panel>
         <Grid.Row>
           <Grid.Column>
-            <Grid panel>
+            <Grid>
               <Grid.Row>
                 <Grid.Column textAlign="center">
                   <Title renderAs="h2" textAlign="center" key="view-title">
@@ -63,25 +63,25 @@ class LayoutView extends React.Component {
           </Grid.Column>
         </Grid.Row>
       </Grid>,
-      <Title renderAs="h1" textAlign="center" key="view-title-footer">
+      <Title renderAs="h1" textAlign="center" key="view-title-footer" panel>
         <Title.Content dispatch="scroll">Layout - Footer</Title.Content>
       </Title>,
-      <Grid key="view-grid-footer">
+      <Grid key="view-grid-footer" panel>
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
+          <Grid.Column textAlign="center">
             <Title renderAs="h2" textAlign="center" key="view-title">
               <Title.Content>Footer</Title.Content>
               <Title.Subtitle>Standard or Fixed</Title.Subtitle>
             </Title>
             <br />
             <br />
-            <Footer inset>
-              <Footer.Content>
-                <Footer.Button>Footer Button</Footer.Button>
-                <Footer.Button>Footer Button</Footer.Button>
-                <Footer.Text>Footer Text</Footer.Text>
-              </Footer.Content>
-            </Footer>
+            <ToolBar inset>
+              <ToolBar.Content>
+                <ToolBar.Button>Footer Button</ToolBar.Button>
+                <ToolBar.Button>Footer Button</ToolBar.Button>
+                <ToolBar.Text>Footer Text</ToolBar.Text>
+              </ToolBar.Content>
+            </ToolBar>
           </Grid.Column>
         </Grid.Row>
       </Grid>

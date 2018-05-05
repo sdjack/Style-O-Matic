@@ -6,63 +6,39 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React, { cloneElement } from "react";
+import React from "react";
 import {
   CoreComponent,
-  getCorePropDefaults,
   getValidProps,
+  getCorePropTypes,
+  getCorePropDefaults,
   ROLE
 } from "../../lib";
-import ToolBarHeader from "./ToolBarHeader.js";
 import ToolBarContent from "./ToolBarContent.js";
+import ToolBarItem from "./ToolBarItem.js";
+import ToolBarTitle from "./ToolBarTitle.js";
+import ToolBarText from "./ToolBarText.js";
+import ToolBarIcon from "./ToolBarIcon.js";
+import Button from "../Button/Button.js";
 import "./ToolBar.css";
 
 class ToolBar extends CoreComponent {
   static defaultProps = getCorePropDefaults({
-    uirole: "toolbar"
+    renderAs: "div",
+    uirole: ROLE.TOOLBAR
   });
 
-  static Header = ToolBarHeader;
   static Content = ToolBarContent;
-
-  renderHeader = (child, props) => {
-    const role = child.props.uirole;
-    let ref = c => {
-      this.header = c;
-    };
-    if (typeof child.ref !== "string") {
-      ref = this.chainFunction(child.ref, ref);
-    }
-    return cloneElement(child, {
-      ...props,
-      ref,
-      uiclass: this.childPrefix(role)
-    });
-  };
-
-  renderChild = (child, props) => {
-    const role = child.props.uirole || ROLE.CONTENT;
-    let ref = c => {
-      this[role] = c;
-    };
-    if (typeof child.ref !== "string") {
-      ref = this.chainFunction(child.ref, ref);
-    }
-    return cloneElement(child, {
-      ...props,
-      ref,
-      uiclass: this.childPrefix(role)
-    });
-  };
+  static Item = ToolBarItem;
+  static Icon = ToolBarIcon;
+  static Title = ToolBarTitle;
+  static Button = Button;
+  static Text = ToolBarText;
 
   render() {
-    const {
-      renderAs: Component,
-      uiclass,
-      children,
-      props,
-      inherited
-    } = getValidProps(this.props);
+    const { renderAs: Component, children, props, inherited } = getValidProps(
+      this.props
+    );
 
     return (
       <Component {...props}>

@@ -11,7 +11,8 @@ import {
   CoreComponent,
   getValidProps,
   getPropTypesA11y,
-  getCorePropDefaults
+  getCorePropDefaults,
+  ROLE
 } from "../../lib";
 import Calendar from "./Calendar.js";
 import Dropdown from "../Dropdown/Dropdown.js";
@@ -28,7 +29,7 @@ class DatePicker extends CoreComponent {
 
   static defaultProps = getCorePropDefaults({
     renderAs: "Dropdown",
-    uirole: "datepicker",
+    uirole: ROLE.DATEPICKER,
     id: `datepicker_${this.GUID}`,
     inputenabled: false,
     iconenabled: false,

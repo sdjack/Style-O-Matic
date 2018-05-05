@@ -74,7 +74,7 @@ class NavFolder extends CoreComponent {
     const classes = {
       expanded,
       minimized,
-      active: to && to === path
+      active: to && path.indexOf(to) !== -1
     };
 
     const caretClass =

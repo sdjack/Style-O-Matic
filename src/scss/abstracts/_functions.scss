@@ -33,11 +33,11 @@
 }
 
 @function color-contrast($n, $inverted: false) {
-  $light: $color-white;
-  $dark: $color-black;
+  $light: $color-light;
+  $dark: $color-dark;
   @if $inverted {
-    $light: $color-black;
-    $dark: $color-white;
+    $light: $color-dark;
+    $dark: $color-light;
   }
   $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
   $light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);

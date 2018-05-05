@@ -4,7 +4,7 @@
  * @author: Steven Jackson
  * ======================================================================== */
 
-class UIEvent {
+class ManagedEvent {
   constructor(eventName) {
     this.initialized = false;
     this.name = eventName;
@@ -36,20 +36,20 @@ class UIEvent {
   };
 }
 
-class UI {
+class EventManager {
   constructor() {
     this.registry = {};
     this.events = {
-      scroll: new UIEvent("scroll"),
-      wheel: new UIEvent("wheel"),
-      mousemove: new UIEvent("mousemove"),
-      keypress: new UIEvent("keypress"),
-      copy: new UIEvent("copy"),
-      paste: new UIEvent("paste"),
-      touchmove: new UIEvent("touchmove"),
-      touchstart: new UIEvent("touchstart"),
-      error: new UIEvent("error"),
-      load: new UIEvent("load")
+      scroll: new ManagedEvent("scroll"),
+      wheel: new ManagedEvent("wheel"),
+      mousemove: new ManagedEvent("mousemove"),
+      keypress: new ManagedEvent("keypress"),
+      copy: new ManagedEvent("copy"),
+      paste: new ManagedEvent("paste"),
+      touchmove: new ManagedEvent("touchmove"),
+      touchstart: new ManagedEvent("touchstart"),
+      error: new ManagedEvent("error"),
+      load: new ManagedEvent("load")
     };
   }
 
@@ -128,4 +128,4 @@ class UI {
   };
 }
 
-export default new UI();
+export default new EventManager();

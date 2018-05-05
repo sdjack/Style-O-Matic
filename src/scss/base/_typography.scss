@@ -18,18 +18,18 @@ hr {
   border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-  @include typo-display-3($colorContrast: true);
+  @include typo-small($colorContrast: true);
 
   font-size: 0.6em;
 }
 h1 {
-  @include typo-display-3;
+  @include typo-h1;
 }
 h2 {
-  @include typo-display-2;
+  @include typo-h2;
 }
 h3 {
-  @include typo-display-1;
+  @include typo-h3;
 }
 h4 {
   @include typo-headline;
@@ -42,7 +42,7 @@ h6 {
 }
 
 p {
-  @include typo-body-1;
+  @include typo-paragraph;
 
   margin: 0px 0px 16px;
   
@@ -90,7 +90,7 @@ ul {
 
 button {
   background: none;
-  border: 1px solid rgba(0,0,0,0);
+  border: 1px solid rgba(0,0,0,0.01);
   cursor: pointer;
   &:focus {
     border: 1px solid rgba(0,0,0,0.35);
@@ -112,23 +112,23 @@ legend {
   display: inline-block;
   width: 100%;
   margin: 0;
-  padding: $input-padding;
+  padding: $widget-padding;
   @include text-align-left();
 }
 
 label,
 span.label {
-  height: $input-size / 2;
-  font-size: $input-font-size;
-  line-height: $input-size / 4;
+  height: $widget-size / 2;
+  font-size: $widget-font-size;
+  line-height: $widget-size / 4;
 }
 
 legend {
-  height: $input-size;
-  font-size: $input-font-size + 2;
+  height: $widget-size;
+  font-size: $widget-font-size + 2;
   font-weight: 700;
   width: 100%;
-  line-height: $input-size;
+  line-height: $widget-size;
 }
 
 input::-webkit-autofill,
@@ -173,7 +173,7 @@ select,
 textarea {
   border-radius: $border-radius;
   background-color: white;
-  border: $gentle-border;
+  border: $common-border;
 
   @include typo-input();
 
@@ -184,13 +184,13 @@ textarea {
 
 input[type="button"],
 input[type="submit"] {
-  padding: ($input-size / 4) $input-size;
+  padding: ($widget-size / 4) $widget-size;
   text-decoration: none;
   background-color: $color-dark-alpha-0;
   border: none !important;
   border-radius: $border-radius;
   cursor: pointer;
-  min-width: $input-size;
+  min-width: $widget-size;
 
   @include typo-input-button();
 
@@ -199,4 +199,30 @@ input[type="submit"] {
   &:active {
     background-color: $color-dark-alpha-2;
   }
+}
+
+tr {
+  position: relative;
+}
+
+th, td {
+  position: relative;
+  color: inherit;
+  padding: 4px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+th {
+  position: relative;
+  vertical-align: bottom;
+  text-overflow: ellipsis;
+  @include typo-table-header();
+  @include text-horizontal-align-center();
+}
+
+thead,
+tbody,
+tfoot {
+  padding-bottom: 3px;
 }

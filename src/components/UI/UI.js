@@ -13,11 +13,17 @@ import {
   getValidProps,
   ROLE
 } from "../../lib";
+// import "./UI.css";
 
-class ToolBarHeader extends CoreComponent {
+class UI extends CoreComponent {
+  static propTypes = getCorePropTypes({
+    theme: "string"
+  });
+
   static defaultProps = getCorePropDefaults({
-    renderAs: "h2",
-    uirole: ROLE.HEADER
+    renderAs: "div",
+    uirole: "ui",
+    theme: "default"
   });
 
   render() {
@@ -27,4 +33,4 @@ class ToolBarHeader extends CoreComponent {
   }
 }
 
-export default ToolBarHeader;
+export default UI;

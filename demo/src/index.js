@@ -7,7 +7,7 @@ import FormsView from "./views/FormsView";
 import NotFound from "./views/NotFound";
 import LayoutView from "./views/LayoutView";
 import GridView from "./views/GridView";
-import NavigationView from "./views/NavigationView";
+import CardView from "./views/CardView";
 import ButtonsView from "./views/ButtonsView";
 import TableView from "./views/TableView";
 import AccordionView from "./views/AccordionView";
@@ -65,11 +65,11 @@ render(
         )}
       />
       <Route
-        path="/navigation"
+        path="/cards"
         exact
         render={props => (
           <PageWrapper {...props}>
-            <NavigationView {...props} />
+            <CardView {...props} />
           </PageWrapper>
         )}
       />

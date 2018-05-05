@@ -51,6 +51,7 @@ const componentList = [
   "ButtonMenu",
   "Card",
   "DatePicker",
+  "Drawer",
   "Dropdown",
   "Footer",
   "Form",
@@ -188,6 +189,14 @@ gulp.task("replicate", cb => {
   runSequence(["replicate_css"], cb);
 });
 // Our default task (executed by calling the "gulp" command)
-gulp.task("default", cb => {
+gulp.task("proc", cb => {
   runSequence(["build_all"], ["replicate"], ["clean"], cb);
+});
+// Start watching for file changes
+gulp.task("watch", () => {
+  gulp.watch(["src/scss/**/*.scss", "src/scss/**/**/*.scss"], ["proc"]);
+});
+// Our default task (executed by calling the "gulp" command)
+gulp.task("default", cb => {
+  runSequence(["proc"], cb);
 });

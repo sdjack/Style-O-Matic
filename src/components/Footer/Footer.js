@@ -9,31 +9,33 @@
 import React, { cloneElement } from "react";
 import {
   CoreComponent,
-  getCorePropDefaults,
   getValidProps,
+  getCorePropDefaults,
   ROLE
 } from "../../lib";
+import Drawer from "../Drawer/Drawer.js";
 import FooterContent from "./FooterContent.js";
-import FooterDrawer from "./FooterDrawer.js";
-import FooterItem from "./FooterItem.js";
-import FooterText from "./FooterText.js";
-import Button from "../Button/Button.js";
 import "./Footer.css";
+
+class FooterDrawer extends Drawer {
+  static defaultProps = {
+    renderAs: "div",
+    uirole: ROLE.DRAWER,
+    attach: "bottom"
+  };
+}
 
 class Footer extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "footer",
-    uirole: "footer"
+    uirole: ROLE.FOOTER
   });
 
-  static Content = FooterContent;
   static Drawer = FooterDrawer;
-  static Item = FooterItem;
-  static Button = Button;
-  static Text = FooterText;
+  static Content = FooterContent;
 
-  renderChild(child, props) {
-    const role = child.props.uirole || ROLE.DEFAULT;
+  renderChild = (child, props) => {
+    const role = child.props.uirole;
     let ref = c => {
       this[role] = c;
     };
@@ -45,7 +47,7 @@ class Footer extends CoreComponent {
       ref,
       uiclass: this.childPrefix(role)
     });
-  }
+  };
 
   render() {
     const {
@@ -56,31 +58,21 @@ class Footer extends CoreComponent {
       props
     } = getValidProps(this.props);
 
+    const output = [];
+
     if (fixed) {
-      return [
-        <div className="ui-footer-bolster" key="footer-bolster" />,
-        <Component {...props} key="footer">
-          {React.Children.map(children, child => {
-            if (
-              typeof child.props !== "undefined" &&
-              typeof child.props.uirole !== "undefined"
-            ) {
-              return this.renderChild(child, { uiclass });
-            }
-            return child;
-          })}
-        </Component>
-      ];
+      output.push(<div className="ui-footer-bolster" key="footer-bolster" />);
     }
-    return (
-      <Component {...props}>
+
+    output.push(
+      <Component {...props} key="footer">
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case ROLE.CONTENT || ROLE.DRAWER:
+              case ROLE.CONTENT:
                 return this.renderChild(child, { uiclass });
               default:
                 return child;
@@ -90,6 +82,8 @@ class Footer extends CoreComponent {
         })}
       </Component>
     );
+
+    return output;
   }
 }
 

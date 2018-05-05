@@ -11,127 +11,28 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 
+ @import 'config';
+
+ 
 .ui-header {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-content: space-around;
   height: auto;
-  background-color: $color-black;
-  color: $color-white;
   margin: 0;
   padding: 0;
   border: none;
-  overflow: hidden;
-  @include shadow-basic();
-
-  @media screen and (max-width: $screen-size-threshold) {
-    min-height: $header-height;
-  }
+  position: relative;
+  background-color: $color-dark;
+  color: $color-lighter;
 
   &.ui-fixed {
     left: 0;
     top: 0;
     z-index: 77;
   }
-}
 
-.ui-header-content {
-  min-height: $header-height;
-  z-index: 8;
-  display: flex;
-  flex: 1 1 auto;
-  margin: 0;
-  padding: 0;
-}
-
-.ui-header-title {
-  display: inline-block;
-  position: relative;
-  justify-content: space-between;
-  padding: $header-title-padding;
-  font-size: $header-title-font-size;
-  line-height: 1;
-  margin: 0;
-  border: none;
-  @include bar-button-skin();
-}
-
-.ui-header-item,
-.ui-header-text,
-.ui-header-button {
-  display: inline-block;
-  position: relative;
-  justify-content: space-between;
-  margin: 0;
-  border-radius: 0;
-  font-size: $header-font-size;
-  color: $color-white;
-  background-color: transparent;
-  @include text-horizontal-align-center();
-  @include bar-button-skin();
-  & > .fa {
-    font-size: $header-icon-font-size !important;
-    padding: $header-icon-padding !important;
+  @media screen and (max-width: $screen-size-threshold) {
+    min-height: $header-height;
   }
-}
-
-.ui-header-button {
-  line-height: 22px;
-}
-
-.ui-header-item,
-.ui-header-text {
-  cursor: pointer;
-  border: none;
-  line-height: 1;
-}
-
-.ui-header-item {
-  padding: $header-item-padding;
-}
-
-.ui-header-text {
-  padding: $header-text-padding;
-}
-
-.ui-header-button {
-  padding: $header-button-padding;
-  &:hover {
-    background-color: rgba(33, 150, 243, 0.5);
-  }
-}
-
-.ui-header-logo {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 0;
-  height: 100%;
-  cursor: pointer;
-  border: none;
-  & > img {
-    padding: 0;
-    height: 100%;
-  }
-}
-
-.ui-header-list {
-  display: inline-block;
-  padding: $header-list-padding;
-  margin: 0;
-  letter-spacing: 1px;
-  font-size: $header-list-font-size;
-  line-height: 1;
-  list-style-type: none;
-  @include text-horizontal-align-right();
-}
-
-.ui-header-icon {
-  display: inline-block;
-  font-size: $header-icon-font-size !important;
-  padding: $header-icon-padding;
 }
 
 .ui-header-bolster {
@@ -141,95 +42,3 @@
   padding: 0;
 }
 
-.ui-header-drawer,
-.ui-header-drawer-flyout {
-    padding: 0px;
-    margin: 0px;
-}
-
-.ui-header-drawer {
-    z-index: 70;
-    overflow: hidden;
-    @include no-shadow();
-    @include animate-default(0.2s);
-    transition-property: all;
-    width: 100%;
-    height: 0px;
-    max-height: $nav-size;
-    & > .ui-header-drawer-flyout {
-      width: 100%;
-    }
-
-    &.active {
-      height: $nav-size !important;
-      min-height: $nav-size !important;
-      max-height: $nav-size !important;
-      overflow-x: auto !important;
-      overflow-y: hidden !important;
-      @include shadow-drawer();
-    }
-
-    &.minimized {
-      height: $outer-frame-size !important;
-      min-height: $outer-frame-size !important;
-      max-height: $outer-frame-size !important;
-      overflow-x: auto !important;
-      overflow-y: hidden !important;
-      @include shadow-drawer();
-    }
-
-    &.minimized > .ui-header-drawer-content {
-      background-color: $color-darker-grey;
-    }
-
-    & > .drawer-toggle-button {
-      height: 100% !important;
-      width: 70px !important;
-      color: $color-white;
-      background-color: transparent;
-      display: inline-block;
-      padding: 2px !important;
-      font-size: $toggle-size !important;
-      border: none !important;
-      border-radius: 0 !important;
-      @include text-align-center();
-      @include shadow-removed();
-      &:hover {
-        background-color: rgba(33, 150, 243, 0.5);
-      }
-    }
-}
-
-.ui-header-drawer-content {
-  display: block;
-  width: 100%;
-  height: 100%;
-  color: $color-white;
-  background-color: $color-darkest-grey;
-  @include animate-default(0.2s);
-  transition-property: all;
-}
-
-.ui-header-drawer-flyout {
-  display: block;
-  width: 100%;
-  float: left;
-  overflow-x: hidden;
-  overflow-y: auto;
-  max-height: 100%;
-  color: $color-white;
-  background-color: $color-darkest-grey;
-}
-
-.ui-header-drawer-collapsed {
-  width: 0px !important;
-  overflow: hidden !important;
-  @include no-shadow();
-}
-
-.ui-header-drawer-flyout-collapsed {
-  width: 0px !important;
-  height: 0px !important;
-  overflow: hidden !important;
-  @include no-shadow();
-}

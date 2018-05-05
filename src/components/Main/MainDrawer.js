@@ -6,7 +6,7 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React, { cloneElement } from "react";
+import React from "react";
 import classNames from "classnames";
 import {
   CoreComponent,
@@ -15,54 +15,39 @@ import {
   getValidProps,
   ROLE
 } from "../../lib";
-import MainDrawerContent from "./MainDrawerContent.js";
 
 class MainDrawer extends CoreComponent {
   static propTypes = getCorePropTypes({
     minimizable: "bool",
-    defaultOpen: "bool"
+    defaultOpen: "bool",
+    icon: "string"
   });
 
   static defaultProps = getCorePropDefaults({
     uirole: ROLE.DRAWER,
     minimizable: true,
-    defaultOpen: false
+    defaultOpen: false,
+    icon: "fa fa-bars"
   });
-
-  static Content = MainDrawerContent;
 
   constructor(props) {
     super(props);
     this.state = {
-      navActive: false
+      drawerActive: false
     };
   }
 
   onToggleHandler = e => {
     e.preventDefault();
-    const { navActive } = this.state;
-    this.setState({ navActive: !navActive });
-  };
-
-  renderChild = (child, props) => {
-    const role = child.props.uirole || ROLE.CONTENT;
-    let ref = c => {
-      this[role] = c;
-    };
-    if (typeof child.ref !== "string") {
-      ref = this.chainFunction(child.ref, ref);
-    }
-    return cloneElement(child, {
-      ...props,
-      ref,
-      uiclass: this.childPrefix(role)
-    });
+    const { drawerActive } = this.state;
+    this.setState({ drawerActive: !drawerActive });
   };
 
   render() {
     const {
       renderAs: Component,
       uiclass,
+      icon,
       className,
       disabled,
       minimizable,
@@ -70,7 +55,7 @@ class MainDrawer extends CoreComponent {
       props
     } = getValidProps(this.props);
 
-    const active = this.state.navActive;
+    const active = this.state.drawerActive;
     const classes = {
       active,
       minimized: !active && minimizable
@@ -79,11 +64,12 @@ class MainDrawer extends CoreComponent {
     const toggle = [];
     if (minimizable) {
       toggle.push(
-        <button
-          key="drawer_toggle_left"
-          className="drawer-toggle-button fa fa-bars"
-          onClick={this.onToggleHandler}
-        />
+        <div key="main_drawer_toggle" className="ui-main-drawer-toggle">
+          <button
+            className={`ui-main-drawer-toggle-button ${icon}`}
+            onClick={this.onToggleHandler}
+          />
+        </div>
       );
     }
 

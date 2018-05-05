@@ -16,7 +16,7 @@ import {
   ROLE
 } from "../../lib";
 
-class HeaderTitle extends CoreComponent {
+class ToolBarTitle extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.TITLE,
@@ -60,11 +60,11 @@ class HeaderTitle extends CoreComponent {
 
     const { dynamicText } = this.state;
 
-    const ElementType = getElementType(HeaderTitle, this.props);
+    const ElementType = getElementType(ToolBarTitle, this.props);
     const titleText = dynamicText || text || children;
 
     return <ElementType {...props}>{titleText}</ElementType>;
   }
 }
 
-export default HeaderTitle;
+export default ToolBarTitle;

@@ -14,10 +14,11 @@ import {
   ROLE
 } from "../../lib";
 
-class HeaderDrawerContent extends CoreComponent {
+class ToolBarText extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: ROLE.CONTENT
+    uirole: ROLE.TEXT,
+    text: ""
   });
 
   render() {
@@ -27,4 +28,4 @@ class HeaderDrawerContent extends CoreComponent {
   }
 }
 
-export default HeaderDrawerContent;
+export default ToolBarText;

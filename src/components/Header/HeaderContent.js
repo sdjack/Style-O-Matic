@@ -6,11 +6,11 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React, { cloneElement } from "react";
+import React from "react";
 import {
   CoreComponent,
-  getValidProps,
   getCorePropDefaults,
+  getValidProps,
   ROLE
 } from "../../lib";
 
@@ -20,39 +20,10 @@ class HeaderContent extends CoreComponent {
     uirole: ROLE.CONTENT
   });
 
-  renderChild = (child, props) => {
-    const role = child.props.uirole || ROLE.CONTENT;
-    let ref = c => {
-      this[role] = c;
-    };
-    if (typeof child.ref !== "string") {
-      ref = this.chainFunction(child.ref, ref);
-    }
-    return cloneElement(child, {
-      ...props,
-      ref,
-      uiclass: this.childPrefix(role)
-    });
-  };
-
   render() {
-    const { renderAs: Component, children, props, inherited } = getValidProps(
-      this.props
-    );
+    const { renderAs: Component, children, props } = getValidProps(this.props);
 
-    return (
-      <Component {...props}>
-        {React.Children.map(children, child => {
-          if (
-            typeof child.props !== "undefined" &&
-            typeof child.props.uirole !== "undefined"
-          ) {
-            return this.renderChild(child, inherited);
-          }
-          return child;
-        })}
-      </Component>
-    );
+    return <Component {...props}>{children}</Component>;
   }
 }
 

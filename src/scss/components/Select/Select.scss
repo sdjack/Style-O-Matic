@@ -2,6 +2,9 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 
+ @import 'config';
+
+ 
 .ui-select {
   display: inline-block;
   position: relative;
@@ -12,15 +15,15 @@
   line-height: 1;
 	width: 100%;
 	max-width: 100%;
-	height: $input-size;
+	height: $widget-size;
 	background-color: white;
 	border-radius: $border-radius;
-	border: $gentle-border;
+	border: $common-border;
   overflow: hidden;
 
 	& > select {
 		width: 100%;
-		height: $input-size;
+		height: $widget-size;
 		background-color: transparent !important;
 		background: none !important;
 		border: none !important;

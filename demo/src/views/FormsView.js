@@ -14,7 +14,7 @@ class FormsView extends React.Component {
 
   render() {
     return [
-      <Title renderAs="h1" textAlign="center" key="view-title">
+      <Title renderAs="h1" textAlign="center" key="view-title" sticky>
         <Title.Content>Forms</Title.Content>
       </Title>,
       <Grid key="view-grid">

@@ -3,6 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "main": "./ToolBar.js",
+  "files": [
+      "./ToolBar.js",
+      "./ToolBarContent.js",
+      "./ToolBarIcon.js",
+      "./ToolBarItem.js",
+      "./ToolBarText.js",
+      "./ToolBarTitle.js"
+  ],
   "dependencies": {
     "lodash": "^4.17.5",
     "react": "^16.2.0",

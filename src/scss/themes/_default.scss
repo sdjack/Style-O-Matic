@@ -1,41 +1,12 @@
 // -----------------------------------------------------------------------------
-// When having several themes, this file contains everything related to the
-// default one.
+// Add Notes Here
 // -----------------------------------------------------------------------------
-.theme-login,
-.theme-page,
-.theme-navigation,
-.theme-header,
-.theme-content,
-.theme-component,
-.theme-button,
-.theme-tab,
-.theme-input,
-.theme-table {
-	color: $common-text-color;
+
+.ui-theme-default {
 }
-.theme-login:hover,
-.theme-page:hover,
-.theme-navigation:hover,
-.theme-header:hover,
-.theme-content:hover,
-.theme-component:hover,
-.theme-button:hover,
-.theme-tab:hover,
-.theme-input:hover,
-.theme-table:hover {
-	color: $common-text-color;
+
+.ui-theme-spiffy {
 }
-.theme-well {
-  min-height: 18px;
-  padding: 18px;
-  margin: 0;
-  background-color: $well-bg;
-  border: 1px solid $well-border;
-  border-radius: $border-radius;
-  box-shadow: 2px 2px 4px 0 rgba(0,0,0,1), inset 0 1px 1px rgba(0,0,0,.05);
-  blockquote {
-    border-color: #ddd;
-    border-color: rgba(0,0,0,.15);
-  }
+
+.ui-theme-mlg {
 }

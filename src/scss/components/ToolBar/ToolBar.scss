@@ -1,83 +1,122 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
+
+ @import 'config';
+
+
 .ui-toolbar {
-	margin: 0;
-	padding: 10px 10px 12px;
+  width: 100%;
+  height: $outer-frame-size;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: space-around;
+  background-color: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  @include shadow-basic();
+  @include animate-default();
+  transition-property: $layout-transition-properties;
+
+  @media screen and (max-width: $screen-size-threshold) {
+    min-height: $toolbar-height;
+  }
 }
 
-.ui-toolbar-header,
 .ui-toolbar-content {
-	display: inline-block;
-	width: 100%;
-	padding: 0;
-  	@include text-vertical-align-middle();
-}
-
-.ui-toolbar-header {
-	margin: 0 0 20px;
-}
-
-.ui-toolbar-content {
-	margin: 0;
-}
-
-.ui-toolbar-title,
-.ui-toolbar-badge {
-	float: left;
+  min-height: $toolbar-height;
+  z-index: 8;
+  display: flex;
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  @include text-horizontal-align-center();
 }
 
 .ui-toolbar-title {
-	display: inline-block;
-  	padding: 0 !important;
-  	margin: 0px 10px 0px 0px !important;
-  	vertical-align: middle;
-  	@include typo-control-title();
-  	@include text-align-left();
+  display: inline-block;
+  padding: $toolbar-title-padding;
+  font-size: $toolbar-title-font-size;
+  line-height: 1;
+  margin: 0;
+  border: none;
+  color: inherit;
+  background-color: transparent;
 }
 
-.ui-toolbar-form {
-	display: flex;
-	flex-flow: row;
-	width: 100%;
+.ui-toolbar-item,
+.ui-toolbar-text,
+.ui-toolbar-button,
+.ui-toolbar-icon {
+  display: inline-block;
+  position: relative;
+  justify-content: space-between;
+  margin: 0;
+  border-radius: 0;
+  font-size: $toolbar-font-size;
+  color: inherit;
+  background-color: transparent;
+  @include text-horizontal-align-center();
+  @include bar-button-skin();
+  & > .fa,
+  & > .devicon {
+    display: inline-block;
+    font-size: $toolbar-icon-font-size !important;
+    padding: $toolbar-icon-padding !important;
+  }
 }
 
-.ui-toolbar-table {
-	flex: auto;
-  	border-collapse: collapse;
-  	white-space: nowrap;
-  	@include text-align-left();
-  	&.ui-toolbar-table-large {
-  		min-width: 55%;
-  	}
+.ui-toolbar-button {
+  line-height: 22px;
 }
 
-.ui-toolbar-table-cell {
-	padding: 0 $padding 0 0;
+.ui-toolbar-item,
+.ui-toolbar-text {
+  cursor: pointer;
+  border: none;
+  line-height: 1;
 }
 
-.ui-toolbar-table-footer {
-	padding: $padding $padding 0 0;
+.ui-toolbar-item {
+  padding: $toolbar-item-padding;
 }
 
-.ui-toolbar-input,
-.ui-toolbar-component {
-	width: 98% !important;
-	display: inline-block;
-	margin: 0px $padding-large 0px ($padding-large / 2);
+.ui-toolbar-text {
+  padding: $toolbar-text-padding;
 }
 
-.ui-toolbar-component {
-  	@include text-align-center();
+.ui-toolbar-button {
+  padding: $toolbar-button-padding;
+  &:hover {
+    background-color: $color-blue-highlight;
+  }
 }
 
-.ui-toolbar-badge {
-	margin: 0px 2px 0px 2px;
+.ui-toolbar-logo {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+  & > img {
+    padding: 0;
+    height: 100%;
+  }
 }
 
-.ui-toolbar-divider {
-	height: 48px;
-	width: 1px;
-	background: rgb(151, 151, 151) none repeat scroll 0% 0%;
-	margin: 0px 0px 0px 16px;
+.ui-toolbar-list {
+  display: inline-block;
+  padding: $toolbar-list-padding;
+  margin: 0;
+  letter-spacing: 1px;
+  font-size: $toolbar-list-font-size;
+  line-height: 1;
+  list-style-type: none;
+  @include text-horizontal-align-right();
 }

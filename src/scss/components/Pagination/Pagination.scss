@@ -10,74 +10,84 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.pagination-bar {
-	display: block;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	z-index: 56;
-  	@include text-align-center();
+.ui-pagination {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: inherit;
 }
 
-.pagination-step {
-	font-size: 36px !important;
-	line-height: 1;
-	//margin-top: 10px;
-}
+.ui-pagination-button {
+  display: inline-block;
+  font-family: inherit;
+  padding: 8px 0 0;
 
-.pagination-current-page,
-.pagination-spacer-page,
-.pagination-other-page {
-	display: block;
-	height: 24px;
-	width: 24px;
-	line-height: 24px;
-	border: none;
-}
-
-.pagination-current-page,
-.pagination-other-page {
-	border-radius: 50%;
-    color: white;
-    background-color: $color-secondary-light;
-}
-
-.pagination-spacer-page {
-    color: $color-invisible !important;
-    background-color: $color-invisible !important;
-}
-
-.pagination-other-page {
-    opacity: 0.25 !important;
-    &:hover {
-    	opacity: 0.8 !important;
+  &.disabled {
+    background-color: rgba(0,0,0,0);
+    & > .ui-pagination-page {
+      color: $color-invisible !important;
     }
+  }
 }
 
-ul.pagination {
-	padding: 0;
-	margin: 0;
-	display: block;
-  	@include text-align-center();
-	
-	& > li {
-		padding: 0 20px;
-		display: inline-block;
-		vertical-align: inherit;
-	}
+.ui-pagination-button:not(.disabled):hover {
+  background-color: rgba(150,150,150,0.033);
+  & > .ui-pagination-page {
+    border-color: rgba(0,0,0,0.6);
+  }
 }
 
-ul.pages {
-	& > li {
-		padding: 0 2px !important;
-		display: inline-block;
-		vertical-align: inherit;
-	}
+.ui-pagination-control,
+.ui-pagination-page {
+  display: block;
+  vertical-align: middle;
+  height: 32px;
+  font-family: inherit;
+
+  &.disabled {
+    opacity: 0.33;
+  }
 }
 
-.pagination-disabled {
-	color: #888888 !important;
-	cursor: default;
-	opacity: 0.8;
+.ui-pagination-control {
+  padding: 0 0 6px;
+  line-height: 1;
+  min-width: 42px;
+}
+
+.ui-pagination-page {
+  padding: 0;
+  margin: 0 8px;
+  line-height: 23px;
+  min-width: 12px;
+  font-size: 16px;
+	border-bottom: 2px solid rgba(0,0,0,0);
+  opacity: 0.25;
+  &:hover {
+    opacity: 1;
+  }
+
+  &.active {
+    opacity: 1;
+    border-color: rgba(0,0,0,0.2);
+  }
+}
+
+.ui-pagination-page.active:hover {
+  border-color: rgba(0,0,0,0.5);
+}
+
+.ui-pagination-num,
+.ui-pagination-icon {
+  display: inline-block;
+  //height: 32px;
+}
+
+.ui-pagination-num {
+  font-size: 14px;
+}
+
+.ui-pagination-icon {
+  font-size: 20px;
 }

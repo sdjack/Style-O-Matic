@@ -1,0 +1,32 @@
+// -----------------------------------------------------------------------------
+// This file contains all component specific Sass mixins.
+// -----------------------------------------------------------------------------
+
+// VARIABLES
+
+$nav-size: $inner-frame-size;
+$nav-padding: $padding 24px;
+$nav-item-size: 18px;
+$nav-item-height: 54px;
+$nav-item-padding: 18px 21px;
+$nav-icon-size: $outer-frame-size;
+$nav-icon-fontsize: 18px;
+$nav-icon-width: $outer-frame-size;
+$nav-caret-fontsize: $nav-icon-fontsize;
+$nav-caret-width: 17px;
+$nav-info-fontsize: 16px;
+$nav-info-width: ($nav-size - $outer-frame-size - 5);
+$nav-list-line-height: 20px;
+$nav-list-margin: -10px 0px 0px 0px;
+
+$nav-folder-item-font-color: rgba(239,239,239,0.7);
+$nav-folder-item-font-color-hover: $color-light-alpha-1;
+$nav-folder-item-height: 36px;
+$nav-folder-icon-fontsize: 16px;
+$nav-folder-icon-line-height: 18px;
+$nav-folder-icon-padding: 1px 0px;
+$nav-folder-icon-margin: 8px 12px 8px 48px;
+$nav-folder-info-fontsize: 12px;
+$nav-folder-info-padding: 0;
+$nav-folder-caret-fontsize: $nav-caret-fontsize;
+$nav-folder-caret-padding: 17px 10px 17px 0;

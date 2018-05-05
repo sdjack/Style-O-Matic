@@ -10,12 +10,13 @@ import React from "react";
 import classNames from "classnames";
 import {
   CoreComponent,
-  getCorePropDefaults,
   getValidProps,
+  getElementType,
+  getCorePropDefaults,
   ROLE
 } from "../../lib";
 
-class FooterItem extends CoreComponent {
+class ToolBarItem extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.ITEM,
@@ -24,7 +25,6 @@ class FooterItem extends CoreComponent {
 
   render() {
     const {
-      renderAs,
       uiclass,
       className,
       to,
@@ -35,14 +35,15 @@ class FooterItem extends CoreComponent {
       props
     } = getValidProps(this.props);
 
+    const ElementType = getElementType(ToolBarItem, this.props);
+
     const classes = {
-      active: to && to === path
+      active: to && path.indexOf(to) !== -1
     };
 
     if (icon || text) {
-      const Component = "a";
       return (
-        <Component
+        <ElementType
           {...props}
           className={classNames(className, classes)}
           href={to}
@@ -51,17 +52,16 @@ class FooterItem extends CoreComponent {
           <i className={`${uiclass}-icon ${icon}`} />
           <span className={`${uiclass}-info`}>{text}</span>
           {children}
-        </Component>
+        </ElementType>
       );
     }
-    const Component = renderAs;
 
     return (
-      <Component {...props} className={classNames(className, classes)}>
+      <ElementType {...props} className={classNames(className, classes)}>
         {children}
-      </Component>
+      </ElementType>
     );
   }
 }
 
-export default FooterItem;
+export default ToolBarItem;

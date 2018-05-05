@@ -9,7 +9,7 @@
       "./coreUtilities.js",
       "./propUtilities.js",
       "./ROLE.js",
-      "./UI.js",
+      "./EventManager.js",
       "./CoreComponent.js"
   ],
   "dependencies": {

@@ -6,44 +6,35 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React, { cloneElement } from "react";
-import PropTypes from "prop-types";
-import elementType from "prop-types-extra/lib/elementType";
-import classNames from "classnames";
-import { CoreComponent } from "../../lib";
+import React from "react";
+import {
+  CoreComponent,
+  getCorePropDefaults,
+  getPropTypesA11y,
+  getValidProps,
+  ROLE
+} from "../../lib";
 import "./Pill.css";
 
-const REMOVE_ROLE = "remove";
-const ACTION_ROLE = "action";
-
 class Pill extends CoreComponent {
-  static propTypes = {
-    renderAs: elementType,
-    disabled: PropTypes.bool,
-    config: PropTypes.shape({
-      label: PropTypes.string,
-      actionIcon: PropTypes.string,
-      pillData: PropTypes.object,
-      onRemove: PropTypes.func,
-      onAction: PropTypes.func
-    })
-  };
+  static propTypes = getPropTypesA11y(null, {
+    actionIcon: "string",
+    pillData: "object",
+    onRemove: "func",
+    onAction: "func"
+  });
 
-  static defaultProps = {
-    uirole: "pill",
+  static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    disabled: false,
-    config: {
-      label: "...",
-      actionIcon: "fa-arrow-up",
-      pillData: {},
-      onRemove: null,
-      onAction: null
-    }
-  };
+    uirole: ROLE.PAGINATION,
+    actionIcon: "fa fa-arrow-up",
+    pillData: {},
+    onRemove: null,
+    onAction: null
+  });
 
   handleOnRemove = e => {
-    const { pillData, onRemove } = this.props.config;
+    const { pillData, onRemove } = this.props;
     if (!this.props.disabled && onRemove) {
       e.preventDefault();
       onRemove(pillData);
@@ -51,7 +42,7 @@ class Pill extends CoreComponent {
   };
 
   handleOnAction = e => {
-    const { pillData, onAction } = this.props.config;
+    const { pillData, onAction } = this.props;
     if (!this.props.disabled && onAction) {
       e.preventDefault();
       onAction(pillData);
@@ -59,57 +50,44 @@ class Pill extends CoreComponent {
   };
 
   renderAction = () => {
-    const { actionIcon, onAction } = this.props.config;
+    const { actionIcon, onAction } = this.props;
     if (onAction) {
       return (
-        <span className="pill-action" onClick={this.handleOnAction}>
-          <i className={`fa ${actionIcon}`} aria-hidden="true" />
+        <span
+          className="ui-pill-action"
+          role="presentation"
+          onClick={this.handleOnAction}
+        >
+          <i className={actionIcon} aria-hidden="true" />
         </span>
       );
     }
+    return null;
   };
 
   renderRemove = () => {
-    const { onRemove } = this.props.config;
+    const { onRemove } = this.props;
     if (onRemove) {
       return (
-        <span className="pill-close" onClick={this.handleOnRemove}>
+        <span
+          className="ui-pill-close"
+          role="presentation"
+          onClick={this.handleOnRemove}
+        >
           <i className="fa fa-times" aria-hidden="true" />
         </span>
       );
     }
+    return null;
   };
 
   render() {
-    const {
-      renderAs: Component,
-      uiclass,
-      className,
-      disabled,
-      config,
-      ...props
-    } = this.props;
-
-    const { label, onRemove, onAction } = config;
-
-    const classes = {
-      [uiclass]: true,
-      disabled,
-      padleft: onAction && !onRemove,
-      padright: !onAction && onRemove,
-      padboth: onAction && onRemove
-    };
-
-    delete props.uirole;
-
-    const preParsedClass = className
-      ? `${className} theme-button_hover`
-      : "theme-button_hover";
+    const { renderAs: Component, children, props } = getValidProps(this.props);
 
     return (
-      <Component {...props} className={classNames(preParsedClass, classes)}>
+      <Component {...props}>
         {this.renderAction()}
-        <span className="pill-text">{label}</span>
+        <span className="ui-pill-text">{children}</span>
         {this.renderRemove()}
       </Component>
     );

@@ -7,7 +7,7 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Header, Footer, Main, Loading } from "../../../src/index";
+import { Header, ToolBar, Footer, Main } from "../../../src/index";
 import Navigation from "./Navigation";
 
 class PageWrapper extends React.Component {
@@ -15,36 +15,75 @@ class PageWrapper extends React.Component {
     const { children } = this.props;
 
     return [
-      <Header fixed key="layout-header">
-        <Header.Content contentAlign="left">
-          <Header.Title observe="scroll">Style-O-Matic</Header.Title>
-          <Header.Button>OP1</Header.Button>
-          <Header.Button>OP2</Header.Button>
-        </Header.Content>
-        <Header.Content contentAlign="right">
-          <Header.Item>
-            <ul className="ui-header-list">
-              <li>Guest</li>
-              <li>email@email.com</li>
-            </ul>
-            <span className="fa fa-user" aria-hidden="true" />
-          </Header.Item>
-        </Header.Content>
+      <Header key="layout-header" fixed>
+        <Header.Drawer icon="fa fa-user" minimizable>
+          <ToolBar>
+            <ToolBar.Content contentAlign="left">
+              <ToolBar.Title observe="scroll">Style-O-Matic</ToolBar.Title>
+            </ToolBar.Content>
+            <ToolBar.Content contentAlign="right">
+              <ToolBar.Button>OP1</ToolBar.Button>
+              <ToolBar.Button>OP2</ToolBar.Button>
+            </ToolBar.Content>
+          </ToolBar>
+          <ToolBar>
+            <ToolBar.Content contentAlign="left">
+              <ToolBar.Title observe="scroll">Hidden Toolbar 1</ToolBar.Title>
+              <ToolBar.Button>OP3</ToolBar.Button>
+              <ToolBar.Button>OP4</ToolBar.Button>
+            </ToolBar.Content>
+          </ToolBar>
+          <ToolBar>
+            <ToolBar.Content contentAlign="left">
+              <ToolBar.Title observe="scroll">Hidden Toolbar 2</ToolBar.Title>
+              <ToolBar.Button>OP5</ToolBar.Button>
+              <ToolBar.Button>OP6</ToolBar.Button>
+            </ToolBar.Content>
+          </ToolBar>
+          <ToolBar>
+            <ToolBar.Content contentAlign="left">
+              <ToolBar.Title observe="scroll">Hidden Toolbar 3</ToolBar.Title>
+              <ToolBar.Button>OP7</ToolBar.Button>
+              <ToolBar.Button>OP8</ToolBar.Button>
+            </ToolBar.Content>
+          </ToolBar>
+        </Header.Drawer>
       </Header>,
-      <Main key="layout-main">
-        <Main.Drawer minimizable>
+      <Main key="layout-main" color="!grey">
+        <Main.Drawer icon="fa fa-angle-double-right" minimizable>
           <Navigation />
         </Main.Drawer>
         <Main.Content>{children}</Main.Content>
       </Main>,
-      <Footer fixed key="layout-footer">
-        <Footer.Content contentAlign="left">
-          <Footer.Text>Style-O-Matic UI DEMO</Footer.Text>
-        </Footer.Content>
-        <Footer.Content contentAlign="right">
-          <Footer.Button>Footer Button</Footer.Button>
-          <Footer.Button>Footer Button</Footer.Button>
-        </Footer.Content>
+      <Footer key="layout-footer" fixed>
+        <Footer.Drawer icon="fa fa-bars" minimizable>
+          <ToolBar>
+            <ToolBar.Content contentAlign="right">
+              <ToolBar.Title observe="scroll">Style-O-Matic</ToolBar.Title>
+            </ToolBar.Content>
+          </ToolBar>
+          <ToolBar>
+            <ToolBar.Content contentAlign="left">
+              <ToolBar.Title observe="scroll">Hidden Toolbar 1</ToolBar.Title>
+              <ToolBar.Button>OP3</ToolBar.Button>
+              <ToolBar.Button>OP4</ToolBar.Button>
+            </ToolBar.Content>
+          </ToolBar>
+          <ToolBar>
+            <ToolBar.Content contentAlign="left">
+              <ToolBar.Title observe="scroll">Hidden Toolbar 2</ToolBar.Title>
+              <ToolBar.Button>OP5</ToolBar.Button>
+              <ToolBar.Button>OP6</ToolBar.Button>
+            </ToolBar.Content>
+          </ToolBar>
+          <ToolBar>
+            <ToolBar.Content contentAlign="left">
+              <ToolBar.Title observe="scroll">Hidden Toolbar 3</ToolBar.Title>
+              <ToolBar.Button>OP7</ToolBar.Button>
+              <ToolBar.Button>OP8</ToolBar.Button>
+            </ToolBar.Content>
+          </ToolBar>
+        </Footer.Drawer>
       </Footer>
     ];
   }

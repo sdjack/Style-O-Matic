@@ -6,34 +6,48 @@
 
 /* eslint "react/prop-types": [0] */
 
-import React from "react";
+import React, { cloneElement } from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropTypes,
   getCorePropDefaults,
   ROLE
 } from "../../lib";
+import Drawer from "../Drawer/Drawer.js";
 import HeaderContent from "./HeaderContent.js";
-import HeaderDrawer from "./HeaderDrawer.js";
-import HeaderItem from "./HeaderItem.js";
-import HeaderTitle from "./HeaderTitle.js";
-import HeaderText from "./HeaderText.js";
-import Button from "../Button/Button.js";
 import "./Header.css";
+
+class HeaderDrawer extends Drawer {
+  static defaultProps = {
+    renderAs: "div",
+    uirole: ROLE.DRAWER,
+    attach: "top"
+  };
+}
 
 class Header extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "header",
-    uirole: "header"
+    uirole: ROLE.HEADER
   });
 
-  static Content = HeaderContent;
   static Drawer = HeaderDrawer;
-  static Item = HeaderItem;
-  static Title = HeaderTitle;
-  static Button = Button;
-  static Text = HeaderText;
+  static Content = HeaderContent;
+
+  renderChild = (child, props) => {
+    const role = child.props.uirole;
+    let ref = c => {
+      this[role] = c;
+    };
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
+    }
+    return cloneElement(child, {
+      ...props,
+      ref,
+      uiclass: this.childPrefix(role)
+    });
+  };
 
   render() {
     const {
@@ -44,36 +58,17 @@ class Header extends CoreComponent {
       props
     } = getValidProps(this.props);
 
-    if (fixed) {
-      return [
-        <Component {...props} key="header">
-          {React.Children.map(children, child => {
-            if (
-              typeof child.props !== "undefined" &&
-              typeof child.props.uirole !== "undefined"
-            ) {
-              switch (child.props.uirole) {
-                case ROLE.CONTENT:
-                  return this.renderChild(child, { uiclass });
-                default:
-                  return child;
-              }
-            }
-            return child;
-          })}
-        </Component>,
-        <div className="ui-header-bolster" key="header-bolster" />
-      ];
-    }
-    return (
-      <Component {...props}>
+    const output = [];
+
+    output.push(
+      <Component {...props} key="header">
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case ROLE.CONTENT || ROLE.DRAWER:
+              case ROLE.CONTENT:
                 return this.renderChild(child, { uiclass });
               default:
                 return child;
@@ -83,6 +78,12 @@ class Header extends CoreComponent {
         })}
       </Component>
     );
+
+    if (fixed) {
+      output.push(<div className="ui-header-bolster" key="header-bolster" />);
+    }
+
+    return output;
   }
 }
 

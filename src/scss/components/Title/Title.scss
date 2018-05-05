@@ -3,6 +3,15 @@
 // -----------------------------------------------------------------------------
 .ui-title {
 	display: block;
+
+  &.ui-sticky {
+    border: none;
+    border-radius: 0;
+    margin: 0 0 20px 0;
+    padding: 0 0 8px;
+    background-color: #fff;
+    @include shadow-titlebar();
+  }
 }
 
 .ui-title-content,
@@ -13,21 +22,21 @@
 
 .ui-title-content,
 .ui-title-icon {
-    padding: 0 !important;
-    margin-bottom: 6px !important;
+    padding: 0;
+    margin-bottom: 6px;
 }
 
 .ui-title-subtitle,
 .ui-title-icon {
-    padding: 0 !important;
-    margin: 0 !important;
+    padding: 0;
+    margin: 0;
 }
 
 .ui-title-content,
 .ui-title-subtitle {
     & > .ui-title-icon {
-        display: inline-block !important;
-        margin: 0 !important;
+        display: inline-block;
+        margin: 0;
     }
 }
 
@@ -45,6 +54,33 @@ form > .ui-title,
 .ui-grid-column > .ui-title {
     & > .ui-title-content,
     & > .ui-title-icon {
-        margin: 0 !important;
+        margin: 0;
     }
+}
+
+h1.ui-title-content, 
+h2.ui-title-content, 
+h3.ui-title-content, 
+h4.ui-title-content, 
+h5.ui-title-content, 
+h6.ui-title-content {
+  margin: 0;
+}
+h1.ui-title-content {
+  padding: 40px 0 4px;
+}
+h2.ui-title-content {
+  padding: 12px 0 4px;
+}
+h3.ui-title-content {
+  padding: 8px 0 4px;
+}
+h4.ui-title-content {
+  padding: 6px 0 4px;
+}
+h5.ui-title-content {
+  padding: 4px 0;
+}
+h6.ui-title-content {
+  padding: 2px 0;
 }

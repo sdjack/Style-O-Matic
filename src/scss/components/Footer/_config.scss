@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+// This file contains all component specific Sass mixins.
+// -----------------------------------------------------------------------------
+
+// VARIABLES
+
+$footer-height: 30px;
+$footer-inner-height: 26px !default;
+$footer-item-v-offset: floor(($footer-height - $footer-inner-height) / 2);
+$footer-item-h-offset: floor($footer-inner-height / 2);
+$footer-font-size: $layout-font-size !default;
+$footer-item-height: ($footer-height - ($padding * 2)) !default;
+$footer-item-padding: $footer-item-v-offset $padding !default;
+$footer-text-padding: 8px $padding !default;
+$footer-button-padding: $footer-item-v-offset $footer-item-h-offset !default;
+$footer-icon-height: ($footer-height - ($padding * 2)) !default;
+$footer-icon-font-size: $footer-inner-height;
+$footer-icon-padding: 0px 2px !default;
+$footer-list-padding: 0px $padding-xlarge 0px 0px !default;
+$footer-list-margin: 0px 0px 12px 0px !default;
+$footer-toggle-size: $footer-inner-height !default;
+$footer-toggle-padding: $footer-item-v-offset $footer-item-h-offset !default;

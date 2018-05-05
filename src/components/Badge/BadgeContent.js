@@ -7,19 +7,28 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { CoreComponent, getCorePropDefaults, getValidProps } from "../../lib";
+import {
+  CoreComponent,
+  getCorePropDefaults,
+  getValidProps,
+  ROLE
+} from "../../lib";
 
-class FooterDrawerContent extends CoreComponent {
+class BadgeContent extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: "content"
+    uirole: ROLE.CONTENT
   });
 
   render() {
     const { renderAs: Component, children, props } = getValidProps(this.props);
 
-    return <Component {...props}>{children}</Component>;
+    return (
+      <Component {...props} ref={this.onSetRef}>
+        {children}
+      </Component>
+    );
   }
 }
 
-export default FooterDrawerContent;
+export default BadgeContent;

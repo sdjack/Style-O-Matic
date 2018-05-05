@@ -28,7 +28,7 @@ class Dropdown extends CoreComponent {
 
   static defaultProps = getPropDefaultsAutoId({
     renderAs: "div",
-    uirole: "dropdown"
+    uirole: ROLE.DROPDOWN
   });
 
   static Toggle = DropdownToggle;

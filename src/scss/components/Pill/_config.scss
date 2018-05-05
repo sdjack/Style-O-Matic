@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// This file contains all component specific Sass mixins.
+// -----------------------------------------------------------------------------
+
+// VARIABLES
+
+$pill-min-width: 32px !default;
+$pill-height: 28px !default;
+$pill-margin: 0px 0px 0px ($padding-large / 2) !default;
+$pill-padding-low-value: $pill-height / 2;
+$pill-padding-high-value: $pill-height - 2;
+$pill-padding: 0px $pill-padding-low-value 0px $pill-padding-low-value !default;
+$pill-action-padding: 0px $pill-padding-low-value 0px $pill-padding-high-value !default;
+$pill-remove-padding: 0px $pill-padding-high-value 0px $pill-padding-low-value !default;
+$pill-both-padding: 0px $pill-padding-high-value 0px $pill-padding-high-value !default;
+$pill-line-height: $pill-height;
+$pill-action-size: 24px !default;

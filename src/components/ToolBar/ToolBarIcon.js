@@ -10,22 +10,24 @@ import React from "react";
 import {
   CoreComponent,
   getValidProps,
+  getElementType,
   getCorePropDefaults,
   ROLE
 } from "../../lib";
 
-class HeaderText extends CoreComponent {
+class ToolBarIcon extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: ROLE.TEXT,
-    text: ""
+    uirole: ROLE.ICON
   });
 
   render() {
-    const { renderAs: Component, children, props } = getValidProps(this.props);
+    const { children, props } = getValidProps(this.props);
 
-    return <Component {...props}>{children}</Component>;
+    const ElementType = getElementType(ToolBarIcon, this.props);
+
+    return <ElementType {...props}>{children}</ElementType>;
   }
 }
 
-export default HeaderText;
+export default ToolBarIcon;
