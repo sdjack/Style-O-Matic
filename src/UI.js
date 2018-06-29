@@ -1,4 +1,4 @@
-import EventManager from "./lib/EventManager.js";
+import EventManager from "./lib/EventManager";
 
 class UI {
   setTheme = value => {

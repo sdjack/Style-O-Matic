@@ -1,11 +1,3 @@
-/* ========================================================================
-* Style-O-Matic UI
-*
-* @author: Steven Jackson
-* ======================================================================== */
-
-/* eslint "react/prop-types": [0] */
-
 import React from "react";
 import classNames from "classnames";
 import {
@@ -59,8 +51,8 @@ class Textarea extends CoreComponent {
       const validationClass = required ? " required" : "";
       return (
         <label
-          key={`label_${this.state.renderKey}`}
           htmlFor={id}
+          key={`label_${this.state.renderKey}`}
           className={validationClass}
         >
           {label}

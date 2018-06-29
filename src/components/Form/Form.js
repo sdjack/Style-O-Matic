@@ -1,11 +1,3 @@
-/* ========================================================================
- * Style-O-Matic UI
- *
- * @author: Steven Jackson
- * ======================================================================== */
-
-/* eslint "react/prop-types": [0] */
-
 import React, { cloneElement } from "react";
 import {
   CoreComponent,
@@ -70,22 +62,17 @@ class Form extends CoreComponent {
     return formData;
   };
 
-  elRef = null;
   rows = [];
   fields = {};
 
-  handleOnRef = e => {
-    this.elRef = e;
-  };
-
   handleForcedUpdate = () => {
-    if (this.elRef) {
+    if (this.node) {
       this.forceUpdate();
     }
   };
 
   handleOnInvalid = e => {
-    console.log(e);
+    // console.log(e);
   };
 
   handleOnSubmit = e => {
@@ -137,11 +124,7 @@ class Form extends CoreComponent {
     delete props.onSubmit;
 
     return (
-      <Component
-        {...props}
-        ref={this.handleOnRef}
-        onSubmit={this.handleOnSubmit}
-      >
+      <Component {...props} ref={this.onSetRef} onSubmit={this.handleOnSubmit}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&

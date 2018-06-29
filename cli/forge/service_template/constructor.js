@@ -1,5 +1,5 @@
 /**
-* File generated using ENIGMA © 2016 Whiting House Group
+* File generated using ENIGMA © 2016 Steven Jackson
 *
 */
 

@@ -1,11 +1,3 @@
-/* ========================================================================
- * Style-O-Matic UI
- *
- * @author: Steven Jackson
- * ======================================================================== */
-
-/* eslint "react/prop-types": [0] */
-
 import React, { cloneElement } from "react";
 import activeElement from "dom-helpers/activeElement";
 import contains from "dom-helpers/query/contains";
@@ -75,15 +67,11 @@ class Dropdown extends CoreComponent {
     document.removeEventListener("mousedown", this.handleOnToggle, false);
   }
 
-  setWrapperRef = node => {
-    this.wrapperRef = node;
-  };
-
   handleOnToggle = e => {
     if (isModifiedEvent(e) || !isLeftClickEvent(e) || !this.state.open) {
       return;
     }
-    if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
+    if (this.node && !this.node.contains(e.target)) {
       // console.log("handleClickOutside",e.target);
       this.handleClose(e);
     }
@@ -210,7 +198,7 @@ class Dropdown extends CoreComponent {
     const { open } = this.state;
 
     return (
-      <Component {...props} ref={this.setWrapperRef}>
+      <Component {...props} ref={this.onSetRef}>
         {React.Children.map(children, child => {
           switch (child.props.uirole) {
             case ROLE.TOGGLE:

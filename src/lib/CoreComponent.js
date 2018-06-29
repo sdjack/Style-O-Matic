@@ -1,8 +1,3 @@
-/* ========================================================================
- * Style-O-Matic UI
- *
- * @author: Steven Jackson
- * ======================================================================== */
 /* eslint-disable */
 import { Component, cloneElement } from "react";
 import { uID } from "./coreUtilities.js";
@@ -22,7 +17,7 @@ export default class CoreComponent extends Component {
     this.GUID = uID();
     const state = this.state || {};
     this.state = { ...state };
-    this.uiRef = null;
+    this.node = null;
   }
 
   componentWillMount() {
@@ -52,7 +47,7 @@ export default class CoreComponent extends Component {
   }
 
   onSetRef = ref => {
-    this.uiRef = ref;
+    this.node = ref;
   };
 
   /* eslint-disable */
@@ -74,7 +69,7 @@ export default class CoreComponent extends Component {
   };
 
   chainFunction = (...funcs) =>
-    funcs.filter(f => f != null).reduce((acc, f) => {
+    funcs.filter(f => f !== null).reduce((acc, f) => {
       if (typeof f !== "function") {
         throw new Error(
           "Invalid Argument Type, must only provide functions, undefined, or null."

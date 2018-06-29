@@ -1,11 +1,3 @@
-/* ========================================================================
- * Style-O-Matic UI
- *
- * @author: Steven Jackson
- * ======================================================================== */
-
-/* eslint "react/prop-types": [0] */
-
 import React, { cloneElement } from "react";
 import {
   isModifiedEvent,

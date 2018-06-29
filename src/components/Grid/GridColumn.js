@@ -1,10 +1,3 @@
-/* ========================================================================
- * Style-O-Matic UI
- *
- * @author: Steven Jackson
- * ======================================================================== */
-
-/* eslint "react/prop-types": [0] */
 import _ from "lodash";
 import React from "react";
 import classNames from "classnames";

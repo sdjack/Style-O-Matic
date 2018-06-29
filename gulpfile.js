@@ -1,22 +1,8 @@
-/** *
- *      /$$$$$$  /$$   /$$ /$$       /$$$$$$$
- *     /$$__  $$| $$  | $$| $$      | $$__  $$
- *    | $$  \__/| $$  | $$| $$      | $$  \ $$
- *    | $$ /$$$$| $$  | $$| $$      | $$$$$$$/
- *    | $$|_  $$| $$  | $$| $$      | $$____/
- *    | $$  \ $$| $$  | $$| $$      | $$
- *    |  $$$$$$/|  $$$$$$/| $$$$$$$$| $$
- *     \______/  \______/ |________/|__/
- *
- *
- *
- */
 const gulp = require("gulp");
 const strip = require("gulp-strip-comments");
 const es = require("event-stream");
 const $ = require("gulp-load-plugins")();
 const del = require("del");
-const runSequence = require("run-sequence");
 const pkg = require("./package.json");
 
 const banner = [
@@ -25,7 +11,7 @@ const banner = [
   " * @version v<%= pkg.version %>",
   " * @license <%= pkg.license %>",
   " * @author <%= pkg.author %>",
-  " * @copyright 2017 Whiting House Group. All rights reserved.",
+  " * @copyright 2017 Steven Jackson. All rights reserved.",
   " */",
   ""
 ].join("\n");
@@ -99,7 +85,7 @@ gulp.task("all_styles", () =>
     .pipe($.concat("style-o-matic.all.min.css"))
     .pipe($.header(banner, { pkg }))
     .pipe(gulp.dest("css"))
-    .pipe($.size({ title: "styles" }))
+    .pipe($.size({ title: "all_styles" }))
 );
 // Base CSS [Componentized Version]
 gulp.task("styles", () =>
@@ -129,7 +115,7 @@ gulp.task("styles", () =>
     .pipe($.size({ title: "styles" }))
 );
 // React Components
-gulp.task("react_compile", () =>
+gulp.task("react_compile", cb => {
   es.merge(
     componentList.map(componentName =>
       gulp
@@ -154,49 +140,30 @@ gulp.task("react_compile", () =>
         .pipe(gulp.dest(`lib/components/${componentName}`))
         .pipe($.size({ title: `React Component: ${componentName}` }))
     )
-  )
-);
-
-gulp.task(
-  "react_prep",
-  del.bind(null, ["src/components/*.css", ".tmp"], {
-    dot: true
-  })
-);
-
-gulp.task("react", cb => {
-  runSequence(["react_prep"], ["react_compile"], ["clean"], cb);
+  );
+  cb();
 });
-// Prepare Output Directory
-gulp.task(
-  "prep",
-  del.bind(null, ["_build", "css/*.css", "src/components/*.css", ".tmp"], {
-    dot: true
-  })
-);
+
 // Clean TMP Directory
-gulp.task("clean", del.bind(null, [".tmp"], { dot: true }));
-// Run all scss-to-_build handlers
-gulp.task("build_all", ["prep"], cb => {
-  runSequence(["all_styles"], ["styles"], ["react_compile"], cb);
-});
+gulp.task("clean", () => del([".tmp"]));
+
+gulp.task("react_prep", () => del(["src/components/*.css", ".tmp"]));
+
+gulp.task("react", gulp.series("react_prep", "react_compile"));
+// Prepare Output Directory
+gulp.task("prep", () =>
+  del(["_build", "css/*.css", "src/components/*.css", ".tmp"])
+);
 // Copy all _build files to the public directory
-gulp.task("replicate_css", () => {
-  const sources = ["_build/css/*.css"];
-  return gulp.src(sources).pipe(gulp.dest("./css"));
-});
-gulp.task("replicate", cb => {
-  runSequence(["replicate_css"], cb);
-});
+gulp.task("replicate", () =>
+  gulp.src(["_build/css/*.css"]).pipe(gulp.dest("./css"))
+);
 // Our default task (executed by calling the "gulp" command)
-gulp.task("proc", cb => {
-  runSequence(["build_all"], ["replicate"], ["clean"], cb);
-});
+gulp.task(
+  "default",
+  gulp.series("prep", "all_styles", "styles", "react_compile", "replicate")
+);
 // Start watching for file changes
 gulp.task("watch", () => {
-  gulp.watch(["src/scss/**/*.scss", "src/scss/**/**/*.scss"], ["proc"]);
-});
-// Our default task (executed by calling the "gulp" command)
-gulp.task("default", cb => {
-  runSequence(["proc"], cb);
+  gulp.watch(["src/scss/**/*.scss", "src/scss/**/**/*.scss"], ["default"]);
 });

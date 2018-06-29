@@ -1,14 +1,37 @@
-/**
- * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.0.942
- * @license MIT
- * @author Steven Jackson [sdj.root@gmail.com]
- * @copyright 2017 Steven Jackson. All rights reserved.
- */
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 @import url("https://use.fontawesome.com/releases/v5.0.9/css/all.css");
+/**
+ * NEUTRALS
+ */
+/**
+ * NEUTRALS CONTRAST
+ */
+/**
+ * ROYGBIV
+ */
+/**
+ * ROYGBIV ACTIVE
+ */
+/**
+ * ROYGBIV DARKENED
+ */
+/**
+ * ROYGBIV CONTRAST ACTIVE
+ */
+/**
+ * ROYGBIV CONTRAST
+ */
+/**
+ * ROYGBIV CONTRAST DARKENED
+ */
+/**
+ * ONWARD
+ */
+/**
+*  MISC
+*/
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg); }
@@ -29,14 +52,18 @@
   100% {
     opacity: 1; } }
 
+/* Firefox < 16 */
 
+/* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
 
+/* Internet Explorer */
 
+/* Opera < 12.1 */
 
 @keyframes fadeout {
   100% {
@@ -44,18 +71,31 @@
   0% {
     opacity: 0; } }
 
+/* Firefox < 16 */
 
+/* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadeout {
   100% {
     opacity: 1; }
   0% {
     opacity: 0; } }
 
+/* Internet Explorer */
 
+/* Opera < 12.1 */
 
+/**
+ * Set up a decent box model on the root element
+ */
 html {
   box-sizing: border-box; }
 
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
 *,
 *::before,
 *::after {
@@ -66,6 +106,9 @@ body {
   width: 100vw;
   overflow: hidden; }
 
+/**
+ * Basic styles for links
+ */
 a {
   text-decoration: none; }
   a:hover, a:active, a:focus {
@@ -599,6 +642,9 @@ tfoot {
   margin-top: 30vh !important;
   padding: 20px 50px 40px 50px !important; }
 
+/**
+ * Clear inner floats
+ */
 .clearfix::after {
   clear: both;
   content: '';
@@ -608,15 +654,29 @@ tfoot {
   padding: 0 !important;
   margin: 0 !important; }
 
+/**
+ * Hidden Completely
+ */
 .ui-hidden {
   display: none !important; }
 
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
 .ui-hidden-text {
   overflow: hidden;
   padding: 0;
+  /* 1 */
   text-indent: 101%;
   white-space: nowrap; }
 
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
 .ui-hidden-visually {
   border: 0;
   clip: rect(0 0 0 0);

@@ -1,10 +1,3 @@
-/* ========================================================================
- * Style-O-Matic UI
- *
- * @author: Steven Jackson
- * ======================================================================== */
-
-/* eslint "react/prop-types": [0] */
 import _ from "lodash";
 import React, { cloneElement } from "react";
 import {
@@ -49,7 +42,7 @@ class Toasts extends CoreComponent {
   renderToasts = () => {
     const output = [];
     const items = this.state.messages;
-    for (let i = 0; i < items.length; i++) {
+    for (let i = 0; i < items.length; i += 1) {
       const msg = items[i];
       output.push(
         <span className="ui-toasts-toast" key={`toast-message_${i}`}>

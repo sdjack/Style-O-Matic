@@ -1,8 +1,3 @@
-/* ========================================================================
- * Style-O-Matic UI
- *
- * @author: Steven Jackson
- * ======================================================================== */
 const today = new Date();
 const year = today.getFullYear();
 const timeComparator = today.getTime() - 86400000;

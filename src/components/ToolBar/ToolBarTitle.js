@@ -1,11 +1,3 @@
-/* ========================================================================
- * Style-O-Matic UI
- *
- * @author: Steven Jackson
- * ======================================================================== */
-
-/* eslint "react/prop-types": [0] */
-
 import React from "react";
 import ReactDOM from "react-dom";
 import {
@@ -31,16 +23,15 @@ class ToolBarTitle extends CoreComponent {
   }
 
   onEventDispatch = (eventName, eventData, eventSenders) => {
-    if (eventName === "scroll") {
+    if (eventName === "scroll" && this.node) {
       const { text, children } = this.props;
       const currentTitle = text || children;
       let newTitle = "";
       for (let i = 0; i < eventSenders.length; i += 1) {
         const sender = eventSenders[i];
         if (sender) {
-          const node = ReactDOM.findDOMNode(sender);
-          const { scrollTop } = node.offsetParent;
-          const { offsetTop, clientHeight } = node;
+          const { scrollTop } = this.node.offsetParent;
+          const { offsetTop, clientHeight } = this.node;
           const targetOffset = offsetTop + clientHeight;
           const pageOffset = scrollTop + 70;
           const titleText = sender.props.children;

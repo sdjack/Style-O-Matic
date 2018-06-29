@@ -78,6 +78,12 @@ module.exports = {
     // ESLint plugin for prettier formatting
     // https://github.com/prettier/eslint-plugin-prettier
     'prettier/prettier': 'error',
+    'react/prop-types': [0],
+
+    'import/extensions': 0,
+
+    'linebreak-style': 0,
+    'jsx-a11y/label-has-for': [ 2, {'allowChildren': true}]
   },
 
   settings: {

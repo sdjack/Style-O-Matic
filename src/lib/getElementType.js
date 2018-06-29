@@ -13,8 +13,9 @@ function getElementType(Component, props, getDefault) {
   // ----------------------------------------
   // user defined "renderAs" element type
 
-  if (props.renderAs && props.renderAs !== defaultProps.renderAs)
+  if (props.renderAs && props.renderAs !== defaultProps.renderAs) {
     return props.renderAs;
+  }
 
   // ----------------------------------------
   // computed default element type

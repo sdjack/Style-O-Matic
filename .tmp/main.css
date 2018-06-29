@@ -1,14 +1,37 @@
-/**
- * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.0.942
- * @license MIT
- * @author Steven Jackson [sdj.root@gmail.com]
- * @copyright 2017 Steven Jackson. All rights reserved.
- */
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 @import url("https://use.fontawesome.com/releases/v5.0.9/css/all.css");
+/**
+ * NEUTRALS
+ */
+/**
+ * NEUTRALS CONTRAST
+ */
+/**
+ * ROYGBIV
+ */
+/**
+ * ROYGBIV ACTIVE
+ */
+/**
+ * ROYGBIV DARKENED
+ */
+/**
+ * ROYGBIV CONTRAST ACTIVE
+ */
+/**
+ * ROYGBIV CONTRAST
+ */
+/**
+ * ROYGBIV CONTRAST DARKENED
+ */
+/**
+ * ONWARD
+ */
+/**
+*  MISC
+*/
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg); }
@@ -29,14 +52,18 @@
   100% {
     opacity: 1; } }
 
+/* Firefox < 16 */
 
+/* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
 
+/* Internet Explorer */
 
+/* Opera < 12.1 */
 
 @keyframes fadeout {
   100% {
@@ -44,18 +71,31 @@
   0% {
     opacity: 0; } }
 
+/* Firefox < 16 */
 
+/* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadeout {
   100% {
     opacity: 1; }
   0% {
     opacity: 0; } }
 
+/* Internet Explorer */
 
+/* Opera < 12.1 */
 
+/**
+ * Set up a decent box model on the root element
+ */
 html {
   box-sizing: border-box; }
 
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
 *,
 *::before,
 *::after {
@@ -66,6 +106,9 @@ body {
   width: 100vw;
   overflow: hidden; }
 
+/**
+ * Basic styles for links
+ */
 a {
   text-decoration: none; }
   a:hover, a:active, a:focus {
@@ -599,6 +642,9 @@ tfoot {
   margin-top: 30vh !important;
   padding: 20px 50px 40px 50px !important; }
 
+/**
+ * Clear inner floats
+ */
 .clearfix::after {
   clear: both;
   content: '';
@@ -608,15 +654,29 @@ tfoot {
   padding: 0 !important;
   margin: 0 !important; }
 
+/**
+ * Hidden Completely
+ */
 .ui-hidden {
   display: none !important; }
 
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
 .ui-hidden-text {
   overflow: hidden;
   padding: 0;
+  /* 1 */
   text-indent: 101%;
   white-space: nowrap; }
 
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
 .ui-hidden-visually {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1294,6 +1354,15 @@ tfoot {
   top: 50%;
   margin-top: -16px; }
 
+/***
+ *    ██████╗..█████╗.██████╗..██████╗.███████╗
+ *    ██╔══██╗██╔══██╗██╔══██╗██╔════╝.██╔════╝
+ *    ██████╔╝███████║██║..██║██║..███╗█████╗..
+ *    ██╔══██╗██╔══██║██║..██║██║...██║██╔══╝..
+ *    ██████╔╝██║..██║██████╔╝╚██████╔╝███████╗
+ *    ╚═════╝.╚═╝..╚═╝╚═════╝..╚═════╝.╚══════╝
+ *    .........................................
+ */
 .ui-badge {
   display: inline-block;
   min-width: 36px;
@@ -1370,6 +1439,15 @@ tfoot {
   .ui-badge-label:hover {
     background-color: rgba(0, 0, 0, 0.033); }
 
+/***
+ *    ██████╗ ██████╗ ███████╗ █████╗ ██████╗  ██████╗██████╗ ██╗   ██╗███╗   ███╗██████╗ ███████╗
+ *    ██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗██║   ██║████╗ ████║██╔══██╗██╔════╝
+ *    ██████╔╝██████╔╝█████╗  ███████║██║  ██║██║     ██████╔╝██║   ██║██╔████╔██║██████╔╝███████╗
+ *    ██╔══██╗██╔══██╗██╔══╝  ██╔══██║██║  ██║██║     ██╔══██╗██║   ██║██║╚██╔╝██║██╔══██╗╚════██║
+ *    ██████╔╝██║  ██║███████╗██║  ██║██████╔╝╚██████╗██║  ██║╚██████╔╝██║ ╚═╝ ██║██████╔╝███████║
+ *    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝  ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝
+ *                                                                                                
+ */
 .ui-breadcrumbs {
   display: block;
   width: 100%;
@@ -1444,6 +1522,15 @@ tfoot {
 .ui-breadcrumb-active {
   opacity: 0.5; }
 
+/***
+ *    ██████╗.██╗...██╗████████╗████████╗.██████╗.███╗...██╗
+ *    ██╔══██╗██║...██║╚══██╔══╝╚══██╔══╝██╔═══██╗████╗..██║
+ *    ██████╔╝██║...██║...██║......██║...██║...██║██╔██╗.██║
+ *    ██╔══██╗██║...██║...██║......██║...██║...██║██║╚██╗██║
+ *    ██████╔╝╚██████╔╝...██║......██║...╚██████╔╝██║.╚████║
+ *    ╚═════╝..╚═════╝....╚═╝......╚═╝....╚═════╝.╚═╝..╚═══╝
+ *    ......................................................
+ */
 .ui-button {
   min-width: 32px;
   height: 36px;
@@ -1744,6 +1831,15 @@ tfoot {
   background-attachment: scroll;
   box-sizing: border-box; }
 
+/***
+ *    ██████╗  █████╗ ████████╗███████╗██████╗ ██╗ ██████╗██╗  ██╗███████╗██████╗
+ *    ██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗██║██╔════╝██║ ██╔╝██╔════╝██╔══██╗
+ *    ██║  ██║███████║   ██║   █████╗  ██████╔╝██║██║     █████╔╝ █████╗  ██████╔╝
+ *    ██║  ██║██╔══██║   ██║   ██╔══╝  ██╔═══╝ ██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
+ *    ██████╔╝██║  ██║   ██║   ███████╗██║     ██║╚██████╗██║  ██╗███████╗██║  ██║
+ *    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+ *
+ */
 .ui-datepicker {
   cursor: pointer;
   padding: 0;
@@ -2227,6 +2323,15 @@ tfoot {
 .ui-dropdown-active {
   display: block; }
 
+/***
+ *    ███████╗_██████╗__██████╗_████████╗███████╗██████╗_
+ *    ██╔════╝██╔═══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗
+ *    █████╗__██║___██║██║___██║___██║___█████╗__██████╔╝
+ *    ██╔══╝__██║___██║██║___██║___██║___██╔══╝__██╔══██╗
+ *    ██║_____╚██████╔╝╚██████╔╝___██║___███████╗██║__██║
+ *    ╚═╝______╚═════╝__╚═════╝____╚═╝___╚══════╝╚═╝__╚═╝
+ *    ___________________________________________________
+ */
 .ui-footer {
   width: 100%;
   height: auto;
@@ -2250,6 +2355,15 @@ tfoot {
   margin: 0;
   padding: 0; }
 
+/***
+ *    ███████╗_██████╗_██████╗_███╗___███╗
+ *    ██╔════╝██╔═══██╗██╔══██╗████╗_████║
+ *    █████╗__██║___██║██████╔╝██╔████╔██║
+ *    ██╔══╝__██║___██║██╔══██╗██║╚██╔╝██║
+ *    ██║_____╚██████╔╝██║__██║██║_╚═╝_██║
+ *    ╚═╝______╚═════╝_╚═╝__╚═╝╚═╝_____╚═╝
+ *    ____________________________________
+ */
 .ui-form {
   position: relative;
   width: 100%;
@@ -2421,6 +2535,15 @@ tfoot {
     .ui-grid-post-divider {
       padding: 14px 2px 2px 2px; } }
 
+/***
+ *    ██╗..██╗███████╗.█████╗.██████╗.███████╗██████╗.
+ *    ██║..██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗
+ *    ███████║█████╗..███████║██║..██║█████╗..██████╔╝
+ *    ██╔══██║██╔══╝..██╔══██║██║..██║██╔══╝..██╔══██╗
+ *    ██║..██║███████╗██║..██║██████╔╝███████╗██║..██║
+ *    ╚═╝..╚═╝╚══════╝╚═╝..╚═╝╚═════╝.╚══════╝╚═╝..╚═╝
+ *    ................................................
+ */
 .ui-header {
   width: 100%;
   height: auto;
@@ -2444,6 +2567,15 @@ tfoot {
   margin: 0;
   padding: 0; }
 
+/***
+ *    ██╗███╗___██╗██████╗_██╗___██╗████████╗
+ *    ██║████╗__██║██╔══██╗██║___██║╚══██╔══╝
+ *    ██║██╔██╗_██║██████╔╝██║___██║___██║___
+ *    ██║██║╚██╗██║██╔═══╝_██║___██║___██║___
+ *    ██║██║_╚████║██║_____╚██████╔╝___██║___
+ *    ╚═╝╚═╝__╚═══╝╚═╝______╚═════╝____╚═╝___
+ *    _______________________________________
+ */
 .invalid {
   border-color: #eb4d37;
   background-color: rgba(235, 77, 55, 0.1); }
@@ -2508,6 +2640,7 @@ tfoot {
   .ui-input-icon.appended {
     right: 1px; }
 
+/* INPUT CONTAINERS AND ICONS */
 .ui-input-text,
 .ui-input-textarea,
 .ui-input-select,
@@ -2662,6 +2795,7 @@ tfoot {
     background: none !important;
     border: none !important; }
 
+/* INPUT TYPE: TEXTAREA */
 .ui-input-textarea {
   width: 100%;
   max-width: 100%;
@@ -2678,6 +2812,7 @@ tfoot {
     overflow: auto;
     resize: vertical; }
 
+/* INPUT TYPE: NUMBER */
 .ui-input-number {
   background-color: white;
   border-radius: 3px;
@@ -2730,6 +2865,9 @@ tfoot {
   bottom: 0;
   border-radius: 0 0 3px 0; }
 
+/* INPUT TYPE: DATE */
+/* INPUT TYPE: TIME */
+/* INPUT TYPE: FILE */
 .ui-inputfile {
   width: 0.1px;
   height: 0.1px;
@@ -2764,6 +2902,7 @@ tfoot {
     outline: 1px dotted #000;
     outline: -webkit-focus-ring-color auto 5px; }
 
+/* INPUT TYPE: CHECKBOX & RADIO */
 .ui-input-checkbox,
 .ui-input-radio {
   margin: 10px; }
@@ -2776,6 +2915,17 @@ tfoot {
       width: 20px;
       height: 20px; }
 
+/* INPUT TYPE: RADIO */
+/* INPUT TYPE: URL */
+/***
+ *    ██╗......██████╗..█████╗.██████╗.██╗███╗...██╗.██████╗.
+ *    ██║.....██╔═══██╗██╔══██╗██╔══██╗██║████╗..██║██╔════╝.
+ *    ██║.....██║...██║███████║██║..██║██║██╔██╗.██║██║..███╗
+ *    ██║.....██║...██║██╔══██║██║..██║██║██║╚██╗██║██║...██║
+ *    ███████╗╚██████╔╝██║..██║██████╔╝██║██║.╚████║╚██████╔╝
+ *    ╚══════╝.╚═════╝.╚═╝..╚═╝╚═════╝.╚═╝╚═╝..╚═══╝.╚═════╝.
+ *    .......................................................
+ */
 .ui-loading {
   background-color: #EFF3F8;
   border: 0;
@@ -2933,6 +3083,15 @@ tfoot {
   padding: 0px 0px 128px 0px;
   position: relative; }
 
+/***
+ *    ███╗...███╗.██████╗.██████╗..█████╗.██╗.....
+ *    ████╗.████║██╔═══██╗██╔══██╗██╔══██╗██║.....
+ *    ██╔████╔██║██║...██║██║..██║███████║██║.....
+ *    ██║╚██╔╝██║██║...██║██║..██║██╔══██║██║.....
+ *    ██║.╚═╝.██║╚██████╔╝██████╔╝██║..██║███████╗
+ *    ╚═╝.....╚═╝.╚═════╝.╚═════╝.╚═╝..╚═╝╚══════╝
+ *    ............................................
+ */
 .modal {
   position: fixed;
   top: 0;
@@ -3206,6 +3365,15 @@ tfoot {
   display: block;
   width: 100%; }
 
+/***
+ *    ██████╗  █████╗  ██████╗ ██╗███╗   ██╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗
+ *    ██╔══██╗██╔══██╗██╔════╝ ██║████╗  ██║██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
+ *    ██████╔╝███████║██║  ███╗██║██╔██╗ ██║███████║   ██║   ██║██║   ██║██╔██╗ ██║
+ *    ██╔═══╝ ██╔══██║██║   ██║██║██║╚██╗██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║
+ *    ██║     ██║  ██║╚██████╔╝██║██║ ╚████║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║
+ *    ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+ *                                                                                 
+ */
 .ui-pagination {
   padding: 0;
   margin: 0;
@@ -3607,6 +3775,7 @@ tfoot {
     opacity: 1;
     width: 100%; } }
 
+/* INPUT TYPE: TEXTAREA */
 .ui-textarea {
   display: inline-block;
   position: relative;

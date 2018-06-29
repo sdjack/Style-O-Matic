@@ -1,11 +1,3 @@
-/* ========================================================================
- * Style-O-Matic UI
- *
- * @author: Steven Jackson
- * ======================================================================== */
-
-/* eslint "react/prop-types": [0] */
-
 import React from "react";
 import ReactDOM from "react-dom";
 import {
@@ -22,22 +14,17 @@ class ToolTip extends CoreComponent {
     position: "right"
   });
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      clientWidth: 1,
-      clientHeight: 1
-    };
-  }
+  parentNode = { clientWidth: 1, clientHeight: 1 };
 
   componentDidMount() {
-    const { clientWidth, clientHeight } = ReactDOM.findDOMNode(this).parentNode;
-    this.setState({ clientWidth, clientHeight });
+    if (this.node) {
+      this.parentNode = this.node.parentNode;
+    }
   }
 
   render() {
     const { position, ...sorceProps } = this.props;
-    const { clientWidth, clientHeight } = this.state;
+    const { clientWidth, clientHeight } = this.parentNode;
     const { renderAs: Component, children, props } = getValidProps(sorceProps);
 
     let widgetClass = "ui-tooltip-widget ";
