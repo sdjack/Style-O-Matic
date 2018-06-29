@@ -26,6 +26,7 @@ export default class CoreComponent extends Component {
   }
 
   componentWillMount() {
+    EventManager.registerComponent(this);
     if (this.props.observe) {
       EventManager.registerObserver(this, this.props.observe);
     }
@@ -38,6 +39,7 @@ export default class CoreComponent extends Component {
   }
 
   componentWillUnmount() {
+    EventManager.unregisterComponent(this);
     if (this.props.observe) {
       EventManager.unregisterObserver(this, this.props.observe);
     }

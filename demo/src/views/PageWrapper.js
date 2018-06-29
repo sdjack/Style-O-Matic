@@ -13,7 +13,7 @@ import Navigation from "./Navigation";
 class PageWrapper extends React.Component {
   render() {
     const { children } = this.props;
-
+    // UI.setTheme("foo");
     return [
       <Header key="layout-header" fixed>
         <Header.Drawer icon="fa fa-user" minimizable>

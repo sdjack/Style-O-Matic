@@ -5,6 +5,7 @@ import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
 import cx from "classnames";
 import { getParentClass } from "./ROLE.js";
 import { uID } from "./coreUtilities.js";
+import UIGlobals from "./UIGlobals.js";
 
 const OBSERVABLE_EVENTS = [
   "scroll",
@@ -84,7 +85,6 @@ const DefaultPropTypes = {
   tooltip: PropTypes.string,
   children: PropTypes.node,
   uiclass: PropTypes.string,
-  theme: PropTypes.string,
   uirole: PropTypes.string,
   path: PropTypes.string,
   text: PropTypes.string,
@@ -158,7 +158,6 @@ const DefaultPropValues = {
   tooltip: null,
   children: null,
   uiclass: null,
-  theme: null,
   uirole: "",
   path: "/",
   attach: null,
@@ -272,7 +271,6 @@ export function getPropDefaultsAutoId(config, uidataConfig) {
 export function getUIClassString(props) {
   const {
     uiclass,
-    theme,
     className,
     disabled,
     active,
@@ -299,7 +297,6 @@ export function getUIClassString(props) {
 
   const sUIclass = `ui-${uiclass}`;
   const hasUIclass = !className || className.indexOf(sUIclass) === -1;
-
   const coreClasses = {
     [sUIclass]: hasUIclass,
     [`ui-position-${position}`]: position,
@@ -322,9 +319,11 @@ export function getUIClassString(props) {
     invalid
   };
 
+  const theme = UIGlobals.readSetting("theme");
   const styleClasses = {
-    [`ui-theme-${theme}`]: theme
+    [`${sUIclass}-theme-${theme}`]: uiclass && theme
   };
+
   if (!_.isNil(color)) {
     const nohover = String(color).indexOf("!") !== -1;
     const cleanColor = String(color).replace("!", "");

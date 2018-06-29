@@ -10,6 +10,7 @@
       "./propUtilities.js",
       "./ROLE.js",
       "./EventManager.js",
+      "./UIGlobals.js",
       "./CoreComponent.js"
   ],
   "dependencies": {

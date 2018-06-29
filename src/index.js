@@ -56,6 +56,8 @@ import _ToolBar from "./components/ToolBar/ToolBar";
 
 import _ToolTip from "./components/ToolTip/ToolTip";
 
+import _UI from "./UI";
+
 export { _Accordion as Accordion };
 
 export { _Badge as Badge };
@@ -113,3 +115,5 @@ export { _Toasts as Toasts };
 export { _ToolBar as ToolBar };
 
 export { _ToolTip as ToolTip };
+
+export { _UI as UI };

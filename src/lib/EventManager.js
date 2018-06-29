@@ -3,6 +3,7 @@
  *
  * @author: Steven Jackson
  * ======================================================================== */
+import _ from "lodash";
 
 class ManagedEvent {
   constructor(eventName) {
@@ -52,6 +53,25 @@ class EventManager {
       load: new ManagedEvent("load")
     };
   }
+
+  applySetting = (prop, value) => {
+    localStorage.setItem(prop, value);
+    Object.entries(this.registry).forEach(([guid, registrant]) => {
+      if (!_.isNil(registrant)) {
+        registrant.forceUpdate();
+      }
+    });
+  };
+
+  readSetting = prop => localStorage.getItem(prop);
+
+  registerComponent = registrant => {
+    this.registry[registrant.GUID] = registrant;
+  };
+
+  unregisterComponent = registrant => {
+    this.registry[registrant.GUID] = null;
+  };
 
   addListener = eventName => {
     const eventObject = this.events[eventName];

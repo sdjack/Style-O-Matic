@@ -4,12 +4,13 @@
  * @author: Steven Jackson
  * ======================================================================== */
 import React from "react";
-import { Form, Grid, Title } from "../../../src/index";
+import { Form, Grid, Title, UI } from "../../../src/index";
 
 class FormsView extends React.Component {
   handleOnSubmit = (e, formData) => {
     e.preventDefault();
-    // console.log(formData);
+    UI.setTheme("foo");
+    console.log("Theme: foo");
   };
 
   render() {

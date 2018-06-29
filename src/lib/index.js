@@ -1,5 +1,6 @@
 export { default as CoreComponent } from "./CoreComponent.js";
 export EventManager from "./EventManager.js";
+export UIGlobals from "./UIGlobals.js";
 export getElementType from "./getElementType.js";
 export getUnhandledProps from "./getUnhandledProps.js";
 export * from "./ROLE.js";

@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.0.93
+ * @version v1.0.942
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Whiting House Group. All rights reserved.
@@ -647,11 +647,11 @@ tfoot {
 
 .ui-raised {
   border-radius: 4px;
-  box-shadow: 3px 2px 8px -2px rgba(0, 0, 0, 0.5), -2px 4px 8px -2px rgba(0, 0, 0, 0.5); }
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.04), 1px 2px 6px -2px rgba(0, 0, 0, 0.14); }
 
 .ui-inset {
   border-radius: 4px;
-  box-shadow: inset 2px 3px 1px 0 rgba(88, 88, 88, 0.75), inset -2px -1px 1px 0px rgba(220, 220, 220, 0.8), inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5); }
+  box-shadow: inset 1px 2px 2px rgba(50, 50, 50, 0.15), inset -1px -2px 2px #ffffff; }
 
 .ui-well {
   min-height: 18px;
@@ -1210,7 +1210,9 @@ tfoot {
   color: #8b23b7 !important; }
 
 .ui-accordion {
-  background-color: #fff;
+  font-family: inherit;
+  color: inherit;
+  background-color: inherit;
   border: 1px solid rgba(0, 0, 0, 0.13);
   border-radius: 6px;
   margin-left: auto;
@@ -1235,15 +1237,18 @@ tfoot {
     border-bottom-right-radius: 6px; }
 
 .ui-accordion-title {
+  position: relative;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 1em 1em;
+  font-family: inherit;
+  color: inherit;
+  background-color: inherit;
   font-size: 20px;
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.02em;
   -moz-osx-font-smoothing: greyscale;
-  position: relative;
-  border-bottom: none;
-  border-radius: 6px 6px 0 0;
-  padding: 1em 1em;
   text-decoration: none;
   text-indent: 12px;
   overflow: hidden;
@@ -1267,6 +1272,8 @@ tfoot {
   height: 0px;
   padding: 0;
   margin: 0;
+  font-family: inherit;
+  color: inherit;
   background-color: rgba(0, 0, 0, 0.02);
   overflow: hidden;
   box-shadow: none;
