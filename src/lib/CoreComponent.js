@@ -12,9 +12,9 @@ export default class CoreComponent extends Component {
 
   static defaultProps = getCorePropDefaults();
 
-  constructor(...args) {
-    super(...args);
-    this.GUID = uID();
+  constructor(props, ...args) {
+    super(props, ...args);
+    this.GUID = props.uuid;
     const state = this.state || {};
     this.state = { ...state };
     this.node = null;
@@ -70,13 +70,13 @@ export default class CoreComponent extends Component {
 
   chainFunction = (...funcs) =>
     funcs.filter(f => f !== null).reduce((acc, f) => {
-      if (typeof f !== "function") {
+      if (f && typeof f !== "function") {
         throw new Error(
           "Invalid Argument Type, must only provide functions, undefined, or null."
         );
       }
 
-      if (acc === null) {
+      if (!acc) {
         return f;
       }
 

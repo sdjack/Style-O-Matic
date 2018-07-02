@@ -11,8 +11,25 @@ import { Grid, Table, Title } from "../../../src/index";
 
 class TableView extends React.Component {
   render() {
+    const sampleData = Table.FactoryData({
+      head: {
+        labels: {
+          x: ["Name", "Email", "ID"]
+        }
+      },
+      body: {
+        rows: [
+          ["Default User", "generic@email.com", "001"],
+          ["Another User", "another@email.com", "002"],
+          ["Mystery User", "mystery@email.com", "003"],
+          ["Ignored User", "ignored@email.com", "004"],
+          ["Broken User", null, "005"],
+          [null, "ghost@email.com", "000"]
+        ]
+      }
+    });
     return [
-      <Title renderAs="h1" textAlign="center" sticky>
+      <Title renderAs="h1" textAlign="center" key="grip-title1" sticky>
         <Title.Content>Table</Title.Content>
       </Title>,
       <Grid key="grip-panel1">
@@ -29,37 +46,7 @@ class TableView extends React.Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Table panel>
-                    <Table.Head>
-                      <Table.Row>
-                        <Table.Cell>Name</Table.Cell>
-                        <Table.Cell>Email</Table.Cell>
-                        <Table.Cell>ID</Table.Cell>
-                      </Table.Row>
-                    </Table.Head>
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>Default User</Table.Cell>
-                        <Table.Cell />
-                        <Table.Cell />
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell>Default User</Table.Cell>
-                        <Table.Cell />
-                        <Table.Cell />
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell>Default User</Table.Cell>
-                        <Table.Cell />
-                        <Table.Cell />
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell>Default User</Table.Cell>
-                        <Table.Cell />
-                        <Table.Cell />
-                      </Table.Row>
-                    </Table.Body>
-                  </Table>
+                  <Table panel>{sampleData}</Table>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -79,35 +66,7 @@ class TableView extends React.Component {
               <Grid.Row>
                 <Grid.Column textAlign="center">
                   <Table bordered panel>
-                    <Table.Head>
-                      <Table.Row>
-                        <Table.Cell>Name</Table.Cell>
-                        <Table.Cell>Email</Table.Cell>
-                        <Table.Cell>ID</Table.Cell>
-                      </Table.Row>
-                    </Table.Head>
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>Default User</Table.Cell>
-                        <Table.Cell />
-                        <Table.Cell />
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell>Default User</Table.Cell>
-                        <Table.Cell />
-                        <Table.Cell />
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell>Default User</Table.Cell>
-                        <Table.Cell />
-                        <Table.Cell />
-                      </Table.Row>
-                      <Table.Row>
-                        <Table.Cell>Default User</Table.Cell>
-                        <Table.Cell />
-                        <Table.Cell />
-                      </Table.Row>
-                    </Table.Body>
+                    {sampleData}
                   </Table>
                 </Grid.Column>
               </Grid.Row>
@@ -122,35 +81,7 @@ class TableView extends React.Component {
             <hr />
             <br />
             <Table bordered padded>
-              <Table.Head>
-                <Table.Row>
-                  <Table.Cell>Name</Table.Cell>
-                  <Table.Cell>Email</Table.Cell>
-                  <Table.Cell>ID</Table.Cell>
-                </Table.Row>
-              </Table.Head>
-              <Table.Body>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-              </Table.Body>
+              {sampleData}
             </Table>
           </Grid.Column>
         </Grid.Row>
@@ -162,35 +93,7 @@ class TableView extends React.Component {
             <hr />
             <br />
             <Table bordered padded hover>
-              <Table.Head>
-                <Table.Row>
-                  <Table.Cell>Name</Table.Cell>
-                  <Table.Cell>Email</Table.Cell>
-                  <Table.Cell>ID</Table.Cell>
-                </Table.Row>
-              </Table.Head>
-              <Table.Body>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-              </Table.Body>
+              {sampleData}
             </Table>
           </Grid.Column>
         </Grid.Row>
@@ -202,35 +105,7 @@ class TableView extends React.Component {
             <hr />
             <br />
             <Table bordered padded hover striped>
-              <Table.Head>
-                <Table.Row>
-                  <Table.Cell>Name</Table.Cell>
-                  <Table.Cell>Email</Table.Cell>
-                  <Table.Cell>ID</Table.Cell>
-                </Table.Row>
-              </Table.Head>
-              <Table.Body>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Default User</Table.Cell>
-                  <Table.Cell />
-                  <Table.Cell />
-                </Table.Row>
-              </Table.Body>
+              {sampleData}
             </Table>
           </Grid.Column>
         </Grid.Row>

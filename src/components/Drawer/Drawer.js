@@ -43,6 +43,7 @@ class Drawer extends CoreComponent {
     const {
       renderAs: Component,
       uiclass,
+      uuid,
       attach,
       icon,
       disabled,
@@ -61,7 +62,7 @@ class Drawer extends CoreComponent {
     const toggle = [];
     if (minimizable) {
       toggle.push(
-        <div key={`drawer_toggle_${this.GUID}`} className="ui-drawer-toggle">
+        <div key={`drawer_toggle_${uuid}`} className="ui-drawer-toggle">
           <button
             className={`ui-drawer-toggle-button ${icon}`}
             onClick={this.toggle}

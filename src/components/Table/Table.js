@@ -5,7 +5,8 @@ import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps,
-  ROLE
+  ROLE,
+  uID
 } from "../../lib";
 import TableHead from "./TableHead.js";
 import TableBody from "./TableBody.js";
@@ -13,6 +14,38 @@ import TableFoot from "./TableFoot.js";
 import TableRow from "./TableRow.js";
 import TableCell from "./TableCell.js";
 import "./Table.css";
+
+function ParseSectionData(data, UUID) {
+  const output = [];
+  let xCount;
+  if (data.labels && data.labels.x) {
+    xCount = data.labels.x.length;
+    const labelRow = [];
+    for (let i = 0; i < xCount; i += 1) {
+      labelRow.push(
+        <TableCell key={`td_${UUID}_label_${i}`}>{data.labels.x[i]}</TableCell>
+      );
+    }
+    output.push(<TableRow key={`td_${UUID}_labelrow`}>{labelRow}</TableRow>);
+  }
+  if (data.rows) {
+    const rowCount = data.rows.length;
+    const colCount = xCount || data.rows[0].length;
+    for (let i = 0; i < rowCount; i += 1) {
+      const readRow = data.rows[i];
+      const dataRow = [];
+      for (let x = 0; x < colCount; x += 1) {
+        dataRow.push(
+          <TableCell key={`td_${UUID}_cell_${i}${x}`}>{readRow[x]}</TableCell>
+        );
+      }
+      output.push(
+        <TableRow key={`td_${UUID}_cellrow${i}`}>{dataRow}</TableRow>
+      );
+    }
+  }
+  return output;
+}
 
 class Table extends CoreComponent {
   static propTypes = getCorePropTypes({
@@ -38,6 +71,24 @@ class Table extends CoreComponent {
   static Foot = TableFoot;
   static Row = TableRow;
   static Cell = TableCell;
+
+  static FactoryData = data => {
+    const output = [];
+    const UUID = uID();
+    if (data.head) {
+      const compiled = ParseSectionData(data.head, UUID);
+      output.push(<TableHead key={`thead_${UUID}`}>{compiled}</TableHead>);
+    }
+    if (data.body) {
+      const compiled = ParseSectionData(data.body, UUID);
+      output.push(<TableBody key={`tbody_${UUID}`}>{compiled}</TableBody>);
+    }
+    if (data.foot) {
+      const compiled = ParseSectionData(data.foot, UUID);
+      output.push(<TableFoot key={`tfoot_${UUID}`}>{compiled}</TableFoot>);
+    }
+    return output;
+  };
 
   renderChild = (child, props) => {
     const role = child.props.uirole;
@@ -78,6 +129,7 @@ class Table extends CoreComponent {
 
     const uiClassCore = cx(className, classes);
     delete props.className;
+
     return (
       <Component className={uiClassCore} {...props}>
         {React.Children.map(children, child => {
@@ -102,5 +154,29 @@ class Table extends CoreComponent {
     );
   }
 }
+
+// const sampleData = {
+//   head: {
+//     labels: {
+//       x: [],
+//       y: []
+//     },
+//     rows: []
+//   },
+//   body: {
+//     labels: {
+//       x: [],
+//       y: []
+//     },
+//     rows: []
+//   },
+//   foot: {
+//     labels: {
+//       x: [],
+//       y: []
+//     },
+//     rows: []
+//   }
+// };
 
 export default Table;

@@ -50,7 +50,7 @@ class Breadcrumbs extends CoreComponent {
           if (i > 0) {
             rows.push(
               <span
-                key={`breadcrumb-divider_${this.GUID}_${i}`}
+                key={`breadcrumb-divider_${this.props.uuid}_${i}`}
                 className="ui-breadcrumb-divider"
               >
                 &nbsp;/&nbsp;

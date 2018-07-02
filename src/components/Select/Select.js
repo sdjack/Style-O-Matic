@@ -30,7 +30,7 @@ class Select extends CoreComponent {
   constructor(props) {
     super(props);
     let defaultValue = props.value;
-    const renderKey = `select_${this.GUID}`;
+    const renderKey = `select_${props.uuid}`;
     if (!defaultValue) {
       defaultValue = props.options[0] ? props.options[0].Value : "";
     }

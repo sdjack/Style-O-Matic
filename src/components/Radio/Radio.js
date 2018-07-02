@@ -48,7 +48,7 @@ class Radio extends CoreComponent {
 
   fields = [];
   valid = true;
-  renderKey = `radio_${this.GUID}`;
+  renderKey = `radio_${this.props.uuid}`;
 
   renderLabel = (id, label, required) => {
     if (label !== null) {

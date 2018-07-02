@@ -28,7 +28,7 @@ class Textarea extends CoreComponent {
   constructor(props) {
     super(props);
     const defaultValue = props.value || "";
-    const renderKey = `textarea_${this.GUID}`;
+    const renderKey = `textarea_${props.uuid}`;
     this.state = {
       renderKey,
       value: defaultValue,

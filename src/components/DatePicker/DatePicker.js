@@ -4,7 +4,7 @@ import {
   CoreComponent,
   getValidProps,
   getPropTypesA11y,
-  getCorePropDefaults,
+  getPropDefaultsAutoId,
   ROLE
 } from "../../lib";
 import Calendar from "./Calendar.js";
@@ -20,10 +20,9 @@ class DatePicker extends CoreComponent {
     expiredlock: "bool"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = getPropDefaultsAutoId({
     renderAs: "Dropdown",
     uirole: ROLE.DATEPICKER,
-    id: `datepicker_${this.GUID}`,
     inputenabled: false,
     iconenabled: false,
     expiredlock: false
@@ -684,7 +683,7 @@ class DatePicker extends CoreComponent {
         icon.push(
           <i
             key={`datepicker-icon_${id}`}
-            id={`datepicker-icon_${this.GUID}`}
+            id={`datepicker-icon_${this.props.uuid}`}
             className="fa fa-calendar input-icon prepended"
             aria-hidden="true"
           />
@@ -693,14 +692,14 @@ class DatePicker extends CoreComponent {
       return (
         <Dropdown.Toggle
           key={`datepicker-toggle_${id}`}
-          id={`datepicker-toggle_${this.GUID}`}
+          id={`datepicker-toggle_${this.props.uuid}`}
           className={`input-text ${themeClass}${expiredClass}${iconClass}${invalidClass}`}
           renderAs="div"
         >
           {icon}
           <input
             key={`datepicker-input_${id}`}
-            id={`datepicker-input_${this.GUID}`}
+            id={`datepicker-input_${this.props.uuid}`}
             type="text"
             className={`datepicker-text ${invalidClass}`}
             onChange={this.handleOnChange}
@@ -714,7 +713,7 @@ class DatePicker extends CoreComponent {
       icon.push(
         <i
           key={`datepicker-icon_${id}`}
-          id={`datepicker-icon_${this.GUID}`}
+          id={`datepicker-icon_${this.props.uuid}`}
           className="fa fa-calendar"
           aria-hidden="true"
         />
@@ -726,7 +725,7 @@ class DatePicker extends CoreComponent {
     return (
       <Dropdown.Toggle
         key={`datepicker-toggle_${id}`}
-        id={`datepicker-toggle_${this.GUID}`}
+        id={`datepicker-toggle_${this.props.uuid}`}
         className={`datepicker-toggle theme-input_text ${expiredClass}`}
       >
         {icon}
@@ -753,7 +752,7 @@ class DatePicker extends CoreComponent {
         {this.renderToggle(id, iconenabled, inputenabled, disabled, invalid)}
         <Component.Content
           key={`datepicker-window_${id}`}
-          id={`datepicker-window_${this.GUID}`}
+          id={`datepicker-window_${this.props.uuid}`}
           className="datepicker-window theme-input"
         >
           {this.renderWindow(disabled)}

@@ -62,6 +62,7 @@ const INHERITED_PROPS = [
 ];
 
 const DefaultPropTypes = {
+  uuid: PropTypes.string,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
   type: PropTypes.string,
@@ -144,6 +145,7 @@ const DefaultPropTypes = {
 };
 
 const DefaultPropValues = {
+  uuid: null,
   renderAs: "div",
   className: null,
   role: null,
@@ -230,6 +232,7 @@ export function getPropTypesA11y(config, uidataConfig) {
 
 function setPropDefaults(autoId, config, uidataConfig) {
   const obj = _.clone(DefaultPropValues);
+  obj.uuid = uID();
   if (typeof config !== "undefined" && config !== null) {
     Object.entries(config).forEach(([attr, prop]) => {
       if (typeof prop === "object") {
@@ -255,7 +258,7 @@ function setPropDefaults(autoId, config, uidataConfig) {
     obj.uiclass = obj.uirole;
   }
   if (autoId && _.isNil(obj.id)) {
-    obj.id = `${obj.uirole}_${uID()}`;
+    obj.id = `${obj.uirole}_${obj.uuid}`;
   }
   return obj;
 }

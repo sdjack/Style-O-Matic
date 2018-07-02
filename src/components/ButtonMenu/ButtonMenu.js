@@ -3,17 +3,16 @@ import {
   CoreComponent,
   getValidProps,
   getPropTypesA11y,
-  getCorePropDefaults,
+  getPropDefaultsAutoId,
   ROLE
 } from "../../lib";
 import "./ButtonMenu.css";
 
 export class ButtonMenu extends CoreComponent {
   static propTypes = getPropTypesA11y();
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = getPropDefaultsAutoId({
     renderAs: "div",
-    uirole: ROLE.BUTTONMENU,
-    id: `buttonmenu_${this.GUID}`
+    uirole: ROLE.BUTTONMENU
   });
 
   constructor(props) {

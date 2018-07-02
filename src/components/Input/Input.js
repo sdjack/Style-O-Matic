@@ -36,7 +36,7 @@ class Input extends CoreComponent {
   constructor(props) {
     super(props);
     let defaultValue = props.value;
-    const renderKey = `input_${this.GUID}`;
+    const renderKey = `input_${props.uuid}`;
     if (!defaultValue) {
       switch (props.type) {
         case "select":
