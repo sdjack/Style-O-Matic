@@ -48,7 +48,7 @@
 		left: 100%;
 		margin-left: 10px;
 		margin-top: -18px;
-		
+
 		& > .ui-tooltip-content:before {
 	  		border-right-color: #1f1f1f;
 			right: 100%;
@@ -68,7 +68,7 @@
 		bottom: 100%;
 		margin-bottom: 10px;
 		margin-left: -18px;
-		
+
 		& > .ui-tooltip-content:before {
 	  		border-top-color: #1f1f1f;
 			top: 100%;
@@ -88,7 +88,7 @@
 		top: 100%;
 		margin-top: 10px;
 		margin-left: -18px;
-		
+
 		& > .ui-tooltip-content:before {
 	  		border-bottom-color: #1f1f1f;
 			bottom: 100%;
@@ -116,7 +116,7 @@
 	line-height: 16px;
 	@include shadow-tooltip();
 
-  	&:before, &:after {
+  &:before, &:after {
 		border: solid transparent;
 		content: " ";
 		height: 0;
@@ -124,13 +124,13 @@
 		position: absolute;
 		pointer-events: none;
 	}
-	
-  	&:before {
+
+  &:before {
 		border-color: rgba(240, 240, 240, 0);
 		border-width: 10px;
 	}
-	
-  	&:after {
+
+  &:after {
 		border-color: rgba(255, 255, 255, 0);
 		border-width: 8px;
 	}

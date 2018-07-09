@@ -4,7 +4,7 @@
 
  @import 'config';
 
- 
+
 .ui-table {
   position: relative;
   width: 100%;
@@ -19,6 +19,44 @@
 .ui-table-thead {
   background-color: $color-dark;
   color: $color-light;
+}
+
+.interactive {
+  cursor: pointer;
+  @include animate-default(0.2s);
+  transition-property: color, background-color;
+
+  &:hover {
+    color: $table-interactive-text-color;
+    background-color: $table-interactive-background-color;
+  }
+}
+
+.interactive.sorted-asc {
+  &:after {
+		content: "\25BC";
+    display: inline-block;
+    position: absolute;
+    right: 4px;
+	}
+}
+
+.interactive.sorted-desc {
+  &:after {
+		content: "\25B2";
+    display: inline-block;
+    position: absolute;
+    right: 4px;
+	}
+}
+
+.interactive.filtered {
+  &:before {
+		content: "\26A0";
+    display: inline-block;
+    position: absolute;
+    left: 4px;
+	}
 }
 
 .ui-table-bordered {
@@ -124,6 +162,22 @@
 .sort-button {
   padding: 0 4px;
   float: right;
+}
+
+.table-filter-input {
+  width: 99.4%;
+  padding: 1%;
+  background-color: $table-selection-color;
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 9999;
+  @include dropdown-shadow();
+  &.active {
+    display: block;
+  }
 }
 
 @media (min-width: 40em) {

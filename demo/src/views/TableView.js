@@ -12,21 +12,30 @@ import { Grid, Table, Title } from "../../../src/index";
 class TableView extends React.Component {
   render() {
     const sampleData = Table.FactoryData({
-      head: {
-        labels: {
-          x: ["Name", "Email", "ID"]
-        }
-      },
-      body: {
-        rows: [
-          ["Default User", "generic@email.com", "001"],
-          ["Another User", "another@email.com", "002"],
-          ["Mystery User", "mystery@email.com", "003"],
-          ["Ignored User", "ignored@email.com", "004"],
-          ["Broken User", null, "005"],
-          [null, "ghost@email.com", "000"]
+      head: [
+        [
+          {
+            content: "Name",
+            filterable: true
+          },
+          {
+            content: "Email",
+            editable: true
+          },
+          {
+            content: "ID",
+            sortable: true
+          }
         ]
-      }
+      ],
+      body: [
+        ["Default User", "generic@email.com", "001"],
+        ["Another User", "another@email.com", "002"],
+        ["Mystery User", "mystery@email.com", "003"],
+        ["Ignored User", "ignored@email.com", "004"],
+        ["Broken User", null, "005"],
+        [null, "ghost@email.com", "000"]
+      ]
     });
     return [
       <Title renderAs="h1" textAlign="center" key="grip-title1" sticky>

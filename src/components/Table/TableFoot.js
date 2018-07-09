@@ -15,6 +15,7 @@ class TableFoot extends CoreComponent {
   });
 
   rows = [];
+  rowCount = 0;
 
   renderChild = (child, props) => {
     let ref = c => {
@@ -23,9 +24,13 @@ class TableFoot extends CoreComponent {
     if (typeof child.ref !== "string") {
       ref = this.chainFunction(child.ref, ref);
     }
+    const index = this.rowCount;
+    this.rowCount += 1;
     return cloneElement(child, {
       ...props,
       ref,
+      rowid: index,
+      data: this.props.data,
       uiclass: this.childPrefix(child.props.uirole),
       rowtype: "foot"
     });
@@ -37,6 +42,7 @@ class TableFoot extends CoreComponent {
     );
 
     this.rows = [];
+    this.rowCount = 0;
 
     return (
       <Component {...props}>

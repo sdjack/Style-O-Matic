@@ -3591,6 +3591,33 @@ tfoot {
   background-color: #3F4348;
   color: #CFD3D8; }
 
+.interactive {
+  cursor: pointer;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: color, background-color; }
+  .interactive:hover {
+    color: rgba(255, 255, 255, 0.533);
+    background-color: rgba(0, 0, 0, 0.333); }
+
+.interactive.sorted-asc:after {
+  content: "\25BC";
+  display: inline-block;
+  position: absolute;
+  right: 4px; }
+
+.interactive.sorted-desc:after {
+  content: "\25B2";
+  display: inline-block;
+  position: absolute;
+  right: 4px; }
+
+.interactive.filtered:before {
+  content: "\26A0";
+  display: inline-block;
+  position: absolute;
+  left: 4px; }
+
 .ui-table-bordered {
   border-right: 1px solid rgba(0, 0, 0, 0.12); }
   .ui-table-bordered > .ui-table-tbody > .ui-table-tbody-row {
@@ -3648,6 +3675,20 @@ tfoot {
 .sort-button {
   padding: 0 4px;
   float: right; }
+
+.table-filter-input {
+  width: 99.4%;
+  padding: 1%;
+  background-color: #e0e0e0;
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 9999;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.233), 0px 1px 4px -1px rgba(0, 0, 0, 0.233); }
+  .table-filter-input.active {
+    display: block; }
 
 @media (min-width: 40em) {
   .ui-table {

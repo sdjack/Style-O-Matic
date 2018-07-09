@@ -19,7 +19,7 @@ class PageWrapper extends React.Component {
         <Header.Drawer icon="fa fa-user" minimizable>
           <ToolBar>
             <ToolBar.Content contentAlign="left">
-              <ToolBar.Title observe="scroll">Style-O-Matic</ToolBar.Title>
+              <ToolBar.Title observe="scroll">Demo</ToolBar.Title>
             </ToolBar.Content>
             <ToolBar.Content contentAlign="right">
               <ToolBar.Button>OP1</ToolBar.Button>
@@ -59,7 +59,7 @@ class PageWrapper extends React.Component {
         <Footer.Drawer icon="fa fa-bars" minimizable>
           <ToolBar>
             <ToolBar.Content contentAlign="right">
-              <ToolBar.Title observe="scroll">Style-O-Matic</ToolBar.Title>
+              <ToolBar.Title observe="scroll">Demo</ToolBar.Title>
             </ToolBar.Content>
           </ToolBar>
           <ToolBar>

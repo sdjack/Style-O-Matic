@@ -13,17 +13,24 @@ class TableBody extends CoreComponent {
   });
 
   rows = [];
+  rowCount = 0;
 
   renderChild = (child, props) => {
     let ref = c => {
-      this.rows.push(c);
+      if (c && this.props.data) {
+        this.rows.push(c);
+      }
     };
     if (typeof child.ref !== "string") {
       ref = this.chainFunction(child.ref, ref);
     }
+    const index = this.rowCount;
+    this.rowCount += 1;
     return cloneElement(child, {
       ...props,
       ref,
+      data: this.props.data,
+      rowid: index,
       uiclass: this.childPrefix(child.props.uirole),
       rowtype: "body"
     });
@@ -35,10 +42,13 @@ class TableBody extends CoreComponent {
     );
 
     this.rows = [];
+    this.rowCount = 0;
+
+    const orderedChildren = this.props.data.applyChanges(children);
 
     return (
       <Component {...props}>
-        {React.Children.map(children, child => {
+        {React.Children.map(orderedChildren, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined" &&

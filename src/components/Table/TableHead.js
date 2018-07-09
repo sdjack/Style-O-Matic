@@ -2,17 +2,28 @@ import React, { cloneElement } from "react";
 import {
   CoreComponent,
   getCorePropDefaults,
+  getCorePropTypes,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class TableHead extends CoreComponent {
+  static propTypes = getCorePropTypes({
+    filtering: "func",
+    sorting: "func",
+    editing: "func"
+  });
+
   static defaultProps = getCorePropDefaults({
     renderAs: "thead",
-    uirole: "thead"
+    uirole: "thead",
+    filtering: null,
+    sorting: null,
+    editing: null
   });
 
   rows = [];
+  rowCount = 0;
 
   renderChild = (child, props) => {
     let ref = c => {
@@ -21,11 +32,18 @@ class TableHead extends CoreComponent {
     if (typeof child.ref !== "string") {
       ref = this.chainFunction(child.ref, ref);
     }
+    const index = this.rowCount;
+    this.rowCount += 1;
     return cloneElement(child, {
       ...props,
       ref,
+      rowid: index,
       uiclass: this.childPrefix(child.props.uirole),
-      rowtype: "head"
+      rowtype: "head",
+      data: this.props.data,
+      filtering: this.props.filtering,
+      sorting: this.props.sorting,
+      editing: this.props.editing
     });
   };
 
@@ -35,6 +53,7 @@ class TableHead extends CoreComponent {
     );
 
     this.rows = [];
+    this.rowCount = 0;
 
     return (
       <Component {...props}>

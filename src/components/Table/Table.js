@@ -13,36 +13,32 @@ import TableBody from "./TableBody.js";
 import TableFoot from "./TableFoot.js";
 import TableRow from "./TableRow.js";
 import TableCell from "./TableCell.js";
+import TableData from "./models/TableData.js";
 import "./Table.css";
 
 function ParseSectionData(data, UUID) {
   const output = [];
-  let xCount;
-  if (data.labels && data.labels.x) {
-    xCount = data.labels.x.length;
-    const labelRow = [];
-    for (let i = 0; i < xCount; i += 1) {
-      labelRow.push(
-        <TableCell key={`td_${UUID}_label_${i}`}>{data.labels.x[i]}</TableCell>
-      );
-    }
-    output.push(<TableRow key={`td_${UUID}_labelrow`}>{labelRow}</TableRow>);
-  }
-  if (data.rows) {
-    const rowCount = data.rows.length;
-    const colCount = xCount || data.rows[0].length;
-    for (let i = 0; i < rowCount; i += 1) {
-      const readRow = data.rows[i];
-      const dataRow = [];
-      for (let x = 0; x < colCount; x += 1) {
+  const rowCount = data.length;
+  const colCount = data[0].length;
+  for (let i = 0; i < rowCount; i += 1) {
+    const readRow = data[i];
+    const dataRow = [];
+    for (let x = 0; x < colCount; x += 1) {
+      const column = readRow[x];
+      if (column instanceof Object) {
+        const { content, ...props } = column;
         dataRow.push(
-          <TableCell key={`td_${UUID}_cell_${i}${x}`}>{readRow[x]}</TableCell>
+          <TableCell key={`td_${UUID}_cell_${i}${x}`} {...props}>
+            {content}
+          </TableCell>
+        );
+      } else {
+        dataRow.push(
+          <TableCell key={`td_${UUID}_cell_${i}${x}`}>{column}</TableCell>
         );
       }
-      output.push(
-        <TableRow key={`td_${UUID}_cellrow${i}`}>{dataRow}</TableRow>
-      );
     }
+    output.push(<TableRow key={`td_${UUID}_cellrow${i}`}>{dataRow}</TableRow>);
   }
   return output;
 }
@@ -90,6 +86,49 @@ class Table extends CoreComponent {
     return output;
   };
 
+  constructor(props) {
+    super(props);
+    this.columns = {};
+    this.data = TableData.init(this);
+  }
+
+  /* eslint-disable */
+
+  handleFilter = node => {
+    this.forceUpdate();
+  };
+
+  handleSort = node => {
+    const { rowid, columnid } = node.props;
+    const dataColumn = this.data.getColumn(columnid);
+    dataColumn.changeSortState();
+    this.forceUpdate();
+  };
+
+  handleEdit = node => {
+    this.forceUpdate();
+  };
+  /* eslint-enable */
+
+  renderInteractiveChild = (child, props) => {
+    const role = child.props.uirole;
+    let ref = c => {
+      this[role] = c;
+    };
+    if (typeof child.ref !== "string") {
+      ref = this.chainFunction(child.ref, ref);
+    }
+    return cloneElement(child, {
+      ...props,
+      ref,
+      data: this.data,
+      uiclass: this.childPrefix(child.props.uirole),
+      filtering: this.handleFilter,
+      sorting: this.handleSort,
+      editing: this.handleEdit
+    });
+  };
+
   renderChild = (child, props) => {
     const role = child.props.uirole;
     let ref = c => {
@@ -101,8 +140,24 @@ class Table extends CoreComponent {
     return cloneElement(child, {
       ...props,
       ref,
+      data: this.data,
       uiclass: this.childPrefix(child.props.uirole)
     });
+  };
+
+  preRenderBody = (children, inherited) => {
+    const output = [];
+    React.Children.map(children, child => {
+      if (
+        typeof child.props !== "undefined" &&
+        typeof child.props.uirole !== "undefined" &&
+        child.props.uirole === TableBody.defaultProps.uirole
+      ) {
+        output.push(this.renderChild(child, inherited));
+      }
+      return null;
+    });
+    return output;
   };
 
   render() {
@@ -130,53 +185,40 @@ class Table extends CoreComponent {
     const uiClassCore = cx(className, classes);
     delete props.className;
 
+    const bodyRows = this.preRenderBody(children, inherited);
+
     return (
       <Component className={uiClassCore} {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
-            typeof child.props.uirole !== "undefined"
+            typeof child.props.uirole !== "undefined" &&
+            child.props.uirole === TableHead.defaultProps.uirole
+          ) {
+            return this.renderInteractiveChild(child, inherited);
+          }
+          return null;
+        })}
+        {bodyRows}
+        {React.Children.map(children, child => {
+          if (
+            typeof child.props !== "undefined" &&
+            typeof child.props.uirole !== "undefined" &&
+            child.props.uirole !== TableHead.defaultProps.uirole &&
+            child.props.uirole !== TableBody.defaultProps.uirole
           ) {
             switch (child.props.uirole) {
-              case TableHead.defaultProps.uirole:
-                return this.renderChild(child, inherited);
-              case TableBody.defaultProps.uirole:
-                return this.renderChild(child, inherited);
               case TableFoot.defaultProps.uirole:
-                return this.renderChild(child, inherited);
+                return this.renderInteractiveChild(child, inherited);
               default:
                 return child;
             }
           }
-          return child;
+          return null;
         })}
       </Component>
     );
   }
 }
-
-// const sampleData = {
-//   head: {
-//     labels: {
-//       x: [],
-//       y: []
-//     },
-//     rows: []
-//   },
-//   body: {
-//     labels: {
-//       x: [],
-//       y: []
-//     },
-//     rows: []
-//   },
-//   foot: {
-//     labels: {
-//       x: [],
-//       y: []
-//     },
-//     rows: []
-//   }
-// };
 
 export default Table;

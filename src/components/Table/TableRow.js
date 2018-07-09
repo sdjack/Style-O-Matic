@@ -9,35 +9,61 @@ import {
 
 class TableRow extends CoreComponent {
   static propTypes = getCorePropTypes({
-    rowtype: "string"
+    rowid: "number",
+    rowtype: "string",
+    filtering: "func",
+    sorting: "func",
+    editing: "func"
   });
 
   static defaultProps = getCorePropDefaults({
+    rowid: 0,
     uirole: ROLE.ROW,
-    rowtype: "body"
+    rowtype: "body",
+    filtering: null,
+    sorting: null,
+    editing: null
   });
 
-  cells = [];
+  columns = [];
+  columnCount = 0;
 
   renderChild = (child, props, rowtype) => {
     let ref = c => {
-      this.cells.push(c);
+      this.columns.push(c);
     };
     if (typeof child.ref !== "string") {
       ref = this.chainFunction(child.ref, ref);
     }
-    return cloneElement(child, {
+    const index = this.columnCount;
+    this.columnCount += 1;
+    const dataColumn = this.props.data.getColumn(index);
+    const cell = cloneElement(child, {
       ...props,
       ref,
+      rowid: this.props.rowid,
+      data: this.props.data,
+      columnid: index,
       uiclass: this.childPrefix(child.props.uirole),
-      rowtype
+      rowtype,
+      filtering: this.props.filtering,
+      filtered: dataColumn.filterState !== 0,
+      sorting: this.props.sorting,
+      sorted: dataColumn.sortState,
+      editing: this.props.editing,
+      edited: false
     });
+    if (this.props.rowtype === "body") {
+      this.props.data.setColumn(cell);
+    }
+    return cell;
   };
 
   render() {
     const { rowtype, children, props, inherited } = getValidProps(this.props);
 
-    this.cells = [];
+    this.columns = [];
+    this.columnCount = 0;
 
     return (
       <tr {...props}>
