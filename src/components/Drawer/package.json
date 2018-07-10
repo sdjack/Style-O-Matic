@@ -1,8 +1,8 @@
 {
-  "name": "Badge",
+  "name": "Drawer",
   "version": "0.0.0",
   "private": true,
-  "main": "./Badge.js",
+  "main": "./Drawer.js",
   "dependencies": {
     "lodash": "^4.17.5",
     "react": "^16.2.0",

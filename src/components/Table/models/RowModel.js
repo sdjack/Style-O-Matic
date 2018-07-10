@@ -1,14 +1,19 @@
 export default class RowModel {
-  constructor(index) {
+  constructor(index, value) {
     this.defaultIndex = index;
-    this.activeIndex = index;
+    this.index = index;
+    this.value = value;
   }
 
-  setOrder = index => {
-    this.activeIndex = index;
+  setValue = value => {
+    this.value = value;
   };
 
-  unsetOrder = () => {
-    this.activeIndex = this.defaultIndex;
+  setIndex = index => {
+    this.index = index;
+  };
+
+  resetIndex = () => {
+    this.index = this.defaultIndex;
   };
 }

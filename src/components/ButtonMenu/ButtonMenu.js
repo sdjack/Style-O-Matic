@@ -8,7 +8,7 @@ import {
 } from "../../lib";
 import "./ButtonMenu.css";
 
-export class ButtonMenu extends CoreComponent {
+class ButtonMenu extends CoreComponent {
   static propTypes = getPropTypesA11y();
   static defaultProps = getPropDefaultsAutoId({
     renderAs: "div",

@@ -1,6 +1,5 @@
-# Style-O-Matic UI
-
----
+Style-O-Matic UI [![Build Status](https://travis-ci.org/sdjack/Style-O-Matic.svg?branch=master)](https://travis-ci.org/sdjack/Style-O-Matic)
+================
 
 Experimental element-based CSS framework with accompanying React.js component library
 
@@ -48,3 +47,8 @@ $ npm run build
 
 ### Full wiki coming soon.
 
+
+## License
+Copyright (c) 2018 Steven Jackson
+
+Licensed under the MIT license.

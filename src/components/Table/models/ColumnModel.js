@@ -1,4 +1,4 @@
-import ColumnRowModel from "./ColumnRowModel.js";
+import RowModel from "./RowModel.js";
 
 function NO_SORT(a, b) {
   return 0;
@@ -57,7 +57,7 @@ export default class ColumnModel {
 
   setValue = (index, value) => {
     if (!this.rows[index]) {
-      this.rows.push(new ColumnRowModel(index, value));
+      this.rows.push(new RowModel(index, value));
     } else {
       this.rows[index].setValue(value);
     }

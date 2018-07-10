@@ -10,7 +10,7 @@ import {
   ROLE
 } from "../../lib";
 
-class TableCellFilter extends CoreComponent {
+class TableCellWidget extends CoreComponent {
   static propTypes = getCorePropTypes({
     columnid: "number",
     rowid: "number",
@@ -194,4 +194,4 @@ class TableCellFilter extends CoreComponent {
   }
 }
 
-export default TableCellFilter;
+export default TableCellWidget;

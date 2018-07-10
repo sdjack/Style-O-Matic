@@ -170,7 +170,6 @@ class Table extends CoreComponent {
     const output = [];
     if (this.props.pagination) {
       const pageConfig = this.data.getPagination();
-      console.log(pageConfig);
       const { uuid } = this.props;
       output.push(
         <TableFoot key={`tfoot_pagination_${uuid}`} data={this.data}>

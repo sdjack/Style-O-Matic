@@ -1,5 +1,4 @@
 import _ from "lodash";
-import RowModel from "./RowModel.js";
 import ColumnModel from "./ColumnModel.js";
 /* eslint-disable */
 
@@ -7,7 +6,6 @@ export default class TableDataModel {
   constructor(node) {
     this.columns = {};
     this.registry = {};
-    this.rows = [];
     this.pageNum = 1;
     this.pageTotal = 1;
     this.rowTotal = 0;
@@ -19,17 +17,6 @@ export default class TableDataModel {
     this.pageNum = page;
     this.perPage = showing || this.perPage;
   };
-
-  setRow = node => {
-    const { rowid } = node.props;
-    const tag = `row${rowid}`;
-    if (!this.registry[tag]) {
-      this.registry[tag] = true;
-      this.rows.push(new RowModel(rowid));
-    }
-  };
-
-  getRow = rowid => this.rows[`row${rowid}`];
 
   setColumn = node => {
     const { rowid, columnid, children } = node.props;

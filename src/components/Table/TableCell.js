@@ -7,7 +7,7 @@ import {
   getValidProps,
   ROLE
 } from "../../lib";
-import TableCellFilter from "./TableCellFilter.js";
+import TableCellWidget from "./TableCellWidget.js";
 
 class TableCell extends CoreComponent {
   static propTypes = getCorePropTypes({
@@ -26,7 +26,7 @@ class TableCell extends CoreComponent {
   render() {
     if (this.props.rowtype && this.props.rowtype === "head") {
       const { ...props } = this.props;
-      return <TableCellFilter {...this.props} />;
+      return <TableCellWidget {...this.props} />;
     }
     const { children, props } = getValidProps(this.props);
 
