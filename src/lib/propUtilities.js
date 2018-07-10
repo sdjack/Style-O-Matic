@@ -35,7 +35,7 @@ const NATIVE_PROPS = [
   "src",
   "width",
   "height",
-  "colspan",
+  "colSpan",
   "children",
   "onClick",
   "onSelect",

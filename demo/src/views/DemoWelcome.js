@@ -32,7 +32,7 @@ class DemoWelcome extends React.Component {
               </Title.Subtitle>
             </Title>
             <br />
-            <Pagination pageTotal={999} />
+            <Pagination pageTotal={999} panel/>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>

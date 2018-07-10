@@ -17,8 +17,8 @@
 }
 
 .ui-table-thead {
-  background-color: $color-dark;
-  color: $color-light;
+  background-color: $table-header-bg-color;
+  color: $table-header-fg-color;
 }
 
 .interactive {
@@ -164,19 +164,72 @@
   float: right;
 }
 
-.table-filter-input {
-  width: 99.4%;
-  padding: 1%;
-  background-color: $table-selection-color;
+.table-filter {
+  width: 100%;
+  background-color: $table-header-bg-color;
   display: none;
   position: absolute;
   left: 0;
   right: 0;
   top: 100%;
   z-index: 9999;
-  @include dropdown-shadow();
+  // @include dropdown-shadow();
   &.active {
     display: block;
+  }
+}
+
+.table-filter-outer-wrapper {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-content: space-around;
+	max-width: 100%;
+	padding: 3px 0px;
+}
+
+.table-filter-input-wrapper {
+	display: inline-block;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 100%;
+	padding-left: 4px;
+	padding-right: 4px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.table-filter-button-wrapper {
+	display: inline-block;
+  width: 44px;
+	padding-right: 4px;
+}
+
+.table-filter-input {
+  display: inline-block;
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	height: $widget-size;
+	background-color: white;
+	padding: 0;
+	line-height: 1;
+}
+
+.table-filter-button {
+  display: inline-block;
+	position: relative;
+  width: 40px !important;
+	height: $widget-size;
+	color: lighten($table-header-fg-color, 20%);
+	background: lighten($table-header-bg-color, 10%) !important;
+	padding: 0 !important;
+	line-height: 1;
+  &:hover,
+  &:focus:not(:active),
+  &:active {
+    background: lighten($table-header-bg-color, 20%) !important;
   }
 }
 

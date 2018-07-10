@@ -83,39 +83,68 @@ class TableView extends React.Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Bordered, Padded</Title.Content>
-            </Title>
-            <hr />
-            <br />
-            <Table bordered padded>
-              {sampleData}
-            </Table>
+          <Grid.Column textAlign="center">
+            <Grid panel>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <Title renderAs="h2" textAlign="center">
+                    <Title.Content>Bordered, Padded</Title.Content>
+                  </Title>
+                  <hr />
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <Table bordered padded panel>
+                    {sampleData}
+                  </Table>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Bordered, Padded, Hover</Title.Content>
-            </Title>
-            <hr />
-            <br />
-            <Table bordered padded hover>
-              {sampleData}
-            </Table>
+          <Grid.Column textAlign="center">
+            <Grid panel>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <Title renderAs="h2" textAlign="center">
+                    <Title.Content>Bordered, Padded, Hover</Title.Content>
+                  </Title>
+                  <hr />
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <Table bordered padded hover panel>
+                    {sampleData}
+                  </Table>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Bordered, Padded, Hover, Striped</Title.Content>
-            </Title>
-            <hr />
-            <br />
-            <Table bordered padded hover striped>
-              {sampleData}
-            </Table>
+          <Grid.Column textAlign="center">
+            <Grid panel>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <Title renderAs="h2" textAlign="center">
+                    <Title.Content>
+                      Bordered, Padded, Hover, Striped
+                    </Title.Content>
+                  </Title>
+                  <hr />
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <Table pagination="4" bordered padded hover striped panel>
+                    {sampleData}
+                  </Table>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Grid.Column>
         </Grid.Row>
       </Grid>

@@ -44,11 +44,11 @@ class TableBody extends CoreComponent {
     this.rows = [];
     this.rowCount = 0;
 
-    const orderedChildren = this.props.data.applyChanges(children);
+    const visibleRows = this.props.data.applyChanges(children);
 
     return (
       <Component {...props}>
-        {React.Children.map(orderedChildren, child => {
+        {React.Children.map(visibleRows, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined" &&

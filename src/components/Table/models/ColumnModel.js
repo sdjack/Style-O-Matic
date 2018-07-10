@@ -114,16 +114,15 @@ export default class ColumnModel {
   };
 
   modify = src => {
+    let visibleRows = src;
     if (this.rows.length > 0) {
-      let altered = src;
       if (this.sortState > 0) {
-        altered = this.sortColumn(altered);
+        visibleRows = this.sortColumn(visibleRows);
       }
       if (this.filterSearch && this.filterState > 0) {
-        altered = this.filterColumn(altered);
+        visibleRows = this.filterColumn(visibleRows);
       }
-      return altered;
     }
-    return src;
+    return visibleRows;
   };
 }

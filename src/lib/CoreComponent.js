@@ -18,6 +18,8 @@ export default class CoreComponent extends Component {
     const state = this.state || {};
     this.state = { ...state };
     this.node = null;
+    this.useParentNode = false;
+    this.parentNode = { clientWidth: 1, clientHeight: 1 };
   }
 
   componentWillMount() {
@@ -47,7 +49,14 @@ export default class CoreComponent extends Component {
   }
 
   onSetRef = ref => {
-    this.node = ref;
+    if (ref) {
+      const needsUpdate = this.useParentNode && this.node === null;
+      this.node = ref;
+      this.parentNode = ref.parentNode;
+      if (needsUpdate) {
+        this.forceUpdate();
+      }
+    }
   };
 
   /* eslint-disable */
@@ -56,6 +65,11 @@ export default class CoreComponent extends Component {
     // console.log(eventSenders);
   };
   /* eslint-enable */
+
+  getParentDimensions = () => {
+    this.useParentNode = true;
+    return this.parentNode;
+  };
 
   setChildProps = (role, ref, props) => {
     const parentClass = getParentClass(this.props);

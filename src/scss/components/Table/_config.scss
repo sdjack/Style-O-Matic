@@ -7,7 +7,8 @@
 $table-border-color: rgba(#000, 0.12);
 $table-borders: 1px solid $table-border-color;
 $table-row-height: 32px;
-$table-header-color: rgba(#000, 0.54);
+$table-header-bg-color: $color-dark;
+$table-header-fg-color: $color-light;
 $table-divider-color: rgba(#000, 0.12);
 $table-hover-color: #eeeeee;
 $table-selection-color: #e0e0e0;

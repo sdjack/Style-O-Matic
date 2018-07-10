@@ -45,7 +45,7 @@ p {
   @include typo-paragraph;
 
   margin: 0px 0px 16px;
-  
+
   &.preface {
     border-bottom: $common-border;
     &:last-child {

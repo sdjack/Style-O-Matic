@@ -14,6 +14,7 @@ import TableFoot from "./TableFoot.js";
 import TableRow from "./TableRow.js";
 import TableCell from "./TableCell.js";
 import TableData from "./models/TableData.js";
+import Pagination from "../Pagination/Pagination.js";
 import "./Table.css";
 
 function ParseSectionData(data, UUID) {
@@ -108,6 +109,11 @@ class Table extends CoreComponent {
   handleEdit = node => {
     this.forceUpdate();
   };
+
+  handlePageChange = pageNum => {
+    this.data.setPagination(pageNum);
+    this.forceUpdate();
+  };
   /* eslint-enable */
 
   renderInteractiveChild = (child, props) => {
@@ -157,6 +163,32 @@ class Table extends CoreComponent {
       }
       return null;
     });
+    return output;
+  };
+
+  renderPagination = () => {
+    const output = [];
+    if (this.props.pagination) {
+      const pageConfig = this.data.getPagination();
+      console.log(pageConfig);
+      const { uuid } = this.props;
+      output.push(
+        <TableFoot key={`tfoot_pagination_${uuid}`} data={this.data}>
+          <TableRow key={`td_pagination_${uuid}_cellrow`}>
+            <TableCell
+              key={`td_pagination_${uuid}_cell`}
+              colSpan={pageConfig.cols}
+            >
+              <Pagination
+                pageTotal={pageConfig.pageTotal}
+                pageNum={pageConfig.pageNum}
+                onPageChange={this.handlePageChange}
+              />
+            </TableCell>
+          </TableRow>
+        </TableFoot>
+      );
+    }
     return output;
   };
 
@@ -216,6 +248,7 @@ class Table extends CoreComponent {
           }
           return null;
         })}
+        {this.renderPagination()}
       </Component>
     );
   }

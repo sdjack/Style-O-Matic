@@ -28,47 +28,51 @@
 /**
 *  MISC
 */
-.ui-tooltip {
-  position: fixed; }
-  .ui-tooltip:hover > .ui-tooltip-wrapper > .ui-tooltip-widget {
+.ui-toasts {
+  border: none;
+  display: none;
+  padding: 0;
+  position: fixed;
+  top: 2px;
+  left: 20%;
+  right: 20%;
+  text-align: -webkit-center;
+  text-align: center;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center;
+  z-index: 89; }
+  .ui-toasts.active {
     display: block; }
 
-.ui-tooltip-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%; }
-
-.ui-tooltip-widget {
-  display: none;
-  position: absolute;
-  z-index: 999; }
-  .ui-tooltip-widget.ui-tooltip-left {
-    top: 50%;
-    right: 100%;
-    margin-right: 10px;
-    margin-top: -18px; }
-    .ui-tooltip-widget.ui-tooltip-left > .ui-tooltip-content:before {
-      border-left-color: #1f1f1f;
-      left: 100%;
-      top: 48px;
-      margin-top: -42px; }
-    .ui-tooltip-widget.ui-tooltip-left > .ui-tooltip-content:after {
-      border-left-color: #262626;
-      left: 100%;
-      top: 50px;
-      margin-top: -40px; }
-  .ui-tooltip-widget.ui-tooltip-right {
-    top: 50%;
-    left: 100%;
-    margin-left: 10px;
-    margin-top: -18px; }
-    .ui-tooltip-widget.ui-tooltip-right > .ui-tooltip-content:before {
-      border-right-color: #1f1f1f;
-      right: 100%;
-      top: 48px;
-      margin-top: -42px; }
-    .ui-tooltip-widget.ui-tooltip-right > .ui-tooltip-content:after {
-      border-right-color: #262626;
+.ui-toasts-toast {
+  height: 36px;
+  line-height: 36px;
+  padding: 0 24px;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 900;
+  box-sizing: border-box;
+  border-radius: 20px;
+  text-align: -webkit-center;
+  text-align: center;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: all; }
+#262626;
       right: 100%;
       top: 50px;
       margin-top: -40px; }

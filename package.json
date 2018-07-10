@@ -73,7 +73,7 @@
         "jsdoc": "^3.5.5",
         "keycode": "^2.1.9",
         "merge-stream": "^0.1.7",
-        "node-sass": "^4.9.0",
+        "node-sass": "^4.9.2",
         "nwb": "^0.22.0",
         "postcss": "^6.0.16",
         "postcss-calc": "^6.0.1",

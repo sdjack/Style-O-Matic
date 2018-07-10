@@ -731,7 +731,7 @@ tfoot {
   border-radius: 1px;
   max-width: 96% !important;
   margin: .33em 2% 1.5em;
-  padding: 1em 0 0.5em;
+  padding: 0.1em 0.3em 0.2em 0;
   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.04), 1px 2px 6px -2px rgba(0, 0, 0, 0.14); }
   .ui-panel > .well {
     background-color: rgba(0, 0, 0, 0.03); }
