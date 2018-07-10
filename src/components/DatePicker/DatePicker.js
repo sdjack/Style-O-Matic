@@ -1,5 +1,7 @@
 import _ from "lodash";
 import React from "react";
+import "intl";
+import "intl/locale-data/jsonp/en";
 import {
   CoreComponent,
   getValidProps,
@@ -273,7 +275,7 @@ class DatePicker extends CoreComponent {
   };
 
   renderSingleWeek = (monthVal, weekData) => (
-    <tr key={uID()}>
+    <tr key={this.props.uuid}>
       {this.renderSingleDay(monthVal, weekData[0])}
       {this.renderSingleDay(monthVal, weekData[1])}
       {this.renderSingleDay(monthVal, weekData[2])}
@@ -307,7 +309,7 @@ class DatePicker extends CoreComponent {
     const class2 = viewMonth === monthVal + 1 ? " theme-input_active" : "";
     const class3 = viewMonth === monthVal + 2 ? " theme-input_active" : "";
     return (
-      <tr key={uID()}>
+      <tr key={this.props.uuid}>
         <td className={`datepicker-month-cell theme-input${class1}`}>
           <span
             className="datepicker-control theme-input_text"
@@ -362,7 +364,7 @@ class DatePicker extends CoreComponent {
     const class3 = viewYear === yearVal + 2 ? " theme-input_active" : "";
     const class4 = viewYear === yearVal + 3 ? " theme-input_active" : "";
     return (
-      <tr key={uID()}>
+      <tr key={this.props.uuid}>
         <td className={`datepicker-year-cell theme-input${class1}`}>
           <span
             className="datepicker-control theme-input_text"
@@ -440,7 +442,7 @@ class DatePicker extends CoreComponent {
       years.push(this.renderYearRow(viewYear + 20));
       if (!_.isNil(this.state.loadedValue)) {
         footer.push(
-          <tfoot key={uID()}>
+          <tfoot key={this.props.uuid}>
             <tr>
               <td colSpan={4}>
                 <span
@@ -499,7 +501,7 @@ class DatePicker extends CoreComponent {
       months.push(this.renderMonthRow(9));
       if (!_.isNil(this.state.loadedValue)) {
         footer.push(
-          <tfoot key={uID()}>
+          <tfoot key={this.props.uuid}>
             <tr>
               <td colSpan={3}>
                 <span
@@ -560,7 +562,7 @@ class DatePicker extends CoreComponent {
     const headerText = `${Calendar.monthName[viewMonth]} ${viewYear}`;
     if (!_.isNil(this.state.loadedValue)) {
       footer.push(
-        <tfoot key={uID()}>
+        <tfoot key={this.props.uuid}>
           <tr>
             <td colSpan={7}>
               <span

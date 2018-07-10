@@ -29,6 +29,7 @@
     "dependencies": {
         "compass": "^0.1.1",
         "expect": "^23.2.0",
+        "intl": "^1.2.5",
         "lodash": "^4.17.5",
         "mathsass": "^0.10.1"
     },
