@@ -7,9 +7,13 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Button, Dropdown, Grid, Title } from "../../../src/index";
+import { Button, Dropdown, Grid, Pill, Title } from "../../../src/index";
 
 class ButtonsView extends React.Component {
+  handlePillAction = data => {
+    console.log(data);
+  };
+
   render() {
     return [
       <Title renderAs="h1" textAlign="center" key="view-title" sticky>
@@ -109,6 +113,32 @@ class ButtonsView extends React.Component {
               </Grid.Row>
             </Grid>
             <Title renderAs="h2" textAlign="center">
+              <Title.Content>Conditions</Title.Content>
+            </Title>
+            <hr />
+            <br />
+            <Grid>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <Button color="black" disabled>
+                    DISABLED
+                  </Button>&nbsp;&nbsp;
+                  <Button color="red" disabled>
+                    DISABLED
+                  </Button>&nbsp;&nbsp;
+                  <Button color="orange" disabled>
+                    DISABLED
+                  </Button>&nbsp;&nbsp;
+                  <Button color="yellow" disabled>
+                    DISABLED
+                  </Button>&nbsp;&nbsp;
+                  <Button color="green" disabled>
+                    DISABLED
+                  </Button>&nbsp;&nbsp;
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+            <Title renderAs="h2" textAlign="center">
               <Title.Content>Bonus Features</Title.Content>
             </Title>
             <hr />
@@ -158,21 +188,40 @@ class ButtonsView extends React.Component {
                   </Dropdown>
                 </Grid.Column>
               </Grid.Row>
+            </Grid>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column textAlign="center" panel>
+            <Title renderAs="h2" textAlign="center">
+              <Title.Content>Pills</Title.Content>
+            </Title>
+            <hr />
+            <br />
+            <Grid>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Button
-                    className="ui-color ui-indigo"
-                    id="dd2"
-                    dropdown
-                    label="Example Dropdown"
+                  <Pill id="pill1" onAction={this.handlePillAction}>
+                    Action
+                  </Pill>
+                  <Pill id="pill2" onRemove={this.handlePillAction}>
+                    Closable
+                  </Pill>
+                  <Pill
+                    id="pill3"
+                    onAction={this.handlePillAction}
+                    onRemove={this.handlePillAction}
                   >
-                    <span>Option 1</span>
-                    <span>Option 2</span>
-                    <span>Option 3</span>
-                    <span>Option 4</span>
-                    <span>Option 5</span>
-                    <span>Option 6</span>
-                  </Button>
+                    Both
+                  </Pill>
+                  <Pill
+                    id="pill4"
+                    onAction={this.handlePillAction}
+                    onRemove={this.handlePillAction}
+                    disabled
+                  >
+                    Disabled
+                  </Pill>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

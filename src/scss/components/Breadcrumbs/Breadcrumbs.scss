@@ -5,17 +5,17 @@
  *    ██╔══██╗██╔══██╗██╔══╝  ██╔══██║██║  ██║██║     ██╔══██╗██║   ██║██║╚██╔╝██║██╔══██╗╚════██║
  *    ██████╔╝██║  ██║███████╗██║  ██║██████╔╝╚██████╗██║  ██║╚██████╔╝██║ ╚═╝ ██║██████╔╝███████║
  *    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝  ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝
- *                                                                                                
+ *
  */
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
 .ui-breadcrumbs {
-	display: block;
-	width: 100%;
-	height: 40px;
-  padding: 0 30px;
+  padding: 0;
   margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: inherit;
 }
 
 .ui-breadcrumbs-shim {
@@ -35,8 +35,8 @@
 
 .ui-breadcrumb,
 .ui-breadcrumb-right {
-	padding: $widget-padding;
-	font-size: 13px;
+	padding: 0px $widget-padding;
+	font-size: 12px;
 	opacity: 0.7;
 	&:hover,
 	&:focus,
@@ -61,7 +61,7 @@
 }
 
 .ui-breadcrumb-divider {
-	padding: $widget-padding;
+	padding: 0px $widget-padding;
 	font-size: 16px;
 	opacity: 0.25;
 }

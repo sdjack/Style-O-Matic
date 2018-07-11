@@ -208,7 +208,7 @@ legend {
   display: inline-block;
   width: 100%;
   margin: 0;
-  padding: 1px;
+  padding: 0.1em;
   text-align: -webkit-start;
   text-align: start;
   vertical-align: -webkit-baseline-middle;
@@ -557,20 +557,39 @@ tfoot {
 .ui-overlay {
   position: absolute; }
 
-.i-close:before {
+.ui-icon {
+  display: inline-block;
+  font-style: normal; }
+
+.ui-icon-close:before {
   content: "\00d7"; }
 
-.i-sort-asc:before {
-  content: "\2B07"; }
+.ui-icon-calendar:before {
+  content: "\1F5D3"; }
 
-.i-sort-desc:before {
-  content: "\2B06"; }
+.ui-icon-search:before {
+  content: "\26B2"; }
 
-.i-user:before {
+.ui-icon-up:before {
+  content: "\25BC"; }
+
+.ui-icon-down:before {
+  content: "\25B2"; }
+
+.ui-icon-right:before {
+  content: "\25B6"; }
+
+.ui-icon-left:before {
+  content: "\25C0"; }
+
+.ui-icon-user:before {
   content: "\1F464"; }
 
-.i-menu:before {
+.ui-icon-menu:before {
   content: "\2261"; }
+
+.ui-icon-star:before {
+  content: "\2605"; }
 
 .window {
   background-color: #EFF3F8;
@@ -670,8 +689,8 @@ tfoot {
   border: solid 1px rgba(0, 0, 0, 0.14);
   border-radius: 1px;
   max-width: 96% !important;
-  margin: .33em 2% 1.5em;
-  padding: 0.1em 0.3em 0.2em 0;
+  margin: 0 2% .5em;
+  padding: 0.1em 0.26em 0.2em 0.26em;
   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.04), 1px 2px 6px -2px rgba(0, 0, 0, 0.14); }
   .ui-panel > .well {
     background-color: rgba(0, 0, 0, 0.03); }
@@ -1371,11 +1390,11 @@ tfoot {
     background-color: rgba(0, 0, 0, 0.033); }
 
 .ui-breadcrumbs {
-  display: block;
-  width: 100%;
-  height: 40px;
-  padding: 0 30px;
-  margin: 0; }
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: inherit; }
 
 .ui-breadcrumbs-shim {
   display: block;
@@ -1392,8 +1411,8 @@ tfoot {
 
 .ui-breadcrumb,
 .ui-breadcrumb-right {
-  padding: 1px;
-  font-size: 13px;
+  padding: 0px 0.1em;
+  font-size: 12px;
   opacity: 0.7; }
   .ui-breadcrumb:hover, .ui-breadcrumb:focus, .ui-breadcrumb:active,
   .ui-breadcrumb-right:hover,
@@ -1437,7 +1456,7 @@ tfoot {
   margin-right: 90px; }
 
 .ui-breadcrumb-divider {
-  padding: 1px;
+  padding: 0px 0.1em;
   font-size: 16px;
   opacity: 0.25; }
 
@@ -1481,11 +1500,11 @@ tfoot {
     color: rgba(255, 255, 255, 0.533);
     background-color: rgba(0, 0, 0, 0.333); }
   .ui-button.disabled {
-    color: rgba(255, 255, 255, 0.033) !important;
-    background-color: rgba(0, 0, 0, 0.233) !important; }
+    color: #F5F8FB !important;
+    background-color: #CFD3D8 !important; }
     .ui-button.disabled:hover, .ui-button.disabled:focus, .ui-button.disabled:active {
-      color: rgba(255, 255, 255, 0.033) !important;
-      background-color: rgba(0, 0, 0, 0.233) !important; }
+      color: #F5F8FB !important;
+      background-color: #CFD3D8 !important; }
   .ui-button.header {
     font-size: 22px !important;
     font-weight: 700 !important;
@@ -1745,8 +1764,20 @@ tfoot {
   box-sizing: border-box; }
 
 .ui-datepicker {
+  display: inline-block;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+  padding: 0 4px;
+  margin-left: auto;
+  margin-right: auto;
   cursor: pointer;
-  padding: 0;
   opacity: 1; }
   .ui-datepicker.muted > .ui-datepicker-text {
     opacity: 0.5; }
@@ -1788,12 +1819,29 @@ tfoot {
           align-items: center;
   -webkit-align-content: center;
       -ms-flex-line-pack: center;
-          align-content: center; }
+          align-content: center;
+  display: inline-block;
+  position: absolute;
+  right: 4px;
+  top: 3px; }
 
 .ui-datepicker-window {
+  position: absolute;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.333);
-  width: auto !important; }
+  border: none;
+  width: auto !important;
+  height: 0;
+  z-index: 69;
+  box-shadow: none;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: height, border-shadow; }
+  .ui-datepicker-window.open {
+    height: auto !important;
+    max-height: 320px !important;
+    overflow-y: auto !important;
+    border: 1px solid rgba(0, 0, 0, 0.333);
+    box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.07), 1px 2px 8px -3px rgba(0, 0, 0, 0.3); }
 
 .ui-datepicker-clear {
   font-size: 10px;
@@ -1890,6 +1938,9 @@ tfoot {
     background: #3F4348; }
   .ui-datepicker-day-cell.ui-datepicker-day-active {
     background: #388E3C; }
+
+.ui-datepicker-cell-active {
+  background: rgba(0, 0, 0, 0.133); }
 
 .ui-datepicker-cell-disabled {
   background: rgba(0, 0, 0, 0.233); }
@@ -2496,17 +2547,17 @@ tfoot {
   padding-left: 0;
   padding-right: 0;
   position: absolute;
-  top: 1px;
-  bottom: 1px;
+  top: 0.1em;
+  bottom: 0.1em;
   width: 36px;
   height: 36px;
   line-height: 36px;
   text-align: center;
   background: transparent; }
   .ui-input-icon.prepended {
-    left: 1px; }
+    left: 0.1em; }
   .ui-input-icon.appended {
-    right: 1px; }
+    right: 0.1em; }
 
 .ui-input-text,
 .ui-input-textarea,
@@ -3216,7 +3267,7 @@ tfoot {
 .ui-pagination-button {
   display: inline-block;
   font-family: inherit;
-  padding: 0; }
+  padding: 0 4px 0 1px; }
   .ui-pagination-button.disabled {
     background-color: rgba(0, 0, 0, 0); }
     .ui-pagination-button.disabled > .ui-pagination-page {
@@ -3272,16 +3323,18 @@ tfoot {
 .ui-pill {
   display: inline-block;
   position: relative;
-  height: 28px;
+  height: 29px;
   min-width: 32px;
-  padding: 0px 14px 0px 14px;
+  padding: 0 0.2em;
   margin: 0px 0px 0px 12px;
   border: none;
   border-radius: 20px;
   letter-spacing: 0;
   text-decoration: none;
+  color: rgba(0, 0, 0, 0.533);
+  background-color: #DFE3E8;
   cursor: default;
-  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.233), 0px 1px 3px -1px rgba(0, 0, 0, 0.233);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -3298,37 +3351,56 @@ tfoot {
   overflow: hidden;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none; }
-  .ui-pill.padleft {
-    padding: 0px 14px 0px 26px !important; }
-  .ui-pill.padright {
-    padding: 0px 26px 0px 14px !important; }
-  .ui-pill.padboth {
-    padding: 0px 26px 0px 26px !important; }
+  .ui-pill:hover, .ui-pill:focus, .ui-pill:active {
+    border: none; }
+  .ui-pill.disabled {
+    color: #F5F8FB !important;
+    background-color: #CFD3D8 !important; }
+    .ui-pill.disabled > .ui-pill-action {
+      color: #F5F8FB !important;
+      background-color: #CFD3D8 !important;
+      cursor: default;
+      box-shadow: none; }
+      .ui-pill.disabled > .ui-pill-action:hover, .ui-pill.disabled > .ui-pill-action:focus, .ui-pill.disabled > .ui-pill-action:active {
+        color: #F5F8FB !important;
+        background-color: #CFD3D8 !important; }
 
 .ui-pill-text {
   font-size: 12px;
   font-weight: 300;
-  line-height: 28px; }
+  line-height: 28px;
+  padding: 0px 7.25px 0px 7.25px; }
 
-.ui-pill-close,
 .ui-pill-action {
-  display: block;
+  display: inline-block;
   height: 24px;
   width: 24px;
-  font-size: 12px;
+  font-size: 20px;
   font-weight: 300;
-  line-height: 20px;
-  cursor: pointer; }
-
-.ui-pill-close {
-  position: absolute;
-  top: 4px;
-  right: 0; }
-
-.ui-pill-action {
-  position: absolute;
-  top: 4px;
-  left: 0; }
+  line-height: 24px;
+  border: none;
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.533);
+  background-color: #F5F8FB;
+  cursor: pointer;
+  box-shadow: inset 0px 1px 2px #999999, 0px 1px 1px #FFFFFF;
+  text-align: -webkit-center;
+  text-align: center;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center; }
+  .ui-pill-action > .ui-icon {
+    padding-left: 0.08em; }
+  .ui-pill-action:hover, .ui-pill-action:focus, .ui-pill-action:active {
+    border: none; }
+  .ui-pill-action:hover, .ui-pill-action:active {
+    color: rgba(255, 255, 255, 0.833);
+    background-color: rgba(0, 0, 0, 0.233); }
 
 .ui-radio {
   display: -webkit-flex;
@@ -3433,19 +3505,19 @@ tfoot {
     background-color: rgba(0, 0, 0, 0.333); }
 
 .interactive.sorted-asc:after {
-  content: "\25BC";
+  content: "\2B07";
   display: inline-block;
   position: absolute;
   right: 4px; }
 
 .interactive.sorted-desc:after {
-  content: "\25B2";
+  content: "\2B06";
   display: inline-block;
   position: absolute;
   right: 4px; }
 
 .interactive.filtered:before {
-  content: "\26A0";
+  content: "\26B2";
   display: inline-block;
   position: absolute;
   left: 4px; }
@@ -3550,8 +3622,7 @@ tfoot {
   -webkit-flex-basis: 100%;
       -ms-flex-preferred-size: 100%;
           flex-basis: 100%;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding: 0px 4px;
   margin-left: auto;
   margin-right: auto; }
 
@@ -3565,7 +3636,7 @@ tfoot {
   position: relative;
   width: 100%;
   max-width: 100%;
-  height: 36px;
+  height: 28px;
   background-color: white;
   padding: 0;
   line-height: 1; }
@@ -3574,7 +3645,7 @@ tfoot {
   display: inline-block;
   position: relative;
   width: 40px !important;
-  height: 36px;
+  height: 28px;
   color: white;
   background: #575c63 !important;
   padding: 0 !important;

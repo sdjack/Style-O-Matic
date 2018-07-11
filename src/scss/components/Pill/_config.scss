@@ -4,14 +4,18 @@
 
 // VARIABLES
 
+$pill-background-color: $color-lighter !default;
+$pill-background-color-disabled: $color-light;
+$pill-text-color: $color-dark-alpha-5 !default;
+$pill-text-color-disabled: $color-ultra-light;
+$pill-action-background-color: $color-ultra-light !default;
+$pill-action-active-background-color: $color-dark-alpha-2 !default;
+$pill-action-text-color: $color-dark-alpha-5 !default;
+$pill-action-active-text-color: $color-light-alpha-8 !default;
 $pill-min-width: 32px !default;
-$pill-height: 28px !default;
+$pill-height: 29px !default;
 $pill-margin: 0px 0px 0px ($padding-large / 2) !default;
-$pill-padding-low-value: $pill-height / 2;
-$pill-padding-high-value: $pill-height - 2;
-$pill-padding: 0px $pill-padding-low-value 0px $pill-padding-low-value !default;
-$pill-action-padding: 0px $pill-padding-low-value 0px $pill-padding-high-value !default;
-$pill-remove-padding: 0px $pill-padding-high-value 0px $pill-padding-low-value !default;
-$pill-both-padding: 0px $pill-padding-high-value 0px $pill-padding-high-value !default;
+$pill-padding-calc: ($pill-height / 4);
+$pill-padding: 0px $pill-padding-calc 0px $pill-padding-calc !default;
 $pill-line-height: $pill-height;
 $pill-action-size: 24px !default;

@@ -50,6 +50,7 @@ class TableBody extends CoreComponent {
       <Component {...props}>
         {React.Children.map(visibleRows, child => {
           if (
+            child &&
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined" &&
             child.props.uirole === ROLE.ROW

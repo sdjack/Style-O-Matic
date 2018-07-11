@@ -79,7 +79,7 @@ $toggle-padding: $toggle-v-offset $toggle-h-offset !default;
 
 $widget-size: 36px !default;
 $widget-size-small: 30px !default;
-$widget-offset: 1px;
+$widget-offset: 0.1em;
 $widget-padding: $widget-offset !default;
 $widget-font-size: 14px;
 $widget-icon-font-size: 18px;
@@ -94,4 +94,3 @@ $animation-curve-slow-out-fast-in: cubic-bezier(0.7, 0, 1, 0.7) !default;
 $animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
 $animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
 $animation-curve-default: $animation-curve-fast-out-slow-in !default;
-

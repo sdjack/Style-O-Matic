@@ -2,28 +2,57 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 
-.i-close {
+.ui-icon {
+  display: inline-block;
+  font-style: normal;
+}
+.ui-icon-close {
     &:before {
         content: "\00d7";
     }
 }
-.i-sort-asc {
+.ui-icon-calendar {
     &:before {
-        content: "\2B07";
+        content: "\1F5D3";
     }
 }
-.i-sort-desc {
+.ui-icon-search {
     &:before {
-        content: "\2B06";
+        content: "\26B2";
     }
 }
-.i-user {
+.ui-icon-up {
+    &:before {
+        content: "\25BC";
+    }
+}
+.ui-icon-down {
+    &:before {
+        content: "\25B2";
+    }
+}
+.ui-icon-right {
+    &:before {
+        content: "\25B6";
+    }
+}
+.ui-icon-left {
+    &:before {
+        content: "\25C0";
+    }
+}
+.ui-icon-user {
     &:before {
         content: "\1F464";
     }
 }
-.i-menu {
+.ui-icon-menu {
     &:before {
         content: "\2261";
+    }
+}
+.ui-icon-star {
+    &:before {
+        content: "\2605";
     }
 }

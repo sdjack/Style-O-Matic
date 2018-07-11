@@ -4,13 +4,15 @@ import "intl";
 import "intl/locale-data/jsonp/en";
 import {
   CoreComponent,
+  isModifiedEvent,
+  isLeftClickEvent,
+  uID,
   getValidProps,
   getPropTypesA11y,
   getPropDefaultsAutoId,
   ROLE
 } from "../../lib";
 import Calendar from "./Calendar.js";
-import Dropdown from "../Dropdown/Dropdown.js";
 import "./DatePicker.css";
 
 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -19,12 +21,14 @@ class DatePicker extends CoreComponent {
   static propTypes = getPropTypesA11y({
     inputenabled: "bool",
     iconenabled: "bool",
+    label: "string",
     expiredlock: "bool"
   });
 
   static defaultProps = getPropDefaultsAutoId({
-    renderAs: "Dropdown",
+    renderAs: "div",
     uirole: ROLE.DATEPICKER,
+    label: null,
     inputenabled: false,
     iconenabled: false,
     expiredlock: false
@@ -54,8 +58,11 @@ class DatePicker extends CoreComponent {
         year: 0
       };
     }
+    const renderKey = `input_${props.uuid}`;
 
     this.state = {
+      renderKey,
+      open: false,
       loadedDate: date,
       loadedValue: dateLocale,
       viewYear: date.getFullYear(),
@@ -68,6 +75,14 @@ class DatePicker extends CoreComponent {
     const { value } = nextProps;
     this.reset(value);
   };
+
+  WillMount() {
+    document.addEventListener("mousedown", this.handleOnToggle, false);
+  }
+
+  WillUnmount() {
+    document.removeEventListener("mousedown", this.handleOnToggle, false);
+  }
 
   reset = defaultDate => {
     let date;
@@ -117,12 +132,28 @@ class DatePicker extends CoreComponent {
         month: date.getMonth(),
         year: date.getFullYear()
       };
+      newData.open = false;
       this.setState(newData);
       onSelect(date.toISOString(), name);
-      document.dispatchEvent(new MouseEvent("mousedown"));
     } else {
       this.setState(newData);
     }
+  };
+
+  handleOnToggle = e => {
+    if (isModifiedEvent(e) || !isLeftClickEvent(e) || !this.state.open) {
+      return;
+    }
+    if (this.node && !this.node.contains(e.target)) {
+      this.handleClose(e);
+    }
+  };
+
+  handleClose = (event, eventDetails) => {
+    if (!this.state.open) {
+      return;
+    }
+    this.handleOnClick(event);
   };
 
   handleOnClosed = () => {
@@ -137,7 +168,7 @@ class DatePicker extends CoreComponent {
     if (onSelect) {
       onSelect(null, name);
     }
-    document.dispatchEvent(new MouseEvent("mousedown"));
+    this.setState({ open: false });
   };
 
   handleOnChange = e => {
@@ -145,6 +176,12 @@ class DatePicker extends CoreComponent {
     if (onSelect) {
       onSelect(e.target.value, name);
     }
+  };
+
+  handleOnClick = e => {
+    e.preventDefault();
+    const { open } = this.state;
+    this.setState({ open: !open });
   };
 
   handlePrevClick = e => {
@@ -242,11 +279,11 @@ class DatePicker extends CoreComponent {
       return (
         <td
           key={`day-cell_${keyName}`}
-          className={`datepicker-day-cell datepicker-cell-disabled ${selectedClass}`}
+          className={`ui-datepicker-day-cell ui-datepicker-cell-disabled ${selectedClass}`}
         >
           <span
             key={`day-button_${keyName}`}
-            className={`datepicker-day datepicker-disabled ${selectedClass}`}
+            className={`ui-datepicker-day ui-datepicker-disabled ${selectedClass}`}
           >
             {data.day}
           </span>
@@ -256,11 +293,11 @@ class DatePicker extends CoreComponent {
     return (
       <td
         key={`day-cell_${keyName}`}
-        className={`datepicker-day-cell theme-content-item ${selectedClass}`}
+        className={`ui-datepicker-day-cell theme-content-item ${selectedClass}`}
       >
         <span
           key={`day-button_${keyName}`}
-          className={`datepicker-day theme-content-item ${selectedClass}`}
+          className={`ui-datepicker-day theme-content-item ${selectedClass}`}
           day={data.day}
           month={data.month}
           year={data.year}
@@ -275,7 +312,7 @@ class DatePicker extends CoreComponent {
   };
 
   renderSingleWeek = (monthVal, weekData) => (
-    <tr key={this.props.uuid}>
+    <tr key={uID()}>
       {this.renderSingleDay(monthVal, weekData[0])}
       {this.renderSingleDay(monthVal, weekData[1])}
       {this.renderSingleDay(monthVal, weekData[2])}
@@ -305,14 +342,16 @@ class DatePicker extends CoreComponent {
     const dayVal = date.getDate();
     const viewMonth = date.getMonth();
     const yearVal = date.getFullYear();
-    const class1 = viewMonth === monthVal ? " theme-input_active" : "";
-    const class2 = viewMonth === monthVal + 1 ? " theme-input_active" : "";
-    const class3 = viewMonth === monthVal + 2 ? " theme-input_active" : "";
+    const class1 = viewMonth === monthVal ? " ui-datepicker-cell-active" : "";
+    const class2 =
+      viewMonth === monthVal + 1 ? " ui-datepicker-cell-active" : "";
+    const class3 =
+      viewMonth === monthVal + 2 ? " ui-datepicker-cell-active" : "";
     return (
-      <tr key={this.props.uuid}>
-        <td className={`datepicker-month-cell theme-input${class1}`}>
+      <tr key={uID()}>
+        <td className={`ui-datepicker-month-cell ${class1}`}>
           <span
-            className="datepicker-control theme-input_text"
+            className="ui-datepicker-control"
             day={dayVal}
             month={monthVal}
             year={yearVal}
@@ -323,9 +362,9 @@ class DatePicker extends CoreComponent {
             {Calendar.monthName[monthVal]}
           </span>
         </td>
-        <td className={`datepicker-month-cell theme-input${class2}`}>
+        <td className={`ui-datepicker-month-cell ${class2}`}>
           <span
-            className="datepicker-control theme-input_text"
+            className="ui-datepicker-control"
             day={dayVal}
             month={monthVal + 1}
             year={yearVal}
@@ -336,9 +375,9 @@ class DatePicker extends CoreComponent {
             {Calendar.monthName[monthVal + 1]}
           </span>
         </td>
-        <td className={`datepicker-month-cell theme-input${class3}`}>
+        <td className={`ui-datepicker-month-cell ${class3}`}>
           <span
-            className="datepicker-control theme-input_text"
+            className="ui-datepicker-control"
             day={dayVal}
             month={monthVal + 2}
             year={yearVal}
@@ -359,15 +398,15 @@ class DatePicker extends CoreComponent {
     const dayVal = date.getDate();
     const monthVal = date.getMonth();
     const viewYear = date.getFullYear();
-    const class1 = viewYear === yearVal ? " theme-input_active" : "";
-    const class2 = viewYear === yearVal + 1 ? " theme-input_active" : "";
-    const class3 = viewYear === yearVal + 2 ? " theme-input_active" : "";
-    const class4 = viewYear === yearVal + 3 ? " theme-input_active" : "";
+    const class1 = viewYear === yearVal ? " ui-datepicker-cell-active" : "";
+    const class2 = viewYear === yearVal + 1 ? " ui-datepicker-cell-active" : "";
+    const class3 = viewYear === yearVal + 2 ? " ui-datepicker-cell-active" : "";
+    const class4 = viewYear === yearVal + 3 ? " ui-datepicker-cell-active" : "";
     return (
-      <tr key={this.props.uuid}>
-        <td className={`datepicker-year-cell theme-input${class1}`}>
+      <tr key={uID()}>
+        <td className={`ui-datepicker-year-cell ${class1}`}>
           <span
-            className="datepicker-control theme-input_text"
+            className="ui-datepicker-control"
             day={dayVal}
             month={monthVal}
             year={yearVal}
@@ -378,9 +417,9 @@ class DatePicker extends CoreComponent {
             {yearVal}
           </span>
         </td>
-        <td className={`datepicker-year-cell theme-input${class2}`}>
+        <td className={`ui-datepicker-year-cell ${class2}`}>
           <span
-            className="datepicker-control theme-input_text"
+            className="ui-datepicker-control"
             day={dayVal}
             month={monthVal}
             year={yearVal + 1}
@@ -391,9 +430,9 @@ class DatePicker extends CoreComponent {
             {yearVal + 1}
           </span>
         </td>
-        <td className={`datepicker-year-cell theme-input${class3}`}>
+        <td className={`ui-datepicker-year-cell ${class3}`}>
           <span
-            className="datepicker-control theme-input_text"
+            className="ui-datepicker-control"
             day={dayVal}
             month={monthVal}
             year={yearVal + 2}
@@ -404,9 +443,9 @@ class DatePicker extends CoreComponent {
             {yearVal + 2}
           </span>
         </td>
-        <td className={`datepicker-year-cell theme-input${class4}`}>
+        <td className={`ui-datepicker-year-cell ${class4}`}>
           <span
-            className="datepicker-control theme-input_text"
+            className="ui-datepicker-control"
             day={dayVal}
             month={monthVal}
             year={yearVal + 3}
@@ -430,6 +469,7 @@ class DatePicker extends CoreComponent {
       : Calendar.today;
     const viewMonth = activeDate.getMonth();
     let viewYear = activeDate.getFullYear();
+    const windowClass = this.state.open ? "ui-datepicker-window open" : "ui-datepicker-window";
     const footer = [];
     if (this.state.viewType === "years") {
       viewYear = this.state.viewYear;
@@ -442,11 +482,11 @@ class DatePicker extends CoreComponent {
       years.push(this.renderYearRow(viewYear + 20));
       if (!_.isNil(this.state.loadedValue)) {
         footer.push(
-          <tfoot key={this.props.uuid}>
+          <tfoot key={uID()}>
             <tr>
               <td colSpan={4}>
                 <span
-                  className="datepicker-clear theme-input"
+                  className="ui-datepicker-clear"
                   onClick={this.handleOnClear}
                   onKeyDown={this.handleOnClear}
                   role="presentation"
@@ -459,39 +499,39 @@ class DatePicker extends CoreComponent {
         );
       }
       return (
-        <table className="datepicker-table">
-          <thead>
-            <tr>
-              <th className="datepicker-control-cell theme-input">
-                <span
-                  className="datepicker-control theme-input_text"
-                  onClick={this.handlePrevClick}
-                  onKeyDown={this.handlePrevClick}
-                  role="presentation"
-                >
-                  <i className="fa fa-chevron-left" />
-                </span>
-              </th>
-              <th colSpan={2} className="datepicker-header-cell theme-input">
-                <span className="datepicker-control theme-input_text">
-                  Select a year
-                </span>
-              </th>
-              <th className="datepicker-control-cell theme-input">
-                <span
-                  className="datepicker-control theme-input_text"
-                  onClick={this.handleNextClick}
-                  onKeyDown={this.handleNextClick}
-                  role="presentation"
-                >
-                  <i className="fa fa-chevron-right" />
-                </span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>{years}</tbody>
-          {footer}
-        </table>
+        <div className={windowClass}>
+          <table className="ui-datepicker-table">
+            <thead>
+              <tr>
+                <th className="ui-datepicker-control-cell">
+                  <span
+                    className="ui-datepicker-control"
+                    onClick={this.handlePrevClick}
+                    onKeyDown={this.handlePrevClick}
+                    role="presentation"
+                  >
+                    <i className="ui-icon ui-icon-left" />
+                  </span>
+                </th>
+                <th colSpan={2} className="ui-datepicker-header-cell">
+                  <span className="ui-datepicker-control">Select a year</span>
+                </th>
+                <th className="ui-datepicker-control-cell">
+                  <span
+                    className="ui-datepicker-control"
+                    onClick={this.handleNextClick}
+                    onKeyDown={this.handleNextClick}
+                    role="presentation"
+                  >
+                    <i className="ui-icon ui-icon-right" />
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>{years}</tbody>
+            {footer}
+          </table>
+        </div>
       );
     } else if (this.state.viewType === "months") {
       const months = [];
@@ -501,11 +541,11 @@ class DatePicker extends CoreComponent {
       months.push(this.renderMonthRow(9));
       if (!_.isNil(this.state.loadedValue)) {
         footer.push(
-          <tfoot key={this.props.uuid}>
+          <tfoot key={uID()}>
             <tr>
               <td colSpan={3}>
                 <span
-                  className="datepicker-clear theme-input"
+                  className="ui-datepicker-clear"
                   onClick={() => {}}
                   onKeyDown={this.handleOnClear}
                   role="presentation"
@@ -518,55 +558,57 @@ class DatePicker extends CoreComponent {
         );
       }
       return (
-        <table className="datepicker-table">
-          <thead>
-            <tr>
-              <th className="datepicker-control-cell theme-input">
-                <span
-                  className="datepicker-control theme-input_text"
-                  onClick={this.handlePrevClick}
-                  onKeyDown={this.handlePrevClick}
-                  role="presentation"
-                >
-                  <i className="fa fa-chevron-left" />
-                </span>
-              </th>
-              <th className="datepicker-header-cell theme-input">
-                <span
-                  className="datepicker-control theme-input_text"
-                  viewtype="years"
-                  onClick={this.handleViewChange}
-                  onKeyDown={this.handleViewChange}
-                  role="presentation"
-                >
-                  {viewYear}
-                </span>
-              </th>
-              <th className="datepicker-control-cell theme-input">
-                <span
-                  className="datepicker-control theme-input_text"
-                  onClick={this.handleNextClick}
-                  onKeyDown={this.handleNextClick}
-                  role="presentation"
-                >
-                  <i className="fa fa-chevron-right" />
-                </span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>{months}</tbody>
-          {footer}
-        </table>
+        <div className={windowClass}>
+          <table className="ui-datepicker-table">
+            <thead>
+              <tr>
+                <th className="ui-datepicker-control-cell">
+                  <span
+                    className="ui-datepicker-control"
+                    onClick={this.handlePrevClick}
+                    onKeyDown={this.handlePrevClick}
+                    role="presentation"
+                  >
+                    <i className="ui-icon ui-icon-left" />
+                  </span>
+                </th>
+                <th className="ui-datepicker-header-cell">
+                  <span
+                    className="ui-datepicker-control"
+                    viewtype="years"
+                    onClick={this.handleViewChange}
+                    onKeyDown={this.handleViewChange}
+                    role="presentation"
+                  >
+                    {viewYear}
+                  </span>
+                </th>
+                <th className="ui-datepicker-control-cell">
+                  <span
+                    className="ui-datepicker-control"
+                    onClick={this.handleNextClick}
+                    onKeyDown={this.handleNextClick}
+                    role="presentation"
+                  >
+                    <i className="ui-icon ui-icon-right" />
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>{months}</tbody>
+            {footer}
+          </table>
+        </div>
       );
     }
     const headerText = `${Calendar.monthName[viewMonth]} ${viewYear}`;
     if (!_.isNil(this.state.loadedValue)) {
       footer.push(
-        <tfoot key={this.props.uuid}>
+        <tfoot key={uID()}>
           <tr>
             <td colSpan={7}>
               <span
-                className="datepicker-clear theme-input"
+                className="ui-datepicker-clear"
                 onClick={this.handleOnClear}
                 onKeyDown={this.handleOnClear}
                 role="presentation"
@@ -579,101 +621,102 @@ class DatePicker extends CoreComponent {
       );
     }
     return (
-      <table className="datepicker-table">
-        <thead>
-          <tr>
-            <th colSpan={1} className="datepicker-control-cell theme-input">
-              <span
-                className="datepicker-control theme-input_text"
-                onClick={this.handlePrevClick}
-                onKeyDown={this.handlePrevClick}
-                role="presentation"
-              >
-                <i className="fa fa-chevron-left" />
-              </span>
-            </th>
-            <th colSpan={5} className="datepicker-header-cell theme-input">
-              <span
-                className="datepicker-control theme-input_text"
-                viewtype="months"
-                onClick={this.handleViewChange}
-                onKeyDown={this.handleViewChange}
-                role="presentation"
-              >
-                {headerText}
-              </span>
-            </th>
-            <th colSpan={1} className="datepicker-control-cell theme-input">
-              <span
-                className="datepicker-control theme-input_text"
-                onClick={this.handleNextClick}
-                onKeyDown={this.handleNextClick}
-                role="presentation"
-              >
-                <i className="fa fa-chevron-right" />
-              </span>
-            </th>
-          </tr>
-          <tr>
-            <th className="datepicker-weekday-cell datepicker-bordered-b-r">
-              <span className="datepicker-weekday">
-                {Calendar.dayAbbrev[0]}
-              </span>
-            </th>
-            <th className="datepicker-weekday-cell datepicker-bordered-b-r">
-              <span className="datepicker-weekday">
-                {Calendar.dayAbbrev[1]}
-              </span>
-            </th>
-            <th className="datepicker-weekday-cell datepicker-bordered-b-r">
-              <span className="datepicker-weekday">
-                {Calendar.dayAbbrev[2]}
-              </span>
-            </th>
-            <th className="datepicker-weekday-cell datepicker-bordered-b-r">
-              <span className="datepicker-weekday">
-                {Calendar.dayAbbrev[3]}
-              </span>
-            </th>
-            <th className="datepicker-weekday-cell datepicker-bordered-b-r">
-              <span className="datepicker-weekday">
-                {Calendar.dayAbbrev[4]}
-              </span>
-            </th>
-            <th className="datepicker-weekday-cell datepicker-bordered-b-r">
-              <span className="datepicker-weekday">
-                {Calendar.dayAbbrev[5]}
-              </span>
-            </th>
-            <th className="datepicker-weekday-cell datepicker-bordered-b">
-              <span className="datepicker-weekday">
-                {Calendar.dayAbbrev[6]}
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>{this.renderCalendar(viewMonth, viewYear)}</tbody>
-        {footer}
-      </table>
+      <div className={windowClass}>
+        <table className="ui-datepicker-table">
+          <thead>
+            <tr>
+              <th colSpan={1} className="ui-datepicker-control-cell">
+                <span
+                  className="ui-datepicker-control"
+                  onClick={this.handlePrevClick}
+                  onKeyDown={this.handlePrevClick}
+                  role="presentation"
+                >
+                  <i className="ui-icon ui-icon-left" />
+                </span>
+              </th>
+              <th colSpan={5} className="ui-datepicker-header-cell">
+                <span
+                  className="ui-datepicker-control"
+                  viewtype="months"
+                  onClick={this.handleViewChange}
+                  onKeyDown={this.handleViewChange}
+                  role="presentation"
+                >
+                  {headerText}
+                </span>
+              </th>
+              <th colSpan={1} className="ui-datepicker-control-cell">
+                <span
+                  className="ui-datepicker-control"
+                  onClick={this.handleNextClick}
+                  onKeyDown={this.handleNextClick}
+                  role="presentation"
+                >
+                  <i className="ui-icon ui-icon-right" />
+                </span>
+              </th>
+            </tr>
+            <tr>
+              <th className="ui-datepicker-weekday-cell ui-datepicker-bordered-b-r">
+                <span className="ui-datepicker-weekday">
+                  {Calendar.dayAbbrev[0]}
+                </span>
+              </th>
+              <th className="ui-datepicker-weekday-cell ui-datepicker-bordered-b-r">
+                <span className="ui-datepicker-weekday">
+                  {Calendar.dayAbbrev[1]}
+                </span>
+              </th>
+              <th className="ui-datepicker-weekday-cell ui-datepicker-bordered-b-r">
+                <span className="ui-datepicker-weekday">
+                  {Calendar.dayAbbrev[2]}
+                </span>
+              </th>
+              <th className="ui-datepicker-weekday-cell ui-datepicker-bordered-b-r">
+                <span className="ui-datepicker-weekday">
+                  {Calendar.dayAbbrev[3]}
+                </span>
+              </th>
+              <th className="ui-datepicker-weekday-cell ui-datepicker-bordered-b-r">
+                <span className="ui-datepicker-weekday">
+                  {Calendar.dayAbbrev[4]}
+                </span>
+              </th>
+              <th className="ui-datepicker-weekday-cell ui-datepicker-bordered-b-r">
+                <span className="ui-datepicker-weekday">
+                  {Calendar.dayAbbrev[5]}
+                </span>
+              </th>
+              <th className="ui-datepicker-weekday-cell ui-datepicker-bordered-b">
+                <span className="ui-datepicker-weekday">
+                  {Calendar.dayAbbrev[6]}
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>{this.renderCalendar(viewMonth, viewYear)}</tbody>
+          {footer}
+        </table>
+      </div>
     );
   };
 
   renderToggle = (id, iconenabled, inputenabled, disabled, invalid) => {
     const { expiredlock } = this.props;
     const icon = [];
-    const themeClass = invalid ? "" : " theme-input";
     const invalidClass = invalid ? " invalid" : "";
     let expiredClass = "";
     let iconClass = "";
     if (expiredlock && Calendar.isExpired(this.state.loadedDate)) {
-      expiredClass = " datepicker-expired";
+      expiredClass = " ui-datepicker-expired";
     }
     if (disabled) {
       const label = !_.isNil(this.state.loadedValue)
         ? this.state.loadedValue
         : "MM/DD/YYYY";
       return (
-        <span className="datepicker-toggle datepicker-disabled">
+        <span className="ui-datepicker-toggle ui-datepicker-disabled">
           {icon}
           {label}
         </span>
@@ -684,39 +727,41 @@ class DatePicker extends CoreComponent {
         iconClass = " prepend-icon";
         icon.push(
           <i
-            key={`datepicker-icon_${id}`}
-            id={`datepicker-icon_${this.props.uuid}`}
-            className="fa fa-calendar input-icon prepended"
+            key={`ui-datepicker-icon_${id}`}
+            id={`ui-datepicker-icon_${this.props.uuid}`}
+            className="ui-icon ui-icon-calendar ui-datepicker-icon"
             aria-hidden="true"
           />
         );
       }
       return (
-        <Dropdown.Toggle
-          key={`datepicker-toggle_${id}`}
-          id={`datepicker-toggle_${this.props.uuid}`}
-          className={`input-text ${themeClass}${expiredClass}${iconClass}${invalidClass}`}
-          renderAs="div"
+        <div
+          key={`ui-datepicker-toggle_${id}`}
+          id={`ui-datepicker-toggle_${this.props.uuid}`}
+          className={`ui-input-text ${expiredClass}${iconClass}${invalidClass}`}
+          role="presentation"
+          onKeyUp={this.handleOnClick}
+          onClick={this.handleOnClick}
         >
           {icon}
           <input
-            key={`datepicker-input_${id}`}
-            id={`datepicker-input_${this.props.uuid}`}
+            key={`ui-datepicker-input_${id}`}
+            id={`ui-datepicker-input_${this.props.uuid}`}
             type="text"
-            className={`datepicker-text ${invalidClass}`}
+            className={`ui-datepicker-text ui-form-input ${invalidClass}`}
             onChange={this.handleOnChange}
             value={this.state.loadedValue}
             placeholder="MM/DD/YYYY"
           />
-        </Dropdown.Toggle>
+        </div>
       );
     }
     if (iconenabled) {
       icon.push(
         <i
-          key={`datepicker-icon_${id}`}
-          id={`datepicker-icon_${this.props.uuid}`}
-          className="fa fa-calendar"
+          key={`ui-datepicker-icon_${id}`}
+          id={`ui-datepicker-icon_${this.props.uuid}`}
+          className="ui-icon ui-icon-calendar ui-datepicker-icon"
           aria-hidden="true"
         />
       );
@@ -725,22 +770,39 @@ class DatePicker extends CoreComponent {
       ? this.state.loadedValue
       : "MM/DD/YYYY";
     return (
-      <Dropdown.Toggle
-        key={`datepicker-toggle_${id}`}
-        id={`datepicker-toggle_${this.props.uuid}`}
-        className={`datepicker-toggle theme-input_text ${expiredClass}`}
+      <div
+        key={`ui-datepicker-toggle_${id}`}
+        id={`ui-datepicker-toggle_${this.props.uuid}`}
+        className={`ui-datepicker-toggle ${expiredClass}`}
+        role="presentation"
+        onKeyUp={this.handleOnClick}
+        onClick={this.handleOnClick}
       >
         {icon}
-        <span className={`datepicker-text ${invalidClass}`}>{label}</span>
-      </Dropdown.Toggle>
+        <span className={`ui-datepicker-text ${invalidClass}`}>{label}</span>
+      </div>
     );
+  };
+
+  renderLabel = (id, label, required) => {
+    if (label !== null) {
+      const validationClass = required ? "label required-label" : "label";
+      return (
+        <span key={`label_${this.state.renderKey}`} className={validationClass}>
+          {label}
+        </span>
+      );
+    }
+    return <span />;
   };
 
   render() {
     const {
       renderAs: Component,
       id,
+      required,
       disabled,
+      label,
       iconenabled,
       inputenabled,
       invalid,
@@ -749,16 +811,13 @@ class DatePicker extends CoreComponent {
       inherited
     } = getValidProps(this.props);
 
+    const fieldId = id || this.state.renderKey;
+
     return (
-      <Component {...props} onClose={this.handleOnClosed}>
+      <Component {...props} onClose={this.handleOnClosed} ref={this.onSetRef}>
+        {this.renderLabel(fieldId, label, required)}
         {this.renderToggle(id, iconenabled, inputenabled, disabled, invalid)}
-        <Component.Content
-          key={`datepicker-window_${id}`}
-          id={`datepicker-window_${this.props.uuid}`}
-          className="datepicker-window theme-input"
-        >
-          {this.renderWindow(disabled)}
-        </Component.Content>
+        {this.renderWindow(disabled)}
       </Component>
     );
   }

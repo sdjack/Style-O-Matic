@@ -11,8 +11,14 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 .ui-datepicker {
+  display: inline-block;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 100%;
+  padding: 0 4px;
+	margin-left: auto;
+	margin-right: auto;
   cursor: pointer;
-  padding: 0;
   opacity: 1;
 
   &.muted > .ui-datepicker-text {
@@ -62,14 +68,31 @@
 
 .ui-datepicker-icon {
   font-size: 26px !important;
-
   @include text-align-center();
+  display: inline-block;
+  position: absolute;
+  right: 4px;
+  top: 3px;
 }
 
 .ui-datepicker-window {
+  position: absolute;
   overflow: hidden;
-  border: $common-border;
+  border: none;
   width: auto !important;
+  height: 0;
+  z-index: 69;
+  @include shadow-removed();
+  @include animate-default(0.2s);
+  transition-property: height, border-shadow;
+
+  &.open {
+      height: auto !important;
+      max-height: 320px !important;
+      overflow-y: auto !important;
+      border: $common-border;
+      @include shadow-basic();
+  }
 }
 
 .ui-datepicker-clear {
@@ -151,6 +174,10 @@
   &.ui-datepicker-day-active {
     background: $color-green;
   }
+}
+
+.ui-datepicker-cell-active {
+  background: $color-dark-alpha-1;
 }
 
 .ui-datepicker-cell-disabled {

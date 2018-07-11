@@ -165,5 +165,8 @@ gulp.task(
 );
 // Start watching for file changes
 gulp.task("watch", () => {
-  gulp.watch(["src/scss/**/*.scss", "src/scss/**/**/*.scss"], ["default"]);
+  gulp.watch(
+    ["src/scss/**/*.scss", "src/scss/**/**/*.scss"],
+    gulp.series("default")
+  );
 });

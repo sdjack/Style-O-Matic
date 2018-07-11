@@ -87,6 +87,15 @@ class TableCellWidget extends CoreComponent {
     filtering(this);
   };
 
+  handleClearFilter = e => {
+    e.preventDefault();
+    const { filtering } = this.props;
+    const dataColumn = this.props.data.getColumn(this.props.columnid);
+    dataColumn.setFilterSearch("");
+    this.setState({ open: false, filterValue: "" });
+    filtering(this);
+  };
+
   handleChangeFilter = e => {
     e.preventDefault();
     const { value } = e.target;
@@ -142,10 +151,18 @@ class TableCellWidget extends CoreComponent {
             </div>
             <div className="table-filter-button-wrapper">
               <input
-                type="submit"
-                className="table-filter-button"
+                type="button"
+                className="table-filter-button ui-green"
                 onClick={this.handleSetFilter}
                 value="&#10004;"
+              />
+            </div>
+            <div className="table-filter-button-wrapper">
+              <input
+                type="button"
+                className="table-filter-button ui-red"
+                onClick={this.handleClearFilter}
+                value="&#10008;"
               />
             </div>
           </div>

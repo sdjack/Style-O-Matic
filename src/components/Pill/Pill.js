@@ -18,8 +18,8 @@ class Pill extends CoreComponent {
 
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: ROLE.PAGINATION,
-    actionIcon: "fa fa-arrow-up",
+    uirole: ROLE.PILL,
+    actionIcon: "ui-icon ui-icon-star",
     pillData: {},
     onRemove: null,
     onAction: null
@@ -45,13 +45,13 @@ class Pill extends CoreComponent {
     const { actionIcon, onAction } = this.props;
     if (onAction) {
       return (
-        <span
+        <div
           className="ui-pill-action"
           role="presentation"
           onClick={this.handleOnAction}
         >
           <i className={actionIcon} aria-hidden="true" />
-        </span>
+        </div>
       );
     }
     return null;
@@ -61,13 +61,13 @@ class Pill extends CoreComponent {
     const { onRemove } = this.props;
     if (onRemove) {
       return (
-        <span
-          className="ui-pill-close"
+        <div
+          className="ui-pill-action"
           role="presentation"
           onClick={this.handleOnRemove}
         >
-          <i className="fa fa-times" aria-hidden="true" />
-        </span>
+          <i className="ui-icon ui-icon-close" aria-hidden="true" />
+        </div>
       );
     }
     return null;

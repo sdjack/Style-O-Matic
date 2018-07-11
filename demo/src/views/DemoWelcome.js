@@ -1,8 +1,4 @@
-/* ========================================================================
- * Style-O-Matic UI
- *
- * @author: Steven Jackson
- * ======================================================================== */
+/* eslint-disable */
 import React from "react";
 import {
   Badge,
@@ -42,7 +38,7 @@ class DemoWelcome extends React.Component {
               <Title.Subtitle>Simple breadcrumb component</Title.Subtitle>
             </Title>
             <br />
-            <Breadcrumbs path="/demo/page1/page2/page3/page4" />
+            <Breadcrumbs path="/demo/page1/page2/page3/page4" panel />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>

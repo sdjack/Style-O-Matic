@@ -4,18 +4,20 @@
 
  @import 'config';
 
- 
+
 .ui-pill {
   display: inline-block;
   position: relative;
   height: $pill-height;
   min-width: $pill-min-width;
-  padding: $pill-padding;
+  padding: 0 0.2em;
   margin: $pill-margin;
   border: none;
   border-radius: 20px;
   letter-spacing: 0;
   text-decoration: none;
+  color: $pill-text-color;
+  background-color: $pill-background-color;
   cursor: default;
   @include pill-skin();
   @include typo-button();
@@ -26,14 +28,29 @@
               color 0.2s $animation-curve-default;
   outline: none;
 
-  &.padleft {
-    padding: $pill-action-padding !important;
+  &:hover,
+  &:focus,
+  &:active {
+    border: none;
   }
-  &.padright {
-    padding: $pill-remove-padding !important;
-  }
-  &.padboth {
-    padding: $pill-both-padding !important;
+
+  &.disabled {
+    color: $pill-text-color-disabled !important;
+    background-color: $pill-background-color-disabled !important;
+
+    & > .ui-pill-action {
+      color: $pill-text-color-disabled !important;
+      background-color: $pill-background-color-disabled !important;
+      cursor: default;
+      @include shadow-removed();
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $pill-text-color-disabled !important;
+        background-color: $pill-background-color-disabled !important;
+      }
+    }
   }
 }
 
@@ -41,27 +58,37 @@
   font-size: 12px;
   font-weight: 300;
   line-height: 28px;
+  padding: $pill-padding;
 }
 
-.ui-pill-close,
 .ui-pill-action {
-  display: block;
+  display: inline-block;
   height: $pill-action-size;
   width: $pill-action-size;
-  font-size: ($pill-action-size / 2);
+  font-size: ($pill-action-size - 4);
   font-weight: 300;
-  line-height: 20px;
+  line-height: $pill-action-size;
+  border: none;
+  border-radius: 20px;
+  color: $pill-action-text-color;
+  background-color: $pill-action-background-color;
   cursor: pointer;
-}
+  @include pill-action-skin();
+  @include text-align-center();
 
-.ui-pill-close {
-  position: absolute;
-  top: 4px;
-  right: 0;
-}
+  & > .ui-icon {
+    padding-left: 0.08em;
+  }
 
-.ui-pill-action {
-  position: absolute;
-  top: 4px;
-  left: 0;
+  &:hover,
+  &:focus,
+  &:active {
+    border: none;
+  }
+
+  &:hover,
+  &:active {
+    color: $pill-action-active-text-color;
+    background-color: $pill-action-active-background-color;
+  }
 }

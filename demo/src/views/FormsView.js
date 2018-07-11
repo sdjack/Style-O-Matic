@@ -4,13 +4,12 @@
  * @author: Steven Jackson
  * ======================================================================== */
 import React from "react";
-import { Form, Grid, Title, UI } from "../../../src/index";
+import { Form, DatePicker, Grid, Title, UI } from "../../../src/index";
 
 class FormsView extends React.Component {
-  handleOnSubmit = (e, formData) => {
+  handleOnSubmit = e => {
     e.preventDefault();
     UI.setTheme("foo");
-    console.log("Theme: foo");
   };
 
   render() {
@@ -47,7 +46,6 @@ class FormsView extends React.Component {
                     { Value: "Option7", Label: "Select Option 7" }
                   ]}
                 />
-                <Form.Input id="demo-input5" label="Date" type="date" />
                 <Form.Input id="demo-input6" label="Time" type="time" />
                 <Form.Input id="demo-input7" label="Number" type="number" />
               </Form.Row>
@@ -55,6 +53,19 @@ class FormsView extends React.Component {
                 <Form.Input id="demo-input8" label="Email" type="email" />
                 <Form.Input id="demo-input9" label="Telephone" type="tel" />
                 <Form.Input id="demo-input10" label="URL" type="url" />
+              </Form.Row>
+              <Form.Row>
+                <Form.Input
+                  id="demo-input5a"
+                  label="Date (Browser Native)"
+                  type="date"
+                />
+                <DatePicker
+                  id="demo-input5b"
+                  label="DatePicker (SoM Component)"
+                  inputenabled
+                  iconenabled
+                />
               </Form.Row>
               <Form.Row>
                 <Form.Radio

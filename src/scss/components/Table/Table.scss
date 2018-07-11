@@ -34,7 +34,7 @@
 
 .interactive.sorted-asc {
   &:after {
-		content: "\25BC";
+		content: "\2B07";
     display: inline-block;
     position: absolute;
     right: 4px;
@@ -43,7 +43,7 @@
 
 .interactive.sorted-desc {
   &:after {
-		content: "\25B2";
+		content: "\2B06";
     display: inline-block;
     position: absolute;
     right: 4px;
@@ -52,7 +52,7 @@
 
 .interactive.filtered {
   &:before {
-		content: "\26A0";
+		content: "\26B2";
     display: inline-block;
     position: absolute;
     left: 4px;
@@ -194,8 +194,7 @@
 	flex-grow: 1;
 	flex-shrink: 1;
 	flex-basis: 100%;
-	padding-left: 4px;
-	padding-right: 4px;
+	padding: 0px 4px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -211,7 +210,7 @@
 	position: relative;
 	width: 100%;
 	max-width: 100%;
-	height: $widget-size;
+	height: ($widget-size - 8);
 	background-color: white;
 	padding: 0;
 	line-height: 1;
@@ -221,7 +220,7 @@
   display: inline-block;
 	position: relative;
   width: 40px !important;
-	height: $widget-size;
+	height: ($widget-size - 8);
 	color: lighten($table-header-fg-color, 20%);
 	background: lighten($table-header-bg-color, 10%) !important;
 	padding: 0 !important;
