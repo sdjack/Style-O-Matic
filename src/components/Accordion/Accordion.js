@@ -11,7 +11,7 @@ import AccordionContent from "./AccordionContent.js";
 import "./Accordion.css";
 
 class Accordion extends CoreComponent {
-  static propProps = getCorePropTypes({
+  static propTypes = getCorePropTypes({
     caret: "bool"
   });
 

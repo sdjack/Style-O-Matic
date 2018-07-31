@@ -10,9 +10,7 @@ import React from "react";
 import { Button, Dropdown, Grid, Pill, Title } from "../../../src/index";
 
 class ButtonsView extends React.Component {
-  handlePillAction = data => {
-    console.log(data);
-  };
+  handlePillAction = () => null;
 
   render() {
     return [

@@ -66,6 +66,11 @@ export default class CoreComponent extends Component {
   };
   /* eslint-enable */
 
+  getParentNode = () => {
+    this.useParentNode = true;
+    return this.parentNode;
+  };
+
   getParentDimensions = () => {
     this.useParentNode = true;
     return this.parentNode;

@@ -11,6 +11,7 @@ import CardView from "./views/CardView";
 import ButtonsView from "./views/ButtonsView";
 import TableView from "./views/TableView";
 import AccordionView from "./views/AccordionView";
+import ModalView from "./views/ModalView";
 import PageWrapper from "./views/PageWrapper";
 import "../../css/style-o-matic.min.css";
 
@@ -97,6 +98,15 @@ render(
         render={props => (
           <PageWrapper {...props}>
             <AccordionView {...props} />
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/modal"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <ModalView {...props} />
           </PageWrapper>
         )}
       />

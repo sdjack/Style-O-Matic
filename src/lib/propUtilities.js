@@ -271,13 +271,10 @@ export function getPropDefaultsAutoId(config, uidataConfig) {
   return setPropDefaults(true, config, uidataConfig);
 }
 
-export function getUIClassString(props) {
+export function getUIClassString(props, state) {
   const {
     uiclass,
     className,
-    disabled,
-    active,
-    open,
     overlay,
     fixed,
     inset,
@@ -288,7 +285,6 @@ export function getUIClassString(props) {
     rounded,
     circular,
     masked,
-    invalid,
     color,
     colorStyle,
     colorHover,
@@ -297,6 +293,11 @@ export function getUIClassString(props) {
     contentAlign,
     position
   } = props;
+
+  const disabled = state && state.disabled ? state.disabled : props.disabled;
+  const active = state && state.active ? state.active : props.active;
+  const open = state && state.open ? state.open : props.open;
+  const invalid = state && state.invalid ? state.invalid : props.invalid;
 
   const sUIclass = `ui-${uiclass}`;
   const hasUIclass = !className || className.indexOf(sUIclass) === -1;
@@ -359,7 +360,7 @@ export function getUIClassString(props) {
   return [uiClassFull, uiClassCore, uiClassStyle];
 }
 
-export function getValidProps(source) {
+export function getValidProps(source, state) {
   const obj = { props: {}, inherited: {} };
   if (source.style) {
     const uiStyle = {};
@@ -392,7 +393,7 @@ export function getValidProps(source) {
   if (typeof source.privatedata !== "undefined") {
     obj.uidata = _.clone(source.privatedata, source.uidata);
   }
-  const uiClassNames = getUIClassString(source);
+  const uiClassNames = getUIClassString(source, state);
   obj.className = uiClassNames[0];
   obj.coreClassName = uiClassNames[1];
   obj.styleClassName = uiClassNames[2];

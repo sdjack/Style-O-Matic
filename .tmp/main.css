@@ -3143,67 +3143,147 @@ tfoot {
  *    ╚═╝.....╚═╝.╚═════╝.╚═════╝.╚═╝..╚═╝╚══════╝
  *    ............................................
  */
-.modal {
+.ui-modal {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 79;
+  padding: 0;
   display: none;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.533); }
-  .modal.open {
+  background-color: none; }
+  .ui-modal.open {
     display: block;
     overflow-x: hidden;
-    overflow-y: auto; }
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.533); }
+    .ui-modal.open > .ui-modal-wrapper {
+      margin: 0 !important; }
 
-.modal-dialog {
-  max-width: 30vw;
-  min-width: 300px !important;
-  min-height: 18px;
-  height: auto !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-top: 10vh !important;
-  padding: 24px 12px 6px;
+.ui-modal-wrapper {
+  height: 100%;
+  width: 100%;
+  padding: 6em 6em 8em;
+  margin: -15vh 0 0 0;
+  transition-property: margin;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.1, 0, 0.2, 1);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-align-content: space-around;
+      -ms-flex-line-pack: distribute;
+          align-content: space-around;
+  overflow-x: hidden;
+  overflow-y: auto; }
+  @media screen and (max-width: 600px) {
+    .ui-modal-wrapper {
+      padding: 2em 1em; } }
+  .ui-modal-wrapper.from-left {
+    margin: 0 0 0 -15vh; }
+  .ui-modal-wrapper.from-right {
+    margin: 0 -15vh 0 0; }
+  .ui-modal-wrapper.from-bottom {
+    margin: 0 0 -15vh 0; }
+
+.ui-modal-dialog {
+  position: relative;
+  display: inline-block;
+  -webkit-flex-grow: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 300px;
+  padding: 0.4em;
   margin: 0;
   background-color: #fff;
+  color: #333;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); }
+  border-radius: 8px; }
 
-.modal-header {
+.ui-modal-header {
   display: block;
   text-align: left;
-  vertical-align: middle;
-  padding: 4px 12px 24px;
-  font-size: 24px;
+  padding: 0.2em 0.33em 0.575em;
+  font-size: 18px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   line-height: 0.88;
   letter-spacing: 0.5px; }
 
-.modal-body {
+.ui-modal-content {
   display: block;
   text-align: center;
-  vertical-align: middle;
   padding: 40px 0;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.2;
   letter-spacing: 0.4px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000; }
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
 
-.modal-footer {
+.ui-modal-footer {
   display: block;
   text-align: right;
+  padding: 0.575em 0.6em 0;
+  font-size: 14px; }
+
+.ui-modal-close {
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  height: 24px;
+  width: 24px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+  border: none;
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.533);
+  background-color: #F5F8FB;
+  cursor: pointer;
+  box-shadow: inset 0px 1px 2px #999999, 0px 1px 1px #FFFFFF;
+  text-align: -webkit-center;
+  text-align: center;
+  vertical-align: -webkit-baseline-middle;
   vertical-align: middle;
-  padding: 8px 12px 4px; }
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center; }
+  .ui-modal-close > .ui-icon {
+    padding-left: 0.08em; }
+  .ui-modal-close:hover, .ui-modal-close:focus, .ui-modal-close:active {
+    border: none; }
+  .ui-modal-close:hover, .ui-modal-close:active {
+    color: rgba(255, 255, 255, 0.833);
+    background-color: rgba(0, 0, 0, 0.233); }
 
 .ui-nav {
   height: 100%;

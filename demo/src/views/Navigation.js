@@ -42,9 +42,11 @@ class Navigation extends React.Component {
         <Nav.Item to="/accordion" icon="fa fa-th-list" text="Accordion">
           <ToolTip>Accordion</ToolTip>
         </Nav.Item>
+        <Nav.Item to="/modal" icon="fa fa-window-restore" text="Modal">
+          <ToolTip>Modal</ToolTip>
+        </Nav.Item>
         <Nav.Folder to="/misc" icon="fa fa-folder" text="Misc">
           <Nav.Item to="/" icon="fa fa-angle-double-right" text="Breadcrumbs" />
-          <Nav.Item to="/" icon="fa fa-window-restore" text="Modal" />
           <Nav.Item to="/" icon="fa fa-cogs" text="ToolBar" />
           <Nav.Item to="/" icon="fa fa-bookmark" text="Tabs" />
           <Nav.Item to="/" icon="fa fa-comment" text="Toasts" />

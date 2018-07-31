@@ -10,46 +10,81 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.modal {
-   position: fixed;
-   top: 0;
-   right: 0;
-   bottom: 0;
-   left: 0;
-   z-index: 79;
-   display: none;
-   overflow: hidden;
-   background-color: $color-dark-alpha-5;
 
-   &.open {
-      display: block;
-      overflow-x: hidden;
-      overflow-y: auto;
+@import "config";
+
+.ui-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 79;
+  padding: 0;
+  display: none;
+  overflow: hidden;
+  background-color: none;
+  &.open {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: $color-dark-alpha-5;
+    & > .ui-modal-wrapper {
+      margin: 0 !important;
+    }
   }
 }
 
-.modal-dialog {
-  max-width: 30vw;
-  min-width: 300px !important;
-  min-height: 18px;
-  height: auto !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-top: 10vh !important;
-  padding: 24px 12px 6px;
-  margin: 0;
-  background-color: #fff;
-  border: 1px solid rgba(0,0,0,.05);
-  border-radius: 8px;
-  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+.ui-modal-wrapper {
+  height: 100%;
+  width: 100%;
+  padding: 6em 6em 8em;
+  margin: -15vh 0 0 0;
+  transition-property: margin;
+  @include animate-linear-out-slow-in(0.4s);
+  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.05));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: space-around;
+  overflow-x: hidden;
+  overflow-y: auto;
+  @media screen and (max-width: $mobile-screen-threshold) {
+    padding: 2em 1em;
+  }
+  &.from-left {
+    margin: 0 0 0 -15vh;
+  }
+  &.from-right {
+    margin: 0 -15vh 0 0;
+  }
+  &.from-bottom {
+    margin: 0 0 -15vh 0;
+  }
 }
 
-.modal-header {
-	display: block;
-	text-align: left;
-	vertical-align: middle;
-	padding: 4px 12px 24px;
-  font-size: 24px;
+.ui-modal-dialog {
+  position: relative;
+  display: inline-block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  height: fit-content;
+  width: fit-content;
+  min-width: 300px;
+  padding: 0.4em;
+  margin: 0;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.ui-modal-header {
+  display: block;
+  text-align: left;
+  padding: 0.2em 0.33em 0.575em;
+  font-size: 18px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -57,24 +92,58 @@
   letter-spacing: 0.5px;
 }
 
-.modal-body {
-	display: block;
-	text-align: center;
-	vertical-align: middle;
-	padding: 40px 0;
-	font-size: 20px;
+.ui-modal-content {
+  display: block;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 14px;
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.2;
   letter-spacing: 0.4px;
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.modal-footer {
-	display: block;
-	text-align: right;
-	vertical-align: middle;
-	padding: 8px 12px 4px;
+.ui-modal-footer {
+  display: block;
+  text-align: right;
+  padding: 0.575em 0.6em 0;
+  font-size: 14px;
+}
+
+.ui-modal-close {
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  height: $modal-action-size;
+  width: $modal-action-size;
+  font-size: ($modal-action-size - 4);
+  font-weight: 300;
+  line-height: $modal-action-size;
+  border: none;
+  border-radius: 20px;
+  color: $modal-action-text-color;
+  background-color: $modal-action-background-color;
+  cursor: pointer;
+  @include pill-action-skin();
+  @include text-align-center();
+
+  & > .ui-icon {
+    padding-left: 0.08em;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: none;
+  }
+
+  &:hover,
+  &:active {
+    color: $modal-action-active-text-color;
+    background-color: $modal-action-active-background-color;
+  }
 }

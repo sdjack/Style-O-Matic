@@ -1,0 +1,21 @@
+// -----------------------------------------------------------------------------
+// This file contains all component specific Sass mixins.
+// -----------------------------------------------------------------------------
+
+// VARIABLES
+
+$modal-background-color: $color-lighter !default;
+$modal-background-color-disabled: $color-light;
+$modal-text-color: $color-dark-alpha-5 !default;
+$modal-text-color-disabled: $color-ultra-light;
+$modal-action-background-color: $color-ultra-light !default;
+$modal-action-active-background-color: $color-dark-alpha-2 !default;
+$modal-action-text-color: $color-dark-alpha-5 !default;
+$modal-action-active-text-color: $color-light-alpha-8 !default;
+$modal-min-width: 32px !default;
+$modal-height: 29px !default;
+$modal-margin: 0px 0px 0px ($padding-large / 2) !default;
+$modal-padding-calc: ($modal-height / 4);
+$modal-padding: 0px $modal-padding-calc 0px $modal-padding-calc !default;
+$modal-line-height: $modal-height;
+$modal-action-size: 24px !default;

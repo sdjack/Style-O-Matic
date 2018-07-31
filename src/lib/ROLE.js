@@ -60,6 +60,19 @@ const NON_INHERITABLE = [
   ROLE.WIDGET
 ];
 
+const NON_INHERITING = [
+  ROLE.ACCORDION,
+  ROLE.BREADCRUMBS,
+  ROLE.CARD,
+  ROLE.DATEPICKER,
+  ROLE.GRID,
+  ROLE.MODAL,
+  ROLE.PAGINATION,
+  ROLE.TABLE,
+  ROLE.TOASTS,
+  ROLE.TOOLBAR
+];
+
 const THEME_ENABLED = [
   ROLE.DEFAULT,
   ROLE.GROUP,
@@ -75,6 +88,9 @@ const THEME_ENABLED = [
 ];
 
 export function getParentClass(props) {
+  if (NON_INHERITING.indexOf(props.uirole) !== -1) {
+    return props.uirole || "";
+  }
   return NON_INHERITABLE.indexOf(props.uirole) === -1
     ? props.uiclass
     : props.parentclass || "";
