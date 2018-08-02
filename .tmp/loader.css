@@ -29,7 +29,7 @@
 *  MISC
 */
 .ui-tooltip {
-  position: fixed; }
+  position: absolute; }
   .ui-tooltip:hover > .ui-tooltip-wrapper > .ui-tooltip-widget {
     display: block; }
 
@@ -40,7 +40,7 @@
 
 .ui-tooltip-widget {
   display: none;
-  position: absolute;
+  position: fixed;
   z-index: 999; }
   .ui-tooltip-widget.ui-tooltip-left {
     top: 50%;

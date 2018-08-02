@@ -7,7 +7,7 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Header, Footer, ToolBar, Main, Grid, Title } from "../../../src/index";
+import { ToolBar, Main, Grid, Title } from "../../../src/index";
 
 class LayoutView extends React.Component {
   render() {

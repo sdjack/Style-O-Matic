@@ -35,7 +35,7 @@ class Drawer extends CoreComponent {
     if (!e.defaultPrevented) {
       e.preventDefault();
       const { drawerActive } = this.state;
-      this.setState({ drawerActive: !drawerActive });
+      this.setPersistentState({ drawerActive: !drawerActive });
     }
   };
 

@@ -19,9 +19,13 @@ class NavFolder extends CoreComponent {
     minimized: false
   });
 
-  state = {
-    expanded: ""
-  };
+  constructor(props) {
+    super(props);
+    this.useParentNode = true;
+    this.state = {
+      expanded: ""
+    };
+  }
 
   toggleExpansion = e => {
     e.preventDefault();
@@ -69,11 +73,24 @@ class NavFolder extends CoreComponent {
       active: to && path.indexOf(to) !== -1
     };
 
+    const offsetStyle = {};
+
+    if (this.node) {
+      const {
+        bottom: screenBottom,
+        height: screenHeight
+      } = document.body.getBoundingClientRect();
+      const { y, height, bottom } = this.node.getBoundingClientRect();
+      if (y > screenHeight / 2) {
+        offsetStyle.bottom = `${screenHeight - bottom + height / 2}px`;
+      }
+    }
+
     const caretClass =
       !minimized && expanded ? "fa fa-caret-down" : "fa fa-caret-right";
 
     return (
-      <div className="ui-nav-flyout-wrapper">
+      <div className="ui-nav-flyout-wrapper" ref={this.onSetRef}>
         <a className="ui-nav-item" href={to} label={text}>
           <i className={`ui-nav-item-icon ${icon}`} />
           <span className="ui-nav-item-info">{text}</span>
@@ -84,7 +101,11 @@ class NavFolder extends CoreComponent {
             onClick={this.toggleExpansion}
           />
         </a>
-        <Component {...props} className={classNames(className, classes)}>
+        <Component
+          {...props}
+          className={classNames(className, classes)}
+          style={offsetStyle}
+        >
           <div className="ui-nav-folder-title">{text}</div>
           {React.Children.map(children, child => {
             if (

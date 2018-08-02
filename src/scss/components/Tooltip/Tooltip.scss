@@ -2,7 +2,7 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 .ui-tooltip {
-  position: fixed;
+  position: absolute;
   &:hover {
     & > .ui-tooltip-wrapper {
 			& > .ui-tooltip-widget {
@@ -20,7 +20,7 @@
 
 .ui-tooltip-widget {
 	display: none;
-  position: absolute;
+  position: fixed;
   z-index: 999;
 
   &.ui-tooltip-left {

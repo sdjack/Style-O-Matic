@@ -4,6 +4,7 @@ import { uID } from "./coreUtilities.js";
 import { getCorePropTypes, getCorePropDefaults } from "./propUtilities.js";
 import { ROLE, getParentClass, getChildClass } from "./ROLE.js";
 import EventManager from "./EventManager.js";
+import UIGlobals from "./UIGlobals.js";
 /* eslint-enable */
 /* eslint "react/prop-types": [0] */
 
@@ -19,6 +20,7 @@ export default class CoreComponent extends Component {
     this.state = { ...state };
     this.node = null;
     this.useParentNode = false;
+    this.debugging = false;
     this.parentNode = { clientWidth: 1, clientHeight: 1 };
   }
 
@@ -33,6 +35,29 @@ export default class CoreComponent extends Component {
     if (this.WillMount) {
       this.WillMount();
     }
+  }
+
+  componentDidMount() {
+    const srcState = this.state;
+    const newState = srcState || {};
+    if (this.props.persistentId) {
+      if (srcState && !_.isEmpty(srcState)) {
+        const storage = UIGlobals.readSetting(this.props.persistentId);
+        if (storage) {
+          const savedState = JSON.parse(storage);
+          _.forIn(srcState, (value, key) => {
+            if (savedState && typeof savedState[key] !== "undefined") {
+              newState[key] = savedState[key];
+            } else {
+              newState[key] = value;
+            }
+          });
+        }
+      }
+    }
+    /* eslint-disable */
+    this.setState(newState);
+    /* eslint-enable */
   }
 
   componentWillUnmount() {
@@ -66,14 +91,11 @@ export default class CoreComponent extends Component {
   };
   /* eslint-enable */
 
-  getParentNode = () => {
-    this.useParentNode = true;
-    return this.parentNode;
-  };
-
-  getParentDimensions = () => {
-    this.useParentNode = true;
-    return this.parentNode;
+  setPersistentState = newState => {
+    if (this.props.persistentId) {
+      UIGlobals.applySetting(this.props.persistentId, JSON.stringify(newState));
+    }
+    this.setState(newState);
   };
 
   setChildProps = (role, ref, props) => {

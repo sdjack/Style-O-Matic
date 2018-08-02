@@ -31,8 +31,8 @@
 
 .ui-drawer-content {
   display: block;
-  width: 100%;
   height: 100%;
+  width: 100%;
   color: inherit;
   background-color: inherit;
   @include animate-default(0.2s);
@@ -80,7 +80,6 @@
 
 .ui-drawer-toggle-button {
   width: $outer-frame-size;
-  width: $outer-frame-size;
   color: $color-light;
   background-color: transparent;
   padding: 2px;
@@ -88,9 +87,11 @@
   border: none;
   border-radius: 0;
   @include shadow-removed();
+  outline: none !important;
   &:hover, &:focus, &:active {
     background-color: transparent;
     border: none;
+    outline: none !important;
   }
 }
 
@@ -111,12 +112,22 @@
       width: 100% !important;
       min-width: ($outer-frame-size * 2) !important;
       max-width: $inner-frame-size !important;
+      & > .ui-drawer-content {
+        overflow-y: scroll;
+        width: calc(100% + 20px) !important;
+        padding-bottom: 120px !important;
+      }
     }
 
     &.minimized {
       width: $outer-frame-size !important;
       min-width: $outer-frame-size !important;
       max-width: $outer-frame-size !important;
+      & > .ui-drawer-content {
+        overflow-y: hidden;
+        width: 100% !important;
+        padding-bottom: 0px !important;
+      }
     }
 }
 

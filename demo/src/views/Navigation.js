@@ -24,6 +24,9 @@ class Navigation extends React.Component {
         <Nav.Item to="/layout" icon="fa fa-object-group" text="Layout">
           <ToolTip>Layout</ToolTip>
         </Nav.Item>
+        <Nav.Item to="/toolbar" icon="fa fa-cogs" text="ToolBar">
+          <ToolTip>ToolBar</ToolTip>
+        </Nav.Item>
         <Nav.Item to="/grid" icon="fa fa-th" text="Grid">
           <ToolTip>Grid</ToolTip>
         </Nav.Item>
@@ -45,11 +48,19 @@ class Navigation extends React.Component {
         <Nav.Item to="/modal" icon="fa fa-window-restore" text="Modal">
           <ToolTip>Modal</ToolTip>
         </Nav.Item>
+        <Nav.Item to="/tabs" icon="fa fa-bookmark" text="Tabs">
+          <ToolTip>Tabs</ToolTip>
+        </Nav.Item>
+        <Nav.Item to="/toasts" icon="fa fa-comment" text="Toasts">
+          <ToolTip>Toasts</ToolTip>
+        </Nav.Item>
         <Nav.Folder to="/misc" icon="fa fa-folder" text="Misc">
-          <Nav.Item to="/" icon="fa fa-angle-double-right" text="Breadcrumbs" />
-          <Nav.Item to="/" icon="fa fa-cogs" text="ToolBar" />
-          <Nav.Item to="/" icon="fa fa-bookmark" text="Tabs" />
-          <Nav.Item to="/" icon="fa fa-comment" text="Toasts" />
+          <Nav.Item to="/" icon="fa fa-cogs" text="TBD" />
+          <Nav.Item to="/" icon="fa fa-cogs" text="TBD" />
+          <Nav.Item to="/" icon="fa fa-cogs" text="TBD" />
+          <Nav.Item to="/" icon="fa fa-cogs" text="TBD" />
+          <Nav.Item to="/" icon="fa fa-cogs" text="TBD" />
+          <Nav.Item to="/" icon="fa fa-cogs" text="TBD" />
         </Nav.Folder>
       </Nav>
     );

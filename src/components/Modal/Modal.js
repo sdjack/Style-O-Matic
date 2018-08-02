@@ -31,6 +31,7 @@ class Modal extends CoreComponent {
 
   constructor(props, context) {
     super(props, context);
+    this.useParentNode = true;
     this.state = {
       open: false
     };
@@ -45,7 +46,6 @@ class Modal extends CoreComponent {
   };
 
   handleToggle = () => {
-    console.log(this);
     this.setState({ open: !this.state.open });
   };
 
@@ -62,11 +62,10 @@ class Modal extends CoreComponent {
       children,
       props,
       inherited
-    } = getValidProps(this.props);
+    } = getValidProps(this.props, this.state);
 
     delete props.className;
-    const pn = this.getParentNode();
-    pn.onclick = this.handleToggle;
+    this.parentNode.onclick = this.handleToggle;
 
     return (
       <Component

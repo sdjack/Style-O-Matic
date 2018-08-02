@@ -14,16 +14,26 @@ class ToolTip extends CoreComponent {
     position: "right"
   });
 
+  constructor(props) {
+    super(props);
+    this.useParentNode = true;
+  }
+
   render() {
     const { position, ...sorceProps } = this.props;
-    const { clientWidth, clientHeight } = this.getParentDimensions();
     const { renderAs: Component, children, props } = getValidProps(sorceProps);
 
     let widgetClass = "ui-tooltip-widget ";
-    const tipDimensions = {
-      width: `${clientWidth}px`,
-      height: `${clientHeight}px`
-    };
+    const tipDimensions = {};
+    const offsetStyle = {};
+    if (this.node) {
+      const { clientWidth, clientHeight } = this.node.parentNode;
+      tipDimensions.width = `${clientWidth}px`;
+      tipDimensions.height = `${clientHeight}px`;
+      const { x, y, width, bottom } = this.node.getBoundingClientRect();
+      offsetStyle.left = `${x + width}px`;
+      offsetStyle.top = `${bottom}px`;
+    }
 
     if (position) {
       widgetClass += `ui-tooltip-${position}`;
@@ -34,7 +44,7 @@ class ToolTip extends CoreComponent {
     return (
       <Component {...props} style={tipDimensions} ref={this.onSetRef}>
         <div className="ui-tooltip-wrapper">
-          <div className={widgetClass}>
+          <div className={widgetClass} style={offsetStyle}>
             <div className="ui-tooltip-content">{children}</div>
           </div>
         </div>

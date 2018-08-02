@@ -50,7 +50,11 @@ class PageWrapper extends React.Component {
         </Header.Drawer>
       </Header>,
       <Main key="layout-main" color="!grey">
-        <Main.Drawer icon="fa fa-angle-double-right" minimizable>
+        <Main.Drawer
+          persistentId="main-drawer"
+          icon="fa fa-angle-double-right"
+          minimizable
+        >
           <Navigation />
         </Main.Drawer>
         <Main.Content>{children}</Main.Content>
