@@ -16,7 +16,7 @@ class TableHead extends CoreComponent {
 
   static defaultProps = getCorePropDefaults({
     renderAs: "thead",
-    uirole: "thead",
+    uirole: ROLE.THEAD,
     filtering: null,
     sorting: null,
     editing: null

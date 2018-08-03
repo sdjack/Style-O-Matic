@@ -64,15 +64,10 @@ class Modal extends CoreComponent {
       inherited
     } = getValidProps(this.props, this.state);
 
-    delete props.className;
     this.parentNode.onclick = this.handleToggle;
 
     return (
-      <Component
-        {...props}
-        className={cx("ui-modal", { open: this.state.open })}
-        ref={this.onSetRef}
-      >
+      <Component {...props} ref={this.onSetRef}>
         <div
           className={cx("ui-modal-wrapper", {
             [`from-${slidefrom}`]: slidefrom

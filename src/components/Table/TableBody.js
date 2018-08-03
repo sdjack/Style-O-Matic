@@ -9,7 +9,7 @@ import {
 class TableBody extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "tbody",
-    uirole: "tbody"
+    uirole: ROLE.TBODY
   });
 
   rows = [];

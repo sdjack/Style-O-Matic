@@ -12,6 +12,9 @@ import ButtonsView from "./views/ButtonsView";
 import TableView from "./views/TableView";
 import AccordionView from "./views/AccordionView";
 import ModalView from "./views/ModalView";
+import TabsView from "./views/TabsView";
+import ToastsView from "./views/ToastsView";
+import ToolbarView from "./views/ToolbarView";
 import PageWrapper from "./views/PageWrapper";
 import "../../css/style-o-matic.min.css";
 
@@ -107,6 +110,33 @@ render(
         render={props => (
           <PageWrapper {...props}>
             <ModalView {...props} />
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/toolbar"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <ToolbarView {...props} />
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/tabs"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <TabsView {...props} />
+          </PageWrapper>
+        )}
+      />
+      <Route
+        path="/toasts"
+        exact
+        render={props => (
+          <PageWrapper {...props}>
+            <ToastsView {...props} />
           </PageWrapper>
         )}
       />

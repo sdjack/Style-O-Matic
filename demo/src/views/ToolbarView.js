@@ -7,13 +7,13 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Button, Modal, Grid, Title, ToolTip } from "../../../src/index";
+import { Grid, Title, ToolBar } from "../../../src/index";
 
-class ModalView extends React.Component {
+class ToolbarView extends React.Component {
   render() {
     return [
       <Title renderAs="h1" textAlign="center" key="view-title" sticky>
-        <Title.Content>Modals</Title.Content>
+        <Title.Content>Toolbars</Title.Content>
       </Title>,
       <Grid key="grip-panel1">
         <Grid.Row>
@@ -22,22 +22,14 @@ class ModalView extends React.Component {
               <Grid.Row>
                 <Grid.Column textAlign="center">
                   <Title renderAs="h2" textAlign="center">
-                    <Title.Content>Basic Modal</Title.Content>
+                    <Title.Content>Basic Toolbar</Title.Content>
                   </Title>
                   <hr />
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Button id="modal1-toggle">
-                    DEMO
-                    <ToolTip>Basic Modal</ToolTip>
-                    <Modal toggle="modal1-toggle">
-                      <Modal.Header>Modal Header</Modal.Header>
-                      <Modal.Content>Modal Content</Modal.Content>
-                      <Modal.Footer>Modal Footer</Modal.Footer>
-                    </Modal>
-                  </Button>
+                  <ToolBar panel>Component</ToolBar>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -48,4 +40,4 @@ class ModalView extends React.Component {
   }
 }
 
-export default ModalView;
+export default ToolbarView;

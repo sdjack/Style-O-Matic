@@ -112,21 +112,20 @@
       width: 100% !important;
       min-width: ($outer-frame-size * 2) !important;
       max-width: $inner-frame-size !important;
-      & > .ui-drawer-content {
-        overflow-y: scroll;
-        width: calc(100% + 20px) !important;
-        padding-bottom: 120px !important;
-      }
     }
 
     &.minimized {
       width: $outer-frame-size !important;
       min-width: $outer-frame-size !important;
       max-width: $outer-frame-size !important;
+    }
+
+    &.active,
+    &.minimized {
       & > .ui-drawer-content {
-        overflow-y: hidden;
-        width: 100% !important;
-        padding-bottom: 0px !important;
+        overflow-y: scroll;
+        width: calc(100% + 20px) !important;
+        padding-bottom: 120px !important;
       }
     }
 }

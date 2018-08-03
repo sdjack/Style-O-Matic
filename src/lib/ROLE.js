@@ -33,11 +33,17 @@ export const ROLE = {
   SELECT: "select",
   SUBTITLE: "subtitle",
   TABS: "tabs",
+  TABTOGGLE: "tabs-tab",
+  TABCONTENT: "tabs-content",
   TABLE: "table",
+  TBODY: "tbody",
   TEXT: "text",
   TEXTAREA: "textarea",
+  TFOOT: "tfoot",
+  THEAD: "thead",
   TITLE: "title",
   TOASTS: "toasts",
+  TOAST: "toasts-toast",
   TOGGLE: "toggle",
   TOOLBAR: "toolbar",
   TOOLTIP: "tooltip",
@@ -70,7 +76,8 @@ const NON_INHERITING = [
   ROLE.PAGINATION,
   ROLE.TABLE,
   ROLE.TOASTS,
-  ROLE.TOOLBAR
+  ROLE.TOOLBAR,
+  ROLE.TOOLTIP
 ];
 
 const THEME_ENABLED = [
@@ -97,5 +104,8 @@ export function getParentClass(props) {
 }
 
 export function getChildClass(parentClass, role) {
+  if (NON_INHERITING.indexOf(role) !== -1) {
+    return role ? `${role}` : "";
+  }
   return (parentClass ? `${parentClass}-` : "") + (role ? `${role}` : "");
 }

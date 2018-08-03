@@ -79,7 +79,7 @@ class Button extends CoreComponent {
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
-            return this.renderChild(child, {
+            return this.renderOrphan(child, {
               ...inherited,
               onClick: this.chainFunction(child.props.onClick, () => {}),
               onKeyDown: this.chainFunction(child.props.onKeyDown, () => {})

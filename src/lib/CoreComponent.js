@@ -145,4 +145,25 @@ export default class CoreComponent extends Component {
     }
     return child;
   };
+
+  renderOrphan = (child, props) => {
+    if (child.props) {
+      const role = child.props.uirole || ROLE.CONTENT;
+      let ref = c => {
+        this[role] = c;
+      };
+      if (typeof child.ref === "string") {
+        throw new Error("Child components cannot set ref to string.");
+      } else {
+        ref = this.chainFunction(child.ref, ref);
+      }
+      return cloneElement(child, {
+        ...props,
+        ref,
+        parentclass: role,
+        uiclass: role
+      });
+    }
+    return child;
+  };
 }

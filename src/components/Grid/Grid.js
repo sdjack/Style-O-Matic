@@ -12,7 +12,7 @@ import "./Grid.css";
 class Grid extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: "grid"
+    uirole: ROLE.GRID
   });
 
   static Row = GridRow;

@@ -11,7 +11,7 @@ import {
 class TableFoot extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "tfoot",
-    uirole: "tfoot"
+    uirole: ROLE.TFOOT
   });
 
   rows = [];

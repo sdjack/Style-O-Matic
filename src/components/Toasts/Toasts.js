@@ -7,6 +7,7 @@ import {
   getValidProps,
   ROLE
 } from "../../lib";
+import ToastMessage from "./ToastMessage.js";
 import "./Toasts.css";
 
 class Toasts extends CoreComponent {
@@ -16,48 +17,70 @@ class Toasts extends CoreComponent {
 
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: "toasts",
+    uirole: ROLE.TOASTS,
     messages: []
   });
+
+  static Message = ToastMessage;
 
   constructor(props) {
     super(props);
     this.state = {
-      messages: []
+      queue: [],
+      activeQueue: []
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (
       nextProps.messages &&
-      nextProps.messages.length !== this.state.messages.length
+      nextProps.messages.length !== this.state.queue.length
     ) {
       if (this.removalTimer) {
         clearTimeout(this.removalTimer);
       }
-      this.setState({ messages: nextProps.messages });
+      this.setState({
+        active: true,
+        queue: _.cloneDeep(nextProps.messages),
+        activeQueue: _.cloneDeep(nextProps.messages)
+      });
     }
   }
 
   renderToasts = () => {
+    const self = this;
     const output = [];
-    const items = this.state.messages;
-    for (let i = 0; i < items.length; i += 1) {
-      const msg = items[i];
-      output.push(
-        <span className="ui-toasts-toast" key={`toast-message_${i}`}>
-          {msg}
-        </span>
-      );
+    const items = self.state.queue;
+    const activeItems = self.state.activeQueue;
+    if (items.length > 0) {
+      for (let i = 0; i < items.length; i += 1) {
+        const key = `toast-message_${i}`;
+        const msg = items[i].split("|");
+        output.push(
+          <ToastMessage
+            key={key}
+            color={msg[1].toLowerCase()}
+            active={!!activeItems[i]}
+          >
+            {msg[0]}
+          </ToastMessage>
+        );
+      }
+      if (self.removalTimer) {
+        clearTimeout(self.removalTimer);
+      }
+      if (activeItems.length > 0) {
+        self.removalTimer = setTimeout(() => {
+          const garbage = self.state.activeQueue || [];
+          garbage.pop();
+          self.setState({ activeQueue: garbage });
+        }, 5000);
+      } else {
+        self.removalTimer = setTimeout(() => {
+          self.setState({ queue: [], activeQueue: [] });
+        }, 5000);
+      }
     }
-    if (this.removalTimer) {
-      clearTimeout(this.removalTimer);
-    }
-    this.removalTimer = setTimeout(() => {
-      const { messages } = this.state;
-      messages.pop();
-      this.setState({ messages });
-    }, 5000);
     return output;
   };
 

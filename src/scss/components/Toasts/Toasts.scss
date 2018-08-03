@@ -2,34 +2,75 @@
 // Add Notes Here
 // -----------------------------------------------------------------------------
 
- @import 'config';
+@import "config";
 
- 
- .ui-toasts {
+.ui-toasts {
   border: none;
-  display: none;
+  display: block;
   padding: 0;
+  margin: 0;
   position: fixed;
-  top: $toasts-offset;
-  left: 20%;
-  right: 20%;
+  top: 0;
+  left: 0;
+  right: 0;
   @include text-align-center();
   z-index: 89;
-  &.active {
-    display: block;
-  }
 }
 
 .ui-toasts-toast {
-  height: $toasts-height;
-  line-height: $toasts-height;
-  padding: $toasts-padding;
-  display: inline-block;
-  font-size: 1em;
-  font-weight: 900;
+  width: 100%;
+  height: 0px;
+  line-height: 0px;
+  padding: 0px;
+  display: block;
   box-sizing: border-box;
-  border-radius: 20px;
-  @include text-align-center();
+  background: #262626;
+  border-bottom: none;
+  @include text-align-left();
   @include animate-default(0.2s);
-  transition-property: all;
+  overflow: hidden;
+  transition-property: height, padding, line-height;
+  &.active {
+    height: $toasts-height;
+    line-height: $toasts-height;
+    padding: $toasts-padding;
+    border-bottom: 1px solid #1f1f1f;
+  }
+}
+
+.ui-toasts-toast-msg {
+  font-size: 1em;
+  font-weight: 600;
+  line-height: $toasts-height;
+  color: #ffffff;
+  -webkit-animation: bounceInLeft 1s ease-in-out;
+          animation: bounceInLeft 1s ease-in-out;
+}
+
+@-webkit-keyframes bounceInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-50vw);
+  }
+  50% {
+    -webkit-transform: translateX(15vw);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@keyframes bounceInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50vw);
+  }
+  50% {
+    transform: translateX(15vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

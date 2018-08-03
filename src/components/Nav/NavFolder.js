@@ -5,6 +5,7 @@ import {
   getCorePropDefaults,
   getCorePropTypes,
   getValidProps,
+  UIGlobals,
   ROLE
 } from "../../lib";
 
@@ -23,9 +24,28 @@ class NavFolder extends CoreComponent {
     super(props);
     this.useParentNode = true;
     this.state = {
-      expanded: ""
+      expanded: "",
+      bottomOffset: 0,
+      leftOffset: 0
     };
   }
+
+  handleMouseEnter = e => {
+    if (this.node) {
+      const {
+        bottom: screenBottom,
+        height: screenHeight
+      } = UIGlobals.getScreenDimensions();
+      const { y, height, bottom } = this.node.getBoundingClientRect();
+      let bottomOffset = y;
+      if (y > screenHeight / 2) {
+        bottomOffset = height / 2;
+        bottomOffset += screenHeight;
+        bottomOffset -= bottom;
+      }
+      this.setState({ bottomOffset });
+    }
+  };
 
   toggleExpansion = e => {
     e.preventDefault();
@@ -73,24 +93,19 @@ class NavFolder extends CoreComponent {
       active: to && path.indexOf(to) !== -1
     };
 
-    const offsetStyle = {};
-
-    if (this.node) {
-      const {
-        bottom: screenBottom,
-        height: screenHeight
-      } = document.body.getBoundingClientRect();
-      const { y, height, bottom } = this.node.getBoundingClientRect();
-      if (y > screenHeight / 2) {
-        offsetStyle.bottom = `${screenHeight - bottom + height / 2}px`;
-      }
-    }
+    const offsetStyle = {
+      bottom: `${this.state.bottomOffset}px`
+    };
 
     const caretClass =
       !minimized && expanded ? "fa fa-caret-down" : "fa fa-caret-right";
 
     return (
-      <div className="ui-nav-flyout-wrapper" ref={this.onSetRef}>
+      <div
+        className="ui-nav-flyout-wrapper"
+        ref={this.onSetRef}
+        onMouseEnter={this.handleMouseEnter}
+      >
         <a className="ui-nav-item" href={to} label={text}>
           <i className={`ui-nav-item-icon ${icon}`} />
           <span className="ui-nav-item-info">{text}</span>

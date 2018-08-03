@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React from "react";
 import {
   CoreComponent,
@@ -6,17 +7,21 @@ import {
   ROLE
 } from "../../lib";
 
-class TabContent extends CoreComponent {
+class ToastMessage extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: ROLE.TABCONTENT
+    uirole: ROLE.TOAST
   });
 
   render() {
     const { renderAs: Component, children, props } = getValidProps(this.props);
 
-    return <Component {...props}>{children}</Component>;
+    return (
+      <Component {...props}>
+        <div className="ui-toasts-toast-msg">{children}</div>
+      </Component>
+    );
   }
 }
 
-export default TabContent;
+export default ToastMessage;

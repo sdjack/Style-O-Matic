@@ -2,7 +2,7 @@ import React, { cloneElement } from "react";
 import classNames from "classnames";
 import {
   CoreComponent,
-  getCorePropDefaults,
+  getPropDefaultsAutoId,
   getPropTypesA11y,
   getValidProps,
   ROLE
@@ -17,9 +17,9 @@ class Tabs extends CoreComponent {
     onSwitch: "func"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = getPropDefaultsAutoId({
     renderAs: "div",
-    uirole: "tabs",
+    uirole: ROLE.TABS,
     smart: false,
     onSwitch: null
   });
@@ -29,7 +29,7 @@ class Tabs extends CoreComponent {
 
   constructor(props, context) {
     super(props, context);
-    this.state = { activeTab: `tabs_${props.id}_tab_1` };
+    this.state = { activeTab: `${props.id}_tab_1` };
   }
 
   handleClick = event => {
@@ -52,7 +52,7 @@ class Tabs extends CoreComponent {
   };
 
   renderToggle = (child, index, parentId, { ...props }) => {
-    const id = `tabs_${parentId}_tab_${index}`;
+    const id = `${parentId}_tab_${index}`;
     const activeClass = this.state.activeTab === id ? "tab active" : "tab";
     return cloneElement(child, {
       ...props,
@@ -64,9 +64,9 @@ class Tabs extends CoreComponent {
   };
 
   renderContent = (child, index, parentId, { ...props }) => {
-    let id = `tabs_${parentId}_tab_${index}`;
+    let id = `${parentId}_tab_${index}`;
     const activeClass =
-      this.state.activeTab === id ? "tab-content active" : "tab-content";
+      this.state.activeTab === id ? "content active" : "content";
     id += "_content";
     return cloneElement(child, {
       ...props,
@@ -83,66 +83,42 @@ class Tabs extends CoreComponent {
       uiclass,
       disabled,
       smart,
-      automatic,
       children,
       props,
       inherited
     } = getValidProps(this.props);
 
-    const preSorted = { tabs: [], content: [] };
+    let tabCount = 0;
+    let contentCount = 0;
 
-    if (automatic) {
-      React.Children.map(children, child => {
-        switch (child.props.uirole) {
-          case ROLE.BUTTON: {
-            const tindex = preSorted.tabs.length + 1;
-            preSorted.tabs.push(
-              this.renderToggle(child, tindex, id, inherited)
-            );
-            break;
-          }
-          case ROLE.CONTENT: {
-            const cindex = preSorted.content.length + 1;
-            preSorted.content.push(
-              this.renderContent(child, cindex, id, inherited)
-            );
-            break;
-          }
-          default:
-            break;
-        }
-      });
-      const columns = preSorted.tabs.length;
-
-      return (
-        <Component id={`tabs_${id}`} {...props}>
-          <div
-            className={classNames("tabs-container", {
-              smart: smart && columns < 2
-            })}
-          >
-            {preSorted.tabs}
-          </div>
-          {preSorted.content}
-        </Component>
-      );
-    }
     return (
-      <Component id={`tabs_${id}`} {...props}>
-        {React.Children.map(children, child => {
-          switch (child.props.uirole) {
-            case ROLE.BUTTON: {
-              const tindex = preSorted.tabs.length + 1;
-              return this.renderToggle(child, tindex, id, inherited);
+      <Component {...props}>
+        <div className="ui-tabs-tab-wrapper">
+          {React.Children.map(children, child => {
+            if (
+              typeof child.props !== "undefined" &&
+              typeof child.props.uirole !== "undefined" &&
+              child.props.uirole === ROLE.TABTOGGLE
+            ) {
+              tabCount += 1;
+              return this.renderToggle(child, tabCount, id, inherited);
             }
-            case ROLE.CONTENT: {
-              const cindex = preSorted.content.length + 1;
-              return this.renderContent(child, cindex, id, inherited);
+            return null;
+          })}
+        </div>
+        <div className="ui-tabs-content-wrapper">
+          {React.Children.map(children, child => {
+            if (
+              typeof child.props !== "undefined" &&
+              typeof child.props.uirole !== "undefined" &&
+              child.props.uirole === ROLE.TABCONTENT
+            ) {
+              contentCount += 1;
+              return this.renderContent(child, contentCount, id, inherited);
             }
-            default:
-              return child;
-          }
-        })}
+            return null;
+          })}
+        </div>
       </Component>
     );
   }

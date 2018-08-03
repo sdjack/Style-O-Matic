@@ -10,7 +10,7 @@ import {
 class TitleSubtitle extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "h4",
-    uirole: "subtitle"
+    uirole: ROLE.SUBTITLE
   });
 
   render() {
