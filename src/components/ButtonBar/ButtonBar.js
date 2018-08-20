@@ -27,14 +27,6 @@ class ButtonBar extends CoreComponent {
     };
   }
 
-  dummyClick = e => {
-    e.preventDefault();
-  };
-
-  handleOnClick = e => {
-    e.preventDefault();
-  };
-
   handleOnClick = e => {
     e.preventDefault();
     e.stopPropagation();
@@ -77,7 +69,8 @@ class ButtonBar extends CoreComponent {
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
-            typeof child.props.uirole !== "undefined"
+            typeof child.props.uirole !== "undefined" &&
+            child.props.uirole === ROLE.BUTTON
           ) {
             return this.renderChild(child, inherited);
           }

@@ -19,6 +19,13 @@ class ToastMessage extends CoreComponent {
     return (
       <Component {...props}>
         <div className="ui-toasts-toast-msg">{children}</div>
+        <div
+          className="ui-toasts-toast-close"
+          role="presentation"
+          onClick={this.props.onClick}
+        >
+          &#10005;
+        </div>
       </Component>
     );
   }

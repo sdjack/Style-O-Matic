@@ -1,10 +1,86 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
+
+ @import 'config';
+
 .ui-buttonbar {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: inherit;
+  @include buttonbar-shadow();
 	
+  & .ui-buttonbar-button:first-child {
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: 0;
+		border-bottom-left-radius: $border-radius;
+		border-bottom-right-radius: 0;
+	}
+
+	& .ui-buttonbar-button:last-child {
+		border-top-left-radius: 0;
+		border-top-right-radius: $border-radius;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: $border-radius;
+	}
+
+	& .ui-buttonbar-button:only-child {
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+		border-bottom-left-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
+	}
 }
 
-.ui-buttonbar-item {
-	
+.ui-buttonbar-button {
+  min-width: $button-min-width;
+  height: 36px;
+  color: $button-text-color;
+  background-color: $button-background-color;
+  position: relative;
+  padding: $button-padding;
+  display: inline-block;
+  line-height: 1;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  @include typo-button();
+  @include text-align-center();
+  @include animate-default(0.2s);
+  transition-property: color, background-color, box-shadow;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: none;
+  }
+
+  &:hover,
+  &:active {
+    color: $button-active-text-color;
+    background-color: $button-active-background-color;
+  }
+
+  &.disabled {
+    color: $button-text-color-disabled !important;
+    background-color: $button-background-color-disabled !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $button-text-color-disabled !important;
+      background-color: $button-background-color-disabled !important;
+    }
+  }
+
+  &>.fa {
+    line-height: 32px;
+  }
+
+  &>i {
+    color: inherit !important;
+  }
 }

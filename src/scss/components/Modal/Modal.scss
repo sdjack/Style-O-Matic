@@ -21,6 +21,7 @@
   left: 0;
   z-index: 79;
   padding: 0;
+  margin: 0;
   display: none;
   overflow: hidden;
   background-color: none;
@@ -29,19 +30,15 @@
     overflow-x: hidden;
     overflow-y: auto;
     background-color: $color-dark-alpha-5;
-    & > .ui-modal-wrapper {
-      margin: 0 !important;
-    }
+    margin: 0 !important;
   }
 }
 
-.ui-modal-wrapper {
+.ui-modal-outer-wrapper {
   height: 100%;
   width: 100%;
   padding: 6em 6em 8em;
-  margin: -15vh 0 0 0;
-  transition-property: margin;
-  @include animate-linear-out-slow-in(0.4s);
+  margin: 0;
   @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.05));
   display: flex;
   flex-direction: row;
@@ -53,22 +50,20 @@
   @media screen and (max-width: $mobile-screen-threshold) {
     padding: 2em 1em;
   }
-  &.from-left {
-    margin: 0 0 0 -15vh;
-  }
-  &.from-right {
-    margin: 0 -15vh 0 0;
-  }
-  &.from-bottom {
-    margin: 0 0 -15vh 0;
-  }
+}
+
+.ui-modal-inner-wrapper {
+  position: relative;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  padding: 0;
+  margin: 0;
 }
 
 .ui-modal-dialog {
   position: relative;
-  display: inline-block;
-  flex-grow: 0;
-  flex-shrink: 1;
+  display: block;
   height: fit-content;
   width: fit-content;
   min-width: 300px;

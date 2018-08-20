@@ -51,7 +51,9 @@ class ToastsView extends React.Component {
                     Load Messages
                     <ToolTip>Click To Add Toasts</ToolTip>
                   </Button>
-                  <Toasts messages={this.state.demoMsgs}>Component</Toasts>
+                  <Toasts messages={this.state.demoMsgs} timeout={1000}>
+                    Component
+                  </Toasts>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

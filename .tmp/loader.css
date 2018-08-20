@@ -133,3 +133,34 @@
   .ui-tooltip-content:after {
     border-color: rgba(255, 255, 255, 0);
     border-width: 8px; }
+ }
+  .ui-toolbar-button:hover {
+    background-color: rgba(25, 118, 210, 0.5); }
+
+.ui-toolbar-logo {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0;
+  height: 100%;
+  cursor: pointer;
+  border: none; }
+  .ui-toolbar-logo > img {
+    padding: 0;
+    height: 100%; }
+
+.ui-toolbar-list {
+  display: inline-block;
+  padding: 0px 12px;
+  margin: 0;
+  letter-spacing: 1px;
+  font-size: 15px;
+  line-height: 1;
+  list-style-type: none;
+  text-align: -webkit-end;
+  text-align: end;
+  -webkit-align-items: end;
+      -ms-flex-align: end;
+          align-items: end;
+  -webkit-align-content: end;
+      -ms-flex-line-pack: end;
+          align-content: end; }

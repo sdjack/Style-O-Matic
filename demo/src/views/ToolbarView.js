@@ -29,7 +29,47 @@ class ToolbarView extends React.Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <ToolBar panel>Component</ToolBar>
+                  <ToolBar color="red" raised>
+                    <ToolBar.Content contentAlign="left">
+                      <ToolBar.Title>TITLE</ToolBar.Title>
+                      <ToolBar.Button>Button</ToolBar.Button>
+                      <ToolBar.Button>Button</ToolBar.Button>
+                    </ToolBar.Content>
+                    <ToolBar.Content contentAlign="right">
+                      <ToolBar.Text>Raised</ToolBar.Text>
+                      <ToolBar.Text>Red</ToolBar.Text>
+                    </ToolBar.Content>
+                  </ToolBar>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <ToolBar color="green" raised>
+                    <ToolBar.Content contentAlign="left">
+                      <ToolBar.Title>TITLE</ToolBar.Title>
+                      <ToolBar.Button>Button</ToolBar.Button>
+                      <ToolBar.Button>Button</ToolBar.Button>
+                    </ToolBar.Content>
+                    <ToolBar.Content contentAlign="right">
+                      <ToolBar.Text>Raised</ToolBar.Text>
+                      <ToolBar.Text>Green</ToolBar.Text>
+                    </ToolBar.Content>
+                  </ToolBar>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <ToolBar color="blue" raised>
+                    <ToolBar.Content contentAlign="left">
+                      <ToolBar.Title>TITLE</ToolBar.Title>
+                      <ToolBar.Button>Button</ToolBar.Button>
+                      <ToolBar.Button>Button</ToolBar.Button>
+                    </ToolBar.Content>
+                    <ToolBar.Content contentAlign="right">
+                      <ToolBar.Text>Raised</ToolBar.Text>
+                      <ToolBar.Text>Blue</ToolBar.Text>
+                    </ToolBar.Content>
+                  </ToolBar>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

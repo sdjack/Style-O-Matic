@@ -8,8 +8,6 @@ import _ButtonBar from "./components/ButtonBar/ButtonBar";
 
 import _Button from "./components/Button/Button";
 
-import _ButtonMenu from "./components/ButtonMenu/ButtonMenu";
-
 import _Card from "./components/Card/Card";
 
 import _DatePicker from "./components/DatePicker/DatePicker";
@@ -67,8 +65,6 @@ export { _Breadcrumbs as Breadcrumbs };
 export { _Button as Button };
 
 export { _ButtonBar as ButtonBar };
-
-export { _ButtonMenu as ButtonMenu };
 
 export { _Card as Card };
 

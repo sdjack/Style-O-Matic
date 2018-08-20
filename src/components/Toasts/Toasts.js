@@ -12,13 +12,15 @@ import "./Toasts.css";
 
 class Toasts extends CoreComponent {
   static propTypes = getCorePropTypes({
-    messages: "array"
+    messages: "array",
+    timeout: "number"
   });
 
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.TOASTS,
-    messages: []
+    messages: [],
+    timeout: 5000
   });
 
   static Message = ToastMessage;
@@ -26,6 +28,7 @@ class Toasts extends CoreComponent {
   constructor(props) {
     super(props);
     this.state = {
+      timeout: 5000,
       queue: [],
       activeQueue: []
     };
@@ -41,15 +44,23 @@ class Toasts extends CoreComponent {
       }
       this.setState({
         active: true,
+        timeout: nextProps.timeout,
         queue: _.cloneDeep(nextProps.messages),
         activeQueue: _.cloneDeep(nextProps.messages)
       });
     }
   }
 
+  handleClose = index => {
+    const activeItems = this.state.activeQueue;
+    activeItems[index] = false;
+    this.setState({ activeQueue: activeItems });
+  };
+
   renderToasts = () => {
     const self = this;
     const output = [];
+    const delay = self.state.timeout;
     const items = self.state.queue;
     const activeItems = self.state.activeQueue;
     if (items.length > 0) {
@@ -61,6 +72,7 @@ class Toasts extends CoreComponent {
             key={key}
             color={msg[1].toLowerCase()}
             active={!!activeItems[i]}
+            onClick={() => self.handleClose(i)}
           >
             {msg[0]}
           </ToastMessage>
@@ -74,11 +86,11 @@ class Toasts extends CoreComponent {
           const garbage = self.state.activeQueue || [];
           garbage.pop();
           self.setState({ activeQueue: garbage });
-        }, 5000);
+        }, delay);
       } else {
         self.removalTimer = setTimeout(() => {
           self.setState({ queue: [], activeQueue: [] });
-        }, 5000);
+        }, delay);
       }
     }
     return output;

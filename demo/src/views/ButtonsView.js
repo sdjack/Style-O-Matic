@@ -7,7 +7,14 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Button, Dropdown, Grid, Pill, Title } from "../../../src/index";
+import {
+  Button,
+  ButtonBar,
+  Dropdown,
+  Grid,
+  Pill,
+  Title
+} from "../../../src/index";
 
 class ButtonsView extends React.Component {
   handlePillAction = () => null;
@@ -220,6 +227,27 @@ class ButtonsView extends React.Component {
                   >
                     Disabled
                   </Pill>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column textAlign="center" panel>
+            <Title renderAs="h2" textAlign="center">
+              <Title.Content>Button Bar</Title.Content>
+            </Title>
+            <hr />
+            <br />
+            <Grid>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
+                  <ButtonBar id="bb1">
+                    <ButtonBar.Button>1</ButtonBar.Button>
+                    <ButtonBar.Button>2</ButtonBar.Button>
+                    <ButtonBar.Button>3</ButtonBar.Button>
+                    <ButtonBar.Button>4</ButtonBar.Button>
+                  </ButtonBar>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

@@ -34,7 +34,6 @@ const componentList = [
   "Breadcrumbs",
   "Button",
   "ButtonBar",
-  "ButtonMenu",
   "Card",
   "DatePicker",
   "Drawer",

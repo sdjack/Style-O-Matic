@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+// This file contains all component specific Sass mixins.
+// -----------------------------------------------------------------------------
+
+// VARIABLES
+$button-background-color: $color-dark-alpha-0 !default;
+$button-background-color-disabled: $color-light;
+$button-text-color: $color-dark-alpha-5 !default;
+$button-text-color-disabled: $color-ultra-light;
+$button-active-background-color: $color-dark-alpha-3 !default;
+$button-active-text-color: $color-light-alpha-5 !default;
+$button-icon-color: rgba(128,128,128,0.7) !default;
+$button-icon-active-color: $button-active-background-color !default;
+$button-min-width: 32px !default;
+$button-height: 26px !default;
+$button-padding: ($padding - 2) ($padding * 2) ($padding + 2) !default;
+$button-margin: 4px !default;
+$button-fab-size: 56px !default;
+$button-fab-size-mini: 40px !default;
+$button-fab-font-size: 24px !default;
+$button-icon-size: 26px !default;
+$button-icon-size-mini: 24px !default;
