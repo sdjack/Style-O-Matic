@@ -97,6 +97,7 @@ const DefaultPropTypes = {
   overlay: PropTypes.bool,
   fixed: PropTypes.bool,
   color: PropTypes.oneOf([
+    "transparent",
     "grey",
     "black",
     "red",

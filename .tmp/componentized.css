@@ -808,6 +808,11 @@ tfoot {
   opacity: 1;
   height: auto; }
 
+.ui-transparent {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+  color: #000000 !important; }
+
 .ui-grey,
 .ui-grey-no-hover {
   background-color: #DFDFDF !important;

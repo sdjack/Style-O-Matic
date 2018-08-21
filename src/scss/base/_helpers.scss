@@ -181,6 +181,12 @@
   }
 }
 
+.ui-transparent {
+  background-color: $color-invisible !important;
+  border-color: $color-invisible !important;
+  color: $color-black !important;
+}
+
 @include ui-color('grey',$color-grey);
 @include ui-color('black',$color-black);
 @include ui-color('white',$color-white);

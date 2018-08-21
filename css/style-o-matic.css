@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.0.948
+ * @version v1.1.0
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Steven Jackson. All rights reserved.
@@ -747,6 +747,11 @@ tfoot {
           transform: scale(1);
   opacity: 1;
   height: auto; }
+
+.ui-transparent {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+  color: #000000 !important; }
 
 .ui-grey,
 .ui-grey-no-hover {
