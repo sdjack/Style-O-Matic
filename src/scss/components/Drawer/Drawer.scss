@@ -9,8 +9,8 @@
 
 .ui-drawer {
     z-index: 70;
-    color: $color-light;
-    background-color: $color-darker;
+    color: $text-color;
+    background-color: $background-color;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -19,7 +19,6 @@
     @include no-shadow();
     @include animate-default(0.2s);
     transition-property: all;
-
     &.active {
       @include shadow-drawer();
     }
@@ -80,7 +79,7 @@
 
 .ui-drawer-toggle-button {
   width: $outer-frame-size;
-  color: $color-light;
+  color: $color-darker;
   background-color: transparent;
   padding: 2px;
   font-size: $toggle-size;

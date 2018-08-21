@@ -16,7 +16,7 @@ class PageWrapper extends React.Component {
     // UI.setTheme("foo");
     return [
       <Header key="layout-header" fixed>
-        <Header.Drawer icon="fa fa-user" color="transparent" minimizable>
+        <Header.Drawer icon="fa fa-user" minimizable>
           <ToolBar>
             <ToolBar.Content contentAlign="left">
               <ToolBar.Title observe="scroll">Demo</ToolBar.Title>

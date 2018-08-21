@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import classNames from "classnames";
 import {
   CoreComponent,
@@ -43,6 +44,8 @@ class Drawer extends CoreComponent {
     const {
       renderAs: Component,
       uiclass,
+      color,
+      colorStyle,
       uuid,
       attach,
       icon,
@@ -58,6 +61,18 @@ class Drawer extends CoreComponent {
       active,
       minimized: !active && minimizable
     };
+    if (!_.isNil(color)) {
+      const nohover = String(color).indexOf("!") !== -1;
+      const cleanColor = String(color).replace("!", "");
+      let colorClass = `ui-${cleanColor}`;
+      if (!_.isNil(colorStyle)) {
+        colorClass += `-${colorStyle}`;
+      }
+      if (nohover) {
+        colorClass += "-no-hover";
+      }
+      classes[colorClass] = true;
+    }
 
     const toggle = [];
     if (minimizable) {

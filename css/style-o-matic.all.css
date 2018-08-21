@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.1.0
+ * @version v1.1.1
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Steven Jackson. All rights reserved.
@@ -64,7 +64,8 @@ html {
 body {
   height: 100vh;
   width: 100vw;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #EFF3F8; }
 
 a {
   text-decoration: none; }
@@ -1974,8 +1975,8 @@ tfoot {
 
 .ui-drawer {
   z-index: 70;
-  color: #CFD3D8;
-  background-color: #2F3338;
+  color: #3F4348;
+  background-color: #EFF3F8;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -2048,7 +2049,7 @@ tfoot {
 
 .ui-drawer-toggle-button {
   width: 40px;
-  color: #CFD3D8;
+  color: #2F3338;
   background-color: transparent;
   padding: 2px;
   font-size: 28px;
