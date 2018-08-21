@@ -21,6 +21,8 @@
   padding: 0;
   border: none;
   position: relative;
+  color: inherit;
+  background-color: inherit;
 
   &.ui-fixed {
     left: 0;

@@ -164,23 +164,26 @@
   -webkit-align-content: end;
       -ms-flex-line-pack: end;
           align-content: end; }
-ter;
-  vertical-align: -webkit-baseline-middle;
-  vertical-align: middle;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center; }
-  .ui-modal-close > .ui-icon {
-    padding-left: 0.08em; }
-  .ui-modal-close:hover, .ui-modal-close:focus, .ui-modal-close:active {
-    border: none; }
-  .ui-modal-close:hover, .ui-modal-close:active {
-    color: rgba(255, 255, 255, 0.833);
-    background-color: rgba(0, 0, 0, 0.233); }
-egative: 1;
+ flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-align-content: space-around;
+      -ms-flex-line-pack: distribute;
+          align-content: space-around;
+  max-width: 100%;
+  padding: 3px 0px; }
+
+.table-filter-input-wrapper {
+  display: inline-block;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
           flex-shrink: 1;
   -webkit-flex-basis: 100%;
       -ms-flex-preferred-size: 100%;
@@ -219,195 +222,3 @@ egative: 1;
 @media (min-width: 40em) {
   .ui-table {
     font-size: 13px; } }
-ht: 20px;
-  min-width: 20px;
-  padding: 1px 0px;
-  font-size: 16px !important;
-  line-height: 18px !important;
-  margin: 8px 12px 8px 48px; }
-
-.ui-nav-folder-item-info {
-  display: inline-block;
-  height: 20px;
-  width: auto;
-  padding: 0;
-  font-size: 12px !important;
-  font-weight: 600;
-  line-height: 20px; }
-
-.ui-nav-folder-item-icon {
-  height: 20px;
-  min-width: 20px;
-  padding: 1px 0px;
-  margin: 8px 12px 8px 48px;
-  font-size: 16px !important;
-  line-height: 18px !important; }
-
-.ui-nav-folder-item-caret {
-  padding: 17px 10px 17px 0;
-  font-size: 18px !important;
-  line-height: 36px !important; }
-
-.ui-nav-folder-title,
-.ui-nav-folder-item-info {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; }
-
-.ui-nav-border {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.333); }
-
-.ui-nav-flyout {
-  width: 200px;
-  border: 1px solid rgba(0, 0, 0, 0.333);
-  position: absolute;
-  left: 39px;
-  top: 0; }
-
-.ui-nav-flyout-wrapper {
-  display: block;
-  width: 100%; }
-,
-  .ui-input-tel > select,
-  .ui-input-number > input,
-  .ui-input-number > select,
-  .ui-input-date > input,
-  .ui-input-date > select,
-  .ui-input-time > input,
-  .ui-input-time > select,
-  .ui-input-file > input,
-  .ui-input-file > select,
-  .ui-input-url > input,
-  .ui-input-url > select,
-  .ui-input-email > input,
-  .ui-input-email > select,
-  .ui-input-color > input,
-  .ui-input-color > select {
-    width: 100%;
-    height: 100%;
-    background-color: transparent !important;
-    background: none !important;
-    border: none !important; }
-
-/* INPUT TYPE: TEXTAREA */
-.ui-input-textarea {
-  width: 100%;
-  max-width: 100%;
-  background-color: white;
-  border-radius: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.333); }
-  .ui-input-textarea > textarea {
-    width: 100%;
-    height: 100%;
-    min-height: 36px;
-    background-color: transparent !important;
-    background: none !important;
-    border: none !important;
-    overflow: auto;
-    resize: vertical; }
-
-/* INPUT TYPE: NUMBER */
-.ui-input-number {
-  background-color: white;
-  border-radius: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.333); }
-  .ui-input-number > input {
-    position: absolute;
-    display: inline-block;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 22px;
-    background-color: transparent !important;
-    background: none !important;
-    border-radius: 0 !important;
-    border: none !important; }
-
-.ui-input-number-up,
-.ui-input-number-down {
-  position: absolute;
-  display: inline-block;
-  right: -20px;
-  height: 17px;
-  width: 20px;
-  border-left: 1px solid rgba(0, 0, 0, 0.333);
-  cursor: pointer;
-  text-align: center;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  line-height: 1;
-  background-color: white;
-  -webkit-transform: translateX(-100%);
-  transform: translateX(-100%);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none; }
-  .ui-input-number-up:hover,
-  .ui-input-number-down:hover {
-    border-left: rgba(0, 0, 0, 0.433);
-    background-color: rgba(0, 0, 0, 0.233); }
-
-.ui-input-number-up {
-  top: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.333);
-  border-radius: 0 3px 0 0; }
-  .ui-input-number-up:hover {
-    border-bottom: rgba(0, 0, 0, 0.433); }
-
-.ui-input-number-down {
-  bottom: 0;
-  border-radius: 0 0 3px 0; }
-
-/* INPUT TYPE: DATE */
-/* INPUT TYPE: TIME */
-/* INPUT TYPE: FILE */
-.ui-inputfile {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1; }
-
-.ui-input-file > label {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-indent: 6px;
-  background-color: transparent !important;
-  background: none !important;
-  border-radius: 0 !important;
-  border: none !important;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  vertical-align: -webkit-baseline-middle;
-  vertical-align: middle;
-  line-height: 2; }
-  .ui-input-file > label > .fa {
-    line-height: 36px !important; }
-  .ui-input-file > label > input:focus {
-    outline: 1px dotted #000;
-    outline: -webkit-focus-ring-color auto 5px; }
-
-/* INPUT TYPE: CHECKBOX & RADIO */
-.ui-input-checkbox,
-.ui-input-radio {
-  margin: 10px; }
-  .ui-input-checkbox > label,
-  .ui-input-radio > label {
-    line-height: 1;
-    font-size: 18px; }
-    .ui-input-checkbox > label > input,
-    .ui-input-radio > label > input {
-      width: 20px;
-      height: 20px; }
-
-/* INPUT TYPE: RADIO */
-/* INPUT TYPE: URL */

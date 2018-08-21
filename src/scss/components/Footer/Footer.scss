@@ -21,8 +21,8 @@
   padding: 0;
   border: none;
   position: relative;
-  background-color: $color-dark;
-  color: $color-lighter;
+  color: inherit;
+  background-color: inherit;
 
   &.ui-fixed {
     left: 0;

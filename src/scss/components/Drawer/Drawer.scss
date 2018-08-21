@@ -9,8 +9,8 @@
 
 .ui-drawer {
     z-index: 70;
-    color: $text-color;
-    background-color: $background-color;
+    color: inherit;
+    background-color: inherit;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;

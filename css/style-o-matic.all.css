@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.1.1
+ * @version v1.1.26
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Steven Jackson. All rights reserved.
@@ -474,9 +474,9 @@ tfoot {
           align-content: end; }
 
 .ui-content-align-center {
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-align-content: space-around;
       -ms-flex-line-pack: distribute;
           align-content: space-around; }
@@ -1975,8 +1975,8 @@ tfoot {
 
 .ui-drawer {
   z-index: 70;
-  color: #3F4348;
-  background-color: #EFF3F8;
+  color: inherit;
+  background-color: inherit;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -2220,8 +2220,8 @@ tfoot {
   padding: 0;
   border: none;
   position: relative;
-  background-color: #3F4348;
-  color: #DFE3E8; }
+  color: inherit;
+  background-color: inherit; }
   .ui-footer.ui-fixed {
     left: 0;
     bottom: 0;
@@ -2413,7 +2413,9 @@ tfoot {
   margin: 0;
   padding: 0;
   border: none;
-  position: relative; }
+  position: relative;
+  color: inherit;
+  background-color: inherit; }
   .ui-header.ui-fixed {
     left: 0;
     top: 0;
@@ -2777,9 +2779,9 @@ tfoot {
   position: relative;
   overflow: hidden;
   z-index: 70;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-align-content: space-around;
       -ms-flex-line-pack: distribute;
           align-content: space-around; }
