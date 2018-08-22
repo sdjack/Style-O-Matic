@@ -62,7 +62,6 @@
   color: inherit;
   background-color: transparent;
   @include text-horizontal-align-center();
-  @include bar-button-skin();
   & > .fa,
   & > .devicon {
     display: inline-block;
@@ -92,9 +91,6 @@
 
 .ui-toolbar-button {
   padding: $toolbar-button-padding;
-  &:hover {
-    background-color: $color-blue-highlight;
-  }
 }
 
 .ui-toolbar-logo {

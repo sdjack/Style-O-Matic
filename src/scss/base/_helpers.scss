@@ -181,6 +181,13 @@
   }
 }
 
+.ui-grouped-border {
+  @include bar-button-skin();
+  &:hover {
+    background-color: $color-blue-highlight;
+  }
+}
+
 .ui-transparent {
   background-color: $color-invisible !important;
   border-color: $color-invisible !important;

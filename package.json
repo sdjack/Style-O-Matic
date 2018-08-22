@@ -1,6 +1,6 @@
 {
     "name": "style-o-matic",
-    "version": "1.1.26",
+    "version": "1.1.27",
     "description": "Experimental element-based CSS framework with accompanying React.js component library",
     "main": "lib/index.js",
     "module": "es/index.js",

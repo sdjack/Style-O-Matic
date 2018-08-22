@@ -9,8 +9,8 @@
 
 .ui-drawer {
     z-index: 70;
-    color: inherit;
-    background-color: inherit;
+    color: $text-color;
+    background-color: $background-color;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -79,6 +79,7 @@
 
 .ui-drawer-toggle-button {
   width: $outer-frame-size;
+  height: 100%;
   color: $color-darker;
   background-color: transparent;
   padding: 2px;
