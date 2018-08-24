@@ -196,7 +196,7 @@
 
 @include ui-color('grey',$color-grey);
 @include ui-color('black',$color-black);
-@include ui-color('white',$color-white);
+@include ui-color('white',$color-lighter);
 @include ui-color('red',$color-red);
 @include ui-color('orange',$color-orange,true);
 @include ui-color('yellow',$color-yellow,true);

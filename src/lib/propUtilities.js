@@ -98,6 +98,7 @@ const DefaultPropTypes = {
   fixed: PropTypes.bool,
   color: PropTypes.oneOf([
     "transparent",
+    "white",
     "grey",
     "black",
     "red",
@@ -107,6 +108,7 @@ const DefaultPropTypes = {
     "blue",
     "indigo",
     "violet",
+    "!white",
     "!grey",
     "!black",
     "!red",

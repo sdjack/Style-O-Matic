@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.1.28
+ * @version v1.1.3
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Steven Jackson. All rights reserved.
@@ -860,51 +860,51 @@ tfoot {
 
 .ui-white,
 .ui-white-no-hover {
-  background-color: #FFFFFF !important;
-  border-color: #FFFFFF !important;
+  background-color: #DFE3E8 !important;
+  border-color: #DFE3E8 !important;
   color: #3F4348 !important; }
 
 .ui-white:hover, .ui-white:active,
 .ui-white-hover:hover,
 .ui-white-hover:active {
-  background-color: white !important;
-  border-color: white !important;
+  background-color: #fdfdfd !important;
+  border-color: #eef0f3 !important;
   color: #3F4348 !important; }
 
 .ui-white-fill,
 .ui-white-fill-no-hover {
-  background-color: #FFFFFF !important;
-  border: 1px solid #d9d9d9 !important;
+  background-color: #DFE3E8 !important;
+  border: 1px solid #b2bcc8 !important;
   color: #3F4348 !important; }
 
 .ui-white-fill:hover, .ui-white-fill:active,
 .ui-white-fill-hover:hover,
 .ui-white-fill-hover:active {
   background-color: #3F4348 !important;
-  border: 1px solid #FFFFFF !important;
-  color: #FFFFFF !important; }
+  border: 1px solid #DFE3E8 !important;
+  color: #DFE3E8 !important; }
 
 .ui-white-outline,
 .ui-white-outline-no-hover {
   background-color: #3F4348 !important;
-  border: 1px solid #FFFFFF !important;
-  color: #FFFFFF !important; }
+  border: 1px solid #DFE3E8 !important;
+  color: #DFE3E8 !important; }
 
 .ui-white-outline:hover, .ui-white-outline:active,
 .ui-white-outline-hover:hover,
 .ui-white-outline-hover:active {
-  background-color: #FFFFFF !important;
-  border: 1px solid #d9d9d9 !important;
+  background-color: #DFE3E8 !important;
+  border: 1px solid #b2bcc8 !important;
   color: #3F4348 !important; }
 
 .ui-white-text,
 .ui-white-text-no-hover {
-  color: #FFFFFF !important; }
+  color: #DFE3E8 !important; }
 
 .ui-white-text:hover, .ui-white-text:active,
 .ui-white-text-hover:hover,
 .ui-white-text-hover:active {
-  color: white !important; }
+  color: #eef0f3 !important; }
 
 .ui-red,
 .ui-red-no-hover {
