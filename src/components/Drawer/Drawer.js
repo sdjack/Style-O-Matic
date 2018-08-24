@@ -25,25 +25,11 @@ class Drawer extends CoreComponent {
     attach: "left"
   });
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerActive: false
-    };
-  }
-
-  toggle = e => {
-    if (!e.defaultPrevented) {
-      e.preventDefault();
-      const { drawerActive } = this.state;
-      this.setPersistentState({ drawerActive: !drawerActive });
-    }
-  };
-
   render() {
     const {
       renderAs: Component,
       uiclass,
+      active,
       color,
       colorStyle,
       uuid,
@@ -55,7 +41,6 @@ class Drawer extends CoreComponent {
       props
     } = getValidProps(this.props);
 
-    const active = this.state.drawerActive;
     const classes = {
       [`ui-drawer-${attach}`]: attach,
       active,
@@ -74,40 +59,8 @@ class Drawer extends CoreComponent {
       classes[colorClass] = true;
     }
 
-    const toggle = [];
-    if (minimizable) {
-      toggle.push(
-        <div key={`drawer_toggle_${uuid}`} className="ui-drawer-toggle">
-          <button
-            className={`ui-drawer-toggle-button ${icon}`}
-            onClick={this.toggle}
-          />
-        </div>
-      );
-    }
-
-    if (attach === "top" || attach === "right") {
-      return (
-        <Component {...props} className={classNames("ui-drawer", classes)}>
-          <div className="ui-drawer-content">
-            {React.Children.map(children, child => (
-              <div className="ui-drawer-row">
-                {this.renderChild(child, {
-                  disabled,
-                  uiclass,
-                  active
-                })}
-              </div>
-            ))}
-          </div>
-          {toggle}
-        </Component>
-      );
-    }
-
     return (
       <Component {...props} className={classNames("ui-drawer", classes)}>
-        {toggle}
         <div className="ui-drawer-content">
           {React.Children.map(children, child => (
             <div className="ui-drawer-row">

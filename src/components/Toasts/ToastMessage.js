@@ -18,6 +18,7 @@ class ToastMessage extends CoreComponent {
 
     return (
       <Component {...props}>
+        <div className="ui-toasts-toast-icon">&#128365;</div>
         <div className="ui-toasts-toast-msg">{children}</div>
         <div
           className="ui-toasts-toast-close"

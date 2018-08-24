@@ -1,3 +1,5 @@
+import _App from "./components/App/App";
+
 import _Accordion from "./components/Accordion/Accordion";
 
 import _Badge from "./components/Badge/Badge";
@@ -11,6 +13,8 @@ import _Button from "./components/Button/Button";
 import _Card from "./components/Card/Card";
 
 import _DatePicker from "./components/DatePicker/DatePicker";
+
+import _Drawer from "./components/Drawer/Drawer";
 
 import _Dropdown from "./components/Dropdown/Dropdown";
 
@@ -56,6 +60,8 @@ import _ToolTip from "./components/ToolTip/ToolTip";
 
 import _UI from "./UI";
 
+export { _App as App };
+
 export { _Accordion as Accordion };
 
 export { _Badge as Badge };
@@ -69,6 +75,8 @@ export { _ButtonBar as ButtonBar };
 export { _Card as Card };
 
 export { _DatePicker as DatePicker };
+
+export { _Drawer as Drawer };
 
 export { _Dropdown as Dropdown };
 

@@ -14,7 +14,7 @@ class Navigation extends React.Component {
     const { active } = this.props;
 
     return (
-      <Nav active={active}>
+      <Nav active={active} orientation="vertical">
         <Nav.Item to="/" icon="fa fa-home" text="Home">
           <ToolTip>Home</ToolTip>
         </Nav.Item>

@@ -29,6 +29,7 @@ const AUTOPREFIXER_BROWSERS = [
 ];
 
 const componentList = [
+  "App",
   "Accordion",
   "Badge",
   "Breadcrumbs",

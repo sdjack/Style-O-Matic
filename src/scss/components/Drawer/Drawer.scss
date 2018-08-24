@@ -1,31 +1,40 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
+.ui-drawer-layout {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
 .ui-drawer,
 .ui-drawer-flyout {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .ui-drawer {
-    z-index: 70;
-    color: $text-color;
-    background-color: $background-color;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-content: space-around;
-    overflow: hidden;
-    @include no-shadow();
-    @include animate-default(0.2s);
-    transition-property: all;
-    &.active {
-      @include shadow-drawer();
-    }
+  z-index: 99;
+  color: $text-color;
+  background-color: $background-color;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: space-around;
+  overflow: hidden;
+  @include no-shadow();
+  @include animate-default(0.2s);
+  transition-property: all;
+  &.active {
+    @include shadow-drawer();
+  }
 
-    &.minimized {
-      @include shadow-drawer();
-    }
+  &.minimized {
+    @include shadow-drawer();
+  }
 }
 
 .ui-drawer-content {
@@ -88,7 +97,9 @@
   border-radius: 0;
   @include shadow-removed();
   outline: none !important;
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     background-color: transparent;
     border: none;
     outline: none !important;
@@ -97,57 +108,59 @@
 
 .ui-drawer-left,
 .ui-drawer-right {
-    width: 0px;
-    flex-direction: column;
-    max-width: $inner-frame-size;
-    & > .ui-drawer-flyout {
-      height: 100%;
-    }
+  width: 0px;
+  flex-direction: column;
+  max-width: $inner-frame-size;
+  & > .ui-drawer-flyout {
+    height: 100%;
+  }
 
-    & > .ui-drawer-row {
-      height: 100%;
-    }
+  & > .ui-drawer-row {
+    height: 100%;
+  }
 
-    &.active {
-      width: 100% !important;
-      min-width: ($outer-frame-size * 2) !important;
-      max-width: $inner-frame-size !important;
-    }
+  &.active {
+    width: 100% !important;
+    min-width: ($outer-frame-size * 2) !important;
+    max-width: $inner-frame-size !important;
+  }
 
-    &.minimized {
-      width: $outer-frame-size !important;
-      min-width: $outer-frame-size !important;
-      max-width: $outer-frame-size !important;
-    }
+  &.minimized {
+    width: $outer-frame-size !important;
+    min-width: $outer-frame-size !important;
+    max-width: $outer-frame-size !important;
+  }
 
-    &.active,
-    &.minimized {
-      & > .ui-drawer-content {
-        overflow-y: scroll;
-        width: calc(100% + 20px) !important;
+  &.active,
+  &.minimized {
+    & > .ui-drawer-content {
+      overflow-y: scroll;
+      width: calc(100% + 20px) !important;
+      & > .ui-drawer-row {
         padding-bottom: 120px !important;
       }
     }
+  }
 }
 
 .ui-drawer-top,
 .ui-drawer-bottom {
-    height: 0px;
-    flex-direction: row;
-    max-height: $inner-frame-size;
-    & > .ui-drawer-flyout {
-      width: 100%;
-    }
+  height: 0px;
+  flex-direction: row;
+  max-height: $inner-frame-size;
+  & > .ui-drawer-flyout {
+    width: 100%;
+  }
 
-    &.active {
-      height: 100% !important;
-      min-height: ($outer-frame-size * 2) !important;
-      max-height: $inner-frame-size !important;
-    }
+  &.active {
+    height: 100% !important;
+    min-height: ($outer-frame-size * 2) !important;
+    max-height: $inner-frame-size !important;
+  }
 
-    &.minimized {
-      height: $outer-frame-size !important;
-      min-height: $outer-frame-size !important;
-      max-height: $outer-frame-size !important;
-    }
+  &.minimized {
+    height: $outer-frame-size !important;
+    min-height: $outer-frame-size !important;
+    max-height: $outer-frame-size !important;
+  }
 }

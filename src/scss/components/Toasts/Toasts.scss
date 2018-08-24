@@ -14,7 +14,7 @@
   left: 0;
   right: 0;
   @include text-align-center();
-  z-index: 89;
+  z-index: 199;
 }
 
 .ui-toasts-toast {
@@ -27,7 +27,7 @@
   box-sizing: border-box;
   background: #262626;
   border-bottom: none;
-  @include text-align-left();
+  @include text-align-center();
   @include animate-default(0.2s);
   overflow: hidden;
   transition-property: height, padding, line-height;
@@ -49,16 +49,27 @@
           animation: bounceInLeft 0.66s ease-in-out;
 }
 
+.ui-toasts-toast-icon,
 .ui-toasts-toast-close {
   display: inline-block;
   position: absolute;
-  font-size: 1em;
   font-weight: 600;
-  line-height: $toasts-height;
-  right: 12px;
   top: 0;
   color: #ffffff;
-  text-shadow: 0px 0px 0px rgba(0,0,0,0);
+}
+
+.ui-toasts-toast-icon {
+  left: 12px;
+  font-size: 1.4em;
+  line-height: 1.4em;
+  -webkit-animation: bounceInLeft 0.77s ease-in-out;
+          animation: bounceInLeft 0.77s ease-in-out;
+}
+
+.ui-toasts-toast-close {
+  right: 12px;
+  font-size: 1em;
+  line-height: $toasts-height;
   cursor: pointer;
   -webkit-animation: bounceInRight 0.77s ease-in-out;
           animation: bounceInRight 0.77s ease-in-out;

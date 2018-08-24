@@ -1,6 +1,7 @@
 export const ROLE = {
   DEFAULT: "item",
   ACCORDION: "accordion",
+  APP: "app",
   BADGE: "badge",
   BREADCRUMBS: "breadcrumbs",
   BUTTON: "button",
@@ -68,6 +69,7 @@ const NON_INHERITABLE = [
 
 const NON_INHERITING = [
   ROLE.ACCORDION,
+  ROLE.APP,
   ROLE.BREADCRUMBS,
   ROLE.CARD,
   ROLE.DATEPICKER,

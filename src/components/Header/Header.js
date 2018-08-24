@@ -5,26 +5,13 @@ import {
   getCorePropDefaults,
   ROLE
 } from "../../lib";
-import Drawer from "../Drawer/Drawer.js";
-import HeaderContent from "./HeaderContent.js";
 import "./Header.css";
-
-class HeaderDrawer extends Drawer {
-  static defaultProps = {
-    renderAs: "div",
-    uirole: ROLE.DRAWER,
-    attach: "top"
-  };
-}
 
 class Header extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "header",
     uirole: ROLE.HEADER
   });
-
-  static Drawer = HeaderDrawer;
-  static Content = HeaderContent;
 
   renderChild = (child, props) => {
     const role = child.props.uirole;

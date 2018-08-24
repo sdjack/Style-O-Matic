@@ -504,8 +504,12 @@
   box-shadow: 0px -2px 3px 1px rgba(0,0,0,.8),
               0px -2px 2px -1px rgba(0,0,0,.8);
 }
-@mixin shadow-drawer() {
-  box-shadow: -1px 0px 2px 1px rgba(0,0,0,.23),1px 1px 2px 1px rgba(0,0,0,.23);
+@mixin shadow-drawer($horizontal: false) {
+  @if $horizontal {
+    box-shadow: -1px 0px 2px 1px rgba(0,0,0,.23),1px 1px 2px 1px rgba(0,0,0,.23);
+  } @else {
+    box-shadow: -1px 1px 2px -1px rgba(0,0,0,.23),2px 1px 2px -1px rgba(0,0,0,.23);
+  }
 }
 @mixin shadow-inset-nested() {
   box-shadow: inset -1px 2px 2px 0 rgba(0,0,0,.35),

@@ -15,6 +15,7 @@
   overflow: hidden;
   position: relative;
   background-color: $background-color;
+  flex-basis: 100%;
 
   & > .scroll-wrapper {
     display: inline-block;
@@ -41,5 +42,3 @@
   padding: 0px 0px 128px 0px;
   position: relative;
 }
-
-
