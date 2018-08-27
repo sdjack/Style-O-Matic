@@ -66,7 +66,7 @@ class Button extends CoreComponent {
     const ElementType = getElementType(Button, this.props);
     if (to) {
       props.href = props.href || to;
-      props.target = props.target || "_blank";
+      props.target = props.target || "_top";
       props.onClick = null;
     } else {
       props.onClick = this.handleClick;

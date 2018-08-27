@@ -32,6 +32,7 @@ const NATIVE_PROPS = [
   "role",
   "style",
   "href",
+  "target",
   "src",
   "width",
   "height",
