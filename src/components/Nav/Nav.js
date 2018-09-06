@@ -14,7 +14,8 @@ class Nav extends CoreComponent {
   static defaultProps = getCorePropDefaults({
     renderAs: "nav",
     uirole: ROLE.NAV,
-    orientation: "horizontal"
+    orientation: "horizontal",
+    active: true
   });
 
   static Item = NavItem;

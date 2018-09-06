@@ -27,6 +27,7 @@ const NATIVE_PROPS = [
   "type",
   "value",
   "checked",
+  "defaultChecked",
   "required",
   "className",
   "role",
@@ -71,6 +72,7 @@ const DefaultPropTypes = {
   label: PropTypes.string,
   invalid: PropTypes.bool,
   checked: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
   required: PropTypes.bool,
   inset: PropTypes.bool,
   raised: PropTypes.bool,
@@ -143,6 +145,7 @@ const DefaultPropTypes = {
     "bottom",
     "below"
   ]),
+  shadow: PropTypes.string,
   observe: PropTypes.oneOf(OBSERVABLE_EVENTS),
   dispatch: PropTypes.oneOf(OBSERVABLE_EVENTS),
   uidata: PropTypes.object
@@ -159,6 +162,7 @@ const DefaultPropValues = {
   value: null,
   invalid: null,
   checked: null,
+  defaultChecked: null,
   required: null,
   group: null,
   tooltip: null,
@@ -191,10 +195,28 @@ const DefaultPropValues = {
   textAlign: null,
   contentAlign: null,
   position: null,
+  shadow: null,
   observe: null,
   dispatch: null,
   uidata: {}
 };
+
+function stringToPropType(propString) {
+  const required = String(propString).indexOf("!") !== -1;
+  const prop = String(propString).replace("!", "");
+  if (typeof PropTypes[prop] !== "undefined") {
+    return required ? PropTypes[prop].isRequired : PropTypes[prop];
+  }
+  return PropTypes.string;
+}
+
+function assignPropType(propVal) {
+  if (_.isArray(propVal)) {
+    const typeValues = propVal.map(val => stringToPropType(val));
+    return PropTypes.oneOfType(typeValues);
+  }
+  return stringToPropType(propVal);
+}
 
 function setPropTypes(isA11y = false, config, uidataConfig) {
   const obj = _.clone(DefaultPropTypes);
@@ -204,22 +226,14 @@ function setPropTypes(isA11y = false, config, uidataConfig) {
     );
   }
   if (typeof config !== "undefined" && config !== null) {
-    Object.entries(config).forEach(([attr, propString]) => {
-      const required = String(propString).indexOf("!") !== -1;
-      const prop = String(propString).replace("!", "");
-      if (typeof PropTypes[prop] !== "undefined") {
-        obj[attr] = required ? PropTypes[prop].isRequired : PropTypes[prop];
-      }
+    Object.entries(config).forEach(([attr, val]) => {
+      obj[attr] = assignPropType(val);
     });
   }
   if (typeof uidataConfig !== "undefined" && uidataConfig !== null) {
     const uidata = {};
-    Object.entries(uidataConfig).forEach(([attr, propString]) => {
-      const required = String(propString).indexOf("!") !== -1;
-      const prop = String(propString).replace("!", "");
-      if (typeof PropTypes[prop] !== "undefined") {
-        uidata[attr] = required ? PropTypes[prop].isRequired : PropTypes[prop];
-      }
+    Object.entries(uidataConfig).forEach(([attr, val]) => {
+      uidata[attr] = assignPropType(val);
     });
     obj.uidata = PropTypes.shape(uidata);
   }
@@ -295,7 +309,8 @@ export function getUIClassString(props, state) {
     orientation,
     textAlign,
     contentAlign,
-    position
+    position,
+    shadow
   } = props;
 
   const disabled = state && state.disabled ? state.disabled : props.disabled;
@@ -321,6 +336,7 @@ export function getUIClassString(props, state) {
     "ui-well": well,
     "ui-panel": panel,
     "ui-masked": masked,
+    "ui-shadow": shadow,
     disabled,
     active,
     open,

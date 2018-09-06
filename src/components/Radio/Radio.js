@@ -31,7 +31,20 @@ class Radio extends CoreComponent {
     options: []
   });
 
-  getValue = () => {
+  constructor(props) {
+    super(props);
+    this.value = props.value;
+    if (!this.value) {
+      this.value = props.options[0] ? props.options[0].value : "";
+    }
+    this.fields = [];
+    this.valid = true;
+    this.renderKey = `radio_${props.uuid}`;
+  }
+
+  getValue = () => this.value;
+
+  getCheckedValue = () => {
     let value = null;
     this.fields.map(field => {
       if (field.checked) {
@@ -42,19 +55,22 @@ class Radio extends CoreComponent {
     return value;
   };
 
+  handleOnChange = e => {
+    this.value = e.target.value;
+    if (this.props.onChange) {
+      this.props.onChange(e);
+    }
+  };
+
   handleOnRef = e => {
     this.fields.push(e);
   };
 
-  fields = [];
-  valid = true;
-  renderKey = `radio_${this.props.uuid}`;
-
-  renderLabel = (id, label, required) => {
+  renderLabel = (fieldId, label, required) => {
     if (label !== null) {
       const validationClass = required ? "label required-label" : "label";
       return (
-        <span key={`label_${this.state.renderKey}`} className={validationClass}>
+        <span key={`label_${fieldId}`} className={validationClass}>
           {label}
         </span>
       );
@@ -62,21 +78,22 @@ class Radio extends CoreComponent {
     return <span />;
   };
 
-  renderRadioOptions = (parentKey, options) => {
+  renderRadioOptions = (fieldId, options) => {
     const output = [];
     for (let i = 0; i < options.length; i += 1) {
       const optionData = options[i];
-      const optionId = `${parentKey}_${i}`;
+      const optionId = `${fieldId}_${i}`;
       output.push(
         <label key={optionId} htmlFor={optionId}>
           <input
             type="radio"
             id={optionId}
-            name={parentKey}
-            value={optionData.Value}
+            name={fieldId}
+            onChange={this.handleOnChange}
+            value={optionData.value}
             ref={this.handleOnRef}
           />
-          {optionData.Label}
+          {optionData.label}
         </label>
       );
     }

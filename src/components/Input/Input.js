@@ -36,13 +36,16 @@ class Input extends CoreComponent {
   constructor(props) {
     super(props);
     let defaultValue = props.value;
-    const renderKey = `input_${props.uuid}`;
+    this.renderKey = `input_${props.uuid}`;
     if (!defaultValue) {
       switch (props.type) {
         case "select":
           defaultValue = props.selectOptions[0]
             ? props.selectOptions[0].Value
             : "";
+          break;
+        case "checkbox":
+          defaultValue = props.defaultChecked ? props.value : "";
           break;
         case "number":
           defaultValue = 0;
@@ -56,7 +59,6 @@ class Input extends CoreComponent {
       }
     }
     this.state = {
-      renderKey,
       value: defaultValue,
       valid: true
     };
@@ -65,8 +67,8 @@ class Input extends CoreComponent {
   getValue = () => this.state.value;
 
   handleOnChecked = e => {
-    e.preventDefault();
-    this.setState({ value: e.target.value });
+    const value = e.target.checked ? e.target.value : "";
+    this.setState({ value });
     if (this.props.onChange) {
       this.props.onChange(e);
     }
@@ -126,7 +128,7 @@ class Input extends CoreComponent {
     if (label !== null) {
       const validationClass = required ? "label required-label" : "label";
       return (
-        <span key={`label_${this.state.renderKey}`} className={validationClass}>
+        <span key={`label_${this.renderKey}`} className={validationClass}>
           {label}
         </span>
       );
@@ -140,7 +142,7 @@ class Input extends CoreComponent {
       const optionData = selectOptions[i];
       output.push(
         <option
-          key={`option_${i}_${this.state.renderKey}`}
+          key={`option_${i}_${this.renderKey}`}
           id={`option_${i}`}
           name={`option_${i}`}
           value={optionData.Value}
@@ -158,6 +160,7 @@ class Input extends CoreComponent {
       className,
       coreClassName,
       styleClassName,
+      defaultChecked,
       type,
       id,
       name,
@@ -170,8 +173,8 @@ class Input extends CoreComponent {
       props
     } = getValidProps(this.props);
 
-    const fieldName = name || id || this.state.renderKey;
-    const fieldId = id || this.state.renderKey;
+    const fieldName = name || id || this.renderKey;
+    const fieldId = id || this.renderKey;
     delete props.name;
     delete props.id;
 
@@ -190,11 +193,11 @@ class Input extends CoreComponent {
       return (
         <div className={coreClassName}>
           <div
-            key={`wrapper_${this.state.renderKey}`}
+            key={`wrapper_${this.renderKey}`}
             className={classNames(preParsedClass, wrapperClasses)}
           >
             <Component
-              key={this.state.renderKey}
+              key={this.renderKey}
               {...props}
               className={styleClassName}
               id={fieldId}
@@ -211,11 +214,11 @@ class Input extends CoreComponent {
         <div className={className}>
           {this.renderLabel(fieldId, label, required)}
           <div
-            key={`wrapper_${this.state.renderKey}`}
+            key={`wrapper_${this.renderKey}`}
             className={classNames(preParsedClass, wrapperClasses)}
           >
             <Component
-              key={this.state.renderKey}
+              key={this.renderKey}
               {...props}
               id={fieldId}
               name={fieldName}
@@ -235,22 +238,22 @@ class Input extends CoreComponent {
         <div className={className}>
           {this.renderLabel(fieldId, label, required)}
           <div
-            key={`wrapper_${this.state.renderKey}`}
+            key={`wrapper_${this.renderKey}`}
             className={classNames(preParsedClass, wrapperClasses)}
           >
             <label
-              key={`label_${this.state.renderKey}`}
+              key={`label_${this.renderKey}`}
               htmlFor={fieldId}
               className={validationClass}
             >
               <Component
-                key={this.state.renderKey}
+                key={this.renderKey}
                 {...props}
                 id={fieldId}
                 name={fieldName}
                 type={type}
-                defaultChecked={value === this.state.value}
-                onClick={this.handleOnChange}
+                onClick={this.handleOnChecked}
+                defaultChecked
               />
               {value}
             </label>
@@ -262,11 +265,11 @@ class Input extends CoreComponent {
         <div className={className}>
           {this.renderLabel(fieldId, label, required)}
           <div
-            key={`wrapper_${this.state.renderKey}`}
+            key={`wrapper_${this.renderKey}`}
             className={classNames(preParsedClass, wrapperClasses)}
           >
             <Component
-              key={this.state.renderKey}
+              key={this.renderKey}
               {...props}
               id={fieldId}
               name={fieldName}
@@ -276,14 +279,14 @@ class Input extends CoreComponent {
             />
             {children}
             <button
-              key={`number-button_${this.state.renderKey}_up`}
+              key={`number-button_${this.renderKey}_up`}
               className="ui-input-number-up"
               onClick={this.handleOnNumUp}
             >
               +
             </button>
             <button
-              key={`number-button_${this.state.renderKey}_down`}
+              key={`number-button_${this.renderKey}_down`}
               className="ui-input-number-down"
               onClick={this.handleOnNumDown}
             >
@@ -295,7 +298,7 @@ class Input extends CoreComponent {
     } else if (type === "hidden") {
       return (
         <Component
-          key={this.state.renderKey}
+          key={this.renderKey}
           {...props}
           id={fieldId}
           name={fieldName}
@@ -309,11 +312,11 @@ class Input extends CoreComponent {
       <div className={className}>
         {this.renderLabel(fieldId, label, required)}
         <div
-          key={`wrapper_${this.state.renderKey}`}
+          key={`wrapper_${this.renderKey}`}
           className={classNames(preParsedClass, wrapperClasses)}
         >
           <Component
-            key={this.state.renderKey}
+            key={this.renderKey}
             {...props}
             id={fieldId}
             name={fieldName}

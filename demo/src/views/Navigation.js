@@ -11,10 +11,10 @@ import { Nav, ToolTip } from "../../../src/index";
 
 class Navigation extends React.Component {
   render() {
-    const { active } = this.props;
+    const { active, orientation } = this.props;
 
     return (
-      <Nav active={active} orientation="vertical">
+      <Nav active={active} orientation={orientation}>
         <Nav.Item to="/" icon="fa fa-home" text="Home">
           <ToolTip>Home</ToolTip>
         </Nav.Item>

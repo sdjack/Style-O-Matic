@@ -25,8 +25,7 @@ class NavFolder extends CoreComponent {
     this.useParentNode = true;
     this.state = {
       expanded: "",
-      bottomOffset: 0,
-      leftOffset: 0
+      offset: {}
     };
   }
 
@@ -34,16 +33,22 @@ class NavFolder extends CoreComponent {
     if (this.node) {
       const {
         bottom: screenBottom,
-        height: screenHeight
+        height: screenHeight,
+        width: screenWidth
       } = UIGlobals.getScreenDimensions();
-      const { y, height, bottom } = this.node.getBoundingClientRect();
-      let bottomOffset = y;
+      const { x, y, height, bottom } = this.node.getBoundingClientRect();
+      const offset = {};
       if (y > screenHeight / 2) {
+        let bottomOffset = 0;
         bottomOffset = height / 2;
         bottomOffset += screenHeight;
         bottomOffset -= bottom;
+        offset.bottom = `${bottomOffset}px`;
       }
-      this.setState({ bottomOffset });
+      if (x > screenWidth / 2) {
+        offset.right = "0px";
+      }
+      this.setState({ offset });
     }
   };
 
@@ -85,16 +90,12 @@ class NavFolder extends CoreComponent {
       inherited
     } = getValidProps(this.props);
 
-    const { expanded } = this.state;
+    const { offset, expanded } = this.state;
 
     const classes = {
       expanded,
       minimized,
       active: to && path.indexOf(to) !== -1
-    };
-
-    const offsetStyle = {
-      bottom: `${this.state.bottomOffset}px`
     };
 
     const caretClass =
@@ -119,7 +120,7 @@ class NavFolder extends CoreComponent {
         <Component
           {...props}
           className={classNames(className, classes)}
-          style={offsetStyle}
+          style={offset}
         >
           <div className="ui-nav-folder-title">{text}</div>
           {React.Children.map(children, child => {

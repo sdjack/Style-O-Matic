@@ -83,6 +83,10 @@
   border-radius: 50px;
 }
 
+.ui-shadow {
+  @include shadow-basic();
+}
+
 .ui-raised {
   border-radius: 4px;
   @include shadow-raised();
@@ -142,6 +146,7 @@
   &>.ui-reveal-hover {
     display: block;
     text-align: center;
+    transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -ms-transition: all .2s ease-in-out;
@@ -167,6 +172,7 @@
       transform: scale(0.1);
       opacity: 0;
       height: 0;
+      transition: all 0s;
       -webkit-transition: all 0s;
       -moz-transition: all 0s;
       -ms-transition: all 0s;

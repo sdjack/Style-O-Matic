@@ -6,6 +6,7 @@ import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps,
+  UIGlobals,
   ROLE
 } from "../../lib";
 import "./Drawer.css";
@@ -25,6 +26,45 @@ class Drawer extends CoreComponent {
     attach: "left"
   });
 
+  constructor(props) {
+    super(props);
+    this.useParentNode = true;
+    this.state = {
+      attachment: props.attach
+    };
+  }
+
+  componentDidMount() {
+    this.ensureAttachment();
+  }
+
+  ensureAttachment = () => {
+    if (this.node) {
+      const { attachment } = this.state;
+      const {
+        width,
+        height,
+        top,
+        left,
+        bottom,
+        right
+      } = this.node.getBoundingClientRect();
+      const {
+        height: screenHeight,
+        width: screenWidth
+      } = UIGlobals.getScreenDimensions();
+      let newAttach = attachment;
+      if (height > screenHeight / 2) {
+        newAttach = left > screenWidth / 2 ? "right" : "left";
+      } else {
+        newAttach = top > screenHeight / 2 ? "bottom" : "top";
+      }
+      if (newAttach !== attachment) {
+        this.setState({ attachment: newAttach });
+      }
+    }
+  };
+
   render() {
     const {
       renderAs: Component,
@@ -40,9 +80,11 @@ class Drawer extends CoreComponent {
       children,
       props
     } = getValidProps(this.props);
+    this.ensureAttachment();
+    const { attachment } = this.state;
 
     const classes = {
-      [`ui-drawer-${attach}`]: attach,
+      [`ui-drawer-${attachment}`]: attachment,
       active,
       minimized: !active && minimizable
     };
@@ -60,7 +102,11 @@ class Drawer extends CoreComponent {
     }
 
     return (
-      <Component {...props} className={classNames("ui-drawer", classes)}>
+      <Component
+        {...props}
+        className={classNames("ui-drawer", classes)}
+        ref={this.onSetRef}
+      >
         <div className="ui-drawer-content">
           {React.Children.map(children, child => (
             <div className="ui-drawer-row">

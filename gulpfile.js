@@ -29,7 +29,6 @@ const AUTOPREFIXER_BROWSERS = [
 ];
 
 const componentList = [
-  "App",
   "Accordion",
   "Badge",
   "Breadcrumbs",
@@ -109,6 +108,10 @@ gulp.task("styles", () =>
     .pipe($.header(banner, { pkg }))
     .pipe(gulp.dest("css"))
     .pipe($.if("*.css", $.csso()))
+    .pipe($.concat("App.css"))
+    .pipe(gulp.dest(`src/components/App`))
+    .pipe(gulp.dest(`es/components/App`))
+    .pipe(gulp.dest(`lib/components/App`))
     .pipe($.concat("style-o-matic.min.css"))
     .pipe($.header(banner, { pkg }))
     .pipe(gulp.dest("css"))

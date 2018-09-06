@@ -3,14 +3,14 @@ import ColumnModel from "./ColumnModel.js";
 /* eslint-disable */
 
 export default class TableDataModel {
-  constructor(node) {
+  constructor() {
     this.columns = {};
     this.registry = {};
     this.pageNum = 1;
     this.pageTotal = 1;
     this.rowTotal = 0;
     this.columnTotal = 0;
-    this.perPage = node.props.pagination || 0;
+    this.perPage = 0;
   }
 
   setPagination = (page, showing) => {
@@ -37,11 +37,12 @@ export default class TableDataModel {
     return this.columns[columnTag];
   };
 
-  getPagination = () => {
+  getPagination = node => {
+    this.perPage = node.props.pagination || 0;
     const rowCount = this.rowTotal;
     const colCount = this.columnTotal;
     const perPage = this.perPage > 0 ? this.perPage : rowCount;
-    const pageCount = Math.floor(rowCount / perPage);
+    const pageCount = Math.round(rowCount / perPage);
     const showPager = rowCount > perPage;
     return {
       totalRows: rowCount,

@@ -63,7 +63,7 @@ class Form extends CoreComponent {
   };
 
   rows = [];
-  fields = {};
+  fields = [];
 
   handleForcedUpdate = () => {
     if (this.node) {
@@ -85,7 +85,9 @@ class Form extends CoreComponent {
   renderRow = (child, props) => {
     const role = child.props.uirole || ROLE.ROW;
     let ref = c => {
-      this.rows.push(c);
+      if (c) {
+        this.rows.push(c);
+      }
     };
     if (typeof child.ref !== "string") {
       ref = this.chainFunction(child.ref, ref);
@@ -101,7 +103,9 @@ class Form extends CoreComponent {
     const role = child.props.uirole || ROLE.INPUT;
     const key = child.props.name || child.props.id;
     let ref = c => {
-      this.fields.push({ key, value: c });
+      if (c) {
+        this.fields.push({ key, element: c });
+      }
     };
     if (typeof child.ref !== "string") {
       ref = this.chainFunction(child.ref, ref);
@@ -134,6 +138,8 @@ class Form extends CoreComponent {
               case ROLE.ROW:
                 return this.renderRow(child, inherited);
               case ROLE.INPUT:
+                return this.renderInput(child, inherited);
+              case ROLE.DATEPICKER:
                 return this.renderInput(child, inherited);
               default:
                 return child;

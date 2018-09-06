@@ -35,7 +35,7 @@ class TableData {
   init = node => {
     const tag = node.props.uuid;
     if (!this.instances[tag]) {
-      this.instances[tag] = new TableDataModel(node);
+      this.instances[tag] = new TableDataModel();
     }
     return this.instances[tag];
   };

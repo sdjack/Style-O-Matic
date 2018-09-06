@@ -103,7 +103,7 @@ html {
 
 body {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
   color: #3F4348;
   background-color: #EFF3F8; }
@@ -404,6 +404,22 @@ tfoot {
   padding: 0 !important;
   box-sizing: border-box; }
 
+.ui-app-container {
+  height: 100%;
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-align-content: space-around;
+      -ms-flex-line-pack: distribute;
+          align-content: space-around; }
+
 .ui-page {
   display: block;
   overflow: hidden;
@@ -618,14 +634,26 @@ tfoot {
 .ui-icon-up:before {
   content: "\25BC"; }
 
+.ui-icon-up-open:before {
+  content: "\25B3"; }
+
 .ui-icon-down:before {
-  content: "\25B2"; }
+  content: "\25BC"; }
+
+.ui-icon-down-open:before {
+  content: "\25BD"; }
 
 .ui-icon-right:before {
   content: "\25B6"; }
 
+.ui-icon-right-open:before {
+  content: "\25B7"; }
+
 .ui-icon-left:before {
   content: "\25C0"; }
+
+.ui-icon-left-open:before {
+  content: "\25C1"; }
 
 .ui-icon-user:before {
   content: "\1F464"; }
@@ -635,6 +663,12 @@ tfoot {
 
 .ui-icon-star:before {
   content: "\2605"; }
+
+.ui-icon-folder:before {
+  content: "\1F5C0"; }
+
+.ui-icon-folder-open:before {
+  content: "\1F5C1"; }
 
 .window {
   background-color: #EFF3F8;
@@ -726,6 +760,9 @@ tfoot {
 .ui-circular {
   border-radius: 50px; }
 
+.ui-shadow {
+  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.07), 1px 2px 8px -3px rgba(0, 0, 0, 0.3); }
+
 .ui-raised {
   border-radius: 4px;
   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.04), 1px 2px 6px -2px rgba(0, 0, 0, 0.14); }
@@ -777,6 +814,7 @@ tfoot {
 .ui-reveal > .ui-reveal-hover {
   display: block;
   text-align: center;
+  transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -ms-transition: all .2s ease-in-out;
@@ -799,6 +837,7 @@ tfoot {
           transform: scale(0.1);
   opacity: 0;
   height: 0;
+  transition: all 0s;
   -webkit-transition: all 0s;
   -moz-transition: all 0s;
   -ms-transition: all 0s;

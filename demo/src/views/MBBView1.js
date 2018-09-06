@@ -4,38 +4,16 @@
  * @author: Steven Jackson
  * ======================================================================== */
 import React from "react";
-import {
-  Form,
-  DatePicker,
-  Input,
-  Radio,
-  Select,
-  Textarea,
-  Grid,
-  Title,
-  Toasts
-} from "../../../src/index";
+import { Form, DatePicker, Grid, Title, UI } from "../../../src/index";
 
-class FormsView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      msgs: []
-    };
-  }
-
+class MBBView1 extends React.Component {
   handleOnSubmit = e => {
     e.preventDefault();
-    this.setState({
-      msgs: ["Submitted Successfully!|green"]
-    });
+    UI.setTheme("foo");
   };
 
   render() {
     return [
-      <Toasts key="view-toasts" messages={this.state.msgs} timeout={4000}>
-        Component
-      </Toasts>,
       <Title renderAs="h1" textAlign="center" key="view-title" sticky>
         <Title.Content>Forms</Title.Content>
       </Title>,
@@ -50,34 +28,34 @@ class FormsView extends React.Component {
             <br />
             <Form onSubmit={this.handleOnSubmit}>
               <Form.Row>
-                <Input id="demo-input1" label="Text" />
-                <Input id="demo-input2" label="Password" type="password" />
-                <Input id="demo-input3" label="Color" type="color" />
+                <Form.Input id="demo-input1" label="Text" />
+                <Form.Input id="demo-input2" label="Password" type="password" />
+                <Form.Input id="demo-input3" label="Color" type="color" />
               </Form.Row>
               <Form.Row>
-                <Select
+                <Form.Select
                   id="demo-input4"
                   label="Select"
                   options={[
-                    { value: "Option1", label: "Select Option 1" },
-                    { value: "Option2", label: "Select Option 2" },
-                    { value: "Option3", label: "Select Option 3" },
-                    { value: "Option4", label: "Select Option 4" },
-                    { value: "Option5", label: "Select Option 5" },
-                    { value: "Option6", label: "Select Option 6" },
-                    { value: "Option7", label: "Select Option 7" }
+                    { Value: "Option1", Label: "Select Option 1" },
+                    { Value: "Option2", Label: "Select Option 2" },
+                    { Value: "Option3", Label: "Select Option 3" },
+                    { Value: "Option4", Label: "Select Option 4" },
+                    { Value: "Option5", Label: "Select Option 5" },
+                    { Value: "Option6", Label: "Select Option 6" },
+                    { Value: "Option7", Label: "Select Option 7" }
                   ]}
                 />
-                <Input id="demo-input6" label="Time" type="time" />
-                <Input id="demo-input7" label="Number" type="number" />
+                <Form.Input id="demo-input6" label="Time" type="time" />
+                <Form.Input id="demo-input7" label="Number" type="number" />
               </Form.Row>
               <Form.Row>
-                <Input id="demo-input8" label="Email" type="email" />
-                <Input id="demo-input9" label="Telephone" type="tel" />
-                <Input id="demo-input10" label="URL" type="url" />
+                <Form.Input id="demo-input8" label="Email" type="email" />
+                <Form.Input id="demo-input9" label="Telephone" type="tel" />
+                <Form.Input id="demo-input10" label="URL" type="url" />
               </Form.Row>
               <Form.Row>
-                <Input
+                <Form.Input
                   id="demo-input5a"
                   label="Date (Browser Native)"
                   type="date"
@@ -90,59 +68,59 @@ class FormsView extends React.Component {
                 />
               </Form.Row>
               <Form.Row>
-                <Radio
+                <Form.Radio
                   id="demo-input11"
                   label="Radio"
                   options={[
-                    { value: "Radio1", label: "Radio 1" },
-                    { value: "Radio2", label: "Radio 2" },
-                    { value: "Radio3", label: "Radio 3" },
-                    { value: "Radio4", label: "Radio 4" },
-                    { value: "Radio5", label: "Radio 5" },
-                    { value: "Radio6", label: "Radio 6" },
-                    { value: "Radio7", label: "Radio 7" }
+                    { Value: "Radio1", Label: "Radio 1" },
+                    { Value: "Radio2", Label: "Radio 2" },
+                    { Value: "Radio3", Label: "Radio 3" },
+                    { Value: "Radio4", Label: "Radio 4" },
+                    { Value: "Radio5", Label: "Radio 5" },
+                    { Value: "Radio6", Label: "Radio 6" },
+                    { Value: "Radio7", Label: "Radio 7" }
                   ]}
                 />
               </Form.Row>
               <Form.Row>
-                <Input
+                <Form.Input
                   id="demo-input12"
                   label="Checkbox 1"
                   type="checkbox"
                   value="Check"
                   required
                 />
-                <Input
+                <Form.Input
                   id="demo-input13"
                   label="Checkbox 2"
                   type="checkbox"
                   value="Check"
                 />
-                <Input
+                <Form.Input
                   id="demo-input14"
                   label="Checkbox 3"
                   type="checkbox"
                   value="Check"
                 />
-                <Input
+                <Form.Input
                   id="demo-input15"
                   label="Checkbox 4"
                   type="checkbox"
                   value="Check"
                 />
-                <Input
+                <Form.Input
                   id="demo-input16"
                   label="Checkbox 5"
                   type="checkbox"
                   value="Check"
                 />
-                <Input
+                <Form.Input
                   id="demo-input17"
                   label="Checkbox 6"
                   type="checkbox"
                   value="Check"
                 />
-                <Input
+                <Form.Input
                   id="demo-input18"
                   label="Checkbox 7"
                   type="checkbox"
@@ -150,10 +128,10 @@ class FormsView extends React.Component {
                 />
               </Form.Row>
               <Form.Row>
-                <Textarea id="demo-input19" label="Text Area" />
+                <Form.Textarea id="demo-input99" label="Text Area" />
               </Form.Row>
               <Form.Row>
-                <Input
+                <Form.Input
                   id="demo-input99"
                   label="SUBMIT"
                   type="submit"
@@ -168,4 +146,4 @@ class FormsView extends React.Component {
   }
 }
 
-export default FormsView;
+export default MBBView1;

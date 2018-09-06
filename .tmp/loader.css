@@ -28,145 +28,108 @@
 /**
 *  MISC
 */
-.ui-toasts {
-  border: none;
-  display: block;
-  padding: 0;
-  margin: 0;
-  position: fixed;
+.ui-tooltip {
+  position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  text-align: -webkit-center;
-  text-align: center;
-  vertical-align: -webkit-baseline-middle;
-  vertical-align: middle;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center;
-  z-index: 199; }
-
-.ui-toasts-toast {
   width: 100%;
-  height: 0px;
-  line-height: 0px;
-  padding: 0px;
-  display: block;
+  height: 100%; }
+  .ui-tooltip:hover > .ui-tooltip-wrapper > .ui-tooltip-widget, .ui-tooltip.active > .ui-tooltip-wrapper > .ui-tooltip-widget {
+    display: block; }
+
+.ui-tooltip-wrapper {
   position: relative;
-  box-sizing: border-box;
+  width: 100%;
+  height: 100%; }
+
+.ui-tooltip-widget {
+  display: none;
+  position: fixed;
+  z-index: 999; }
+  .ui-tooltip-widget.ui-tooltip-left {
+    top: 50%;
+    right: 100%;
+    margin-right: 10px;
+    margin-top: -18px; }
+    .ui-tooltip-widget.ui-tooltip-left > .ui-tooltip-content:before {
+      border-left-color: #1f1f1f;
+      left: 100%;
+      top: 48px;
+      margin-top: -42px; }
+    .ui-tooltip-widget.ui-tooltip-left > .ui-tooltip-content:after {
+      border-left-color: #262626;
+      left: 100%;
+      top: 50px;
+      margin-top: -40px; }
+  .ui-tooltip-widget.ui-tooltip-right {
+    top: 50%;
+    left: 100%;
+    margin-left: 10px;
+    margin-top: -18px; }
+    .ui-tooltip-widget.ui-tooltip-right > .ui-tooltip-content:before {
+      border-right-color: #1f1f1f;
+      right: 100%;
+      top: 48px;
+      margin-top: -42px; }
+    .ui-tooltip-widget.ui-tooltip-right > .ui-tooltip-content:after {
+      border-right-color: #262626;
+      right: 100%;
+      top: 50px;
+      margin-top: -40px; }
+  .ui-tooltip-widget.ui-tooltip-top {
+    left: 50%;
+    bottom: 100%;
+    margin-bottom: 10px;
+    margin-left: -18px; }
+    .ui-tooltip-widget.ui-tooltip-top > .ui-tooltip-content:before {
+      border-top-color: #1f1f1f;
+      top: 100%;
+      left: 48px;
+      margin-left: -42px; }
+    .ui-tooltip-widget.ui-tooltip-top > .ui-tooltip-content:after {
+      border-top-color: #262626;
+      top: 100%;
+      left: 50px;
+      margin-left: -40px; }
+  .ui-tooltip-widget.ui-tooltip-bottom {
+    left: 50%;
+    top: 100%;
+    margin-top: 10px;
+    margin-left: -18px; }
+    .ui-tooltip-widget.ui-tooltip-bottom > .ui-tooltip-content:before {
+      border-bottom-color: #1f1f1f;
+      bottom: 100%;
+      left: 48px;
+      margin-left: -42px; }
+    .ui-tooltip-widget.ui-tooltip-bottom > .ui-tooltip-content:after {
+      border-bottom-color: #262626;
+      bottom: 100%;
+      left: 50px;
+      margin-left: -40px; }
+
+.ui-tooltip-content {
+  min-height: 20px;
+  min-width: 120px;
+  position: relative;
   background: #262626;
-  border-bottom: none;
-  text-align: -webkit-center;
-  text-align: center;
-  vertical-align: -webkit-baseline-middle;
-  vertical-align: middle;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center;
-  transition-duration: 0.2s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  transition-property: height, padding, line-height; }
-  .ui-toasts-toast.active {
-    height: 36px;
-    line-height: 36px;
-    padding: 0 24px;
-    border-bottom: 1px solid #1f1f1f; }
-
-.ui-toasts-toast-msg {
-  display: inline-block;
-  font-size: 1em;
-  font-weight: 600;
-  line-height: 36px;
-  color: #ffffff;
-  -webkit-animation: bounceInLeft 0.66s ease-in-out;
-  animation: bounceInLeft 0.66s ease-in-out; }
-
-.ui-toasts-toast-icon,
-.ui-toasts-toast-close {
-  display: inline-block;
-  position: absolute;
-  font-weight: 600;
-  top: 0;
-  color: #ffffff; }
-
-.ui-toasts-toast-icon {
-  left: 12px;
-  font-size: 1.4em;
-  line-height: 1.4em;
-  -webkit-animation: bounceInLeft 0.77s ease-in-out;
-  animation: bounceInLeft 0.77s ease-in-out; }
-
-.ui-toasts-toast-close {
-  right: 12px;
-  font-size: 1em;
-  line-height: 36px;
-  cursor: pointer;
-  -webkit-animation: bounceInRight 0.77s ease-in-out;
-  animation: bounceInRight 0.77s ease-in-out; }
-  .ui-toasts-toast-close:hover {
-    color: rgba(0, 0, 0, 0.33); }
-
-@-webkit-keyframes bounceInLeft {
-  0% {
-    opacity: 0.2;
-    -webkit-transform: translateX(100px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0); } }
-
-@keyframes bounceInLeft {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(100px);
-            transform: translateX(100px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-            transform: translateX(0); } }
-
-@-webkit-keyframes bounceInRight {
-  0% {
-    opacity: 0.2;
-    -webkit-transform: translateX(-100px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0); } }
-
-@keyframes bounceInRight {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-100px);
-            transform: translateX(-100px); }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-            transform: translateX(0); } }
-ointer;
-  border: none; }
-  .ui-toolbar-logo > img {
-    padding: 0;
-    height: 100%; }
-
-.ui-toolbar-list {
-  display: inline-block;
-  padding: 0px 12px;
-  margin: 0;
-  letter-spacing: 1px;
-  font-size: 15px;
-  line-height: 1;
-  list-style-type: none;
-  text-align: -webkit-end;
-  text-align: end;
-  -webkit-align-items: end;
-      -ms-flex-align: end;
-          align-items: end;
-  -webkit-align-content: end;
-      -ms-flex-line-pack: end;
-          align-content: end; }
+  border: 1px solid #1f1f1f;
+  color: #efefef;
+  font-weight: 300;
+  text-align: left;
+  border-radius: 0;
+  padding: 8px;
+  line-height: 16px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.07), 0px 3px 8px -3px rgba(0, 0, 0, 0.3); }
+  .ui-tooltip-content:before, .ui-tooltip-content:after {
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none; }
+  .ui-tooltip-content:before {
+    border-color: rgba(240, 240, 240, 0);
+    border-width: 10px; }
+  .ui-tooltip-content:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-width: 8px; }

@@ -64,17 +64,17 @@ class DatePicker extends CoreComponent {
       renderKey,
       open: false,
       loadedDate: date,
-      loadedValue: dateLocale,
+      value: dateLocale,
       viewYear: date.getFullYear(),
       viewType: "days",
       selectedDate: selected
     };
   }
 
-  componentWillReceiveProps = nextProps => {
-    const { value } = nextProps;
-    this.reset(value);
-  };
+  // componentWillReceiveProps = nextProps => {
+  //   const { value } = nextProps;
+  //   this.reset(value);
+  // };
 
   WillMount() {
     document.addEventListener("mousedown", this.handleOnToggle, false);
@@ -110,33 +110,30 @@ class DatePicker extends CoreComponent {
     }
     this.setState({
       loadedDate: date,
-      loadedValue: dateLocale,
+      value: dateLocale,
       viewType: "days",
       selectedDate: selected
     });
   };
+
+  getValue = () => this.state.value;
 
   updateDateValues = (date, viewType, keepOpen) => {
     const { name, onSelect } = this.props;
     const value = date.toLocaleDateString({ timeZone: tz });
     const newData = this.state;
     newData.loadedDate = date;
-    if (!keepOpen) {
-      newData.loadedValue = value;
-    }
+    newData.value = value;
     newData.viewType = viewType;
-    // console.log((!keepOpen && onSelect));
-    if (!keepOpen && onSelect) {
-      newData.selectedDate = {
-        day: date.getDate(),
-        month: date.getMonth(),
-        year: date.getFullYear()
-      };
-      newData.open = false;
-      this.setState(newData);
+    newData.selectedDate = {
+      day: date.getDate(),
+      month: date.getMonth(),
+      year: date.getFullYear()
+    };
+    newData.open = keepOpen;
+    this.setState(newData);
+    if (onSelect) {
       onSelect(date.toISOString(), name);
-    } else {
-      this.setState(newData);
     }
   };
 
@@ -154,13 +151,6 @@ class DatePicker extends CoreComponent {
       return;
     }
     this.handleOnClick(event);
-  };
-
-  handleOnClosed = () => {
-    const { value } = this.props;
-    if (value) {
-      this.reset(value);
-    }
   };
 
   handleOnClear = () => {
@@ -469,7 +459,9 @@ class DatePicker extends CoreComponent {
       : Calendar.today;
     const viewMonth = activeDate.getMonth();
     let viewYear = activeDate.getFullYear();
-    const windowClass = this.state.open ? "ui-datepicker-window open" : "ui-datepicker-window";
+    const windowClass = this.state.open
+      ? "ui-datepicker-window open"
+      : "ui-datepicker-window";
     const footer = [];
     if (this.state.viewType === "years") {
       viewYear = this.state.viewYear;
@@ -480,7 +472,7 @@ class DatePicker extends CoreComponent {
       years.push(this.renderYearRow(viewYear + 12));
       years.push(this.renderYearRow(viewYear + 16));
       years.push(this.renderYearRow(viewYear + 20));
-      if (!_.isNil(this.state.loadedValue)) {
+      if (!_.isNil(this.state.value)) {
         footer.push(
           <tfoot key={uID()}>
             <tr>
@@ -539,7 +531,7 @@ class DatePicker extends CoreComponent {
       months.push(this.renderMonthRow(3));
       months.push(this.renderMonthRow(6));
       months.push(this.renderMonthRow(9));
-      if (!_.isNil(this.state.loadedValue)) {
+      if (!_.isNil(this.state.value)) {
         footer.push(
           <tfoot key={uID()}>
             <tr>
@@ -602,7 +594,7 @@ class DatePicker extends CoreComponent {
       );
     }
     const headerText = `${Calendar.monthName[viewMonth]} ${viewYear}`;
-    if (!_.isNil(this.state.loadedValue)) {
+    if (!_.isNil(this.state.value)) {
       footer.push(
         <tfoot key={uID()}>
           <tr>
@@ -712,8 +704,8 @@ class DatePicker extends CoreComponent {
       expiredClass = " ui-datepicker-expired";
     }
     if (disabled) {
-      const label = !_.isNil(this.state.loadedValue)
-        ? this.state.loadedValue
+      const label = !_.isNil(this.state.value)
+        ? this.state.value
         : "MM/DD/YYYY";
       return (
         <span className="ui-datepicker-toggle ui-datepicker-disabled">
@@ -750,7 +742,7 @@ class DatePicker extends CoreComponent {
             type="text"
             className={`ui-datepicker-text ui-form-input ${invalidClass}`}
             onChange={this.handleOnChange}
-            value={this.state.loadedValue}
+            value={this.state.value}
             placeholder="MM/DD/YYYY"
           />
         </div>
@@ -766,9 +758,7 @@ class DatePicker extends CoreComponent {
         />
       );
     }
-    const label = !_.isNil(this.state.loadedValue)
-      ? this.state.loadedValue
-      : "MM/DD/YYYY";
+    const label = !_.isNil(this.state.value) ? this.state.value : "MM/DD/YYYY";
     return (
       <div
         key={`ui-datepicker-toggle_${id}`}
@@ -814,7 +804,7 @@ class DatePicker extends CoreComponent {
     const fieldId = id || this.state.renderKey;
 
     return (
-      <Component {...props} onClose={this.handleOnClosed} ref={this.onSetRef}>
+      <Component {...props} ref={this.onSetRef}>
         {this.renderLabel(fieldId, label, required)}
         {this.renderToggle(id, iconenabled, inputenabled, disabled, invalid)}
         {this.renderWindow(disabled)}

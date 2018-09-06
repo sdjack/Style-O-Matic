@@ -1,13 +1,16 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
+
+  @import "config";
+
 .ui-drawer-layout {
   height: 100%;
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-around;
-  align-content: space-around;
+  justify-content: space-between;
+  align-content: space-between;
 }
 
 .ui-drawer,
@@ -22,25 +25,23 @@
   background-color: $background-color;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-around;
-  align-content: space-around;
+  justify-content: space-between;
+  align-content: space-between;
   overflow: hidden;
   @include no-shadow();
   @include animate-default(0.2s);
   transition-property: all;
-  &.active {
+  &.active.ui-shadow {
     @include shadow-drawer();
   }
 
-  &.minimized {
+  &.minimized.ui-shadow {
     @include shadow-drawer();
   }
 }
 
 .ui-drawer-content {
   display: block;
-  height: 100%;
-  width: 100%;
   color: inherit;
   background-color: inherit;
   @include animate-default(0.2s);
@@ -49,7 +50,6 @@
 
 .ui-drawer-row {
   display: block;
-  width: 100%;
 }
 
 .ui-drawer-flyout {
@@ -109,13 +109,17 @@
 .ui-drawer-left,
 .ui-drawer-right {
   width: 0px;
+  min-height: 100%;
+  max-height: 100%;
   flex-direction: column;
   max-width: $inner-frame-size;
-  & > .ui-drawer-flyout {
-    height: 100%;
+  & > .ui-drawer-content {
+    & > .ui-drawer-row {
+      width: 100%;
+    }
   }
 
-  & > .ui-drawer-row {
+  & > .ui-drawer-flyout {
     height: 100%;
   }
 
@@ -126,16 +130,21 @@
   }
 
   &.minimized {
-    width: $outer-frame-size !important;
-    min-width: $outer-frame-size !important;
-    max-width: $outer-frame-size !important;
+    width: $outer-frame-size;
+    min-width: $outer-frame-size;
+    max-width: $outer-frame-size;
+    @media screen and (max-width: $drawer-size-threshold) {
+      width: 0px;
+      min-width: 0px;
+      max-width: 0px;
+    }
   }
 
   &.active,
   &.minimized {
     & > .ui-drawer-content {
       overflow-y: scroll;
-      width: calc(100% + 20px) !important;
+      width: calc(100% + 20px);
       & > .ui-drawer-row {
         padding-bottom: 120px !important;
       }
@@ -145,9 +154,16 @@
 
 .ui-drawer-top,
 .ui-drawer-bottom {
+  min-width: 100%;
+  max-width: 100%;
   height: 0px;
   flex-direction: row;
   max-height: $inner-frame-size;
+  & > .ui-drawer-content {
+    & > .ui-drawer-row {
+      height: 100%;
+    }
+  }
   & > .ui-drawer-flyout {
     width: 100%;
   }
@@ -159,8 +175,13 @@
   }
 
   &.minimized {
-    height: $outer-frame-size !important;
-    min-height: $outer-frame-size !important;
-    max-height: $outer-frame-size !important;
+    height: $outer-frame-size;
+    min-height: $outer-frame-size;
+    max-height: $outer-frame-size;
+    @media screen and (max-width: $drawer-size-threshold) {
+      height: 0px;
+      min-height: 0px;
+      max-height: 0px;
+    }
   }
 }

@@ -17,14 +17,13 @@ import TableData from "./models/TableData.js";
 import Pagination from "../Pagination/Pagination.js";
 import "./Table.css";
 
-function ParseSectionData(data, UUID) {
+function ParseSectionData(data, UUID, colSpan) {
   const output = [];
   const rowCount = data.length;
-  const colCount = data[0].length;
   for (let i = 0; i < rowCount; i += 1) {
     const readRow = data[i];
     const dataRow = [];
-    for (let x = 0; x < colCount; x += 1) {
+    for (let x = 0; x < colSpan; x += 1) {
       const column = readRow[x];
       if (column instanceof Object) {
         const { content, ...props } = column;
@@ -50,7 +49,8 @@ class Table extends CoreComponent {
     padded: "bool",
     hover: "bool",
     spaced: "bool",
-    striped: "bool"
+    striped: "bool",
+    pagination: "number"
   });
 
   static defaultProps = getCorePropDefaults({
@@ -60,7 +60,8 @@ class Table extends CoreComponent {
     padded: false,
     hover: false,
     spaced: false,
-    striped: false
+    striped: false,
+    pagination: null
   });
 
   static Head = TableHead;
@@ -72,16 +73,20 @@ class Table extends CoreComponent {
   static FactoryData = data => {
     const output = [];
     const UUID = uID();
-    if (data.head) {
-      const compiled = ParseSectionData(data.head, UUID);
+    let colSpan = 0;
+    if (data.head && data.head[0]) {
+      colSpan = data.head[0].length;
+      const compiled = ParseSectionData(data.head, UUID, colSpan);
       output.push(<TableHead key={`thead_${UUID}`}>{compiled}</TableHead>);
     }
-    if (data.body) {
-      const compiled = ParseSectionData(data.body, UUID);
+    if (data.body && data.body[0]) {
+      colSpan = colSpan === 0 ? data.body[0].length : colSpan;
+      const compiled = ParseSectionData(data.body, UUID, colSpan);
       output.push(<TableBody key={`tbody_${UUID}`}>{compiled}</TableBody>);
     }
-    if (data.foot) {
-      const compiled = ParseSectionData(data.foot, UUID);
+    if (data.foot && data.foot[0]) {
+      colSpan = colSpan === 0 ? data.foot[0].length : colSpan;
+      const compiled = ParseSectionData(data.foot, UUID, colSpan);
       output.push(<TableFoot key={`tfoot_${UUID}`}>{compiled}</TableFoot>);
     }
     return output;
@@ -169,7 +174,7 @@ class Table extends CoreComponent {
   renderPagination = () => {
     const output = [];
     if (this.props.pagination) {
-      const pageConfig = this.data.getPagination();
+      const pageConfig = this.data.getPagination(this);
       const { uuid } = this.props;
       output.push(
         <TableFoot key={`tfoot_pagination_${uuid}`} data={this.data}>

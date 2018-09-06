@@ -22,14 +22,11 @@ class FormRow extends CoreComponent {
     return value;
   };
 
-  getAllFieldValues = () => {
-    const output = [];
-    this.fields.map(field => {
-      output.push({ key: field.key, value: field.element.getValue() });
-      return null;
-    });
-    return output;
-  };
+  getAllFieldValues = () =>
+    this.fields.map(field => ({
+      key: field.key,
+      value: field.element.getValue()
+    }));
 
   fields = [];
 
@@ -48,7 +45,9 @@ class FormRow extends CoreComponent {
     const role = child.props.uirole || ROLE.INPUT;
     const key = child.props.name || child.props.id;
     let ref = c => {
-      this.fields.push({ key, element: c });
+      if (c) {
+        this.fields.push({ key, element: c });
+      }
     };
     if (typeof child.ref !== "string") {
       ref = this.chainFunction(child.ref, ref);
@@ -76,6 +75,8 @@ class FormRow extends CoreComponent {
           ) {
             switch (child.props.uirole) {
               case ROLE.INPUT:
+                return this.renderChild(child, inherited);
+              case ROLE.DATEPICKER:
                 return this.renderChild(child, inherited);
               default:
                 return child;

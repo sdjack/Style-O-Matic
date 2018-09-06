@@ -11,7 +11,7 @@ import {
 
 class GridColumn extends CoreComponent {
   static propTypes = getCorePropTypes({
-    cols: "number"
+    cols: ["string", "number"]
   });
 
   static defaultProps = getCorePropDefaults({

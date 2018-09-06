@@ -10,6 +10,15 @@
   box-sizing: border-box;
 }
 
+.ui-app-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
 .ui-page {
 	display: block;
 	overflow: hidden;

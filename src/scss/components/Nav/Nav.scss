@@ -9,6 +9,8 @@
   width: 100%;
   color: inherit;
   overflow: hidden;
+  justify-content: space-evenly;
+  display: flex;
 
   &.minimized {
     & > .ui-nav-item {
@@ -70,8 +72,15 @@
   }
 
   &.ui-orientation-vertical {
+    flex-direction: column;
+    & > .ui-nav-flyout-wrapper {
+      display: block;
+    }
     &.minimized {
       width: $nav-icon-size;
+      @media screen and (max-width: $nav-size-threshold) {
+        width: 0px;
+      }
       & > .ui-nav-flyout-wrapper {
         & > .ui-nav-folder {
           left: $outer-frame-size;
@@ -95,11 +104,21 @@
   }
 
   &.ui-orientation-horizontal {
+    flex-direction: row;
     & > .ui-nav-item {
       display: inline-block;
+      width: 100%;
+    }
+    & > .ui-nav-flyout-wrapper {
+      display: inline-block;
+      height: 100%;
+      width: 100%;
     }
     &.minimized {
       height: $nav-icon-size;
+      @media screen and (max-width: $nav-size-threshold) {
+        height: 0px;
+      }
       & > .ui-nav-flyout-wrapper {
         & > .ui-nav-folder {
           top: $outer-frame-size;
@@ -175,9 +194,9 @@
   font-size: $nav-caret-fontsize !important;
   font-style: normal;
   position: absolute;
-  top: 6px;
+  top: 0;
   right: 0;
-  padding: 12px 10px;
+  padding: $nav-caret-padding;
 }
 
 .ui-nav-folder {
@@ -282,9 +301,4 @@
   position: absolute;
   left: ($outer-frame-size - 1);
   top: 0;
-}
-
-.ui-nav-flyout-wrapper {
-  display: block;
-  width: 100%;
 }

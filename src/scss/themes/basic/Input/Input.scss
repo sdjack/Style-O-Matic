@@ -1,0 +1,65 @@
+/***
+ *    ██╗███╗___██╗██████╗_██╗___██╗████████╗
+ *    ██║████╗__██║██╔══██╗██║___██║╚══██╔══╝
+ *    ██║██╔██╗_██║██████╔╝██║___██║___██║___
+ *    ██║██║╚██╗██║██╔═══╝_██║___██║___██║___
+ *    ██║██║_╚████║██║_____╚██████╔╝___██║___
+ *    ╚═╝╚═╝__╚═══╝╚═╝______╚═════╝____╚═╝___
+ *    _______________________________________
+ */
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+
+.ui-theme-basic.ui-input-text,
+.ui-theme-basic.ui-input-textarea,
+.ui-theme-basic.ui-input-select,
+.ui-theme-basic.ui-input-password,
+.ui-theme-basic.ui-input-tel,
+.ui-theme-basic.ui-input-number,
+.ui-theme-basic.ui-input-date,
+.ui-theme-basic.ui-input-time,
+.ui-theme-basic.ui-input-file,
+.ui-theme-basic.ui-input-url,
+.ui-theme-basic.ui-input-email,
+.ui-theme-basic.ui-input-color,
+.ui-theme-basic.ui-input-checkbox,
+.ui-theme-basic.ui-input-radio {
+	& > input,
+	& > select,
+	& > textarea {
+		border-radius: $border-radius;
+	}
+}
+
+.ui-theme-basic.ui-input-text,
+.ui-theme-basic.ui-input-select,
+.ui-theme-basic.ui-input-password,
+.ui-theme-basic.ui-input-tel,
+.ui-theme-basic.ui-input-number,
+.ui-theme-basic.ui-input-date,
+.ui-theme-basic.ui-input-time,
+.ui-theme-basic.ui-input-file,
+.ui-theme-basic.ui-input-url,
+.ui-theme-basic.ui-input-email,
+.ui-theme-basic.ui-input-color {
+	background-color: white;
+	border-radius: $border-radius;
+	border: $common-border;
+}
+
+/* INPUT TYPE: TEXTAREA */
+
+.ui-theme-basic.ui-input-textarea {
+	background-color: white;
+	border-radius: $border-radius;
+	border: $common-border;
+}
+
+/* INPUT TYPE: NUMBER */
+
+.ui-theme-basic.ui-input-number {
+	background-color: white;
+	border-radius: $border-radius;
+	border: $common-border;
+}

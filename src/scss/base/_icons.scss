@@ -26,9 +26,19 @@
         content: "\25BC";
     }
 }
+.ui-icon-up-open {
+    &:before {
+        content: "\25B3";
+    }
+}
 .ui-icon-down {
     &:before {
-        content: "\25B2";
+        content: "\25BC";
+    }
+}
+.ui-icon-down-open {
+    &:before {
+        content: "\25BD";
     }
 }
 .ui-icon-right {
@@ -36,9 +46,19 @@
         content: "\25B6";
     }
 }
+.ui-icon-right-open {
+    &:before {
+        content: "\25B7";
+    }
+}
 .ui-icon-left {
     &:before {
         content: "\25C0";
+    }
+}
+.ui-icon-left-open {
+    &:before {
+        content: "\25C1";
     }
 }
 .ui-icon-user {
@@ -54,5 +74,15 @@
 .ui-icon-star {
     &:before {
         content: "\2605";
+    }
+}
+.ui-icon-folder {
+    &:before {
+        content: "\1F5C0";
+    }
+}
+.ui-icon-folder-open {
+    &:before {
+        content: "\1F5C1";
     }
 }

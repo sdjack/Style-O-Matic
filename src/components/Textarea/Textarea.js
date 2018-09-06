@@ -27,20 +27,16 @@ class Textarea extends CoreComponent {
 
   constructor(props) {
     super(props);
-    const defaultValue = props.value || "";
-    const renderKey = `textarea_${props.uuid}`;
-    this.state = {
-      renderKey,
-      value: defaultValue,
-      valid: true
-    };
+    this.value = props.value || "";
+    this.valid = true;
+    this.renderKey = `textarea_${props.uuid}`;
   }
 
-  getValue = () => this.state.value;
+  getValue = () => this.value;
 
   handleOnChange = e => {
     e.preventDefault();
-    this.setState({ value: e.target.value });
+    this.value = e.target.value;
     if (this.props.onChange) {
       this.props.onChange(e);
     }
@@ -52,7 +48,7 @@ class Textarea extends CoreComponent {
       return (
         <label
           htmlFor={id}
-          key={`label_${this.state.renderKey}`}
+          key={`label_${this.renderKey}`}
           className={validationClass}
         >
           {label}
@@ -79,28 +75,28 @@ class Textarea extends CoreComponent {
     delete props.id;
     delete props.className;
 
-    const fieldName = name || id || this.state.renderKey;
-    const fieldId = id || this.state.renderKey;
+    const fieldName = name || id || this.renderKey;
+    const fieldId = id || this.renderKey;
     const preParsedClass = "ui-textarea";
     const wrapperClasses = {
       disabled,
-      invalid: !this.state.valid
+      invalid: !this.valid
     };
 
     return (
       <div className={className}>
         {this.renderLabel(fieldId, label, required)}
         <div
-          key={`wrapper_${this.state.renderKey}`}
+          key={`wrapper_${this.renderKey}`}
           className={classNames(preParsedClass, wrapperClasses)}
         >
           <Component
-            key={this.state.renderKey}
+            key={this.renderKey}
             {...props}
             id={fieldId}
             name={fieldName}
             onChange={this.handleOnChange}
-            value={this.state.value}
+            defaultValue={this.value}
           />
           {children}
         </div>

@@ -30,12 +30,11 @@ class Select extends CoreComponent {
   constructor(props) {
     super(props);
     let defaultValue = props.value;
-    const renderKey = `select_${props.uuid}`;
+    this.renderKey = `select_${props.uuid}`;
     if (!defaultValue) {
-      defaultValue = props.options[0] ? props.options[0].Value : "";
+      defaultValue = props.options[0] ? props.options[0].value : "";
     }
     this.state = {
-      renderKey,
       value: defaultValue,
       valid: true
     };
@@ -56,7 +55,7 @@ class Select extends CoreComponent {
       const validationClass = required ? " required" : "";
       return (
         <label
-          key={`label_${this.state.renderKey}`}
+          key={`label_${this.renderKey}`}
           htmlFor={id}
           className={validationClass}
         >
@@ -69,16 +68,16 @@ class Select extends CoreComponent {
 
   renderSelectOptions = options => {
     const output = [];
-    for (let i = 0; i < options.length; i++) {
+    for (let i = 0; i < options.length; i += 1) {
       const optionData = options[i];
       output.push(
         <option
-          key={`option_${i}_${this.state.renderKey}`}
+          key={`option_${i}_${this.renderKey}`}
           id={`option_${i}`}
           name={`option_${i}`}
-          value={optionData.Value}
+          value={optionData.value}
         >
-          {optionData.Label}
+          {optionData.label}
         </option>
       );
     }
@@ -102,8 +101,8 @@ class Select extends CoreComponent {
     delete props.name;
     delete props.id;
 
-    const fieldName = name || id || this.state.renderKey;
-    const fieldId = id || this.state.renderKey;
+    const fieldName = name || id || this.renderKey;
+    const fieldId = id || name || this.renderKey;
     const preParsedClass = "ui-select";
     const wrapperClasses = {
       disabled,
@@ -114,11 +113,11 @@ class Select extends CoreComponent {
       <div className={className}>
         {this.renderLabel(fieldId, label, required)}
         <div
-          key={`wrapper_${this.state.renderKey}`}
+          key={`wrapper_${this.renderKey}`}
           className={classNames(preParsedClass, wrapperClasses)}
         >
           <Component
-            key={this.state.renderKey}
+            key={this.renderKey}
             {...props}
             id={fieldId}
             name={fieldName}

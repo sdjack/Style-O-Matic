@@ -24,12 +24,12 @@ class AccordionTitle extends CoreComponent {
       props
     } = getValidProps(this.props);
 
-    const caretClass = active ? "fa-caret-down" : "fa-caret-right";
+    const caretClass = active ? "ui-icon-folder-open" : "ui-icon-folder";
 
     return (
       <Component {...props} accordionindex={accordionindex}>
         <span
-          className={`ui-accordion-caret fa ${caretClass}`}
+          className={`ui-accordion-caret ${caretClass}`}
           aria-hidden="true"
         />
         {children}

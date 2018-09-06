@@ -1,6 +1,8 @@
 import React, { cloneElement } from "react";
+import cx from "classnames";
 import {
   CoreComponent,
+  getCorePropTypes,
   getCorePropDefaults,
   getValidProps,
   ROLE
@@ -9,14 +11,29 @@ import Drawer from "../Drawer/Drawer.js";
 import MainContent from "./MainContent.js";
 import "./Main.css";
 
+class MainDrawer extends Drawer {
+  static defaultProps = {
+    renderAs: "div",
+    uirole: ROLE.DRAWER,
+    attach: "left"
+  };
+}
+
 class Main extends CoreComponent {
+  static propTypes = getCorePropTypes({
+    header: "bool",
+    footer: "bool"
+  });
+
   static defaultProps = getCorePropDefaults({
     renderAs: "main",
     uirole: ROLE.MAIN,
-    fixed: false
+    fixed: false,
+    header: false,
+    footer: false
   });
 
-  static Drawer = Drawer;
+  static Drawer = MainDrawer;
   static Content = MainContent;
 
   renderChild = (child, props) => {
@@ -35,12 +52,27 @@ class Main extends CoreComponent {
   };
 
   render() {
-    const { renderAs: Component, uiclass, children, props } = getValidProps(
-      this.props
-    );
+    const {
+      renderAs: Component,
+      className,
+      header,
+      footer,
+      uiclass,
+      children,
+      props
+    } = getValidProps(this.props);
+
+    const classes = {
+      "with-header": header && !footer,
+      "with-footer": !header && footer,
+      "with-header-and-footer": header && footer
+    };
+
+    const uiClassCore = cx(className, classes);
+    delete props.className;
 
     return (
-      <Component {...props}>
+      <Component className={uiClassCore} {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
