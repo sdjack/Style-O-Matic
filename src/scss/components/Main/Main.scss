@@ -11,7 +11,7 @@
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-content: flex-start;
-  margin: $outer-frame-size 0;
+  margin: 0;
   overflow: hidden;
   position: relative;
   background-color: $background-color;
@@ -60,6 +60,6 @@
   // flex-grow: 1;
   // flex-shrink: 1;
   margin: 0px;
-  padding: 0px 0px 128px 0px;
+  padding: 0px;
   position: relative;
 }

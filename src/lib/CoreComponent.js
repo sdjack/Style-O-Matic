@@ -84,12 +84,11 @@ export default class CoreComponent extends Component {
     }
   };
 
-  /* eslint-disable */
-  onEventDispatch = (eventName, eventData, eventSenders) => {
-    // console.log(`${eventName} - ${eventData}`);
-    // console.log(eventSenders);
+  onEventDispatch = (...args) => {
+    if (this.props.onDispatch) {
+      this.props.onDispatch(...args);
+    }
   };
-  /* eslint-enable */
 
   setPersistentState = newState => {
     if (this.props.persistentId) {

@@ -12,7 +12,7 @@
   justify-content: space-evenly;
   display: flex;
 
-  &.minimized {
+  &:not(.active) {
     & > .ui-nav-item {
       & > .ui-nav-item-info {
         display: none;
@@ -75,8 +75,16 @@
     flex-direction: column;
     & > .ui-nav-flyout-wrapper {
       display: block;
+      & > .ui-nav-folder {
+        &.expanded {
+          height: auto;
+          & > .ui-nav-folder-item {
+            height: $nav-folder-item-height;
+          }
+        }
+      }
     }
-    &.minimized {
+    &:not(.active) {
       width: $nav-icon-size;
       @media screen and (max-width: $nav-size-threshold) {
         width: 0px;
@@ -85,19 +93,6 @@
         & > .ui-nav-folder {
           left: $outer-frame-size;
           margin-top: ($nav-item-height * -1);
-        }
-      }
-    }
-
-    &:not(.minimized) {
-      & > .ui-nav-flyout-wrapper {
-        & > .ui-nav-folder {
-          &.expanded {
-            height: auto;
-            & > .ui-nav-folder-item {
-              height: $nav-folder-item-height;
-            }
-          }
         }
       }
     }
@@ -114,7 +109,7 @@
       height: 100%;
       width: 100%;
     }
-    &.minimized {
+    &:not(.active) {
       height: $nav-icon-size;
       @media screen and (max-width: $nav-size-threshold) {
         height: 0px;

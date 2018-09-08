@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.1.35
+ * @version v1.1.37
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Steven Jackson. All rights reserved.
@@ -3009,7 +3009,7 @@ tfoot {
   -webkit-align-content: flex-start;
       -ms-flex-line-pack: start;
           align-content: flex-start;
-  margin: 40px 0;
+  margin: 0;
   overflow: hidden;
   position: relative;
   background-color: #EFF3F8;
@@ -3050,7 +3050,7 @@ tfoot {
   display: block;
   width: 100%;
   margin: 0px;
-  padding: 0px 0px 128px 0px;
+  padding: 0px;
   position: relative; }
 
 .ui-modal {
@@ -3203,38 +3203,38 @@ tfoot {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
-  .ui-nav.minimized > .ui-nav-item > .ui-nav-item-info {
+  .ui-nav:not(.active) > .ui-nav-item > .ui-nav-item-info {
     display: none; }
-  .ui-nav.minimized > .ui-nav-flyout-wrapper > .ui-nav-item > .ui-nav-item-info {
+  .ui-nav:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-item > .ui-nav-item-info {
     display: none; }
-  .ui-nav.minimized > .ui-nav-flyout-wrapper > .ui-nav-folder {
+  .ui-nav:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder {
     background-color: #EFF3F8;
     position: absolute !important; }
-    .ui-nav.minimized > .ui-nav-flyout-wrapper > .ui-nav-folder:hover, .ui-nav.minimized > .ui-nav-flyout-wrapper > .ui-nav-folder:focus {
+    .ui-nav:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder:hover, .ui-nav:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder:focus {
       width: auto;
       max-width: 300px;
       border: 1px solid rgba(0, 0, 0, 0.333);
       box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3), 2px 2px 2px 0px rgba(0, 0, 0, 0.2); }
-    .ui-nav.minimized > .ui-nav-flyout-wrapper > .ui-nav-folder > .ui-nav-folder-item {
+    .ui-nav:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder > .ui-nav-folder-item {
       padding: 0 60px 0 0; }
-      .ui-nav.minimized > .ui-nav-flyout-wrapper > .ui-nav-folder > .ui-nav-folder-item > .ui-nav-folder-item-icon {
+      .ui-nav:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder > .ui-nav-folder-item > .ui-nav-folder-item-icon {
         margin: 8px 0;
         float: right; }
-      .ui-nav.minimized > .ui-nav-flyout-wrapper > .ui-nav-folder > .ui-nav-folder-item > .ui-nav-folder-item-info {
+      .ui-nav:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder > .ui-nav-folder-item > .ui-nav-folder-item-info {
         width: 175px;
         margin: 8px 0; }
-  .ui-nav.minimized > .ui-nav-flyout-wrapper:hover > .ui-nav-item {
+  .ui-nav:not(.active) > .ui-nav-flyout-wrapper:hover > .ui-nav-item {
     font-weight: 600; }
-  .ui-nav.minimized > .ui-nav-flyout-wrapper:hover > .ui-nav-folder {
+  .ui-nav:not(.active) > .ui-nav-flyout-wrapper:hover > .ui-nav-folder {
     width: auto;
     height: auto;
     max-width: 300px;
     border: 1px solid rgba(0, 0, 0, 0.333);
     box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3), 2px 2px 2px 0px rgba(0, 0, 0, 0.2); }
-    .ui-nav.minimized > .ui-nav-flyout-wrapper:hover > .ui-nav-folder > .ui-nav-folder-item {
+    .ui-nav:not(.active) > .ui-nav-flyout-wrapper:hover > .ui-nav-folder > .ui-nav-folder-item {
       padding: 0 12px 0 40px;
       height: 36px; }
-    .ui-nav.minimized > .ui-nav-flyout-wrapper:hover > .ui-nav-folder > .ui-nav-folder-title {
+    .ui-nav:not(.active) > .ui-nav-flyout-wrapper:hover > .ui-nav-folder > .ui-nav-folder-title {
       padding: 20px 0 0 40px;
       height: 40px; }
   .ui-nav.ui-orientation-vertical {
@@ -3243,18 +3243,18 @@ tfoot {
             flex-direction: column; }
     .ui-nav.ui-orientation-vertical > .ui-nav-flyout-wrapper {
       display: block; }
-    .ui-nav.ui-orientation-vertical.minimized {
+      .ui-nav.ui-orientation-vertical > .ui-nav-flyout-wrapper > .ui-nav-folder.expanded {
+        height: auto; }
+        .ui-nav.ui-orientation-vertical > .ui-nav-flyout-wrapper > .ui-nav-folder.expanded > .ui-nav-folder-item {
+          height: 36px; }
+    .ui-nav.ui-orientation-vertical:not(.active) {
       width: 40px; }
       @media screen and (max-width: 1000px) {
-        .ui-nav.ui-orientation-vertical.minimized {
+        .ui-nav.ui-orientation-vertical:not(.active) {
           width: 0px; } }
-      .ui-nav.ui-orientation-vertical.minimized > .ui-nav-flyout-wrapper > .ui-nav-folder {
+      .ui-nav.ui-orientation-vertical:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder {
         left: 40px;
         margin-top: -40px; }
-    .ui-nav.ui-orientation-vertical:not(.minimized) > .ui-nav-flyout-wrapper > .ui-nav-folder.expanded {
-      height: auto; }
-      .ui-nav.ui-orientation-vertical:not(.minimized) > .ui-nav-flyout-wrapper > .ui-nav-folder.expanded > .ui-nav-folder-item {
-        height: 36px; }
   .ui-nav.ui-orientation-horizontal {
     -webkit-flex-direction: row;
         -ms-flex-direction: row;
@@ -3266,12 +3266,12 @@ tfoot {
       display: inline-block;
       height: 100%;
       width: 100%; }
-    .ui-nav.ui-orientation-horizontal.minimized {
+    .ui-nav.ui-orientation-horizontal:not(.active) {
       height: 40px; }
       @media screen and (max-width: 1000px) {
-        .ui-nav.ui-orientation-horizontal.minimized {
+        .ui-nav.ui-orientation-horizontal:not(.active) {
           height: 0px; } }
-      .ui-nav.ui-orientation-horizontal.minimized > .ui-nav-flyout-wrapper > .ui-nav-folder {
+      .ui-nav.ui-orientation-horizontal:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder {
         top: 40px;
         margin-left: -40px; }
 

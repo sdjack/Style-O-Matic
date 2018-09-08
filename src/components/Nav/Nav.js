@@ -40,7 +40,6 @@ class Nav extends CoreComponent {
   render() {
     const {
       renderAs: Component,
-      className,
       active,
       children,
       props,
@@ -54,7 +53,7 @@ class Nav extends CoreComponent {
     };
 
     return (
-      <Component {...props} className={classNames(className, classes)}>
+      <Component {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
