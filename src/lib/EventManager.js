@@ -8,26 +8,28 @@ class ManagedEvent {
     this.observerRegistry = [];
     this.dispatchers = [];
     this.dispatcherRegistry = [];
+    this.data = {};
     this.ready = true;
     this.timer = null;
   }
 
   onEvent = eventData => {
     const self = this;
+    self.data = eventData;
     if (self.ready) {
       self.ready = false;
-      if (self.observers.length > 0) {
-        for (let i = 0; i < self.observers.length; i += 1) {
-          const observer = self.observers[i];
-          observer.onEventDispatch(self.name, eventData, self.dispatchers);
-        }
-      }
       if (self.timer) {
         clearTimeout(self.timer);
       }
-      self.timer = setInterval(() => {
+      self.timer = setTimeout(function () {
         self.ready = true;
-      }, 100);
+        if (self.observers.length > 0) {
+          for (var i = 0; i < self.observers.length; i += 1) {
+            var observer = self.observers[i];
+            observer.onEventDispatch(self.name, self.data, self.dispatchers);
+          }
+        }
+      }, 250);
     }
   };
 }
