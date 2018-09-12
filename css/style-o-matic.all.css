@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.1.38
+ * @version v1.1.4
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Steven Jackson. All rights reserved.
@@ -3043,8 +3043,12 @@ tfoot {
   .ui-main.with-header-and-footer > .scroll-wrapper {
     height: 91%; }
   .ui-main.with-header-and-footer > .ui-drawer {
-    min-height: 91%;
-    max-height: 91%; }
+    min-height: 92%;
+    max-height: 92%; }
+  .ui-main.with-header > .scroll-wrapper, .ui-main.with-header-and-footer > .scroll-wrapper {
+    margin-top: 40px; }
+  .ui-main.with-header > .ui-drawer, .ui-main.with-header-and-footer > .ui-drawer {
+    margin-top: 40px; }
 
 .ui-main-content {
   display: block;
@@ -3203,10 +3207,6 @@ tfoot {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
-  .ui-nav:not(.active) > .ui-nav-item > .ui-nav-item-info {
-    display: none; }
-  .ui-nav:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-item > .ui-nav-item-info {
-    display: none; }
   .ui-nav:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder {
     background-color: #EFF3F8;
     position: absolute !important; }
@@ -3251,7 +3251,13 @@ tfoot {
       width: 40px; }
       @media screen and (max-width: 1000px) {
         .ui-nav.ui-orientation-vertical:not(.active) {
-          width: 0px; } }
+          width: 0px; }
+          .ui-nav.ui-orientation-vertical:not(.active) > .ui-nav-item > .ui-tooltip {
+            display: none; } }
+      .ui-nav.ui-orientation-vertical:not(.active) > .ui-nav-item > .ui-nav-item-info {
+        display: none; }
+      .ui-nav.ui-orientation-vertical:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-item > .ui-nav-item-info {
+        display: none; }
       .ui-nav.ui-orientation-vertical:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder {
         left: 40px;
         margin-top: -40px; }
@@ -3260,27 +3266,31 @@ tfoot {
         -ms-flex-direction: row;
             flex-direction: row; }
     .ui-nav.ui-orientation-horizontal > .ui-nav-item {
-      display: inline-block;
-      width: 100%; }
+      display: contents;
+      width: 100%;
+      text-align: center !important; }
     .ui-nav.ui-orientation-horizontal > .ui-nav-flyout-wrapper {
-      display: inline-block;
+      display: contents;
       height: 100%;
       width: 100%; }
     .ui-nav.ui-orientation-horizontal:not(.active) {
       height: 40px; }
       @media screen and (max-width: 1000px) {
         .ui-nav.ui-orientation-horizontal:not(.active) {
-          height: 0px; } }
+          height: 0px; }
+          .ui-nav.ui-orientation-horizontal:not(.active) > .ui-nav-item > .ui-tooltip {
+            display: none; } }
       .ui-nav.ui-orientation-horizontal:not(.active) > .ui-nav-flyout-wrapper > .ui-nav-folder {
         top: 40px;
         margin-left: -40px; }
 
 .ui-nav-item {
-  display: block;
+  display: contents;
   position: relative;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  text-align: left;
   height: 40px;
   margin: 0;
   padding: 0;
@@ -3312,30 +3322,29 @@ tfoot {
   vertical-align: middle; }
 
 .ui-nav-item-icon {
-  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
   text-align: center;
   font-size: 18px !important;
-  line-height: 40px !important;
-  position: absolute; }
+  line-height: 40px !important; }
 
 .ui-nav-item-info {
-  width: 100%;
+  max-width: calc(100% - 40px);
   height: 100%;
   text-align: start;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 16px !important;
-  line-height: 40px !important;
-  text-indent: 40px; }
+  line-height: 40px !important; }
 
 .ui-nav-item-caret {
   font-size: 18px !important;
   font-style: normal;
-  position: absolute;
   top: 0;
   right: 0;
-  padding: 11px 10px; }
+  padding: 11px 10px;
+  position: absolute; }
 
 .ui-nav-folder {
   display: block;

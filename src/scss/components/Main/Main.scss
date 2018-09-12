@@ -47,8 +47,18 @@
       height: 91%;
     }
     & > .ui-drawer {
-      min-height: 91%;
-      max-height: 91%;
+      min-height: 92%;
+      max-height: 92%;
+    }
+  }
+
+  &.with-header,
+  &.with-header-and-footer {
+    & > .scroll-wrapper {
+      margin-top: 40px;
+    }
+    & > .ui-drawer {
+      margin-top: 40px;
     }
   }
 }
