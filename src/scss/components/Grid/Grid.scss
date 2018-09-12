@@ -91,7 +91,7 @@
     flex-basis: 99.5%;
   }
 
-  @media screen and (max-width: $grid-screen-threshold) {
+  @media screen and (max-width: $mobile-screen-threshold) {
     flex-basis: auto;
   }
 }
@@ -102,7 +102,7 @@
   border-right: 1px solid rgba(0,0,0,0.2);
   border-bottom: 0px solid rgba(0,0,0,0);
 
-  @media screen and (max-width: $grid-screen-threshold) {
+  @media screen and (max-width: $mobile-screen-threshold) {
     padding: 2px 2px 14px 2px;
     border-right: 0px solid rgba(0,0,0,0);
     border-bottom: 1px solid rgba(0,0,0,0.2);
@@ -112,7 +112,7 @@
 .ui-grid-post-divider {
   padding: 2px 2px 2px 14px;
 
-  @media screen and (max-width: $grid-screen-threshold) {
+  @media screen and (max-width: $mobile-screen-threshold) {
     padding: 14px 2px 2px 2px;
   }
 }

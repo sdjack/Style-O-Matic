@@ -27,24 +27,13 @@ class PageWrapper extends React.Component {
     // UI.setTheme("foo");
     return [
       <Header key="app-header" fixed>
-        <Nav active={true}>
-          <Nav.Item to="/" icon="fa fa-cogs" text="Long Description" />
-          <Nav.Item to="/" icon="fa fa-cogs" text="Long Description" />
-          <Nav.Item to="/" icon="fa fa-cogs" text="Long Description" />
-          <Nav.Item to="/" icon="fa fa-cogs" text="Long Description" />
-        </Nav>
+        <Navigation />
       </Header>,
       <Main key="app-content" color="!grey" header footer>
-        <Drawer
-          persistentId="main-drawer"
-          icon="fa fa-angle-double-right"
-          active={this.state.drawerOpen}
-          onClick={this.handleDrawer}
-          minimizable
-        >
-          <Navigation orientation="vertical" />
-        </Drawer>
-        <Main.Content>{children}</Main.Content>
+        <Main.Content>
+          <Drawer fixed>TBD</Drawer>
+          {children}
+        </Main.Content>
       </Main>,
       <Footer key="app-footer" fixed>
         <ToolBar>

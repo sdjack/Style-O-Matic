@@ -23,6 +23,7 @@ export const ROLE = {
   ICON: "icon",
   INPUT: "input",
   ITEM: "item",
+  LINK: "link",
   LOADING: "loading",
   MAIN: "main",
   MODAL: "modal",

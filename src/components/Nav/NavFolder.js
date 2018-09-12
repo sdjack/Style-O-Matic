@@ -99,15 +99,15 @@ class NavFolder extends CoreComponent {
     };
 
     const caretClass =
-      !minimized && expanded ? "fa fa-caret-down" : "fa fa-caret-right";
+      !minimized && expanded ? "ui-icon-down" : "ui-icon-right";
 
     return (
       <div
-        className="ui-nav-flyout-wrapper"
+        className="ui-nav-item"
         ref={this.onSetRef}
         onMouseEnter={this.handleMouseEnter}
       >
-        <a className="ui-nav-item" href={to} label={text}>
+        <a className="ui-nav-item-link" href={to} label={text}>
           <i className={`ui-nav-item-icon ${icon}`} />
           <span className="ui-nav-item-info">{text}</span>
           <span

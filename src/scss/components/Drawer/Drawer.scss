@@ -4,81 +4,70 @@
 
   @import "config";
 
-.ui-drawer-layout {
-  height: 100%;
-  width: 100%;
+.ui-drawer {
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-content: space-between;
-}
-
-.ui-drawer,
-.ui-drawer-flyout {
+  width: auto;
+  height: auto;
+  z-index: 99;
   padding: 0px;
   margin: 0px;
-}
-
-.ui-drawer {
-  z-index: 99;
-  color: $text-color;
-  background-color: $background-color;
-  display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-content: space-between;
-  overflow: hidden;
   @include no-shadow();
-  @include animate-default(0.2s);
-  transition-property: all;
   &.active.ui-shadow {
     @include shadow-drawer();
   }
 
-  &.minimized.ui-shadow {
-    @include shadow-drawer();
+  &.ui-orientation-vertical {
+    min-height: 100%;
+    max-height: 100%;
+    flex-direction: column;
+
+    & > .ui-drawer-content {
+      width: 0px;
+      height: 100%;
+    }
+
+    &.active {
+      & > .ui-drawer-content {
+        width: auto !important;
+      }
+    }
+  }
+
+  &.ui-orientation-horizontal {
+    min-width: 100%;
+    max-width: 100%;
+    flex-direction: row;
+
+    & > .ui-drawer-content {
+      height: 0px;
+      width: 100%;
+    }
+
+    &.active {
+      & > .ui-drawer-content {
+        height: auto !important;
+      }
+    }
   }
 }
 
 .ui-drawer-content {
   display: block;
+  overflow: hidden;
+}
+
+.ui-drawer,
+.ui-drawer-content {
   color: inherit;
   background-color: inherit;
   @include animate-default(0.2s);
   transition-property: all;
 }
 
-.ui-drawer-row {
-  display: block;
-}
-
-.ui-drawer-flyout {
-  display: block;
-  width: 100%;
-  float: left;
-  overflow-x: hidden;
-  overflow-y: auto;
-  max-height: 100%;
-  color: inherit;
-  background-color: inherit;
-}
-
-.ui-drawer-collapsed {
-  width: 0px;
-  overflow: hidden;
-  @include no-shadow();
-}
-
-.ui-drawer-flyout-collapsed {
-  width: 0px;
-  height: 0px;
-  overflow: hidden;
-  @include no-shadow();
-}
-
 .ui-drawer-toggle {
-  //height: $outer-frame-size;
-  //width: 100%;
   display: inline-block;
   @include text-horizontal-align-left();
   &:hover {
@@ -87,8 +76,8 @@
 }
 
 .ui-drawer-toggle-button {
-  width: $outer-frame-size;
-  height: 100%;
+  width: $framing-size;
+  height: $framing-size;
   color: $color-darker;
   background-color: transparent;
   padding: 2px;
@@ -103,85 +92,5 @@
     background-color: transparent;
     border: none;
     outline: none !important;
-  }
-}
-
-.ui-drawer-left,
-.ui-drawer-right {
-  width: 0px;
-  min-height: 100%;
-  max-height: 100%;
-  flex-direction: column;
-  max-width: $inner-frame-size;
-  & > .ui-drawer-content {
-    & > .ui-drawer-row {
-      width: 100%;
-    }
-  }
-
-  & > .ui-drawer-flyout {
-    height: 100%;
-  }
-
-  &.active {
-    width: 100% !important;
-    min-width: ($outer-frame-size * 2) !important;
-    max-width: $inner-frame-size !important;
-  }
-
-  &.minimized {
-    width: $outer-frame-size;
-    min-width: $outer-frame-size;
-    max-width: $outer-frame-size;
-    @media screen and (max-width: $drawer-size-threshold) {
-      width: 0px;
-      min-width: 0px;
-      max-width: 0px;
-    }
-  }
-
-  &.active,
-  &.minimized {
-    & > .ui-drawer-content {
-      overflow-y: scroll;
-      width: calc(100% + 20px);
-      & > .ui-drawer-row {
-        padding-bottom: 120px !important;
-      }
-    }
-  }
-}
-
-.ui-drawer-top,
-.ui-drawer-bottom {
-  min-width: 100%;
-  max-width: 100%;
-  height: 0px;
-  flex-direction: row;
-  max-height: $inner-frame-size;
-  & > .ui-drawer-content {
-    & > .ui-drawer-row {
-      height: 100%;
-    }
-  }
-  & > .ui-drawer-flyout {
-    width: 100%;
-  }
-
-  &.active {
-    height: 100% !important;
-    min-height: ($outer-frame-size * 2) !important;
-    max-height: $inner-frame-size !important;
-  }
-
-  &.minimized {
-    height: $outer-frame-size;
-    min-height: $outer-frame-size;
-    max-height: $outer-frame-size;
-    @media screen and (max-width: $drawer-size-threshold) {
-      height: 0px;
-      min-height: 0px;
-      max-height: 0px;
-    }
   }
 }

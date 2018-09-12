@@ -95,43 +95,50 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   line-height: 1.1;
   letter-spacing: 0.02em;
   opacity: 0.54;
+  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 0.6em; }
 
 h1 {
   font-size: 56px;
   font-weight: 400;
   line-height: 1.1;
-  letter-spacing: -0.02em; }
+  letter-spacing: -0.02em;
+  font-family: "Helvetica", "Arial", sans-serif; }
 
 h2 {
   font-size: 45px;
   font-weight: 400;
-  line-height: 1.1; }
+  line-height: 1.1;
+  font-family: "Helvetica", "Arial", sans-serif; }
 
 h3 {
   font-size: 34px;
   font-weight: 500;
-  line-height: 1.1; }
+  line-height: 1.1;
+  font-family: "Helvetica", "Arial", sans-serif; }
 
 h4 {
   font-size: 24px;
   font-weight: 500;
   line-height: 28px;
   letter-spacing: 0.02em;
-  -moz-osx-font-smoothing: greyscale; }
+  -moz-osx-font-smoothing: greyscale;
+  font-family: "Helvetica", "Arial", sans-serif; }
 
 h5 {
   font-size: 20px;
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.02em;
-  -moz-osx-font-smoothing: greyscale; }
+  -moz-osx-font-smoothing: greyscale;
+  font-family: "Helvetica", "Arial", sans-serif; }
 
 h6 {
   font-size: 17px;
   font-weight: 200;
   line-height: 20px;
-  letter-spacing: 0.3px; }
+  letter-spacing: 0.3px;
+  font-family: "Helvetica", "Arial", sans-serif; }
 
 p {
   font-size: 14px;
@@ -383,7 +390,7 @@ tfoot {
   margin: 0 !important;
   transition-property: display, width, height, margin, padding;
   transition-duration: 0.5s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+  transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1); }
 
 .ui-flex-container {
   display: -webkit-flex;
@@ -574,6 +581,12 @@ tfoot {
 
 .ui-overlay {
   position: absolute; }
+
+.ui-scroll-container {
+  overflow-y: scroll;
+  width: calc(100% + 20px); }
+  .ui-scroll-container > .ui-scroll-content {
+    padding-bottom: 120px !important; }
 
 .ui-icon {
   display: inline-block;

@@ -21,11 +21,11 @@ class ManagedEvent {
       if (self.timer) {
         clearTimeout(self.timer);
       }
-      self.timer = setTimeout(function () {
+      self.timer = setTimeout(() => {
         self.ready = true;
         if (self.observers.length > 0) {
-          for (var i = 0; i < self.observers.length; i += 1) {
-            var observer = self.observers[i];
+          for (let i = 0; i < self.observers.length; i += 1) {
+            const observer = self.observers[i];
             observer.onEventDispatch(self.name, self.data, self.dispatchers);
           }
         }

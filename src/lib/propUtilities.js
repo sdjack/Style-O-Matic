@@ -134,7 +134,6 @@ const DefaultPropTypes = {
   orientation: PropTypes.oneOf(["vertical", "horizontal"]),
   textAlign: PropTypes.oneOf(["left", "right", "center"]),
   contentAlign: PropTypes.oneOf(["left", "right", "center"]),
-  attach: PropTypes.oneOf(["left", "right", "top", "bottom"]),
   position: PropTypes.oneOf([
     "left",
     "before",
@@ -170,7 +169,6 @@ const DefaultPropValues = {
   uiclass: null,
   uirole: "",
   path: "/",
-  attach: null,
   text: null,
   icon: null,
   inset: null,
@@ -306,17 +304,20 @@ export function getUIClassString(props, state) {
     color,
     colorStyle,
     colorHover,
-    orientation,
     textAlign,
     contentAlign,
     position,
     shadow
   } = props;
 
-  const disabled = state && state.disabled ? state.disabled : props.disabled;
-  const active = state && state.active ? state.active : props.active;
-  const open = state && state.open ? state.open : props.open;
-  const invalid = state && state.invalid ? state.invalid : props.invalid;
+  const disabled =
+    state && !_.isNil(state.disabled) ? state.disabled : props.disabled;
+  const active = state && !_.isNil(state.active) ? state.active : props.active;
+  const open = state && !_.isNil(state.open) ? state.open : props.open;
+  const invalid =
+    state && !_.isNil(state.invalid) ? state.invalid : props.invalid;
+  const orientation =
+    state && state.orientation ? state.orientation : props.orientation;
 
   const sUIclass = `ui-${uiclass}`;
   const hasUIclass = !className || className.indexOf(sUIclass) === -1;

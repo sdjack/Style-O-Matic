@@ -4,11 +4,11 @@
 
 // VARIABLES
 
-$header-height: $outer-frame-size !default;
+$header-height: $framing-size !default;
 $header-inner-height: 27px !default;
 $header-item-v-offset: floor(($header-height - $header-inner-height) / 2);
 $header-item-h-offset: floor($header-inner-height / 2);
-$header-font-size: $layout-font-size !default;
+$header-font-size: ($text-font-size + 1) !default;
 $header-item-height: ($header-height - ($padding * 2)) !default;
 $header-text-padding: $padding $header-item-h-offset !default;
 $header-item-padding: $header-item-v-offset $padding !default;

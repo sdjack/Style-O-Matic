@@ -13,54 +13,48 @@ import "./Drawer.css";
 
 class Drawer extends CoreComponent {
   static propTypes = getCorePropTypes({
-    minimizable: "bool",
-    defaultOpen: "bool",
-    icon: "string"
+    defaultOpen: "bool"
   });
 
   static defaultProps = getCorePropDefaults({
     uirole: ROLE.DRAWER,
-    minimizable: true,
-    defaultOpen: false,
-    icon: "fa fa-bars",
-    attach: "left"
+    orientation: "horizontal",
+    defaultOpen: true
   });
 
   constructor(props) {
     super(props);
     this.useParentNode = true;
     this.state = {
-      attachment: props.attach
+      orientation: props.orientation,
+      active: props.defaultOpen
     };
   }
 
   componentDidMount() {
-    this.ensureAttachment();
+    this.ensureOrientation();
   }
 
-  ensureAttachment = () => {
+  handleOnClick = () => {
+    this.setState({ active: !this.state.active });
+  };
+
+  ensureOrientation = () => {
     if (this.node) {
-      const { attachment } = this.state;
-      const {
-        width,
-        height,
-        top,
-        left,
-        bottom,
-        right
-      } = this.node.getBoundingClientRect();
+      const { orientation } = this.state;
+      const { width, height } = this.node.getBoundingClientRect();
       const {
         height: screenHeight,
         width: screenWidth
       } = UIGlobals.getScreenDimensions();
-      let newAttach = attachment;
+      let newOrientation = orientation;
       if (height > screenHeight / 2) {
-        newAttach = left > screenWidth / 2 ? "right" : "left";
+        newOrientation = "vertical";
       } else {
-        newAttach = top > screenHeight / 2 ? "bottom" : "top";
+        newOrientation = "horizontal";
       }
-      if (newAttach !== attachment) {
-        this.setState({ attachment: newAttach });
+      if (newOrientation !== orientation) {
+        this.setState({ orientation: newOrientation });
       }
     }
   };
@@ -69,54 +63,27 @@ class Drawer extends CoreComponent {
     const {
       renderAs: Component,
       uiclass,
-      active,
       color,
       colorStyle,
       uuid,
-      attach,
-      icon,
+      fixed,
       disabled,
-      minimizable,
       children,
       props
-    } = getValidProps(this.props);
-    this.ensureAttachment();
-    const { attachment } = this.state;
-
-    const classes = {
-      [`ui-drawer-${attachment}`]: attachment,
-      active,
-      minimized: !active && minimizable
-    };
-    if (!_.isNil(color)) {
-      const nohover = String(color).indexOf("!") !== -1;
-      const cleanColor = String(color).replace("!", "");
-      let colorClass = `ui-${cleanColor}`;
-      if (!_.isNil(colorStyle)) {
-        colorClass += `-${colorStyle}`;
-      }
-      if (nohover) {
-        colorClass += "-no-hover";
-      }
-      classes[colorClass] = true;
-    }
-
+    } = getValidProps(this.props, this.state);
+    // this.ensureOrientation();
+    const { orientation, active } = this.state;
     return (
-      <Component
-        {...props}
-        className={classNames("ui-drawer", classes)}
-        ref={this.onSetRef}
-      >
+      <Component {...props} ref={this.onSetRef}>
         <div className="ui-drawer-content">
-          {React.Children.map(children, child => (
-            <div className="ui-drawer-row">
-              {this.renderChild(child, {
-                disabled,
-                uiclass,
-                active
-              })}
-            </div>
-          ))}
+          {React.Children.map(children, child =>
+            this.renderChild(child, {
+              disabled,
+              uiclass,
+              orientation,
+              active
+            })
+          )}
         </div>
       </Component>
     );

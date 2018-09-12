@@ -114,7 +114,9 @@
 
 @mixin typo-preferred-font($useTitleFont: true) {
   @if $useTitleFont {
-    font-family: $title_font;
+    font-family: $heading-font;
+  } @else {
+    font-family: $text-font;
   }
 }
 
@@ -127,6 +129,8 @@
   @if $colorContrast {
     opacity: 0.54;
   }
+
+  @include typo-preferred-font($useTitleFont);
 }
 
 @mixin typo-small($colorContrast: false, $useTitleFont: true) {
@@ -138,6 +142,8 @@
   @if $colorContrast {
     opacity: 0.54;
   }
+
+  @include typo-preferred-font($useTitleFont);
 }
 
 @mixin typo-h1($colorContrast: false, $useTitleFont: true) {
@@ -149,6 +155,8 @@
   @if $colorContrast {
     opacity: 0.54;
   }
+
+  @include typo-preferred-font($useTitleFont);
 }
 
 @mixin typo-h2($colorContrast: false, $useTitleFont: true) {
@@ -159,6 +167,8 @@
   @if $colorContrast {
     opacity: 0.54;
   }
+
+  @include typo-preferred-font($useTitleFont);
 }
 
 @mixin typo-h3($colorContrast: false, $useTitleFont: true) {
@@ -169,6 +179,8 @@
   @if $colorContrast {
     opacity: 0.54;
   }
+
+  @include typo-preferred-font($useTitleFont);
 }
 
 @mixin typo-headline($colorContrast: false, $useTitleFont: true) {
@@ -181,6 +193,8 @@
   @if $colorContrast {
     opacity: 0.87;
   }
+
+  @include typo-preferred-font($useTitleFont);
 }
 
 @mixin typo-title($colorContrast: false, $useTitleFont: true) {
@@ -193,6 +207,8 @@
   @if $colorContrast {
     opacity: 0.87;
   }
+
+  @include typo-preferred-font($useTitleFont);
 }
 
 @mixin typo-subhead($colorContrast: false, $useTitleFont: true) {
@@ -204,15 +220,13 @@
   @if $colorContrast {
     opacity: 0.87;
   }
+
+  @include typo-preferred-font($useTitleFont);
 }
 
-@mixin typo-table-header($colorContrast: false, $useTitleFont: false) {
+@mixin typo-table-header($colorContrast: false) {
   font-size: 14px;
-  @if $useTitleFont {
-    font-weight: 500;
-  } @else {
-    font-weight: bold;
-  }
+  font-weight: bold;
   line-height: 1.4;
   letter-spacing: 0.05em;
 
@@ -221,7 +235,7 @@
   }
 }
 
-@mixin typo-paragraph($colorContrast: false, $useTitleFont: false) {
+@mixin typo-paragraph($colorContrast: false) {
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
@@ -232,7 +246,7 @@
   }
 }
 
-@mixin typo-caption($colorContrast: false, $useTitleFont: false) {
+@mixin typo-caption($colorContrast: false) {
   font-size: 12px;
   font-weight: 400;
   line-height: 1;
@@ -243,7 +257,7 @@
   }
 }
 
-@mixin typo-blockquote($colorContrast: false, $useTitleFont: false) {
+@mixin typo-blockquote($colorContrast: false) {
   position: relative;
   font-size: 24px;
   font-weight: 300;
@@ -267,7 +281,7 @@
   }
 }
 
-@mixin typo-menu($colorContrast: false, $useTitleFont: false) {
+@mixin typo-menu($colorContrast: false) {
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
@@ -278,7 +292,7 @@
   }
 }
 
-@mixin typo-button($colorContrast: false, $useTitleFont: false) {
+@mixin typo-button($colorContrast: false) {
   font-size: 14px;
   font-weight: 500;
 
@@ -287,7 +301,7 @@
   }
 }
 
-@mixin typo-text-button($colorContrast: false, $useTitleFont: false) {
+@mixin typo-text-button($colorContrast: false) {
   font-size: 1em;
   font-weight: 500;
   line-height: 2 !important;
@@ -298,7 +312,7 @@
   }
 }
 
-@mixin typo-lists($colorContrast: false, $useTitleFont: false) {
+@mixin typo-lists($colorContrast: false) {
   font-size: 14px;
   font-weight: 300;
   line-height: 1.4;
@@ -309,7 +323,7 @@
   }
 }
 
-@mixin typo-lists-small($colorContrast: false, $useTitleFont: false) {
+@mixin typo-lists-small($colorContrast: false) {
   font-size: 12px;
   font-weight: 100;
   line-height: 18px;
@@ -320,7 +334,7 @@
   }
 }
 
-@mixin typo-lists-medium($colorContrast: false, $useTitleFont: false) {
+@mixin typo-lists-medium($colorContrast: false) {
   font-size: 16px;
   font-weight: 100;
   line-height: 22px;
@@ -331,7 +345,7 @@
   }
 }
 
-@mixin typo-lists-large($colorContrast: false, $useTitleFont: false) {
+@mixin typo-lists-large($colorContrast: false) {
   font-size: 22px;
   font-weight: 100;
   line-height: 40px;
@@ -342,7 +356,7 @@
   }
 }
 
-@mixin typo-input($colorContrast: false, $useTitleFont: false) {
+@mixin typo-input($colorContrast: false) {
   font-size: $widget-font-size;
   font-weight: 300;
   line-height: 1;
@@ -355,7 +369,7 @@
   }
 }
 
-@mixin typo-input-button($colorContrast: false, $useTitleFont: false) {
+@mixin typo-input-button($colorContrast: false) {
   font-size: $widget-font-size;
   font-weight: 500;
   letter-spacing: 0.05em;

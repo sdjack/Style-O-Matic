@@ -5,5 +5,5 @@
 // VARIABLES
 
 $toasts-offset: 2px !default;
-$toasts-height: ($outer-frame-size - ($toasts-offset * 2));
+$toasts-height: ($framing-size - ($toasts-offset * 2));
 $toasts-padding: 0 24px;

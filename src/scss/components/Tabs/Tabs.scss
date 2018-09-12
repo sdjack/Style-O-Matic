@@ -69,7 +69,7 @@
   cursor: pointer;
   line-height: 36px;
   font-weight: 500;
-  font-size: $common-font-size;
+  font-size: $text-font-size;
   overflow: hidden;
   box-shadow: 1px 1px 0 rgba(0,0,0,0);
 
@@ -112,7 +112,7 @@
   height: 58px;
   line-height: 30px;
   font-weight: 500;
-  font-size: $common-font-size;
+  font-size: $text-font-size;
   overflow: hidden;
 
   @include text-align-center();

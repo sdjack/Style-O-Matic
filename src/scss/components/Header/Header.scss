@@ -36,7 +36,7 @@
     z-index: 77;
   }
 
-  @media screen and (max-width: $screen-size-threshold) {
+  @media screen and (max-width: $mobile-screen-threshold) {
     min-height: $header-height;
   }
 }

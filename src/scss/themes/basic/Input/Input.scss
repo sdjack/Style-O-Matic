@@ -45,7 +45,7 @@
 .ui-theme-basic.ui-input-color {
 	background-color: white;
 	border-radius: $border-radius;
-	border: $common-border;
+	border: $border;
 }
 
 /* INPUT TYPE: TEXTAREA */
@@ -53,7 +53,7 @@
 .ui-theme-basic.ui-input-textarea {
 	background-color: white;
 	border-radius: $border-radius;
-	border: $common-border;
+	border: $border;
 }
 
 /* INPUT TYPE: NUMBER */
@@ -61,5 +61,5 @@
 .ui-theme-basic.ui-input-number {
 	background-color: white;
 	border-radius: $border-radius;
-	border: $common-border;
+	border: $border;
 }

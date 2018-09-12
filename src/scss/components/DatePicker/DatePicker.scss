@@ -90,7 +90,7 @@
       height: auto !important;
       max-height: 320px !important;
       overflow-y: auto !important;
-      border: $common-border;
+      border: $border;
       @include shadow-basic();
   }
 }

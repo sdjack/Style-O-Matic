@@ -47,7 +47,7 @@ p {
   margin: 0px 0px 16px;
 
   &.preface {
-    border-bottom: $common-border;
+    border-bottom: $border;
     &:last-child {
       margin-bottom: 0;
     }
@@ -173,7 +173,7 @@ select,
 textarea {
   border-radius: $border-radius;
   background-color: white;
-  border: $common-border;
+  border: $border;
 
   @include typo-input();
 

@@ -183,3 +183,11 @@
 .ui-overlay {
     position: absolute;
 }
+
+.ui-scroll-container {
+  overflow-y: scroll;
+  width: calc(100% + 20px);
+  & > .ui-scroll-content {
+    padding-bottom: 120px !important;
+  }
+}
