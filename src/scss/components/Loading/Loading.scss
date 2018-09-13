@@ -29,12 +29,22 @@
     top: 0;
     left: 0;
     opacity: 0.7 !important;
+    & > .loading-cube {
+      top: 50%;
+      position: fixed;
+      margin-top: -75px;
+    }
   }
   &.ui-fixed {
     position: fixed !important;
     top: 0;
     left: 0;
     opacity: 0.7 !important;
+    & > .loading-cube {
+      top: 50%;
+      position: fixed;
+      margin-top: -75px;
+    }
   }
   &.active {
     display: flex;
@@ -55,7 +65,7 @@
   border-radius: 0px;
   float: left;
   -webkit-animation: cubeGridScaleDelay 1.3s infinite ease-in-out;
-          animation: cubeGridScaleDelay 1.3s infinite ease-in-out; 
+          animation: cubeGridScaleDelay 1.3s infinite ease-in-out;
 }
 .loading-cube .cube1 {
   -webkit-animation-delay: 0.2s;
@@ -91,7 +101,7 @@
             transform: scale3D(1, 1, 1);
   } 35% {
     -webkit-transform: scale3D(0, 0, 1);
-            transform: scale3D(0, 0, 1); 
+            transform: scale3D(0, 0, 1);
   }
 }
 
@@ -102,5 +112,5 @@
   } 35% {
     -webkit-transform: scale3D(0, 0, 1);
             transform: scale3D(0, 0, 1);
-  } 
+  }
 }

@@ -24,7 +24,7 @@ class AccordionTitle extends CoreComponent {
       props
     } = getValidProps(this.props);
 
-    const caretClass = active ? "ui-icon-folder-open" : "ui-icon-folder";
+    const caretClass = active ? "ui-icon-folder-open" : "ui-icon-folder-closed";
 
     return (
       <Component {...props} accordionindex={accordionindex}>

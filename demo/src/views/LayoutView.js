@@ -38,34 +38,50 @@ class LayoutView extends React.Component {
               <Grid.Row>
                 <Grid.Column textAlign="center" cols="6">
                   <Nav>
-                    <Nav.Item icon="fa fa-home" text="Home">
+                    <Nav.Item icon="ui-icon-home" text="Home">
                       <ToolTip>Home</ToolTip>
                     </Nav.Item>
-                    <Nav.Item icon="fa fa-font" text="Blog">
+                    <Nav.Item icon="ui-icon-robot" text="Blog">
                       <ToolTip>Blog</ToolTip>
                     </Nav.Item>
-                    <Nav.Item icon="fa fa-bookmark" text="About">
+                    <Nav.Item icon="ui-icon-user" text="About">
                       <ToolTip>About</ToolTip>
                     </Nav.Item>
-                    <Nav.Item icon="fa fa-comment" text="Contact">
+                    <Nav.Item icon="ui-icon-shooting-star" text="Contact">
                       <ToolTip>Contact</ToolTip>
                     </Nav.Item>
+                    <Nav.Folder to="/misc" text="Misc">
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                    </Nav.Folder>
                   </Nav>
                 </Grid.Column>
                 <Grid.Column textAlign="center" cols="6">
                   <Nav orientation="vertical">
-                    <Nav.Item icon="fa fa-home" text="Home">
+                    <Nav.Item icon="ui-icon-home" text="Home">
                       <ToolTip>Home</ToolTip>
                     </Nav.Item>
-                    <Nav.Item icon="fa fa-font" text="Blog">
+                    <Nav.Item icon="ui-icon-robot" text="Blog">
                       <ToolTip>Blog</ToolTip>
                     </Nav.Item>
-                    <Nav.Item icon="fa fa-bookmark" text="About">
+                    <Nav.Item icon="ui-icon-user" text="About">
                       <ToolTip>About</ToolTip>
                     </Nav.Item>
-                    <Nav.Item icon="fa fa-comment" text="Contact">
+                    <Nav.Item icon="ui-icon-shooting-star" text="Contact">
                       <ToolTip>Contact</ToolTip>
                     </Nav.Item>
+                    <Nav.Folder to="/misc" text="Misc">
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                      <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
+                    </Nav.Folder>
                   </Nav>
                 </Grid.Column>
               </Grid.Row>

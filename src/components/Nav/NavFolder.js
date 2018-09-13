@@ -1,5 +1,7 @@
 import React, { cloneElement } from "react";
 import classNames from "classnames";
+import activeElement from "dom-helpers/activeElement";
+import contains from "dom-helpers/query/contains";
 import {
   CoreComponent,
   getCorePropDefaults,
@@ -16,47 +18,55 @@ class NavFolder extends CoreComponent {
 
   static defaultProps = getCorePropDefaults({
     uirole: ROLE.FOLDER,
-    text: "",
-    minimized: false
+    text: ""
   });
 
   constructor(props) {
     super(props);
+    this.folder = null;
     this.useParentNode = true;
     this.state = {
-      expanded: "",
+      open: false,
       offset: {}
     };
   }
 
-  handleMouseEnter = e => {
-    if (this.node) {
+  setFolderRef = ref => {
+    if (ref) {
+      const needsUpdate = this.folder === null;
+      this.folder = ref;
+      if (needsUpdate) {
+        this.forceUpdate();
+      }
+    }
+  };
+
+  toggleExpansion = e => {
+    e.preventDefault();
+    const newState = this.state;
+    if (!newState.open && this.node && this.folder) {
       const {
         bottom: screenBottom,
         height: screenHeight,
         width: screenWidth
       } = UIGlobals.getScreenDimensions();
       const { x, y, height, bottom } = this.node.getBoundingClientRect();
+      const { width: folderWidth } = this.folder.getBoundingClientRect();
       const offset = {};
       if (y > screenHeight / 2) {
         let bottomOffset = 0;
-        bottomOffset = height / 2;
+        bottomOffset = height;
         bottomOffset += screenHeight;
         bottomOffset -= bottom;
         offset.bottom = `${bottomOffset}px`;
       }
-      if (x > screenWidth / 2) {
-        offset.right = "0px";
+      if (x + folderWidth > screenWidth - 10) {
+        offset.right = "10px";
       }
-      this.setState({ offset });
+      newState.offset = offset;
     }
-  };
-
-  toggleExpansion = e => {
-    e.preventDefault();
-    if (!this.props.minimized) {
-      this.setState({ expanded: !this.state.expanded });
-    }
+    newState.open = !newState.open;
+    this.setState(newState);
   };
 
   renderChild = (child, props) => {
@@ -70,6 +80,7 @@ class NavFolder extends CoreComponent {
     return cloneElement(child, {
       ...props,
       ref,
+      uirole: ROLE.FOLDERITEM,
       uiclass: this.childPrefix(role),
       onClick: this.chainFunction(child.props.onClick, this.handleOnClick)
     });
@@ -84,49 +95,44 @@ class NavFolder extends CoreComponent {
       path,
       text,
       icon,
-      minimized,
       children,
       props,
       inherited
     } = getValidProps(this.props);
 
-    const { offset, expanded } = this.state;
+    const { offset, open } = this.state;
 
     const classes = {
-      expanded,
-      minimized,
+      open,
       active: to && path.indexOf(to) !== -1
     };
 
-    const caretClass =
-      !minimized && expanded ? "ui-icon-down" : "ui-icon-right";
+    const caretClass = open ? "ui-icon-remove" : "ui-icon-add";
 
     return (
       <div
         className="ui-nav-item"
         ref={this.onSetRef}
-        onMouseEnter={this.handleMouseEnter}
+        role="presentation"
+        onKeyDown={this.toggleExpansion}
+        onClick={this.toggleExpansion}
       >
         <a className="ui-nav-item-link" href={to} label={text}>
-          <i className={`ui-nav-item-icon ${icon}`} />
+          <i className={`ui-nav-item-icon ${caretClass}`} />
           <span className="ui-nav-item-info">{text}</span>
-          <span
-            className={`ui-nav-item-caret ${caretClass}`}
-            role="presentation"
-            onKeyDown={this.toggleExpansion}
-            onClick={this.toggleExpansion}
-          />
         </a>
         <Component
           {...props}
           className={classNames(className, classes)}
           style={offset}
+          ref={this.setFolderRef}
         >
           <div className="ui-nav-folder-title">{text}</div>
           {React.Children.map(children, child => {
             if (
               typeof child.props !== "undefined" &&
-              typeof child.props.uirole !== "undefined"
+              typeof child.props.uirole !== "undefined" &&
+              child.props.uirole === ROLE.ITEM
             ) {
               return this.renderChild(child, inherited);
             }

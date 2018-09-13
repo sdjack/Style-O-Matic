@@ -8,14 +8,14 @@ import {
   ROLE
 } from "../../lib";
 
-class NavItem extends CoreComponent {
+class NavFolderItem extends CoreComponent {
   static propTypes = getCorePropTypes({
     minimized: "bool"
   });
 
   static defaultProps = getCorePropDefaults({
     renderAs: "div",
-    uirole: ROLE.ITEM,
+    uirole: ROLE.FOLDERITEM,
     text: "",
     minimized: false
   });
@@ -23,7 +23,7 @@ class NavItem extends CoreComponent {
   render() {
     const {
       renderAs: Component,
-      uirole,
+      uiclass,
       className,
       to,
       path,
@@ -39,22 +39,11 @@ class NavItem extends CoreComponent {
       minimized
     };
 
-    if (uirole === ROLE.FOLDERITEM) {
-      return (
-        <Component {...props} className={classNames(className, classes)}>
-          <a className="ui-nav-item-link" href={to} label={text}>
-            <span className={`ui-nav-${uirole}-info`}>{text}</span>
-            <span className={`ui-nav-${uirole}-icon ${icon}`} />
-            {children}
-          </a>
-        </Component>
-      );
-    }
     return (
       <Component {...props} className={classNames(className, classes)}>
         <a className="ui-nav-item-link" href={to} label={text}>
-          <span className={`ui-nav-${uirole}-icon ${icon}`} />
-          <span className={`ui-nav-${uirole}-info`}>{text}</span>
+          <span className={`ui-${uiclass}-icon ${icon}`} />
+          <span className={`ui-${uiclass}-info`}>{text}</span>
           {children}
         </a>
       </Component>
@@ -62,4 +51,4 @@ class NavItem extends CoreComponent {
   }
 }
 
-export default NavItem;
+export default NavFolderItem;

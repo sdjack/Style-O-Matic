@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Component, cloneElement } from "react";
+import _ from "lodash";
 import { uID } from "./coreUtilities.js";
 import { getCorePropTypes, getCorePropDefaults } from "./propUtilities.js";
 import { ROLE, getParentClass, getChildClass } from "./ROLE.js";

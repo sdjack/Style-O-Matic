@@ -5,6 +5,7 @@ import {
   getCorePropTypes,
   getCorePropDefaults,
   getValidProps,
+  UIGlobals,
   ROLE
 } from "../../lib";
 import NavItem from "./NavItem.js";
@@ -13,14 +14,16 @@ import "./Nav.css";
 
 class Nav extends CoreComponent {
   static propTypes = getCorePropTypes({
-    defaultOpen: "bool"
+    defaultOpen: "bool",
+    canMinimize: "bool"
   });
 
   static defaultProps = getCorePropDefaults({
     renderAs: "nav",
     uirole: ROLE.NAV,
     orientation: "horizontal",
-    defaultOpen: true
+    defaultOpen: true,
+    canMinimize: false
   });
 
   static Item = NavItem;
@@ -30,7 +33,7 @@ class Nav extends CoreComponent {
     super(props, ...args);
     this.state = {
       orientation: props.orientation,
-      active: props.defaultOpen,
+      open: props.defaultOpen,
       isMobile: window.innerWidth <= 1024
     };
   }
@@ -45,7 +48,7 @@ class Nav extends CoreComponent {
   }
 
   handleOnClick = () => {
-    this.setState({ active: !this.state.active });
+    this.setState({ open: !this.state.open });
   };
 
   ensureOrientation = () => {
@@ -92,13 +95,16 @@ class Nav extends CoreComponent {
   };
 
   render() {
-    const { renderAs: Component, children, props, inherited } = getValidProps(
-      this.props,
-      this.state
-    );
+    const {
+      renderAs: Component,
+      canMinimize,
+      children,
+      props,
+      inherited
+    } = getValidProps(this.props, this.state);
 
-    const { orientation, active } = this.state;
-    const minimized = !active;
+    const contentClass =
+      !canMinimize && !this.state.open ? " ui-nav-hidden" : "";
 
     return (
       <Component {...props}>
@@ -107,15 +113,14 @@ class Nav extends CoreComponent {
             <i className="ui-icon-menu" />
           </button>
         </div>
-        <div className="ui-nav-content">
+        <div className={`ui-nav-content${contentClass}`}>
           {React.Children.map(children, child => {
             if (
               typeof child.props !== "undefined" &&
               typeof child.props.uirole !== "undefined"
             ) {
               return this.renderChild(child, {
-                ...inherited,
-                minimized
+                ...inherited
               });
             }
             return child;

@@ -54,14 +54,7 @@ const NATIVE_PROPS = [
   "onSubmit"
 ];
 
-const INHERITED_PROPS = [
-  "uiclass",
-  "path",
-  "disabled",
-  "open",
-  "uidata",
-  "invalid"
-];
+const INHERITED_PROPS = ["uiclass", "path", "disabled", "uidata", "invalid"];
 
 const DefaultPropTypes = {
   uuid: PropTypes.string,
