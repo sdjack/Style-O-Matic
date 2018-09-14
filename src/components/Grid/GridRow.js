@@ -2,12 +2,12 @@ import React from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropDefaults,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 
 class GridRow extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     uirole: ROLE.ROW
   });
 

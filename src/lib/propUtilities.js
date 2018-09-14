@@ -231,11 +231,11 @@ function setPropTypes(isA11y = false, config, uidataConfig) {
   return obj;
 }
 
-export function getCorePropTypes(config, uidataConfig) {
+export function setCorePropTypes(config, uidataConfig) {
   return setPropTypes(false, config, uidataConfig);
 }
 
-export function getPropTypesA11y(config, uidataConfig) {
+export function setPropTypesA11y(config, uidataConfig) {
   return setPropTypes(true, config, uidataConfig);
 }
 
@@ -272,11 +272,11 @@ function setPropDefaults(autoId, config, uidataConfig) {
   return obj;
 }
 
-export function getCorePropDefaults(config, uidataConfig) {
+export function setCorePropDefaults(config, uidataConfig) {
   return setPropDefaults(false, config, uidataConfig);
 }
 
-export function getPropDefaultsAutoId(config, uidataConfig) {
+export function setPropDefaultsAutoId(config, uidataConfig) {
   return setPropDefaults(true, config, uidataConfig);
 }
 

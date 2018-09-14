@@ -4,14 +4,14 @@ import {
   CoreComponent,
   isModifiedEvent,
   isLeftClickEvent,
-  getCorePropDefaults,
-  getCorePropTypes,
+  setCorePropDefaults,
+  setCorePropTypes,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class TableCellWidget extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     columnid: "number",
     rowid: "number",
     rowtype: "string",
@@ -26,7 +26,7 @@ class TableCellWidget extends CoreComponent {
     editing: "func"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     columnid: 0,
     rowid: 0,
     uirole: ROLE.CELL,

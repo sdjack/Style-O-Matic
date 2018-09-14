@@ -1,13 +1,13 @@
 import React from "react";
 import {
   CoreComponent,
-  getCorePropDefaults,
+  setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class DropdownToggle extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "button",
     uirole: ROLE.TOGGLE
   });

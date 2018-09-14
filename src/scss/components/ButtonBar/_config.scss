@@ -3,12 +3,12 @@
 // -----------------------------------------------------------------------------
 
 // VARIABLES
-$button-background-color: $color-dark-alpha-0 !default;
+$button-background-color: color-dark-alpha(0.033) !default;
 $button-background-color-disabled: $color-light;
-$button-text-color: $color-dark-alpha-5 !default;
+$button-text-color: color-dark-alpha(0.5) !default;
 $button-text-color-disabled: $color-ultra-light;
-$button-active-background-color: $color-dark-alpha-3 !default;
-$button-active-text-color: $color-light-alpha-5 !default;
+$button-active-background-color: color-dark-alpha(0.3) !default;
+$button-active-text-color: color-light-alpha(0.5) !default;
 $button-icon-color: rgba(128,128,128,0.7) !default;
 $button-icon-active-color: $button-active-background-color !default;
 $button-min-width: 32px !default;

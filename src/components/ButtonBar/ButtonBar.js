@@ -2,16 +2,16 @@ import React, { cloneElement } from "react";
 import {
   CoreComponent,
   getValidProps,
-  getPropTypesA11y,
-  getCorePropDefaults,
+  setPropTypesA11y,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 import Button from "../Button/Button.js";
 import "./ButtonBar.css";
 
 class ButtonBar extends CoreComponent {
-  static propTypes = getPropTypesA11y();
-  static defaultProps = getCorePropDefaults({
+  static propTypes = setPropTypesA11y();
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.BUTTONBAR,
     id: "buttonbar_id",

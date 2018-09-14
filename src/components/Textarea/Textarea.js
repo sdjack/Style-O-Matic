@@ -2,22 +2,22 @@ import React from "react";
 import classNames from "classnames";
 import {
   CoreComponent,
-  getCorePropDefaults,
-  getPropTypesA11y,
+  setCorePropDefaults,
+  setPropTypesA11y,
   getValidProps,
   ROLE
 } from "../../lib";
 import "./Textarea.css";
 
 class Textarea extends CoreComponent {
-  static propTypes = getPropTypesA11y({
+  static propTypes = setPropTypesA11y({
     id: "string!",
     required: "bool",
     label: "string",
     validator: "func"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "textarea",
     uirole: ROLE.INPUT,
     required: false,

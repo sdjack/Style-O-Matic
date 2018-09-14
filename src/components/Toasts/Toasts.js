@@ -2,8 +2,8 @@ import _ from "lodash";
 import React, { cloneElement } from "react";
 import {
   CoreComponent,
-  getCorePropDefaults,
-  getCorePropTypes,
+  setCorePropDefaults,
+  setCorePropTypes,
   getValidProps,
   ROLE
 } from "../../lib";
@@ -11,12 +11,12 @@ import ToastMessage from "./ToastMessage.js";
 import "./Toasts.css";
 
 class Toasts extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     messages: "array",
     timeout: "number"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.TOASTS,
     messages: [],

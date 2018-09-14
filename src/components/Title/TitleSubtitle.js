@@ -2,13 +2,13 @@ import _ from "lodash";
 import React from "react";
 import {
   CoreComponent,
-  getCorePropDefaults,
+  setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class TitleSubtitle extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "h4",
     uirole: ROLE.SUBTITLE
   });

@@ -2,14 +2,14 @@ import React, { cloneElement } from "react";
 import _ from "lodash";
 import {
   CoreComponent,
-  getCorePropDefaults,
+  setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
 import "./App.css";
 
 class App extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.APP
   });

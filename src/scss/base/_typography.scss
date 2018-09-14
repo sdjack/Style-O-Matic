@@ -186,7 +186,7 @@ input[type="button"],
 input[type="submit"] {
   padding: ($widget-size / 4) $widget-size;
   text-decoration: none;
-  background-color: $color-dark-alpha-0;
+  background-color: color-dark-alpha(0.033);
   border: none !important;
   border-radius: $border-radius;
   cursor: pointer;
@@ -197,7 +197,7 @@ input[type="submit"] {
   &:hover,
   &:focus:not(:active),
   &:active {
-    background-color: $color-dark-alpha-2;
+    background-color: color-dark-alpha(0.2);
   }
 }
 

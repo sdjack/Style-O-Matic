@@ -2,13 +2,13 @@ import React from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropDefaults,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 import "./Icon.css";
 
 class Icon extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "i",
     uirole: ROLE.ICON
   });

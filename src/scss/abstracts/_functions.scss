@@ -32,6 +32,14 @@
   @return $number / ($number * 0 + 1);
 }
 
+@function color-light-alpha($alpha) {
+  @return rgba(255,255,255,$alpha);
+}
+
+@function color-dark-alpha($alpha) {
+  @return rgba(0,0,0,$alpha);
+}
+
 @function color-contrast($n, $inverted: false) {
   $light: $color-lightest;
   $dark: $color-dark;

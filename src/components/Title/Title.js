@@ -2,8 +2,8 @@ import React, { cloneElement } from "react";
 import cx from "classnames";
 import {
   CoreComponent,
-  getCorePropDefaults,
-  getCorePropTypes,
+  setCorePropDefaults,
+  setCorePropTypes,
   getValidProps,
   ROLE
 } from "../../lib";
@@ -13,11 +13,11 @@ import TitleIcon from "./TitleIcon";
 import "./Title.css";
 
 class Title extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     sticky: "bool"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.TITLE,
     sticky: false

@@ -41,7 +41,8 @@ $glow-key-umbra-opacity: 0.3;
 $glow-key-penumbra-opacity: 0.24;
 $glow-ambient-shadow-opacity: 0.22;
 
-$border: 1px solid $color-dark-alpha-3;
+$border: 1px solid color-dark-alpha(0.3);
+$border-hinted: 1px solid color-dark-alpha(0.1);
 
 $padding: 12px !default;
 $padding-xlarge: ($padding * 3) !default;
@@ -49,6 +50,7 @@ $padding-large: ($padding * 2) !default;
 $padding-medium: floor($padding * 1.5) !default;
 $padding-small: floor($padding / 2) !default;
 $padding-smaller: floor($padding / 3) !default;
+$padding-panels: 0.78em;
 
 $border-radius: 3px !default;
 $border-radius-large: 5px !default;

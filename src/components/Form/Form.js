@@ -1,8 +1,8 @@
 import React, { cloneElement } from "react";
 import {
   CoreComponent,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
@@ -14,7 +14,7 @@ import FormRow from "./FormRow.js";
 import "./Form.css";
 
 class Form extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "form",
     uirole: ROLE.FORM
   });

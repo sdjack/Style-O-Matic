@@ -2,12 +2,12 @@ import React, { cloneElement } from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropDefaults,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 
 class DropdownContent extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.CONTENT
   });

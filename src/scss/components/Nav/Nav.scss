@@ -14,6 +14,7 @@
 
 .ui-nav-content {
   display: block;
+  height: 100%;
   overflow: hidden;
   &.ui-nav-hidden {
     width: 0px !important;
@@ -24,21 +25,20 @@
 .ui-nav {
   display: flex;
   width: auto;
-  height: auto;
   padding: 0px;
   margin: 0px;
   flex-wrap: nowrap;
   align-content: space-evenly;
+  justify-content: flex-start;
 
   &.ui-orientation-vertical {
     min-height: 100%;
     max-height: 100%;
-    justify-content: space-evenly;
+    height: auto;
     flex-direction: column;
 
     & > .ui-nav-content {
       width: auto;
-      height: 100%;
       & > .ui-nav-item {
         display: block;
       }
@@ -59,13 +59,13 @@
   &.ui-orientation-horizontal {
     min-width: 100%;
     max-width: 100%;
-    justify-content: flex-start;
+    height: $nav-item-height;
     flex-direction: row;
 
     & > .ui-nav-content {
       width: 100%;
-      height: auto;
       & > .ui-nav-item {
+        display: inline-block;
         text-align: center !important;
       }
 
@@ -98,7 +98,6 @@
 }
 
 .ui-nav-item {
-  display: inline-block;
   position: relative;
   justify-content: space-between;
   text-align: left;
@@ -107,13 +106,8 @@
   margin: 0;
   padding: 0;
   cursor: pointer;
-  @include animate-default(0.2s);
-  transition-property: all;
   color: inherit;
   background-color: rgba(0, 0, 0, 0);
-  &.active {
-    font-weight: 600;
-  }
 }
 
 .ui-nav-item-link {
@@ -244,7 +238,6 @@
 .ui-nav-folder-item {
   &:hover,
   &:focus {
-    font-weight: 600;
     color: $color-lightest;
     background-color: $color-blue-highlight;
   }

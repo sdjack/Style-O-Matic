@@ -2,8 +2,8 @@ import React from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 import ToolBarContent from "./ToolBarContent.js";
@@ -15,7 +15,7 @@ import Button from "../Button/Button.js";
 import "./ToolBar.css";
 
 class ToolBar extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.TOOLBAR
   });

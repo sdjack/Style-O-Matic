@@ -1,8 +1,8 @@
 /* eslint-disable */
-import { Component, cloneElement } from "react";
+import React, { Component, cloneElement } from "react";
 import _ from "lodash";
 import { uID } from "./coreUtilities.js";
-import { getCorePropTypes, getCorePropDefaults } from "./propUtilities.js";
+import { setCorePropTypes, setCorePropDefaults } from "./propUtilities.js";
 import { ROLE, getParentClass, getChildClass } from "./ROLE.js";
 import EventManager from "./EventManager.js";
 import UIGlobals from "./UIGlobals.js";
@@ -10,9 +10,9 @@ import UIGlobals from "./UIGlobals.js";
 /* eslint "react/prop-types": [0] */
 
 export default class CoreComponent extends Component {
-  static propTypes = getCorePropTypes();
+  static propTypes = setCorePropTypes();
 
-  static defaultProps = getCorePropDefaults();
+  static defaultProps = setCorePropDefaults();
 
   constructor(props, ...args) {
     super(props, ...args);

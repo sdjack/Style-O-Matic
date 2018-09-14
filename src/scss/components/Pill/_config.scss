@@ -6,12 +6,12 @@
 
 $pill-background-color: $color-lighter !default;
 $pill-background-color-disabled: $color-light;
-$pill-text-color: $color-dark-alpha-5 !default;
+$pill-text-color: color-dark-alpha(0.5) !default;
 $pill-text-color-disabled: $color-ultra-light;
 $pill-action-background-color: $color-ultra-light !default;
-$pill-action-active-background-color: $color-dark-alpha-2 !default;
-$pill-action-text-color: $color-dark-alpha-5 !default;
-$pill-action-active-text-color: $color-light-alpha-8 !default;
+$pill-action-active-background-color: color-dark-alpha(0.2) !default;
+$pill-action-text-color: color-dark-alpha(0.5) !default;
+$pill-action-active-text-color: color-light-alpha(0.8) !default;
 $pill-min-width: 32px !default;
 $pill-height: 29px !default;
 $pill-margin: 0px 0px 0px ($padding-large / 2) !default;

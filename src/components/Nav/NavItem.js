@@ -2,18 +2,18 @@ import React from "react";
 import classNames from "classnames";
 import {
   CoreComponent,
-  getCorePropDefaults,
-  getCorePropTypes,
+  setCorePropDefaults,
+  setCorePropTypes,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class NavItem extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     minimized: "bool"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.ITEM,
     text: "",

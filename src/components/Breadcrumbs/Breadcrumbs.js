@@ -3,18 +3,18 @@ import React from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropDefaults,
-  getCorePropTypes,
+  setCorePropDefaults,
+  setCorePropTypes,
   ROLE
 } from "../../lib";
 import "./Breadcrumbs.css";
 
 class Breadcrumbs extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     pathnames: "array"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     uirole: ROLE.BREADCRUMBS,
     pathnames: []
   });

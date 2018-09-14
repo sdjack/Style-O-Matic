@@ -2,7 +2,7 @@ import React, { cloneElement } from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropDefaults,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 import Drawer from "../Drawer/Drawer.js";
@@ -18,7 +18,7 @@ class FooterDrawer extends Drawer {
 }
 
 class Footer extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "footer",
     uirole: ROLE.FOOTER
   });

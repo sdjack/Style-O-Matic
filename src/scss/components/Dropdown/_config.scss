@@ -4,8 +4,8 @@
 
 // VARIABLES
 
-$dropdown-text-color: $color-dark-alpha-5 !default;
-$dropdown-background-color: $color-dark-alpha-0 !default;
+$dropdown-text-color: color-dark-alpha(0.5) !default;
+$dropdown-background-color: color-dark-alpha(0.033) !default;
 $dropdown-toggle-padding: 10px 24px 10px 12px !default;
 $dropdown-padding: 4px $padding !default;
 $dropdown-transition-properties: height,box-shadow,color,background-color;

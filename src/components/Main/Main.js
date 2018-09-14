@@ -2,8 +2,8 @@ import React, { cloneElement } from "react";
 import cx from "classnames";
 import {
   CoreComponent,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
@@ -20,12 +20,12 @@ class MainDrawer extends Drawer {
 }
 
 class Main extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     header: "bool",
     footer: "bool"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "main",
     uirole: ROLE.MAIN,
     fixed: false,

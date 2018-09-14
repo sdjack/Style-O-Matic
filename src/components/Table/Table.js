@@ -2,8 +2,8 @@ import React, { cloneElement } from "react";
 import cx from "classnames";
 import {
   CoreComponent,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   getValidProps,
   ROLE,
   uID
@@ -43,8 +43,30 @@ function ParseSectionData(data, UUID, colSpan) {
   return output;
 }
 
+function ParseTableData(data) {
+  const output = [];
+  const UUID = uID();
+  let colSpan = 0;
+  if (data.head && data.head[0]) {
+    colSpan = data.head[0].length;
+    const compiled = ParseSectionData(data.head, UUID, colSpan);
+    output.push(<TableHead key={`thead_${UUID}`}>{compiled}</TableHead>);
+  }
+  if (data.body && data.body[0]) {
+    colSpan = colSpan === 0 ? data.body[0].length : colSpan;
+    const compiled = ParseSectionData(data.body, UUID, colSpan);
+    output.push(<TableBody key={`tbody_${UUID}`}>{compiled}</TableBody>);
+  }
+  if (data.foot && data.foot[0]) {
+    colSpan = colSpan === 0 ? data.foot[0].length : colSpan;
+    const compiled = ParseSectionData(data.foot, UUID, colSpan);
+    output.push(<TableFoot key={`tfoot_${UUID}`}>{compiled}</TableFoot>);
+  }
+  return output;
+}
+
 class Table extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     bordered: "bool",
     padded: "bool",
     hover: "bool",
@@ -53,7 +75,7 @@ class Table extends CoreComponent {
     pagination: "number"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "table",
     uirole: ROLE.TABLE,
     bordered: false,
@@ -70,27 +92,7 @@ class Table extends CoreComponent {
   static Row = TableRow;
   static Cell = TableCell;
 
-  static FactoryData = data => {
-    const output = [];
-    const UUID = uID();
-    let colSpan = 0;
-    if (data.head && data.head[0]) {
-      colSpan = data.head[0].length;
-      const compiled = ParseSectionData(data.head, UUID, colSpan);
-      output.push(<TableHead key={`thead_${UUID}`}>{compiled}</TableHead>);
-    }
-    if (data.body && data.body[0]) {
-      colSpan = colSpan === 0 ? data.body[0].length : colSpan;
-      const compiled = ParseSectionData(data.body, UUID, colSpan);
-      output.push(<TableBody key={`tbody_${UUID}`}>{compiled}</TableBody>);
-    }
-    if (data.foot && data.foot[0]) {
-      colSpan = colSpan === 0 ? data.foot[0].length : colSpan;
-      const compiled = ParseSectionData(data.foot, UUID, colSpan);
-      output.push(<TableFoot key={`tfoot_${UUID}`}>{compiled}</TableFoot>);
-    }
-    return output;
-  };
+  static FactoryData = ParseTableData;
 
   constructor(props) {
     super(props);
@@ -120,6 +122,13 @@ class Table extends CoreComponent {
     this.forceUpdate();
   };
   /* eslint-enable */
+
+  preParseChildren = children => {
+    if (children && (children.head || children.body || children.foot)) {
+      return ParseTableData(children);
+    }
+    return children;
+  };
 
   renderInteractiveChild = (child, props) => {
     const role = child.props.uirole;
@@ -220,12 +229,13 @@ class Table extends CoreComponent {
 
     const uiClassCore = cx(className, classes);
     delete props.className;
+    const tableContents = this.preParseChildren(children);
 
-    const bodyRows = this.preRenderBody(children, inherited);
+    const bodyRows = this.preRenderBody(tableContents, inherited);
 
     return (
       <Component className={uiClassCore} {...props}>
-        {React.Children.map(children, child => {
+        {React.Children.map(tableContents, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined" &&
@@ -236,7 +246,7 @@ class Table extends CoreComponent {
           return null;
         })}
         {bodyRows}
-        {React.Children.map(children, child => {
+        {React.Children.map(tableContents, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined" &&

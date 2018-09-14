@@ -3,12 +3,12 @@ import {
   CoreComponent,
   getValidProps,
   getElementType,
-  getCorePropDefaults,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 
 class ToolBarIcon extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.ICON
   });

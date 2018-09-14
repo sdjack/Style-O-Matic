@@ -2,8 +2,8 @@ import React, { cloneElement } from "react";
 import classNames from "classnames";
 import {
   CoreComponent,
-  getPropDefaultsAutoId,
-  getPropTypesA11y,
+  setPropDefaultsAutoId,
+  setPropTypesA11y,
   getValidProps,
   ROLE
 } from "../../lib";
@@ -12,12 +12,12 @@ import TabToggle from "./TabToggle.js";
 import "./Tabs.css";
 
 class Tabs extends CoreComponent {
-  static propTypes = getPropTypesA11y({
+  static propTypes = setPropTypesA11y({
     smart: "bool",
     onSwitch: "func"
   });
 
-  static defaultProps = getPropDefaultsAutoId({
+  static defaultProps = setPropDefaultsAutoId({
     renderAs: "div",
     uirole: ROLE.TABS,
     smart: false,

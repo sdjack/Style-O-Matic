@@ -1,20 +1,20 @@
 import React, { cloneElement } from "react";
 import {
   CoreComponent,
-  getCorePropDefaults,
-  getCorePropTypes,
+  setCorePropDefaults,
+  setCorePropTypes,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class TableHead extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     filtering: "func",
     sorting: "func",
     editing: "func"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "thead",
     uirole: ROLE.THEAD,
     filtering: null,

@@ -3,8 +3,8 @@ import _ from "lodash";
 import classNames from "classnames";
 import {
   CoreComponent,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   getValidProps,
   UIGlobals,
   ROLE
@@ -12,11 +12,11 @@ import {
 import "./Drawer.css";
 
 class Drawer extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     defaultOpen: "bool"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     uirole: ROLE.DRAWER,
     orientation: "horizontal",
     defaultOpen: true

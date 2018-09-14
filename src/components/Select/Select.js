@@ -2,15 +2,15 @@ import React from "react";
 import classNames from "classnames";
 import {
   CoreComponent,
-  getPropTypesA11y,
-  getCorePropDefaults,
+  setPropTypesA11y,
+  setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
 import "./Select.css";
 
 class Select extends CoreComponent {
-  static propTypes = getPropTypesA11y({
+  static propTypes = setPropTypesA11y({
     id: "string!",
     required: "bool",
     label: "string",
@@ -18,7 +18,7 @@ class Select extends CoreComponent {
     options: "array"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "select",
     uirole: ROLE.INPUT,
     required: false,

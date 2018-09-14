@@ -2,7 +2,7 @@ import React from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropDefaults,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 import GridRow from "./GridRow.js";
@@ -10,7 +10,7 @@ import GridColumn from "./GridColumn.js";
 import "./Grid.css";
 
 class Grid extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.GRID
   });

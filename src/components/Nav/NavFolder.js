@@ -4,19 +4,19 @@ import activeElement from "dom-helpers/activeElement";
 import contains from "dom-helpers/query/contains";
 import {
   CoreComponent,
-  getCorePropDefaults,
-  getCorePropTypes,
+  setCorePropDefaults,
+  setCorePropTypes,
   getValidProps,
   UIGlobals,
   ROLE
 } from "../../lib";
 
 class NavFolder extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     minimized: "bool"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     uirole: ROLE.FOLDER,
     text: ""
   });

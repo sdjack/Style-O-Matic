@@ -2,15 +2,15 @@ import React from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 
 class AccordionTitle extends CoreComponent {
-  static propTypes = getCorePropTypes({ accordionindex: "string" });
+  static propTypes = setCorePropTypes({ accordionindex: "string" });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "dt",
     uirole: ROLE.TITLE
   });
@@ -24,7 +24,7 @@ class AccordionTitle extends CoreComponent {
       props
     } = getValidProps(this.props);
 
-    const caretClass = active ? "ui-icon-folder-open" : "ui-icon-folder-closed";
+    const caretClass = active ? "ui-icon-folder-open" : "ui-icon-folder";
 
     return (
       <Component {...props} accordionindex={accordionindex}>

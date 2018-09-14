@@ -4,17 +4,17 @@ import classNames from "classnames";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 
 class GridColumn extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     cols: ["string", "number"]
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     uirole: ROLE.COLUMN,
     cols: 12,
     textAlign: "left"

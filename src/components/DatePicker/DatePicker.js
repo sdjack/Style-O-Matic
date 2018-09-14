@@ -8,8 +8,8 @@ import {
   isLeftClickEvent,
   uID,
   getValidProps,
-  getPropTypesA11y,
-  getPropDefaultsAutoId,
+  setPropTypesA11y,
+  setPropDefaultsAutoId,
   ROLE
 } from "../../lib";
 import Calendar from "./Calendar.js";
@@ -18,14 +18,14 @@ import "./DatePicker.css";
 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 class DatePicker extends CoreComponent {
-  static propTypes = getPropTypesA11y({
+  static propTypes = setPropTypesA11y({
     inputenabled: "bool",
     iconenabled: "bool",
     label: "string",
     expiredlock: "bool"
   });
 
-  static defaultProps = getPropDefaultsAutoId({
+  static defaultProps = setPropDefaultsAutoId({
     renderAs: "div",
     uirole: ROLE.DATEPICKER,
     label: null,

@@ -3,8 +3,8 @@ import {
   isModifiedEvent,
   isLeftClickEvent,
   CoreComponent,
-  getPropTypesA11y,
-  getPropDefaultsAutoId,
+  setPropTypesA11y,
+  setPropDefaultsAutoId,
   getValidProps,
   getElementType,
   ROLE
@@ -13,11 +13,11 @@ import Dropdown from "../Dropdown/Dropdown.js";
 import "./Button.css";
 
 class Button extends CoreComponent {
-  static propTypes = getPropTypesA11y({
+  static propTypes = setPropTypesA11y({
     dropdown: "bool"
   });
 
-  static defaultProps = getPropDefaultsAutoId({
+  static defaultProps = setPropDefaultsAutoId({
     renderAs: "button",
     uirole: ROLE.BUTTON,
     dropdown: false

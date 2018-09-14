@@ -1,22 +1,22 @@
 import React from "react";
 import {
   CoreComponent,
-  getCorePropDefaults,
-  getPropTypesA11y,
+  setCorePropDefaults,
+  setPropTypesA11y,
   getValidProps,
   ROLE
 } from "../../lib";
 import "./Pill.css";
 
 class Pill extends CoreComponent {
-  static propTypes = getPropTypesA11y(null, {
+  static propTypes = setPropTypesA11y(null, {
     actionIcon: "string",
     pillData: "object",
     onRemove: "func",
     onAction: "func"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.PILL,
     actionIcon: "ui-icon ui-icon-star",

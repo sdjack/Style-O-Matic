@@ -87,7 +87,7 @@
     cursor: pointer;
     border-width: 0 0 1px 0 !important; 
     border-style: solid;
-    border-color: $color-invisible $color-invisible $color-dark-alpha-2 $color-invisible !important;
+    border-color: $color-invisible $color-invisible color-dark-alpha(0.2) $color-invisible !important;
     @include text-align-left();
 
     & > strong {
@@ -95,7 +95,7 @@
     }
 
     &:hover, &:focus, &.ui-dropdown-item-selected, &.ui-dropdown-option-selected {
-        background-color: $color-dark-alpha-2;
+        background-color: color-dark-alpha(0.2);
     }
 
     &.disabled {

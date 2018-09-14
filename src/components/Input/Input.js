@@ -2,15 +2,15 @@ import React from "react";
 import classNames from "classnames";
 import {
   CoreComponent,
-  getPropTypesA11y,
-  getCorePropDefaults,
+  setPropTypesA11y,
+  setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
 import "./Input.css";
 
 class Input extends CoreComponent {
-  static propTypes = getPropTypesA11y({
+  static propTypes = setPropTypesA11y({
     id: "string!",
     required: "bool",
     label: "string",
@@ -20,7 +20,7 @@ class Input extends CoreComponent {
     selectOptions: "array"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "input",
     uirole: ROLE.INPUT,
     type: "text",

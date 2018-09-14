@@ -3,8 +3,8 @@ import cx from "classnames";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 import CardHeader from "./CardHeader";
@@ -13,11 +13,11 @@ import CardFooter from "./CardFooter";
 import "./Card.css";
 
 class Card extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     striped: "bool"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.CARD,
     striped: false

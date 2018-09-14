@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {
   CoreComponent,
-  getCorePropDefaults,
+  setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
 import "./ToolTip.css";
 
 class ToolTip extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.TOOLTIP,
     position: "right"

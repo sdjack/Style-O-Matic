@@ -2,8 +2,8 @@ import React, { cloneElement } from "react";
 import classNames from "classnames";
 import {
   CoreComponent,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   getValidProps,
   UIGlobals,
   ROLE
@@ -13,12 +13,12 @@ import NavFolder from "./NavFolder.js";
 import "./Nav.css";
 
 class Nav extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     defaultOpen: "bool",
     canMinimize: "bool"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "nav",
     uirole: ROLE.NAV,
     orientation: "horizontal",
@@ -39,7 +39,6 @@ class Nav extends CoreComponent {
   }
 
   componentDidMount() {
-    this.ensureOrientation();
     window.addEventListener("resize", this.detectIfMobile);
   }
 
@@ -49,26 +48,6 @@ class Nav extends CoreComponent {
 
   handleOnClick = () => {
     this.setState({ open: !this.state.open });
-  };
-
-  ensureOrientation = () => {
-    if (this.node) {
-      const { orientation } = this.state;
-      const { width, height } = this.node.getBoundingClientRect();
-      const {
-        height: screenHeight,
-        width: screenWidth
-      } = UIGlobals.getScreenDimensions();
-      let newOrientation = orientation;
-      if (height > screenHeight / 2) {
-        newOrientation = "vertical";
-      } else {
-        newOrientation = "horizontal";
-      }
-      if (newOrientation !== orientation) {
-        this.setState({ orientation: newOrientation });
-      }
-    }
   };
 
   detectIfMobile = () => {
@@ -102,9 +81,8 @@ class Nav extends CoreComponent {
       props,
       inherited
     } = getValidProps(this.props, this.state);
-
-    const contentClass =
-      !canMinimize && !this.state.open ? " ui-nav-hidden" : "";
+    const { open } = this.state;
+    const contentClass = !canMinimize && !open ? " ui-nav-hidden" : "";
 
     return (
       <Component {...props}>

@@ -88,52 +88,39 @@
 }
 
 .ui-raised {
-  border-radius: 4px;
   @include shadow-raised();
 }
 
 .ui-inset {
-  border-radius: 4px;
   @include shadow-inset();
 }
 
 .ui-well {
   min-height: 18px;
-  padding: 1em 1em;
+  padding: $padding-panels;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
   margin-bottom: 1em;
-  background-color: rgba(255, 255, 255, .25);
-  border: 1px solid rgba(0, 0, 0, .05);
-  border-radius: 6px;
-  @include box-shadow(inset 1px 2px 2px rgba(50, 50, 50, .15), inset -1px -2px 2px #ffffff);
+  background-color: rgba(200,200,200,.033);
+  border: $border-hinted;
+  @include shadow-well();
 }
 
 .ui-panel {
   background-color: #fff;
-  border: solid 1px rgba(0,0,0,0.14);
-  max-width: 96% !important;
-  margin: 0 2% .5em;
-  padding: 0.1em 0.26em 0.2em 0.26em;
-  @include shadow-card();
-  &>.well {
-    background-color: rgba(0, 0, 0, .03);
-  }
+  border: $border-hinted;
+  padding: $padding-panels;
+  @include shadow-panel();
 }
 
 .ui-masked {
   display: block;
-  padding: 0;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
   margin-bottom: 1em;
-  background-color: rgba(0, 0, 0, .1);
-  border: 1px solid rgba(0, 0, 0, .05);
-  border-radius: 6px;
-  @include box-shadow(inset 0 1px 0px rgba(0, 0, 0, .15), inset 0 -1px 0px rgba(255, 255, 255, .85));
 }
 
 .ui-unavailable {

@@ -2,8 +2,8 @@ import React, { cloneElement } from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getPropDefaultsAutoId,
+  setCorePropTypes,
+  setPropDefaultsAutoId,
   ROLE
 } from "../../lib";
 import AccordionTitle from "./AccordionTitle.js";
@@ -11,11 +11,11 @@ import AccordionContent from "./AccordionContent.js";
 import "./Accordion.css";
 
 class Accordion extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     caret: "bool"
   });
 
-  static defaultProps = getPropDefaultsAutoId({
+  static defaultProps = setPropDefaultsAutoId({
     renderAs: "dl",
     uirole: ROLE.ACCORDION,
     caret: false

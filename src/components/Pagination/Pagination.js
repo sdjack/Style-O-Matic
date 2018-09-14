@@ -1,21 +1,21 @@
 import React from "react";
 import {
   CoreComponent,
-  getCorePropDefaults,
-  getPropTypesA11y,
+  setCorePropDefaults,
+  setPropTypesA11y,
   getValidProps,
   ROLE
 } from "../../lib";
 import "./Pagination.css";
 
 class Pagination extends CoreComponent {
-  static propTypes = getPropTypesA11y({
+  static propTypes = setPropTypesA11y({
     pageNum: "number",
     pageTotal: "number",
     onPageChange: "func"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.PAGINATION,
     id: "pagination_id",

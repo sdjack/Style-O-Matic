@@ -4,12 +4,12 @@ import {
   CoreComponent,
   getValidProps,
   getElementType,
-  getCorePropDefaults,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 
 class ToolBarTitle extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.TITLE,
     text: ""

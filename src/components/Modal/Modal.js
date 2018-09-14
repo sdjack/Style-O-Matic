@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import cx from "classnames";
 import {
   CoreComponent,
-  getCorePropDefaults,
-  getCorePropTypes,
+  setCorePropDefaults,
+  setCorePropTypes,
   getValidProps,
   ROLE
 } from "../../lib";
@@ -16,7 +16,7 @@ import ModalFooter from "./ModalFooter";
 import "./Modal.css";
 
 class Modal extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.MODAL
   });

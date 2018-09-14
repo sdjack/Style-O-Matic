@@ -2,15 +2,15 @@ import React from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 
 class AccordionContent extends CoreComponent {
-  static propTypes = getCorePropTypes({ accordionindex: "string" });
+  static propTypes = setCorePropTypes({ accordionindex: "string" });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "dd",
     uirole: ROLE.CONTENT
   });

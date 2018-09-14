@@ -7,8 +7,8 @@ import {
   isModifiedEvent,
   isLeftClickEvent,
   getValidProps,
-  getPropTypesA11y,
-  getPropDefaultsAutoId,
+  setPropTypesA11y,
+  setPropDefaultsAutoId,
   ROLE
 } from "../../lib";
 import DropdownToggle from "./DropdownToggle.js";
@@ -16,9 +16,9 @@ import DropdownContent from "./DropdownContent.js";
 import "./Dropdown.css";
 
 class Dropdown extends CoreComponent {
-  static propTypes = getPropTypesA11y();
+  static propTypes = setPropTypesA11y();
 
-  static defaultProps = getPropDefaultsAutoId({
+  static defaultProps = setPropDefaultsAutoId({
     renderAs: "div",
     uirole: ROLE.DROPDOWN
   });

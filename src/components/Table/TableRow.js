@@ -1,14 +1,14 @@
 import React, { cloneElement } from "react";
 import {
   CoreComponent,
-  getCorePropTypes,
-  getCorePropDefaults,
+  setCorePropTypes,
+  setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class TableRow extends CoreComponent {
-  static propTypes = getCorePropTypes({
+  static propTypes = setCorePropTypes({
     rowid: "number",
     rowtype: "string",
     filtering: "func",
@@ -16,7 +16,7 @@ class TableRow extends CoreComponent {
     editing: "func"
   });
 
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     rowid: 0,
     uirole: ROLE.ROW,
     rowtype: "body",

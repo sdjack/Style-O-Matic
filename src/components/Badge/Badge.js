@@ -2,7 +2,7 @@ import React from "react";
 import {
   CoreComponent,
   getValidProps,
-  getCorePropDefaults,
+  setCorePropDefaults,
   ROLE
 } from "../../lib";
 import BadgeContent from "./BadgeContent";
@@ -10,7 +10,7 @@ import BadgeIcon from "./BadgeIcon";
 import "./Badge.css";
 
 class Badge extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     uirole: ROLE.BADGE
   });
 

@@ -133,34 +133,34 @@
   .ui-tooltip-content:after {
     border-color: rgba(255, 255, 255, 0);
     border-width: 8px; }
-t-style-type: none;
-  text-align: -webkit-end;
-  text-align: end;
-  -webkit-align-items: end;
-      -ms-flex-align: end;
-          align-items: end;
-  -webkit-align-content: end;
-      -ms-flex-line-pack: end;
-          align-content: end; }
-.sort-button {
-  padding: 0 4px;
-  float: right; }
+le;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center; }
+  .ui-tabs-tab-button.active {
+    background: transparent; }
+  .ui-tabs-tab-button.disabled {
+    cursor: not-allowed; }
 
-.table-filter {
-  width: 100%;
-  background-color: #3F4348;
-  display: none;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
-  z-index: 9999; }
-  .table-filter.active {
-    display: block; }
+@-webkit-keyframes border-expand {
+  0% {
+    opacity: 0;
+    width: 0; }
+  100% {
+    opacity: 1;
+    width: 100%; } }
 
-.table-filter-outer-wrapper {
-  display: -webkit-flex;
-  display: -ms-flexbox;
+@keyframes border-expand {
+  0% {
+    opacity: 0;
+    width: 0; }
+  100% {
+    opacity: 1;
+    width: 100%; } }
+ay: -ms-flexbox;
   display: flex;
   -webkit-flex-direction: row;
       -ms-flex-direction: row;

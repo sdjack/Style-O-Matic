@@ -1,13 +1,13 @@
 import React, { cloneElement } from "react";
 import {
   CoreComponent,
-  getCorePropDefaults,
+  setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class TableBody extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "tbody",
     uirole: ROLE.TBODY
   });

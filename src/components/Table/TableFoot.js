@@ -2,14 +2,14 @@ import React, { cloneElement } from "react";
 import classNames from "classnames";
 import {
   CoreComponent,
-  getCorePropDefaults,
-  getCorePropTypes,
+  setCorePropDefaults,
+  setCorePropTypes,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class TableFoot extends CoreComponent {
-  static defaultProps = getCorePropDefaults({
+  static defaultProps = setCorePropDefaults({
     renderAs: "tfoot",
     uirole: ROLE.TFOOT
   });
