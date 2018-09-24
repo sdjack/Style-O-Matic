@@ -260,6 +260,29 @@ class Input extends CoreComponent {
           </div>
         </div>
       );
+    } else if (type === "file") {
+      return (
+        <div className={className}>
+          {this.renderLabel(fieldId, label, required)}
+          <div
+            key={`wrapper_${this.renderKey}`}
+            className={classNames(preParsedClass, wrapperClasses)}
+          >
+            <label>
+              {this.state.value === "" ? "Choose a file..." : this.state.value}
+              <Component
+                key={this.renderKey}
+                {...props}
+                id={fieldId}
+                name={fieldName}
+                type={type}
+                onChange={this.handleOnChange}
+              />
+            </label>
+            {children}
+          </div>
+        </div>
+      );
     } else if (type === "number") {
       return (
         <div className={className}>
