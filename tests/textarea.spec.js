@@ -20,7 +20,7 @@ describe("Textarea", () => {
   });
 
   it("displays a success message", () => {
-    render(<Textarea id="testtextarea">SUCCESS</Textarea>, node, () => {
+    render(<Textarea id="testtextarea" defaultValue="SUCCESS"></Textarea>, node, () => {
       expect(node.innerHTML).toContain("SUCCESS");
     });
   });
