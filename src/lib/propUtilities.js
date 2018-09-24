@@ -90,6 +90,7 @@ const DefaultPropTypes = {
   disabled: PropTypes.bool,
   open: PropTypes.bool,
   active: PropTypes.bool,
+  visible: PropTypes.bool,
   overlay: PropTypes.bool,
   fixed: PropTypes.bool,
   color: PropTypes.oneOf([
@@ -173,9 +174,10 @@ const DefaultPropValues = {
   circular: null,
   masked: null,
   to: null,
-  disabled: false,
-  open: false,
-  active: false,
+  disabled: null,
+  open: null,
+  active: null,
+  visible: null,
   overlay: null,
   fixed: null,
   color: null,
@@ -307,6 +309,7 @@ export function getUIClassString(props, state) {
     state && !_.isNil(state.disabled) ? state.disabled : props.disabled;
   const active = state && !_.isNil(state.active) ? state.active : props.active;
   const open = state && !_.isNil(state.open) ? state.open : props.open;
+  const visible = state && !_.isNil(state.visible) ? state.visible : props.visible;
   const invalid =
     state && !_.isNil(state.invalid) ? state.invalid : props.invalid;
   const orientation =
@@ -334,6 +337,7 @@ export function getUIClassString(props, state) {
     disabled,
     active,
     open,
+    visible,
     invalid
   };
 

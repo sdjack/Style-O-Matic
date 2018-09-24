@@ -1,5 +1,4 @@
 import React, { cloneElement } from "react";
-import classNames from "classnames";
 import {
   CoreComponent,
   setCorePropTypes,
@@ -31,10 +30,12 @@ class Nav extends CoreComponent {
 
   constructor(props, ...args) {
     super(props, ...args);
+    const isMobile = window.innerWidth <= 1024;
+    const open = isMobile ? false : props.defaultOpen;
     this.state = {
       orientation: props.orientation,
-      open: props.defaultOpen,
-      isMobile: window.innerWidth <= 1024
+      open,
+      isMobile
     };
   }
 
@@ -81,7 +82,7 @@ class Nav extends CoreComponent {
       props,
       inherited
     } = getValidProps(this.props, this.state);
-    const { open } = this.state;
+    const { open, isMobile } = this.state;
     const contentClass = !canMinimize && !open ? " ui-nav-hidden" : "";
 
     return (
@@ -98,6 +99,7 @@ class Nav extends CoreComponent {
               typeof child.props.uirole !== "undefined"
             ) {
               return this.renderChild(child, {
+                visible: open,
                 ...inherited
               });
             }

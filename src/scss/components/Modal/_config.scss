@@ -6,12 +6,12 @@
 
 $modal-background-color: $color-lighter !default;
 $modal-background-color-disabled: $color-light;
-$modal-text-color: color-dark-alpha(0.5) !default;
+$modal-text-color: rgba(0,0,0,0.5) !default;
 $modal-text-color-disabled: $color-ultra-light;
 $modal-action-background-color: $color-ultra-light !default;
-$modal-action-active-background-color: color-dark-alpha(0.2) !default;
-$modal-action-text-color: color-dark-alpha(0.5) !default;
-$modal-action-active-text-color: color-light-alpha(0.8) !default;
+$modal-action-active-background-color: rgba(0,0,0,0.2) !default;
+$modal-action-text-color: rgba(0,0,0,0.5) !default;
+$modal-action-active-text-color: rgba(255,255,255,0.8) !default;
 $modal-min-width: 32px !default;
 $modal-height: 29px !default;
 $modal-margin: 0px 0px 0px ($padding-large / 2) !default;

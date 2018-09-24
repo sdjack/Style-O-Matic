@@ -219,8 +219,8 @@
 	user-select: none;
 
 	&:hover {
-		border-left: color-dark-alpha(0.4);
-		background-color: color-dark-alpha(0.2);
+		border-left: rgba(0,0,0,0.4);
+		background-color: rgba(0,0,0,0.2);
 	}
 }
 
@@ -230,7 +230,7 @@
 	border-radius: 0 $border-radius 0 0;
 
 	&:hover {
-		border-bottom: color-dark-alpha(0.4);
+		border-bottom: rgba(0,0,0,0.4);
 	}
 }
 
@@ -271,7 +271,7 @@
       bottom: 0px;
     }
     &:hover {
-      background-color: color-dark-alpha(0.1);
+      background-color: rgba(0,0,0,0.1);
     }
 
     & > input[type="file"] {

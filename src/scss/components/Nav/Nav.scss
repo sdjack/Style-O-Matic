@@ -8,13 +8,10 @@
 .ui-nav-content {
   color: inherit;
   background-color: inherit;
-  @include animate-default(0.2s);
-  transition-property: all;
 }
 
 .ui-nav-content {
   display: block;
-  height: 100%;
   overflow: hidden;
   &.ui-nav-hidden {
     width: 0px !important;
@@ -25,6 +22,7 @@
 .ui-nav {
   display: flex;
   width: auto;
+  height: auto;
   padding: 0px;
   margin: 0px;
   flex-wrap: nowrap;
@@ -39,19 +37,9 @@
 
     & > .ui-nav-content {
       width: auto;
+      height: 100%;
       & > .ui-nav-item {
         display: block;
-      }
-
-      @media screen and (max-width: $mobile-screen-threshold) {
-        width: 0px;
-        & > .ui-nav-item {
-          & > .ui-nav-item-link {
-            & > .ui-tooltip {
-              display: none;
-            }
-          }
-        }
       }
     }
   }
@@ -64,36 +52,20 @@
 
     & > .ui-nav-content {
       width: 100%;
+      height: auto;
       & > .ui-nav-item {
         display: inline-block;
         text-align: center !important;
       }
-
-      @media screen and (max-width: $mobile-screen-threshold) {
-        height: 0px;
-        & > .ui-nav-item {
-          display: contents;
-        }
-      }
     }
 
-    &.open {
-      & > .ui-nav-content {
-        height: auto !important;
-      }
+    @media screen and (max-width: $mobile-screen-threshold) {
+      height: auto;
     }
   }
 
-  &.open {
-    & > .ui-nav-content {
-      & > .ui-nav-item {
-        & > .ui-nav-item-link {
-          & > .ui-nav-item-info {
-            display: inline;
-          }
-        }
-      }
-    }
+  @media screen and (max-width: $mobile-screen-threshold) {
+    flex-wrap: wrap;
   }
 }
 
@@ -101,13 +73,23 @@
   position: relative;
   justify-content: space-between;
   text-align: left;
-  height: $nav-item-height;
-  width: auto;
+  height: 0px;
+  width: 0px;
   margin: 0;
   padding: 0;
   cursor: pointer;
   color: inherit;
+  overflow: hidden;
   background-color: rgba(0, 0, 0, 0);
+  @include animate-default(0.2s);
+  transition-property: all;
+  &.visible {
+    height: $nav-item-height;
+    width: auto;
+  }
+  @media screen and (max-width: $mobile-screen-threshold) {
+    display: block !important;
+  }
 }
 
 .ui-nav-item-link {
@@ -138,7 +120,7 @@
 }
 
 .ui-nav-item-info {
-  display: none;
+  display: inline;
   max-width: calc(100% - 40px);
   height: 100%;
   text-align: start;
@@ -245,16 +227,17 @@
 
 .ui-nav-toggle {
   display: inline-block;
+  color: inherit;
   @include text-horizontal-align-left();
-  &:hover {
-    background-color: $color-blue-highlight;
+  @media screen and (max-width: $mobile-screen-threshold) {
+    display: block !important;
   }
 }
 
 .ui-nav-toggle-button {
   width: $framing-size;
   height: $framing-size;
-  color: $color-darker;
+  color: inherit;
   background-color: transparent;
   padding: 2px;
   font-size: $toggle-size;

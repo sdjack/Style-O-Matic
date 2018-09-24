@@ -95,6 +95,7 @@ class NavFolder extends CoreComponent {
       path,
       text,
       icon,
+      visible,
       children,
       props,
       inherited
@@ -108,10 +109,11 @@ class NavFolder extends CoreComponent {
     };
 
     const caretClass = open ? "ui-icon-remove" : "ui-icon-add";
+    const itemClass = visible ? "ui-nav-item visible" : "ui-nav-item";
 
     return (
       <div
-        className="ui-nav-item"
+        className={itemClass}
         ref={this.onSetRef}
         role="presentation"
         onKeyDown={this.toggleExpansion}

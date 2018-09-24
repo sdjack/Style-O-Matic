@@ -412,23 +412,23 @@
   //box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3), inset 0 1px 3px 0 rgba(0, 0, 0, 0.3);
   border: solid 0.5px $text-color;
 }
-@mixin button-skin($shadowColor: color-dark-alpha(0.2)) {
+@mixin button-skin($shadowColor: rgba(0,0,0,0.2)) {
   box-shadow: 	0px 0px 2px 0px $shadowColor,
   				0px 1px 4px -1px $shadowColor;
 }
-@mixin button-shadow($shadowColor: color-dark-alpha(0.2)) {
+@mixin button-shadow($shadowColor: rgba(0,0,0,0.2)) {
   box-shadow:   0px 0px 2px 0px $shadowColor,
           0px 1px 4px -1px $shadowColor;
 }
-@mixin buttonbar-shadow($shadowColor: color-dark-alpha(0.4)) {
+@mixin buttonbar-shadow($shadowColor: rgba(0,0,0,0.4)) {
   box-shadow:   0px 1px 3px -2px $shadowColor,
           1px 0px 3px -2px $shadowColor;
 }
-@mixin dropdown-shadow($shadowColor: color-dark-alpha(0.2)) {
+@mixin dropdown-shadow($shadowColor: rgba(0,0,0,0.2)) {
   box-shadow:   0px 0px 2px 0px $shadowColor,
           0px 1px 4px -1px $shadowColor;
 }
-@mixin pill-skin($shadowColor: color-dark-alpha(0.2)) {
+@mixin pill-skin($shadowColor: rgba(0,0,0,0.2)) {
   box-shadow: 0 0 1px 0 $shadowColor,
           0px 1px 3px -1px $shadowColor;
 }
@@ -481,8 +481,8 @@
     box-shadow: none;
 }
 @mixin shadow-raised() {
-  box-shadow: 1px 1px 3px 0 rgba(0,0,0,.04),
-              1px 2px 6px -2px rgba(0,0,0,.14);
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,.33),
+              1px 2px 6px -2px rgba(0,0,0,.5);
 }
 @mixin shadow-inset() {
   box-shadow: inset 1px 2px 2px rgba(50, 50, 50, .15),
@@ -601,7 +601,7 @@
 }
 
 @mixin shadow-component() {
-  border: 1px solid color-dark-alpha(0.033);
+  border: 1px solid rgba(0,0,0,0.033);
   box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.25);
 }
 

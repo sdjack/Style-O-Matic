@@ -23,5 +23,5 @@ $table-tile-title-top: 20px;
 $table-tile-padding: 24px;
 $table-button-padding-right: 16px;
 $table-cell-top: $table-tile-padding / 2;
-$table-interactive-background-color: color-dark-alpha(0.3) !default;
-$table-interactive-text-color: color-light-alpha(0.5) !default;
+$table-interactive-background-color: rgba(0,0,0,0.3) !default;
+$table-interactive-text-color: rgba(255,255,255,0.5) !default;

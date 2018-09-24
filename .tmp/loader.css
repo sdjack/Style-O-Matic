@@ -28,14 +28,21 @@
 /**
 *  MISC
 */
-.ui-tooltip {
+.ui-tooltip,
+.ui-tooltip-hover {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%; }
-  .ui-tooltip:hover > .ui-tooltip-wrapper > .ui-tooltip-widget, .ui-tooltip.active > .ui-tooltip-wrapper > .ui-tooltip-widget {
-    display: block; }
+  @media screen and (max-width: 1024px) {
+    .ui-tooltip,
+    .ui-tooltip-hover {
+      display: none; } }
+
+.ui-tooltip-hover:hover > .ui-tooltip-wrapper > .ui-tooltip-widget {
+  width: auto;
+  height: auto; }
 
 .ui-tooltip-wrapper {
   position: relative;
@@ -43,69 +50,18 @@
   height: 100%; }
 
 .ui-tooltip-widget {
-  display: none;
   position: fixed;
-  z-index: 999; }
-  .ui-tooltip-widget.ui-tooltip-left {
-    top: 50%;
-    right: 100%;
-    margin-right: 10px;
-    margin-top: -18px; }
-    .ui-tooltip-widget.ui-tooltip-left > .ui-tooltip-content:before {
-      border-left-color: #1f1f1f;
-      left: 100%;
-      top: 48px;
-      margin-top: -42px; }
-    .ui-tooltip-widget.ui-tooltip-left > .ui-tooltip-content:after {
-      border-left-color: #262626;
-      left: 100%;
-      top: 50px;
-      margin-top: -40px; }
-  .ui-tooltip-widget.ui-tooltip-right {
-    top: 50%;
-    left: 100%;
-    margin-left: 10px;
-    margin-top: -18px; }
-    .ui-tooltip-widget.ui-tooltip-right > .ui-tooltip-content:before {
-      border-right-color: #1f1f1f;
-      right: 100%;
-      top: 48px;
-      margin-top: -42px; }
-    .ui-tooltip-widget.ui-tooltip-right > .ui-tooltip-content:after {
-      border-right-color: #262626;
-      right: 100%;
-      top: 50px;
-      margin-top: -40px; }
-  .ui-tooltip-widget.ui-tooltip-top {
-    left: 50%;
-    bottom: 100%;
-    margin-bottom: 10px;
-    margin-left: -18px; }
-    .ui-tooltip-widget.ui-tooltip-top > .ui-tooltip-content:before {
-      border-top-color: #1f1f1f;
-      top: 100%;
-      left: 48px;
-      margin-left: -42px; }
-    .ui-tooltip-widget.ui-tooltip-top > .ui-tooltip-content:after {
-      border-top-color: #262626;
-      top: 100%;
-      left: 50px;
-      margin-left: -40px; }
-  .ui-tooltip-widget.ui-tooltip-bottom {
-    left: 50%;
-    top: 100%;
-    margin-top: 10px;
-    margin-left: -18px; }
-    .ui-tooltip-widget.ui-tooltip-bottom > .ui-tooltip-content:before {
-      border-bottom-color: #1f1f1f;
-      bottom: 100%;
-      left: 48px;
-      margin-left: -42px; }
-    .ui-tooltip-widget.ui-tooltip-bottom > .ui-tooltip-content:after {
-      border-bottom-color: #262626;
-      bottom: 100%;
-      left: 50px;
-      margin-left: -40px; }
+  overflow: hidden;
+  width: 0px;
+  height: 0px;
+  z-index: 999;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
+  transition-property: all; }
+  .ui-tooltip-widget.open {
+    width: auto;
+    height: auto;
+    overflow: visible; }
 
 .ui-tooltip-content {
   min-height: 20px;
@@ -128,24 +84,94 @@
     position: absolute;
     pointer-events: none; }
   .ui-tooltip-content:before {
-    border-color: rgba(240, 240, 240, 0);
     border-width: 10px; }
   .ui-tooltip-content:after {
-    border-color: rgba(255, 255, 255, 0);
     border-width: 8px; }
-le;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-align-content: center;
-      -ms-flex-line-pack: center;
-          align-content: center; }
-  .ui-tabs-tab-button.active {
-    background: transparent; }
-  .ui-tabs-tab-button.disabled {
-    cursor: not-allowed; }
 
-@-webkit-keyframes border-expand {
+.ui-tooltip-left {
+  top: 50%;
+  right: 100%;
+  margin-right: 10px;
+  margin-top: -18px; }
+  .ui-tooltip-left > .ui-tooltip-content:before {
+    border-left-color: #1f1f1f;
+    left: 100%;
+    top: 48px;
+    margin-top: -42px; }
+  .ui-tooltip-left > .ui-tooltip-content:after {
+    border-left-color: #262626;
+    left: 100%;
+    top: 50px;
+    margin-top: -40px; }
+
+.ui-tooltip-right {
+  top: 50%;
+  left: 100%;
+  margin-left: 10px;
+  margin-top: -18px; }
+  .ui-tooltip-right > .ui-tooltip-content:before {
+    border-right-color: #1f1f1f;
+    right: 100%;
+    top: 48px;
+    margin-top: -42px; }
+  .ui-tooltip-right > .ui-tooltip-content:after {
+    border-right-color: #262626;
+    right: 100%;
+    top: 50px;
+    margin-top: -40px; }
+
+.ui-tooltip-top {
+  left: 50%;
+  bottom: 100%;
+  margin-bottom: 10px; }
+  .ui-tooltip-top > .ui-tooltip-content:before {
+    border-top-color: #1f1f1f;
+    top: 100%;
+    left: 48px;
+    margin-left: -42px; }
+  .ui-tooltip-top > .ui-tooltip-content:after {
+    border-top-color: #262626;
+    top: 100%;
+    left: 50px;
+    margin-left: -40px; }
+
+.ui-tooltip-bottom {
+  left: 50%;
+  top: 100%;
+  margin-top: 10px; }
+  .ui-tooltip-bottom > .ui-tooltip-content:before {
+    border-bottom-color: #1f1f1f;
+    bottom: 100%;
+    left: 48px;
+    margin-left: -42px; }
+  .ui-tooltip-bottom > .ui-tooltip-content:after {
+    border-bottom-color: #262626;
+    bottom: 100%;
+    left: 50px;
+    margin-left: -40px; }
+cursor: pointer;
+  border: none; }
+  .ui-toolbar-logo > img {
+    padding: 0;
+    height: 100%; }
+
+.ui-toolbar-list {
+  display: inline-block;
+  padding: 0px 12px;
+  margin: 0;
+  letter-spacing: 1px;
+  font-size: 15px;
+  line-height: 1;
+  list-style-type: none;
+  text-align: -webkit-end;
+  text-align: end;
+  -webkit-align-items: end;
+      -ms-flex-align: end;
+          align-items: end;
+  -webkit-align-content: end;
+      -ms-flex-line-pack: end;
+          align-content: end; }
+order-expand {
   0% {
     opacity: 0;
     width: 0; }
@@ -222,3 +248,188 @@ ay: -ms-flexbox;
 @media (min-width: 40em) {
   .ui-table {
     font-size: 13px; } }
+ddle;
+  -webkit-flex-basis: 36px;
+      -ms-flex-preferred-size: 36px;
+          flex-basis: 36px; }
+
+.ui-nav-item:hover, .ui-nav-item:focus,
+.ui-nav-folder-item:hover,
+.ui-nav-folder-item:focus {
+  color: #EFF3F8;
+  background-color: rgba(25, 118, 210, 0.5); }
+
+.ui-nav-toggle {
+  display: inline-block;
+  color: inherit;
+  text-align: -webkit-start;
+  text-align: start;
+  -webkit-align-items: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-align-content: start;
+      -ms-flex-line-pack: start;
+          align-content: start; }
+  @media screen and (max-width: 1024px) {
+    .ui-nav-toggle {
+      display: block !important; } }
+
+.ui-nav-toggle-button {
+  width: 40px;
+  height: 40px;
+  color: inherit;
+  background-color: transparent;
+  padding: 2px;
+  font-size: 28px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none !important; }
+  .ui-nav-toggle-button:hover, .ui-nav-toggle-button:focus, .ui-nav-toggle-button:active {
+    background-color: transparent;
+    border: none;
+    outline: none !important; }
+ select,
+  .ui-input-date > input,
+  .ui-input-date > select,
+  .ui-input-time > input,
+  .ui-input-time > select,
+  .ui-input-file > input,
+  .ui-input-file > select,
+  .ui-input-url > input,
+  .ui-input-url > select,
+  .ui-input-email > input,
+  .ui-input-email > select,
+  .ui-input-color > input,
+  .ui-input-color > select {
+    width: 100%;
+    height: 100%;
+    background-color: transparent !important;
+    background: none !important;
+    border: none !important; }
+
+/* INPUT TYPE: TEXTAREA */
+.ui-input-textarea {
+  width: 100%;
+  max-width: 100%;
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3); }
+  .ui-input-textarea > textarea {
+    width: 100%;
+    height: 100%;
+    min-height: 36px;
+    background-color: transparent !important;
+    background: none !important;
+    border: none !important;
+    overflow: auto;
+    resize: vertical; }
+
+/* INPUT TYPE: NUMBER */
+.ui-input-number {
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3); }
+  .ui-input-number > input {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 22px;
+    background-color: transparent !important;
+    background: none !important;
+    border-radius: 0 !important;
+    border: none !important; }
+
+.ui-input-number-up,
+.ui-input-number-down {
+  position: absolute;
+  display: inline-block;
+  right: -20px;
+  height: 17px;
+  width: 20px;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  text-align: center;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  line-height: 1;
+  background-color: white;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
+  .ui-input-number-up:hover,
+  .ui-input-number-down:hover {
+    border-left: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.2); }
+
+.ui-input-number-up {
+  top: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 0 3px 0 0; }
+  .ui-input-number-up:hover {
+    border-bottom: rgba(0, 0, 0, 0.4); }
+
+.ui-input-number-down {
+  bottom: 0;
+  border-radius: 0 0 3px 0; }
+
+/* INPUT TYPE: DATE */
+/* INPUT TYPE: TIME */
+/* INPUT TYPE: FILE */
+.ui-input-file > label {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-indent: 6px;
+  border-radius: 0 !important;
+  border: none !important;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: middle;
+  line-height: 34px;
+  cursor: pointer;
+  text-indent: 42px; }
+  .ui-input-file > label:before {
+    content: "\1F5B3";
+    font-size: 32px;
+    display: inline-block;
+    position: absolute;
+    left: -38px;
+    bottom: 0px; }
+  .ui-input-file > label:hover {
+    background-color: rgba(0, 0, 0, 0.1); }
+  .ui-input-file > label > input[type="file"] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1; }
+
+/* INPUT TYPE: CHECKBOX & RADIO */
+.ui-input-checkbox,
+.ui-input-radio {
+  margin: 10px; }
+  .ui-input-checkbox > label,
+  .ui-input-radio > label {
+    line-height: 1;
+    font-size: 18px; }
+    .ui-input-checkbox > label > input,
+    .ui-input-radio > label > input {
+      width: 20px;
+      height: 20px; }
+
+/* INPUT TYPE: RADIO */
+/* INPUT TYPE: URL */

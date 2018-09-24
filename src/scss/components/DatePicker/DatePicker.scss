@@ -123,13 +123,13 @@
 .ui-datepicker-month-cell,
 .ui-datepicker-foot-cell {
   padding: 0 !important;
-  background: color-dark-alpha(0.5);
+  background: rgba(0,0,0,0.5);
 
   @include text-align-center();
 
   &:hover,
   &:focus {
-    background: color-dark-alpha(0.8);
+    background: rgba(0,0,0,0.8);
   }
 }
 
@@ -156,15 +156,15 @@
 
 .ui-datepicker-weekday-cell {
   min-height: 18px;
-  background: color-dark-alpha(0.1);
-  box-shadow: inset -1px -1px 1px color-dark-alpha(0.2);
+  background: rgba(0,0,0,0.1);
+  box-shadow: inset -1px -1px 1px rgba(0,0,0,0.2);
 }
 
 .ui-datepicker-day-cell {
   width: 50px;
   height: 46px;
   background: $color-white;
-  box-shadow: inset -1px -1px 1px color-dark-alpha(0.033);
+  box-shadow: inset -1px -1px 1px rgba(0,0,0,0.033);
 
   &:hover,
   &:focus {
@@ -177,11 +177,11 @@
 }
 
 .ui-datepicker-cell-active {
-  background: color-dark-alpha(0.1);
+  background: rgba(0,0,0,0.1);
 }
 
 .ui-datepicker-cell-disabled {
-  background: color-dark-alpha(0.2);
+  background: rgba(0,0,0,0.2);
 
   &.ui-datepicker-day-active {
     background: $color-green;
@@ -189,20 +189,20 @@
 
   &:hover,
   &:focus {
-    background: color-dark-alpha(0.2);
+    background: rgba(0,0,0,0.2);
   }
 }
 
 .ui-datepicker-bordered-b {
-  box-shadow: inset 0 -1px 1px color-dark-alpha(0.033);
+  box-shadow: inset 0 -1px 1px rgba(0,0,0,0.033);
 }
 
 .ui-datepicker-bordered-r {
-  box-shadow: inset -1px 0 1px color-dark-alpha(0.033);
+  box-shadow: inset -1px 0 1px rgba(0,0,0,0.033);
 }
 
 .ui-datepicker-bordered-b-r {
-  box-shadow: inset -1px -1px 1px color-dark-alpha(0.033);
+  box-shadow: inset -1px -1px 1px rgba(0,0,0,0.033);
 }
 
 .ui-datepicker-control,
@@ -252,7 +252,7 @@
 .ui-datepicker-weekday {
   line-height: 16px !important;
   letter-spacing: 0;
-  color: color-dark-alpha(0.5);
+  color: rgba(0,0,0,0.5);
   font-size: 10px !important;
 }
 

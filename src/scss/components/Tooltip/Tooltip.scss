@@ -1,17 +1,24 @@
 // -----------------------------------------------------------------------------
 // Add Notes Here
 // -----------------------------------------------------------------------------
-.ui-tooltip {
+.ui-tooltip,
+.ui-tooltip-hover {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  &:hover,
-  &.active {
+  @media screen and (max-width: $mobile-screen-threshold) {
+    display: none;
+  }
+}
+
+.ui-tooltip-hover {
+  &:hover {
     & > .ui-tooltip-wrapper {
       & > .ui-tooltip-widget {
-        display: block;
+        width: auto;
+        height: auto;
       }
     }
   }
@@ -24,88 +31,19 @@
 }
 
 .ui-tooltip-widget {
-  display: none;
+  // display: block;
   position: fixed;
+  overflow: hidden;
+  width: 0px;
+  height: 0px;
   z-index: 999;
+  @include animate-default(0.2s);
+  transition-property: all;
 
-  &.ui-tooltip-left {
-    top: 50%;
-    right: 100%;
-    margin-right: 10px;
-    margin-top: -18px;
-
-    & > .ui-tooltip-content:before {
-      border-left-color: #1f1f1f;
-      left: 100%;
-      top: 48px;
-      margin-top: -42px;
-    }
-    & > .ui-tooltip-content:after {
-      border-left-color: #262626;
-      left: 100%;
-      top: 50px;
-      margin-top: -40px;
-    }
-  }
-
-  &.ui-tooltip-right {
-    top: 50%;
-    left: 100%;
-    margin-left: 10px;
-    margin-top: -18px;
-
-    & > .ui-tooltip-content:before {
-      border-right-color: #1f1f1f;
-      right: 100%;
-      top: 48px;
-      margin-top: -42px;
-    }
-    & > .ui-tooltip-content:after {
-      border-right-color: #262626;
-      right: 100%;
-      top: 50px;
-      margin-top: -40px;
-    }
-  }
-
-  &.ui-tooltip-top {
-    left: 50%;
-    bottom: 100%;
-    margin-bottom: 10px;
-    margin-left: -18px;
-
-    & > .ui-tooltip-content:before {
-      border-top-color: #1f1f1f;
-      top: 100%;
-      left: 48px;
-      margin-left: -42px;
-    }
-    & > .ui-tooltip-content:after {
-      border-top-color: #262626;
-      top: 100%;
-      left: 50px;
-      margin-left: -40px;
-    }
-  }
-
-  &.ui-tooltip-bottom {
-    left: 50%;
-    top: 100%;
-    margin-top: 10px;
-    margin-left: -18px;
-
-    & > .ui-tooltip-content:before {
-      border-bottom-color: #1f1f1f;
-      bottom: 100%;
-      left: 48px;
-      margin-left: -42px;
-    }
-    & > .ui-tooltip-content:after {
-      border-bottom-color: #262626;
-      bottom: 100%;
-      left: 50px;
-      margin-left: -40px;
-    }
+  &.open {
+    width: auto;
+    height: auto;
+    overflow: visible;
   }
 }
 
@@ -134,12 +72,88 @@
   }
 
   &:before {
-    border-color: rgba(240, 240, 240, 0);
     border-width: 10px;
   }
 
   &:after {
-    border-color: rgba(255, 255, 255, 0);
     border-width: 8px;
+  }
+}
+
+.ui-tooltip-left {
+  top: 50%;
+  right: 100%;
+  margin-right: 10px;
+  margin-top: -18px;
+
+  & > .ui-tooltip-content:before {
+    border-left-color: #1f1f1f;
+    left: 100%;
+    top: 48px;
+    margin-top: -42px;
+  }
+  & > .ui-tooltip-content:after {
+    border-left-color: #262626;
+    left: 100%;
+    top: 50px;
+    margin-top: -40px;
+  }
+}
+
+.ui-tooltip-right {
+  top: 50%;
+  left: 100%;
+  margin-left: 10px;
+  margin-top: -18px;
+
+  & > .ui-tooltip-content:before {
+    border-right-color: #1f1f1f;
+    right: 100%;
+    top: 48px;
+    margin-top: -42px;
+  }
+  & > .ui-tooltip-content:after {
+    border-right-color: #262626;
+    right: 100%;
+    top: 50px;
+    margin-top: -40px;
+  }
+}
+
+.ui-tooltip-top {
+  left: 50%;
+  bottom: 100%;
+  margin-bottom: 10px;
+
+  & > .ui-tooltip-content:before {
+    border-top-color: #1f1f1f;
+    top: 100%;
+    left: 48px;
+    margin-left: -42px;
+  }
+  & > .ui-tooltip-content:after {
+    border-top-color: #262626;
+    top: 100%;
+    left: 50px;
+    margin-left: -40px;
+  }
+}
+
+.ui-tooltip-bottom {
+  left: 50%;
+  top: 100%;
+  margin-top: 10px;
+
+  & > .ui-tooltip-content:before {
+    border-bottom-color: #1f1f1f;
+    bottom: 100%;
+    left: 48px;
+    margin-left: -42px;
+  }
+  & > .ui-tooltip-content:after {
+    border-bottom-color: #262626;
+    bottom: 100%;
+    left: 50px;
+    margin-left: -40px;
   }
 }

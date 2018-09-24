@@ -31,7 +31,7 @@ class PageWrapper extends React.Component {
       </Header>,
       <Main key="app-content" color="!grey" header footer>
         <Main.Content>
-          <Drawer fixed>TBD</Drawer>
+          <Drawer fixed></Drawer>
           {children}
         </Main.Content>
       </Main>,

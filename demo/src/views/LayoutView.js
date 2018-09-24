@@ -39,16 +39,16 @@ class LayoutView extends React.Component {
                 <Grid.Column textAlign="center" cols="6">
                   <Nav>
                     <Nav.Item icon="ui-icon-home" text="Home">
-                      <ToolTip>Home</ToolTip>
+                      <ToolTip position="bottom">Home</ToolTip>
                     </Nav.Item>
                     <Nav.Item icon="ui-icon-robot" text="Blog">
-                      <ToolTip>Blog</ToolTip>
+                      <ToolTip position="top">Blog</ToolTip>
                     </Nav.Item>
                     <Nav.Item icon="ui-icon-user" text="About">
-                      <ToolTip>About</ToolTip>
+                      <ToolTip position="bottom">About</ToolTip>
                     </Nav.Item>
                     <Nav.Item icon="ui-icon-shooting-star" text="Contact">
-                      <ToolTip>Contact</ToolTip>
+                      <ToolTip position="top">Contact</ToolTip>
                     </Nav.Item>
                     <Nav.Folder to="/misc" text="Misc">
                       <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />
@@ -63,16 +63,16 @@ class LayoutView extends React.Component {
                 <Grid.Column textAlign="center" cols="6">
                   <Nav orientation="vertical">
                     <Nav.Item icon="ui-icon-home" text="Home">
-                      <ToolTip>Home</ToolTip>
+                      <ToolTip position="left">Home</ToolTip>
                     </Nav.Item>
                     <Nav.Item icon="ui-icon-robot" text="Blog">
-                      <ToolTip>Blog</ToolTip>
+                      <ToolTip position="left">Blog</ToolTip>
                     </Nav.Item>
                     <Nav.Item icon="ui-icon-user" text="About">
-                      <ToolTip>About</ToolTip>
+                      <ToolTip position="left">About</ToolTip>
                     </Nav.Item>
                     <Nav.Item icon="ui-icon-shooting-star" text="Contact">
-                      <ToolTip>Contact</ToolTip>
+                      <ToolTip position="left">Contact</ToolTip>
                     </Nav.Item>
                     <Nav.Folder to="/misc" text="Misc">
                       <Nav.Item to="/" icon="ui-icon-tools" text="TBD" />

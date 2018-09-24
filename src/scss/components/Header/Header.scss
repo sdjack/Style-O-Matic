@@ -20,8 +20,8 @@
   padding: 0;
   border: none;
   position: relative;
-  color: inherit;
-  background-color: inherit;
+  color: $header-text-color;
+  background-color: $header-background-color;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
