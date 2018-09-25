@@ -58,9 +58,8 @@ class ToolTip extends CoreComponent {
       let topOffset = y;
       if (position === "left") {
         leftOffset += 40;
-        topOffset += 40;
       } else if (position === "right") {
-        leftOffset -= 40;
+        leftOffset += width - 40;
         topOffset += 40;
       } else if (position === "bottom") {
         leftOffset += 20;

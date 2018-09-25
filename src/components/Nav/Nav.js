@@ -87,11 +87,14 @@ class Nav extends CoreComponent {
 
     return (
       <Component {...props}>
-        <div className="ui-nav-toggle">
-          <button className="ui-nav-toggle-button" onClick={this.handleOnClick}>
-            <i className="ui-icon-menu" />
-          </button>
-        </div>
+        {
+          isMobile ?
+          <div className="ui-nav-toggle">
+            <button className="ui-nav-toggle-button" onClick={this.handleOnClick}>
+              <i className="ui-icon-menu" />
+            </button>
+          </div> : null
+        }
         <div className={`ui-nav-content${contentClass}`}>
           {React.Children.map(children, child => {
             if (

@@ -11,33 +11,38 @@
 }
 
 .ui-nav-content {
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: space-evenly;
+  justify-content: space-evenly;
   overflow: hidden;
   &.ui-nav-hidden {
     width: 0px !important;
     height: 0px !important;
   }
+
+  @media screen and (max-width: $mobile-screen-threshold) {
+    flex-wrap: wrap;
+    flex-direction: column !important;
+  }
 }
 
 .ui-nav {
-  display: flex;
   width: auto;
   height: auto;
   padding: 0px;
   margin: 0px;
-  flex-wrap: nowrap;
-  align-content: space-evenly;
-  justify-content: flex-start;
+  display: block;
 
   &.ui-orientation-vertical {
     min-height: 100%;
     max-height: 100%;
     height: auto;
-    flex-direction: column;
 
     & > .ui-nav-content {
       width: auto;
       height: 100%;
+      flex-direction: column;
       & > .ui-nav-item {
         display: block;
       }
@@ -48,11 +53,11 @@
     min-width: 100%;
     max-width: 100%;
     height: $nav-item-height;
-    flex-direction: row;
 
     & > .ui-nav-content {
       width: 100%;
       height: auto;
+      flex-direction: row;
       & > .ui-nav-item {
         display: inline-block;
         text-align: center !important;
@@ -62,10 +67,6 @@
     @media screen and (max-width: $mobile-screen-threshold) {
       height: auto;
     }
-  }
-
-  @media screen and (max-width: $mobile-screen-threshold) {
-    flex-wrap: wrap;
   }
 }
 
@@ -172,6 +173,7 @@
 .ui-nav-folder-item {
   height: $nav-folder-item-height;
   padding: 0;
+  position: relative;
 }
 
 .ui-nav-folder-title,
