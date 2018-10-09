@@ -186,6 +186,13 @@
   color: $color-black !important;
 }
 
+.ui-success {
+  background-color: rgba(0, 230, 40, 0.18) !important;
+}
+.ui-error {
+  background-color: rgba(255,0,0,0.1) !important;
+}
+
 @include ui-color('grey',$color-grey);
 @include ui-color('black',$color-black);
 @include ui-color('white',$color-lighter);

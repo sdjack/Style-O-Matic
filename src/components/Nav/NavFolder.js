@@ -81,8 +81,7 @@ class NavFolder extends CoreComponent {
       ...props,
       ref,
       uirole: ROLE.FOLDERITEM,
-      uiclass: this.childPrefix(role),
-      onClick: this.chainFunction(child.props.onClick, this.handleOnClick)
+      uiclass: this.childPrefix(role)
     });
   };
 
@@ -90,11 +89,11 @@ class NavFolder extends CoreComponent {
     const {
       renderAs: Component,
       uiclass,
-      className,
+      coreClassName,
+      iconClassName,
       to,
       path,
       text,
-      icon,
       visible,
       children,
       props,
@@ -112,20 +111,19 @@ class NavFolder extends CoreComponent {
     const itemClass = visible ? "ui-nav-item visible" : "ui-nav-item";
 
     return (
-      <div
-        className={itemClass}
-        ref={this.onSetRef}
-        role="presentation"
-        onKeyDown={this.toggleExpansion}
-        onClick={this.toggleExpansion}
-      >
-        <a className="ui-nav-item-link" href={to} label={text}>
+      <div className={itemClass} ref={this.onSetRef}>
+        <div
+          className="ui-nav-item-link"
+          role="presentation"
+          onKeyDown={this.toggleExpansion}
+          onClick={this.toggleExpansion}
+        >
           <i className={`ui-nav-item-icon ${caretClass}`} />
           <span className="ui-nav-item-info">{text}</span>
-        </a>
+        </div>
         <Component
           {...props}
-          className={classNames(className, classes)}
+          className={classNames(coreClassName, classes)}
           style={offset}
           ref={this.setFolderRef}
         >

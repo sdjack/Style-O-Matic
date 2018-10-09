@@ -6,9 +6,6 @@
  * @copyright 2017 Steven Jackson. All rights reserved.
  */
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
-@import url("https://use.fontawesome.com/releases/v5.0.9/css/all.css");
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg); }
@@ -623,6 +620,9 @@ tfoot {
 .ui-icon-cart:before {
   content: "\1F6D2"; }
 
+.ui-icon-warning:before {
+  content: "\26A0"; }
+
 .ui-icon-spider:before {
   content: "\1F577"; }
 
@@ -641,6 +641,9 @@ tfoot {
 .ui-icon-robot:before {
   content: "\1F916"; }
 
+.ui-icon-sheep:before {
+  content: "\1F411"; }
+
 .ui-icon-fire:before {
   content: "\1F525"; }
 
@@ -655,6 +658,12 @@ tfoot {
 
 .ui-icon-disabled:before {
   content: "\26D4"; }
+
+.ui-icon-speech-left:before {
+  content: "\1F5E8"; }
+
+.ui-icon-speech-right:before {
+  content: "\1F5E9"; }
 
 .ui-icon-up:before {
   content: "\25BC"; }
@@ -679,6 +688,12 @@ tfoot {
 
 .ui-icon-left-open:before {
   content: "\25C1"; }
+
+.ui-icon-check:before {
+  content: "\2714"; }
+
+.ui-icon-x:before {
+  content: "\2718"; }
 
 .ui-icon-menu:before {
   content: "\2261"; }
@@ -705,10 +720,28 @@ tfoot {
   content: "\1F5C1"; }
 
 .ui-icon-add:before {
-  content: "\2795"; }
+  content: "\002B"; }
 
 .ui-icon-remove:before {
+  content: "\2212"; }
+
+.ui-icon-plus:before {
+  content: "\2795"; }
+
+.ui-icon-minus:before {
   content: "\2796"; }
+
+.ui-icon-maximize:before {
+  content: "\1F5D6"; }
+
+.ui-icon-minimize:before {
+  content: "\1F5D5"; }
+
+.ui-icon-checked:before {
+  content: "\2611"; }
+
+.ui-icon-unchecked:before {
+  content: "\2610"; }
 
 .window {
   background-color: #EFF3F8;
@@ -870,6 +903,12 @@ tfoot {
   background-color: rgba(0, 0, 0, 0) !important;
   border-color: rgba(0, 0, 0, 0) !important;
   color: #000000 !important; }
+
+.ui-success {
+  background-color: rgba(0, 230, 40, 0.18) !important; }
+
+.ui-error {
+  background-color: rgba(255, 0, 0, 0.1) !important; }
 
 .ui-grey,
 .ui-grey-no-hover {

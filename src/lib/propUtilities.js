@@ -302,14 +302,16 @@ export function getUIClassString(props, state) {
     textAlign,
     contentAlign,
     position,
-    shadow
+    shadow,
+    icon
   } = props;
 
   const disabled =
     state && !_.isNil(state.disabled) ? state.disabled : props.disabled;
   const active = state && !_.isNil(state.active) ? state.active : props.active;
   const open = state && !_.isNil(state.open) ? state.open : props.open;
-  const visible = state && !_.isNil(state.visible) ? state.visible : props.visible;
+  const visible =
+    state && !_.isNil(state.visible) ? state.visible : props.visible;
   const invalid =
     state && !_.isNil(state.invalid) ? state.invalid : props.invalid;
   const orientation =
@@ -360,6 +362,11 @@ export function getUIClassString(props, state) {
     }
     styleClasses[colorClass] = true;
   }
+  const iconPre =
+    icon && icon.indexOf("ui-icon-") !== -1 ? icon : `ui-icon-${icon}`;
+  const iconClass = {
+    [iconPre]: icon
+  };
   // if (!_.isNil(orientation)) {
   //   classes[`ui-orientation-${orientation}`] = true;
   // }
@@ -373,9 +380,10 @@ export function getUIClassString(props, state) {
   //   classes[`ui-text-align-${textAlign}`] = true;
   // }
   const uiClassCore = cx(className, coreClasses);
-  const uiClassStyle = cx("", styleClasses);
+  const uiClassIcon = cx("", iconClass);
+  const uiClassStyle = cx(uiClassIcon, styleClasses);
   const uiClassFull = cx(uiClassCore, uiClassStyle);
-  return [uiClassFull, uiClassCore, uiClassStyle];
+  return [uiClassFull, uiClassCore, uiClassStyle, uiClassIcon];
 }
 
 export function getValidProps(source, state) {
@@ -415,6 +423,7 @@ export function getValidProps(source, state) {
   obj.className = uiClassNames[0];
   obj.coreClassName = uiClassNames[1];
   obj.styleClassName = uiClassNames[2];
+  obj.iconClassName = uiClassNames[3];
   obj.props.className = uiClassNames[0];
   if (_.isNil(obj.parentclass)) {
     obj.parentclass = getParentClass(obj);

@@ -8,7 +8,7 @@
   &:before {
     display: inline-block;
     font-style: normal;
-    vertical-align: middle;  
+    vertical-align: middle;
   }
 }
 
@@ -56,6 +56,11 @@
         content: "\1F6D2";
     }
 }
+.ui-icon-warning {
+    &:before {
+        content: "\26A0";
+    }
+}
 .ui-icon-spider {
     &:before {
         content: "\1F577";
@@ -86,6 +91,11 @@
         content: "\1F916";
     }
 }
+.ui-icon-sheep {
+    &:before {
+        content: "\1F411";
+    }
+}
 .ui-icon-fire {
     &:before {
         content: "\1F525";
@@ -109,6 +119,16 @@
 .ui-icon-disabled {
     &:before {
         content: "\26D4";
+    }
+}
+.ui-icon-speech-left {
+    &:before {
+        content: "\1F5E8";
+    }
+}
+.ui-icon-speech-right {
+    &:before {
+        content: "\1F5E9";
     }
 }
 
@@ -161,6 +181,16 @@
 // Controls
 // -----------------------------------------------------------------------------
 
+.ui-icon-check {
+    &:before {
+        content: "\2714";
+    }
+}
+.ui-icon-x {
+    &:before {
+        content: "\2718";
+    }
+}
 .ui-icon-menu {
     &:before {
         content: "\2261";
@@ -203,11 +233,41 @@
 }
 .ui-icon-add {
     &:before {
-        content: "\2795";
+        content: "\002B";
     }
 }
 .ui-icon-remove {
     &:before {
+        content: "\2212";
+    }
+}
+.ui-icon-plus {
+    &:before {
+        content: "\2795";
+    }
+}
+.ui-icon-minus {
+    &:before {
         content: "\2796";
+    }
+}
+.ui-icon-maximize {
+    &:before {
+        content: "\1F5D6";
+    }
+}
+.ui-icon-minimize {
+    &:before {
+        content: "\1F5D5";
+    }
+}
+.ui-icon-checked {
+    &:before {
+        content: "\2611";
+    }
+}
+.ui-icon-unchecked {
+    &:before {
+        content: "\2610";
     }
 }

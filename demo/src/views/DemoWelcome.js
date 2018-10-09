@@ -54,28 +54,28 @@ class DemoWelcome extends React.Component {
               <Grid.Row>
                 <Grid.Column textAlign="center">
                   <Badge color="black">
-                    <Badge.Icon>&#9918;</Badge.Icon>
+                    <Badge.Icon icon="star"/>
                   </Badge>
                   <Badge color="red">
-                    <Badge.Icon>&#9749;</Badge.Icon>
+                    <Badge.Icon icon="spider"/>
                   </Badge>
                   <Badge color="orange">
-                    <Badge.Icon>&#9889;</Badge.Icon>
+                    <Badge.Icon icon="bat"/>
                   </Badge>
                   <Badge color="yellow">
-                    <Badge.Icon>&#9924;</Badge.Icon>
+                    <Badge.Icon icon="ghost"/>
                   </Badge>
                   <Badge color="green">
-                    <Badge.Icon>&#9748;</Badge.Icon>
+                    <Badge.Icon icon="skull"/>
                   </Badge>
                   <Badge color="blue">
-                    <Badge.Icon>&#9995;</Badge.Icon>
+                    <Badge.Icon icon="doot"/>
                   </Badge>
                   <Badge color="indigo">
-                    <Badge.Icon>&#9200;</Badge.Icon>
+                    <Badge.Icon icon="robot"/>
                   </Badge>
                   <Badge color="violet">
-                    <Badge.Icon>&#10024;</Badge.Icon>
+                    <Badge.Icon icon="sheep"/>
                   </Badge>
                 </Grid.Column>
               </Grid.Row>

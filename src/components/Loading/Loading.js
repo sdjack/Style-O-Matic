@@ -18,16 +18,16 @@ class Loading extends CoreComponent {
 
     return (
       <div {...props}>
-        <div className="loading-cube">
-          <div className="cube cube1" />
-          <div className="cube cube2" />
-          <div className="cube cube3" />
-          <div className="cube cube4" />
-          <div className="cube cube5" />
-          <div className="cube cube6" />
-          <div className="cube cube7" />
-          <div className="cube cube8" />
-          <div className="cube cube9" />
+        <div className="ui-loading-container">
+          <div className="ui-actor-stage">
+            <div className="ui-actor left-sheep" />
+            <div className="ui-actor helix">
+              <div className="helix1" />
+              <div className="helix2" />
+              <div className="helix3" />
+            </div>
+            <div className="ui-actor right-sheep" />
+          </div>
         </div>
       </div>
     );

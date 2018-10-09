@@ -69,8 +69,7 @@ class Nav extends CoreComponent {
     return cloneElement(child, {
       ...props,
       ref,
-      uiclass: this.childPrefix(role),
-      onClick: this.chainFunction(child.props.onClick, this.handleOnClick)
+      uiclass: this.childPrefix(role)
     });
   };
 
@@ -87,14 +86,16 @@ class Nav extends CoreComponent {
 
     return (
       <Component {...props}>
-        {
-          isMobile ?
+        {isMobile ? (
           <div className="ui-nav-toggle">
-            <button className="ui-nav-toggle-button" onClick={this.handleOnClick}>
+            <button
+              className="ui-nav-toggle-button"
+              onClick={this.handleOnClick}
+            >
               <i className="ui-icon-menu" />
             </button>
-          </div> : null
-        }
+          </div>
+        ) : null}
         <div className={`ui-nav-content${contentClass}`}>
           {React.Children.map(children, child => {
             if (
