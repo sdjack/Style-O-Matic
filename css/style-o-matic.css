@@ -218,15 +218,15 @@ legend {
   margin: 0;
   padding: 0.1em;
   text-align: -webkit-start;
-  text-align: start;
+  text-align: left;
   vertical-align: -webkit-baseline-middle;
   vertical-align: middle;
-  -webkit-align-items: start;
-      -ms-flex-align: start;
-          align-items: start;
-  -webkit-align-content: start;
-      -ms-flex-line-pack: start;
-          align-content: start; }
+  -webkit-align-items: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-align-content: left;
+      -ms-flex-line-pack: left;
+          align-content: left; }
 
 label,
 span.label {
@@ -476,27 +476,27 @@ tfoot {
 
 .ui-text-align-left {
   text-align: -webkit-start;
-  text-align: start;
+  text-align: left;
   vertical-align: -webkit-baseline-middle;
   vertical-align: middle;
-  -webkit-align-items: start;
-      -ms-flex-align: start;
-          align-items: start;
-  -webkit-align-content: start;
-      -ms-flex-line-pack: start;
-          align-content: start; }
+  -webkit-align-items: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-align-content: left;
+      -ms-flex-line-pack: left;
+          align-content: left; }
 
 .ui-text-align-right {
   text-align: -webkit-end;
-  text-align: end;
+  text-align: right;
   vertical-align: -webkit-baseline-middle;
   vertical-align: middle;
-  -webkit-align-items: end;
-      -ms-flex-align: end;
-          align-items: end;
-  -webkit-align-content: end;
-      -ms-flex-line-pack: end;
-          align-content: end; }
+  -webkit-align-items: right;
+      -ms-flex-align: right;
+          align-items: right;
+  -webkit-align-content: right;
+      -ms-flex-line-pack: right;
+          align-content: right; }
 
 .ui-content-align-center {
   -webkit-justify-content: center;
@@ -605,12 +605,6 @@ tfoot {
 .ui-icon-star:before {
   content: "\1F7CA"; }
 
-.ui-icon-shooting-star:before {
-  content: "\1F320"; }
-
-.ui-icon-atom:before {
-  content: "\269B"; }
-
 .ui-icon-calendar:before {
   content: "\1F5D3"; }
 
@@ -623,26 +617,14 @@ tfoot {
 .ui-icon-warning:before {
   content: "\26A0"; }
 
-.ui-icon-spider:before {
-  content: "\1F577"; }
+.ui-icon-speech:before {
+  content: "\1F4AC"; }
 
-.ui-icon-bat:before {
-  content: "\1F987"; }
+.ui-icon-speech-left:before {
+  content: "\1F5E8"; }
 
-.ui-icon-ghost:before {
-  content: "\1F47B"; }
-
-.ui-icon-skull:before {
-  content: "\1F480"; }
-
-.ui-icon-doot:before {
-  content: "\1F571"; }
-
-.ui-icon-robot:before {
-  content: "\1F916"; }
-
-.ui-icon-sheep:before {
-  content: "\1F411"; }
+.ui-icon-speech-right:before {
+  content: "\1F5E9"; }
 
 .ui-icon-fire:before {
   content: "\1F525"; }
@@ -659,11 +641,17 @@ tfoot {
 .ui-icon-disabled:before {
   content: "\26D4"; }
 
-.ui-icon-speech-left:before {
-  content: "\1F5E8"; }
+.ui-icon-lock:before {
+  content: "\1F512"; }
 
-.ui-icon-speech-right:before {
-  content: "\1F5E9"; }
+.ui-icon-unlock:before {
+  content: "\1F513"; }
+
+.ui-icon-point-left:before {
+  content: "\1F59C"; }
+
+.ui-icon-point-right:before {
+  content: "\1F59D"; }
 
 .ui-icon-up:before {
   content: "\25BC"; }
@@ -742,6 +730,63 @@ tfoot {
 
 .ui-icon-unchecked:before {
   content: "\2610"; }
+
+.ui-icon-home:before {
+  content: "\1F3E0"; }
+
+.ui-icon-user:before {
+  content: "\1F464"; }
+
+.ui-icon-star:before {
+  content: "\1F7CA"; }
+
+.ui-icon-shooting-star:before {
+  content: "\1F320"; }
+
+.ui-icon-atom:before {
+  content: "\269B"; }
+
+.ui-icon-calendar:before {
+  content: "\1F5D3"; }
+
+.ui-icon-tools:before {
+  content: "\1F6E0"; }
+
+.ui-icon-cart:before {
+  content: "\1F6D2"; }
+
+.ui-icon-warning:before {
+  content: "\26A0"; }
+
+.ui-icon-spider:before {
+  content: "\1F577"; }
+
+.ui-icon-bat:before {
+  content: "\1F987"; }
+
+.ui-icon-ghost:before {
+  content: "\1F47B"; }
+
+.ui-icon-skull:before {
+  content: "\1F480"; }
+
+.ui-icon-doot:before {
+  content: "\1F571"; }
+
+.ui-icon-robot:before {
+  content: "\1F916"; }
+
+.ui-icon-rocket:before {
+  content: "\1F680"; }
+
+.ui-icon-sheep:before {
+  content: "\1F411"; }
+
+.ui-icon-ufo:before {
+  content: "\1F6F8"; }
+
+.ui-icon-zombie:before {
+  content: "\1F9DF"; }
 
 .window {
   background-color: #EFF3F8;
@@ -898,6 +943,10 @@ tfoot {
   box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.2); }
   .ui-grouped-border:hover {
     background-color: rgba(25, 118, 210, 0.5); }
+
+.ui-blurred {
+  -webkit-filter: blur(2.5px) grayscale(100);
+          filter: blur(2.5px) grayscale(100); }
 
 .ui-transparent {
   background-color: rgba(0, 0, 0, 0) !important;

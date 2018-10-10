@@ -63,6 +63,7 @@ const DefaultPropTypes = {
   type: PropTypes.string,
   value: PropTypes.string,
   label: PropTypes.string,
+  loader: PropTypes.oneOf(["cube", "sheep"]),
   invalid: PropTypes.bool,
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool,
@@ -126,6 +127,7 @@ const DefaultPropTypes = {
     "largest"
   ]),
   orientation: PropTypes.oneOf(["vertical", "horizontal"]),
+  align: PropTypes.oneOf(["left", "right", "center"]),
   textAlign: PropTypes.oneOf(["left", "right", "center"]),
   contentAlign: PropTypes.oneOf(["left", "right", "center"]),
   position: PropTypes.oneOf([
@@ -152,6 +154,7 @@ const DefaultPropValues = {
   name: null,
   type: null,
   label: null,
+  loader: null,
   value: null,
   invalid: null,
   checked: null,
@@ -185,6 +188,7 @@ const DefaultPropValues = {
   colorHover: null,
   displaySize: null,
   orientation: null,
+  align: null,
   textAlign: null,
   contentAlign: null,
   position: null,
@@ -303,7 +307,8 @@ export function getUIClassString(props, state) {
     contentAlign,
     position,
     shadow,
-    icon
+    icon,
+    loader
   } = props;
 
   const disabled =
@@ -336,6 +341,7 @@ export function getUIClassString(props, state) {
     "ui-panel": panel,
     "ui-masked": masked,
     "ui-shadow": shadow,
+    "ui-blurred": !!loader,
     disabled,
     active,
     open,
@@ -425,6 +431,9 @@ export function getValidProps(source, state) {
   obj.styleClassName = uiClassNames[2];
   obj.iconClassName = uiClassNames[3];
   obj.props.className = uiClassNames[0];
+  if (_.isNil(obj.props.key)) {
+    obj.props.key = `component-${obj.props.uuid}`;
+  }
   if (_.isNil(obj.parentclass)) {
     obj.parentclass = getParentClass(obj);
   }

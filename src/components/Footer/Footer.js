@@ -41,7 +41,7 @@ class Footer extends CoreComponent {
     });
   };
 
-  render() {
+  renderCore = () => {
     const {
       renderAs: Component,
       uiclass,
@@ -76,7 +76,7 @@ class Footer extends CoreComponent {
     );
 
     return output;
-  }
+  };
 }
 
 export default Footer;

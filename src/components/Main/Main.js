@@ -9,6 +9,7 @@ import {
 } from "../../lib";
 import Drawer from "../Drawer/Drawer.js";
 import MainContent from "./MainContent.js";
+import Loading from "../Loading/Loading.js";
 import "./Main.css";
 
 class MainDrawer extends Drawer {
@@ -51,7 +52,7 @@ class Main extends CoreComponent {
     });
   };
 
-  render() {
+  renderCore = () => {
     const {
       renderAs: Component,
       className,
@@ -59,6 +60,7 @@ class Main extends CoreComponent {
       footer,
       uiclass,
       children,
+      uuid,
       props
     } = getValidProps(this.props);
 
@@ -89,7 +91,7 @@ class Main extends CoreComponent {
         })}
       </Component>
     );
-  }
+  };
 }
 
 export default Main;

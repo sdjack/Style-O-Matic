@@ -72,7 +72,7 @@ class Accordion extends CoreComponent {
     );
   };
 
-  render() {
+  renderCore = () => {
     const {
       renderAs: Component,
       id,
@@ -121,7 +121,7 @@ class Accordion extends CoreComponent {
         })}
       </Component>
     );
-  }
+  };
 }
 
 export default Accordion;

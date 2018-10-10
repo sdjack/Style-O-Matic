@@ -73,7 +73,7 @@ class Nav extends CoreComponent {
     });
   };
 
-  render() {
+  renderCore = () => {
     const {
       renderAs: Component,
       canMinimize,
@@ -112,7 +112,7 @@ class Nav extends CoreComponent {
         </div>
       </Component>
     );
-  }
+  };
 }
 
 export default Nav;

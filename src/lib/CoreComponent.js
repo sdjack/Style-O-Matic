@@ -2,10 +2,11 @@
 import React, { Component, cloneElement } from "react";
 import _ from "lodash";
 import { uID } from "./coreUtilities.js";
-import { setCorePropTypes, setCorePropDefaults } from "./propUtilities.js";
+import { setCorePropTypes, setCorePropDefaults, getValidProps } from "./propUtilities.js";
 import { ROLE, getParentClass, getChildClass } from "./ROLE.js";
 import EventManager from "./EventManager.js";
 import UIGlobals from "./UIGlobals.js";
+import LoadingStateless from "../components/Loading/LoadingStateless.js";
 /* eslint-enable */
 /* eslint "react/prop-types": [0] */
 
@@ -166,4 +167,22 @@ export default class CoreComponent extends Component {
     }
     return child;
   };
+
+  renderCore = () => {
+    const { renderAs: ElementType, children, props } = getValidProps(
+      this.props
+    );
+    return <ElementType {...props}>{children}</ElementType>;
+  };
+
+  render() {
+    const { uuid, loader } = this.props;
+    const rendered = [this.renderCore()];
+    if (loader) {
+      rendered.push(
+        <LoadingStateless key={`loading-${uuid}`} scene={loader} />
+      );
+    }
+    return rendered;
+  }
 }

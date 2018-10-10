@@ -18,7 +18,7 @@ class Grid extends CoreComponent {
   static Row = GridRow;
   static Column = GridColumn;
 
-  render() {
+  renderCore = () => {
     const { renderAs: Component, children, props, inherited } = getValidProps(
       this.props
     );
@@ -41,7 +41,7 @@ class Grid extends CoreComponent {
         })}
       </Component>
     );
-  }
+  };
 }
 
 export default Grid;

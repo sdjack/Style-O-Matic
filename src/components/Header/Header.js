@@ -41,7 +41,7 @@ class Header extends CoreComponent {
     });
   };
 
-  render() {
+  renderCore = () => {
     const { renderAs: Component, uiclass, children, props } = getValidProps(
       this.props
     );
@@ -64,7 +64,7 @@ class Header extends CoreComponent {
         })}
       </Component>
     );
-  }
+  };
 }
 
 export default Header;

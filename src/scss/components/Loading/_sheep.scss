@@ -1,0 +1,234 @@
+// -----------------------------------------------------------------------------
+// Add Notes Here
+// -----------------------------------------------------------------------------
+
+@import "sheep_config";
+
+.ui-loading-sheep {
+  height: 12vh;
+  font-weight: 600;
+  background-color: #EFEFEF;
+  border: 2px solid rgba(252,252,252,.5);
+  border-radius: 80px;
+  color: #262626;
+}
+
+.ui-overlay,
+.ui-fixed {
+  & > .ui-loading-sheep {
+    top: 50%;
+    position: fixed;
+    margin-top: -8vh;
+  }
+}
+
+.ui-loading-sheep-actor {
+  height: 100%;
+  float: left;
+}
+
+.ui-loading-sheep-left,
+.ui-loading-sheep-right {
+  width: 10vh;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.ui-loading-sheep-left {
+  margin-left: 2vh;
+  background-image: $svg-sheep;
+  -webkit-animation: cloningPulse 6s infinite ease-in-out;
+          animation: cloningPulse 6s infinite ease-in-out;
+}
+.ui-loading-sheep-right {
+  margin-right: 2vh;
+  background-image: $svg-sheep2;
+  -webkit-animation: cloningPulse 6s infinite ease-in-out;
+          animation: cloningPulse 6s infinite ease-in-out;
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+
+.ui-loading-sheep-center {
+  width: 21vh;
+  // opacity: 0.33;
+  position: relative;
+}
+
+.ui-loading-sheep-center1,
+.ui-loading-sheep-center2,
+.ui-loading-sheep-center3 {
+  display:block;
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  top:0; right:0; bottom:0; left:0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.ui-loading-sheep-center1,
+.ui-loading-sheep-center2,
+.ui-loading-sheep-center3 {
+  opacity: 0.33;
+  background-image: $svg-helix;
+}
+
+.ui-loading-sheep-center1 {
+  -webkit-animation: helixAnim1 1s linear infinite;
+          animation: helixAnim1 1s linear infinite;
+}
+
+.ui-loading-sheep-center2 {
+  -webkit-animation: helixAnim2 2s linear infinite;
+          animation: helixAnim2 2s linear infinite;
+}
+
+.ui-loading-sheep-center3 {
+  -webkit-animation: helixAnim3 3s linear 1s infinite;
+          animation: helixAnim3 3s linear 1s infinite;
+}
+
+@-webkit-keyframes helixAnim1 {
+  0%, 100% {
+    -webkit-transform: scale3D(1, 1, 1); opacity: 0.1;
+            transform: scale3D(1, 1, 1); opacity: 0.1;
+  }
+  50% {
+    -webkit-transform: scale3D(1.05, 1.05, 1); opacity: 0.33;
+            transform: scale3D(1.05, 1.05, 1); opacity: 0.33;
+  }
+}
+
+@keyframes helixAnim1 {
+  0%, 100% {
+    -webkit-transform: scale3D(1, 1, 1); opacity: 0.1;
+            transform: scale3D(1, 1, 1); opacity: 0.1;
+  }
+  50% {
+    -webkit-transform: scale3D(1.05, 1.05, 1); opacity: 0.33;
+            transform: scale3D(1.05, 1.05, 1); opacity: 0.33;
+  }
+}
+
+@-webkit-keyframes helixAnim2 {
+  0% {
+    -webkit-transform: scale3D(0.5, 0.5, 1) skew(-6deg, 5deg); opacity:0;
+            transform: scale3D(0.5, 0.5, 1) skew(-6deg, 5deg); opacity:0;
+  }
+  25% {
+    -webkit-transform: scale3D(1, 1, 1) skew(0deg, 0deg); opacity:0.33;
+            transform: scale3D(1, 1, 1) skew(0deg, 0deg); opacity:0.33;
+  }
+  100% {
+    -webkit-transform: scale3D(1.25, 1.25, 1) skew(6deg, -5deg); opacity:0;
+            transform: scale3D(1.25, 1.25, 1) skew(6deg, -5deg); opacity:0;
+  }
+}
+
+@keyframes helixAnim2 {
+  0% {
+    -webkit-transform: scale3D(0.5, 0.5, 1) skew(-6deg, 5deg); opacity:0;
+            transform: scale3D(0.5, 0.5, 1) skew(-6deg, 5deg); opacity:0;
+  }
+  25% {
+    -webkit-transform: scale3D(1, 1, 1) skew(0deg, 0deg); opacity:0.33;
+            transform: scale3D(1, 1, 1) skew(0deg, 0deg); opacity:0.33;
+  }
+  100% {
+    -webkit-transform: scale3D(1.25, 1.25, 1) skew(6deg, -5deg); opacity:0;
+            transform: scale3D(1.25, 1.25, 1) skew(6deg, -5deg); opacity:0;
+  }
+}
+
+@-webkit-keyframes helixAnim3 {
+  0% {
+    -webkit-transform: scale3D(0.5, 0.5, 1) skew(6deg, -5deg); opacity:0;
+            transform: scale3D(0.5, 0.5, 1) skew(6deg, -5deg); opacity:0;
+  }
+  25% {
+    -webkit-transform: scale3D(1, 1, 1) skew(0deg, 0deg); opacity:0.33;
+            transform: scale3D(1, 1, 1) skew(0deg, 0deg); opacity:0.33;
+  }
+  100% {
+    -webkit-transform: scale3D(1.25, 1.25, 1) skew(-6deg, 5deg); opacity:0;
+            transform: scale3D(1.25, 1.25, 1) skew(-6deg, 5deg); opacity:0;
+  }
+}
+
+@keyframes helixAnim3 {
+  0% {
+    -webkit-transform: scale3D(0.5, 0.5, 1) skew(6deg, -5deg); opacity:0;
+            transform: scale3D(0.5, 0.5, 1) skew(6deg, -5deg); opacity:0;
+  }
+  25% {
+    -webkit-transform: scale3D(1, 1, 1) skew(0deg, 0deg); opacity:0.33;
+            transform: scale3D(1, 1, 1) skew(0deg, 0deg); opacity:0.33;
+  }
+  100% {
+    -webkit-transform: scale3D(1.25, 1.25, 1) skew(-6deg, 5deg); opacity:0;
+            transform: scale3D(1.25, 1.25, 1) skew(-6deg, 5deg); opacity:0;
+  }
+}
+
+@-webkit-keyframes helixAnim4 {
+  0% {
+    -webkit-transform: scale3D(0.5, 0.5, 1); opacity:1;
+            transform: scale3D(0.5, 0.5, 1); opacity:1;
+  }
+  33% {
+    -webkit-transform: scale3D(1, 1, 1); opacity:1;
+            transform: scale3D(1, 1, 1); opacity:1;
+  }
+  100% {
+    -webkit-transform: scale3D(1.25, 1.25, 1); opacity:0;
+            transform: scale3D(1.25, 1.25, 1); opacity:0;
+  }
+}
+
+@keyframes helixAnim4 {
+  0% {
+    -webkit-transform: scale3D(0.5, 0.5, 1); opacity:1;
+            transform: scale3D(0.5, 0.5, 1); opacity:1;
+  }
+  33% {
+    -webkit-transform: scale3D(1, 1, 1); opacity:1;
+            transform: scale3D(1, 1, 1); opacity:1;
+  }
+  100% {
+    -webkit-transform: scale3D(1.25, 1.25, 1); opacity:0;
+            transform: scale3D(1.25, 1.25, 1); opacity:0;
+  }
+}
+
+
+
+
+@-webkit-keyframes cloningPulse {
+  0%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  }
+  25%, 75% {
+    -webkit-transform: scale3D(0.9, 0.9, 1);
+            transform: scale3D(0.9, 0.9, 1);
+  }
+  50% {
+    -webkit-transform: scale3D(1.05, 1.05, 1);
+            transform: scale3D(1.05, 1.05, 1);
+  }
+}
+
+@keyframes cloningPulse {
+  0%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  }
+  25%, 75% {
+    -webkit-transform: scale3D(0.9, 0.9, 1);
+            transform: scale3D(0.9, 0.9, 1);
+  }
+  50% {
+    -webkit-transform: scale3D(1.05, 1.05, 1);
+            transform: scale3D(1.05, 1.05, 1);
+  }
+}

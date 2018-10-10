@@ -150,7 +150,7 @@ class DemoWelcome extends React.Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column textAlign="center" masked>
-                  <Loading active />
+                  <Loading scene="cube" active />
                 </Grid.Column>
               </Grid.Row>
             </Grid>

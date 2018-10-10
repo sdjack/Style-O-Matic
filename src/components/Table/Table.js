@@ -205,7 +205,7 @@ class Table extends CoreComponent {
     return output;
   };
 
-  render() {
+  renderCore = () => {
     const {
       renderAs: Component,
       className,
@@ -265,7 +265,7 @@ class Table extends CoreComponent {
         {this.renderPagination()}
       </Component>
     );
-  }
+  };
 }
 
 export default Table;

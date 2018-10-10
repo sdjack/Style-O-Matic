@@ -180,6 +180,10 @@
   }
 }
 
+.ui-blurred {
+  filter: blur(2.5px) grayscale(100);
+}
+
 .ui-transparent {
   background-color: $color-invisible !important;
   border-color: $color-invisible !important;

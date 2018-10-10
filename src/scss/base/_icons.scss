@@ -31,16 +31,6 @@
         content: "\1F7CA";
     }
 }
-.ui-icon-shooting-star {
-    &:before {
-        content: "\1F320";
-    }
-}
-.ui-icon-atom {
-    &:before {
-        content: "\269B";
-    }
-}
 .ui-icon-calendar {
     &:before {
         content: "\1F5D3";
@@ -61,39 +51,19 @@
         content: "\26A0";
     }
 }
-.ui-icon-spider {
+.ui-icon-speech {
     &:before {
-        content: "\1F577";
+        content: "\1F4AC";
     }
 }
-.ui-icon-bat {
+.ui-icon-speech-left {
     &:before {
-        content: "\1F987";
+        content: "\1F5E8";
     }
 }
-.ui-icon-ghost {
+.ui-icon-speech-right {
     &:before {
-        content: "\1F47B";
-    }
-}
-.ui-icon-skull {
-    &:before {
-        content: "\1F480";
-    }
-}
-.ui-icon-doot {
-    &:before {
-        content: "\1F571";
-    }
-}
-.ui-icon-robot {
-    &:before {
-        content: "\1F916";
-    }
-}
-.ui-icon-sheep {
-    &:before {
-        content: "\1F411";
+        content: "\1F5E9";
     }
 }
 .ui-icon-fire {
@@ -121,14 +91,24 @@
         content: "\26D4";
     }
 }
-.ui-icon-speech-left {
+.ui-icon-lock {
     &:before {
-        content: "\1F5E8";
+        content: "\1F512";
     }
 }
-.ui-icon-speech-right {
+.ui-icon-unlock {
     &:before {
-        content: "\1F5E9";
+        content: "\1F513";
+    }
+}
+.ui-icon-point-left {
+    &:before {
+        content: "\1F59C";
+    }
+}
+.ui-icon-point-right {
+    &:before {
+        content: "\1F59D";
     }
 }
 
@@ -269,5 +249,108 @@
 .ui-icon-unchecked {
     &:before {
         content: "\2610";
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Misc Fun Stuff
+// -----------------------------------------------------------------------------
+
+.ui-icon-home {
+    &:before {
+        content: "\1F3E0";
+    }
+}
+.ui-icon-user {
+    &:before {
+        content: "\1F464";
+    }
+}
+.ui-icon-star {
+    &:before {
+        content: "\1F7CA";
+    }
+}
+.ui-icon-shooting-star {
+    &:before {
+        content: "\1F320";
+    }
+}
+.ui-icon-atom {
+    &:before {
+        content: "\269B";
+    }
+}
+.ui-icon-calendar {
+    &:before {
+        content: "\1F5D3";
+    }
+}
+.ui-icon-tools {
+    &:before {
+        content: "\1F6E0";
+    }
+}
+.ui-icon-cart {
+    &:before {
+        content: "\1F6D2";
+    }
+}
+.ui-icon-warning {
+    &:before {
+        content: "\26A0";
+    }
+}
+.ui-icon-spider {
+    &:before {
+        content: "\1F577";
+    }
+}
+.ui-icon-bat {
+    &:before {
+        content: "\1F987";
+    }
+}
+.ui-icon-ghost {
+    &:before {
+        content: "\1F47B";
+    }
+}
+.ui-icon-skull {
+    &:before {
+        content: "\1F480";
+    }
+}
+.ui-icon-doot {
+    &:before {
+        content: "\1F571";
+    }
+}
+.ui-icon-robot {
+    &:before {
+        content: "\1F916";
+    }
+}
+.ui-icon-rocket {
+    &:before {
+        content: "\1F680";
+    }
+}
+.ui-icon-sheep {
+    &:before {
+        content: "\1F411";
+    }
+}
+
+// Currently Unsupported In Most browsers
+
+.ui-icon-ufo {
+    &:before {
+        content: "\1F6F8";
+    }
+}
+.ui-icon-zombie {
+    &:before {
+        content: "\1F9DF";
     }
 }

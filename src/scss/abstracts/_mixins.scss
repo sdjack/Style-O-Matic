@@ -70,20 +70,20 @@
 
 @mixin text-align-left() {
   text-align: -webkit-start;
-  text-align: start;
+  text-align: left;
   vertical-align: -webkit-baseline-middle;
   vertical-align: middle;
-  align-items: start;
-  align-content: start;
+  align-items: left;
+  align-content: left;
 }
 
 @mixin text-align-right() {
   text-align: -webkit-end;
-  text-align: end;
+  text-align: right;
   vertical-align: -webkit-baseline-middle;
   vertical-align: middle;
-  align-items: end;
-  align-content: end;
+  align-items: right;
+  align-content: right;
 }
 
 @mixin text-horizontal-align-center() {

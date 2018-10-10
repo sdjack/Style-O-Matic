@@ -4,44 +4,48 @@
 
  @import 'config';
 
- 
+
 .ui-card {
-  display: inline-block;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
   position: relative;
   height: 100%;
   width: 96%;
   z-index: 0;
   border: solid 1px rgba(0,0,0,0.14);
-  border-radius: 1px;
-  box-sizing: border-box;
+  border-radius: 0;
   background-color: $color-white;
   padding: 0;
   margin: 1em 2%;
   overflow: hidden;
   @include shadow-card();
-
-  &.ui-card-striped {
-    & > .ui-card-header,
-    & > .ui-card-footer {
-      background-color: $color-lightest;
-    }
-  }
 }
 
 .ui-card-header,
 .ui-card-content,
 .ui-card-footer {
-  display: block;
+  // display: block;
   width: 100%;
   margin: 0;
-  transform-origin: $card-header-transform-origin-x $card-header-transform-origin-y;
-  box-sizing: border-box;
+  // transform-origin: $card-header-transform-origin-x $card-header-transform-origin-y;
+  // box-sizing: border-box;
 }
 
 .ui-card-header,
 .ui-card-content {
   position: relative;
-  padding: 14px 10px 10px;
+  padding: 0px 10px;
+  line-height: 38px;
+  & > .ui-card-icon {
+    height: 30px;
+    width: 32px;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 4px 0px;
+    background-color: rgba(230,230,230,.8);
+    border: 1px solid rgba(255,255,255,.8);
+  }
 }
 
 .ui-card-header {
@@ -52,8 +56,20 @@
   font-size: 11px;
   position: absolute;
   bottom: 0;
-  padding: 4px 10px;
+  padding: 6px 10px;
   border-top: 1px solid rgba(0,0,0,0.033);
+  & > .ui-card-icon {
+    height: 20px;
+    font-size: 18px;
+    line-height: 14px;
+    margin: 0;
+  }
+}
+
+.ui-card-icon {
+  display: inline-block;
+  padding: 0;
+  @include text-align-center();
 }
 
 .ui-card-title {
@@ -86,4 +102,55 @@
   background-origin: padding-box;
   background-attachment: scroll;
   box-sizing: border-box;
+}
+
+// Styles
+
+.ui-card-align-center {
+    @include text-align-center();
+    & > .ui-card-header,
+    & > .ui-card-footer {
+      & > .ui-card-icon {
+        float: none;
+      }
+    }
+}
+
+.ui-card-align-left {
+    @include text-align-left();
+    & > .ui-card-header,
+    & > .ui-card-footer {
+      & > .ui-card-icon {
+        float: left;
+        margin-right: 10px;
+      }
+    }
+}
+
+.ui-card-align-right {
+    @include text-align-right();
+    & > .ui-card-header,
+    & > .ui-card-footer {
+      & > .ui-card-icon {
+        float: right;
+        margin-left: 10px;
+      }
+    }
+}
+
+.ui-card-styled {
+  border-radius: 6px;
+  & > .ui-card-header,
+  & > .ui-card-footer {
+    background-color: $color-lightest;
+  }
+}
+
+.ui-card-round {
+  border-radius: 50px;
+  & > .ui-card-header,
+  & > .ui-card-footer {
+      padding-left: 40px;
+      padding-right: 40px;
+  }
 }

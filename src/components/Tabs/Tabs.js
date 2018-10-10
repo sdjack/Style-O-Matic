@@ -76,7 +76,7 @@ class Tabs extends CoreComponent {
     });
   };
 
-  render() {
+  renderCore = () => {
     const {
       renderAs: Component,
       id,
@@ -121,7 +121,7 @@ class Tabs extends CoreComponent {
         </div>
       </Component>
     );
-  }
+  };
 }
 
 export default Tabs;
