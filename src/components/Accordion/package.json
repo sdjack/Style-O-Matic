@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "main": "./Accordion.js",
+  "hasExample": true,
   "dependencies": {
     "lodash": "^4.17.5",
     "react": "^16.2.0",

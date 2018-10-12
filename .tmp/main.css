@@ -1920,15 +1920,6 @@ tfoot {
   position: relative;
   padding: 0px 10px;
   line-height: 38px; }
-  .ui-card-header > .ui-card-icon,
-  .ui-card-content > .ui-card-icon {
-    height: 30px;
-    width: 32px;
-    font-size: 18px;
-    line-height: 22px;
-    margin: 4px 0px;
-    background-color: rgba(230, 230, 230, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.8); }
 
 .ui-card-header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.033); }
@@ -1986,6 +1977,15 @@ tfoot {
   background-attachment: scroll;
   box-sizing: border-box; }
 
+.ui-card-icon-frame {
+  height: 30px;
+  width: 32px;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 4px 0px;
+  background-color: rgba(0, 0, 0, 0.33);
+  border: 1px solid rgba(255, 255, 255, 0.8); }
+
 .ui-card-align-center {
   text-align: -webkit-center;
   text-align: center;
@@ -1999,7 +1999,9 @@ tfoot {
           align-content: center; }
   .ui-card-align-center > .ui-card-header > .ui-card-icon,
   .ui-card-align-center > .ui-card-footer > .ui-card-icon {
-    float: none; }
+    float: none;
+    margin-right: 10px;
+    margin-left: 10px; }
 
 .ui-card-align-left {
   text-align: -webkit-start;
