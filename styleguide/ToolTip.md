@@ -6,9 +6,9 @@ ToolTip: ver.0.0.0
 
 ```
 const ToolTipExample = () => (
-  <ToolTip>
-    Example Content
-  </ToolTip>
+  <div>
+    <ToolTip position="right">Example Tooltip</ToolTip>
+  </div>
 );
 
 export default ToolTipExample;

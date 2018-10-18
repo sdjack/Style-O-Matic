@@ -7,9 +7,9 @@ import React from "react";
 import ToolTip from "./ToolTip";
 
 const ToolTipExample = () => (
-  <ToolTip>
-    Example Content
-  </ToolTip>
+  <div>
+    <ToolTip position="right">Example Tooltip</ToolTip>
+  </div>
 );
 
 export default ToolTipExample;

@@ -7,9 +7,7 @@ import React from "react";
 import Breadcrumbs from "./Breadcrumbs";
 
 const BreadcrumbsExample = () => (
-  <Breadcrumbs>
-    Example Content
-  </Breadcrumbs>
+  <Breadcrumbs path="/demo/page1/page2/page3/page4" />
 );
 
 export default BreadcrumbsExample;

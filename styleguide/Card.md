@@ -6,8 +6,18 @@ Card: ver.0.0.0
 
 ```
 const CardExample = () => (
-  <Card>
-    Example Content
+  <Card align="center" styled round>
+    <Card.Header>
+      <Card.Icon icon="star" />
+      Card Header
+      <Card.Icon icon="star" />
+    </Card.Header>
+    <Card.Content>Card Content</Card.Content>
+    <Card.Footer>
+      <Card.Icon icon="star" />
+      Card Footer
+      <Card.Icon icon="star" />
+    </Card.Footer>
   </Card>
 );
 

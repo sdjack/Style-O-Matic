@@ -7,9 +7,7 @@ import React from "react";
 import DatePicker from "./DatePicker";
 
 const DatePickerExample = () => (
-  <DatePicker>
-    Example Content
-  </DatePicker>
+  <DatePicker label="DatePicker" inputenabled iconenabled />
 );
 
 export default DatePickerExample;

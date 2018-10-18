@@ -6,10 +6,6 @@
 import React from "react";
 import Pagination from "./Pagination";
 
-const PaginationExample = () => (
-  <Pagination>
-    Example Content
-  </Pagination>
-);
+const PaginationExample = () => <Pagination pageTotal={999} />;
 
 export default PaginationExample;

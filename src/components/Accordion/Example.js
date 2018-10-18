@@ -8,7 +8,12 @@ import Accordion from "./Accordion";
 
 const AccordionExample = () => (
   <Accordion>
-    Example Content
+    <Accordion.Title>
+      Example Title
+    </Accordion.Title>
+    <Accordion.Content>
+      Example Content
+    </Accordion.Content>
   </Accordion>
 );
 

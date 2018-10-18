@@ -5,11 +5,20 @@ Pill: ver.0.0.0
 **Typical render usage:**
 
 ```
-const PillExample = () => (
-  <Pill>
-    Example Content
+const PillExample = () => [
+  <Pill id="pill1" onAction={() => {}}>
+    Action
+  </Pill>,
+  <Pill id="pill2" onRemove={() => {}}>
+    Closable
+  </Pill>,
+  <Pill id="pill3" onAction={() => {}} onRemove={() => {}}>
+    Both
+  </Pill>,
+  <Pill id="pill4" onAction={() => {}} onRemove={() => {}} disabled>
+    Disabled
   </Pill>
-);
+];
 
 export default PillExample;
 ```

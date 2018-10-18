@@ -8,7 +8,10 @@ import ButtonBar from "./ButtonBar";
 
 const ButtonBarExample = () => (
   <ButtonBar>
-    Example Content
+    <ButtonBar.Button>1</ButtonBar.Button>
+    <ButtonBar.Button>2</ButtonBar.Button>
+    <ButtonBar.Button>3</ButtonBar.Button>
+    <ButtonBar.Button>4</ButtonBar.Button>
   </ButtonBar>
 );
 

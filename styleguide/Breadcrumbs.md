@@ -6,9 +6,7 @@ Breadcrumbs: ver.0.0.0
 
 ```
 const BreadcrumbsExample = () => (
-  <Breadcrumbs>
-    Example Content
-  </Breadcrumbs>
+  <Breadcrumbs path="/demo/page1/page2/page3/page4" />
 );
 
 export default BreadcrumbsExample;

@@ -5,11 +5,7 @@ Pagination: ver.0.0.0
 **Typical render usage:**
 
 ```
-const PaginationExample = () => (
-  <Pagination>
-    Example Content
-  </Pagination>
-);
+const PaginationExample = () => <Pagination pageTotal={999} />;
 
 export default PaginationExample;
 ```

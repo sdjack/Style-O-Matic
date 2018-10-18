@@ -5,11 +5,7 @@ Drawer: ver.0.0.0
 **Typical render usage:**
 
 ```
-const DrawerExample = () => (
-  <Drawer>
-    Example Content
-  </Drawer>
-);
+const DrawerExample = () => <Drawer>Example Content</Drawer>;
 
 export default DrawerExample;
 ```

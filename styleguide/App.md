@@ -5,11 +5,7 @@ App: ver.0.0.0
 **Typical render usage:**
 
 ```
-const AppExample = () => (
-  <App>
-    Example Content
-  </App>
-);
+const AppExample = () => <App>Example Content</App>;
 
 export default AppExample;
 ```

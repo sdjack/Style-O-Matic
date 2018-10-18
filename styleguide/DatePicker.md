@@ -6,9 +6,7 @@ DatePicker: ver.0.0.0
 
 ```
 const DatePickerExample = () => (
-  <DatePicker>
-    Example Content
-  </DatePicker>
+  <DatePicker label="DatePicker" inputenabled iconenabled />
 );
 
 export default DatePickerExample;
