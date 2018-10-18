@@ -4,7 +4,7 @@ Footer: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const FooterExample = () => (
   <Footer>
     Example Content

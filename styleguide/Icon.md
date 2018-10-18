@@ -4,7 +4,7 @@ Icon: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const IconExample = () => (
   <Icon>
     Example Content

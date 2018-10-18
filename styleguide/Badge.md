@@ -4,7 +4,7 @@ Badge: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const BadgeExample = () => [
   <Badge color="black">
     <Badge.Icon icon="star" />

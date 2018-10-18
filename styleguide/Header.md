@@ -4,7 +4,7 @@ Header: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const HeaderExample = () => (
   <Header>
     Example Content

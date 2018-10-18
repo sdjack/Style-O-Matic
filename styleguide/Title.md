@@ -4,7 +4,7 @@ Title: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const TitleExample = () => (
   <Title>
     Example Content

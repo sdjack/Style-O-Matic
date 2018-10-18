@@ -4,7 +4,7 @@ Dropdown: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const DropdownExample = () => (
   <Dropdown>
     <Dropdown.Toggle>Example Dropdown</Dropdown.Toggle>

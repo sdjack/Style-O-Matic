@@ -4,7 +4,7 @@ Textarea: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const TextareaExample = () => (
   <Textarea>
     Example Content

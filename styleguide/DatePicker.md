@@ -4,7 +4,7 @@ DatePicker: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const DatePickerExample = () => (
   <DatePicker label="DatePicker" inputenabled iconenabled />
 );

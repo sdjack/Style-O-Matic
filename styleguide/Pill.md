@@ -4,7 +4,7 @@ Pill: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const PillExample = () => [
   <Pill id="pill1" onAction={() => {}}>
     Action

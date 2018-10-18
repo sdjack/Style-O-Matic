@@ -4,7 +4,7 @@ Nav: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const NavExample = () => (
   <Nav>
     Example Content

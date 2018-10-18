@@ -4,7 +4,7 @@ Form: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const FormExample = () => (
   <Form>
     <Form.Row>

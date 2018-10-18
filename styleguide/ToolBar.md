@@ -4,7 +4,7 @@ ToolBar: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const ToolBarExample = () => (
   <ToolBar raised>
     <ToolBar.Content contentAlign="left">

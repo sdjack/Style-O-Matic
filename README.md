@@ -44,8 +44,21 @@ $ gulp
 $ npm run build
 ```
 
-
-### Full wiki coming soon.
+## Usage Examples
+**more soon**
+* [Accordion](styleguide/Accordion.md)
+* [Badge](styleguide/Badge.md)
+* [Breadcrumbs](styleguide/Breadcrumbs.md)
+* [Button](styleguide/Button.md)
+* [ButtonBar](styleguide/ButtonBar.md)
+* [Card](styleguide/Card.md)
+* [DatePicker](styleguide/DatePicker.md)
+* [Dropdown](styleguide/Dropdown.md)
+* [Form](styleguide/Form.md)
+* [Pagination](styleguide/Pagination.md)
+* [Pill](styleguide/Pill.md)
+* [ToolBar](styleguide/ToolBar.md)
+* [ToolTip](styleguide/ToolTip.md)
 
 
 ## License

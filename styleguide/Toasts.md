@@ -4,12 +4,8 @@ Toasts: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
-const ToastsExample = () => (
-  <Toasts>
-    Example Content
-  </Toasts>
-);
+```js
+const ToastsExample = () => <Toasts>Example Content</Toasts>;
 
 export default ToastsExample;
 ```

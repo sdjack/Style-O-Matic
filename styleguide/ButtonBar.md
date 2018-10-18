@@ -4,7 +4,7 @@ ButtonBar: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const ButtonBarExample = () => (
   <ButtonBar>
     <ButtonBar.Button>1</ButtonBar.Button>

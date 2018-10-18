@@ -4,7 +4,7 @@ Button: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const ButtonExample = () => [
   <Button>DEFAULT</Button>,
   <Button color="black">BLACK</Button>,

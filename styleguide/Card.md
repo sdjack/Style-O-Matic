@@ -4,7 +4,7 @@ Card: ver.0.0.0
 ---
 **Typical render usage:**
 
-```
+```js
 const CardExample = () => (
   <Card align="center" styled round>
     <Card.Header>
