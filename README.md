@@ -1,4 +1,5 @@
-Style-O-Matic UI [![Build Status](https://travis-ci.org/sdjack/Style-O-Matic.svg?branch=master)](https://travis-ci.org/sdjack/Style-O-Matic)
+[![Build Status](https://travis-ci.org/sdjack/Style-O-Matic.svg?branch=master)](https://travis-ci.org/sdjack/Style-O-Matic)
+![SoM Logo](images/logo.png)
 ================
 
 Experimental element-based CSS framework with accompanying React.js component library
