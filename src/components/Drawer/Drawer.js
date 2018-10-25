@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Drawer
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Drawer
+ * @example <Drawer>
+             Example Content
+           </Drawer>
+ */
 import React from "react";
 import _ from "lodash";
 import classNames from "classnames";

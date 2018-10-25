@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name ToolTip
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/ToolTip
+ * @example <div>
+   <ToolTip position="right">Example Tooltip</ToolTip>
+ </div>
+ */
 import React from "react";
 import ReactDOM from "react-dom";
 import classNames from "classnames";

@@ -1,3 +1,7 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @author Steven Jackson
+ */
 import React, { cloneElement } from "react";
 import {
   CoreComponent,

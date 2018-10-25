@@ -1,3 +1,23 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Card
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Card
+ * @example <Card align="center" styled round>
+   <Card.Header>
+     <Card.Icon icon="star" />
+     Card Header
+     <Card.Icon icon="star" />
+   </Card.Header>
+   <Card.Content>Card Content</Card.Content>
+   <Card.Footer>
+     <Card.Icon icon="star" />
+     Card Footer
+     <Card.Icon icon="star" />
+   </Card.Footer>
+ </Card>
+ */
 import React from "react";
 import cx from "classnames";
 import {

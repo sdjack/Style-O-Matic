@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Main
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Main
+ * @example <Main>
+             Example Content
+           </Main>
+ */
 import React, { cloneElement } from "react";
 import cx from "classnames";
 import {

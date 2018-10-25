@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Nav
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Nav
+ * @example <Nav>
+             Example Content
+           </Nav>
+ */
 import React, { cloneElement } from "react";
 import {
   CoreComponent,

@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Modal
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Modal
+ * @example <Modal>
+             Example Content
+           </Modal>
+ */
 import React, { cloneElement } from "react";
 import ReactDOM from "react-dom";
 import cx from "classnames";

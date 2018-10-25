@@ -1,3 +1,8 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @todo Write sub-component documentation
+ * @author Steven Jackson
+ */
 import React from "react";
 import "./Loading.css";
 

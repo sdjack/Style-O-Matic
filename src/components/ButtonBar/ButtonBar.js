@@ -1,3 +1,16 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name ButtonBar
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/ButtonBar
+ * @example <ButtonBar>
+   <ButtonBar.Button>1</ButtonBar.Button>
+   <ButtonBar.Button>2</ButtonBar.Button>
+   <ButtonBar.Button>3</ButtonBar.Button>
+   <ButtonBar.Button>4</ButtonBar.Button>
+ </ButtonBar>
+ */
 import React, { cloneElement } from "react";
 import {
   CoreComponent,

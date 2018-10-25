@@ -1,3 +1,21 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name ToolBar
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/ToolBar
+ * @example <ToolBar raised>
+   <ToolBar.Content contentAlign="left">
+     <ToolBar.Title>TITLE</ToolBar.Title>
+     <ToolBar.Button>Button</ToolBar.Button>
+     <ToolBar.Button>Button</ToolBar.Button>
+   </ToolBar.Content>
+   <ToolBar.Content contentAlign="right">
+     <ToolBar.Text>Raised</ToolBar.Text>
+     <ToolBar.Text>Example</ToolBar.Text>
+   </ToolBar.Content>
+ </ToolBar>
+ */
 import React from "react";
 import {
   CoreComponent,

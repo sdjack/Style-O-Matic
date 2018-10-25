@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Select
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Select
+ * @example <Select>
+             Example Content
+           </Select>
+ */
 import React from "react";
 import classNames from "classnames";
 import {

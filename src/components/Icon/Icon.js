@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Icon
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Icon
+ * @example <Icon>
+             Example Content
+           </Icon>
+ */
 import React from "react";
 import {
   CoreComponent,

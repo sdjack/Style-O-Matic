@@ -1,3 +1,20 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Tabs
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Tabs
+ * @example <Tabs panel>
+   <Tabs.Tab>Tab 1</Tabs.Tab>
+   <Tabs.Tab>Tab 2</Tabs.Tab>
+   <Tabs.Content>Tab 1 Content</Tabs.Content>
+   <Tabs.Content>Tab 2 Content</Tabs.Content>
+   <Tabs.Tab>Tab 3</Tabs.Tab>
+   <Tabs.Tab>Tab 4</Tabs.Tab>
+   <Tabs.Content>Tab 3 Content</Tabs.Content>
+   <Tabs.Content>Tab 4 Content</Tabs.Content>
+ </Tabs>
+ */
 import React, { cloneElement } from "react";
 import classNames from "classnames";
 import {

@@ -1,3 +1,11 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name DatePicker
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/DatePicker
+ * @example <DatePicker label="DatePicker" inputenabled iconenabled />
+ */
 import _ from "lodash";
 import React from "react";
 import "intl";

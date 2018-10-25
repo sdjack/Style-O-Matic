@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name App
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/App
+ * @example <App>
+             Example Content
+           </App>
+ */
 import React, { cloneElement } from "react";
 import _ from "lodash";
 import {

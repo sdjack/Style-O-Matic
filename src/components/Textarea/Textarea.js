@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Textarea
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Textarea
+ * @example <Textarea>
+             Example Content
+           </Textarea>
+ */
 import React from "react";
 import classNames from "classnames";
 import {

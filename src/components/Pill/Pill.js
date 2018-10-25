@@ -1,3 +1,22 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Pill
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Pill
+ * @example <Pill id="pill1" onAction={() => {}}>
+   Action
+ </Pill>,
+ <Pill id="pill2" onRemove={() => {}}>
+   Closable
+ </Pill>,
+ <Pill id="pill3" onAction={() => {}} onRemove={() => {}}>
+   Both
+ </Pill>,
+ <Pill id="pill4" onAction={() => {}} onRemove={() => {}} disabled>
+   Disabled
+ </Pill>
+ */
 import React from "react";
 import {
   CoreComponent,

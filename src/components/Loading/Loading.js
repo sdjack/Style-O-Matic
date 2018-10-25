@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Loading
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Loading
+ * @example <Loading>
+             Example Content
+           </Loading>
+ */
 import React from "react";
 import {
   CoreComponent,

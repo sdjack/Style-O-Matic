@@ -1,3 +1,10 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Table
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Table
+ */
 import React, { cloneElement } from "react";
 import cx from "classnames";
 import {
@@ -269,3 +276,39 @@ class Table extends CoreComponent {
 }
 
 export default Table;
+
+/**
+ * @namespace Style-O-Matic UI
+ * @name Table
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Table
+ * @example <Table bordered panel>
+   {Table.FactoryData({
+     head: [
+       [
+         {
+           content: "Name",
+           filterable: true
+         },
+         {
+           content: "Email",
+           editable: true
+         },
+         {
+           content: "ID",
+           sortable: true
+         }
+       ]
+     ],
+     body: [
+       ["Default User", "generic@email.com", "001"],
+       ["Another User", "another@email.com", "002"],
+       ["Mystery User", "mystery@email.com", "003"],
+       ["Ignored User", "ignored@email.com", "004"],
+       ["Broken User", null, "005"],
+       [null, "ghost@email.com", "000"]
+     ]
+   })}
+ </Table>
+ */

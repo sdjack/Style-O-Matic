@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Toasts
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Toasts
+ * @example <Toasts>
+             Example Content
+           </Toasts>
+ */
 import _ from "lodash";
 import React, { cloneElement } from "react";
 import {

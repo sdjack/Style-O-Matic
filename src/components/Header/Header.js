@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Header
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Header
+ * @example <Header>
+             Example Content
+           </Header>
+ */
 import React, { cloneElement } from "react";
 import {
   CoreComponent,

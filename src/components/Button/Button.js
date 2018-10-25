@@ -1,3 +1,19 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Button
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Button
+ * @example <Button>DEFAULT</Button>,
+ <Button color="black">BLACK</Button>,
+ <Button color="red">RED</Button>,
+ <Button color="orange">ORANGE</Button>,
+ <Button color="yellow">YELLOW</Button>,
+ <Button color="green">GREEN</Button>,
+ <Button color="blue">BLUE</Button>,
+ <Button color="indigo">INDIGO</Button>,
+ <Button color="violet">VIOLET</Button>
+ */
 import React, { cloneElement } from "react";
 import {
   isModifiedEvent,

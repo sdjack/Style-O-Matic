@@ -7,8 +7,7 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Grid, Title } from "../../../src/index";
-import { Accordion } from "../../../src/examples";
+import { Accordion, Grid, Title } from "../../../src/index";
 
 class AccordionView extends React.Component {
   render() {
@@ -24,7 +23,10 @@ class AccordionView extends React.Component {
             </Title>
             <hr />
             <br />
-            <Accordion />
+            <Accordion>
+              <Accordion.Title>Example Title</Accordion.Title>
+              <Accordion.Content>Example Content</Accordion.Content>
+            </Accordion>
           </Grid.Column>
         </Grid.Row>
       </Grid>

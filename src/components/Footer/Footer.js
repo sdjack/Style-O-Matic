@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Footer
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Footer
+ * @example <Footer>
+   Example Content
+ </Footer>
+ */
 import React, { cloneElement } from "react";
 import {
   CoreComponent,

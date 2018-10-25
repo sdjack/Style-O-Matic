@@ -1,3 +1,18 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Accordion
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Accordion
+ * @example <Accordion>
+   <Accordion.Title>
+     Example Title
+   </Accordion.Title>
+   <Accordion.Content>
+     Example Content
+   </Accordion.Content>
+ </Accordion>
+ */
 import React, { cloneElement } from "react";
 import {
   CoreComponent,

@@ -1,3 +1,21 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Dropdown
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Dropdown
+ * @example <Dropdown>
+   <Dropdown.Toggle>Example Dropdown</Dropdown.Toggle>
+   <Dropdown.Content>
+     <span>Option 1</span>
+     <span>Option 2</span>
+     <span>Option 3</span>
+     <span>Option 4</span>
+     <span>Option 5</span>
+     <span>Option 6</span>
+   </Dropdown.Content>
+ </Dropdown>
+ */
 import React, { cloneElement } from "react";
 import activeElement from "dom-helpers/activeElement";
 import contains from "dom-helpers/query/contains";

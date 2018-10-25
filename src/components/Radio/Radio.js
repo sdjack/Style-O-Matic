@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Radio
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Radio
+ * @example <Radio>
+             Example Content
+           </Radio>
+ */
 import React from "react";
 import classNames from "classnames";
 import {

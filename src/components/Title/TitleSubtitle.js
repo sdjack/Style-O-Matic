@@ -1,5 +1,10 @@
-import _ from "lodash";
+/**
+ * @namespace Style-O-Matic UI
+ * @todo Write sub-component documentation
+ * @author Steven Jackson
+ */
 import React from "react";
+import _ from "lodash";
 import {
   CoreComponent,
   setCorePropDefaults,

@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Grid
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Grid
+ * @example <Grid>
+             Example Content
+           </Grid>
+ */
 import React from "react";
 import {
   CoreComponent,

@@ -1,3 +1,13 @@
+/**
+ * @namespace Style-O-Matic UI
+ * @name Input
+ * @author Steven Jackson
+ * @external scssdir
+ * @see ../../scss/components/Input
+ * @example <Input>
+             Example Content
+           </Input>
+ */
 import React from "react";
 import classNames from "classnames";
 import {
