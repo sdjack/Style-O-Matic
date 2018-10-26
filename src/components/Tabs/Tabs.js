@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Tabs
+ * @memberof components
+ * @namespace Tabs
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Tabs
+* @scss ../../scss/components/Tabs
  * @example <Tabs panel>
    <Tabs.Tab>Tab 1</Tabs.Tab>
    <Tabs.Tab>Tab 2</Tabs.Tab>

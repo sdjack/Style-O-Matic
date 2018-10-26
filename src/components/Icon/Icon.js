@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Icon
+ * @memberof components
+ * @namespace Icon
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Icon
+* @scss ../../scss/components/Icon
  * @example <Icon>
              Example Content
            </Icon>

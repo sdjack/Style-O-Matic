@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Title
+ * @memberof components
+ * @namespace Title
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Title
+* @scss ../../scss/components/Title
  * @example <Title>
              Example Content
            </Title>

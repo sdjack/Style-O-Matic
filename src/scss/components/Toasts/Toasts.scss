@@ -1,8 +1,16 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Toasts
 // -----------------------------------------------------------------------------
 
-@import "config";
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+// VARIABLES
+$toasts-offset: 2px !default;
+$toasts-height: ($framing-size - ($toasts-offset * 2));
+$toasts-padding: 0 24px;
 
 .ui-toasts {
   border: none;
@@ -13,7 +21,7 @@
   top: 0;
   left: 0;
   right: 0;
-  @include text-align-center();
+  @include text-horizontal-align-center();
   z-index: 199;
 }
 
@@ -27,7 +35,7 @@
   box-sizing: border-box;
   background: #262626;
   border-bottom: none;
-  @include text-align-center();
+  @include text-horizontal-align-center();
   @include animate-default(0.2s);
   overflow: hidden;
   transition-property: height, padding, line-height;

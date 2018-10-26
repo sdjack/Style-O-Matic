@@ -1,8 +1,48 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Card
 // -----------------------------------------------------------------------------
 
- @import 'config';
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+$card-background-color: unquote("rgb(#{$color-white})") !default;
+$card-image-placeholder-color: $text-color;
+$card-body-actions-text-color: $text-color;
+$card-border-color: rgba(0,0,0,0.1) !default;
+$card-padding: 8px;
+$card-margin: $padding;
+$card-min-width: 20.5% !default;
+$card-max-width: 24.1% !default;
+$card-height: 325px;
+$card-responsive-min-width: 300px;
+$card-responsive-max-width: 380px;
+$card-responsive-height: 380px;
+$card-header-height: 40px;
+$card-badge-offset: $card-header-height + 30;
+$card-body-height: 300px;
+$card-horizontal-padding: 16px !default;
+$card-vertical-padding: 16px !default;
+$card-font-size: 16px !default;
+$card-header-font-size: 20px !default;
+$card-header-perspective-origin-x: 165px !default;
+$card-header-perspective-origin-y: 56px !default;
+$card-header-transform-origin-x: 165px !default;
+$card-header-transform-origin-y: 56px !default;
+$card-header-horizontal-padding: 0px !default;
+$card-header-vertical-padding: 12px !default;
+$card-header-text-transform-origin-x: 149px !default;
+$card-header-text-transform-origin-y: 48px !default;
+$card-header-text-font-weight: 300 !default;
+$card-body-line-height: 18px !default;
+$card-body-font-size: 13px !default;
+$card-body-actions-font-size: 16px !default;
+$card-body-horizontal-padding: 0px !default;
+$card-body-vertical-padding: 8px !default;
+$card-z-index: 1 !default;
+$card-cover-image-height: 186px !default;
+$card-background-image-url: '' !default;
 
 
 .ui-card {
@@ -19,7 +59,7 @@
   padding: 0;
   margin: 1em 2%;
   overflow: hidden;
-  @include shadow-card();
+  @include box-shadow($shadow-panel);
 }
 
 .ui-card-header,

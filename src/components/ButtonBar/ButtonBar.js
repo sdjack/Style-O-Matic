@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name ButtonBar
+ * @memberof components
+ * @namespace ButtonBar
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/ButtonBar
+* @scss ../../scss/components/ButtonBar
  * @example <ButtonBar>
    <ButtonBar.Button>1</ButtonBar.Button>
    <ButtonBar.Button>2</ButtonBar.Button>

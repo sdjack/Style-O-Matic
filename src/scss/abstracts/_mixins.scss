@@ -1,59 +1,28 @@
 // -----------------------------------------------------------------------------
-// This file contains all application-wide Sass mixins.
+  // Mixins
 // -----------------------------------------------------------------------------
 
-/// Event wrapper
-/// @author Harry Roberts
-/// @param {Bool} $self [false] - Whether or not to include current selector
-/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
-@mixin on-event($self: false) {
-  @if $self {
-    &,
-    &:hover,
-    &:active,
-    &:focus {
-      @content;
-    }
-  } @else {
-    &:hover,
-    &:active,
-    &:focus {
-      @content;
-    }
-  }
-}
+////
+/// @author Steve Jackson
+/// @group abstracts
+////
 
-/// Make a context based selector a little more friendly
-/// @author Hugo Giraudel
-/// @param {String} $context
-@mixin when-inside($context) {
-  #{$context} & {
-    @content;
-  }
-}
-
-
-@mixin clearfix() {
-  &:before,
-  &:after {
-    content: " "; // 1
-    display: table; // 2
-  }
-  &:after {
-    clear: both;
-  }
-}
-
+/// Align content to the center
+/// @name content-align-center
 @mixin content-align-center() {
   justify-content: center;
   align-content: space-around;
 }
 
+/// Align content to the left
+/// @name content-align-left
 @mixin content-align-left() {
   justify-content: flex-start;
   align-content: flex-start;
 }
 
+/// Align content to the right
+/// @name content-align-right
 @mixin content-align-right() {
   justify-content: flex-end;
   align-content: flex-end;
@@ -197,6 +166,10 @@
   @include typo-preferred-font($useTitleFont);
 }
 
+/// Set typeography designed for content titles
+/// @author Steve Jackson
+/// @name typo-title
+/// @param {String} $colorContrast
 @mixin typo-title($colorContrast: false, $useTitleFont: true) {
   font-size: 20px;
   font-weight: 400;
@@ -211,6 +184,10 @@
   @include typo-preferred-font($useTitleFont);
 }
 
+/// Set typeography designed for small headers
+/// @author Steve Jackson
+/// @name typo-subhead
+/// @param {String} $colorContrast
 @mixin typo-subhead($colorContrast: false, $useTitleFont: true) {
   font-size: 17px;
   font-weight: 200;
@@ -224,94 +201,10 @@
   @include typo-preferred-font($useTitleFont);
 }
 
-@mixin typo-table-header($colorContrast: false) {
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 1.4;
-  letter-spacing: 0.05em;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
-@mixin typo-paragraph($colorContrast: false) {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.02em;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
-@mixin typo-caption($colorContrast: false) {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.02em;
-
-  @if $colorContrast {
-    opacity: 0.54;
-  }
-}
-
-@mixin typo-blockquote($colorContrast: false) {
-  position: relative;
-  font-size: 24px;
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.35;
-  letter-spacing: 0.02em;
-
-  &:before {
-    position: absolute;
-    left: -0.5em;
-    content: '“';
-  }
-
-  &:after {
-    content: '”';
-    margin-left: -0.05em;
-  }
-
-  @if $colorContrast {
-    opacity: 0.54;
-  }
-}
-
-@mixin typo-menu($colorContrast: false) {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.02em;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
-@mixin typo-button($colorContrast: false) {
-  font-size: 14px;
-  font-weight: 500;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
-@mixin typo-text-button($colorContrast: false) {
-  font-size: 1em;
-  font-weight: 500;
-  line-height: 2 !important;
-  letter-spacing: 0.04em;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
+/// Set typeography designed for lists
+/// @author Steve Jackson
+/// @name typo-lists
+/// @param {String} $colorContrast
 @mixin typo-lists($colorContrast: false) {
   font-size: 14px;
   font-weight: 300;
@@ -323,39 +216,10 @@
   }
 }
 
-@mixin typo-lists-small($colorContrast: false) {
-  font-size: 12px;
-  font-weight: 100;
-  line-height: 18px;
-  letter-spacing: 0.02em;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
-@mixin typo-lists-medium($colorContrast: false) {
-  font-size: 16px;
-  font-weight: 100;
-  line-height: 22px;
-  letter-spacing: 0.02em;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
-@mixin typo-lists-large($colorContrast: false) {
-  font-size: 22px;
-  font-weight: 100;
-  line-height: 40px;
-  letter-spacing: 0.02em;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-
+/// Set typeography designed for inputs
+/// @author Steve Jackson
+/// @name typo-input
+/// @param {String} $colorContrast
 @mixin typo-input($colorContrast: false) {
   font-size: $widget-font-size;
   font-weight: 300;
@@ -369,7 +233,30 @@
   }
 }
 
-@mixin typo-input-button($colorContrast: false) {
+/// Set the box-shadow property easily
+/// @author Steve Jackson
+/// @name box-shadow
+/// @param {String} $shadow
+/// @example scss - Usage
+///    @include box-shadow($shadow-default);
+@mixin box-shadow($shadow...) {
+  @if $shadow {
+    -webkit-box-shadow: $shadow;
+            box-shadow: $shadow;
+  }
+  @else {
+    -webkit-box-shadow: $shadow-default;
+            box-shadow: $shadow-default;
+  }
+}
+
+/// Set a basic control widget style
+/// @author Steve Jackson
+/// @name button-skin
+/// @param {String} $colorContrast
+/// @example scss - Usage
+///    @include button-skin();
+@mixin button-skin($colorContrast: false) {
   font-size: $widget-font-size;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -384,314 +271,17 @@
   @if $colorContrast {
     opacity: 0.87;
   }
+
+  &.ui-shadow {
+    @include box-shadow(0px 0px 1px 0px rgba(0,0,0,0.2), 0px 1px 3px -1px rgba(0,0,0,0.2));
+  }
 }
 
-@mixin border-top-radius($radius) {
-  border-top-right-radius: $radius;
-   border-top-left-radius: $radius;
-}
-@mixin border-right-radius($radius) {
-  border-bottom-right-radius: $radius;
-     border-top-right-radius: $radius;
-}
-@mixin border-bottom-radius($radius) {
-  border-bottom-right-radius: $radius;
-   border-bottom-left-radius: $radius;
-}
-@mixin border-left-radius($radius) {
-  border-bottom-left-radius: $radius;
-     border-top-left-radius: $radius;
-}
-
-@mixin table-inner-borders() {
-  border-style: solid;
-  border-color: $table-border-color;
-  border-width: 1px 0px 1px 0px;
-}
-@mixin input-skin() {
-  //box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3), inset 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-  border: solid 0.5px $text-color;
-}
-@mixin button-skin($shadowColor: rgba(0,0,0,0.2)) {
-  box-shadow: 	0px 0px 2px 0px $shadowColor,
-  				0px 1px 4px -1px $shadowColor;
-}
-@mixin button-shadow($shadowColor: rgba(0,0,0,0.2)) {
-  box-shadow:   0px 0px 2px 0px $shadowColor,
-          0px 1px 4px -1px $shadowColor;
-}
-@mixin buttonbar-shadow($shadowColor: rgba(0,0,0,0.4)) {
-  box-shadow:   0px 1px 3px -2px $shadowColor,
-          1px 0px 3px -2px $shadowColor;
-}
-@mixin dropdown-shadow($shadowColor: rgba(0,0,0,0.2)) {
-  box-shadow:   0px 0px 2px 0px $shadowColor,
-          0px 1px 4px -1px $shadowColor;
-}
-@mixin pill-skin($shadowColor: rgba(0,0,0,0.2)) {
-  box-shadow: 0 0 1px 0 $shadowColor,
-          0px 1px 3px -1px $shadowColor;
-}
-@mixin pill-action-skin($shadowColor: $color-muted) {
-  box-shadow: inset 0px 1px 2px $shadowColor,
-          0px 1px 1px #FFFFFF;
-}
-@mixin typo-button($colorContrast: false, $useTitleFont: false) {
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-
+@mixin button-inset-skin($colorContrast: false) {
+  @include box-shadow(inset 0px 1px 2px $color-muted, 0px 1px 1px #FFFFFF);
   @if $colorContrast {
     opacity: 0.87;
   }
-}
-@mixin typo-button-uppercase($colorContrast: false, $useTitleFont: false) {
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-
-  @if $colorContrast {
-    opacity: 0.87;
-  }
-}
-@mixin box-shadow($shadow...) {
-  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
-          box-shadow: $shadow;
-}
-@mixin focus-shadow() {
-  box-shadow: 0 0px 2px rgba(0,0,0,.18),
-              0 3px 5px rgba(0,0,0,.36);
-}
-@mixin no-shadow() {
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-}
-// @mixin shadow-hover() {
-//   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
-//               0 2px 1px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity),
-//               0 1px 2px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
-// }
-
-@mixin bar-button-skin() {
-	border-right-color: rgba(255,255,255,0.05);
-  border-left-color: rgba(0,0,0,0.1);
-  box-shadow: 0 0 1px 0px rgba(0,0,0,.2);
-}
-@mixin shadow-removed() {
-    box-shadow: none;
-}
-@mixin shadow-raised() {
-  box-shadow: 1px 1px 3px 0 rgba(0,0,0,.33),
-              1px 2px 6px -2px rgba(0,0,0,.5);
-}
-@mixin shadow-inset() {
-  box-shadow: inset 1px 2px 2px rgba(50, 50, 50, .15),
-              inset -1px -2px 2px #ffffff;
-}
-@mixin shadow-dropdown() {
-  box-shadow: 3px 2px 8px -2px rgba(0,0,0,.5), -2px 4px 8px -2px rgba(0,0,0,.5);
-}
-@mixin shadow-border() {
-  box-shadow: -1px -1px 1px 0px rgba(0,0,0,0.4),
-              1px -1px 1px 0px rgba(0,0,0,0.4),
-              1px 1px 1px 0px rgba(0,0,0,0.4),
-              -1px 1px 1px 0px rgba(0,0,0,0.4),
-              1px 2px 5px 1px rgba(0,0,0,.07),
-              1px 2px 8px -3px rgba(0,0,0,.3);
-}
-@mixin shadow-basic() {
-  box-shadow: 1px 2px 5px 1px rgba(0,0,0,.07),
-              1px 2px 8px -3px rgba(0,0,0,.3);
-}
-@mixin shadow-tooltip() {
-  box-shadow: 1px 1px 2px rgba(0,0,0,.07),
-              0px 3px 8px -3px rgba(0,0,0,.3);
-}
-@mixin shadow-panel() {
-  box-shadow: 1px 1px 3px 0 rgba(0,0,0,.04),
-              1px 2px 6px -2px rgba(0,0,0,.14);
-}
-@mixin shadow-card() {
-  box-shadow: 1px 1px 3px 0 rgba(0,0,0,.04),
-              1px 2px 6px -2px rgba(0,0,0,.14);
-}
-@mixin shadow-well() {
-  box-shadow: inset 0 1px 0px rgba(0, 0, 0, .15),
-              inset 0 -1px 0px rgba(255, 255, 255, .85);
-}
-@mixin shadow-basic-dark() {
-  box-shadow: 1px 2px 5px 1px rgba(0,0,0,.3),
-              1px 2px 8px -3px rgba(0,0,0,.5);
-}
-@mixin shadow-titlebar() {
-  box-shadow: 0px -2px 3px 1px rgba(0,0,0,.8),
-              0px -2px 2px -1px rgba(0,0,0,.8);
-}
-@mixin shadow-drawer($horizontal: false) {
-  @if $horizontal {
-    box-shadow: -1px 0px 2px 1px rgba(0,0,0,.23),1px 1px 2px 1px rgba(0,0,0,.23);
-  } @else {
-    box-shadow: -1px 1px 2px -1px rgba(0,0,0,.23),2px 1px 2px -1px rgba(0,0,0,.23);
-  }
-}
-@mixin shadow-inset-nested() {
-  box-shadow: inset -1px 2px 2px 0 rgba(0,0,0,.35),
-              inset -3px 1px 3px -1px rgba(0,0,0,.14),
-              inset -1px 0 6px -2px rgba(0,0,0,.25);
-}
-@mixin shadow-inset-left() {
-  box-shadow: inset -2px 0px 2px 0 rgba(0,0,0,.15),
-              inset -2px 0px 3px -1px rgba(0,0,0,0.14),
-              inset -1px 0px 8px -1px rgba(0,0,0,.25);
-}
-@mixin shadow-inset-right() {
-  box-shadow: inset 2px 0px 2px 0 rgba(0,0,0,.15),
-              inset 2px 0px 3px -1px rgba(0,0,0,0.14),
-              inset 1px 0px 8px -1px rgba(0,0,0,.25);
-}
-@mixin shadow-1dp() {
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
-              0 2px 1px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity),
-              0 1px 2px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
-}
-@mixin shadow-2dp() {
-  box-shadow: 0 0 3px 3px rgba(0,0,0,$shadow-key-penumbra-opacity),
-              1px 2px 3px 0 rgba(0,0,0,$shadow-key-umbra-opacity),
-              0 1px 5px 0 rgba(0,0,0,$shadow-ambient-shadow-opacity);
-}
-@mixin shadow-3dp() {
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
-              0 3px 3px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity),
-              0 1px 8px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
-}
-@mixin shadow-4dp() {
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
-              0 1px 10px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
-              0 2px 4px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity);
-}
-@mixin shadow-6dp() {
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
-              0 1px 18px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
-              0 3px 5px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity);
-}
-@mixin shadow-8dp() {
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity),
-              0 3px 14px 2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
-              0 5px 5px -3px rgba(0, 0, 0, $shadow-key-umbra-opacity);
-}
-
-@mixin shadow-16dp() {
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity),
-              0  6px 30px 5px rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
-              0  8px 10px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity);
-}
-@mixin shadow-main() {
-    box-shadow: -3px 0px 6px -1px rgba(0,0,0,0.7);
-}
-@mixin glow-2dp() {
-  box-shadow: 0 2px 2px 0 rgba(255, 255, 255, $glow-key-penumbra-opacity),
-              0 3px 1px -2px rgba(255, 255, 255, $glow-key-umbra-opacity),
-              0 1px 5px 0 rgba(255, 255, 255, $glow-ambient-shadow-opacity);
-}
-
-@mixin shadow-hover-highlight() {
-  box-shadow: 0 0 2px 1px $color-green,
-              0 0 4px 2px $color-green,
-              0 0 5px -3px $color-green;
-}
-
-@mixin shadow-component() {
-  border: 1px solid rgba(0,0,0,0.033);
-  box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.25);
-}
-
-@mixin inset-glow() {
-  box-shadow: inset 0px 0px 12px #000000,
-              inset 0px 0px 2px #999999,
-              inset 0px 4px 20px -5px #555555;
-}
-
-@mixin inset-text() {
-  text-shadow: 0px -1px 0px rgba(0,0,0,0.3), 0px 1px 0px rgba(255,255,255,0.3);
-}
-
-@mixin ui-color($colorName:'black',$color:$color-dark,$inverted: false) {
-  .ui-#{$colorName},
-  .ui-#{$colorName}-no-hover {
-    background-color: $color !important;
-    border-color: $color !important;
-    color: color-contrast($color,$inverted) !important;
-  }
-  .ui-#{$colorName},
-  .ui-#{$colorName}-hover {
-    &:hover,
-    &:active {
-      background-color: lighten($color,10%) !important;
-      border-color: lighten($color,5%) !important;
-      color: color-contrast($color,$inverted) !important;
-    }
-  }
-  .ui-#{$colorName}-fill,
-  .ui-#{$colorName}-fill-no-hover {
-    background-color: $color !important;
-    border: 1px solid darken($color,15%) !important;
-    color: color-contrast($color,$inverted) !important;
-  }
-  .ui-#{$colorName}-fill,
-  .ui-#{$colorName}-fill-hover {
-    &:hover,
-    &:active {
-      background-color: color-contrast($color,$inverted) !important;
-      border: 1px solid $color !important;
-      color: $color !important;
-    }
-  }
-  .ui-#{$colorName}-outline,
-  .ui-#{$colorName}-outline-no-hover {
-    background-color: color-contrast($color,$inverted) !important;
-    border: 1px solid $color !important;
-    color: $color !important;
-  }
-  .ui-#{$colorName}-outline,
-  .ui-#{$colorName}-outline-hover {
-    &:hover,
-    &:active {
-      background-color: $color !important;
-      border: 1px solid darken($color,15%) !important;
-      color: color-contrast($color,$inverted) !important;
-    }
-  }
-  .ui-#{$colorName}-text,
-  .ui-#{$colorName}-text-no-hover {
-    color: $color !important;
-  }
-  .ui-#{$colorName}-text,
-  .ui-#{$colorName}-text-hover {
-    &:hover,
-    &:active {
-      color: lighten($color,5%) !important;
-    }
-  }
-}
-
-@mixin animate-slow-out-fast-in($duration:0.2s) {
-  transition-duration: $duration;
-  transition-timing-function: $animation-curve-slow-out-fast-in;
-}
-
-@mixin animate-fast-out-slow-in($duration:0.2s) {
-  transition-duration: $duration;
-  transition-timing-function: $animation-curve-fast-out-slow-in;
-}
-
-@mixin animate-linear-out-slow-in($duration:0.2s) {
-  transition-duration: $duration;
-  transition-timing-function: $animation-curve-linear-out-slow-in;
-}
-
-@mixin animate-fast-out-linear-in($duration:0.2s) {
-  transition-duration: $duration;
-  transition-timing-function: $animation-curve-fast-out-linear-in;
 }
 
 @mixin animate-default($duration:0.2s) {
@@ -699,18 +289,70 @@
   transition-timing-function: $animation-curve-default;
 }
 
-@mixin animate-fadein($duration:1s) {
-    -webkit-animation: fadein $duration;
-       -moz-animation: fadein $duration;
-        -ms-animation: fadein $duration;
-         -o-animation: fadein $duration;
-            animation: fadein $duration;
-}
-
-@mixin animate-fadeout($duration:1s) {
-    -webkit-animation: fadeout $duration;
-       -moz-animation: fadeout $duration;
-        -ms-animation: fadeout $duration;
-         -o-animation: fadeout $duration;
-            animation: fadeout $duration;
+/// Generates the ui-color classes that can be consumed by
+/// components or the user.
+/// @author Steve Jackson
+/// @name spawn-ui-colors
+/// @example scss - Usage
+///    @include spawn-ui-colors();
+@mixin spawn-ui-colors() {
+  @each $colorName, $color in $color-ui-list {
+    $inverted: if($colorName == 'orange', true, $colorName == 'yellow');
+    .ui-#{$colorName},
+    .ui-#{$colorName}-no-hover {
+      background-color: $color !important;
+      border-color: $color !important;
+      color: color-contrast($color,$inverted) !important;
+    }
+    .ui-#{$colorName},
+    .ui-#{$colorName}-hover {
+      &:hover,
+      &:active {
+        background-color: lighten($color,10%) !important;
+        border-color: lighten($color,5%) !important;
+        color: color-contrast($color,$inverted) !important;
+      }
+    }
+    .ui-#{$colorName}-fill,
+    .ui-#{$colorName}-fill-no-hover {
+      background-color: $color !important;
+      border: 1px solid darken($color,15%) !important;
+      color: color-contrast($color,$inverted) !important;
+    }
+    .ui-#{$colorName}-fill,
+    .ui-#{$colorName}-fill-hover {
+      &:hover,
+      &:active {
+        background-color: color-contrast($color,$inverted) !important;
+        border: 1px solid $color !important;
+        color: $color !important;
+      }
+    }
+    .ui-#{$colorName}-outline,
+    .ui-#{$colorName}-outline-no-hover {
+      background-color: color-contrast($color,$inverted) !important;
+      border: 1px solid $color !important;
+      color: $color !important;
+    }
+    .ui-#{$colorName}-outline,
+    .ui-#{$colorName}-outline-hover {
+      &:hover,
+      &:active {
+        background-color: $color !important;
+        border: 1px solid darken($color,15%) !important;
+        color: color-contrast($color,$inverted) !important;
+      }
+    }
+    .ui-#{$colorName}-text,
+    .ui-#{$colorName}-text-no-hover {
+      color: $color !important;
+    }
+    .ui-#{$colorName}-text,
+    .ui-#{$colorName}-text-hover {
+      &:hover,
+      &:active {
+        color: lighten($color,5%) !important;
+      }
+    }
+  }
 }

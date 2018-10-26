@@ -1,18 +1,30 @@
-/***
- *    ██╗..██╗███████╗.█████╗.██████╗.███████╗██████╗.
- *    ██║..██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗
- *    ███████║█████╗..███████║██║..██║█████╗..██████╔╝
- *    ██╔══██║██╔══╝..██╔══██║██║..██║██╔══╝..██╔══██╗
- *    ██║..██║███████╗██║..██║██████╔╝███████╗██║..██║
- *    ╚═╝..╚═╝╚══════╝╚═╝..╚═╝╚═════╝.╚══════╝╚═╝..╚═╝
- *    ................................................
- */
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Header
 // -----------------------------------------------------------------------------
 
- @import 'config';
+////
+/// @author Steve Jackson
+/// @group components
+////
 
+// VARIABLES
+$header-height: $framing-size !default;
+$header-inner-height: 27px !default;
+$header-item-v-offset: floor(($header-height - $header-inner-height) / 2);
+$header-item-h-offset: floor($header-inner-height / 2);
+$header-font-size: ($text-font-size + 1) !default;
+$header-item-height: ($header-height - ($padding * 2)) !default;
+$header-text-padding: $padding $header-item-h-offset !default;
+$header-item-padding: $header-item-v-offset $padding !default;
+$header-button-padding: 7px $header-item-h-offset 9px !default;
+$header-title-padding: $header-item-v-offset $padding-xlarge !default;
+$header-title-font-size: $header-inner-height;
+$header-icon-height: ($header-height - ($padding * 2)) !default;
+$header-icon-font-size: $header-inner-height;
+$header-icon-padding: 0px 2px !default;
+$header-list-padding: 0px $padding !default;
+$header-list-font-size: $header-font-size;
+$header-toggle-size: $header-inner-height !default;
 
 .ui-header {
   width: 100%;

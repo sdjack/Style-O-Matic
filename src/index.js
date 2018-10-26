@@ -1,3 +1,7 @@
+/**
+ * @namespace style-o-matic
+ * @author Steven Jackson
+ */
 import _App from "./components/App/App";
 
 import _Accordion from "./components/Accordion/Accordion";

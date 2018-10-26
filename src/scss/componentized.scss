@@ -1,15 +1,10 @@
 @charset 'UTF-8';
 
-// @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
-// @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-// @import url('https://use.fontawesome.com/releases/v5.0.9/css/all.css');
-@import 'node_modules/mathsass/dist/math';
+@import './node_modules/mathsass/dist/math';
 
 // Vendors
-// @import
-//   'vendor/vendor';
 
-// Configuration and helpers
+// Abstracts
 @import
   'abstracts/colors',
   'abstracts/functions',
@@ -17,44 +12,9 @@
   'abstracts/mixins',
   'abstracts/animations';
 
-// Base stuff
+// Base
 @import
-  'base/base',
   'base/typography',
   'base/layout',
   'base/icons',
-  'base/window',
   'base/helpers';
-
-// Components
-// @import
-//   'components/Accordion/Accordion',
-//   'components/Badge/Badge',
-//   'components/Breadcrumbs/Breadcrumbs',
-//   'components/Button/Button',
-//   'components/ButtonBar/ButtonBar',
-//   'components/Card/Card',
-//   'components/DatePicker/DatePicker',
-//   'components/Drawer/Drawer',
-//   'components/Dropdown/Dropdown',
-//   'components/Footer/Footer',
-//   'components/Form/Form',
-//   'components/Grid/Grid',
-//   'components/Header/Header',
-//   'components/Input/Input',
-//   'components/Icon/Icon',
-//   'components/Loading/Loading',
-//   'components/Main/Main',
-//   'components/Modal/Modal',
-//   'components/Nav/Nav',
-//   'components/Pagination/Pagination',
-//   'components/Pill/Pill',
-//   'components/Radio/Radio',
-//   'components/Select/Select',
-//   'components/Table/Table',
-//   'components/Tabs/Tabs',
-//   'components/Textarea/Textarea',
-//   'components/Title/Title',
-//   'components/Toasts/Toasts',
-//   'components/ToolBar/ToolBar',
-//   'components/ToolTip/ToolTip';

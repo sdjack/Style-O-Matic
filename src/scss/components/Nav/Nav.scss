@@ -1,8 +1,39 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Nav
 // -----------------------------------------------------------------------------
 
-@import "config";
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+// VARIABLES
+$nav-padding: $padding 24px;
+$nav-item-size: 18px;
+$nav-item-height: $framing-size;
+$nav-item-padding: 18px 21px;
+$nav-icon-size: $framing-size;
+$nav-icon-fontsize: 18px;
+$nav-icon-width: $framing-size;
+$nav-caret-fontsize: 12px;
+$nav-caret-padding: ($nav-item-height / 4);
+$nav-caret-width: 17px;
+$nav-info-fontsize: 16px;
+$nav-info-width: ($framing-size-large - 44);
+$nav-list-line-height: 20px;
+$nav-list-margin: -10px 0px 0px 0px;
+$nav-folder-item-font-color: rgba(239,239,239,0.7);
+$nav-folder-item-font-color-hover: rgba(255,255,255,0.1);
+$nav-folder-item-height: 36px;
+$nav-folder-title-fontsize: 18px;
+$nav-folder-title-padding: 12px 0 6px 12px;
+$nav-folder-icon-fontsize: 20px;
+$nav-folder-icon-line-height: 28px;
+$nav-folder-icon-margin: 8px 12px 8px 48px;
+$nav-folder-info-fontsize: 12px;
+$nav-folder-info-padding: 0;
+$nav-folder-caret-fontsize: $nav-caret-fontsize;
+$nav-folder-caret-padding: 17px 10px 17px 0;
 
 .ui-nav,
 .ui-nav-content {
@@ -123,7 +154,7 @@
 .ui-nav-item-info {
   display: inline;
   max-width: calc(100% - 40px);
-  height: 100%;
+  // height: 100%;
   text-align: start;
   white-space: nowrap;
   overflow: hidden;
@@ -145,7 +176,7 @@
   border: none;
   color: $text-color;
   background-color: $background-color;
-  @include shadow-removed();
+  @include box-shadow(none);
   @include animate-default(0.1s);
   transition-property: all;
   overflow: hidden;
@@ -245,7 +276,7 @@
   font-size: $toggle-size;
   border: none;
   border-radius: 0;
-  @include shadow-removed();
+  @include box-shadow(none);
   outline: none !important;
   &:hover,
   &:focus,

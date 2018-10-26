@@ -1,6 +1,12 @@
 // -----------------------------------------------------------------------------
-// This file contains all application-wide Sass functions.
+  // Functions
 // -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group abstracts
+////
+
 /// Native `url(..)` function wrapper
 /// @param {String} $base - base URL for the asset
 /// @param {String} $type - asset type folder (e.g. `fonts/`)
@@ -40,14 +46,19 @@
   @return rgba(0,0,0,$alpha);
 }
 
-@function color-contrast($n, $inverted: false) {
+/// Returns an appropriate color to contrast the
+/// @param {String} $sourceColor - Color to be compared against
+/// @param {String} $inverted - Reverse the outcome
+/// @return {String}
+/// @require $sourceColor
+@function color-contrast($sourceColor, $inverted: false) {
   $light: $color-lightest;
   $dark: $color-dark;
   @if $inverted {
     $light: $color-dark;
     $dark: $color-lightest;
   }
-  $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
+  $color-brightness: round((red($sourceColor) * 299) + (green($sourceColor) * 587) + (blue($sourceColor) * 114) / 1000);
   $light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
 
   @if abs($color-brightness) < ($light-color/2){

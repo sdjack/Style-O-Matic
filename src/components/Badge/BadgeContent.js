@@ -1,5 +1,5 @@
 /**
- * @namespace Style-O-Matic UI
+ * @memberof Badge
  * @todo Write sub-component documentation
  * @author Steven Jackson
  */
@@ -10,7 +10,10 @@ import {
   getValidProps,
   ROLE
 } from "../../lib";
-
+/**
+ * [BadgeContent description]
+ * @extends CoreComponent
+ */
 class BadgeContent extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "div",

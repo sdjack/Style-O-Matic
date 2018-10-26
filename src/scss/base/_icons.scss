@@ -1,6 +1,11 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Icons
 // -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group base
+////
 
 .ui-icon,
 [class^="ui-icon-"],
@@ -12,10 +17,7 @@
   }
 }
 
-// -----------------------------------------------------------------------------
-// General
-// -----------------------------------------------------------------------------
-
+// General Icons
 .ui-icon-home {
     &:before {
         content: "\1F3E0";
@@ -112,10 +114,7 @@
     }
 }
 
-// -----------------------------------------------------------------------------
-// Arrow / Caret
-// -----------------------------------------------------------------------------
-
+// Arrow Icons
 .ui-icon-up {
     &:before {
         content: "\25BC";
@@ -157,10 +156,7 @@
     }
 }
 
-// -----------------------------------------------------------------------------
-// Controls
-// -----------------------------------------------------------------------------
-
+// Control Icons
 .ui-icon-check {
     &:before {
         content: "\2714";
@@ -252,55 +248,7 @@
     }
 }
 
-// -----------------------------------------------------------------------------
-// Misc Fun Stuff
-// -----------------------------------------------------------------------------
-
-.ui-icon-home {
-    &:before {
-        content: "\1F3E0";
-    }
-}
-.ui-icon-user {
-    &:before {
-        content: "\1F464";
-    }
-}
-.ui-icon-star {
-    &:before {
-        content: "\1F7CA";
-    }
-}
-.ui-icon-shooting-star {
-    &:before {
-        content: "\1F320";
-    }
-}
-.ui-icon-atom {
-    &:before {
-        content: "\269B";
-    }
-}
-.ui-icon-calendar {
-    &:before {
-        content: "\1F5D3";
-    }
-}
-.ui-icon-tools {
-    &:before {
-        content: "\1F6E0";
-    }
-}
-.ui-icon-cart {
-    &:before {
-        content: "\1F6D2";
-    }
-}
-.ui-icon-warning {
-    &:before {
-        content: "\26A0";
-    }
-}
+// Random/Misc/Fun Icons
 .ui-icon-spider {
     &:before {
         content: "\1F577";
@@ -343,7 +291,6 @@
 }
 
 // Currently Unsupported In Most browsers
-
 .ui-icon-ufo {
     &:before {
         content: "\1F6F8";

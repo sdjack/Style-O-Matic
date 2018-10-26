@@ -1,4 +1,9 @@
 /**
+ * @memberof utilities
+ * @namespace getUnhandledProps
+ * @author Steven Jackson
+ */
+/**
  * Returns an object consisting of props beyond the scope of the Component.
  * Useful for getting and spreading unknown props from the user.
  * @param {function} Component A function or ReactClass.

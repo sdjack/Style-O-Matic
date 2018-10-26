@@ -1,5 +1,5 @@
 /**
- * @namespace Style-O-Matic UI
+ * @memberof components
  * @author Steven Jackson
  */
 import React, { cloneElement } from "react";

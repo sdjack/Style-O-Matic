@@ -1,19 +1,13 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Grid
 // -----------------------------------------------------------------------------
 
- @import 'config';
+////
+/// @author Steve Jackson
+/// @group components
+////
 
-// .ui-grid {
-//   @include make-grid();
-//   //@include make-grid-max-widths();
-// }
-
-// .ui-grid-row {
-//   @include make-grid-row();
-// }
-
-// @include make-grid-columns();
+// VARIABLES
 
 .ui-grid {
   display: block;

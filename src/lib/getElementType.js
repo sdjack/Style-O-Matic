@@ -1,4 +1,9 @@
 /**
+ * @memberof utilities
+ * @name getElementType
+ * @author Steven Jackson
+ */
+/**
  * Returns a createElement() type based on the props of the Component.
  * Useful for calculating what type a component should render as.
  *

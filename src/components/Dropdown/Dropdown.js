@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Dropdown
+ * @memberof components
+ * @namespace Dropdown
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Dropdown
+* @scss ../../scss/components/Dropdown
  * @example <Dropdown>
    <Dropdown.Toggle>Example Dropdown</Dropdown.Toggle>
    <Dropdown.Content>

@@ -1,3 +1,8 @@
+/**
+ * @memberof utilities
+ * @namespace CoreComponent
+ * @author Steven Jackson
+ */
 /* eslint-disable */
 import React, { Component, cloneElement } from "react";
 import _ from "lodash";

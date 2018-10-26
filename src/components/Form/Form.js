@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Form
+ * @memberof components
+ * @namespace Form
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Form
+* @scss ../../scss/components/Form
  */
 import React, { cloneElement } from "react";
 import {

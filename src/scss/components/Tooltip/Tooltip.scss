@@ -1,6 +1,14 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Tooltip
 // -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+// VARIABLES
+
 .ui-tooltip,
 .ui-tooltip-hover {
   position: absolute;
@@ -59,7 +67,8 @@
   border-radius: 0;
   padding: 8px;
   line-height: 16px;
-  @include shadow-tooltip();
+  box-shadow: 1px 1px 2px rgba(0,0,0,.07),
+              0px 3px 8px -3px rgba(0,0,0,.3);
 
   &:before,
   &:after {

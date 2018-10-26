@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name DatePicker
+ * @memberof components
+ * @namespace DatePicker
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/DatePicker
+* @scss ../../scss/components/DatePicker
  * @example <DatePicker label="DatePicker" inputenabled iconenabled />
  */
 import _ from "lodash";

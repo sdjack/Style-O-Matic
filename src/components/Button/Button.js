@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Button
+ * @memberof components
+ * @namespace Button
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Button
+* @scss ../../scss/components/Button
  * @example <Button>DEFAULT</Button>,
  <Button color="black">BLACK</Button>,
  <Button color="red">RED</Button>,

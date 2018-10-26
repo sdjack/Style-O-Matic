@@ -1,5 +1,5 @@
 /**
- * @namespace Style-O-Matic UI
+ * @memberof App
  * @todo Write sub-component documentation
  * @author Steven Jackson
  */
@@ -10,7 +10,10 @@ import {
   getValidProps,
   ROLE
 } from "../../lib";
-
+/**
+ * [MainContent description]
+ * @extends CoreComponent
+ */
 class MainContent extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "div",

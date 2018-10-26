@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Drawer
+ * @memberof components
+ * @namespace Drawer
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Drawer
+* @scss ../../scss/components/Drawer
  * @example <Drawer>
              Example Content
            </Drawer>

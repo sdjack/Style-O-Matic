@@ -1,5 +1,13 @@
+/**
+ * @memberof utilities
+ * @namespace UIGlobals
+ * @author Steven Jackson
+ */
 import _ from "lodash";
-
+/**
+ * [defaultRect description]
+ * @type {Object}
+ */
 const defaultRect = {
   x: 0,
   y: 0,
@@ -10,7 +18,10 @@ const defaultRect = {
   width: 0,
   height: 0
 };
-
+/**
+ * [UIGlobals description]
+ * @class
+ */
 class UIGlobals {
   getScreenDimensions = () => {
     if (document && document.body) {

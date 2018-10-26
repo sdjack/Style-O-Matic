@@ -1,11 +1,13 @@
 /**
- * @namespace Style-O-Matic UI
+ * @memberof Accordion
  * @todo Write sub-component documentation
  * @author Steven Jackson
  */
 import React from "react";
 import Accordion from "./Accordion";
-
+/**
+ * [AccordionExample description]
+ */
 const AccordionExample = () => (
   <Accordion>
     <Accordion.Title>Example Title 1</Accordion.Title>

@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Textarea
+ * @memberof components
+ * @namespace Textarea
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Textarea
+* @scss ../../scss/components/Textarea
  * @example <Textarea>
              Example Content
            </Textarea>

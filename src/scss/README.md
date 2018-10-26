@@ -1,4 +1,4 @@
-# Failcoder UI
+# Style-O-Matic UI
 
 ---
 
@@ -9,5 +9,3 @@ The main file (usually labelled `main.scss`) should be the only Sass file from t
 Reference: [Sass Guidelines](http://sass-guidelin.es/) > [Architecture](http://sass-guidelin.es/#architecture) > [Main file](http://sass-guidelin.es/#main-file)
 
 ---
-
-

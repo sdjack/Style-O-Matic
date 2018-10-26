@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name ToolBar
+ * @memberof components
+ * @namespace ToolBar
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/ToolBar
+* @scss ../../scss/components/ToolBar
  * @example <ToolBar raised>
    <ToolBar.Content contentAlign="left">
      <ToolBar.Title>TITLE</ToolBar.Title>

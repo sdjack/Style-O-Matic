@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Input
+ * @memberof components
+ * @namespace Input
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Input
+* @scss ../../scss/components/Input
  * @example <Input>
              Example Content
            </Input>

@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Nav
+ * @memberof components
+ * @namespace Nav
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Nav
+* @scss ../../scss/components/Nav
  * @example <Nav>
              Example Content
            </Nav>

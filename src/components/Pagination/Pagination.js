@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Pagination
+ * @memberof components
+ * @namespace Pagination
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Pagination
+* @scss ../../scss/components/Pagination
  * @example <Pagination pageTotal={999} />
  */
 import React from "react";

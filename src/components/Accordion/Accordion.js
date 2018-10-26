@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Accordion
+ * @memberof components
+ * @namespace Accordion
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Accordion
+ * @scss ../../scss/components/Accordion
  * @example <Accordion>
    <Accordion.Title>
      Example Title

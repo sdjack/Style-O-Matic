@@ -1,6 +1,14 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Title
 // -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+// VARIABLES
+
 .ui-title {
 	display: block;
 
@@ -10,7 +18,8 @@
     margin: 0 0 20px 0;
     padding: 0 0 8px;
     background-color: #fff;
-    @include shadow-titlebar();
+		box-shadow: 0px -2px 3px 1px rgba(0,0,0,.8),
+	              0px -2px 2px -1px rgba(0,0,0,.8);
   }
 }
 
@@ -58,11 +67,11 @@ form > .ui-title,
     }
 }
 
-h1.ui-title-content, 
-h2.ui-title-content, 
-h3.ui-title-content, 
-h4.ui-title-content, 
-h5.ui-title-content, 
+h1.ui-title-content,
+h2.ui-title-content,
+h3.ui-title-content,
+h4.ui-title-content,
+h5.ui-title-content,
 h6.ui-title-content {
   margin: 0;
 }

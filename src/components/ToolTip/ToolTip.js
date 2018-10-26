@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name ToolTip
+ * @memberof components
+ * @namespace ToolTip
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/ToolTip
+* @scss ../../scss/components/ToolTip
  * @example <div>
    <ToolTip position="right">Example Tooltip</ToolTip>
  </div>

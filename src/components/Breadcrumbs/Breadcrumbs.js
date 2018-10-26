@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Breadcrumbs
+ * @memberof components
+ * @namespace Breadcrumbs
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Breadcrumbs
+* @scss ../../scss/components/Breadcrumbs
  * @example <Breadcrumbs path="/demo/page1/page2/page3/page4" />
  */
 import _ from "lodash";

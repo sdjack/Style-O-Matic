@@ -1,9 +1,34 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Table
 // -----------------------------------------------------------------------------
 
- @import 'config';
+////
+/// @author Steve Jackson
+/// @group components
+////
 
+// VARIABLES
+$table-border-color: rgba(#000, 0.12);
+$table-borders: 1px solid $table-border-color;
+$table-row-height: 32px;
+$table-header-bg-color: $color-dark;
+$table-header-fg-color: $color-light;
+$table-divider-color: rgba(#000, 0.12);
+$table-hover-color: #eeeeee;
+$table-selection-color: #e0e0e0;
+$table-dividers: 1px solid $table-divider-color;
+$table-row-height: 48px;
+$table-last-row-height: 56px;
+$table-header-height: 56px;
+$table-column-spacing: 36px;
+$table-column-padding: $table-column-spacing / 2;
+$table-tile-header-height: 64px;
+$table-tile-title-top: 20px;
+$table-tile-padding: 24px;
+$table-button-padding-right: 16px;
+$table-cell-top: $table-tile-padding / 2;
+$table-interactive-background-color: rgba(0,0,0,0.3) !default;
+$table-interactive-text-color: rgba(255,255,255,0.5) !default;
 
 .ui-table {
   position: relative;
@@ -173,7 +198,7 @@
   right: 0;
   top: 100%;
   z-index: 9999;
-  // @include dropdown-shadow();
+
   &.active {
     display: block;
   }

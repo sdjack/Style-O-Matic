@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Grid
+ * @memberof components
+ * @namespace Grid
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Grid
+* @scss ../../scss/components/Grid
  * @example <Grid>
              Example Content
            </Grid>

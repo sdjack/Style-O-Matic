@@ -1,15 +1,12 @@
-/***
- *    ██████╗  █████╗ ████████╗███████╗██████╗ ██╗ ██████╗██╗  ██╗███████╗██████╗
- *    ██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗██║██╔════╝██║ ██╔╝██╔════╝██╔══██╗
- *    ██║  ██║███████║   ██║   █████╗  ██████╔╝██║██║     █████╔╝ █████╗  ██████╔╝
- *    ██║  ██║██╔══██║   ██║   ██╔══╝  ██╔═══╝ ██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
- *    ██████╔╝██║  ██║   ██║   ███████╗██║     ██║╚██████╗██║  ██╗███████╗██║  ██║
- *    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
- *
- */
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Datepicker
 // -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group components
+////
+
 .ui-datepicker {
   display: inline-block;
 	flex-grow: 1;
@@ -82,7 +79,7 @@
   width: auto !important;
   height: 0;
   z-index: 69;
-  @include shadow-removed();
+  @include box-shadow(none);
   @include animate-default(0.2s);
   transition-property: height, border-shadow;
 
@@ -91,7 +88,7 @@
       max-height: 320px !important;
       overflow-y: auto !important;
       border: $border;
-      @include shadow-basic();
+      @include box-shadow();
   }
 }
 

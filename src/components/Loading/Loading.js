@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Loading
+ * @memberof components
+ * @namespace Loading
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Loading
+ * @scss ../../scss/components/Loading
  * @example <Loading>
              Example Content
            </Loading>

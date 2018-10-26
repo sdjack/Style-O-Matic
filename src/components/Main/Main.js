@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Main
+ * @memberof components
+ * @namespace Main
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Main
+* @scss ../../scss/components/Main
  * @example <Main>
              Example Content
            </Main>

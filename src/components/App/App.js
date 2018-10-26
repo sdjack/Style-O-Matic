@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name App
+ * @memberof components
+ * @namespace App
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/App
+* @scss ../../scss/components/App
  * @example <App>
              Example Content
            </App>

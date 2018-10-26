@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Toasts
+ * @memberof components
+ * @namespace Toasts
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Toasts
+* @scss ../../scss/components/Toasts
  * @example <Toasts>
              Example Content
            </Toasts>

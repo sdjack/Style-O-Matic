@@ -1,10 +1,19 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Dropdown
 // -----------------------------------------------------------------------------
 
- @import 'config';
+////
+/// @author Steve Jackson
+/// @group components
+////
 
- 
+// VARIABLES
+$dropdown-text-color: rgba(0,0,0,0.5) !default;
+$dropdown-background-color: rgba(0,0,0,0.033) !default;
+$dropdown-toggle-padding: 10px 24px 10px 12px !default;
+$dropdown-padding: 4px $padding !default;
+$dropdown-transition-properties: height,box-shadow,color,background-color;
+
 .ui-dropdown {
     display: inline-block;
     position: relative;
@@ -32,7 +41,7 @@
     cursor: pointer;
     transition-property: $dropdown-transition-properties;
     @include animate-default(0.2s);
-    @include dropdown-shadow();
+    @include box-shadow(0px 0px 2px 0px rgba(0,0,0,0.2), 0px 1px 4px -1px rgba(0,0,0,0.2));
 
     &:hover, &:focus, &.open {
         & > .show-on-hover {
@@ -63,7 +72,7 @@
     overflow: hidden;
     z-index: 69;
 
-    @include shadow-removed();
+    @include box-shadow(none);
     @include animate-default(0.2s);
     transition-property: height, border-shadow;
 
@@ -72,7 +81,7 @@
         max-height: 320px !important;
         overflow-y: auto !important;
         border: $border;
-        @include shadow-basic();
+        @include box-shadow();
     }
 }
 
@@ -85,10 +94,10 @@
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
-    border-width: 0 0 1px 0 !important; 
+    border-width: 0 0 1px 0 !important;
     border-style: solid;
     border-color: $color-invisible $color-invisible rgba(0,0,0,0.2) $color-invisible !important;
-    @include text-align-left();
+    @include text-horizontal-align-left();
 
     & > strong {
         font-weight: 700 !important;

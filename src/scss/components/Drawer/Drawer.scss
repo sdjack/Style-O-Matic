@@ -1,8 +1,14 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Drawer
 // -----------------------------------------------------------------------------
 
-  @import "config";
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+// VARIABLES
+$drawer-size-threshold: 1000px;
 
 .ui-drawer {
   display: flex;
@@ -14,9 +20,9 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-content: space-between;
-  @include no-shadow();
+  @include box-shadow($shadow-hidden);
   &.active.ui-shadow {
-    @include shadow-drawer();
+    box-shadow: -1px 1px 2px -1px rgba(0,0,0,.23),2px 1px 2px -1px rgba(0,0,0,.23);
   }
 
   &.ui-orientation-vertical {
@@ -84,7 +90,7 @@
   font-size: $toggle-size;
   border: none;
   border-radius: 0;
-  @include shadow-removed();
+  @include box-shadow(none);
   outline: none !important;
   &:hover,
   &:focus,

@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Header
+ * @memberof components
+ * @namespace Header
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Header
+* @scss ../../scss/components/Header
  * @example <Header>
              Example Content
            </Header>

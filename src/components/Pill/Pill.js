@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Pill
+ * @memberof components
+ * @namespace Pill
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Pill
+* @scss ../../scss/components/Pill
  * @example <Pill id="pill1" onAction={() => {}}>
    Action
  </Pill>,

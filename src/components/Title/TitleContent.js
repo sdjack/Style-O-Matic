@@ -1,5 +1,5 @@
 /**
- * @namespace Style-O-Matic UI
+ * @memberof components
  * @todo Write sub-component documentation
  * @author Steven Jackson
  */

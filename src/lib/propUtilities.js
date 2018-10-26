@@ -1,3 +1,8 @@
+/**
+ * @memberof utilities
+ * @namespace propUtilities
+ * @author Steven Jackson
+ */
 import _ from "lodash";
 import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
@@ -6,7 +11,10 @@ import cx from "classnames";
 import { getParentClass } from "./ROLE.js";
 import { uID } from "./coreUtilities.js";
 import UIGlobals from "./UIGlobals.js";
-
+/**
+ * [OBSERVABLE_EVENTS description]
+ * @type {Array}
+ */
 const OBSERVABLE_EVENTS = [
   "scroll",
   "wheel",
@@ -20,7 +28,10 @@ const OBSERVABLE_EVENTS = [
   "load",
   "toggle"
 ];
-
+/**
+ * [NATIVE_PROPS description]
+ * @type {Array}
+ */
 const NATIVE_PROPS = [
   "id",
   "name",
@@ -53,9 +64,15 @@ const NATIVE_PROPS = [
   "onToggle",
   "onSubmit"
 ];
-
+/**
+ * [INHERITED_PROPS description]
+ * @type {Array}
+ */
 const INHERITED_PROPS = ["uiclass", "path", "disabled", "uidata", "invalid"];
-
+/**
+ * [DefaultPropTypes description]
+ * @type {Object}
+ */
 const DefaultPropTypes = {
   uuid: PropTypes.string,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -145,7 +162,10 @@ const DefaultPropTypes = {
   dispatch: PropTypes.oneOf(OBSERVABLE_EVENTS),
   uidata: PropTypes.object
 };
-
+/**
+ * [DefaultPropValues description]
+ * @type {Object}
+ */
 const DefaultPropValues = {
   uuid: null,
   renderAs: "div",
@@ -197,7 +217,11 @@ const DefaultPropValues = {
   dispatch: null,
   uidata: {}
 };
-
+/**
+ * [stringToPropType description]
+ * @param  {String} propString [description]
+ * @return {String}            [description]
+ */
 function stringToPropType(propString) {
   const required = String(propString).indexOf("!") !== -1;
   const prop = String(propString).replace("!", "");
@@ -206,7 +230,11 @@ function stringToPropType(propString) {
   }
   return PropTypes.string;
 }
-
+/**
+ * [assignPropType description]
+ * @param  {String} propVal [description]
+ * @return {String}         [description]
+ */
 function assignPropType(propVal) {
   if (_.isArray(propVal)) {
     const typeValues = propVal.map(val => stringToPropType(val));
@@ -214,7 +242,12 @@ function assignPropType(propVal) {
   }
   return stringToPropType(propVal);
 }
-
+/**
+ * [setPropTypes description]
+ * @param {Boolean} [isA11y=false] [description]
+ * @param {String}  config         [description]
+ * @param {String}  uidataConfig   [description]
+ */
 function setPropTypes(isA11y = false, config, uidataConfig) {
   const obj = _.clone(DefaultPropTypes);
   if (isA11y) {
@@ -236,15 +269,28 @@ function setPropTypes(isA11y = false, config, uidataConfig) {
   }
   return obj;
 }
-
+/**
+ * [setCorePropTypes description]
+ * @param {String} config       [description]
+ * @param {String} uidataConfig [description]
+ */
 export function setCorePropTypes(config, uidataConfig) {
   return setPropTypes(false, config, uidataConfig);
 }
-
+/**
+ * [setPropTypesA11y description]
+ * @param {String} config       [description]
+ * @param {String} uidataConfig [description]
+ */
 export function setPropTypesA11y(config, uidataConfig) {
   return setPropTypes(true, config, uidataConfig);
 }
-
+/**
+ * [setPropDefaults description]
+ * @param {String} autoId       [description]
+ * @param {String} config       [description]
+ * @param {String} uidataConfig [description]
+ */
 function setPropDefaults(autoId, config, uidataConfig) {
   const obj = _.clone(DefaultPropValues);
   obj.uuid = uID();
@@ -277,15 +323,28 @@ function setPropDefaults(autoId, config, uidataConfig) {
   }
   return obj;
 }
-
+/**
+ * [setCorePropDefaults description]
+ * @param {String} config       [description]
+ * @param {String} uidataConfig [description]
+ */
 export function setCorePropDefaults(config, uidataConfig) {
   return setPropDefaults(false, config, uidataConfig);
 }
-
+/**
+ * [setPropDefaultsAutoId description]
+ * @param {String} config       [description]
+ * @param {String} uidataConfig [description]
+ */
 export function setPropDefaultsAutoId(config, uidataConfig) {
   return setPropDefaults(true, config, uidataConfig);
 }
-
+/**
+ * [getUIClassString description]
+ * @param  {String} props [description]
+ * @param  {String} state [description]
+ * @return {String}       [description]
+ */
 export function getUIClassString(props, state) {
   const {
     uiclass,
@@ -391,7 +450,12 @@ export function getUIClassString(props, state) {
   const uiClassFull = cx(uiClassCore, uiClassStyle);
   return [uiClassFull, uiClassCore, uiClassStyle, uiClassIcon];
 }
-
+/**
+ * [getValidProps description]
+ * @param  {String} source [description]
+ * @param  {String} state  [description]
+ * @return {String}        [description]
+ */
 export function getValidProps(source, state) {
   const obj = { props: {}, inherited: {} };
   if (source.style) {

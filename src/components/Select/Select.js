@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Select
+ * @memberof components
+ * @namespace Select
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Select
+* @scss ../../scss/components/Select
  * @example <Select>
              Example Content
            </Select>

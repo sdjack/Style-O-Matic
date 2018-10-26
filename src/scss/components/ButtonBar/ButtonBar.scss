@@ -1,8 +1,30 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // ButtonBar
 // -----------------------------------------------------------------------------
 
- @import 'config';
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+// VARIABLES
+$button-background-color: rgba(0,0,0,0.033) !default;
+$button-background-color-disabled: $color-light;
+$button-text-color: rgba(0,0,0,0.5) !default;
+$button-text-color-disabled: $color-ultra-light;
+$button-active-background-color: rgba(0,0,0,0.3) !default;
+$button-active-text-color: rgba(255,255,255,0.5) !default;
+$button-icon-color: rgba(128,128,128,0.7) !default;
+$button-icon-active-color: $button-active-background-color !default;
+$button-min-width: 32px !default;
+$button-height: 26px !default;
+$button-padding: ($padding - 2) ($padding * 2) ($padding + 2) !default;
+$button-margin: 4px !default;
+$button-fab-size: 56px !default;
+$button-fab-size-mini: 40px !default;
+$button-fab-font-size: 24px !default;
+$button-icon-size: 26px !default;
+$button-icon-size-mini: 24px !default;
 
 .ui-buttonbar {
   padding: 0;
@@ -10,8 +32,8 @@
   display: inline-block;
   vertical-align: middle;
   font-family: inherit;
-  @include buttonbar-shadow();
-	
+  @include box-shadow(0px 1px 3px -2px rgba(0,0,0,0.4), 1px 0px 3px -2px rgba(0,0,0,0.4));
+
   & .ui-buttonbar-button:first-child {
 		border-top-left-radius: $border-radius;
 		border-top-right-radius: 0;
@@ -47,7 +69,7 @@
   border: none;
   cursor: pointer;
   overflow: hidden;
-  @include typo-button();
+  @include button-skin();
   @include text-align-center();
   @include animate-default(0.2s);
   transition-property: color, background-color, box-shadow;

@@ -1,13 +1,16 @@
 // -----------------------------------------------------------------------------
-// This file contains all color variables.
+  // Colors
 // -----------------------------------------------------------------------------
-/**
- * NEUTRALS
- */
+
+////
+/// @author Steve Jackson
+/// @group abstracts
+////
+
+// NEUTRALS
 $color-black: #000000;
 $color-white: #FFFFFF;
 $color-grey: #DFDFDF;
-
 $color-dark: #3F4348;
 $color-darker: #2F3338;
 $color-darkest: #1F2328;
@@ -16,15 +19,11 @@ $color-light: #CFD3D8;
 $color-lighter: #DFE3E8;
 $color-lightest: #EFF3F8;
 $color-ultra-light: #F5F8FB;
-/**
- * NEUTRALS CONTRAST
- */
+// NEUTRALS CONTRAST
 $color-black-contrast: $color-white;
 $color-white-contrast: $color-black;
 $color-grey-contrast: $color-white;
-/**
- * ROYGBIV
- */
+// ROYGBIV
 $color-red: #D32F2F !default;
 $color-orange: #F57C00 !default;
 $color-yellow: #FBC02D !default;
@@ -32,9 +31,7 @@ $color-green: #388E3C !default;
 $color-blue: #1976D2 !default;
 $color-indigo: #303F9F !default;
 $color-violet: #7B1FA2 !default;
-/**
- * ROYGBIV ACTIVE
- */
+// ROYGBIV ACTIVE
 $color-red-active: lighten($color-red, 20%);
 $color-orange-active: lighten($color-orange, 20%);
 $color-yellow-active: lighten($color-yellow, 20%);
@@ -42,9 +39,7 @@ $color-green-active: lighten($color-green, 20%);
 $color-blue-active: lighten($color-blue, 20%);
 $color-indigo-active: lighten($color-indigo, 20%);
 $color-violet-active: lighten($color-violet, 20%);
-/**
- * ROYGBIV DARKENED
- */
+// ROYGBIV DARKENED
 $color-red-darkened: darken($color-red, 10%);
 $color-orange-darkened: darken($color-orange, 10%);
 $color-yellow-darkened: darken($color-yellow, 10%);
@@ -52,9 +47,7 @@ $color-green-darkened: darken($color-green, 10%);
 $color-blue-darkened: darken($color-blue, 10%);
 $color-indigo-darkened: darken($color-indigo, 10%);
 $color-violet-darkened: darken($color-violet, 10%);
-/**
- * ROYGBIV CONTRAST ACTIVE
- */
+// ROYGBIV CONTRAST ACTIVE
 $color-red-contrast: #FFEBEE !default;
 $color-orange-contrast: #FFF3E0 !default;
 $color-yellow-contrast: #FFFDE7 !default;
@@ -62,9 +55,7 @@ $color-green-contrast: #E8F5E9 !default;
 $color-blue-contrast: #E3F2FD !default;
 $color-indigo-contrast: #E8EAF6 !default;
 $color-violet-contrast: #EDE7F6 !default;
-/**
- * ROYGBIV CONTRAST
- */
+// ROYGBIV CONTRAST
 $color-red-contrast-active: lighten($color-red-contrast, 10%);
 $color-orange-contrast-active: lighten($color-orange-contrast, 10%);
 $color-yellow-contrast-active: lighten($color-yellow-contrast, 10%);
@@ -72,9 +63,7 @@ $color-green-contrast-active: lighten($color-green-contrast, 10%);
 $color-blue-contrast-active: lighten($color-blue-contrast, 10%);
 $color-indigo-contrast-active: lighten($color-indigo-contrast, 10%);
 $color-violet-contrast-active: lighten($color-violet-contrast, 10%);
-/**
- * ROYGBIV CONTRAST DARKENED
- */
+// ROYGBIV CONTRAST DARKENED
 $color-red-contrast-darkened: darken($color-red-contrast, 10%);
 $color-orange-contrast-darkened: darken($color-orange-contrast, 10%);
 $color-yellow-contrast-darkened: darken($color-yellow-contrast, 10%);
@@ -82,11 +71,21 @@ $color-green-contrast-darkened: darken($color-green-contrast, 10%);
 $color-blue-contrast-darkened: darken($color-blue-contrast, 10%);
 $color-indigo-contrast-darkened: darken($color-indigo-contrast, 10%);
 $color-violet-contrast-darkened: darken($color-violet-contrast, 10%);
-/**
- * ONWARD
- */
+// ONWARD
 $color-blue-highlight: rgba($color-blue, 0.5);
 $color-red-highlight: rgba($color-red, 0.5);
 $color-green-highlight: rgba($color-green, 0.5);
-
 $color-invisible: rgba(0,0,0,0) !default;
+// FOR WIDGET USE
+$color-ui-list: (
+  grey: $color-grey,
+  black: $color-black,
+  white: $color-lighter,
+  red: $color-red,
+  orange: $color-orange,
+  yellow: $color-yellow,
+  green: $color-green,
+  blue: $color-blue,
+  indigo: $color-indigo,
+  violet: $color-violet,
+) !default;

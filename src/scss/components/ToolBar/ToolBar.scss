@@ -1,9 +1,31 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // ToolBar
 // -----------------------------------------------------------------------------
 
- @import 'config';
+////
+/// @author Steve Jackson
+/// @group components
+////
 
+// VARIABLES
+$toolbar-height: $framing-size !default;
+$toolbar-inner-height: 20px !default;
+$toolbar-item-v-offset: floor(($toolbar-height - $toolbar-inner-height) / 2);
+$toolbar-item-h-offset: floor($toolbar-inner-height / 4);
+$toolbar-font-size: ($text-font-size + 1) !default;
+$toolbar-item-height: ($toolbar-height - ($padding * 2)) !default;
+$toolbar-text-padding: $padding $toolbar-item-h-offset !default;
+$toolbar-item-padding: $toolbar-item-v-offset $padding !default;
+$toolbar-button-padding: $toolbar-item-h-offset !default;
+$toolbar-title-padding: $toolbar-item-v-offset 6px !default;
+$toolbar-title-font-size: $toolbar-inner-height;
+$toolbar-item-font-size: $toolbar-inner-height - 6;
+$toolbar-icon-height: ($toolbar-height - ($padding * 2)) !default;
+$toolbar-icon-font-size: $toolbar-inner-height;
+$toolbar-icon-padding: 6px !default;
+$toolbar-list-padding: 0px $padding !default;
+$toolbar-list-font-size: $toolbar-font-size;
+$toolbar-toggle-size: $toolbar-inner-height !default;
 
 .ui-toolbar {
   width: 100%;

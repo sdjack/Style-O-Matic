@@ -1,7 +1,11 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Card
 // -----------------------------------------------------------------------------
 
+////
+/// @author Steve Jackson
+/// @group themes
+////
 .ui-theme-basic.ui-card {
-  @include shadow-card();
+  @include box-shadow($shadow-panel);
 }

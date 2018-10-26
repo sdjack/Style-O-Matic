@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Radio
+ * @memberof components
+ * @namespace Radio
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Radio
+* @scss ../../scss/components/Radio
  * @example <Radio>
              Example Content
            </Radio>

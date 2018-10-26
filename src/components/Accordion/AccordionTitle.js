@@ -1,5 +1,5 @@
 /**
- * @namespace Style-O-Matic UI
+ * @memberof Accordion
  * @todo Write sub-component documentation
  * @author Steven Jackson
  */
@@ -11,7 +11,10 @@ import {
   setCorePropDefaults,
   ROLE
 } from "../../lib";
-
+/**
+ * [AccordionTitle description]
+ * @extends CoreComponent
+ */
 class AccordionTitle extends CoreComponent {
   static propTypes = setCorePropTypes({ accordionindex: "string" });
 

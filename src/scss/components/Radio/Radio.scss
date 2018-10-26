@@ -1,10 +1,19 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Radio
 // -----------------------------------------------------------------------------
 
- @import 'config';
+////
+/// @author Steve Jackson
+/// @group components
+////
 
- 
+// VARIABLES
+$radio-label-height: 24px;
+$radio-button-size: 16px;
+$radio-inner-margin: $radio-button-size / 4;
+$radio-padding: 8px;
+$radio-top-offset: ($radio-label-height - $radio-button-size) / 2 - 2px;
+
 .ui-radio {
 	display: flex;
   flex-direction: row;
@@ -38,7 +47,7 @@
       height: $widget-component-size;
       border-radius: $border-radius;
       margin-right: 6px;
-      
+
       &:focus + label {
         outline: 1px dotted #000;
         outline: -webkit-focus-ring-color auto 5px;
@@ -46,4 +55,3 @@
     }
   }
 }
-

@@ -1,5 +1,12 @@
+/**
+ * @memberof utilities
+ * @namespace EventManager
+ * @author Steven Jackson
+ */
 import _ from "lodash";
-
+/**
+ * [ManagedEvent description]
+ */
 class ManagedEvent {
   constructor(eventName) {
     this.initialized = false;
@@ -33,7 +40,9 @@ class ManagedEvent {
     }
   };
 }
-
+/**
+ * [EventManager description]
+ */
 class EventManager {
   constructor() {
     this.registry = {};

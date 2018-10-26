@@ -1,22 +1,44 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Typeography
 // -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group base
+////
+
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
 html, body {
   margin: 0 !important;
   padding: 0 !important;
 }
+
 body {
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
   font-family: sans-serif;
   line-height: 20px;
+  height: 100vh;
+	width: 100%;
+  overflow: hidden;
+  color: $text-color;
+  background-color: $background-color;
 }
+
 hr {
   border-top: 1px solid #FFFFFF;
   border-bottom: 1px solid rgba(0,0,0,0.08);
 }
+
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   @include typo-small($colorContrast: true);
 
@@ -25,25 +47,32 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 h1 {
   @include typo-h1;
 }
+
 h2 {
   @include typo-h2;
 }
+
 h3 {
   @include typo-h3;
 }
+
 h4 {
   @include typo-headline;
 }
+
 h5 {
   @include typo-title;
 }
+
 h6 {
   @include typo-subhead;
 }
 
 p {
-  @include typo-paragraph;
-
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.02em;
   margin: 0px 0px 16px;
 
   &.preface {
@@ -57,11 +86,33 @@ p {
 a {
   font-weight: 500;
   text-decoration: none !important;
-  //outline: none !important;
+  text-decoration: none;
+  &:hover,
+  &:active,
+  &:focus {
+    color: $text-color;
+    text-decoration: underline;
+  }
 }
 
 blockquote {
-  @include typo-blockquote;
+  position: relative;
+  font-size: 24px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+
+  &:before {
+    position: absolute;
+    left: -0.5em;
+    content: '“';
+  }
+
+  &:after {
+    content: '”';
+    margin-left: -0.05em;
+  }
 }
 
 mark {
@@ -73,8 +124,10 @@ dt {
 }
 
 address {
-  @include typo-caption;
-
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
   font-style: normal;
 }
 
@@ -201,7 +254,7 @@ input[type="submit"] {
   cursor: pointer;
   min-width: $widget-size;
 
-  @include typo-input-button();
+  @include button-skin();
 
   &:hover,
   &:focus:not(:active),
@@ -226,7 +279,10 @@ th {
   position: relative;
   vertical-align: bottom;
   text-overflow: ellipsis;
-  @include typo-table-header();
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
   @include text-horizontal-align-center();
 }
 

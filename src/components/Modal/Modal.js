@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Modal
+ * @memberof components
+ * @namespace Modal
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Modal
+* @scss ../../scss/components/Modal
  * @example <Modal>
              Example Content
            </Modal>

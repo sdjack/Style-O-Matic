@@ -1,3 +1,7 @@
+/**
+ * @class
+ * @ignore
+ */
 import EventManager from "./lib/EventManager";
 
 class UI {

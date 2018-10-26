@@ -1,10 +1,16 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Select
 // -----------------------------------------------------------------------------
 
- @import 'config';
+////
+/// @author Steve Jackson
+/// @group components
+////
 
- 
+// VARIABLES
+$selectbox-padding: $widget-offset ($widget-size + 4) $widget-offset $padding !default;
+$selectbox-font-size: 24px !default;
+
 .ui-select {
   display: inline-block;
   position: relative;

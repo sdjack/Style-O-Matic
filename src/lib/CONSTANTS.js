@@ -1,3 +1,8 @@
+/**
+ * @memberof utilities
+ * @namespace CONSTANTS
+ * @author Steven Jackson
+ */
 const CONSTANTS = {
   DEFAULT: "item",
   ACCORDION: "accordion",

@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Badge
+ * @memberof components
+ * @namespace Badge
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Badge
+* @scss ../../scss/components/Badge
  * @example <Badge color="black">
    <Badge.Icon icon="star" />
  </Badge>,

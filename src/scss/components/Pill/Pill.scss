@@ -1,9 +1,28 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Pill
 // -----------------------------------------------------------------------------
 
- @import 'config';
+////
+/// @author Steve Jackson
+/// @group components
+////
 
+// VARIABLES
+$pill-background-color: $color-lighter !default;
+$pill-background-color-disabled: $color-light;
+$pill-text-color: rgba(0,0,0,0.5) !default;
+$pill-text-color-disabled: $color-ultra-light;
+$pill-action-background-color: $color-ultra-light !default;
+$pill-action-active-background-color: rgba(0,0,0,0.2) !default;
+$pill-action-text-color: rgba(0,0,0,0.5) !default;
+$pill-action-active-text-color: rgba(255,255,255,0.8) !default;
+$pill-min-width: 32px !default;
+$pill-height: 29px !default;
+$pill-margin: 0px 0px 0px ($padding-large / 2) !default;
+$pill-padding-calc: ($pill-height / 4);
+$pill-padding: 0px $pill-padding-calc 0px $pill-padding-calc !default;
+$pill-line-height: $pill-height;
+$pill-action-size: 24px !default;
 
 .ui-pill {
   display: inline-block;
@@ -19,8 +38,7 @@
   color: $pill-text-color;
   background-color: $pill-background-color;
   cursor: default;
-  @include pill-skin();
-  @include typo-button();
+  @include button-skin();
   @include text-align-center();
   overflow: hidden;
   transition: box-shadow 0.2s $animation-curve-fast-out-linear-in,
@@ -42,7 +60,7 @@
       color: $pill-text-color-disabled !important;
       background-color: $pill-background-color-disabled !important;
       cursor: default;
-      @include shadow-removed();
+      @include box-shadow(none);
 
       &:hover,
       &:focus,
@@ -73,7 +91,7 @@
   color: $pill-action-text-color;
   background-color: $pill-action-background-color;
   cursor: pointer;
-  @include pill-action-skin();
+  @include button-inset-skin();
   @include text-align-center();
 
   & > .ui-icon {

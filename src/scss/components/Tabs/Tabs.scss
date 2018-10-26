@@ -1,6 +1,14 @@
 // -----------------------------------------------------------------------------
-// Add Notes Here
+  // Tabs
 // -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+// VARIABLES
+
 .ui-tabs {
   display: block;
   justify-content: left;
@@ -115,7 +123,7 @@
   font-size: $text-font-size;
   overflow: hidden;
 
-  @include text-align-center();
+  @include text-horizontal-align-center();
 
   &.active {
     background: transparent;

@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Table
+ * @memberof components
+ * @namespace Table
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Table
+* @scss ../../scss/components/Table
  */
 import React, { cloneElement } from "react";
 import cx from "classnames";
@@ -278,11 +277,6 @@ class Table extends CoreComponent {
 export default Table;
 
 /**
- * @namespace Style-O-Matic UI
- * @name Table
- * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Table
  * @example <Table bordered panel>
    {Table.FactoryData({
      head: [

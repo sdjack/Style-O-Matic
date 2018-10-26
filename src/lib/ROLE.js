@@ -1,3 +1,8 @@
+/**
+ * @memberof utilities
+ * @namespace ROLE
+ * @author Steven Jackson
+ */
 export const ROLE = {
   DEFAULT: "item",
   ACCORDION: "accordion",
@@ -53,7 +58,10 @@ export const ROLE = {
   UI: "ui",
   WIDGET: "widget"
 };
-
+/**
+ * [NON_INHERITABLE description]
+ * @type {Array}
+ */
 const NON_INHERITABLE = [
   ROLE.DEFAULT,
   ROLE.GROUP,
@@ -69,7 +77,10 @@ const NON_INHERITABLE = [
   ROLE.COLUMN,
   ROLE.WIDGET
 ];
-
+/**
+ * [NON_INHERITING description]
+ * @type {Array}
+ */
 const NON_INHERITING = [
   ROLE.ACCORDION,
   ROLE.APP,
@@ -84,7 +95,10 @@ const NON_INHERITING = [
   ROLE.TOOLBAR,
   ROLE.TOOLTIP
 ];
-
+/**
+ * [THEME_ENABLED description]
+ * @type {Array}
+ */
 const THEME_ENABLED = [
   ROLE.DEFAULT,
   ROLE.GROUP,
@@ -99,7 +113,11 @@ const THEME_ENABLED = [
   ROLE.COLUMN,
   ROLE.WIDGET
 ];
-
+/**
+ * [getParentClass description]
+ * @param  {String} props [description]
+ * @return {String}       [description]
+ */
 export function getParentClass(props) {
   if (NON_INHERITING.indexOf(props.uirole) !== -1) {
     return props.uirole || "";
@@ -108,7 +126,12 @@ export function getParentClass(props) {
     ? props.uiclass
     : props.parentclass || "";
 }
-
+/**
+ * [getChildClass description]
+ * @param  {String} parentClass [description]
+ * @param  {String} role        [description]
+ * @return {String}             [description]
+ */
 export function getChildClass(parentClass, role) {
   if (NON_INHERITING.indexOf(role) !== -1) {
     return role ? `${role}` : "";

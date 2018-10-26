@@ -1,9 +1,8 @@
 /**
- * @namespace Style-O-Matic UI
- * @name Card
+ * @memberof components
+ * @namespace Card
  * @author Steven Jackson
- * @external scssdir
- * @see ../../scss/components/Card
+* @scss ../../scss/components/Card
  * @example <Card align="center" styled round>
    <Card.Header>
      <Card.Icon icon="star" />
