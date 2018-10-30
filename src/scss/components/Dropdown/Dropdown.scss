@@ -21,7 +21,7 @@ $dropdown-transition-properties: height,box-shadow,color,background-color;
     transition-property: $dropdown-transition-properties;
     @include animate-default(0.2s);
 
-    &:hover, &:focus, &.open {
+    &:hover, &:focus, &.ui--open {
         & > .show-on-hover {
             display: block;
         }
@@ -43,7 +43,7 @@ $dropdown-transition-properties: height,box-shadow,color,background-color;
     @include animate-default(0.2s);
     @include box-shadow(0px 0px 2px 0px rgba(0,0,0,0.2), 0px 1px 4px -1px rgba(0,0,0,0.2));
 
-    &:hover, &:focus, &.open {
+    &:hover, &:focus, &.ui--open {
         & > .show-on-hover {
             display: block;
         }
@@ -76,8 +76,7 @@ $dropdown-transition-properties: height,box-shadow,color,background-color;
     @include animate-default(0.2s);
     transition-property: height, border-shadow;
 
-    &.open {
-        height: auto !important;
+    &.ui--open {
         max-height: 320px !important;
         overflow-y: auto !important;
         border: $border;

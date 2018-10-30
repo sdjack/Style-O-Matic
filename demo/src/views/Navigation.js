@@ -15,44 +15,44 @@ class Navigation extends React.Component {
 
     return (
       <Nav active={active} orientation={orientation}>
-        <Nav.Item to="/" icon="home" text="Home">
+        <Nav.Item to="/" icon="home" label="Home">
           <ToolTip position="bottom">Home</ToolTip>
         </Nav.Item>
-        <Nav.Item to="/typography" icon="atom" text="Typography">
+        <Nav.Item to="/typography" icon="atom" label="Typography">
           <ToolTip position="bottom">Typography</ToolTip>
         </Nav.Item>
-        <Nav.Item to="/layout" icon="shooting-star" text="Layout">
+        <Nav.Item to="/layout" icon="shooting-star" label="Layout">
           <ToolTip position="bottom">Layout</ToolTip>
         </Nav.Item>
-        <Nav.Folder to="/misc" text="Misc">
-          <Nav.Item to="/toolbar" icon="star" text="ToolBar">
+        <Nav.Folder to="/misc" label="Misc">
+          <Nav.Item to="/toolbar" icon="star" label="ToolBar">
             <ToolTip position="right">ToolBar</ToolTip>
           </Nav.Item>
-          <Nav.Item to="/grid" icon="star" text="Grid">
+          <Nav.Item to="/grid" icon="star" label="Grid">
             <ToolTip position="right">Grid</ToolTip>
           </Nav.Item>
-          <Nav.Item to="/cards" icon="star" text="Cards">
+          <Nav.Item to="/cards" icon="star" label="Cards">
             <ToolTip position="right">Cards</ToolTip>
           </Nav.Item>
-          <Nav.Item to="/buttons" icon="star" text="Buttons">
+          <Nav.Item to="/buttons" icon="star" label="Buttons">
             <ToolTip position="right">Buttons</ToolTip>
           </Nav.Item>
-          <Nav.Item to="/table" icon="star" text="Tables">
+          <Nav.Item to="/table" icon="star" label="Tables">
             <ToolTip position="right">Tables</ToolTip>
           </Nav.Item>
-          <Nav.Item to="/form" icon="star" text="Forms">
+          <Nav.Item to="/form" icon="star" label="Forms">
             <ToolTip position="right">Forms</ToolTip>
           </Nav.Item>
-          <Nav.Item to="/accordion" icon="star" text="Accordion">
+          <Nav.Item to="/accordion" icon="star" label="Accordion">
             <ToolTip position="right">Accordion</ToolTip>
           </Nav.Item>
-          <Nav.Item to="/modal" icon="star" text="Modal">
+          <Nav.Item to="/modal" icon="star" label="Modal">
             <ToolTip position="right">Modal</ToolTip>
           </Nav.Item>
-          <Nav.Item to="/tabs" icon="star" text="Tabs">
+          <Nav.Item to="/tabs" icon="star" label="Tabs">
             <ToolTip position="right">Tabs</ToolTip>
           </Nav.Item>
-          <Nav.Item to="/toasts" icon="star" text="Toasts">
+          <Nav.Item to="/toasts" icon="star" label="Toasts">
             <ToolTip position="right">Toasts</ToolTip>
           </Nav.Item>
         </Nav.Folder>

@@ -83,8 +83,7 @@
   @include animate-default(0.2s);
   transition-property: height, border-shadow;
 
-  &.open {
-      height: auto !important;
+  &.ui--open {
       max-height: 320px !important;
       overflow-y: auto !important;
       border: $border;

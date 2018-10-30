@@ -198,10 +198,6 @@ $table-interactive-text-color: rgba(255,255,255,0.5) !default;
   right: 0;
   top: 100%;
   z-index: 9999;
-
-  &.active {
-    display: block;
-  }
 }
 
 .table-filter-outer-wrapper {

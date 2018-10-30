@@ -36,8 +36,8 @@ $modal-action-size: 24px !default;
   display: none;
   overflow: hidden;
   background-color: none;
-  &.open {
-    display: block;
+  &.ui--shown {
+    display: block !important;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: rgba(0,0,0,0.5);

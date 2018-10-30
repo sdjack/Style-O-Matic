@@ -1,19 +1,7 @@
 @charset "UTF-8";
-/**
-*  MISC
-*/
-/**
- * Set up a decent box model on the root element
- */
 html {
   box-sizing: border-box; }
 
-/**
- * Make all elements from the DOM inherit from the parent box-sizing
- * Since `*` has a specificity of 0, it does not override the `html` value
- * making all elements inheriting from the root box-sizing value
- * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
- */
 *,
 *::before,
 *::after {
@@ -482,35 +470,35 @@ tfoot {
       -ms-flex-line-pack: end;
           align-content: flex-end; }
 
-.ui-position-left {
+.ui-anchor-left {
   position: absolute !important;
   left: 0; }
 
-.ui-position-before {
+.ui-anchor-before {
   position: absolute !important;
   right: 100%; }
 
-.ui-position-right {
+.ui-anchor-right {
   position: absolute !important;
   right: 0; }
 
-.ui-position-after {
+.ui-anchor-after {
   position: absolute !important;
   left: 100%; }
 
-.ui-position-top {
+.ui-anchor-top {
   position: absolute !important;
   top: 0; }
 
-.ui-position-above {
+.ui-anchor-above {
   position: absolute !important;
   bottom: 100%; }
 
-.ui-position-bottom {
+.ui-anchor-bottom {
   position: absolute !important;
   bottom: 0; }
 
-.ui-position-below {
+.ui-anchor-below {
   position: absolute !important;
   top: 100%; }
 
@@ -691,33 +679,6 @@ tfoot {
 .ui-icon-unchecked:before {
   content: "\2610"; }
 
-.ui-icon-home:before {
-  content: "\1F3E0"; }
-
-.ui-icon-user:before {
-  content: "\1F464"; }
-
-.ui-icon-star:before {
-  content: "\1F7CA"; }
-
-.ui-icon-shooting-star:before {
-  content: "\1F320"; }
-
-.ui-icon-atom:before {
-  content: "\269B"; }
-
-.ui-icon-calendar:before {
-  content: "\1F5D3"; }
-
-.ui-icon-tools:before {
-  content: "\1F6E0"; }
-
-.ui-icon-cart:before {
-  content: "\1F6D2"; }
-
-.ui-icon-warning:before {
-  content: "\26A0"; }
-
 .ui-icon-spider:before {
   content: "\1F577"; }
 
@@ -757,29 +718,27 @@ tfoot {
   padding: 0 !important;
   margin: 0 !important; }
 
-/**
- * Hidden Completely
- */
-.ui-hidden {
+.ui--open {
+  width: auto !important;
+  height: auto !important; }
+
+.ui--closed {
+  width: 0px !important;
+  height: 0px !important;
+  overflow: hidden; }
+
+.ui--shown {
+  display: block; }
+
+.ui--hidden {
   display: none !important; }
 
-/**
- * Hide text while making it readable for screen readers
- * 1. Needed in WebKit-based browsers because of an implementation bug;
- *    See: https://code.google.com/p/chromium/issues/detail?id=457146
- */
 .ui-hidden-text {
   overflow: hidden;
   padding: 0;
-  /* 1 */
   text-indent: 101%;
   white-space: nowrap; }
 
-/**
- * Hide element while making it readable for screen readers
- * Shamelessly borrowed from HTML5Boilerplate:
- * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
- */
 .ui-hidden-visually {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1995,8 +1954,7 @@ tfoot {
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
   transition-property: height, border-shadow; }
-  .ui-datepicker-window.open {
-    height: auto !important;
+  .ui-datepicker-window.ui--open {
     max-height: 320px !important;
     overflow-y: auto !important;
     border: 1px solid rgba(0, 0, 0, 0.3); }
@@ -2290,7 +2248,7 @@ tfoot {
   transition-property: height, box-shadow, color, background-color;
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1); }
-  .ui-dropdown:hover > .show-on-hover, .ui-dropdown:focus > .show-on-hover, .ui-dropdown.open > .show-on-hover {
+  .ui-dropdown:hover > .show-on-hover, .ui-dropdown:focus > .show-on-hover, .ui-dropdown.ui--open > .show-on-hover {
     display: block; }
 
 .ui-dropdown-toggle {
@@ -2308,7 +2266,7 @@ tfoot {
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2), 0px 1px 4px -1px rgba(0, 0, 0, 0.2); }
-  .ui-dropdown-toggle:hover > .show-on-hover, .ui-dropdown-toggle:focus > .show-on-hover, .ui-dropdown-toggle.open > .show-on-hover {
+  .ui-dropdown-toggle:hover > .show-on-hover, .ui-dropdown-toggle:focus > .show-on-hover, .ui-dropdown-toggle.ui--open > .show-on-hover {
     display: block; }
 
 .ui-dropdown-caret {
@@ -2335,8 +2293,7 @@ tfoot {
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
   transition-property: height, border-shadow; }
-  .ui-dropdown-content.open {
-    height: auto !important;
+  .ui-dropdown-content.ui--open {
     max-height: 320px !important;
     overflow-y: auto !important;
     border: 1px solid rgba(0, 0, 0, 0.3); }
@@ -2432,15 +2389,6 @@ tfoot {
   margin: 0px;
   padding: 0px; }
 
-/***
- *    ███████╗_██████╗_██████╗_███╗___███╗
- *    ██╔════╝██╔═══██╗██╔══██╗████╗_████║
- *    █████╗__██║___██║██████╔╝██╔████╔██║
- *    ██╔══╝__██║___██║██╔══██╗██║╚██╔╝██║
- *    ██║_____╚██████╔╝██║__██║██║_╚═╝_██║
- *    ╚═╝______╚═════╝_╚═╝__╚═╝╚═╝_____╚═╝
- *    ____________________________________
- */
 .ui-form {
   position: relative;
   width: 100%;
@@ -3009,9 +2957,6 @@ tfoot {
 
 /* INPUT TYPE: RADIO */
 /* INPUT TYPE: URL */
-/**
-* SVG DATA URIs
-*/
 .ui-loading-sheep {
   height: 12vh;
   font-weight: 600;
@@ -3453,8 +3398,8 @@ tfoot {
   display: none;
   overflow: hidden;
   background-color: none; }
-  .ui-modal.open {
-    display: block;
+  .ui-modal.ui--shown {
+    display: block !important;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.5);
@@ -3599,9 +3544,6 @@ tfoot {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   overflow: hidden; }
-  .ui-nav-content.ui-nav-hidden {
-    width: 0px !important;
-    height: 0px !important; }
   @media screen and (max-width: 1024px) {
     .ui-nav-content {
       -webkit-flex-wrap: wrap;
@@ -3652,8 +3594,8 @@ tfoot {
       -ms-flex-pack: justify;
           justify-content: space-between;
   text-align: left;
-  height: 0px;
-  width: 0px;
+  height: 40px;
+  width: auto;
   margin: 0;
   padding: 0;
   cursor: pointer;
@@ -3663,40 +3605,25 @@ tfoot {
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
   transition-property: all; }
-  .ui-nav-item.visible {
-    height: 40px;
-    width: auto; }
+  .ui-nav-item:hover > .ui-nav-folder {
+    width: auto;
+    height: auto;
+    max-width: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3), 2px 2px 2px 0px rgba(0, 0, 0, 0.2); }
+    .ui-nav-item:hover > .ui-nav-folder > .ui-nav-folder-item {
+      height: 36px; }
+  .ui-nav-item:hover > .ui-nav-folder-caret:before {
+    content: "\2212"; }
   @media screen and (max-width: 1024px) {
     .ui-nav-item {
       display: block !important; } }
+  .ui-nav-item:after {
+    display: -webkit-inline-flex !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important; }
 
-.ui-nav-item-link {
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 100%;
-  width: 100%;
-  border: none;
-  color: inherit;
-  background-color: inherit;
-  font-weight: inherit; }
-  .ui-nav-item-link:hover, .ui-nav-item-link:focus {
-    color: inherit !important;
-    background-color: rgba(0, 0, 0, 0); }
-
-.ui-nav-item-icon {
-  display: inline-block;
-  min-width: 40px;
-  max-width: 40px;
-  font-size: 18px !important;
-  line-height: 40px !important;
-  text-align: center;
-  vertical-align: middle;
-  -webkit-flex-basis: 40px;
-      -ms-flex-preferred-size: 40px;
-          flex-basis: 40px; }
-
-.ui-nav-item-info {
+.ui-nav-item-content {
   display: inline;
   max-width: calc(100% - 40px);
   text-align: start;
@@ -3705,12 +3632,33 @@ tfoot {
   text-overflow: ellipsis;
   font-size: 16px !important;
   line-height: 40px !important;
-  padding: 0 8px 0 0; }
+  padding: 0 8px 0 0;
+  border: none;
+  color: inherit;
+  background-color: transparent;
+  font-weight: inherit; }
+  .ui-nav-item-content:hover, .ui-nav-item-content:focus {
+    color: inherit !important;
+    background-color: transparent !important; }
+
+.ui-nav-item-icon {
+  display: inline-block;
+  min-width: 40px;
+  max-width: 40px;
+  font-size: 18px !important;
+  line-height: 1;
+  text-align: center;
+  vertical-align: text-bottom;
+  -webkit-flex-basis: 40px;
+      -ms-flex-preferred-size: 40px;
+          flex-basis: 40px; }
 
 .ui-nav-folder {
   z-index: 99;
   display: block;
+  width: 0px;
   height: 0px;
+  max-width: 300px;
   font-size: 12px !important;
   list-style-type: none;
   line-height: 1;
@@ -3725,12 +3673,20 @@ tfoot {
   transition-property: all;
   overflow: hidden;
   position: fixed !important; }
-  .ui-nav-folder.open {
+  .ui-nav-folder:hover, .ui-nav-folder.ui--open {
     width: auto;
     height: auto;
-    max-width: 300px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3), 2px 2px 2px 0px rgba(0, 0, 0, 0.2); }
+    .ui-nav-folder:hover > .ui-nav-folder-item, .ui-nav-folder.ui--open > .ui-nav-folder-item {
+      height: 36px; }
+
+.ui-nav-folder-caret:before {
+  display: inline-block;
+  font-style: normal;
+  vertical-align: middle;
+  padding: 0px 4px;
+  content: "\002B"; }
 
 .ui-nav-folder-item,
 .ui-nav-folder-title {
@@ -3742,12 +3698,16 @@ tfoot {
   overflow: hidden; }
 
 .ui-nav-folder-item {
-  height: 36px;
+  height: 0px;
   padding: 0;
   position: relative; }
+  .ui-nav-folder-item:after {
+    display: -webkit-inline-flex !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important; }
 
 .ui-nav-folder-title,
-.ui-nav-folder-item-info {
+.ui-nav-folder-item-content {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
@@ -3759,7 +3719,7 @@ tfoot {
   font-weight: 600;
   text-align: left; }
 
-.ui-nav-folder-item-info {
+.ui-nav-folder-item-content {
   display: inline-block;
   height: 36px;
   width: 181px;
@@ -3777,13 +3737,12 @@ tfoot {
 
 .ui-nav-folder-item-icon {
   width: 36px;
-  height: 36px;
   margin: 0;
   padding: 0;
   font-size: 20px !important;
-  line-height: 28px !important;
+  line-height: 1 !important;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: baseline;
   -webkit-flex-basis: 36px;
       -ms-flex-preferred-size: 36px;
           flex-basis: 36px; }
@@ -4164,8 +4123,6 @@ tfoot {
   right: 0;
   top: 100%;
   z-index: 9999; }
-  .table-filter.active {
-    display: block; }
 
 .table-filter-outer-wrapper {
   display: -webkit-flex;
@@ -4732,21 +4689,21 @@ h6.ui-title-content {
       -ms-flex-line-pack: end;
           align-content: end; }
 
-.ui-tooltip,
-.ui-tooltip-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
+.ui-tooltip {
+  display: inline-block; }
   @media screen and (max-width: 1024px) {
-    .ui-tooltip,
-    .ui-tooltip-hover {
+    .ui-tooltip {
       display: none; } }
-
-.ui-tooltip-hover:hover > .ui-tooltip-wrapper > .ui-tooltip-widget {
-  width: auto;
-  height: auto; }
+  .ui-tooltip.ui--covered {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  .ui-tooltip:hover > .ui-tooltip-wrapper > .ui-tooltip-widget {
+    width: auto;
+    height: auto;
+    overflow: visible; }
 
 .ui-tooltip-wrapper {
   position: relative;
@@ -4762,10 +4719,6 @@ h6.ui-title-content {
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
   transition-property: all; }
-  .ui-tooltip-widget.open {
-    width: auto;
-    height: auto;
-    overflow: visible; }
 
 .ui-tooltip-content {
   min-height: 20px;

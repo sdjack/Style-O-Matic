@@ -107,8 +107,8 @@ const DefaultPropTypes = {
   to: PropTypes.string,
   disabled: PropTypes.bool,
   open: PropTypes.bool,
+  closed: PropTypes.bool,
   active: PropTypes.bool,
-  visible: PropTypes.bool,
   overlay: PropTypes.bool,
   fixed: PropTypes.bool,
   color: PropTypes.oneOf([
@@ -199,8 +199,8 @@ const DefaultPropValues = {
   to: null,
   disabled: null,
   open: null,
+  closed: null,
   active: null,
-  visible: null,
   overlay: null,
   fixed: null,
   color: null,
@@ -364,7 +364,7 @@ export function getUIClassString(props, state) {
     colorHover,
     textAlign,
     contentAlign,
-    position,
+    anchor,
     shadow,
     icon,
     loader
@@ -374,8 +374,7 @@ export function getUIClassString(props, state) {
     state && !_.isNil(state.disabled) ? state.disabled : props.disabled;
   const active = state && !_.isNil(state.active) ? state.active : props.active;
   const open = state && !_.isNil(state.open) ? state.open : props.open;
-  const visible =
-    state && !_.isNil(state.visible) ? state.visible : props.visible;
+  const closed = state && !_.isNil(state.closed) ? state.closed : props.closed;
   const invalid =
     state && !_.isNil(state.invalid) ? state.invalid : props.invalid;
   const orientation =
@@ -385,7 +384,7 @@ export function getUIClassString(props, state) {
   const hasUIclass = !className || className.indexOf(sUIclass) === -1;
   const coreClasses = {
     [sUIclass]: hasUIclass,
-    [`ui-position-${position}`]: position,
+    [`ui-anchor-${anchor}`]: anchor,
     [`ui-orientation-${orientation}`]: orientation,
     [`ui-content-align-${contentAlign}`]: contentAlign,
     [`ui-text-align-${textAlign}`]: textAlign,
@@ -401,10 +400,10 @@ export function getUIClassString(props, state) {
     "ui-masked": masked,
     "ui-shadow": shadow,
     "ui-blurred": !!loader,
+    "ui--open": open,
+    "ui--closed": closed,
     disabled,
     active,
-    open,
-    visible,
     invalid
   };
 
@@ -435,8 +434,8 @@ export function getUIClassString(props, state) {
   // if (!_.isNil(orientation)) {
   //   classes[`ui-orientation-${orientation}`] = true;
   // }
-  // if (!_.isNil(position)) {
-  //   classes[`ui-position-${position}`] = true;
+  // if (!_.isNil(anchor)) {
+  //   classes[`ui-anchor-${anchor}`] = true;
   // }
   // if (!_.isNil(contentAlign)) {
   //   classes[`ui-content-align-${contentAlign}`] = true;

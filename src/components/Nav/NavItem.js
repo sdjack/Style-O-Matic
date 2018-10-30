@@ -21,7 +21,7 @@ class NavItem extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.ITEM,
-    text: "",
+    label: null,
     minimized: false
   });
 
@@ -33,7 +33,7 @@ class NavItem extends CoreComponent {
       iconClassName,
       to,
       path,
-      text,
+      label,
       minimized,
       children,
       props
@@ -44,24 +44,23 @@ class NavItem extends CoreComponent {
       minimized
     };
 
-    if (uirole === ROLE.FOLDERITEM) {
-      return (
-        <Component {...props} className={classNames(coreClassName, classes)}>
-          <a className="ui-nav-item-link" href={to} label={text}>
-            <span className={`ui-nav-${uirole}-info`}>{text}</span>
-            <span className={`ui-nav-${uirole}-icon ${iconClassName}`} />
-            {children}
-          </a>
-        </Component>
-      );
-    }
+    const contents = children || label;
+
     return (
       <Component {...props} className={classNames(coreClassName, classes)}>
-        <a className="ui-nav-item-link" href={to} label={text}>
+        {uirole !== ROLE.FOLDERITEM ? (
           <span className={`ui-nav-${uirole}-icon ${iconClassName}`} />
-          <span className={`ui-nav-${uirole}-info`}>{text}</span>
-          {children}
-        </a>
+        ) : null}
+        {to ? (
+          <a className={`ui-nav-${uirole}-content`} href={to} label={label}>
+            {contents}
+          </a>
+        ) : (
+          <span className={`ui-nav-${uirole}-content`}>{contents}</span>
+        )}
+        {uirole === ROLE.FOLDERITEM ? (
+          <span className={`ui-nav-${uirole}-icon ${iconClassName}`} />
+        ) : null}
       </Component>
     );
   }

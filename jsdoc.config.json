@@ -12,12 +12,19 @@
         "copyright":  "2018",
         "includeDate": false,
         "navType": "inline",
-        "theme": "simplex",
+        "theme": "default",
         "linenums": true,
         "collapseSymbols": false,
         "inverseNav": true,
         "outputSourceFiles": true,
         "outputSourcePath": false,
-        "syntaxTheme": "default"
+        "syntaxTheme": "default",
+        "default": {
+          "staticFiles": {
+            "include": [
+                "./images"
+            ]
+          }
+        }
     }
 }

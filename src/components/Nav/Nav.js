@@ -22,7 +22,6 @@ import "./Nav.css";
 
 class Nav extends CoreComponent {
   static propTypes = setCorePropTypes({
-    defaultOpen: "bool",
     canMinimize: "bool"
   });
 
@@ -30,7 +29,6 @@ class Nav extends CoreComponent {
     renderAs: "nav",
     uirole: ROLE.NAV,
     orientation: "horizontal",
-    defaultOpen: true,
     canMinimize: false
   });
 
@@ -40,10 +38,10 @@ class Nav extends CoreComponent {
   constructor(props, ...args) {
     super(props, ...args);
     const isMobile = window.innerWidth <= 1024;
-    const open = isMobile ? false : props.defaultOpen;
+    const closed = isMobile ? true : props.closed;
     this.state = {
       orientation: props.orientation,
-      open,
+      closed,
       isMobile
     };
   }
@@ -57,7 +55,7 @@ class Nav extends CoreComponent {
   }
 
   handleOnClick = () => {
-    this.setState({ open: !this.state.open });
+    this.setState({ closed: !this.state.closed });
   };
 
   detectIfMobile = () => {
@@ -90,8 +88,8 @@ class Nav extends CoreComponent {
       props,
       inherited
     } = getValidProps(this.props, this.state);
-    const { open, isMobile } = this.state;
-    const contentClass = !canMinimize && !open ? " ui-nav-hidden" : "";
+    const { closed, isMobile } = this.state;
+    const contentClass = !canMinimize && closed ? " ui--closed" : "";
 
     return (
       <Component {...props}>
@@ -112,7 +110,7 @@ class Nav extends CoreComponent {
               typeof child.props.uirole !== "undefined"
             ) {
               return this.renderChild(child, {
-                visible: open,
+                closed,
                 ...inherited
               });
             }

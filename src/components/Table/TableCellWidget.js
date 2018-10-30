@@ -134,14 +134,9 @@ class TableCellWidget extends CoreComponent {
     if (this.props.filterable) {
       const { open } = this.state;
       const filterkey = `table-filter-input-${this.props.uuid}`;
-      const filterClass = {
-        active: open
-      };
+      const filterClass = open ? "table-filter ui--shown" : "table-filter";
       output.push(
-        <div
-          className={classNames("table-filter", filterClass)}
-          key={filterkey}
-        >
+        <div className={filterClass} key={filterkey}>
           <div className="table-filter-outer-wrapper">
             <div className="table-filter-input-wrapper">
               <input

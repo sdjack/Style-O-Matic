@@ -23,7 +23,7 @@ class NavFolder extends CoreComponent {
 
   static defaultProps = setCorePropDefaults({
     uirole: ROLE.FOLDER,
-    text: ""
+    label: ""
   });
 
   constructor(props) {
@@ -31,7 +31,7 @@ class NavFolder extends CoreComponent {
     this.folder = null;
     this.useParentNode = true;
     this.state = {
-      open: false,
+      closed: props.closed,
       offset: {}
     };
   }
@@ -49,7 +49,7 @@ class NavFolder extends CoreComponent {
   toggleExpansion = e => {
     e.preventDefault();
     const newState = this.state;
-    if (!newState.open && this.node && this.folder) {
+    if (newState.closed && this.node && this.folder) {
       const {
         bottom: screenBottom,
         height: screenHeight,
@@ -70,7 +70,7 @@ class NavFolder extends CoreComponent {
       }
       newState.offset = offset;
     }
-    newState.open = !newState.open;
+    newState.closed = !newState.closed;
     this.setState(newState);
   };
 
@@ -98,33 +98,31 @@ class NavFolder extends CoreComponent {
       iconClassName,
       to,
       path,
-      text,
-      visible,
+      label,
       children,
       props,
       inherited
     } = getValidProps(this.props);
 
-    const { offset, open } = this.state;
+    const { offset, closed } = this.state;
 
     const classes = {
-      open,
+      "ui--closed": closed,
       active: to && path.indexOf(to) !== -1
     };
 
-    const caretClass = open ? "ui-icon-remove" : "ui-icon-add";
-    const itemClass = visible ? "ui-nav-item visible" : "ui-nav-item";
+    const itemClass = closed ? "ui-nav-item" : "ui-nav-item ui--open";
 
     return (
       <div className={itemClass} ref={this.onSetRef}>
+        <i className="ui-nav-folder-caret" />
         <div
-          className="ui-nav-item-link"
+          className="ui-nav-item-content"
           role="presentation"
           onKeyDown={this.toggleExpansion}
           onClick={this.toggleExpansion}
         >
-          <i className={`ui-nav-item-icon ${caretClass}`} />
-          <span className="ui-nav-item-info">{text}</span>
+          {label}
         </div>
         <Component
           {...props}
@@ -132,14 +130,17 @@ class NavFolder extends CoreComponent {
           style={offset}
           ref={this.setFolderRef}
         >
-          <div className="ui-nav-folder-title">{text}</div>
+          <div className="ui-nav-folder-title">{label}</div>
           {React.Children.map(children, child => {
             if (
               typeof child.props !== "undefined" &&
               typeof child.props.uirole !== "undefined" &&
               child.props.uirole === ROLE.ITEM
             ) {
-              return this.renderChild(child, inherited);
+              return this.renderChild(child, {
+                label,
+                ...inherited
+              });
             }
             return child;
           })}

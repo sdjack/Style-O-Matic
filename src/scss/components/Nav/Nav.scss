@@ -47,10 +47,6 @@ $nav-folder-caret-padding: 17px 10px 17px 0;
   align-content: space-evenly;
   justify-content: space-evenly;
   overflow: hidden;
-  &.ui-nav-hidden {
-    width: 0px !important;
-    height: 0px !important;
-  }
 
   @media screen and (max-width: $mobile-screen-threshold) {
     flex-wrap: wrap;
@@ -105,8 +101,8 @@ $nav-folder-caret-padding: 17px 10px 17px 0;
   position: relative;
   justify-content: space-between;
   text-align: left;
-  height: 0px;
-  width: 0px;
+  height: $nav-item-height;
+  width: auto;
   margin: 0;
   padding: 0;
   cursor: pointer;
@@ -115,43 +111,33 @@ $nav-folder-caret-padding: 17px 10px 17px 0;
   background-color: rgba(0, 0, 0, 0);
   @include animate-default(0.2s);
   transition-property: all;
-  &.visible {
-    height: $nav-item-height;
-    width: auto;
+
+  &:hover {
+    & > .ui-nav-folder {
+      width: auto;
+      height: auto;
+      max-width: 300px;
+      border: $border;
+      box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3),
+        2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+
+      & > .ui-nav-folder-item {
+        height: $nav-folder-item-height;
+      }
+    }
+    & > .ui-nav-folder-caret:before {
+        content: "\2212";
+    }
   }
   @media screen and (max-width: $mobile-screen-threshold) {
     display: block !important;
   }
-}
-
-.ui-nav-item-link {
-  display: inline-flex;
-  height: 100%;
-  width: 100%;
-  border: none;
-  color: inherit;
-  background-color: inherit;
-  font-weight: inherit;
-
-  &:hover,
-  &:focus {
-    color: inherit !important;
-    background-color: rgba(0, 0, 0, 0);
+  &:after {
+    display: inline-flex !important;
   }
 }
 
-.ui-nav-item-icon {
-  display: inline-block;
-  min-width: $nav-icon-size;
-  max-width: $nav-icon-size;
-  font-size: $nav-icon-fontsize !important;
-  line-height: $nav-item-height !important;
-  text-align: center;
-  vertical-align: middle;
-  flex-basis: $nav-icon-size;
-}
-
-.ui-nav-item-info {
+.ui-nav-item-content {
   display: inline;
   max-width: calc(100% - 40px);
   // height: 100%;
@@ -162,12 +148,35 @@ $nav-folder-caret-padding: 17px 10px 17px 0;
   font-size: $nav-info-fontsize !important;
   line-height: $nav-item-height !important;
   padding: 0 8px 0 0;
+  border: none;
+  color: inherit;
+  background-color: transparent;
+  font-weight: inherit;
+
+  &:hover,
+  &:focus {
+    color: inherit !important;
+    background-color: transparent !important;
+  }
+}
+
+.ui-nav-item-icon {
+  display: inline-block;
+  min-width: $nav-icon-size;
+  max-width: $nav-icon-size;
+  font-size: $nav-icon-fontsize !important;
+  line-height: 1;
+  text-align: center;
+  vertical-align: text-bottom;
+  flex-basis: $nav-icon-size;
 }
 
 .ui-nav-folder {
   z-index: 99;
   display: block;
+  width: 0px;
   height: 0px;
+  max-width: 300px;
   font-size: $nav-folder-info-fontsize !important;
   list-style-type: none;
   line-height: 1;
@@ -182,16 +191,28 @@ $nav-folder-caret-padding: 17px 10px 17px 0;
   overflow: hidden;
   position: fixed !important;
 
-  &.open {
+  &:hover,
+  &.ui--open {
     width: auto;
     height: auto;
-    max-width: 300px;
     border: $border;
     box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3),
       2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    & > .ui-nav-folder-item {
+      height: $nav-folder-item-height;
+    }
   }
 }
+.ui-nav-folder-caret {
+  &:before {
+    display: inline-block;
+    font-style: normal;
+    vertical-align: middle;
+    padding: 0px 4px;
+    content: "\002B";
+  }
 
+}
 .ui-nav-folder-item,
 .ui-nav-folder-title {
   border: none;
@@ -202,13 +223,16 @@ $nav-folder-caret-padding: 17px 10px 17px 0;
 }
 
 .ui-nav-folder-item {
-  height: $nav-folder-item-height;
+  height: 0px;
   padding: 0;
   position: relative;
+  &:after {
+    display: inline-flex !important;
+  }
 }
 
 .ui-nav-folder-title,
-.ui-nav-folder-item-info {
+.ui-nav-folder-item-content {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -222,7 +246,7 @@ $nav-folder-caret-padding: 17px 10px 17px 0;
   text-align: left;
 }
 
-.ui-nav-folder-item-info {
+.ui-nav-folder-item-content {
   display: inline-block;
   height: $nav-folder-item-height;
   width: $nav-info-width;
@@ -239,13 +263,12 @@ $nav-folder-caret-padding: 17px 10px 17px 0;
 
 .ui-nav-folder-item-icon {
   width: $nav-folder-item-height;
-  height: $nav-folder-item-height;
   margin: 0;
   padding: 0;
   font-size: $nav-folder-icon-fontsize !important;
-  line-height: $nav-folder-icon-line-height !important;
+  line-height: 1 !important;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: baseline;
   flex-basis: $nav-folder-item-height;
 }
 

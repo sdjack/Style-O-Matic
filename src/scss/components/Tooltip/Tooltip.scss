@@ -9,28 +9,48 @@
 
 // VARIABLES
 
-.ui-tooltip,
-.ui-tooltip-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.ui-tooltip {
+  display: inline-block;
   @media screen and (max-width: $mobile-screen-threshold) {
     display: none;
   }
-}
-
-.ui-tooltip-hover {
+  &.ui--covered {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   &:hover {
     & > .ui-tooltip-wrapper {
       & > .ui-tooltip-widget {
         width: auto;
         height: auto;
+        overflow: visible;
       }
     }
   }
 }
+
+// .ui-tooltip-wrapper {
+//   display: inline-block;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+// }
+//
+// .ui-tooltip-widget {
+//   display: inline-block;
+//   position: fixed;
+//   overflow: hidden;
+//   width: 0px;
+//   height: 0px;
+//   z-index: 999;
+//   @include animate-default(0.2s);
+//   transition-property: all;
+// }
 
 .ui-tooltip-wrapper {
   position: relative;
@@ -47,12 +67,6 @@
   z-index: 999;
   @include animate-default(0.2s);
   transition-property: all;
-
-  &.open {
-    width: auto;
-    height: auto;
-    overflow: visible;
-  }
 }
 
 .ui-tooltip-content {

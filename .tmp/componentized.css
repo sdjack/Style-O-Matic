@@ -1,19 +1,7 @@
 @charset "UTF-8";
-/**
-*  MISC
-*/
-/**
- * Set up a decent box model on the root element
- */
 html {
   box-sizing: border-box; }
 
-/**
- * Make all elements from the DOM inherit from the parent box-sizing
- * Since `*` has a specificity of 0, it does not override the `html` value
- * making all elements inheriting from the root box-sizing value
- * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
- */
 *,
 *::before,
 *::after {
@@ -482,35 +470,35 @@ tfoot {
       -ms-flex-line-pack: end;
           align-content: flex-end; }
 
-.ui-position-left {
+.ui-anchor-left {
   position: absolute !important;
   left: 0; }
 
-.ui-position-before {
+.ui-anchor-before {
   position: absolute !important;
   right: 100%; }
 
-.ui-position-right {
+.ui-anchor-right {
   position: absolute !important;
   right: 0; }
 
-.ui-position-after {
+.ui-anchor-after {
   position: absolute !important;
   left: 100%; }
 
-.ui-position-top {
+.ui-anchor-top {
   position: absolute !important;
   top: 0; }
 
-.ui-position-above {
+.ui-anchor-above {
   position: absolute !important;
   bottom: 100%; }
 
-.ui-position-bottom {
+.ui-anchor-bottom {
   position: absolute !important;
   bottom: 0; }
 
-.ui-position-below {
+.ui-anchor-below {
   position: absolute !important;
   top: 100%; }
 
@@ -691,33 +679,6 @@ tfoot {
 .ui-icon-unchecked:before {
   content: "\2610"; }
 
-.ui-icon-home:before {
-  content: "\1F3E0"; }
-
-.ui-icon-user:before {
-  content: "\1F464"; }
-
-.ui-icon-star:before {
-  content: "\1F7CA"; }
-
-.ui-icon-shooting-star:before {
-  content: "\1F320"; }
-
-.ui-icon-atom:before {
-  content: "\269B"; }
-
-.ui-icon-calendar:before {
-  content: "\1F5D3"; }
-
-.ui-icon-tools:before {
-  content: "\1F6E0"; }
-
-.ui-icon-cart:before {
-  content: "\1F6D2"; }
-
-.ui-icon-warning:before {
-  content: "\26A0"; }
-
 .ui-icon-spider:before {
   content: "\1F577"; }
 
@@ -757,29 +718,27 @@ tfoot {
   padding: 0 !important;
   margin: 0 !important; }
 
-/**
- * Hidden Completely
- */
-.ui-hidden {
+.ui--open {
+  width: auto !important;
+  height: auto !important; }
+
+.ui--closed {
+  width: 0px !important;
+  height: 0px !important;
+  overflow: hidden; }
+
+.ui--shown {
+  display: block; }
+
+.ui--hidden {
   display: none !important; }
 
-/**
- * Hide text while making it readable for screen readers
- * 1. Needed in WebKit-based browsers because of an implementation bug;
- *    See: https://code.google.com/p/chromium/issues/detail?id=457146
- */
 .ui-hidden-text {
   overflow: hidden;
   padding: 0;
-  /* 1 */
   text-indent: 101%;
   white-space: nowrap; }
 
-/**
- * Hide element while making it readable for screen readers
- * Shamelessly borrowed from HTML5Boilerplate:
- * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
- */
 .ui-hidden-visually {
   border: 0;
   clip: rect(0 0 0 0);

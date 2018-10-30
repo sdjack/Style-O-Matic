@@ -477,35 +477,35 @@ tfoot {
       -ms-flex-line-pack: end;
           align-content: flex-end; }
 
-.ui-position-left {
+.ui-anchor-left {
   position: absolute !important;
   left: 0; }
 
-.ui-position-before {
+.ui-anchor-before {
   position: absolute !important;
   right: 100%; }
 
-.ui-position-right {
+.ui-anchor-right {
   position: absolute !important;
   right: 0; }
 
-.ui-position-after {
+.ui-anchor-after {
   position: absolute !important;
   left: 100%; }
 
-.ui-position-top {
+.ui-anchor-top {
   position: absolute !important;
   top: 0; }
 
-.ui-position-above {
+.ui-anchor-above {
   position: absolute !important;
   bottom: 100%; }
 
-.ui-position-bottom {
+.ui-anchor-bottom {
   position: absolute !important;
   bottom: 0; }
 
-.ui-position-below {
+.ui-anchor-below {
   position: absolute !important;
   top: 100%; }
 
@@ -686,33 +686,6 @@ tfoot {
 .ui-icon-unchecked:before {
   content: "\2610"; }
 
-.ui-icon-home:before {
-  content: "\1F3E0"; }
-
-.ui-icon-user:before {
-  content: "\1F464"; }
-
-.ui-icon-star:before {
-  content: "\1F7CA"; }
-
-.ui-icon-shooting-star:before {
-  content: "\1F320"; }
-
-.ui-icon-atom:before {
-  content: "\269B"; }
-
-.ui-icon-calendar:before {
-  content: "\1F5D3"; }
-
-.ui-icon-tools:before {
-  content: "\1F6E0"; }
-
-.ui-icon-cart:before {
-  content: "\1F6D2"; }
-
-.ui-icon-warning:before {
-  content: "\26A0"; }
-
 .ui-icon-spider:before {
   content: "\1F577"; }
 
@@ -752,7 +725,19 @@ tfoot {
   padding: 0 !important;
   margin: 0 !important; }
 
-.ui-hidden {
+.ui--open {
+  width: auto !important;
+  height: auto !important; }
+
+.ui--closed {
+  width: 0px !important;
+  height: 0px !important;
+  overflow: hidden; }
+
+.ui--shown {
+  display: block; }
+
+.ui--hidden {
   display: none !important; }
 
 .ui-hidden-text {

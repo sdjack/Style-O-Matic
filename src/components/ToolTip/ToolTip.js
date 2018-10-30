@@ -27,86 +27,81 @@ class ToolTip extends CoreComponent {
 
   constructor(props) {
     super(props);
-    this.useParentNode = true;
+    this.defaultCoords = {
+      x: 0,
+      y: 0
+    };
     this.state = {
       open: false,
-      topOffset: 0,
-      leftOffset: 0
+      topOffset: this.defaultCoords.y,
+      leftOffset: this.defaultCoords.x
     };
   }
 
-  componentDidMount() {
-    this.handleMouseLeave();
-  }
+  setRefCallback = ref => {
+    const { x, y } = ref.getBoundingClientRect();
+    this.defaultCoords.x = x;
+    this.defaultCoords.y = y;
+    this.setState({
+      topOffset: this.defaultCoords.y,
+      leftOffset: this.defaultCoords.x
+    });
+  };
 
   handleMouseEnter = e => {
-    if (this.node) {
-      const { position } = this.props;
-      const { x, width, bottom, height } = this.node.getBoundingClientRect();
-      let leftOffset = x;
-      let topOffset = bottom;
-      if (position === "left") {
-        topOffset -= height / 2;
-      } else if (position === "right") {
-        leftOffset += width;
-        topOffset -= height / 2;
-      } else if (position === "top") {
-        topOffset -= height * 2;
+    if (!this.state.open) {
+      if (this.node) {
+        const { position } = this.props;
+        const { x, width, bottom, height } = this.node.getBoundingClientRect();
+        let leftOffset = x;
+        let topOffset = bottom;
+        if (position === "left") {
+          topOffset -= height / 2;
+        } else if (position === "right") {
+          leftOffset += width;
+          topOffset -= height / 2;
+        } else if (position === "top") {
+          topOffset -= height * 2;
+        }
+        this.setState({ open: true, topOffset, leftOffset });
+      } else {
+        this.setState({ open: true });
       }
-      this.setState({ open: true, topOffset, leftOffset });
-    } else {
-      this.setState({ open: true });
     }
   };
 
   handleMouseLeave = e => {
-    if (this.node) {
-      const { position } = this.props;
-      const { x, y, width } = this.node.getBoundingClientRect();
-      let leftOffset = x;
-      let topOffset = y;
-      if (position === "left") {
-        leftOffset += 40;
-      } else if (position === "right") {
-        leftOffset += width - 40;
-        topOffset += 40;
-      } else if (position === "bottom") {
-        leftOffset += 20;
-        topOffset += 60;
-      } else {
-        leftOffset += 20;
-        topOffset -= 40;
-      }
-      this.setState({ open: false, topOffset, leftOffset });
-    } else {
-      this.setState({ open: false });
-    }
+    this.setState({
+      open: false,
+      topOffset: this.defaultCoords.y,
+      leftOffset: this.defaultCoords.x
+    });
   };
 
   render() {
-    const {
-      renderAs: Component,
-      position,
-      open,
-      children,
-      props
-    } = getValidProps(this.props, this.state);
-    const offsetStyle = position === "left" ? {
-      top: `${this.state.topOffset}px`,
-      right: `${this.state.leftOffset}px`
-    } : {
-      top: `${this.state.topOffset}px`,
-      left: `${this.state.leftOffset}px`
-    };
+    const { renderAs: Component, position, children, props } = getValidProps(
+      this.props,
+      this.state
+    );
+    const offsetStyle = {};
     let widgetClass = "ui-tooltip-widget ";
-    if (position) {
-      widgetClass += `ui-tooltip-${position}`;
-    } else {
-      widgetClass += " ui-tooltip-top";
+    if (this.node) {
+      if (position) {
+        widgetClass += `ui-tooltip-${position}`;
+        if (position === "left") {
+          offsetStyle.top = `${this.state.topOffset}px`;
+          offsetStyle.right = `${this.state.leftOffset}px`;
+        } else {
+          offsetStyle.top = `${this.state.topOffset}px`;
+          offsetStyle.left = `${this.state.leftOffset}px`;
+        }
+      } else {
+        widgetClass += " ui-tooltip-top";
+      }
     }
 
     const classes = {
-      open: this.state.open
+      "ui--open": this.state.open
     };
 
     return (
@@ -116,14 +111,10 @@ class ToolTip extends CoreComponent {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
+        {children}
         <div className="ui-tooltip-wrapper">
-          <div
-            className={classNames(widgetClass, classes)}
-            style={offsetStyle}
-          >
-            <div
-              className={classNames("ui-tooltip-content", classes)}
-            >
+          <div className={classNames(widgetClass, classes)} style={offsetStyle}>
+            <div className={classNames("ui-tooltip-content", classes)}>
               {children}
             </div>
           </div>

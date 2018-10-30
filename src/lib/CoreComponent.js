@@ -82,11 +82,15 @@ export default class CoreComponent extends Component {
 
   onSetRef = ref => {
     if (ref) {
-      const needsUpdate = this.useParentNode && this.node === null;
+      const needsUpdate = this.node === null;
       this.node = ref;
       this.parentNode = ref.parentNode;
       if (needsUpdate) {
-        this.forceUpdate();
+        if (this.setRefCallback) {
+          this.setRefCallback(ref);
+        } else if (this.useParentNode) {
+          this.forceUpdate();
+        }
       }
     }
   };
