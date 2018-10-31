@@ -1,0 +1,325 @@
+// -----------------------------------------------------------------------------
+  // Tooltip
+// -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+// VARIABLES
+$tooltip-arrow-size: 6px;
+$tooltip-bg: #262626;
+
+@mixin tooltip-arrow($position: top) {
+  $degrees: 0;
+  $height:  6px;
+  $width:   18px;
+
+  @if ($position == down) {
+    $degrees: 180 18 6;
+    } @else if ($position == left) {
+      $degrees: -90 18 18;
+      $width: 6px;
+      $height: 18px;
+      } @else if ($position == right) {
+        $degrees: 90 6 6;
+        $width: 6px;
+        $height: 18px;
+      }
+
+      background: no-repeat url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22#{$width * 2}%22%20height%3D%22#{$height * 2}%22%3E%3Cpath%20fill%3D%22#{$tooltip-bg}%22%20transform%3D%22rotate(#{$degrees})%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E');
+      background-size: 100% auto;
+      width: $width;
+      height: $height;
+}
+
+[data-ui-tooltip] {
+  position: relative;
+  cursor: pointer;
+
+  &:after {
+    @include opacity(0);
+    pointer-events: none;
+    @include transition(all .18s ease-out .18s);
+    background: $tooltip-bg;
+    color: #efefef;
+    font-weight: 300;
+    text-align: left;
+    border-radius: 0;
+    content: attr(data-ui-tooltip);
+    padding: .5em 1em;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  &:before {
+    @include tooltip-arrow();
+    @include opacity(0);
+    pointer-events: none;
+    @include transition(all .18s ease-out .18s);
+
+    content: '';
+    position: absolute;
+    z-index: 10;
+  }
+
+  &:hover {
+    &:before,
+    &:after {
+      @include opacity(1);
+      pointer-events: auto;
+    }
+  }
+
+  &:not([data-ui-tooltip-pos]) {
+    &:after {
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 5px + $tooltip-arrow-size;
+      @include transform(translate(-50%, 10px));
+      @include transform-origin(top);
+    }
+    &:before {
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 5px;
+      @include transform(translate(-50%, 10px));
+      @include transform-origin(top);
+    }
+
+    &:hover, &[data-ui-tooltip-visible] {
+      &:after {
+        @include transform(translate(-50%, 0));
+      }
+
+      &:before {
+        @include transform(translate(-50%, 0));
+      }
+    }
+  }
+
+  &[data-ui-tooltip-pos="top"] {
+    &:after {
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 5px + $tooltip-arrow-size;
+      @include transform(translate(-50%, 10px));
+      @include transform-origin(top);
+    }
+    &:before {
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 5px;
+      @include transform(translate(-50%, 10px));
+      @include transform-origin(top);
+    }
+
+    &:hover, &[data-ui-tooltip-visible] {
+      &:after {
+        @include transform(translate(-50%, 0));
+      }
+
+      &:before {
+        @include transform(translate(-50%, 0));
+      }
+    }
+  }
+
+  &[data-ui-tooltip-pos="top-left"] {
+    &:after {
+      bottom: 100%;
+      left: 0;
+      margin-bottom: 5px + $tooltip-arrow-size;
+      @include transform(translate(0, 10px));
+      @include transform-origin(top);
+    }
+    &:before {
+      bottom: 100%;
+      left: 5px;
+      margin-bottom: 5px;
+      @include transform(translate(0, 10px));
+      @include transform-origin(top);
+    }
+
+    &:hover, &[data-ui-tooltip-visible] {
+      &:after {
+        @include transform(translate(0, 0));
+      }
+
+      &:before {
+        @include transform(translate(0, 0));
+      }
+    }
+  }
+
+  &[data-ui-tooltip-pos="top-right"] {
+    &:after {
+      bottom: 100%;
+      right: 0;
+      margin-bottom: 5px + $tooltip-arrow-size;
+      @include transform(translate(0, 10px));
+      @include transform-origin(top);
+    }
+    &:before {
+      bottom: 100%;
+      right: 5px;
+      margin-bottom: 5px;
+      @include transform(translate(0, 10px));
+      @include transform-origin(top);
+    }
+
+    &:hover, &[data-ui-tooltip-visible] {
+      &:after {
+        @include transform(translate(0, 0));
+      }
+
+      &:before {
+        @include transform(translate(0, 0));
+      }
+    }
+  }
+
+  &[data-ui-tooltip-pos='bottom'] {
+    &:after {
+      left: 50%;
+      margin-top: 5px + $tooltip-arrow-size;
+      top: 100%;
+      @include transform(translate(-50%, -10px));
+    }
+
+    &:before {
+      @include tooltip-arrow('bottom');
+
+      left: 50%;
+      margin-top: 5px;
+      top: 100%;
+      @include transform(translate(-50%, -10px));
+    }
+
+    &:hover, &[data-ui-tooltip-visible] {
+      &:after {
+        @include transform(translate(-50%, 0));
+      }
+
+      &:before {
+        @include transform(translate(-50%, 0));
+      }
+    }
+  }
+
+  &[data-ui-tooltip-pos='bottom-left'] {
+    &:after {
+      left: 0;
+      margin-top: 5px + $tooltip-arrow-size;
+      top: 100%;
+      @include transform(translate(0, -10px));
+    }
+
+    &:before {
+      @include tooltip-arrow('bottom');
+
+      left: 5px;
+      margin-top: 5px;
+      top: 100%;
+      @include transform(translate(0, -10px));
+    }
+
+    &:hover, &[data-ui-tooltip-visible] {
+      &:after {
+        @include transform(translate(0, 0));
+      }
+
+      &:before {
+        @include transform(translate(0, 0));
+      }
+    }
+  }
+
+  &[data-ui-tooltip-pos='bottom-right'] {
+    &:after {
+      right: 0;
+      margin-top: 5px + $tooltip-arrow-size;
+      top: 100%;
+      @include transform(translate(0, -10px));
+    }
+
+    &:before {
+      @include tooltip-arrow('bottom');
+
+      right: 5px;
+      margin-top: 5px;
+      top: 100%;
+      @include transform(translate(0, -10px));
+    }
+
+    &:hover, &[data-ui-tooltip-visible] {
+      &:after {
+        @include transform(translate(0, 0));
+      }
+
+      &:before {
+        @include transform(translate(0, 0));
+      }
+    }
+  }
+
+  &[data-ui-tooltip-pos='left'] {
+    &:after {
+      margin-right: 5px + $tooltip-arrow-size;
+      right: 100%;
+      top: 50%;
+      @include transform(translate(10px, -50%));
+    }
+
+    &:before {
+      @include tooltip-arrow('left');
+
+      margin-right: 5px;
+      right: 100%;
+      top: 50%;
+      @include transform(translate(10px, -50%));
+    }
+
+    &:hover, &[data-ui-tooltip-visible] {
+      &:after {
+        @include transform(translate(0, -50%));
+      }
+
+      &:before {
+        @include transform(translate(0, -50%));
+      }
+    }
+
+  }
+
+  &[data-ui-tooltip-pos='right'] {
+    &:after {
+
+      left: 100%;
+      margin-left: 5px + $tooltip-arrow-size;
+      top: 50%;
+      @include transform(translate(-10px, -50%));
+    }
+
+    &:before {
+      @include tooltip-arrow('right');
+
+      left: 100%;
+      margin-left: 5px;
+      top: 50%;
+      @include transform(translate(-10px, -50%));
+    }
+
+    &:hover, &[data-ui-tooltip-visible] {
+      &:after {
+        @include transform(translate(0, -50%));
+      }
+
+      &:before {
+        @include transform(translate(0, -50%));
+      }
+    }
+  }
+}

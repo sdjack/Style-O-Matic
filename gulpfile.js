@@ -62,7 +62,7 @@ const componentList = [
 // Base CSS [Componentized Version]
 gulp.task("all_styles", () =>
   gulp
-    .src(["src/scss/main.scss"])
+    .src(["scss/main.scss"])
     .pipe(
       $.sass({
         precision: 10,
@@ -71,7 +71,7 @@ gulp.task("all_styles", () =>
     )
     .pipe(
       $.cssInlineImages({
-        webRoot: "src/scss"
+        webRoot: "scss"
       })
     )
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -79,17 +79,17 @@ gulp.task("all_styles", () =>
     .pipe($.concat("style-o-matic.all.css"))
     .pipe(strip.text())
     .pipe($.header(banner, { pkg }))
-    .pipe(gulp.dest("css"))
+    .pipe(gulp.dest("dist"))
     .pipe($.if("*.css", $.csso()))
     .pipe($.concat("style-o-matic.all.min.css"))
     .pipe($.header(banner, { pkg }))
-    .pipe(gulp.dest("css"))
+    .pipe(gulp.dest("dist"))
     .pipe($.size({ title: "all_styles" }))
 );
 // Base CSS [Componentized Version]
 gulp.task("styles", () =>
   gulp
-    .src(["src/scss/componentized.scss"])
+    .src(["scss/componentized.scss"])
     .pipe(
       $.sass({
         precision: 10,
@@ -98,7 +98,7 @@ gulp.task("styles", () =>
     )
     .pipe(
       $.cssInlineImages({
-        webRoot: "src/scss"
+        webRoot: "scss"
       })
     )
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -106,7 +106,7 @@ gulp.task("styles", () =>
     .pipe($.concat("style-o-matic.css"))
     .pipe(strip.text())
     .pipe($.header(banner, { pkg }))
-    .pipe(gulp.dest("css"))
+    .pipe(gulp.dest("dist"))
     .pipe($.if("*.css", $.csso()))
     .pipe($.concat("App.css"))
     .pipe(gulp.dest(`src/components/App`))
@@ -114,7 +114,7 @@ gulp.task("styles", () =>
     .pipe(gulp.dest(`lib/components/App`))
     .pipe($.concat("style-o-matic.min.css"))
     .pipe($.header(banner, { pkg }))
-    .pipe(gulp.dest("css"))
+    .pipe(gulp.dest("dist"))
     .pipe($.size({ title: "styles" }))
 );
 // React Components
@@ -122,7 +122,7 @@ gulp.task("react_compile", cb => {
   es.merge(
     componentList.map(componentName =>
       gulp
-        .src(`src/scss/components/${componentName}/loader.scss`)
+        .src(`scss/components/${componentName}/${componentName}_React.scss`)
         .pipe(
           $.sass({
             precision: 10,
@@ -150,16 +150,33 @@ gulp.task("react_compile", cb => {
 // Clean TMP Directory
 gulp.task("clean", () => del([".tmp"]));
 
-gulp.task("react_prep", () => del(["src/components/*.css", ".tmp"]));
+gulp.task("react_prep", () =>
+  del([
+    "src/components/*.css",
+    "src/components/*.min.css",
+    "src/components/**/*.css",
+    "src/components/**/*.min.css",
+    ".tmp"
+  ])
+);
 
 gulp.task("react", gulp.series("react_prep", "react_compile"));
 // Prepare Output Directory
 gulp.task("prep", () =>
-  del(["_build", "css/*.css", "src/components/*.css", ".tmp"])
+  del([
+    "_build",
+    "dist/*.css",
+    "dist/*.min.css",
+    "src/components/*.css",
+    "src/components/*.min.css",
+    "src/components/**/*.css",
+    "src/components/**/*.min.css",
+    ".tmp"
+  ])
 );
 // Copy all _build files to the public directory
 gulp.task("replicate", () =>
-  gulp.src(["_build/css/*.css"]).pipe(gulp.dest("./css"))
+  gulp.src(["_build/dist/*.css"]).pipe(gulp.dest("./dist"))
 );
 // Our default task (executed by calling the "gulp" command)
 gulp.task(
@@ -168,8 +185,5 @@ gulp.task(
 );
 // Start watching for file changes
 gulp.task("watch", () => {
-  gulp.watch(
-    ["src/scss/**/*.scss", "src/scss/**/**/*.scss"],
-    gulp.series("default")
-  );
+  gulp.watch(["scss/**/*.scss", "scss/**/**/*.scss"], gulp.series("default"));
 });

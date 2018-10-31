@@ -1,0 +1,378 @@
+// -----------------------------------------------------------------------------
+  // Nav
+// -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+// VARIABLES
+$nav-padding: $padding 24px;
+$nav-item-size: 18px;
+$nav-item-height: $framing-size;
+$nav-item-padding: 18px 21px;
+$nav-widget-size: $framing-size * 2;
+$nav-icon-size: $framing-size;
+$nav-icon-fontsize: 18px;
+$nav-icon-width: $framing-size;
+$nav-caret-fontsize: 12px;
+$nav-caret-padding: ($nav-item-height / 4);
+$nav-caret-width: 17px;
+$nav-info-fontsize: 16px;
+$nav-info-width: ($framing-size-large - 50);
+$nav-list-line-height: 20px;
+$nav-list-margin: -10px 0px 0px 0px;
+$nav-folder-item-font-color: rgba(239,239,239,0.7);
+$nav-folder-item-font-color-hover: rgba(255,255,255,0.1);
+$nav-folder-item-height: 36px;
+$nav-title-fontsize: 18px;
+$nav-title-padding: 12px 0 6px 12px;
+$nav-folder-icon-fontsize: 20px;
+$nav-folder-icon-line-height: 28px;
+$nav-folder-icon-margin: 8px 12px 8px 48px;
+$nav-folder-info-fontsize: 12px;
+$nav-folder-info-padding: 0;
+$nav-folder-caret-fontsize: $nav-caret-fontsize;
+$nav-folder-caret-padding: 17px 10px 17px 0;
+
+.ui-nav,
+.ui-nav-content {
+  color: inherit;
+  background-color: inherit;
+}
+
+.ui-nav-content {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: space-evenly;
+  justify-content: space-evenly;
+  @media screen and (max-width: $mobile-screen-threshold) {
+    flex-wrap: wrap;
+    flex-direction: column !important;
+    & > .ui-nav-item {
+      text-align: left !important;
+    }
+  }
+}
+
+.ui-nav {
+  width: auto;
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+  display: block;
+
+  &.ui-orientation-vertical {
+    min-height: 100%;
+    max-height: 100%;
+    height: auto;
+
+    & > .ui-nav-content {
+      width: auto;
+      height: 100%;
+      flex-direction: column;
+      & > .ui-nav-item {
+        display: block;
+      }
+    }
+
+    &.ui--collapsed {
+      & > .ui-nav-content {
+        overflow: hidden;
+        width: 0px !important;
+      }
+    }
+  }
+
+  &.ui-orientation-horizontal {
+    min-width: 100%;
+    max-width: 100%;
+    height: $nav-item-height;
+
+    & > .ui-nav-content {
+      width: 100%;
+      height: auto;
+      flex-direction: row;
+      & > .ui-nav-item {
+        display: inline-block;
+        text-align: center;
+      }
+    }
+
+    &.ui--collapsed {
+      & > .ui-nav-content {
+        overflow: hidden;
+        height: 0px !important;
+      }
+    }
+
+    @media screen and (max-width: $mobile-screen-threshold) {
+      height: auto;
+    }
+  }
+}
+
+.ui-nav-item-content {
+  color: inherit;
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    color: inherit !important;
+    background-color: transparent !important;
+  }
+}
+
+.ui-nav-item,
+.ui-nav-folder-item {
+  &:hover {
+    color: $color-lightest;
+    background-color: $color-blue-highlight;
+  }
+}
+
+.ui-nav-widget {
+  position: relative;
+  justify-content: space-between;
+  text-align: left;
+  height: $nav-item-height;
+  width: auto;
+  min-width: $nav-widget-size;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    color: inherit !important;
+    background-color: transparent !important;
+  }
+
+  @media screen and (max-width: $mobile-screen-threshold) {
+    display: block !important;
+  }
+
+  &:after {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+  }
+
+  & > .ui-nav-widget-item {
+    display: inline-block;
+    height: 100%;
+    text-align: start;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.ui-nav-item {
+  position: relative;
+  justify-content: space-between;
+  text-align: left;
+  height: $nav-item-height;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  // overflow: hidden;
+  background-color: rgba(0, 0, 0, 0);
+  @include animate-default(0.2s);
+  transition-property: all;
+
+  &:hover,
+  &:focus {
+    & > .ui-nav-folder {
+      width: auto;
+      height: auto;
+      border: $border;
+      overflow-y: scroll;
+      box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3),
+        2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+
+      & > .ui-nav-item,
+      & > .ui-nav-folder-item {
+        height: $nav-folder-item-height;
+      }
+    }
+    & > .ui-nav-caret:before {
+        content: "\2212";
+    }
+  }
+
+  @media screen and (max-width: $mobile-screen-threshold) {
+    display: block !important;
+  }
+
+  &:after {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+  }
+
+  & > .ui-nav-item-content {
+    display: inline;
+    max-width: calc(100% - 40px);
+    // height: 100%;
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: $nav-info-fontsize !important;
+    line-height: $nav-item-height !important;
+    padding: 0 8px 0 0;
+    border: none;
+    font-weight: inherit;
+  }
+
+  & > .ui-nav-item-icon {
+    display: inline-block;
+    min-width: $nav-icon-size;
+    max-width: $nav-icon-size;
+    font-size: $nav-icon-fontsize !important;
+    line-height: 1;
+    text-align: center;
+    vertical-align: text-bottom;
+    flex-basis: $nav-icon-size;
+  }
+}
+
+.ui-nav-folder {
+  z-index: 99;
+  display: block;
+  width: 0px;
+  max-width: $framing-size-large;
+  height: 0px;
+  max-height: $framing-size-large;
+  font-size: $nav-folder-info-fontsize !important;
+  list-style-type: none;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  border: none;
+  color: $text-color;
+  background-color: $background-color;
+  @include box-shadow(none);
+  @include animate-default(0.1s);
+  transition-property: all;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: absolute !important;
+
+  &.ui--open {
+    width: auto;
+    height: auto;
+    border: $border;
+    overflow-y: scroll;
+    box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3),
+      2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    & > .ui-nav-item,
+    & > .ui-nav-folder-item {
+      height: $nav-folder-item-height;
+    }
+  }
+
+  & > .ui-nav-item,
+  & > .ui-nav-folder-item {
+    height: 0px;
+    padding: 0;
+    position: relative;
+    border: none;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    @include animate-default(0.3s);
+    transition-property: width, height, padding;
+    // overflow: hidden;
+
+    & > .ui-nav-item-content {
+      display: inline-block;
+      height: $nav-folder-item-height;
+      width: $nav-info-width;
+      margin: 0;
+      padding: $nav-folder-info-padding;
+      font-size: $nav-folder-info-fontsize !important;
+      font-weight: 600;
+      line-height: $nav-folder-item-height;
+      text-indent: 8px;
+      text-align: start;
+      vertical-align: middle;
+      flex-basis: $nav-info-width;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    & > .ui-nav-item-icon {
+      display: inline-block;
+      width: $nav-folder-item-height;
+      margin: 0;
+      padding: 0;
+      font-size: $nav-folder-icon-fontsize !important;
+      line-height: 1 !important;
+      text-align: center;
+      vertical-align: baseline;
+      flex-basis: $nav-folder-item-height;
+    }
+  }
+}
+
+.ui-nav-caret {
+  &:before {
+    display: inline-block;
+    font-style: normal;
+    vertical-align: middle;
+    padding: 0px 4px;
+    content: "\002B";
+  }
+
+}
+
+.ui-nav-title {
+  padding: $nav-title-padding;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: $nav-title-fontsize;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: none;
+  display: inline-block;
+  width: 100%;
+  @include animate-default(0.3s);
+  transition-property: width, height, padding;
+}
+
+.ui-nav-toggle {
+  display: inline-block;
+  color: inherit;
+  @include text-horizontal-align-left();
+  @media screen and (max-width: $mobile-screen-threshold) {
+    display: block !important;
+  }
+}
+
+.ui-nav-toggle-button {
+  width: $framing-size;
+  height: $framing-size;
+  color: inherit;
+  background-color: transparent;
+  padding: 2px;
+  font-size: $toggle-size;
+  border: none;
+  border-radius: 0;
+  @include box-shadow(none);
+  outline: none !important;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: transparent;
+    border: none;
+    outline: none !important;
+  }
+}

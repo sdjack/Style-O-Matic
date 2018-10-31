@@ -106,8 +106,11 @@ const DefaultPropTypes = {
   icon: PropTypes.string,
   to: PropTypes.string,
   disabled: PropTypes.bool,
+  collapsed: PropTypes.bool,
   open: PropTypes.bool,
   closed: PropTypes.bool,
+  hidden: PropTypes.bool,
+  shown: PropTypes.bool,
   active: PropTypes.bool,
   overlay: PropTypes.bool,
   fixed: PropTypes.bool,
@@ -198,8 +201,11 @@ const DefaultPropValues = {
   masked: null,
   to: null,
   disabled: null,
+  collapsed: null,
   open: null,
   closed: null,
+  hidden: null,
+  shown: null,
   active: null,
   overlay: null,
   fixed: null,
@@ -373,8 +379,12 @@ export function getUIClassString(props, state) {
   const disabled =
     state && !_.isNil(state.disabled) ? state.disabled : props.disabled;
   const active = state && !_.isNil(state.active) ? state.active : props.active;
+  const collapsed =
+    state && !_.isNil(state.collapsed) ? state.collapsed : props.collapsed;
   const open = state && !_.isNil(state.open) ? state.open : props.open;
   const closed = state && !_.isNil(state.closed) ? state.closed : props.closed;
+  const hidden = state && !_.isNil(state.hidden) ? state.hidden : props.hidden;
+  const shown = state && !_.isNil(state.shown) ? state.shown : props.shown;
   const invalid =
     state && !_.isNil(state.invalid) ? state.invalid : props.invalid;
   const orientation =
@@ -400,8 +410,11 @@ export function getUIClassString(props, state) {
     "ui-masked": masked,
     "ui-shadow": shadow,
     "ui-blurred": !!loader,
+    "ui--collapsed": collapsed,
     "ui--open": open,
     "ui--closed": closed,
+    "ui--hidden": hidden,
+    "ui--shown": shown,
     disabled,
     active,
     invalid

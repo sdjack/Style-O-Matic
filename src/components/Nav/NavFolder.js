@@ -16,6 +16,32 @@ import {
   ROLE
 } from "../../lib";
 
+function getStyleOffset(ref) {
+  const {
+    bottom: screenBottom,
+    height: screenHeight,
+    width: screenWidth
+  } = UIGlobals.getScreenDimensions();
+  const {
+    x,
+    y,
+    height,
+    bottom,
+    width: folderWidth
+  } = ref.getBoundingClientRect();
+  const offset = {};
+  if (y > screenHeight / 2) {
+    let bottomOffset = y;
+    bottomOffset += height * 2;
+    bottomOffset -= bottom;
+    offset.bottom = `${bottomOffset}px`;
+  }
+  if (x + folderWidth > screenWidth - 10) {
+    offset.right = "10px";
+  }
+  return offset;
+}
+
 class NavFolder extends CoreComponent {
   static propTypes = setCorePropTypes({
     minimized: "bool"
@@ -29,46 +55,25 @@ class NavFolder extends CoreComponent {
   constructor(props) {
     super(props);
     this.folder = null;
-    this.useParentNode = true;
     this.state = {
       closed: props.closed,
       offset: {}
     };
   }
 
-  setFolderRef = ref => {
+  setRefCallback = ref => {
     if (ref) {
-      const needsUpdate = this.folder === null;
-      this.folder = ref;
-      if (needsUpdate) {
-        this.forceUpdate();
-      }
+      const newState = this.state;
+      newState.offset = getStyleOffset(ref);
+      this.setState(newState);
     }
   };
 
   toggleExpansion = e => {
     e.preventDefault();
     const newState = this.state;
-    if (newState.closed && this.node && this.folder) {
-      const {
-        bottom: screenBottom,
-        height: screenHeight,
-        width: screenWidth
-      } = UIGlobals.getScreenDimensions();
-      const { x, y, height, bottom } = this.node.getBoundingClientRect();
-      const { width: folderWidth } = this.folder.getBoundingClientRect();
-      const offset = {};
-      if (y > screenHeight / 2) {
-        let bottomOffset = 0;
-        bottomOffset = height;
-        bottomOffset += screenHeight;
-        bottomOffset -= bottom;
-        offset.bottom = `${bottomOffset}px`;
-      }
-      if (x + folderWidth > screenWidth - 10) {
-        offset.right = "10px";
-      }
-      newState.offset = offset;
+    if (newState.closed && this.node) {
+      newState.offset = getStyleOffset(this.node);
     }
     newState.closed = !newState.closed;
     this.setState(newState);
@@ -112,10 +117,9 @@ class NavFolder extends CoreComponent {
     };
 
     const itemClass = closed ? "ui-nav-item" : "ui-nav-item ui--open";
-
     return (
       <div className={itemClass} ref={this.onSetRef}>
-        <i className="ui-nav-folder-caret" />
+        <i className="ui-nav-caret" />
         <div
           className="ui-nav-item-content"
           role="presentation"
@@ -130,7 +134,7 @@ class NavFolder extends CoreComponent {
           style={offset}
           ref={this.setFolderRef}
         >
-          <div className="ui-nav-folder-title">{label}</div>
+          <div className="ui-nav-title">{label}</div>
           {React.Children.map(children, child => {
             if (
               typeof child.props !== "undefined" &&

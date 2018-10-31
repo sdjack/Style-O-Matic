@@ -16,7 +16,7 @@ import TabsView from "./views/TabsView";
 import ToastsView from "./views/ToastsView";
 import ToolbarView from "./views/ToolbarView";
 import PageWrapper from "./views/PageWrapper";
-import "../../css/style-o-matic.min.css";
+import "../../dist/style-o-matic.min.css";
 
 const RootElement = document.getElementById("demo");
 

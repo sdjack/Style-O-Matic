@@ -40,18 +40,14 @@ class Drawer extends CoreComponent {
     };
   }
 
-  componentDidMount() {
-    this.ensureOrientation();
-  }
-
   handleOnClick = () => {
     this.setState({ active: !this.state.active });
   };
 
-  ensureOrientation = () => {
-    if (this.node) {
+  setRefCallback = ref => {
+    if (ref) {
       const { orientation } = this.state;
-      const { width, height } = this.node.getBoundingClientRect();
+      const { width, height } = ref.getBoundingClientRect();
       const {
         height: screenHeight,
         width: screenWidth

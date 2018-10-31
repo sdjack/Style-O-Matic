@@ -1,0 +1,290 @@
+// -----------------------------------------------------------------------------
+  // Typeography
+// -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group base
+////
+
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: sans-serif;
+  line-height: 20px;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+hr {
+  border-top: 1px solid #FFFFFF;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  @include typo-small($colorContrast: true);
+
+  font-size: 0.6em;
+}
+h1 {
+  @include typo-h1;
+}
+
+h2 {
+  @include typo-h2;
+}
+
+h3 {
+  @include typo-h3;
+}
+
+h4 {
+  @include typo-headline;
+}
+
+h5 {
+  @include typo-title;
+}
+
+h6 {
+  @include typo-subhead;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  margin: 0px 0px 16px;
+
+  &.preface {
+    border-bottom: $border;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+a {
+  font-weight: 500;
+  text-decoration: none !important;
+  text-decoration: none;
+  &:hover,
+  &:active,
+  &:focus {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+
+blockquote {
+  position: relative;
+  font-size: 24px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+
+  &:before {
+    position: absolute;
+    left: -0.5em;
+    content: '“';
+  }
+
+  &:after {
+    content: '”';
+    margin-left: -0.05em;
+  }
+}
+
+mark {
+  background-color: #f4ff81;
+}
+
+dt {
+  font-weight: 700;
+}
+
+address {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-style: normal;
+}
+
+ul, ol {
+  @include typo-lists;
+  margin: 2px 0 6px;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: 1px solid rgba(0,0,0,0);
+  cursor: pointer;
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 1px solid rgba(0,0,0,0.033) !important;
+    border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.05);
+  }
+}
+
+fieldset {
+  max-width: 100%;
+  display: block;
+  justify-content: space-around;
+  border: none;
+  padding: 2px;
+  padding-bottom: 16px;
+}
+
+label,
+span.label,
+legend {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding: $widget-padding;
+  @include text-align-left();
+}
+
+label,
+span.label {
+  height: $widget-size / 2;
+  font-size: $widget-font-size;
+  line-height: $widget-size / 4;
+}
+
+legend {
+  height: $widget-size;
+  font-size: $widget-font-size + 2;
+  font-weight: 700;
+  width: 100%;
+  line-height: $widget-size;
+}
+
+input::-webkit-autofill,
+input::-webkit-autofill:hover,
+input::-webkit-autofill:focus,
+input::-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+input, select, textarea {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 1px solid rgba(0,0,0,0.033) !important;
+  }
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+input[type="url"],
+input[type="email"],
+input[type="color"],
+input[type="checkbox"],
+input[type="radio"],
+select,
+textarea {
+  border-radius: $border-radius;
+  background-color: white;
+  border: $border;
+
+  @include typo-input();
+
+  &:focus:not(:active) {
+    border: 1px solid rgba(0,0,0,0.35);
+  }
+}
+
+input[type="button"],
+input[type="submit"] {
+  padding: ($widget-size / 4) $widget-size;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.033);
+  border: none !important;
+  border-radius: $border-radius;
+  cursor: pointer;
+  min-width: $widget-size;
+
+  @include button-skin();
+
+  &:hover,
+  &:focus:not(:active),
+  &:active {
+    background-color: rgba(0,0,0,0.2);
+  }
+}
+
+tr {
+  position: relative;
+}
+
+th, td {
+  position: relative;
+  color: inherit;
+  padding: 4px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+th {
+  position: relative;
+  vertical-align: bottom;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  @include text-horizontal-align-center();
+}
+
+thead,
+tbody,
+tfoot {
+  padding-bottom: 3px;
+}

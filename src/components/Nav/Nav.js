@@ -18,30 +18,27 @@ import {
 } from "../../lib";
 import NavItem from "./NavItem.js";
 import NavFolder from "./NavFolder.js";
+import NavWidget from "./NavWidget.js";
 import "./Nav.css";
 
 class Nav extends CoreComponent {
-  static propTypes = setCorePropTypes({
-    canMinimize: "bool"
-  });
-
   static defaultProps = setCorePropDefaults({
     renderAs: "nav",
     uirole: ROLE.NAV,
-    orientation: "horizontal",
-    canMinimize: false
+    orientation: "horizontal"
   });
 
   static Item = NavItem;
   static Folder = NavFolder;
+  static Widget = NavWidget;
 
   constructor(props, ...args) {
     super(props, ...args);
     const isMobile = window.innerWidth <= 1024;
-    const closed = isMobile ? true : props.closed;
+    const collapsed = isMobile ? true : props.collapsed;
     this.state = {
       orientation: props.orientation,
-      closed,
+      collapsed,
       isMobile
     };
   }
@@ -55,7 +52,7 @@ class Nav extends CoreComponent {
   }
 
   handleOnClick = () => {
-    this.setState({ closed: !this.state.closed });
+    this.setState({ collapsed: !this.state.collapsed });
   };
 
   detectIfMobile = () => {
@@ -88,9 +85,7 @@ class Nav extends CoreComponent {
       props,
       inherited
     } = getValidProps(this.props, this.state);
-    const { closed, isMobile } = this.state;
-    const contentClass = !canMinimize && closed ? " ui--closed" : "";
-
+    const { collapsed, isMobile } = this.state;
     return (
       <Component {...props}>
         {isMobile ? (
@@ -103,14 +98,14 @@ class Nav extends CoreComponent {
             </button>
           </div>
         ) : null}
-        <div className={`ui-nav-content${contentClass}`}>
+        <div className="ui-nav-content">
           {React.Children.map(children, child => {
             if (
               typeof child.props !== "undefined" &&
               typeof child.props.uirole !== "undefined"
             ) {
               return this.renderChild(child, {
-                closed,
+                collapsed,
                 ...inherited
               });
             }

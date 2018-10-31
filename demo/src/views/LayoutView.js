@@ -108,27 +108,21 @@ class LayoutView extends React.Component {
                       <Nav.Item to="/" icon="ui-icon-tools" label="TBD" />
                       <Nav.Item to="/" icon="ui-icon-tools" label="TBD" />
                     </Nav.Folder>
-                    <Nav.Item icon="ui-icon-search" label="Search">
-                      <form className="ui-nav-form" role="search">
-                        <div className="input-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Search"
-                            name="q"
-                            id="search-input"
-                          />
-                          <div className="input-group-btn">
-                            <button
-                              className="btn btn-default"
-                              id="search-submit"
-                            >
-                              <i className="ui-icon-search" />
-                            </button>
-                          </div>
-                        </div>
-                      </form>
-                    </Nav.Item>
+                    <Nav.Widget label="Search" renderAs="form">
+                      <input
+                        type="text"
+                        className="ui-nav-widget-item ui-bordered"
+                        placeholder="Search"
+                        name="q"
+                        id="search-input"
+                      />
+                      <button
+                        className="ui-button ui-nav-widget-item"
+                        id="search-submit"
+                      >
+                        <span className="ui-nav-item-icon ui-icon-search" />
+                      </button>
+                    </Nav.Widget>
                   </Nav>
                 </Grid.Column>
               </Grid.Row>
