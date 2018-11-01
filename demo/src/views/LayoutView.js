@@ -87,7 +87,20 @@ class LayoutView extends React.Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
+                  <hr />
+                  <Title renderAs="h4" textAlign="center">
+                    <Title.Content>Navigation</Title.Content>
+                    <Title.Subtitle>Widgets</Title.Subtitle>
+                  </Title>
+                  <hr />
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column textAlign="center">
                   <Nav>
+                    <Nav.Widget>
+                      <div className="ui-nav-title">Nav Title</div>
+                    </Nav.Widget>
                     <Nav.Item icon="ui-icon-home" label="Home">
                       <ToolTip position="bottom">Home</ToolTip>
                     </Nav.Item>
@@ -100,28 +113,22 @@ class LayoutView extends React.Component {
                     <Nav.Item icon="ui-icon-star" label="Contact">
                       <ToolTip position="top">Contact</ToolTip>
                     </Nav.Item>
-                    <Nav.Folder to="/misc" label="Misc">
-                      <Nav.Item to="/" icon="ui-icon-tools" label="TBD" />
-                      <Nav.Item to="/" icon="ui-icon-tools" label="TBD" />
-                      <Nav.Item to="/" icon="ui-icon-tools" label="TBD" />
-                      <Nav.Item to="/" icon="ui-icon-tools" label="TBD" />
-                      <Nav.Item to="/" icon="ui-icon-tools" label="TBD" />
-                      <Nav.Item to="/" icon="ui-icon-tools" label="TBD" />
-                    </Nav.Folder>
                     <Nav.Widget label="Search" renderAs="form">
-                      <input
-                        type="text"
-                        className="ui-nav-widget-item ui-bordered"
-                        placeholder="Search"
-                        name="q"
-                        id="search-input"
-                      />
-                      <button
-                        className="ui-button ui-nav-widget-item"
-                        id="search-submit"
-                      >
-                        <span className="ui-nav-item-icon ui-icon-search" />
-                      </button>
+                      <div className="ui-input-combo">
+                        <input
+                          type="text"
+                          placeholder="Search"
+                          name="q"
+                          id="search-input"
+                        />
+                        <button
+                          type="submit"
+                          className="ui-blue"
+                          id="search-submit"
+                        >
+                          <span className="ui-nav-icon ui-icon-search" />
+                        </button>
+                      </div>
                     </Nav.Widget>
                   </Nav>
                 </Grid.Column>

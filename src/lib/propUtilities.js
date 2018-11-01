@@ -114,6 +114,7 @@ const DefaultPropTypes = {
   active: PropTypes.bool,
   overlay: PropTypes.bool,
   fixed: PropTypes.bool,
+  fit: PropTypes.oneOf(["width", "height", "parent", "flex"]),
   color: PropTypes.oneOf([
     "transparent",
     "white",
@@ -209,6 +210,7 @@ const DefaultPropValues = {
   active: null,
   overlay: null,
   fixed: null,
+  fit: null,
   color: null,
   colorStyle: null,
   colorHover: null,
@@ -365,6 +367,7 @@ export function getUIClassString(props, state) {
     rounded,
     circular,
     masked,
+    fit,
     color,
     colorStyle,
     colorHover,
@@ -398,6 +401,7 @@ export function getUIClassString(props, state) {
     [`ui-orientation-${orientation}`]: orientation,
     [`ui-content-align-${contentAlign}`]: contentAlign,
     [`ui-text-align-${textAlign}`]: textAlign,
+    [`ui-fit-${fit}`]: fit,
     "ui-overlay": overlay,
     "ui-fixed": fixed,
     "ui-inset": inset,
@@ -426,16 +430,10 @@ export function getUIClassString(props, state) {
   };
 
   if (!_.isNil(color)) {
-    const nohover = String(color).indexOf("!") !== -1;
-    const cleanColor = String(color).replace("!", "");
+    const cleanColor = String(color).replace(/[^\w]/g, "");
     let colorClass = `ui-${cleanColor}`;
     if (!_.isNil(colorStyle)) {
       colorClass += `-${colorStyle}`;
-    }
-    if (nohover) {
-      colorClass += "-no-hover";
-    } else if (!_.isNil(colorHover)) {
-      colorClass += "-hover";
     }
     styleClasses[colorClass] = true;
   }

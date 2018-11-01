@@ -29,7 +29,6 @@ class NavItem extends CoreComponent {
     const {
       renderAs: Component,
       uirole,
-      coreClassName,
       iconClassName,
       to,
       path,
@@ -45,21 +44,22 @@ class NavItem extends CoreComponent {
     };
 
     const contents = children || label;
+    delete props.className;
 
     return (
-      <Component {...props} className={classNames(coreClassName, classes)}>
+      <Component {...props} className={classNames("ui-nav-item", classes)}>
         {uirole !== ROLE.FOLDERITEM ? (
-          <span className={`ui-nav-item-icon ${iconClassName}`} />
+          <span className={`ui-nav-icon ${iconClassName}`} />
         ) : null}
         {to ? (
-          <a className="ui-nav-item-content" href={to} label={label}>
+          <a className="ui-nav-content" href={to} label={label}>
             {contents}
           </a>
         ) : (
-          <span className="ui-nav-item-content">{contents}</span>
+          <span className="ui-nav-content">{contents}</span>
         )}
         {uirole === ROLE.FOLDERITEM ? (
-          <span className={`ui-nav-item-icon ${iconClassName}`} />
+          <span className={`ui-nav-icon ${iconClassName}`} />
         ) : null}
       </Component>
     );

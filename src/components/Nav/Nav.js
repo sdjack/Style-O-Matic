@@ -23,7 +23,7 @@ import "./Nav.css";
 
 class Nav extends CoreComponent {
   static defaultProps = setCorePropDefaults({
-    renderAs: "nav",
+    renderAs: "div",
     uirole: ROLE.NAV,
     orientation: "horizontal"
   });
@@ -98,7 +98,7 @@ class Nav extends CoreComponent {
             </button>
           </div>
         ) : null}
-        <div className="ui-nav-content">
+        <nav>
           {React.Children.map(children, child => {
             if (
               typeof child.props !== "undefined" &&
@@ -111,7 +111,7 @@ class Nav extends CoreComponent {
             }
             return child;
           })}
-        </div>
+        </nav>
       </Component>
     );
   };

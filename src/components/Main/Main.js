@@ -8,10 +8,8 @@
            </Main>
  */
 import React, { cloneElement } from "react";
-import cx from "classnames";
 import {
   CoreComponent,
-  setCorePropTypes,
   setCorePropDefaults,
   getValidProps,
   ROLE
@@ -30,17 +28,9 @@ class MainDrawer extends Drawer {
 }
 
 class Main extends CoreComponent {
-  static propTypes = setCorePropTypes({
-    header: "bool",
-    footer: "bool"
-  });
-
   static defaultProps = setCorePropDefaults({
-    renderAs: "main",
-    uirole: ROLE.MAIN,
-    fixed: false,
-    header: false,
-    footer: false
+    renderAs: "div",
+    uirole: ROLE.MAIN
   });
 
   static Drawer = MainDrawer;
@@ -65,25 +55,14 @@ class Main extends CoreComponent {
     const {
       renderAs: Component,
       className,
-      header,
-      footer,
       uiclass,
       children,
       uuid,
       props
     } = getValidProps(this.props);
 
-    const classes = {
-      "with-header": header && !footer,
-      "with-footer": !header && footer,
-      "with-header-and-footer": header && footer
-    };
-
-    const uiClassCore = cx(className, classes);
-    delete props.className;
-
     return (
-      <Component className={uiClassCore} {...props}>
+      <Component {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&

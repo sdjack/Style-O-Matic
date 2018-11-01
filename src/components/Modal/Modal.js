@@ -39,7 +39,7 @@ class Modal extends CoreComponent {
     this.useParentNode = true;
     this.elevatedContainer = null;
     this.state = {
-      open: false
+      shown: false
     };
   }
 
@@ -59,15 +59,15 @@ class Modal extends CoreComponent {
   }
 
   handleOpen = () => {
-    this.setState({ open: true });
+    this.setState({ shown: true });
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ shown: false });
   };
 
   handleToggle = () => {
-    this.setState({ open: !this.state.open });
+    this.setState({ shown: !this.state.shown });
   };
 
   handleClickShield = e => {

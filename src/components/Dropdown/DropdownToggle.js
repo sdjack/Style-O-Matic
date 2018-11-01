@@ -14,7 +14,8 @@ import {
 class DropdownToggle extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "button",
-    uirole: ROLE.TOGGLE
+    uirole: ROLE.TOGGLE,
+    role: ROLE.PRESENTATION
   });
 
   render() {

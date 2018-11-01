@@ -8,24 +8,8 @@
 ////
 
 // VARIABLES
-$toolbar-height: $framing-size !default;
-$toolbar-inner-height: 20px !default;
-$toolbar-item-v-offset: floor(($toolbar-height - $toolbar-inner-height) / 2);
-$toolbar-item-h-offset: floor($toolbar-inner-height / 4);
-$toolbar-font-size: ($text-font-size + 1) !default;
-$toolbar-item-height: ($toolbar-height - ($padding * 2)) !default;
-$toolbar-text-padding: $padding $toolbar-item-h-offset !default;
-$toolbar-item-padding: $toolbar-item-v-offset $padding !default;
-$toolbar-button-padding: $toolbar-item-h-offset !default;
-$toolbar-title-padding: $toolbar-item-v-offset 6px !default;
-$toolbar-title-font-size: $toolbar-inner-height;
-$toolbar-item-font-size: $toolbar-inner-height - 6;
-$toolbar-icon-height: ($toolbar-height - ($padding * 2)) !default;
-$toolbar-icon-font-size: $toolbar-inner-height;
-$toolbar-icon-padding: 6px !default;
-$toolbar-list-padding: 0px $padding !default;
-$toolbar-list-font-size: $toolbar-font-size;
-$toolbar-toggle-size: $toolbar-inner-height !default;
+$toolbar-unit-padding: 0em 0.8em 0em 0.8em !default;
+$toolbar-title-padding: 0.5em 1.2em 0.5em 1.2em !default;
 
 .ui-toolbar {
   width: 100%;
@@ -40,6 +24,7 @@ $toolbar-toggle-size: $toolbar-inner-height !default;
   padding: 0;
   border: none;
   overflow: hidden;
+  font-size: inherit;
   @include animate-default();
   transition-property: $layout-transition-properties;
 }
@@ -56,7 +41,7 @@ $toolbar-toggle-size: $toolbar-inner-height !default;
 .ui-toolbar-title {
   display: inline-block;
   padding: $toolbar-title-padding;
-  font-size: $toolbar-title-font-size;
+  font-size: inherit;
   line-height: 1;
   margin: 0;
   border: none;
@@ -68,47 +53,33 @@ $toolbar-toggle-size: $toolbar-inner-height !default;
 .ui-toolbar-text,
 .ui-toolbar-button,
 .ui-toolbar-icon {
+  cursor: pointer;
   display: inline-block;
   position: relative;
   height: 100%;
-  justify-content: space-between;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: start;
+  text-overflow: ellipsis;
   margin: 0;
+  padding: $toolbar-unit-padding;
   border-radius: 0;
-  font-size: $toolbar-item-font-size;
+  font-size: inherit;
   color: inherit;
   background-color: transparent;
   @include text-horizontal-align-center();
-  & > .fa,
-  & > .devicon {
-    display: inline-block;
-    font-size: $toolbar-icon-font-size !important;
-    padding: $toolbar-icon-padding !important;
-  }
-}
-
-.ui-toolbar-button {
-  line-height: 1;
   border-left: 1px solid rgba(215,215,215,0.08);
   border-right: 1px solid rgba(0,0,0,0.05);
 }
 
 .ui-toolbar-item,
-.ui-toolbar-text {
-  cursor: pointer;
-  border: none;
-  line-height: 1;
-}
-
-.ui-toolbar-item {
-  padding: $toolbar-item-padding;
+.ui-toolbar-button,
+.ui-toolbar-icon {
+  line-height: 1em;
 }
 
 .ui-toolbar-text {
-  padding: $toolbar-text-padding;
-}
-
-.ui-toolbar-button {
-  padding: $toolbar-button-padding;
+  line-height: 2em;
 }
 
 .ui-toolbar-logo {
@@ -126,10 +97,10 @@ $toolbar-toggle-size: $toolbar-inner-height !default;
 
 .ui-toolbar-list {
   display: inline-block;
-  padding: $toolbar-list-padding;
+  padding: $toolbar-unit-padding;
   margin: 0;
   letter-spacing: 1px;
-  font-size: $toolbar-list-font-size;
+  font-size: inherit;
   line-height: 1;
   list-style-type: none;
   @include text-horizontal-align-right();

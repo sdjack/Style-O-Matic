@@ -113,6 +113,11 @@
         content: "\1F59D";
     }
 }
+.ui-icon-flag {
+    &:before {
+        content: "\1F3F3";
+    }
+}
 
 // Arrow Icons
 .ui-icon-up {
@@ -287,6 +292,21 @@
 .ui-icon-sheep {
     &:before {
         content: "\1F411";
+    }
+}
+.ui-icon-shooting-star {
+    &:before {
+        content: "\1F320";
+    }
+}
+.ui-icon-atom {
+    &:before {
+        content: "\269B";
+    }
+}
+.ui-icon-tv {
+    &:before {
+        content: "\1F4FA";
     }
 }
 

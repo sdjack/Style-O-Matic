@@ -36,6 +36,7 @@ export const ROLE = {
   NAV: "nav",
   PAGINATION: "pagination",
   PILL: "pill",
+  PRESENTATION: "presentation",
   RADIO: "radio",
   ROW: "row",
   SELECT: "select",

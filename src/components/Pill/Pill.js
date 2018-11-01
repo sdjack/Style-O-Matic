@@ -37,6 +37,7 @@ class Pill extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.PILL,
+    role: ROLE.PRESENTATION,
     actionIcon: "ui-icon ui-icon-star",
     pillData: {},
     onRemove: null,

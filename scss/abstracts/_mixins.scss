@@ -11,21 +11,27 @@
 /// @name content-align-center
 @mixin content-align-center() {
   justify-content: center;
+  justify-items: center;
   align-content: space-around;
+  align-items: space-around;
 }
 
 /// Align content to the left
 /// @name content-align-left
 @mixin content-align-left() {
   justify-content: flex-start;
+  justify-items: start;
   align-content: flex-start;
+  align-items: start;
 }
 
 /// Align content to the right
 /// @name content-align-right
 @mixin content-align-right() {
   justify-content: flex-end;
+  justify-items: end;
   align-content: flex-end;
+  align-items: end;
 }
 
 @mixin text-align-center() {
@@ -319,6 +325,15 @@
   transition-timing-function: $animation-curve-default;
 }
 
+@mixin apply-hover-to-controls($cname) {
+  a.#{$cname},
+  button.#{$cname},
+  input.#{$cname},
+  [role="presentation"].#{$cname} {
+    @content;
+  }
+}
+
 /// Generates the ui-color classes that can be consumed by
 /// components or the user.
 /// @author Steve Jackson
@@ -328,14 +343,13 @@
 @mixin spawn-ui-colors() {
   @each $colorName, $color in $color-ui-list {
     $inverted: if($colorName == 'orange', true, $colorName == 'yellow');
-    .ui-#{$colorName},
-    .ui-#{$colorName}-no-hover {
+    $cname: ui-#{$colorName};
+    .#{$cname} {
       background-color: $color !important;
       border-color: $color !important;
       color: color-contrast($color,$inverted) !important;
     }
-    .ui-#{$colorName},
-    .ui-#{$colorName}-hover {
+    @include apply-hover-to-controls($cname) {
       &:hover,
       &:active {
         background-color: lighten($color,10%) !important;
@@ -343,14 +357,22 @@
         color: color-contrast($color,$inverted) !important;
       }
     }
-    .ui-#{$colorName}-fill,
-    .ui-#{$colorName}-fill-no-hover {
+    // .ui-#{$colorName},
+    // .ui-#{$colorName}-hover {
+    //   &:hover,
+    //   &:active {
+    //     background-color: lighten($color,10%) !important;
+    //     border-color: lighten($color,5%) !important;
+    //     color: color-contrast($color,$inverted) !important;
+    //   }
+    // }
+    $cname: ui-#{$colorName}-fill;
+    .#{$cname} {
       background-color: $color !important;
       border: 1px solid darken($color,15%) !important;
       color: color-contrast($color,$inverted) !important;
     }
-    .ui-#{$colorName}-fill,
-    .ui-#{$colorName}-fill-hover {
+    @include apply-hover-to-controls($cname) {
       &:hover,
       &:active {
         background-color: color-contrast($color,$inverted) !important;
@@ -358,14 +380,22 @@
         color: $color !important;
       }
     }
-    .ui-#{$colorName}-outline,
-    .ui-#{$colorName}-outline-no-hover {
+    // .ui-#{$colorName}-fill,
+    // .ui-#{$colorName}-fill-hover {
+    //   &:hover,
+    //   &:active {
+    //     background-color: color-contrast($color,$inverted) !important;
+    //     border: 1px solid $color !important;
+    //     color: $color !important;
+    //   }
+    // }
+    $cname: ui-#{$colorName}-outline;
+    .#{$cname} {
       background-color: color-contrast($color,$inverted) !important;
       border: 1px solid $color !important;
       color: $color !important;
     }
-    .ui-#{$colorName}-outline,
-    .ui-#{$colorName}-outline-hover {
+    @include apply-hover-to-controls($cname) {
       &:hover,
       &:active {
         background-color: $color !important;
@@ -373,16 +403,31 @@
         color: color-contrast($color,$inverted) !important;
       }
     }
-    .ui-#{$colorName}-text,
-    .ui-#{$colorName}-text-no-hover {
+    // .ui-#{$colorName}-outline,
+    // .ui-#{$colorName}-outline-hover {
+    //   &:hover,
+    //   &:active {
+    //     background-color: $color !important;
+    //     border: 1px solid darken($color,15%) !important;
+    //     color: color-contrast($color,$inverted) !important;
+    //   }
+    // }
+    $cname: ui-#{$colorName}-text;
+    .#{$cname} {
       color: $color !important;
     }
-    .ui-#{$colorName}-text,
-    .ui-#{$colorName}-text-hover {
+    @include apply-hover-to-controls($cname) {
       &:hover,
       &:active {
         color: lighten($color,5%) !important;
       }
     }
+    // .ui-#{$colorName}-text,
+    // .ui-#{$colorName}-text-hover {
+    //   &:hover,
+    //   &:active {
+    //     color: lighten($color,5%) !important;
+    //   }
+    // }
   }
 }

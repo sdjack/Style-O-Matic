@@ -27,25 +27,27 @@ class PageWrapper extends React.Component {
     // UI.setTheme("foo");
     const loadingProp = this.state.isLoading ? "cube" : null;
     return [
-      <Header key="app-header" fixed>
+      <Header key="app-header">
         <Navigation />
       </Header>,
-      <Main key="app-content" color="!grey" loader={loadingProp} header footer>
+      <Main key="app-content" loader={loadingProp}>
         <Main.Content>
           <Drawer fixed />
           {children}
         </Main.Content>
       </Main>,
-      <Footer key="app-footer" onClick={this.handleLoadingState} fixed>
-        <ToolBar>
-          <ToolBar.Content contentAlign="left">
-            <ToolBar.Title observe="scroll">Toggle Loading</ToolBar.Title>
-          </ToolBar.Content>
-          <ToolBar.Content contentAlign="right">
-            <ToolBar.Button>OP1</ToolBar.Button>
-            <ToolBar.Button>OP2</ToolBar.Button>
-          </ToolBar.Content>
-        </ToolBar>
+      <Footer key="app-footer" onClick={this.handleLoadingState}>
+        <Footer.Content>
+          <ToolBar>
+            <ToolBar.Content contentAlign="left">
+              <ToolBar.Title observe="scroll">Toggle Loading</ToolBar.Title>
+            </ToolBar.Content>
+            <ToolBar.Content contentAlign="right">
+              <ToolBar.Button>OP1</ToolBar.Button>
+              <ToolBar.Button>OP2</ToolBar.Button>
+            </ToolBar.Content>
+          </ToolBar>
+        </Footer.Content>
       </Footer>
     ];
   }

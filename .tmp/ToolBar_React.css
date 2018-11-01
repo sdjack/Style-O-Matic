@@ -21,6 +21,7 @@
   padding: 0;
   border: none;
   overflow: hidden;
+  font-size: inherit;
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
   transition-property: display, width, height, margin, padding; }
@@ -46,8 +47,8 @@
 
 .ui-toolbar-title {
   display: inline-block;
-  padding: 10px 6px;
-  font-size: 20px;
+  padding: 0.5em 1.2em 0.5em 1.2em;
+  font-size: inherit;
   line-height: 1;
   margin: 0;
   border: none;
@@ -58,15 +59,18 @@
 .ui-toolbar-text,
 .ui-toolbar-button,
 .ui-toolbar-icon {
+  cursor: pointer;
   display: inline-block;
   position: relative;
   height: 100%;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: start;
+  text-overflow: ellipsis;
   margin: 0;
+  padding: 0em 0.8em 0em 0.8em;
   border-radius: 0;
-  font-size: 14px;
+  font-size: inherit;
   color: inherit;
   background-color: transparent;
   text-align: -webkit-center;
@@ -76,38 +80,17 @@
           align-items: center;
   -webkit-align-content: center;
       -ms-flex-line-pack: center;
-          align-content: center; }
-  .ui-toolbar-item > .fa,
-  .ui-toolbar-item > .devicon,
-  .ui-toolbar-text > .fa,
-  .ui-toolbar-text > .devicon,
-  .ui-toolbar-button > .fa,
-  .ui-toolbar-button > .devicon,
-  .ui-toolbar-icon > .fa,
-  .ui-toolbar-icon > .devicon {
-    display: inline-block;
-    font-size: 20px !important;
-    padding: 6px !important; }
-
-.ui-toolbar-button {
-  line-height: 1;
+          align-content: center;
   border-left: 1px solid rgba(215, 215, 215, 0.08);
   border-right: 1px solid rgba(0, 0, 0, 0.05); }
 
 .ui-toolbar-item,
-.ui-toolbar-text {
-  cursor: pointer;
-  border: none;
-  line-height: 1; }
-
-.ui-toolbar-item {
-  padding: 10px 12px; }
+.ui-toolbar-button,
+.ui-toolbar-icon {
+  line-height: 1em; }
 
 .ui-toolbar-text {
-  padding: 12px 5px; }
-
-.ui-toolbar-button {
-  padding: 5px; }
+  line-height: 2em; }
 
 .ui-toolbar-logo {
   display: inline-block;
@@ -122,10 +105,10 @@
 
 .ui-toolbar-list {
   display: inline-block;
-  padding: 0px 12px;
+  padding: 0em 0.8em 0em 0.8em;
   margin: 0;
   letter-spacing: 1px;
-  font-size: 15px;
+  font-size: inherit;
   line-height: 1;
   list-style-type: none;
   text-align: -webkit-end;

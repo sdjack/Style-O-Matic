@@ -32,6 +32,7 @@ class Input extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "input",
     uirole: ROLE.INPUT,
+    role: ROLE.PRESENTATION,
     type: "text",
     checked: false,
     required: false,

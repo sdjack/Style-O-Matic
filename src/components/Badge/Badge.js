@@ -41,7 +41,8 @@ import "./Badge.css";
 
 class Badge extends CoreComponent {
   static defaultProps = setCorePropDefaults({
-    uirole: ROLE.BADGE
+    uirole: ROLE.BADGE,
+    role: ROLE.PRESENTATION
   });
 
   static Content = BadgeContent;

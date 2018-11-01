@@ -45,7 +45,9 @@ class NavWidget extends CoreComponent {
 
     return (
       <Component {...props} className={classNames(coreClassName, classes)}>
-        {children}
+        {React.Children.map(children, child => (
+          <div className="ui-nav-content">{child}</div>
+        ))}
       </Component>
     );
   }

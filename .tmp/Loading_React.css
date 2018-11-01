@@ -324,9 +324,13 @@
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  justify-items: center;
   -webkit-align-content: space-around;
       -ms-flex-line-pack: distribute;
-          align-content: space-around; }
+          align-content: space-around;
+  -webkit-align-items: space-around;
+      -ms-flex-align: space-around;
+          align-items: space-around; }
   .ui-loading.ui-overlay {
     background-color: rgba(0, 0, 0, 0.8);
     position: absolute !important;

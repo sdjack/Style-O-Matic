@@ -20,7 +20,8 @@ class AccordionTitle extends CoreComponent {
 
   static defaultProps = setCorePropDefaults({
     renderAs: "dt",
-    uirole: ROLE.TITLE
+    uirole: ROLE.TITLE,
+    role: ROLE.PRESENTATION
   });
 
   render() {

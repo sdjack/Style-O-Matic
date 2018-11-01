@@ -35,6 +35,7 @@ class Button extends CoreComponent {
   static defaultProps = setPropDefaultsAutoId({
     renderAs: "button",
     uirole: ROLE.BUTTON,
+    role: ROLE.PRESENTATION,
     dropdown: false
   });
 

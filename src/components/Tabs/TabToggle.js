@@ -14,7 +14,8 @@ import {
 class TabToggle extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "div",
-    uirole: ROLE.TABTOGGLE
+    uirole: ROLE.TABTOGGLE,
+    role: ROLE.PRESENTATION
   });
 
   render() {

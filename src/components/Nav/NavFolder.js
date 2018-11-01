@@ -121,7 +121,7 @@ class NavFolder extends CoreComponent {
       <div className={itemClass} ref={this.onSetRef}>
         <i className="ui-nav-caret" />
         <div
-          className="ui-nav-item-content"
+          className="ui-nav-content"
           role="presentation"
           onKeyDown={this.toggleExpansion}
           onClick={this.toggleExpansion}

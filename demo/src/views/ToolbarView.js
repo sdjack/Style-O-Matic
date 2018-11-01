@@ -29,7 +29,7 @@ class ToolbarView extends React.Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <ToolBar color="red" raised>
+                  <ToolBar color="!red" raised>
                     <ToolBar.Content contentAlign="left">
                       <ToolBar.Title>TITLE</ToolBar.Title>
                       <ToolBar.Button>Button</ToolBar.Button>
@@ -44,7 +44,7 @@ class ToolbarView extends React.Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <ToolBar color="green" raised>
+                  <ToolBar color="!green" raised>
                     <ToolBar.Content contentAlign="left">
                       <ToolBar.Title>TITLE</ToolBar.Title>
                       <ToolBar.Button>Button</ToolBar.Button>
@@ -59,7 +59,7 @@ class ToolbarView extends React.Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <ToolBar color="blue" raised>
+                  <ToolBar color="!blue" raised>
                     <ToolBar.Content contentAlign="left">
                       <ToolBar.Title>TITLE</ToolBar.Title>
                       <ToolBar.Button>Button</ToolBar.Button>

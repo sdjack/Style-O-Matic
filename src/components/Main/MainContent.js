@@ -13,18 +13,14 @@ import {
 
 class MainContent extends CoreComponent {
   static defaultProps = setCorePropDefaults({
-    renderAs: "div",
+    renderAs: "main",
     uirole: ROLE.CONTENT
   });
 
   render() {
     const { renderAs: Component, children, props } = getValidProps(this.props);
 
-    return (
-      <div uirole={ROLE.CONTENT} className="scroll-wrapper">
-        <Component {...props}>{children}</Component>
-      </div>
-    );
+    return <Component {...props}>{children}</Component>;
   }
 }
 
