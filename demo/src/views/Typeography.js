@@ -15,7 +15,7 @@ class Typeography extends React.Component {
       <Grid key="view-grid">
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title renderAs="h2" textAlign="center" key="view-title">
+            <Title renderAs="h2" textAlign="center">
               <Title.Content>Header Elements</Title.Content>
               <Title.Subtitle>h1 - h6</Title.Subtitle>
             </Title>
@@ -91,20 +91,57 @@ class Typeography extends React.Component {
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
             <section>
-              <Title renderAs="h2" textAlign="center" key="view-title">
-                <Title.Content>Titles</Title.Content>
+              <Title renderAs="h2" textAlign="center">
+                <Title.Content>Articles</Title.Content>
               </Title>
-              <p className="well">Titles</p>
+              <p className="well">Articles</p>
             </section>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
             <section>
-              <Title renderAs="h2" textAlign="center" key="view-title">
+              <Title renderAs="h2" textAlign="center">
+                <Title.Content>Pre / Code</Title.Content>
+              </Title>
+              <p className="well">Pre / Code</p>
+            </section>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column textAlign="center" panel>
+            <section>
+              <Title renderAs="h2" textAlign="center">
                 <Title.Content>Blockquotes</Title.Content>
               </Title>
-              <p className="well">Blockquotes</p>
+              <blockquote cite="http://www.worldwildlife.org/who/index.html">
+                For 50 years, WWF has been protecting the future of nature. The
+                world&apos;s leading conservation organization, WWF works in 100
+                countries and is supported by 1.2 million members in the United
+                States and close to 5 million globally.
+              </blockquote>
+              <div className="steve-says">
+                <p>
+                  <q>I remember this one time, I said a thing... </q>
+                </p>
+              </div>
+            </section>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column textAlign="center" panel>
+            <section>
+              <Title renderAs="h2" textAlign="center">
+                <Title.Content>Detail Lists</Title.Content>
+              </Title>
+              <dl>
+                <dt>Item 1</dt>
+                <dd>Loreum Ipsum Lazy Description 1</dd>
+                <dt>Item 2</dt>
+                <dd>Loreum Ipsum Lazy Description 2</dd>
+                <dt>Item 3</dt>
+                <dd>Loreum Ipsum Lazy Description 3</dd>
+              </dl>
             </section>
           </Grid.Column>
         </Grid.Row>

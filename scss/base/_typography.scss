@@ -92,23 +92,33 @@ a {
   }
 }
 
+q,
 blockquote {
   position: relative;
-  font-size: 24px;
+  // font-size: 24px;
   font-weight: 300;
   font-style: italic;
-  line-height: 1.35;
+  // line-height: 1.35;
   letter-spacing: 0.02em;
+}
 
+q {
+  &:before,
+  &:after {
+    content: '"';
+  }
   &:before {
     position: absolute;
     left: -0.5em;
-    content: '“';
   }
-
   &:after {
-    content: '”';
     margin-left: -0.05em;
+  }
+}
+
+blockquote {
+  &:before {
+    content: '\2015\00A0';
   }
 }
 
@@ -116,8 +126,19 @@ mark {
   background-color: #f4ff81;
 }
 
+dl {
+  display: inline-flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
 dt {
+  display: inline-block;
   font-weight: 700;
+  flex-basis: 30%;
+}
+dd {
+  display: inline-block;
+  flex-basis: 70%;
 }
 
 address {
