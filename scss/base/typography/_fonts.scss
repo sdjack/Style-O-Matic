@@ -1,0 +1,20 @@
+// -----------------------------------------------------------------------------
+  // Typeography
+// -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group base
+////
+
+@font-face {
+  font-family: '#{$typography-amp-fontface}';
+  src: $typography-amp-src;
+  unicode-range: U+0026;
+}
+
+@font-face {
+  font-family: '#{$typography-amp-fontface}'; // fallback
+  src: $typography-amp-fallback;
+  unicode-range: U+270C;
+}

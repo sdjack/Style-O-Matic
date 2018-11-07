@@ -26,7 +26,7 @@
   font-family: inherit;
   color: inherit;
   background-color: inherit;
-  @include typo-title;
+  @include typography-title;
 	text-decoration: none;
 	overflow: hidden;
 	transition: box-shadow 0.2s $animation-curve-fast-out-linear-in,

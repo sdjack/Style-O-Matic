@@ -7,6 +7,7 @@
 // Abstracts
 @import
   'abstracts/colors',
+  'abstracts/extends',
   'abstracts/functions',
   'abstracts/variables',
   'abstracts/mixins',
@@ -14,6 +15,7 @@
 
 // Base
 @import
+  'base/base',
   'base/typography',
   'base/layout',
   'base/icons',

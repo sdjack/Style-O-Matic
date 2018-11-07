@@ -87,7 +87,153 @@
   vertical-align: middle;
 }
 
-@mixin typo-preferred-font($useTitleFont: true) {
+/// Set typeographical values based on scale
+/// @name typography-setscale
+/// @param {Number} $scale
+/// @param {Number} $base
+/// @param {Number} $value
+/// @param {String} $measure
+@mixin typography-setscale($scale, $base, $value, $measure:"") {
+  @if $value == rem {
+    font-size: size-calc($scale, $base, $value);
+  } @else if $value == em {
+    font-size: size-calc($scale, $base, $value);
+  } @else {
+    font-size: $scale * 1px;
+  }
+
+  @if $measure != "" {
+    @if $value == rem {
+      margin-bottom: margin-calc($scale, $measure, $value);
+    } @else if $value == em {
+      margin-bottom: margin-calc($scale, $measure, $value: rem);
+    } @else {
+      margin-bottom: margin-calc($scale, $measure, $value: px);
+    }
+  }
+}
+
+@mixin typography-headings() {
+  @each $name, $size in $typography-scale {
+    .#{$name} {
+      text-rendering: optimizeLegibility;
+      line-height: 1;
+      margin-top: 0;
+      color: inherit;
+      @include typography-setscale(
+        $size,
+        $typography-font-base,
+        $typography-setscale-unit,
+        $typography-measure
+      );
+    }
+  }
+}
+
+@mixin typography-headings-style() {
+  @each $h, $size in $typography-headings {
+    #{$h} {
+      @extend .#{$size};
+    }
+  }
+}
+
+@mixin typography-hyphens($val) {
+  @each $prefix in $browser-prefixes {
+    #{$prefix}hyphens: $val;
+  }
+}
+
+@mixin typography-smallcaps($color, $font-weight) {
+  @each $prefix in $browser-prefixes {
+    #{$prefix}font-variant: small-caps;
+  }
+  font-weight: $font-weight;
+  text-transform: lowercase;
+  color: $color;
+}
+
+@mixin typography-font-size-adjust($adjust-value) {
+  font-size-adjust: $adjust-value;
+}
+
+@mixin typography-blockquote($citation-flourish) {
+  p {
+    &:last-of-type {
+      margin-bottom: -#{$typography-line-height/2}em;
+    }
+  }
+
+  + figcaption {
+    @extend %typography-cite;
+
+    &:before {
+      content: $citation-flourish;
+    }
+  }
+}
+
+@mixin typography-pull-quotes($fontsize, $opacity, $color) {
+  position: relative;
+  padding: size-calc($fontsize, $fontsize, em);
+
+  &:before,
+  &:after {
+    height: size-calc($fontsize, $fontsize, em);
+    opacity: $opacity;
+    position: absolute;
+    font-size: $fontsize;
+    color: $color;
+  }
+
+  &:before {
+    content: '“';
+    top:  0;
+    left: 0;
+  }
+
+  &:after {
+    content: '”';
+    bottom: 0;
+    right: 0;
+  }
+}
+
+@mixin typography-dropcap(
+  $float-position,
+  $font-size,
+  $font-family,
+  $txt-indent,
+  $margin,
+  $padding,
+  $color,
+  $line-height,
+  $bg
+  ) {
+  @include text-horizontal-align-left();
+  &:first-letter {
+    float: $float-position;
+    margin: $margin;
+    padding: $padding;
+    font-size: $font-size;
+    font-family: $font-family;
+    line-height: $line-height;
+    text-indent: $txt-indent;
+    background: $bg;
+    color: $color;
+  }
+}
+
+@mixin typography-white-space($wrap-space) {
+  @if $wrap-space == 'pre-wrap' {
+    white-space: #{-moz-}$wrap-space;
+    white-space: $wrap-space;
+  } @else {
+    white-space: $wrap-space;
+  }
+}
+
+@mixin typography-preferred-font($useTitleFont: true) {
   @if $useTitleFont {
     font-family: $heading-font;
   } @else {
@@ -95,7 +241,7 @@
   }
 }
 
-@mixin typo-massive($colorContrast: false, $useTitleFont: true) {
+@mixin typography-massive($colorContrast: false, $useTitleFont: true) {
   font-size: 112px;
   font-weight: 300;
   line-height: 1.1;
@@ -105,10 +251,10 @@
     opacity: 0.54;
   }
 
-  @include typo-preferred-font($useTitleFont);
+  @include typography-preferred-font($useTitleFont);
 }
 
-@mixin typo-small($colorContrast: false, $useTitleFont: true) {
+@mixin typography-small($colorContrast: false, $useTitleFont: true) {
   font-size: 0.6em;
   font-weight: 400;
   line-height: 1.1;
@@ -118,10 +264,10 @@
     opacity: 0.54;
   }
 
-  @include typo-preferred-font($useTitleFont);
+  @include typography-preferred-font($useTitleFont);
 }
 
-@mixin typo-h1($colorContrast: false, $useTitleFont: true) {
+@mixin typography-h1($colorContrast: false, $useTitleFont: true) {
   font-size: 56px;
   font-weight: 400;
   line-height: 1.1;
@@ -131,10 +277,10 @@
     opacity: 0.54;
   }
 
-  @include typo-preferred-font($useTitleFont);
+  @include typography-preferred-font($useTitleFont);
 }
 
-@mixin typo-h2($colorContrast: false, $useTitleFont: true) {
+@mixin typography-h2($colorContrast: false, $useTitleFont: true) {
   font-size: 45px;
   font-weight: 400;
   line-height: 1.1;
@@ -143,10 +289,10 @@
     opacity: 0.54;
   }
 
-  @include typo-preferred-font($useTitleFont);
+  @include typography-preferred-font($useTitleFont);
 }
 
-@mixin typo-h3($colorContrast: false, $useTitleFont: true) {
+@mixin typography-h3($colorContrast: false, $useTitleFont: true) {
   font-size: 34px;
   font-weight: 500;
   line-height: 1.1;
@@ -155,10 +301,10 @@
     opacity: 0.54;
   }
 
-  @include typo-preferred-font($useTitleFont);
+  @include typography-preferred-font($useTitleFont);
 }
 
-@mixin typo-headline($colorContrast: false, $useTitleFont: true) {
+@mixin typography-headline($colorContrast: false, $useTitleFont: true) {
   font-size: 24px;
   font-weight: 500;
   line-height: 28px;
@@ -169,14 +315,14 @@
     opacity: 0.87;
   }
 
-  @include typo-preferred-font($useTitleFont);
+  @include typography-preferred-font($useTitleFont);
 }
 
 /// Set typeography designed for content titles
 /// @author Steve Jackson
-/// @name typo-title
+/// @name typography-title
 /// @param {String} $colorContrast
-@mixin typo-title($colorContrast: false, $useTitleFont: true) {
+@mixin typography-title($colorContrast: false, $useTitleFont: true) {
   font-size: 20px;
   font-weight: 400;
   line-height: 1;
@@ -187,14 +333,14 @@
     opacity: 0.87;
   }
 
-  @include typo-preferred-font($useTitleFont);
+  @include typography-preferred-font($useTitleFont);
 }
 
 /// Set typeography designed for small headers
 /// @author Steve Jackson
-/// @name typo-subhead
+/// @name typography-subhead
 /// @param {String} $colorContrast
-@mixin typo-subhead($colorContrast: false, $useTitleFont: true) {
+@mixin typography-subhead($colorContrast: false, $useTitleFont: true) {
   font-size: 17px;
   font-weight: 200;
   line-height: 20px;
@@ -204,14 +350,14 @@
     opacity: 0.87;
   }
 
-  @include typo-preferred-font($useTitleFont);
+  @include typography-preferred-font($useTitleFont);
 }
 
 /// Set typeography designed for lists
 /// @author Steve Jackson
-/// @name typo-lists
+/// @name typography-lists
 /// @param {String} $colorContrast
-@mixin typo-lists($colorContrast: false) {
+@mixin typography-lists($colorContrast: false) {
   font-size: 14px;
   font-weight: 300;
   line-height: 1.4;
@@ -224,9 +370,9 @@
 
 /// Set typeography designed for inputs
 /// @author Steve Jackson
-/// @name typo-input
+/// @name typography-input
 /// @param {String} $colorContrast
-@mixin typo-input($colorContrast: false) {
+@mixin typography-input($colorContrast: false) {
   font-size: $widget-font-size;
   font-weight: 300;
   line-height: 1;
@@ -363,7 +509,7 @@
     &:before {
       border-left-color: rgba(0,0,0,0.2);
       border-right: 0;
-	    border-bottom: 0;
+	    border-top: 0;
       left: 100%;
       top: 50%;
       margin-top: (($size * 0.75) * -1);
@@ -371,7 +517,7 @@
     &:after {
       border-left-color: #FFFFFF;
       border-right: 0;
-	    border-bottom: 0;
+	    border-top: 0;
       left: 100%;
       top: 50%;
       margin-top: ((($size * 0.75) - 1) * -1);

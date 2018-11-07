@@ -1,0 +1,61 @@
+// -----------------------------------------------------------------------------
+  // Extends
+// -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group abstracts
+////
+
+/// Call your custom ampersand on any element.
+/// @example scss - Usage
+///    @extend %typography-amp-placeholder;
+
+%typography-amp-placeholder {
+  font-family: Ampersand, Verdana, sans-serif;
+}
+
+/// Style your blockquote citations
+/// @example scss - Usage
+///    @extend %typography-cite;
+
+%typography-cite {
+  display: block;
+  font-size: inherit;
+  text-align: right;
+}
+
+
+/// Control word wrapping and breaks in your text.
+/// @example scss - Usage
+///    @extend %typography-breakword;
+
+%typography-breakword {
+  word-wrap: break-word;
+}
+
+%typography-normal-wrap {
+  word-wrap: normal;
+}
+
+%typography-inherit-wrap {
+  word-wrap: auto;
+}
+
+/// Control OpenType feature settings where desired.
+/// @example scss - Usage
+///    @extend %typography-ot--smcp;
+
+%typography-ot--smcp {
+  -webkit-font-feature-settings: "smcp";
+     -moz-font-feature-settings: "smcp";
+      -ms-font-feature-settings: "smcp";
+          font-feature-settings: "smcp";
+}
+
+%typography-ot--onum {
+  -webkit-font-feature-settings: "onum";
+     -moz-font-feature-settings: "onum";
+      -ms-font-feature-settings: "onum";
+          font-feature-settings: "onum";
+}

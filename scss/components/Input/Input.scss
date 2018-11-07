@@ -276,7 +276,7 @@
     text-indent: 6px;
     border-radius: 0 !important;
     border: none !important;
-    @include typo-input();
+    @include typography-input();
     line-height: 34px;
     cursor: pointer;
     text-indent: 42px;

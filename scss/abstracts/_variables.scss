@@ -15,6 +15,17 @@ $mobile-screen-threshold: 1024px;
 /// @type Length
 $framing-size: 40px !default;
 $framing-size-large: 225px !default;
+
+$padding: 12px !default;
+$padding-xlarge: ($padding * 3) !default;
+$padding-large: ($padding * 2) !default;
+$padding-medium: floor($padding * 1.5) !default;
+$padding-small: floor($padding / 2) !default;
+$padding-smaller: floor($padding / 3) !default;
+$padding-panels: 0.78em;
+
+// TYPOGRAPHY VARS
+//
 /// Regular font family
 /// @type List
 $text-font: 'Helvetica', 'Arial', sans-serif !default;
@@ -33,6 +44,61 @@ $code-font-size: 14px;
 /// @type List
 $icon-font: 'Arial', sans-serif !default;
 $icon-font-size: 14px;
+
+$typography-serif-boolean: false !default;
+$typography-custom-font: false !default;
+$typography-font-family: if($typography-serif-boolean, serif, $text-font) !default;
+$typography-font-weight: normal !default;
+$typography-line-height: 1.65 !default;
+$typography-font-size: 112.5 !default;
+$typography-font-base: 16 * ($typography-font-size/100) !default;
+$typography-measure: $typography-font-base * $typography-line-height !default;
+$browser-prefixes: -webkit-, -moz-, -ms-, '' !default;
+$typography-setscale-unit: em !default;
+$typography-paragraph-spacing: false !default;
+$typography-indent-val: 1.5rem !default;
+$typography-small-print-size: 65% !default;
+$typography-heading-color: #222 !default;
+$typography-copy-color: #444 !default;
+$typography-amp-fontface: Ampersand !default;
+$typography-amp-fontfamily: Verdana, sans-serif !default;
+$typography-amp-src: local('Georgia'), local('Garamond'), local('Palatino'), local('Book Antiqua') !default;
+$typography-amp-fallback: local('Georgia') !default;
+$typography-scale: (
+  ui-fontsize-titan: 117,
+  ui-fontsize-huge: 90,
+  ui-fontsize-h1: 72,
+  ui-fontsize-h2: 60,
+  ui-fontsize-h3: 48,
+  ui-fontsize-h4: 36,
+  ui-fontsize-h5: 24,
+  ui-fontsize-big: 21,
+  ui-fontsize-h6: 18,
+) !default;
+$typography-headings: (
+  h1: ui-fontsize-h1,
+  h2: ui-fontsize-h2,
+  h3: ui-fontsize-h3,
+  h4: ui-fontsize-h4,
+  h5: ui-fontsize-h5,
+  h6: ui-fontsize-h6
+) !default;
+$typography-pull-quote-fontsize: 4em !default;
+$typography-pull-quote-opacity: 0.5 !default;
+$typography-pull-quote-color: #dc976e !default;
+$typography-smcps-color: gray !default;
+$typography-smcps-weight: 600 !default;
+$typography-dropcap-float-position: left !default;
+$typography-dropcap-font-size: 4.2em !default;
+$typography-dropcap-font-family: serif !default;
+$typography-dropcap-txt-indent: 0 !default;
+$typography-dropcap-margin: 0.02em 0.02em 0 0 !default;
+$typography-dropcap-padding: 0 $padding !default;
+$typography-dropcap-color: inherit !default;
+$typography-dropcap-line-height: 1 !default;
+$typography-dropcap-bg: transparent !default;
+
+// BASE VARS
 
 /// Copy text color
 /// @type Color
@@ -54,14 +120,6 @@ $glow-ambient-shadow-opacity: 0.22;
 
 $border: 1px solid rgba(0,0,0,0.3);
 $border-hinted: 1px solid rgba(0,0,0,0.1);
-
-$padding: 12px !default;
-$padding-xlarge: ($padding * 3) !default;
-$padding-large: ($padding * 2) !default;
-$padding-medium: floor($padding * 1.5) !default;
-$padding-small: floor($padding / 2) !default;
-$padding-smaller: floor($padding / 3) !default;
-$padding-panels: 0.78em;
 
 $border-radius: 3px !default;
 $border-radius-large: 5px !default;

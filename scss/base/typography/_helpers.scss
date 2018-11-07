@@ -1,0 +1,74 @@
+// -----------------------------------------------------------------------------
+  // Typeography
+// -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group base
+////
+
+.ui-drop-cap {
+  text-indent: 0;
+  margin-top: 0;
+  @include typography-dropcap(
+    $typography-dropcap-float-position,
+    $typography-dropcap-font-size,
+    $typography-dropcap-font-family,
+    $typography-dropcap-txt-indent,
+    $typography-dropcap-margin,
+    $typography-dropcap-padding,
+    $typography-dropcap-color,
+    $typography-dropcap-line-height,
+    $typography-dropcap-bg
+  );
+}
+
+.ui-preface {
+  border-bottom: $border;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+dl {
+  &.ui-dictionary {
+    dt {
+      display: inline;
+      counter-reset: definitions;
+      & + dt {
+        &:before {
+          content: ", ";
+          margin-left: 0rem;
+        }
+      }
+    }
+
+    dd {
+      display: block;
+      counter-increment: definitions;
+      &:before {
+        content: counter(definitions, decimal) ". ";
+      }
+    }
+  }
+}
+
+/// @example html - Usage
+///    <aside class="ui-pull-quote">
+///    <blockquote>
+///      <p></p>
+///    </blockquote>
+///  </aside>
+.ui-pull-quote {
+  @include typography-pull-quotes(
+    $typography-pull-quote-fontsize,
+    $typography-pull-quote-opacity,
+    $typography-pull-quote-color
+  );
+}
+
+.ui-leading-hyphen {
+  &:before {
+    content: '\2015\00A0';
+  }
+}
