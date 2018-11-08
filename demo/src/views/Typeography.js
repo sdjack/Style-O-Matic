@@ -5,7 +5,7 @@
  * ======================================================================== */
 import React from "react";
 import { Grid, Title } from "../../../src/index";
-
+/* eslint-disable */
 class Typeography extends React.Component {
   render() {
     return [
@@ -14,9 +14,9 @@ class Typeography extends React.Component {
       </Title>,
       <Grid key="view-grid">
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
+          <Grid.Column textAlign="center">
             <Title renderAs="h2" textAlign="center">
-              <Title.Content>Header Elements</Title.Content>
+              <Title.Content className="ui-serif">Header Elements</Title.Content>
               <Title.Subtitle>h1 - h6</Title.Subtitle>
             </Title>
             <br />
@@ -89,10 +89,10 @@ class Typeography extends React.Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
+          <Grid.Column textAlign="center">
             <section>
               <Title renderAs="h2" textAlign="center">
-                <Title.Content>Articles</Title.Content>
+                <Title.Content className="ui-serif">Articles</Title.Content>
               </Title>
               <br />
               <hr />
@@ -101,73 +101,58 @@ class Typeography extends React.Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
-            <section>
-              <Title renderAs="h2" textAlign="center">
-                <Title.Content>Pre / Code</Title.Content>
-              </Title>
-              <br />
-              <hr />
+          <Grid.Column textAlign="center">
+            <Title renderAs="h2" textAlign="center" panel>
+              <Title.Content className="ui-serif">Pre / Code</Title.Content>
+            </Title>
+            <section className="ui-extra-margin">
               <p className="well">Pre / Code</p>
             </section>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
-            <section>
-              <Title renderAs="h2" textAlign="center">
-                <Title.Content>User Comments</Title.Content>
-              </Title>
-              <br />
-              <hr />
+          <Grid.Column textAlign="center">
+            <Title renderAs="h2" textAlign="center" panel>
+              <Title.Content className="ui-serif">User Comments</Title.Content>
+            </Title>
+            <section className="ui-extra-margin">
               <div className="ui-user-comment">
-                <p>
-                  <q>I remember this one time, I said a thing... </q>
-                </p>
+                <div className="ui-user-avatar" />
+                <q>I remember this one time, I said a thing... </q>
               </div>
               <div className="ui-user-comment-flip">
-                <p>
-                  <q>...Then someone else said another thing...</q>
-                </p>
+                <div className="ui-user-avatar" />
+                <q>...Then someone else said another thing...</q>
               </div>
               <div className="ui-user-comment">
-                <p>
-                  <q>...It was crazy!</q>
-                </p>
+                <div className="ui-user-avatar" />
+                <q>...It was crazy!</q>
               </div>
-              <div className="ui-user-comment" data-user-initials="SJ">
-                <p>
-                  <q>Then there was this other time... </q>
-                </p>
+              <div className="ui-user-comment">
+                <div className="ui-user-avatar" data-user-initials="SJ" data-bg-color="green" />
+                <q>Then there was this other time... </q>
               </div>
-              <div className="ui-user-comment-flip" data-user-initials="SJ">
-                <p>
-                  <q>...People had initials next to them...</q>
-                </p>
+              <div className="ui-user-comment-flip">
+                <div className="ui-user-avatar" data-user-initials="SJ" data-bg-color="red" />
+                <q>...People had initials next to them...</q>
               </div>
               <div className="ui-user-comment ui-user-image">
-                <img src="http://icons.iconarchive.com/icons/diversity-avatars/avatars/256/robot-02-icon.png" alt="" />
-                <p>
-                  <q>...Some even had images...</q>
-                </p>
+                <img src="http://icons.iconarchive.com/icons/diversity-avatars/avatars/256/robot-02-icon.png" alt="" className="ui-user-avatar" />
+                <q>...Some even had images...</q>
               </div>
               <div className="ui-user-comment ui-user-image">
-                <img src="http://icons.iconarchive.com/icons/diversity-avatars/avatars/256/robot-02-icon.png" alt="" />
-                <p>
-                  <q>...Wat do?</q>
-                </p>
+                <img src="http://icons.iconarchive.com/icons/diversity-avatars/avatars/256/robot-02-icon.png" alt="" className="ui-user-avatar" />
+                <q>...Wat do?</q>
               </div>
             </section>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
-            <section>
-              <Title renderAs="h2" textAlign="center">
-                <Title.Content>Detail Lists</Title.Content>
-              </Title>
-              <br />
-              <hr />
+          <Grid.Column textAlign="center">
+            <Title renderAs="h2" textAlign="center" panel>
+              <Title.Content className="ui-serif">Detail Lists</Title.Content>
+            </Title>
+            <section className="ui-extra-margin">
               <dl>
                 <dt>Item 1</dt>
                 <dd>Loreum Ipsum Lazy Description 1</dd>
@@ -180,73 +165,67 @@ class Typeography extends React.Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" panel>
-            <section>
-              <Title renderAs="h2" textAlign="center">
-                <Title.Content>Other Goodies</Title.Content>
-              </Title>
-              <br />
-              <hr />
-              <Grid>
-                <Grid.Row>
-                  <Grid.Column textAlign="center" cols={7}>
-                    <section>
-                      <Title renderAs="h5" textAlign="center">
-                        <Title.Content>Blockquotes</Title.Content>
-                      </Title>
-                      <hr />
-                      <aside className="ui-pull-quote">
-                        <blockquote cite="http://www.worldwildlife.org/who/index.html">
-                          <p>
-                            For 50 years, WWF has been protecting the future of nature. The
-                            world&apos;s leading conservation organization, WWF works in 100
-                            countries and is supported by 1.2 million members in the United
-                            States and close to 5 million globally.
-                          </p>
-                        </blockquote>
-                      </aside>
-                      <figure>
-                        <blockquote cite="http://www.worldwildlife.org/who/index.html">
-                          <p>
-                            For 50 years, WWF has been protecting the future of nature. The
-                            world&apos;s leading conservation organization, WWF works in 100
-                            countries and is supported by 1.2 million members in the United
-                            States and close to 5 million globally.
-                          </p>
-                        </blockquote>
-
-                        <figcaption>
-                          <cite>
-                            <small>
-                              <a href="http://www.worldwildlife.org/who/index.html">World Wildlife Foundation</a>
-                            </small>
-                          </cite>
-                        </figcaption>
-                      </figure>
-                    </section>
-                  </Grid.Column>
-                  <Grid.Column textAlign="center" cols={5}>
-                    <section>
-                      <Title renderAs="h5" textAlign="center">
-                        <Title.Content>Drop Caps</Title.Content>
-                      </Title>
-                      <hr />
-                      <p className="ui-drop-cap">
-                        Embracing the fluid & flexible aspect of responsive web design
-                        was an easy decision, but I’ve been less sure-footed when it
-                        comes to balancing that with setting type on the web.
-                        Embracing the fluid & flexible aspect of responsive web design
-                        was an easy decision, but I’ve been less sure-footed when it
-                        comes to balancing that with setting type on the web.<br />
-                        Embracing the fluid & flexible aspect of responsive web design
-                        was an easy decision, but I’ve been less sure-footed when it
-                        comes to balancing that with setting type on the web.
+          <Grid.Column textAlign="center">
+            <Title renderAs="h2" textAlign="center" panel>
+              <Title.Content className="ui-serif">Quotes & Blockquotes</Title.Content>
+            </Title>
+            <Grid>
+              <Grid.Row>
+                <Grid.Column className="ui-divider-right" textAlign="center" cols={7}>
+                  <Title renderAs="h5" textAlign="center">
+                    <Title.Content className="ui-extra-margin">Blockquotes</Title.Content>
+                  </Title>
+                  <section className="ui-separate-top">
+                    <aside className="ui-pull-quote">
+                      <p>
+                        For 50 years, WWF has been protecting the future of nature. The
+                        world&apos;s leading conservation organization, WWF works in 100
+                        countries and is supported by 1.2 million members in the United
+                        States and close to 5 million globally.
                       </p>
-                    </section>
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-            </section>
+                    </aside>
+                    <figure>
+                      <blockquote cite="http://www.worldwildlife.org/who/index.html">
+                        <p>
+                          For 50 years, WWF has been protecting the future of nature. The
+                          world&apos;s leading conservation organization, WWF works in 100
+                          countries and is supported by 1.2 million members in the United
+                          States and close to 5 million globally.
+                        </p>
+                      </blockquote>
+
+                      <figcaption>
+                        <cite>
+                          <small>
+                            <a href="http://www.worldwildlife.org/who/index.html">
+                              World Wildlife Foundation
+                            </a>
+                          </small>
+                        </cite>
+                      </figcaption>
+                    </figure>
+                  </section>
+                </Grid.Column>
+                <Grid.Column textAlign="center" cols={5}>
+                  <Title renderAs="h5" textAlign="center">
+                    <Title.Content className="ui-extra-margin">Drop Caps</Title.Content>
+                  </Title>
+                  <section className="ui-separate-top">
+                    <p className="ui-drop-cap">
+                      Embracing the fluid & flexible aspect of responsive web design
+                      was an easy decision, but I’ve been less sure-footed when it
+                      comes to balancing that with setting type on the web.
+                      Embracing the fluid & flexible aspect of responsive web design
+                      was an easy decision, but I’ve been less sure-footed when it
+                      comes to balancing that with setting type on the web.<br />
+                      Embracing the fluid & flexible aspect of responsive web design
+                      was an easy decision, but I’ve been less sure-footed when it
+                      comes to balancing that with setting type on the web.
+                    </p>
+                  </section>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Grid.Column>
         </Grid.Row>
       </Grid>

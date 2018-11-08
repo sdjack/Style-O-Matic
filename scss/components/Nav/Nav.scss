@@ -10,7 +10,7 @@
 // VARIABLES
 $nav-item-size: $framing-size;
 $nav-item-padding: 18px 21px;
-$nav-item-width: $framing-size-large;
+$nav-item-width: $framing-size-large - $framing-size;
 $nav-content-fontsize: 1em;
 $nav-content-width: ($framing-size-large - 50);
 $nav-widget-content-fontsize: 1.2em;
@@ -147,7 +147,7 @@ $nav-default-alignment: start;
       width: auto;
       height: auto;
       border: $border;
-      overflow-y: scroll;
+      overflow-y: auto;
       box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3),
         2px 2px 2px 0px rgba(0, 0, 0, 0.2);
 
@@ -171,7 +171,7 @@ $nav-default-alignment: start;
   width: 0px;
   max-width: $framing-size-large;
   height: 0px;
-  max-height: $framing-size-large;
+  max-height: $framing-size-large * 1.5;
   font-size: $nav-folder-fontsize;
   list-style-type: none;
   line-height: 1;
@@ -187,12 +187,13 @@ $nav-default-alignment: start;
   overflow-y: hidden;
   position: absolute;
   font-weight: 600;
+  text-align: start;
 
   &.ui--open {
     width: auto;
     height: auto;
     border: $border;
-    overflow-y: scroll;
+    overflow-y: auto;
     box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3),
       2px 2px 2px 0px rgba(0, 0, 0, 0.2);
     & > .ui-nav-item,
@@ -203,15 +204,11 @@ $nav-default-alignment: start;
 
   & > .ui-nav-item {
     height: 0px;
-    width: $nav-item-width;
+    min-width: $nav-item-width;
     padding: 0;
 
     & > .ui-nav-content {
-      width: $nav-content-width;
-    }
-
-    & > .ui-nav-icon {
-      line-height: 1.8em;
+      width: auto;
     }
   }
 

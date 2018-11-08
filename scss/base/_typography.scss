@@ -1,6 +1,258 @@
-@charset 'UTF-8';
+// -----------------------------------------------------------------------------
+  // Typeography
+// -----------------------------------------------------------------------------
 
-@import
-  './typography/fonts',
-  './typography/base',
-  './typography/helpers';
+////
+/// @author Steve Jackson
+/// @group base
+////
+
+html {
+  @if $typography-custom-font {
+    font: $typography-font-weight #{$typography-font-size + "%"}/#{$typography-line-height} $typography-custom-font, $typography-font-family;
+  } @else {
+    font: $typography-font-weight #{$typography-font-size + "%"}/#{$typography-line-height} $typography-font-family;
+  }
+}
+
+body {
+  color: $text-color;
+  word-wrap: break-word;
+  @include typography-hyphens(auto);
+}
+
+@include typography-headings;
+@include typography-headings-style;
+
+p {
+  margin: auto auto $typography-indent-val;
+  @if $typography-paragraph-spacing == false {
+    & + p {
+      text-indent: $typography-indent-val;
+      margin-top: -$typography-indent-val;
+    }
+  }
+}
+
+small {
+  font-size: $typography-small-print-size;
+}
+
+input,
+abbr,
+acronym,
+blockquote,
+code,
+kbd,
+q,
+samp,
+var {
+  @include typography-hyphens(none);
+}
+
+q,
+blockquote {
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  margin: 0.4em;
+}
+
+q {
+  &:before,
+  &:after {
+    content: '"';
+  }
+  &:before {
+    position: absolute;
+    left: 0.2em;
+  }
+  &:after {
+    margin-left: -0.2em;
+  }
+}
+
+blockquote + figcaption cite {
+  display: block;
+  font-size: inherit;
+  text-align: right;
+
+  &:before {
+    content: '\205C\00A0';
+    font-size: 1.4em;
+    line-height: 1;
+  }
+}
+
+a {
+  font-weight: inherit;
+  text-decoration: none !important;
+  text-decoration: none;
+  &:hover,
+  &:active,
+  &:focus {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+
+dt,
+dd {
+  display: inline;
+  margin: 0;
+
+  & + dt {
+    &:before {
+      content: "\A";
+      white-space: pre;
+    }
+  }
+}
+
+dt {
+  font-weight: 600;
+  @include content-align-right();
+}
+
+dd {
+  font-weight: 300;
+  @include content-align-left();
+
+  & + dd {
+    &:before {
+      content: ", ";
+    }
+  }
+  &:before {
+      content: ": ";
+      margin-left: 0rem;
+  }
+}
+
+ul, ol {
+  display: inline-block;
+  @include typography-lists;
+  margin: 2px 0 6px;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+pre {
+  @include typography-white-space(pre);
+
+  code {
+    word-wrap: normal;
+    @include typography-white-space(pre-wrap);
+  }
+}
+
+code {
+  @include typography-white-space(pre);
+  font-family: monospace;
+}
+
+abbr {
+  @include typography-smallcaps($typography-smcps-color, $typography-smcps-weight);
+  &[title]:hover {
+    cursor: help;
+  }
+}
+
+address {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-style: normal;
+}
+
+.ui-serif {
+  font-family: $heading-font;
+}
+
+.ui-drop-cap {
+  text-indent: 0;
+  margin-top: 0;
+  @include typography-dropcap(
+    $typography-dropcap-float-position,
+    $typography-dropcap-font-size,
+    $typography-dropcap-font-family,
+    $typography-dropcap-txt-indent,
+    $typography-dropcap-margin,
+    $typography-dropcap-padding,
+    $typography-dropcap-color,
+    $typography-dropcap-line-height,
+    $typography-dropcap-bg
+  );
+}
+
+.ui-preface {
+  border-bottom: $border;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+dl {
+  &.ui-dictionary {
+    dt {
+      display: inline;
+      counter-reset: definitions;
+      & + dt {
+        &:before {
+          content: ", ";
+          margin-left: 0rem;
+        }
+      }
+    }
+
+    dd {
+      display: block;
+      counter-increment: definitions;
+      &:before {
+        content: counter(definitions, decimal) ". ";
+      }
+    }
+  }
+}
+
+/// @example html - Usage
+///    <aside class="ui-pull-quote">
+///    <blockquote>
+///      <p></p>
+///    </blockquote>
+///  </aside>
+.ui-pull-quote {
+  position: relative;
+  padding: 1.2em;
+
+  &:before,
+  &:after {
+    line-height: 1em;
+    opacity: $typography-pull-quote-opacity;
+    position: absolute;
+    font-size: $typography-pull-quote-fontsize;
+    color: $typography-pull-quote-color;
+  }
+
+  &:before {
+    content: '“';
+    top:  .15em;
+    left: 0;
+  }
+
+  &:after {
+    content: '”';
+    bottom: .15em;
+    right: 0;
+  }
+}
+
+.ui-leading-hyphen {
+  &:before {
+    content: '\2015\00A0';
+  }
+}

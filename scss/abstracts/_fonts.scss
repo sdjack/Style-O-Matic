@@ -1,0 +1,27 @@
+// -----------------------------------------------------------------------------
+  // Typeography
+// -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group base
+////
+
+
+$fonts-dropcap-fontface: DropCap !default;
+$fonts-amp-fontface: Ampersand !default;
+$fonts-amp-fontfamily: Verdana, sans-serif !default;
+$fonts-amp-src: local('Georgia'), local('Garamond'), local('Palatino'), local('Book Antiqua') !default;
+$fonts-amp-fallback: local('Georgia') !default;
+
+@font-face {
+  font-family: '#{$fonts-amp-fontface}';
+  src: $fonts-amp-src;
+  unicode-range: U+0026;
+}
+
+@font-face {
+  font-family: '#{$fonts-amp-fontface}'; // fallback
+  src: $fonts-amp-fallback;
+  unicode-range: U+270C;
+}

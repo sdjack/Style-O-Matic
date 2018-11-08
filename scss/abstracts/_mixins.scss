@@ -173,32 +173,6 @@
   }
 }
 
-@mixin typography-pull-quotes($fontsize, $opacity, $color) {
-  position: relative;
-  padding: size-calc($fontsize, $fontsize, em);
-
-  &:before,
-  &:after {
-    height: size-calc($fontsize, $fontsize, em);
-    opacity: $opacity;
-    position: absolute;
-    font-size: $fontsize;
-    color: $color;
-  }
-
-  &:before {
-    content: '“';
-    top:  0;
-    left: 0;
-  }
-
-  &:after {
-    content: '”';
-    bottom: 0;
-    right: 0;
-  }
-}
-
 @mixin typography-dropcap(
   $float-position,
   $font-size,
@@ -677,5 +651,12 @@
     //     color: lighten($color,5%) !important;
     //   }
     // }
+    [data-bg-color=#{$colorName}] {
+      background-color: darken($color,10%) !important;
+      color: color-contrast($color,$inverted) !important;
+      &:before {
+        text-shadow: 1px 1px 0px lighten($color,33%), -2px -1px 0px darken($color,33%) !important;
+      }
+    }
   }
 }

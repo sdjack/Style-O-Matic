@@ -34,7 +34,7 @@ $text-font: 'Helvetica', 'Arial', sans-serif !default;
 $text-font-size: 14px;
 /// Heading font family
 /// @type List
-$heading-font: 'Helvetica', 'Arial', sans-serif !default;
+$heading-font: 'Georgia', 'Book Antiqua', 'Garamond', serif !default;
 $heading-font-size: 24px;
 /// Code (monospace) font family
 /// @type List
@@ -60,10 +60,6 @@ $typography-indent-val: 1.5rem !default;
 $typography-small-print-size: 65% !default;
 $typography-heading-color: #222 !default;
 $typography-copy-color: #444 !default;
-$typography-amp-fontface: Ampersand !default;
-$typography-amp-fontfamily: Verdana, sans-serif !default;
-$typography-amp-src: local('Georgia'), local('Garamond'), local('Palatino'), local('Book Antiqua') !default;
-$typography-amp-fallback: local('Georgia') !default;
 $typography-scale: (
   ui-fontsize-titan: 117,
   ui-fontsize-huge: 90,
@@ -89,11 +85,11 @@ $typography-pull-quote-color: #dc976e !default;
 $typography-smcps-color: gray !default;
 $typography-smcps-weight: 600 !default;
 $typography-dropcap-float-position: left !default;
-$typography-dropcap-font-size: 4.2em !default;
-$typography-dropcap-font-family: serif !default;
+$typography-dropcap-font-family: $heading-font;
+$typography-dropcap-font-size: 3.8em !default;
 $typography-dropcap-txt-indent: 0 !default;
 $typography-dropcap-margin: 0.02em 0.02em 0 0 !default;
-$typography-dropcap-padding: 0 $padding !default;
+$typography-dropcap-padding: 0 0.05em 0 0 !default;
 $typography-dropcap-color: inherit !default;
 $typography-dropcap-line-height: 1 !default;
 $typography-dropcap-bg: transparent !default;

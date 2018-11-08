@@ -24,91 +24,82 @@
   @include callout(20px, 'bottom');
 }
 
+.ui-user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  overflow: hidden;
+  color: #FFFFFF;
+  background-color: transparent;
+
+  &:not(img) {
+    &:before {
+      content: "\1F575";
+      display: block;
+      width: 32px;
+      height: 32px;
+      font-size: 20px;
+      font-style: normal;
+      line-height: 32px;
+      text-align: center;
+    }
+  }
+
+  &[data-user-initials] {
+    &:before {
+      content: attr(data-user-initials);
+      display: block;
+      width: 32px;
+      height: 32px;
+      font-size: 20px;
+      font-style: normal;
+      line-height: 32px;
+      text-align: center;
+    }
+  }
+
+  &img {
+    display: block;
+    width: 32px;
+    height: 32px;
+  }
+}
+
 .ui-user-comment,
 .ui-user-comment-flip {
   position: relative;
   display: block;
   width: fit-content;
   margin: .4em auto .6em;
-  & > p {
-    display: block;
-    margin: 0px;
-    font-weight: 300;
-    letter-spacing: 0.02em;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+
+  & > .ui-user-avatar {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
   }
-  &:not([data-user-initials]):not(.ui-user-image) {
-    &:before {
-        content: "\1F575";
-        font-size: 20px;
-        font-style: normal;
-        position: absolute;
-        top: 50%;
-        margin-top: -15px;
-    }
+
+  & > q,
+  & > p {
+    margin: 0;
   }
 }
 
 .ui-user-comment {
-  padding-left: 40px;
-  &:not(.ui-user-image) {
-    &:before {
-      left: 0;
-    }
-  }
-  &.ui-user-image {
-    & > img {
-      left: 0;
-    }
-  }
-  & > p {
-    @include callout(12px, 'left');
+  @include callout(12px, 'left');
+  & > .ui-user-avatar {
+    left: -42px;
   }
 }
 
 .ui-user-comment-flip {
-  padding-right: 40px;
-  &:not(.ui-user-image) {
-    &:before {
-      right: 0;
-    }
-  }
-  &.ui-user-image {
-    & > img {
-      right: 0;
-    }
-  }
-  & > p {
-    @include callout(12px, 'right');
+  @include callout(12px, 'right');
+  & > .ui-user-avatar {
+    right: -42px;
   }
 }
 
-[data-user-initials] {
-  &:before {
-    content: attr(data-user-initials);
-    width: 30px;
-    height: 30px;
-    border-radius: 50px;
-    overflow: hidden;
-    font-size: 20px;
-    font-style: normal;
-    position: absolute;
-    top: 50%;
-    margin-top: -15px;
-    color: #FFFFFF;
-    background-color: $color-blue;
-  }
-}
-.ui-user-image {
-  & > img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50px;
-    overflow: hidden;
-    position: absolute;
-    top: 50%;
-    margin-top: -15px;
-  }
-}
 
 .ui-reveal {
   &>.ui-reveal-default,
