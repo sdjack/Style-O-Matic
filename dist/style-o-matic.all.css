@@ -998,6 +998,12 @@ dl.ui-dictionary dd {
 .ui-unavailable {
   opacity: 0.75; }
 
+.ui-interactive {
+  cursor: pointer; }
+  .ui-interactive:hover, .ui-interactive:focus {
+    color: #EFF3F8;
+    background-color: rgba(25, 118, 210, 0.5); }
+
 .ui-grouped-border {
   border-right-color: rgba(255, 255, 255, 0.05);
   border-left-color: rgba(0, 0, 0, 0.1);
@@ -4202,7 +4208,7 @@ input.ui-violet-text:active,
     color: rgba(255, 255, 255, 0.8);
     background-color: rgba(0, 0, 0, 0.2); }
 
-.ui-nav {
+nav {
   width: auto;
   height: auto;
   padding: 0px;
@@ -4210,27 +4216,45 @@ input.ui-violet-text:active,
   color: inherit;
   background-color: inherit;
   display: block;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-justify-content: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  justify-items: start;
   -webkit-align-content: start;
       -ms-flex-line-pack: start;
           align-content: start;
   -webkit-align-items: start;
       -ms-flex-align: start;
           align-items: start;
-  -webkit-justify-content: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  justify-items: start;
   text-align: left; }
-  .ui-nav > nav {
+  nav > button {
+    width: 40px;
+    height: 40px;
+    color: inherit;
+    background-color: transparent;
+    padding: 2px;
+    font-size: 28px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none !important; }
+    nav > button:hover, nav > button:focus, nav > button:active {
+      background-color: transparent;
+      border: none;
+      outline: none !important; }
+  nav > ul {
+    padding: 0 !important;
+    margin: 0 !important;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    list-style-type: none;
     -webkit-flex-wrap: inherit;
         -ms-flex-wrap: inherit;
             flex-wrap: inherit;
@@ -4251,222 +4275,183 @@ input.ui-violet-text:active,
     -webkit-flex-basis: inherit;
         -ms-flex-preferred-size: inherit;
             flex-basis: inherit; }
-  .ui-nav.ui-orientation-vertical {
-    height: auto; }
-    .ui-nav.ui-orientation-vertical > nav {
+    nav > ul > li {
+      position: relative;
+      float: left;
+      text-align: inherit;
+      height: 40px;
       width: auto;
-      height: inherit;
-      -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-              flex-direction: column; }
-      .ui-nav.ui-orientation-vertical > nav > .ui-nav-item {
-        display: block; }
-    .ui-nav.ui-orientation-vertical.ui--collapsed > nav {
-      overflow: hidden;
-      width: 0px !important; }
-  .ui-nav.ui-orientation-horizontal {
+      margin: 0;
+      padding: 0px 12px;
+      color: inherit;
+      -webkit-flex-basis: unset;
+          -ms-flex-preferred-size: unset;
+              flex-basis: unset;
+      -webkit-flex-grow: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1; }
+      @media screen and (max-width: 1024px) {
+        nav > ul > li {
+          display: block !important; } }
+      nav > ul > li:hover > ul, nav > ul > li:focus > ul {
+        width: auto;
+        min-width: 100%;
+        height: auto;
+        max-height: 500px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3), 2px 2px 2px 0px rgba(0, 0, 0, 0.2); }
+        nav > ul > li:hover > ul > li, nav > ul > li:focus > ul > li {
+          -webkit-flex-basis: 50%;
+              -ms-flex-preferred-size: 50%;
+                  flex-basis: 50%;
+          height: 40px; }
+      nav > ul > li > ul {
+        z-index: 99;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        position: absolute;
+        top: 100%;
+        width: 0px;
+        height: 0px;
+        -webkit-flex-flow: wrap;
+            -ms-flex-flow: wrap;
+                flex-flow: wrap;
+        padding: 0 0 12px 0 !important;
+        margin: 0 !important;
+        font-size: 0.8em;
+        font-weight: 600;
+        text-align: start;
+        line-height: 1;
+        padding: 0;
+        margin: 0;
+        border: 0px solid transparent;
+        color: #3F4348;
+        background-color: #F8F8F8;
+        list-style-type: none;
+        overflow-x: hidden;
+        overflow-y: auto;
+        box-shadow: none; }
+        nav > ul > li > ul > h5,
+        nav > ul > li > ul > h6 {
+          padding: 12px 0 12px 12px;
+          background-color: rgba(0, 0, 0, 0.1); }
+        nav > ul > li > ul > li {
+          -webkit-flex-basis: 0%;
+              -ms-flex-preferred-size: 0%;
+                  flex-basis: 0%;
+          height: 0px;
+          min-width: 150px;
+          padding: 0; }
+  nav > ul > h5,
+  nav > ul > h6,
+  nav > ul > li > ul > h5,
+  nav > ul > li > ul > h6 {
+    display: inline-block;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0;
+    font-weight: 600;
+    font-size: 1.6em;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  nav > ul > li,
+  nav > ul > li > ul > li {
+    font-size: 1.14em;
+    line-height: 40px;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
+    transition-property: all;
+    cursor: pointer; }
+    nav > ul > li:hover, nav > ul > li:focus,
+    nav > ul > li > ul > li:hover,
+    nav > ul > li > ul > li:focus {
+      color: #EFF3F8;
+      background-color: rgba(25, 118, 210, 0.5); }
+    nav > ul > li > a,
+    nav > ul > li > i,
+    nav > ul > li > div,
+    nav > ul > li > span,
+    nav > ul > li > ul > li > a,
+    nav > ul > li > ul > li > i,
+    nav > ul > li > ul > li > div,
+    nav > ul > li > ul > li > span {
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      white-space: nowrap;
+      text-align: start;
+      text-overflow: ellipsis;
+      margin: 0;
+      padding: 0 4px;
+      border: none;
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: inherit;
+      color: inherit;
+      background-color: transparent; }
+      nav > ul > li > a:hover, nav > ul > li > a:focus,
+      nav > ul > li > i:hover,
+      nav > ul > li > i:focus,
+      nav > ul > li > div:hover,
+      nav > ul > li > div:focus,
+      nav > ul > li > span:hover,
+      nav > ul > li > span:focus,
+      nav > ul > li > ul > li > a:hover,
+      nav > ul > li > ul > li > a:focus,
+      nav > ul > li > ul > li > i:hover,
+      nav > ul > li > ul > li > i:focus,
+      nav > ul > li > ul > li > div:hover,
+      nav > ul > li > ul > li > div:focus,
+      nav > ul > li > ul > li > span:hover,
+      nav > ul > li > ul > li > span:focus {
+        color: inherit;
+        background-color: transparent; }
+  nav:not([data-orientation]) {
     height: 40px; }
-    .ui-nav.ui-orientation-horizontal > nav {
-      width: inherit;
+    nav:not([data-orientation]) > ul {
       height: auto;
       -webkit-flex-direction: row;
           -ms-flex-direction: row;
               flex-direction: row; }
-      .ui-nav.ui-orientation-horizontal > nav > .ui-nav-item {
-        display: inline-block;
-        text-align: center; }
-    .ui-nav.ui-orientation-horizontal.ui--collapsed > nav {
+      nav:not([data-orientation]) > ul > li {
+        display: -webkit-inline-flex;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+                justify-content: space-between; }
+    nav:not([data-orientation])[data-state-collapsed] > ul {
       overflow: hidden;
       height: 0px !important; }
     @media screen and (max-width: 1024px) {
-      .ui-nav.ui-orientation-horizontal {
+      nav:not([data-orientation]) {
         height: auto;
         -webkit-flex-wrap: wrap;
             -ms-flex-wrap: wrap;
                 flex-wrap: wrap;
         -webkit-flex-direction: column !important;
             -ms-flex-direction: column !important;
-                flex-direction: column !important; } }
-
-.ui-nav-widget,
-.ui-nav-item {
-  position: relative;
-  text-align: inherit;
-  height: 40px;
-  width: auto;
-  margin: 0;
-  padding: 0px 12px;
-  color: inherit;
-  background-color: transparent;
-  border: none;
-  transition-duration: 0.2s;
-  transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
-  transition-property: all;
-  -webkit-flex-basis: inherit;
-      -ms-flex-preferred-size: inherit;
-          flex-basis: inherit; }
-  @media screen and (max-width: 1024px) {
-    .ui-nav-widget,
-    .ui-nav-item {
-      display: block !important; } }
-  .ui-nav-widget:after,
-  .ui-nav-item:after {
-    display: -webkit-inline-flex !important;
-    display: -ms-inline-flexbox !important;
-    display: inline-flex !important;
-    -webkit-flex-direction: row !important;
-        -ms-flex-direction: row !important;
-            flex-direction: row !important;
-    -webkit-flex-wrap: nowrap;
-        -ms-flex-wrap: nowrap;
-            flex-wrap: nowrap; }
-
-.ui-nav-widget:hover, .ui-nav-widget:focus {
-  color: inherit !important;
-  background-color: transparent !important; }
-
-.ui-nav-item {
-  cursor: pointer; }
-  .ui-nav-item:hover, .ui-nav-item:focus {
-    color: #EFF3F8;
-    background-color: rgba(25, 118, 210, 0.5); }
-    .ui-nav-item:hover > .ui-nav-folder, .ui-nav-item:focus > .ui-nav-folder {
+                flex-direction: column !important;
+        -webkit-flex-basis: unset;
+            -ms-flex-preferred-size: unset;
+                flex-basis: unset; } }
+  nav[data-orientation=vertical] {
+    height: auto; }
+    nav[data-orientation=vertical] > ul {
       width: auto;
-      height: auto;
-      border: 1px solid rgba(0, 0, 0, 0.3);
-      overflow-y: auto;
-      box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3), 2px 2px 2px 0px rgba(0, 0, 0, 0.2); }
-      .ui-nav-item:hover > .ui-nav-folder > .ui-nav-item, .ui-nav-item:focus > .ui-nav-folder > .ui-nav-item {
-        height: 40px; }
-    .ui-nav-item:hover > .ui-nav-caret:before, .ui-nav-item:focus > .ui-nav-caret:before {
-      content: "\2212"; }
-  .ui-nav-item > .ui-nav-icon {
-    line-height: 1.4em; }
-
-.ui-nav-folder {
-  z-index: 99;
-  display: block;
-  width: 0px;
-  max-width: 225px;
-  height: 0px;
-  max-height: 337.5px;
-  font-size: 0.8em;
-  list-style-type: none;
-  line-height: 1;
-  padding: 0;
-  margin: 0;
-  border: none;
-  color: #3F4348;
-  background-color: #F8F8F8;
-  box-shadow: none;
-  transition-duration: 0.1s;
-  transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
-  transition-property: all;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  position: absolute;
-  font-weight: 600;
-  text-align: start; }
-  .ui-nav-folder.ui--open {
-    width: auto;
-    height: auto;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    overflow-y: auto;
-    box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3), 2px 2px 2px 0px rgba(0, 0, 0, 0.2); }
-    .ui-nav-folder.ui--open > .ui-nav-item,
-    .ui-nav-folder.ui--open > .ui-nav-folder-item {
-      height: 40px; }
-  .ui-nav-folder > .ui-nav-item {
-    height: 0px;
-    min-width: 185px;
-    padding: 0; }
-    .ui-nav-folder > .ui-nav-item > .ui-nav-content {
-      width: auto; }
-  .ui-nav-folder > .ui-nav-title {
-    width: 100%;
-    padding: 12px 0 6px 12px;
-    background-color: rgba(0, 0, 0, 0.2); }
-
-.ui-nav-content {
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  white-space: nowrap;
-  text-align: start;
-  text-overflow: ellipsis;
-  line-height: 1;
-  margin: 0;
-  padding: 0 4px;
-  border: none;
-  font-size: 1em;
-  line-height: 40px;
-  font-weight: inherit;
-  color: inherit;
-  background-color: transparent; }
-  .ui-nav-content:hover, .ui-nav-content:focus {
-    color: inherit !important;
-    background-color: transparent !important; }
-
-.ui-nav-icon {
-  display: inline-block;
-  max-width: 40px;
-  margin: 0;
-  padding: 0;
-  font-size: 18px;
-  line-height: 1;
-  text-align: center;
-  vertical-align: baseline;
-  -webkit-flex-basis: 40px;
-      -ms-flex-preferred-size: 40px;
-          flex-basis: 40px; }
-
-.ui-nav-caret:before {
-  display: inline-block;
-  font-style: normal;
-  vertical-align: middle;
-  padding: 0px 4px;
-  content: "\002B"; }
-
-.ui-nav-title {
-  display: inline-block;
-  font-size: 1.2em;
-  font-weight: 600;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border: none; }
-
-.ui-nav-toggle {
-  display: inline-block;
-  color: inherit;
-  text-align: -webkit-start;
-  text-align: start;
-  -webkit-align-items: start;
-      -ms-flex-align: start;
-          align-items: start;
-  -webkit-align-content: start;
-      -ms-flex-line-pack: start;
-          align-content: start; }
-  @media screen and (max-width: 1024px) {
-    .ui-nav-toggle {
-      display: block !important; } }
-
-.ui-nav-toggle-button {
-  width: 40px;
-  height: 40px;
-  color: inherit;
-  background-color: transparent;
-  padding: 2px;
-  font-size: 28px;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  outline: none !important; }
-  .ui-nav-toggle-button:hover, .ui-nav-toggle-button:focus, .ui-nav-toggle-button:active {
-    background-color: transparent;
-    border: none;
-    outline: none !important; }
+      height: inherit;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+      nav[data-orientation=vertical] > ul > li {
+        float: none;
+        display: block; }
+    nav[data-orientation=vertical][data-state-collapsed] > ul {
+      overflow: hidden;
+      width: 0px !important; }
 
 .ui-pagination {
   padding: 0;
@@ -5366,7 +5351,7 @@ h6.ui-title-content {
     -khtml-opacity: 0;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.18s ease-out 0.18s;
+    transition: all 0.13s ease-out 0.13s;
     background: #262626;
     color: #efefef;
     font-weight: 300;
@@ -5384,7 +5369,7 @@ h6.ui-title-content {
     -khtml-opacity: 0;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.18s ease-out 0.18s;
+    transition: all 0.13s ease-out 0.13s;
     content: '';
     position: absolute;
     z-index: 10; }

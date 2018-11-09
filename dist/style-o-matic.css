@@ -998,6 +998,12 @@ dl.ui-dictionary dd {
 .ui-unavailable {
   opacity: 0.75; }
 
+.ui-interactive {
+  cursor: pointer; }
+  .ui-interactive:hover, .ui-interactive:focus {
+    color: #EFF3F8;
+    background-color: rgba(25, 118, 210, 0.5); }
+
 .ui-grouped-border {
   border-right-color: rgba(255, 255, 255, 0.05);
   border-left-color: rgba(0, 0, 0, 0.1);

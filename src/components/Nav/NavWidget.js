@@ -19,7 +19,7 @@ class NavWidget extends CoreComponent {
   });
 
   static defaultProps = setCorePropDefaults({
-    renderAs: "div",
+    renderAs: "li",
     uirole: ROLE.WIDGET,
     label: null,
     minimized: false
@@ -45,9 +45,7 @@ class NavWidget extends CoreComponent {
 
     return (
       <Component {...props} className={classNames(coreClassName, classes)}>
-        {React.Children.map(children, child => (
-          <div className="ui-nav-content">{child}</div>
-        ))}
+        {children}
       </Component>
     );
   }

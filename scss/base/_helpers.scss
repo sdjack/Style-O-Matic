@@ -127,6 +127,15 @@
   opacity: 0.75;
 }
 
+.ui-interactive {
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    color: $color-lightest;
+    background-color: $color-blue-highlight;
+  }
+}
+
 .ui-grouped-border {
   border-right-color: rgba(255,255,255,0.05);
   border-left-color: rgba(0,0,0,0.1);

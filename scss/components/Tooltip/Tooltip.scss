@@ -41,7 +41,7 @@ $tooltip-bg: #262626;
   &:after {
     @include opacity(0);
     pointer-events: none;
-    @include transition(all .18s ease-out .18s);
+    @include transition(all .13s ease-out .13s);
     background: $tooltip-bg;
     color: #efefef;
     font-weight: 300;
@@ -57,7 +57,7 @@ $tooltip-bg: #262626;
   &:before {
     @include opacity(0);
     pointer-events: none;
-    @include transition(all .18s ease-out .18s);
+    @include transition(all .13s ease-out .13s);
 
     content: '';
     position: absolute;

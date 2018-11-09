@@ -19,7 +19,7 @@ class NavItem extends CoreComponent {
   });
 
   static defaultProps = setCorePropDefaults({
-    renderAs: "div",
+    renderAs: "li",
     uirole: ROLE.ITEM,
     label: null,
     minimized: false
@@ -48,13 +48,12 @@ class NavItem extends CoreComponent {
 
     return (
       <Component {...props} className={classNames("ui-nav-item", classes)}>
-        <span className={`ui-nav-icon ${iconClassName}`} />
         {to ? (
-          <a className="ui-nav-content" href={to} label={label}>
+          <a href={to} label={label} className={`ui-icon ${iconClassName}`}>
             {contents}
           </a>
         ) : (
-          <span className="ui-nav-content">{contents}</span>
+          <div className={`ui-icon ${iconClassName}`}>{contents}</div>
         )}
       </Component>
     );

@@ -7,5 +7,295 @@
   '../../abstracts/extends',
   '../../abstracts/functions',
   '../../abstracts/variables',
-  '../../abstracts/mixins',
-  'Nav';
+  '../../abstracts/mixins';
+
+// VARIABLES
+$nav-item-size: $framing-size;
+$nav-item-padding: 18px 21px;
+$nav-item-width: 150px;
+$nav-content-fontsize: 1.14em;
+$nav-content-width: ($framing-size-large - 50);
+$nav-widget-content-fontsize: 1.2em;
+$nav-icon-size: $framing-size;
+$nav-icon-fontsize: 18px;
+$nav-title-fontsize: 1.6em;
+$nav-folder-title-padding: 12px 0 12px 12px;
+$nav-folder-fontsize: 0.8em;
+$nav-default-alignment: start;
+
+.ui-nav {
+  width: auto;
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+  display: block;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  justify-items: $nav-default-alignment;
+  align-content: $nav-default-alignment;
+  align-items: $nav-default-alignment;
+  text-align: left;
+
+  &.ui-orientation-vertical {
+    height: auto;
+
+    & > .ui-nav-list {
+      width: auto;
+      height: inherit;
+      flex-direction: column;
+      & > li {
+        float: none;
+        display: block;
+      }
+    }
+
+    &.ui--collapsed {
+      & > .ui-nav-list {
+        overflow: hidden;
+        width: 0px !important;
+      }
+    }
+  }
+
+  &.ui-orientation-horizontal {
+    // min-width: 100%;
+    // max-width: 100%;
+    height: $nav-item-size;
+
+    & > .ui-nav-toggle {
+      float: left;
+    }
+
+    & > .ui-nav-list {
+      height: auto;
+      flex-direction: row;
+      & > li {
+        display: inline-flex;
+        justify-content: space-between;
+      }
+    }
+
+    &.ui--collapsed {
+      & > .ui-nav-list {
+        overflow: hidden;
+        height: 0px !important;
+      }
+    }
+
+    @media screen and (max-width: $mobile-screen-threshold) {
+      height: auto;
+      flex-wrap: wrap;
+      flex-direction: column !important;
+      flex-basis: unset;
+    }
+  }
+}
+
+.ui-nav-list {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  list-style-type: none;
+  flex-wrap: inherit;
+  flex-direction: inherit;
+  align-content: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  justify-items: inherit;
+  text-align: inherit;
+  flex-basis: inherit;
+
+  & > li {
+    position: relative;
+    float: left;
+    text-align: inherit;
+    height: $nav-item-size;
+    width: auto;
+    margin: 0;
+    padding: 0px 12px;
+    color: inherit;
+    flex-basis: unset;
+    flex-grow: 1;
+
+    @media screen and (max-width: $mobile-screen-threshold) {
+      display: block !important;
+    }
+
+    &:hover,
+    &:focus {
+      & > .ui-nav-caret:before {
+          content: "\2212";
+      }
+      & > .ui-nav-folder {
+        width: auto;
+        min-width: 100%;
+        height: auto;
+        max-height: 500px;
+        border: $border;
+        box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3),
+          2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+        & > li {
+          flex-basis: 50%;
+          height: $nav-item-size;
+        }
+      }
+    }
+  }
+}
+
+.ui-nav-folder {
+  z-index: 99;
+  display: flex;
+  position: absolute;
+  top: 100%;
+  width: 0px;
+  height: 0px;
+  flex-flow: wrap;
+  padding: 0 0 $padding 0 !important;
+  margin: 0 !important;
+  font-size: $nav-folder-fontsize;
+  font-weight: 600;
+  text-align: start;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  border: 0px solid transparent;
+  color: $text-color;
+  background-color: $background-color;
+  list-style-type: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  @include box-shadow(none);
+
+  &.ui--open {
+    width: auto;
+    height: auto;
+    overflow-y: auto;
+    & > .ui-nav-item,
+    & > .ui-nav-folder-item {
+      height: $nav-item-size;
+    }
+  }
+
+  & > .ui-nav-title {
+    padding: $nav-folder-title-padding;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  & > li {
+    flex-basis: 0%;
+    height: 0px;
+    min-width: $nav-item-width;
+    padding: 0;
+    // margin-top: -.2em;
+  }
+}
+
+.ui-nav-list > li,
+.ui-nav-folder > li {
+  font-size: $nav-content-fontsize;
+  line-height: $nav-item-size;
+  @include animate-default(0.2s);
+  transition-property: all;
+  & > a,
+  & > div {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: start;
+    // overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 0 4px;
+    border: none;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    color: inherit;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+      background-color: transparent;
+    }
+
+    &.ui-icon {
+      &:before {
+        padding-right: 0.2em;
+      }
+    }
+  }
+}
+
+.ui-nav-item {
+  &:hover,
+  &:focus {
+    background-color: rgba(188, 188, 188, 0.1);
+  }
+}
+
+.ui-nav-icon {
+  display: inline-block;
+  max-width: $nav-icon-size;
+  margin: 0;
+  padding: 0;
+  font-size: $nav-icon-fontsize;
+  line-height: 1.4em;
+  text-align: center;
+  vertical-align: baseline;
+  flex-basis: $nav-icon-size;
+}
+
+.ui-nav-title {
+  display: inline-block;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0;
+  font-weight: 600;
+  font-size: $nav-title-fontsize;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-nav-caret {
+  &:before {
+    display: inline-block;
+    font-style: normal;
+    vertical-align: middle;
+    padding: 0px 4px;
+    content: "\002B";
+  }
+}
+
+.ui-nav-toggle {
+  display: inline-block;
+  color: inherit;
+  @include text-horizontal-align-left();
+  @media screen and (max-width: $mobile-screen-threshold) {
+    display: block !important;
+  }
+}
+
+.ui-nav-toggle-button {
+  width: $framing-size;
+  height: $framing-size;
+  color: inherit;
+  background-color: transparent;
+  padding: 2px;
+  font-size: $toggle-size;
+  border: none;
+  @include box-shadow(none);
+  outline: none !important;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: transparent;
+    border: none;
+    outline: none !important;
+  }
+}

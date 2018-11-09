@@ -16,38 +16,13 @@ import {
   ROLE
 } from "../../lib";
 
-function getStyleOffset(ref) {
-  const {
-    bottom: screenBottom,
-    height: screenHeight,
-    width: screenWidth
-  } = UIGlobals.getScreenDimensions();
-  const {
-    x,
-    y,
-    height,
-    bottom,
-    width: folderWidth
-  } = ref.getBoundingClientRect();
-  const offset = {};
-  if (y > screenHeight / 2) {
-    let bottomOffset = y;
-    bottomOffset += height * 2;
-    bottomOffset -= bottom;
-    offset.bottom = `${bottomOffset}px`;
-  }
-  if (x + folderWidth > screenWidth - 10) {
-    offset.right = "10px";
-  }
-  return offset;
-}
-
 class NavFolder extends CoreComponent {
   static propTypes = setCorePropTypes({
     minimized: "bool"
   });
 
   static defaultProps = setCorePropDefaults({
+    renderAs: "ul",
     uirole: ROLE.FOLDER,
     label: ""
   });
@@ -56,25 +31,13 @@ class NavFolder extends CoreComponent {
     super(props);
     this.folder = null;
     this.state = {
-      closed: props.closed,
-      offset: {}
+      closed: props.closed
     };
   }
-
-  setRefCallback = ref => {
-    if (ref) {
-      const newState = this.state;
-      newState.offset = getStyleOffset(ref);
-      this.setState(newState);
-    }
-  };
 
   toggleExpansion = e => {
     e.preventDefault();
     const newState = this.state;
-    if (newState.closed && this.node) {
-      newState.offset = getStyleOffset(this.node);
-    }
     newState.closed = !newState.closed;
     this.setState(newState);
   };
@@ -109,7 +72,7 @@ class NavFolder extends CoreComponent {
       inherited
     } = getValidProps(this.props);
 
-    const { offset, closed } = this.state;
+    const { closed } = this.state;
 
     const classes = {
       "ui--closed": closed,
@@ -118,23 +81,17 @@ class NavFolder extends CoreComponent {
 
     const itemClass = closed ? "ui-nav-item" : "ui-nav-item ui--open";
     return (
-      <div className={itemClass} ref={this.onSetRef}>
-        <i className="ui-nav-caret" />
+      <li className={itemClass} ref={this.onSetRef}>
         <div
-          className="ui-nav-content"
+          className="ui-nav-caret"
           role="presentation"
           onKeyDown={this.toggleExpansion}
           onClick={this.toggleExpansion}
         >
           {label}
         </div>
-        <Component
-          {...props}
-          className={classNames(coreClassName, classes)}
-          style={offset}
-          ref={this.setFolderRef}
-        >
-          <div className="ui-nav-title">{label}</div>
+        <Component {...props} className={classNames(coreClassName, classes)}>
+          <h5 className="ui-nav-title">{label}</h5>
           {React.Children.map(children, child => {
             if (
               typeof child.props !== "undefined" &&
@@ -149,7 +106,7 @@ class NavFolder extends CoreComponent {
             return child;
           })}
         </Component>
-      </div>
+      </li>
     );
   }
 }
