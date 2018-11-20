@@ -61,7 +61,7 @@
 .ui-tabs-content {
   display: none;
 
-  &.active {
+  &.ui--active {
     display: block;
   }
 }
@@ -83,12 +83,12 @@
 
   @include text-align-left();
 
-  &.active {
+  &.ui--active {
     box-shadow: 0 3px 1px -2px $text-color;
 		font-weight: 600;
   }
 
-  &.active:after {
+  &.ui--active:after {
     display: inline;
     background: none !important;
     background: transparent !important;
@@ -125,11 +125,11 @@
 
   @include text-horizontal-align-center();
 
-  &.active {
+  &.ui--active {
     background: transparent;
   }
 
-  &.disabled {
+  &.ui--disabled {
     cursor: not-allowed;
   }
 }

@@ -13,7 +13,7 @@ import {
 
 class DropdownContent extends CoreComponent {
   static defaultProps = setCorePropDefaults({
-    renderAs: "div",
+    renderAs: "ul",
     uirole: ROLE.CONTENT
   });
 
@@ -41,9 +41,20 @@ class DropdownContent extends CoreComponent {
 
     return (
       <Component {...props}>
-        {React.Children.map(children, child =>
-          this.renderChild(child, inherited)
-        )}
+        {React.Children.map(children, child => {
+          if (
+            typeof child.props !== "undefined" &&
+            typeof child.props.uirole !== "undefined"
+          ) {
+            switch (child.props.uirole) {
+              case ROLE.HEADER:
+                return this.renderChild(child, inherited);
+              default:
+                return <li>{this.renderChild(child, inherited)}</li>;
+            }
+          }
+          return <li>{this.renderChild(child, inherited)}</li>;
+        })}
       </Component>
     );
   }

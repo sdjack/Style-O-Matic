@@ -2,7 +2,7 @@
  * @memberof components
  * @namespace Form
  * @author Steven Jackson
-* @scss ../../scss/components/Form
+ * @scss ../../scss/components/Form
  */
 import React, { cloneElement } from "react";
 import {

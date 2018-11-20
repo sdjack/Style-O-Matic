@@ -39,7 +39,7 @@
   transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
   overflow: hidden;
   transition-property: height, padding, line-height; }
-  .ui-toasts-toast.active {
+  .ui-toasts-toast.ui--active {
     height: 36px;
     line-height: 36px;
     padding: 0 24px;

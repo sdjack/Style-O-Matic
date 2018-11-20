@@ -2,7 +2,7 @@
  * @memberof components
  * @namespace Pagination
  * @author Steven Jackson
-* @scss ../../scss/components/Pagination
+ * @scss ../../scss/components/Pagination
  * @example <Pagination pageTotal={999} />
  */
 import React from "react";

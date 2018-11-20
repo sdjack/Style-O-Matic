@@ -36,7 +36,6 @@ class Accordion extends CoreComponent {
   });
 
   static Title = AccordionTitle;
-
   static Content = AccordionContent;
 
   constructor(props) {

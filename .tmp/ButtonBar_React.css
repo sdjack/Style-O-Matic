@@ -64,10 +64,10 @@
   .ui-buttonbar-button:hover, .ui-buttonbar-button:active {
     color: rgba(255, 255, 255, 0.5);
     background-color: rgba(0, 0, 0, 0.3); }
-  .ui-buttonbar-button.disabled {
+  .ui-buttonbar-button.ui--disabled {
     color: #F5F8FB !important;
     background-color: #CFD3D8 !important; }
-    .ui-buttonbar-button.disabled:hover, .ui-buttonbar-button.disabled:focus, .ui-buttonbar-button.disabled:active {
+    .ui-buttonbar-button.ui--disabled:hover, .ui-buttonbar-button.ui--disabled:focus, .ui-buttonbar-button.ui--disabled:active {
       color: #F5F8FB !important;
       background-color: #CFD3D8 !important; }
   .ui-buttonbar-button > .fa {

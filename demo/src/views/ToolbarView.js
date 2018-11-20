@@ -7,68 +7,68 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Grid, Title, ToolBar } from "../../../src/index";
+import { Button, Content, Grid, Header, ToolBar } from "../../../src/index";
 
 class ToolbarView extends React.Component {
   render() {
     return [
-      <Title renderAs="h1" textAlign="center" key="view-title" sticky>
-        <Title.Content>Toolbars</Title.Content>
-      </Title>,
+      <Header display="xxl" textAlign="center" key="view-title">
+        <Header.Title>Toolbars</Header.Title>
+      </Header>,
       <Grid key="grip-panel1">
         <Grid.Row>
           <Grid.Column textAlign="center">
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title renderAs="h2" textAlign="center">
-                    <Title.Content>Basic Toolbar</Title.Content>
-                  </Title>
+                  <Header display="xl" textAlign="center">
+                    <Header.Title>Basic Toolbar</Header.Title>
+                  </Header>
                   <hr />
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
                   <ToolBar color="!red" raised>
-                    <ToolBar.Content contentAlign="left">
-                      <ToolBar.Title>TITLE</ToolBar.Title>
-                      <ToolBar.Button>Button</ToolBar.Button>
-                      <ToolBar.Button>Button</ToolBar.Button>
-                    </ToolBar.Content>
-                    <ToolBar.Content contentAlign="right">
-                      <ToolBar.Text>Raised</ToolBar.Text>
-                      <ToolBar.Text>Red</ToolBar.Text>
-                    </ToolBar.Content>
+                    <Content contentAlign="left">
+                      <span>TITLE</span>
+                      <Button>Button</Button>
+                      <Button>Button</Button>
+                    </Content>
+                    <Content contentAlign="right">
+                      <span>Raised</span>
+                      <span>Red</span>
+                    </Content>
                   </ToolBar>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
                   <ToolBar color="!green" raised>
-                    <ToolBar.Content contentAlign="left">
-                      <ToolBar.Title>TITLE</ToolBar.Title>
-                      <ToolBar.Button>Button</ToolBar.Button>
-                      <ToolBar.Button>Button</ToolBar.Button>
-                    </ToolBar.Content>
-                    <ToolBar.Content contentAlign="right">
-                      <ToolBar.Text>Raised</ToolBar.Text>
-                      <ToolBar.Text>Green</ToolBar.Text>
-                    </ToolBar.Content>
+                    <Content contentAlign="left">
+                      <span>TITLE</span>
+                      <Button>Button</Button>
+                      <Button>Button</Button>
+                    </Content>
+                    <Content contentAlign="right">
+                      <span>Raised</span>
+                      <span>Green</span>
+                    </Content>
                   </ToolBar>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
                   <ToolBar color="!blue" raised>
-                    <ToolBar.Content contentAlign="left">
-                      <ToolBar.Title>TITLE</ToolBar.Title>
-                      <ToolBar.Button>Button</ToolBar.Button>
-                      <ToolBar.Button>Button</ToolBar.Button>
-                    </ToolBar.Content>
-                    <ToolBar.Content contentAlign="right">
-                      <ToolBar.Text>Raised</ToolBar.Text>
-                      <ToolBar.Text>Blue</ToolBar.Text>
-                    </ToolBar.Content>
+                    <Content contentAlign="left">
+                      <span>TITLE</span>
+                      <Button>Button</Button>
+                      <Button>Button</Button>
+                    </Content>
+                    <Content contentAlign="right">
+                      <span>Raised</span>
+                      <span>Blue</span>
+                    </Content>
                   </ToolBar>
                 </Grid.Column>
               </Grid.Row>

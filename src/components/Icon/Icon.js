@@ -8,6 +8,7 @@
            </Icon>
  */
 import React from "react";
+import cx from "classnames";
 import {
   CoreComponent,
   getValidProps,
@@ -23,8 +24,15 @@ class Icon extends CoreComponent {
   });
 
   render() {
-    const { renderAs: Component, children, props } = getValidProps(this.props);
-    return <Component {...props}>{children}</Component>;
+    const { renderAs: Component, className, children, props } = getValidProps(
+      this.props
+    );
+    const classes = {
+      [`ui-icon-${children}`]: children
+    };
+    const iconClass = cx(className, classes);
+    delete props.children;
+    return <Component {...props} className={iconClass} />;
   }
 }
 

@@ -1,18 +1,3 @@
-.invalid {
-  border-color: #eb4d37;
-  background-color: rgba(235, 77, 55, 0.1); }
-
-.invalid-label {
-  color: #e32; }
-
-.required-label:after {
-  color: #e32;
-  content: ' *  ';
-  display: inline;
-  font-size: 18px;
-  vertical-align: text-bottom;
-  margin-right: 2px; }
-
 .prepend-icon {
   padding-left: 36px; }
 
@@ -93,6 +78,23 @@
   padding-left: 0;
   padding-right: 0;
   line-height: 1; }
+  .ui-input-text.ui--invalid,
+  .ui-input-textarea.ui--invalid,
+  .ui-input-select.ui--invalid,
+  .ui-input-password.ui--invalid,
+  .ui-input-tel.ui--invalid,
+  .ui-input-number.ui--invalid,
+  .ui-input-date.ui--invalid,
+  .ui-input-time.ui--invalid,
+  .ui-input-file.ui--invalid,
+  .ui-input-url.ui--invalid,
+  .ui-input-email.ui--invalid,
+  .ui-input-color.ui--invalid,
+  .ui-input-checkbox.ui--invalid,
+  .ui-input-radio.ui--invalid,
+  .ui-input-combo.ui--invalid {
+    border-color: #eb4d37;
+    background-color: rgba(235, 77, 55, 0.1); }
   .ui-input-text > input,
   .ui-input-text > select,
   .ui-input-text > textarea,

@@ -1,6 +1,6 @@
 {
     "name": "style-o-matic",
-    "version": "1.1.93",
+    "version": "1.2.0",
     "description": "Experimental element-based CSS framework with accompanying React.js component library",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -13,7 +13,7 @@
     "scripts": {
         "build": "nwb build-react-component && gulp",
         "clean": "nwb clean-module && nwb clean-demo",
-        "start": "concurrently --kill-others \"nwb serve-react-demo\" \"gulp watch\"",
+        "start": "concurrently --kill-others \"nwb serve-react-demo --port 3030\" \"gulp watch\"",
         "docs": "jsdoc -r -c ./jsdoc.config.json -d docs -t ./node_modules/ink-docstrap/template -R README.md",
         "test": "nwb test-react",
         "test:coverage": "nwb test-react --coverage",

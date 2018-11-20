@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import elementType from "prop-types-extra/lib/elementType";
 import isRequiredForA11y from "prop-types-extra/lib/isRequiredForA11y";
 import cx from "classnames";
-import { getParentClass } from "./ROLE.js";
+import { ROLE, getParentClass } from "./ROLE.js";
 import { uID } from "./coreUtilities.js";
 import UIGlobals from "./UIGlobals.js";
 /**
@@ -81,6 +81,7 @@ const DefaultPropTypes = {
   value: PropTypes.string,
   label: PropTypes.string,
   loader: PropTypes.oneOf(["cube", "sheep"]),
+  reversed: PropTypes.bool,
   invalid: PropTypes.bool,
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool,
@@ -101,6 +102,7 @@ const DefaultPropTypes = {
   children: PropTypes.node,
   uiclass: PropTypes.string,
   uirole: PropTypes.string,
+  uigroup: PropTypes.string,
   path: PropTypes.string,
   text: PropTypes.string,
   icon: PropTypes.string,
@@ -114,7 +116,8 @@ const DefaultPropTypes = {
   active: PropTypes.bool,
   overlay: PropTypes.bool,
   fixed: PropTypes.bool,
-  fit: PropTypes.oneOf(["width", "height", "parent", "flex"]),
+  vertical: PropTypes.bool,
+  fit: PropTypes.oneOf(["width", "height", "parent", "flex", "screen"]),
   color: PropTypes.oneOf([
     "transparent",
     "white",
@@ -147,7 +150,6 @@ const DefaultPropTypes = {
     "large",
     "largest"
   ]),
-  orientation: PropTypes.oneOf(["vertical", "horizontal"]),
   align: PropTypes.oneOf(["left", "right", "center"]),
   textAlign: PropTypes.oneOf(["left", "right", "center"]),
   contentAlign: PropTypes.oneOf(["left", "right", "center"]),
@@ -180,6 +182,7 @@ const DefaultPropValues = {
   label: null,
   loader: null,
   value: null,
+  reversed: null,
   invalid: null,
   checked: null,
   defaultChecked: null,
@@ -189,6 +192,7 @@ const DefaultPropValues = {
   children: null,
   uiclass: null,
   uirole: "",
+  uigroup: ROLE.UI,
   path: "/",
   text: null,
   icon: null,
@@ -210,12 +214,12 @@ const DefaultPropValues = {
   active: null,
   overlay: null,
   fixed: null,
+  vertical: null,
   fit: null,
   color: null,
   colorStyle: null,
   colorHover: null,
   displaySize: null,
-  orientation: null,
   align: null,
   textAlign: null,
   contentAlign: null,
@@ -245,8 +249,17 @@ function stringToPropType(propString) {
  */
 function assignPropType(propVal) {
   if (_.isArray(propVal)) {
-    const typeValues = propVal.map(val => stringToPropType(val));
-    return PropTypes.oneOfType(typeValues);
+    let assignMethod = "oneOf";
+    const typeValues = propVal.map(val => {
+      if (typeof PropTypes[val] !== "undefined") {
+        assignMethod = "oneOfType";
+        return stringToPropType(val);
+      }
+      return val;
+    });
+    if (typeof PropTypes[assignMethod] !== "undefined") {
+      return PropTypes[assignMethod](typeValues);
+    }
   }
   return stringToPropType(propVal);
 }
@@ -376,6 +389,8 @@ export function getUIClassString(props, state) {
     anchor,
     shadow,
     icon,
+    reversed,
+    vertical,
     loader
   } = props;
 
@@ -390,15 +405,12 @@ export function getUIClassString(props, state) {
   const shown = state && !_.isNil(state.shown) ? state.shown : props.shown;
   const invalid =
     state && !_.isNil(state.invalid) ? state.invalid : props.invalid;
-  const orientation =
-    state && state.orientation ? state.orientation : props.orientation;
 
   const sUIclass = `ui-${uiclass}`;
   const hasUIclass = !className || className.indexOf(sUIclass) === -1;
   const coreClasses = {
     [sUIclass]: hasUIclass,
     [`ui-anchor-${anchor}`]: anchor,
-    [`ui-orientation-${orientation}`]: orientation,
     [`ui-content-align-${contentAlign}`]: contentAlign,
     [`ui-text-align-${textAlign}`]: textAlign,
     [`ui-fit-${fit}`]: fit,
@@ -413,15 +425,17 @@ export function getUIClassString(props, state) {
     "ui-panel": panel,
     "ui-masked": masked,
     "ui-shadow": shadow,
-    "ui-blurred": !!loader,
+    "ui--active": active,
+    "ui--locked": !!loader,
+    "ui--vertical": vertical,
+    "ui--reversed": reversed,
     "ui--collapsed": collapsed,
     "ui--open": open,
     "ui--closed": closed,
     "ui--hidden": hidden,
     "ui--shown": shown,
-    disabled,
-    active,
-    invalid
+    "ui--disabled": disabled,
+    "ui--invalid": invalid
   };
 
   const theme = UIGlobals.readSetting("theme");
@@ -438,13 +452,10 @@ export function getUIClassString(props, state) {
     styleClasses[colorClass] = true;
   }
   const iconPre =
-    icon && icon.indexOf("ui-icon-") !== -1 ? icon : `ui-icon-${icon}`;
+    icon && icon.indexOf("ui-icon-") !== -1 ? icon : `ui-icon ui-icon-${icon}`;
   const iconClass = {
     [iconPre]: icon
   };
-  // if (!_.isNil(orientation)) {
-  //   classes[`ui-orientation-${orientation}`] = true;
-  // }
   // if (!_.isNil(anchor)) {
   //   classes[`ui-anchor-${anchor}`] = true;
   // }

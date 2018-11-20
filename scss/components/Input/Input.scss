@@ -9,27 +9,6 @@
 
 // VARIABLES
 
-.invalid {
-  //color: rgb(235,77,55) !important;
-  border-color: rgb(235,77,55);
-  background-color: rgba(235,77,55,0.1);
-}
-
-.invalid-label {
-	color: #e32;
-}
-
-.required-label {
-	&:after {
-		color: #e32;
-		content: ' *  ';
-		display: inline;
-		font-size: 18px;
-		vertical-align: text-bottom;
-		margin-right: 2px;
-	}
-}
-
 .prepend-icon {
 	padding-left: $widget-size;
 }
@@ -115,6 +94,11 @@
 	padding-left: 0;
 	padding-right: 0;
 	line-height: 1;
+
+  &.ui--invalid {
+    border-color: rgb(235,77,55);
+    background-color: rgba(235,77,55,0.1);
+  }
 
 	& > input,
 	& > select,

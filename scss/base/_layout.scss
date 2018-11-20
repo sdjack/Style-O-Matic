@@ -74,6 +74,11 @@
   height: 100% !important;
 }
 
+.ui-fit-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
 .ui-float-left {
     float: left;
 }
@@ -145,16 +150,6 @@
     position: absolute !important;
     top: 100%;
 }
-
-// .ui-orientation-vertical {
-//     width: auto;
-//     height: 100%;
-// }
-//
-// .ui-orientation-horizontal {
-//     width: 100%;
-//     height: auto;
-// }
 
 .ui-display-size-smallest {
     font-size: 10px;

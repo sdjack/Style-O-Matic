@@ -17,11 +17,28 @@
   -webkit-align-content: left;
       -ms-flex-line-pack: left;
           align-content: left; }
+  .ui-accordion > .ui-content {
+    display: block;
+    height: 0px;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    color: inherit;
+    overflow: hidden;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
+    transition-property: height, padding, box-shadow; }
+    .ui-accordion > .ui-content.ui--active {
+      height: auto;
+      padding: 0.8em;
+      margin: 0; }
 
 .ui-accordion-title {
   position: relative;
+  display: block;
   border-bottom: none;
-  padding: 0.66em 0;
+  width: 100%;
+  padding: 0.4em 0;
   font-family: inherit;
   color: inherit;
   background-color: inherit;
@@ -35,23 +52,6 @@
   overflow: hidden;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0, 0.1, 0.4, 1), color 0.2s cubic-bezier(0, 0.1, 0.4, 1);
   cursor: pointer; }
-  .ui-accordion-title > .fa {
-    line-height: 32px; }
-
-.ui-accordion-content {
-  height: 0px;
-  padding: 0;
-  margin: 0;
-  font-family: inherit;
-  color: inherit;
-  overflow: hidden;
-  transition-duration: 0.2s;
-  transition-timing-function: cubic-bezier(0, 0.1, 0.4, 1);
-  transition-property: height, padding, box-shadow; }
-  .ui-accordion-content.active {
-    height: auto;
-    padding: 0.8em;
-    margin: 0; }
 
 .ui-accordion-caret {
   height: 26px;

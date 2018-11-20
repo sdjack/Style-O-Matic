@@ -4,39 +4,38 @@
  * @author Steven Jackson
 * @scss ../../scss/components/Header
  * @example <Header>
-             Example Content
+             Example Title
            </Header>
  */
 import React, { cloneElement } from "react";
+import cx from "classnames";
 import {
   CoreComponent,
-  getValidProps,
   setCorePropDefaults,
+  setCorePropTypes,
+  getValidProps,
   ROLE
 } from "../../lib";
-import Drawer from "../Drawer/Drawer.js";
-import HeaderContent from "./HeaderContent.js";
+import HeaderTitle from "./HeaderTitle.js";
+import HeaderSubtitle from "./HeaderSubtitle.js";
 import "./Header.css";
 
-class HeaderDrawer extends Drawer {
-  static defaultProps = {
-    renderAs: "div",
-    uirole: ROLE.DRAWER,
-    attach: "top"
-  };
-}
-
 class Header extends CoreComponent {
-  static defaultProps = setCorePropDefaults({
-    renderAs: "header",
-    uirole: ROLE.HEADER
+  static propTypes = setCorePropTypes({
+    display: ["xxxl", "xxl", "xl", "l", "m"]
   });
 
-  static Drawer = HeaderDrawer;
-  static Content = HeaderContent;
+  static defaultProps = setCorePropDefaults({
+    renderAs: "header",
+    uirole: ROLE.HEADER,
+    display: null
+  });
+
+  static Title = HeaderTitle;
+  static Subtitle = HeaderSubtitle;
 
   renderChild = (child, props) => {
-    const role = child.props.uirole;
+    const role = child.props.uirole || ROLE.CONTENT;
     let ref = c => {
       this[role] = c;
     };
@@ -50,21 +49,63 @@ class Header extends CoreComponent {
     });
   };
 
-  renderCore = () => {
-    const { renderAs: Component, uiclass, children, props } = getValidProps(
-      this.props
-    );
+  render() {
+    const {
+      renderAs: Component,
+      className,
+      display,
+      children,
+      props,
+      inherited
+    } = getValidProps(this.props);
 
+    let titleElement = "h6";
+    let subtitleElement = "small";
+
+    switch (display) {
+      case "xxxl":
+        titleElement = "h1";
+        subtitleElement = "h4";
+        break;
+      case "xxl":
+        titleElement = "h2";
+        subtitleElement = "h4";
+        break;
+      case "xl":
+        titleElement = "h3";
+        subtitleElement = "h5";
+        break;
+      case "l":
+        titleElement = "h4";
+        subtitleElement = "h6";
+        break;
+      case "m":
+        titleElement = "h5";
+        subtitleElement = "small";
+        break;
+      default:
+        titleElement = "h6";
+        subtitleElement = "small";
+        break;
+    }
     return (
-      <Component {...props} key="header">
+      <Component {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
             switch (child.props.uirole) {
-              case ROLE.CONTENT:
-                return this.renderChild(child, { uiclass });
+              case ROLE.SUBTITLE:
+                return this.renderChild(child, {
+                  ...inherited,
+                  renderAs: subtitleElement
+                });
+              case ROLE.TITLE:
+                return this.renderChild(child, {
+                  ...inherited,
+                  renderAs: titleElement
+                });
               default:
                 return child;
             }
@@ -73,7 +114,7 @@ class Header extends CoreComponent {
         })}
       </Component>
     );
-  };
+  }
 }
 
 export default Header;

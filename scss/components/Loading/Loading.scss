@@ -24,7 +24,7 @@
   padding: 0;
   position: relative;
   overflow: hidden;
-  z-index: 70;
+  z-index: 999;
   @include content-align-center();
   &.ui-overlay {
     background-color: rgba(0,0,0,0.8);
@@ -40,7 +40,7 @@
     left: 0;
     opacity: 0.7 !important;
   }
-  &.active {
+  &.ui--active {
     display: flex;
   }
 }

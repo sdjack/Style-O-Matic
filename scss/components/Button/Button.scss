@@ -39,7 +39,7 @@ $button-icon-size-mini: 24px !default;
   border: none;
   border-radius: $border-radius;
   cursor: pointer;
-  overflow: hidden;
+  overflow: visible;
   @include button-skin();
   @include text-align-center();
   @include animate-default(0.2s);
@@ -57,7 +57,7 @@ $button-icon-size-mini: 24px !default;
     background-color: $button-active-background-color;
   }
 
-  &.disabled {
+  &.ui--disabled {
     color: $button-text-color-disabled !important;
     background-color: $button-background-color-disabled !important;
 

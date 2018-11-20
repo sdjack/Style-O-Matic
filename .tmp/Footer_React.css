@@ -1,45 +1,4 @@
 .ui-footer {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-          flex-wrap: nowrap;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-align-content: flex-start;
-      -ms-flex-line-pack: start;
-          align-content: flex-start;
-  -webkit-flex-basis: 100%;
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%;
-  width: 100%;
-  height: 32px;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 199;
-  color: #EFF3F8;
-  background-color: #3F4348;
-  box-shadow: inset 0 3px 4px -1px #262626; }
-
-.ui-footer-content {
   display: block;
-  width: 100%;
-  height: 100%;
-  -webkit-flex-basis: 100%;
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%;
-  margin: 0px;
-  padding: 0px;
-  position: relative;
-  font-size: 1em !important;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch; }
+  padding: 0.8em 1.6em;
+  font-weight: inherit; }

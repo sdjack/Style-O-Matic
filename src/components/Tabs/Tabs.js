@@ -69,7 +69,7 @@ class Tabs extends CoreComponent {
 
   renderToggle = (child, index, parentId, { ...props }) => {
     const id = `${parentId}_tab_${index}`;
-    const activeClass = this.state.activeTab === id ? "tab active" : "tab";
+    const activeClass = this.state.activeTab === id ? "tab ui--active" : "tab";
     return cloneElement(child, {
       ...props,
       ref: child.ref,
@@ -82,7 +82,7 @@ class Tabs extends CoreComponent {
   renderContent = (child, index, parentId, { ...props }) => {
     let id = `${parentId}_tab_${index}`;
     const activeClass =
-      this.state.activeTab === id ? "content active" : "content";
+      this.state.activeTab === id ? "content ui--active" : "content";
     id += "_content";
     return cloneElement(child, {
       ...props,

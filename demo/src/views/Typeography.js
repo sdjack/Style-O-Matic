@@ -4,21 +4,21 @@
  * @author: Steven Jackson
  * ======================================================================== */
 import React from "react";
-import { Grid, Title } from "../../../src/index";
+import { Grid, Header } from "../../../src/index";
 /* eslint-disable */
 class Typeography extends React.Component {
   render() {
     return [
-      <Title renderAs="h1" textAlign="center" key="view-title" sticky>
-        <Title.Content>Typography</Title.Content>
-      </Title>,
+      <Header display="xxl" textAlign="center" key="view-title">
+        <Header.Title>Typography</Header.Title>
+      </Header>,
       <Grid key="view-grid">
         <Grid.Row>
           <Grid.Column textAlign="center">
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content className="ui-serif">Header Elements</Title.Content>
-              <Title.Subtitle>h1 - h6</Title.Subtitle>
-            </Title>
+            <Header display="xl" textAlign="center" className="ui-serif">
+              <Header.Title>Header Elements</Header.Title>
+              <Header.Subtitle>h1 - h6</Header.Subtitle>
+            </Header>
             <br />
             <hr />
             <h1>
@@ -91,9 +91,9 @@ class Typeography extends React.Component {
         <Grid.Row>
           <Grid.Column textAlign="center">
             <section>
-              <Title renderAs="h2" textAlign="center">
-                <Title.Content className="ui-serif">Articles</Title.Content>
-              </Title>
+              <Header display="xl" textAlign="center" className="ui-serif">
+                <Header.Title>Articles</Header.Title>
+              </Header>
               <br />
               <hr />
               <p className="well">Articles</p>
@@ -102,9 +102,9 @@ class Typeography extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center">
-            <Title renderAs="h2" textAlign="center" panel>
-              <Title.Content className="ui-serif">Pre / Code</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center" className="ui-serif" fit="width" panel>
+              <Header.Title>Pre / Code</Header.Title>
+            </Header>
             <section className="ui-extra-margin">
               <p className="well">Pre / Code</p>
             </section>
@@ -112,9 +112,9 @@ class Typeography extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center">
-            <Title renderAs="h2" textAlign="center" panel>
-              <Title.Content className="ui-serif">User Comments</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center" className="ui-serif" fit="width" panel>
+              <Header.Title>User Comments</Header.Title>
+            </Header>
             <section className="ui-extra-margin">
               <div className="ui-user-comment">
                 <div className="ui-user-avatar" />
@@ -149,9 +149,9 @@ class Typeography extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center">
-            <Title renderAs="h2" textAlign="center" panel>
-              <Title.Content className="ui-serif">Detail Lists</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center" className="ui-serif" fit="width" panel>
+              <Header.Title>Detail Lists</Header.Title>
+            </Header>
             <section className="ui-extra-margin">
               <dl>
                 <dt>Item 1</dt>
@@ -166,15 +166,15 @@ class Typeography extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center">
-            <Title renderAs="h2" textAlign="center" panel>
-              <Title.Content className="ui-serif">Quotes & Blockquotes</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center" className="ui-serif" fit="width" panel>
+              <Header.Title>Quotes & Blockquotes</Header.Title>
+            </Header>
             <Grid>
               <Grid.Row>
                 <Grid.Column className="ui-divider-right" textAlign="center" cols={7}>
-                  <Title renderAs="h5" textAlign="center">
-                    <Title.Content className="ui-extra-margin">Blockquotes</Title.Content>
-                  </Title>
+                  <Header display="s" textAlign="center" className="ui-extra-margin">
+                    <Header.Title>Blockquotes</Header.Title>
+                  </Header>
                   <section className="ui-separate-top">
                     <aside className="ui-pull-quote">
                       <p>
@@ -207,9 +207,9 @@ class Typeography extends React.Component {
                   </section>
                 </Grid.Column>
                 <Grid.Column textAlign="center" cols={5}>
-                  <Title renderAs="h5" textAlign="center">
-                    <Title.Content className="ui-extra-margin">Drop Caps</Title.Content>
-                  </Title>
+                  <Header display="s" textAlign="center" className="ui-extra-margin">
+                    <Header.Title>Drop Caps</Header.Title>
+                  </Header>
                   <section className="ui-separate-top">
                     <p className="ui-drop-cap">
                       Embracing the fluid & flexible aspect of responsive web design

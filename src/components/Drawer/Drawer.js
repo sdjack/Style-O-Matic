@@ -12,57 +12,19 @@ import _ from "lodash";
 import classNames from "classnames";
 import {
   CoreComponent,
-  setCorePropTypes,
   setCorePropDefaults,
   getValidProps,
   UIGlobals,
   ROLE
 } from "../../lib";
+import Content from "../Content/Content.js";
 import "./Drawer.css";
 
 class Drawer extends CoreComponent {
-  static propTypes = setCorePropTypes({
-    defaultOpen: "bool"
-  });
-
   static defaultProps = setCorePropDefaults({
     uirole: ROLE.DRAWER,
-    orientation: "horizontal",
-    defaultOpen: true
+    collapsed: true
   });
-
-  constructor(props) {
-    super(props);
-    this.useParentNode = true;
-    this.state = {
-      orientation: props.orientation,
-      active: props.defaultOpen
-    };
-  }
-
-  handleOnClick = () => {
-    this.setState({ active: !this.state.active });
-  };
-
-  setRefCallback = ref => {
-    if (ref) {
-      const { orientation } = this.state;
-      const { width, height } = ref.getBoundingClientRect();
-      const {
-        height: screenHeight,
-        width: screenWidth
-      } = UIGlobals.getScreenDimensions();
-      let newOrientation = orientation;
-      if (height > screenHeight / 2) {
-        newOrientation = "vertical";
-      } else {
-        newOrientation = "horizontal";
-      }
-      if (newOrientation !== orientation) {
-        this.setState({ orientation: newOrientation });
-      }
-    }
-  };
 
   render() {
     const {
@@ -73,23 +35,21 @@ class Drawer extends CoreComponent {
       uuid,
       fixed,
       disabled,
+      collapsed,
       children,
       props
-    } = getValidProps(this.props, this.state);
-    // this.ensureOrientation();
-    const { orientation, active } = this.state;
+    } = getValidProps(this.props);
     return (
-      <Component {...props} ref={this.onSetRef}>
-        <div className="ui-drawer-content">
+      <Component {...props}>
+        <Content>
           {React.Children.map(children, child =>
             this.renderChild(child, {
               disabled,
               uiclass,
-              orientation,
-              active
+              collapsed
             })
           )}
-        </div>
+        </Content>
       </Component>
     );
   }

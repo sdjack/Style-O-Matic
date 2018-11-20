@@ -1,0 +1,40 @@
+// -----------------------------------------------------------------------------
+  // Footer
+// -----------------------------------------------------------------------------
+
+////
+/// @author Steve Jackson
+/// @group components
+////
+
+// VARIABLES
+$footer-height: $framing-size * 0.8;
+
+.ui-bottom-bar {
+  display: block;
+  justify-content: start;
+  align-content: start;
+  width: 100%;
+  // height: $footer-height;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 199;
+  & > .ui-content {
+    display: block;
+    width: 100%;
+    // height: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    font-size: 1em !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  &.ui--styled {
+    color: $header-text-color;
+    background-color: $color-darker;
+    box-shadow: inset 0 3px 4px -1px #262626;
+  }
+}

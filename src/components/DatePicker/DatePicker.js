@@ -66,7 +66,7 @@ class DatePicker extends CoreComponent {
       };
     }
     const renderKey = `input_${props.uuid}`;
-
+    this.useParentNode = true;
     this.state = {
       renderKey,
       open: false,
@@ -467,7 +467,7 @@ class DatePicker extends CoreComponent {
     const viewMonth = activeDate.getMonth();
     let viewYear = activeDate.getFullYear();
     const windowClass = this.state.open
-      ? "ui-datepicker-window open"
+      ? "ui-datepicker-window ui--open"
       : "ui-datepicker-window";
     const footer = [];
     if (this.state.viewType === "years") {

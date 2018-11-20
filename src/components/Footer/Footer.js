@@ -2,29 +2,19 @@
  * @memberof components
  * @namespace Footer
  * @author Steven Jackson
-* @scss ../../scss/components/Footer
+ * @scss ../../scss/components/Footer
  * @example <Footer>
-   Example Content
- </Footer>
+             Example Title
+           </Footer>
  */
 import React, { cloneElement } from "react";
 import {
   CoreComponent,
-  getValidProps,
   setCorePropDefaults,
+  getValidProps,
   ROLE
 } from "../../lib";
-import Drawer from "../Drawer/Drawer.js";
-import FooterContent from "./FooterContent.js";
 import "./Footer.css";
-
-class FooterDrawer extends Drawer {
-  static defaultProps = {
-    renderAs: "div",
-    uirole: ROLE.DRAWER,
-    attach: "bottom"
-  };
-}
 
 class Footer extends CoreComponent {
   static defaultProps = setCorePropDefaults({
@@ -32,11 +22,8 @@ class Footer extends CoreComponent {
     uirole: ROLE.FOOTER
   });
 
-  static Drawer = FooterDrawer;
-  static Content = FooterContent;
-
   renderChild = (child, props) => {
-    const role = child.props.uirole;
+    const role = child.props.uirole || ROLE.CONTENT;
     let ref = c => {
       this[role] = c;
     };
@@ -50,42 +37,24 @@ class Footer extends CoreComponent {
     });
   };
 
-  renderCore = () => {
-    const {
-      renderAs: Component,
-      uiclass,
-      fixed,
-      children,
-      props
-    } = getValidProps(this.props);
-
-    const output = [];
-
-    if (fixed) {
-      output.push(<div className="ui-footer-bolster" key="footer-bolster" />);
-    }
-
-    output.push(
-      <Component {...props} key="footer">
+  render() {
+    const { renderAs: Component, children, props, inherited } = getValidProps(
+      this.props
+    );
+    return (
+      <Component {...props}>
         {React.Children.map(children, child => {
           if (
             typeof child.props !== "undefined" &&
             typeof child.props.uirole !== "undefined"
           ) {
-            switch (child.props.uirole) {
-              case ROLE.CONTENT:
-                return this.renderChild(child, { uiclass });
-              default:
-                return child;
-            }
+            return this.renderChild(child, { ...inherited });
           }
           return child;
         })}
       </Component>
     );
-
-    return output;
-  };
+  }
 }
 
 export default Footer;

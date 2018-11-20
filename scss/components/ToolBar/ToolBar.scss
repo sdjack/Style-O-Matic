@@ -27,81 +27,80 @@ $toolbar-title-padding: 0.5em 1.2em 0.5em 1.2em !default;
   font-size: inherit;
   @include animate-default();
   transition-property: $layout-transition-properties;
-}
-
-.ui-toolbar-content {
-  z-index: 8;
-  display: flex;
-  flex: 1 1 auto;
-  margin: 0;
-  padding: 0;
-  @include text-horizontal-align-center();
-}
-
-.ui-toolbar-title {
-  display: inline-block;
-  padding: $toolbar-title-padding;
-  font-size: inherit;
-  line-height: 1;
-  margin: 0;
-  border: none;
-  color: inherit;
-  background-color: transparent;
-}
-
-.ui-toolbar-item,
-.ui-toolbar-text,
-.ui-toolbar-button,
-.ui-toolbar-icon {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  height: 100%;
-  vertical-align: middle;
-  white-space: nowrap;
-  text-align: start;
-  text-overflow: ellipsis;
-  margin: 0;
-  padding: $toolbar-unit-padding;
-  border-radius: 0;
-  font-size: inherit;
-  color: inherit;
-  background-color: transparent;
-  @include text-horizontal-align-center();
-  border-left: 1px solid rgba(215,215,215,0.08);
-  border-right: 1px solid rgba(0,0,0,0.05);
-}
-
-.ui-toolbar-item,
-.ui-toolbar-button,
-.ui-toolbar-icon {
-  line-height: 1em;
-}
-
-.ui-toolbar-text {
-  line-height: 2em;
-}
-
-.ui-toolbar-logo {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 0;
-  height: 100%;
-  cursor: pointer;
-  border: none;
-  & > img {
+  & > .ui-content {
+    z-index: 8;
+    display: flex;
+    flex: 1 1 auto;
+    margin: 0;
     padding: 0;
-    height: 100%;
-  }
-}
+    @include text-horizontal-align-center();
 
-.ui-toolbar-list {
-  display: inline-block;
-  padding: $toolbar-unit-padding;
-  margin: 0;
-  letter-spacing: 1px;
-  font-size: inherit;
-  line-height: 1;
-  list-style-type: none;
-  @include text-horizontal-align-right();
+    & > .ui-header {
+      display: inline-block;
+      padding: $toolbar-title-padding;
+      font-size: inherit;
+      line-height: 1;
+      margin: 0;
+      border: none;
+      color: inherit;
+      background-color: transparent;
+    }
+
+    & > .ui-item,
+    & > .ui-text,
+    & > .ui-button,
+    & > .ui-icon {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      height: 100%;
+      vertical-align: middle;
+      white-space: nowrap;
+      text-align: start;
+      text-overflow: ellipsis;
+      margin: 0;
+      padding: $toolbar-unit-padding;
+      border-radius: 0;
+      font-size: inherit;
+      color: inherit;
+      background-color: transparent;
+      @include text-horizontal-align-center();
+      border-left: 1px solid rgba(215,215,215,0.08);
+      border-right: 1px solid rgba(0,0,0,0.05);
+    }
+
+    & > .ui-item,
+    & > .ui-button,
+    & > .ui-icon {
+      line-height: 1em;
+    }
+
+    & > .ui-text {
+      line-height: 2em;
+    }
+
+    & > .ui-logo {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 0;
+      height: 100%;
+      cursor: pointer;
+      border: none;
+      & > img {
+        padding: 0;
+        height: 100%;
+      }
+    }
+
+    & > .ui-list {
+      display: inline-block;
+      padding: $toolbar-unit-padding;
+      margin: 0;
+      letter-spacing: 1px;
+      font-size: inherit;
+      line-height: 1;
+      list-style-type: none;
+      @include text-horizontal-align-right();
+    }
+  }
 }

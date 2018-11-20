@@ -30,7 +30,6 @@ class AccordionContent extends CoreComponent {
       children,
       props
     } = getValidProps(this.props);
-
     return (
       <Component {...props} accordionindex={accordionindex}>
         {children}

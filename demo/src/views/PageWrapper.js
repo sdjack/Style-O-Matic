@@ -7,16 +7,29 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Header, Drawer, ToolBar, Footer, Main } from "../../../src/index";
+import {
+  TopBar,
+  Drawer,
+  ToolBar,
+  BottomBar,
+  Main,
+  Content,
+  Button
+} from "../../../src/index";
 import Navigation from "./Navigation";
 
 class PageWrapper extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      isLoading: false
+      isLoading: false,
+      drawerClosed: true
     };
   }
+
+  toggleDrawerState = () => {
+    this.setState({ drawerClosed: !this.state.drawerClosed });
+  };
 
   handleLoadingState = () => {
     this.setState({ isLoading: !this.state.isLoading });
@@ -25,32 +38,58 @@ class PageWrapper extends React.Component {
   render() {
     const { children } = this.props;
     // UI.setTheme("foo");
-    const loadingProp = this.state.isLoading ? "cube" : null;
+    const { isLoading, drawerClosed } = this.state;
+    const loadingProp = isLoading ? "cube" : null;
     return [
-      <Header key="app-header">
+      <TopBar key="app-top-nav" className="ui--styled">
         <Navigation />
-      </Header>,
+      </TopBar>,
       <Main key="app-content" loader={loadingProp}>
-        <Main.Content>
-          <Drawer fixed />
-          {children}
-        </Main.Content>
+        <Drawer className="ui--styled" vertical collapsed={drawerClosed}>
+          Some Generic Drawer Content.
+        </Drawer>
+        <Content>{children}</Content>
       </Main>,
-      <Footer key="app-footer" onClick={this.handleLoadingState}>
-        <Footer.Content>
-          <ToolBar>
-            <ToolBar.Content contentAlign="left">
-              <ToolBar.Title observe="scroll">Toggle Loading</ToolBar.Title>
-            </ToolBar.Content>
-            <ToolBar.Content contentAlign="right">
-              <ToolBar.Button>OP1</ToolBar.Button>
-              <ToolBar.Button>OP2</ToolBar.Button>
-            </ToolBar.Content>
-          </ToolBar>
-        </Footer.Content>
-      </Footer>
+      <BottomBar key="app-footer" className="ui--styled">
+        <ToolBar>
+          <Content contentAlign="left">Bottom Bar</Content>
+          <Content contentAlign="right">
+            <Button onClick={this.toggleDrawerState}>Toggle Drawer</Button>
+            <Button onClick={this.handleLoadingState}>Toggle Loading</Button>
+          </Content>
+        </ToolBar>
+      </BottomBar>
     ];
   }
+
+  // render() {
+  //   const { children } = this.props;
+  //   // UI.setTheme("foo");
+  //   const { isLoading, drawerOpen } = this.state;
+  //   const loadingProp = isLoading ? "cube" : null;
+  //   return [
+  //     <TopBar key="app-header">
+  //       <Navigation />
+  //     </TopBar>,
+  //     <Main key="app-content" loader={loadingProp}>
+  //       <Drawer vertical collapsed={drawerOpen}>
+  //         Some Generic Drawer Content.
+  //       </Drawer>
+  //       {children}
+  //     </Main>,
+  //     <BottomBar key="app-footer">
+  //       <ToolBar>
+  //         <Content contentAlign="left">
+  //           <Header observe="scroll">Toggle Loading</Header>
+  //         </Content>
+  //         <Content contentAlign="right">
+  //           <Button onClick={this.toggleDrawerState}>Toggle Drawer</Button>
+  //           <Button onClick={this.handleLoadingState}>Toggle Loading</Button>
+  //         </Content>
+  //       </ToolBar>
+  //     </BottomBar>
+  //   ];
+  // }
 }
 
 export default PageWrapper;

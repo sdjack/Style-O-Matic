@@ -7,23 +7,23 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Grid, Title } from "../../../src/index";
+import { Grid, Header } from "../../../src/index";
 
 class BoilerplateView extends React.Component {
   render() {
     return [
-      <Title renderAs="h1" textAlign="center" key="view-title" sticky>
-        <Title.Content>View Title</Title.Content>
-      </Title>,
+      <Header display="xxl" textAlign="center" key="view-title">
+        <Header.Title>View Title</Header.Title>
+      </Header>,
       <Grid key="grip-panel1">
         <Grid.Row>
           <Grid.Column textAlign="center">
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title renderAs="h2" textAlign="center">
-                    <Title.Content>Subsection Title</Title.Content>
-                  </Title>
+                  <Header display="xl" textAlign="center">
+                    <Header.Title>Subsection Title</Header.Title>
+                  </Header>
                   <hr />
                 </Grid.Column>
               </Grid.Row>

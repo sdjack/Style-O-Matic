@@ -17,12 +17,32 @@
 	margin-bottom: 1em;
 	padding: 0;
   @include text-align-left();
+
+  & > .ui-content {
+    display: block;
+  	height: 0px;
+  	padding: 0;
+  	margin: 0;
+    font-family: inherit;
+    color: inherit;
+  	overflow: hidden;
+    @include animate-default(0.2s);
+    transition-property: height, padding, box-shadow;
+
+  	&.ui--active {
+  		height: auto;
+  		padding: 0.8em;
+  		margin: 0;
+  	}
+  }
 }
 
 .ui-accordion-title {
 	position: relative;
+  display: block;
 	border-bottom: none;
-	padding: 0.66em 0;
+  width: 100%;
+	padding: 0.4em 0;
   font-family: inherit;
   color: inherit;
   background-color: inherit;
@@ -33,27 +53,6 @@
 	          background-color 0.2s $animation-curve-default,
 	          color 0.2s $animation-curve-default;
 	cursor: pointer;
-
-	& > .fa {
-		line-height: 32px;
-	}
-}
-
-.ui-accordion-content {
-	height: 0px;
-	padding: 0;
-	margin: 0;
-  font-family: inherit;
-  color: inherit;
-	overflow: hidden;
-  @include animate-default(0.2s);
-  transition-property: height, padding, box-shadow;
-
-	&.active {
-		height: auto;
-		padding: 0.8em;
-		margin: 0;
-	}
 }
 
 .ui-accordion-caret {

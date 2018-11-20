@@ -39,7 +39,7 @@ $toasts-padding: 0 24px;
   @include animate-default(0.2s);
   overflow: hidden;
   transition-property: height, padding, line-height;
-  &.active {
+  &.ui--active {
     height: $toasts-height;
     line-height: $toasts-height;
     padding: $toasts-padding;

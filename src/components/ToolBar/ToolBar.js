@@ -5,13 +5,13 @@
 * @scss ../../scss/components/ToolBar
  * @example <ToolBar raised>
    <ToolBar.Content contentAlign="left">
-     <ToolBar.Title>TITLE</ToolBar.Title>
-     <ToolBar.Button>Button</ToolBar.Button>
-     <ToolBar.Button>Button</ToolBar.Button>
+     TITLE
+     <Button>Button</Button>
+     <Button>Button</Button>
    </ToolBar.Content>
    <ToolBar.Content contentAlign="right">
-     <ToolBar.Text>Raised</ToolBar.Text>
-     <ToolBar.Text>Example</ToolBar.Text>
+     <Text>Raised</Text>
+     <Text>Example</Text>
    </ToolBar.Content>
  </ToolBar>
  */
@@ -23,12 +23,6 @@ import {
   setCorePropDefaults,
   ROLE
 } from "../../lib";
-import ToolBarContent from "./ToolBarContent.js";
-import ToolBarItem from "./ToolBarItem.js";
-import ToolBarTitle from "./ToolBarTitle.js";
-import ToolBarText from "./ToolBarText.js";
-import ToolBarIcon from "./ToolBarIcon.js";
-import Button from "../Button/Button.js";
 import "./ToolBar.css";
 
 class ToolBar extends CoreComponent {
@@ -36,13 +30,6 @@ class ToolBar extends CoreComponent {
     renderAs: "div",
     uirole: ROLE.TOOLBAR
   });
-
-  static Content = ToolBarContent;
-  static Item = ToolBarItem;
-  static Icon = ToolBarIcon;
-  static Title = ToolBarTitle;
-  static Button = Button;
-  static Text = ToolBarText;
 
   render() {
     const { renderAs: Component, children, props, inherited } = getValidProps(

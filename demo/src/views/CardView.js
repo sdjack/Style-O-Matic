@@ -7,172 +7,205 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Card, Grid, Title } from "../../../src/index";
-
+import { Card, Icon, Grid, Header, Footer, Section } from "../../../src/index";
+/* eslint-disable */
 class CardView extends React.Component {
   render() {
     return [
-      <Title renderAs="h1" textAlign="center" key="view-title" sticky>
-        <Title.Content>Cards</Title.Content>
-      </Title>,
+      <Header display="xxl" textAlign="center" key="view-title">
+        <Header.Title>Cards</Header.Title>
+      </Header>,
       <Grid key="view-grid" panel>
         <Grid.Row>
-          <Grid.Column textAlign="center">&nbsp;</Grid.Column>
+          <Grid.Column>&nbsp;</Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" contentAlign="center" cols={3}>
-            <br />
-            <br />
-            <br />
-            <br />
+          <Grid.Column cols={3}>
             <strong>Standard</strong>
           </Grid.Column>
-          <Grid.Column textAlign="center" cols={3}>
+          <Grid.Column cols={3}>
             <strong>Left Aligned</strong>
             <Card align="left">
-              <Card.Header>Card Header</Card.Header>
-              <Card.Content>Card Content</Card.Content>
-              <Card.Footer>Card Footer</Card.Footer>
+              <Header>
+                <Header.Title>Card Header</Header.Title>
+              </Header>
+              <Section>Card Content</Section>
+              <Footer>Card Footer</Footer>
             </Card>
           </Grid.Column>
-          <Grid.Column textAlign="center" cols={3}>
+          <Grid.Column cols={3}>
             <strong>Center Aligned</strong>
             <Card align="center">
-              <Card.Header>Card Header</Card.Header>
-              <Card.Content>Card Content</Card.Content>
-              <Card.Footer>Card Footer</Card.Footer>
+              <Header>
+                <Header.Title>Card Header</Header.Title>
+              </Header>
+              <Section>Card Content</Section>
+              <Footer>Card Footer</Footer>
             </Card>
           </Grid.Column>
-          <Grid.Column textAlign="center" cols={3}>
+          <Grid.Column cols={3}>
             <strong>Right Aligned</strong>
             <Card align="right">
-              <Card.Header>Card Header</Card.Header>
-              <Card.Content>Card Content</Card.Content>
-              <Card.Footer>Card Footer</Card.Footer>
+              <Header>
+                <Header.Title>Card Header</Header.Title>
+              </Header>
+              <Section>Card Content</Section>
+              <Footer>Card Footer</Footer>
             </Card>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center">&nbsp;</Grid.Column>
+          <Grid.Column>&nbsp;</Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" contentAlign="center" cols={3}>
-            <br />
-            <br />
-            <br />
-            <br />
+          <Grid.Column cols={3}>
+            <strong>Large</strong>
+          </Grid.Column>
+          <Grid.Column cols={9}>
+            <Card align="left">
+              <Header display="l">
+                <Header.Title>Card Header</Header.Title>
+                <Header.Subtitle>Card SubHeader</Header.Subtitle>
+              </Header>
+              <Section>
+                <Header>
+                  Some text..
+                </Header>
+                <p>
+                  Sunt in culpa qui officia deserunt mollit anim id
+                  est laborum consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                </p>
+              </Section>
+              <Footer>Card Footer</Footer>
+            </Card>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>&nbsp;</Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column cols={3}>
             <strong>Styled</strong>
           </Grid.Column>
           <Grid.Column cols={3}>
             <Card styled>
-              <Card.Header>Card Header</Card.Header>
-              <Card.Content>Card Content</Card.Content>
-              <Card.Footer>Card Footer</Card.Footer>
+              <Header>
+                <Header.Title>Card Header</Header.Title>
+              </Header>
+              <Section>Card Content</Section>
+              <Footer>Card Footer</Footer>
             </Card>
           </Grid.Column>
           <Grid.Column cols={3}>
             <Card align="center" styled round>
-              <Card.Header>Card Header</Card.Header>
-              <Card.Content>Card Content</Card.Content>
-              <Card.Footer>Card Footer</Card.Footer>
+              <Header>
+                <Header.Title>Card Header</Header.Title>
+              </Header>
+              <Section>Card Content</Section>
+              <Footer>Card Footer</Footer>
             </Card>
           </Grid.Column>
           <Grid.Column cols={3}>
             <Card align="right" styled>
-              <Card.Header>Card Header</Card.Header>
-              <Card.Content>Card Content</Card.Content>
-              <Card.Footer>Card Footer</Card.Footer>
+              <Header>
+                <Header.Title>Card Header</Header.Title>
+              </Header>
+              <Section>Card Content</Section>
+              <Footer>Card Footer</Footer>
             </Card>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center">&nbsp;</Grid.Column>
+          <Grid.Column>&nbsp;</Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" contentAlign="center" cols={3}>
-            <br />
-            <br />
-            <br />
-            <br />
+          <Grid.Column cols={3}>
             <strong>w/ Icons</strong>
           </Grid.Column>
           <Grid.Column cols={3}>
             <Card styled>
-              <Card.Header>
-                <Card.Icon icon="cart" />
-                Card Header
-              </Card.Header>
-              <Card.Content>Card Content</Card.Content>
-              <Card.Footer>
+              <Header>
+                <Header.Title>
+                  <Icon>cart</Icon>
+                  Card Header
+                </Header.Title>
+              </Header>
+              <Section>Card Content</Section>
+              <Footer>
+                <Icon>warning</Icon>
                 Card Footer
-                <Card.Icon icon="warning" />
-              </Card.Footer>
+              </Footer>
             </Card>
           </Grid.Column>
           <Grid.Column cols={3}>
             <Card align="center" styled round>
-              <Card.Header>
-                <Card.Icon icon="star" />
-                Card Header
-                <Card.Icon icon="star" />
-              </Card.Header>
-              <Card.Content>Card Content</Card.Content>
-              <Card.Footer>
-                <Card.Icon icon="star" />
+              <Header>
+                <Header.Title>
+                  <Icon>star</Icon>
+                  Card Header
+                  <Icon reversed>star</Icon>
+                </Header.Title>
+              </Header>
+              <Section>Card Content</Section>
+              <Footer>
+                <Icon>star</Icon>
                 Card Footer
-                <Card.Icon icon="star" />
-              </Card.Footer>
+                <Icon reversed>star</Icon>
+              </Footer>
             </Card>
           </Grid.Column>
           <Grid.Column cols={3}>
             <Card align="right" styled>
-              <Card.Header>
-                <Card.Icon icon="speech" />
-                Card Header
-              </Card.Header>
-              <Card.Content>Card Content</Card.Content>
-              <Card.Footer>
+              <Header>
+                <Header.Title icon="speech" reversed>Card Header</Header.Title>
+              </Header>
+              <Section>Card Content</Section>
+              <Footer>
                 Card Footer
-                <Card.Icon icon="warning" />
-              </Card.Footer>
+                <Icon reversed>warning</Icon>
+              </Footer>
             </Card>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center">&nbsp;</Grid.Column>
+          <Grid.Column>&nbsp;</Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center" contentAlign="center" cols={3}>
-            <br />
-            <br />
-            <br />
-            <br />
+          <Grid.Column cols={3}>
             <strong>Colored</strong>
           </Grid.Column>
           <Grid.Column cols={3}>
             <Card styled>
-              <Card.Header color="white">Card Header</Card.Header>
-              <Card.Content color="black">Card Content</Card.Content>
-              <Card.Footer color="white">Card Footer</Card.Footer>
+              <Header color="white">
+                <Header.Title>Card Header</Header.Title>
+              </Header>
+              <Section className="ui-black">Card Content</Section>
+              <Footer className="ui-white">Card Footer</Footer>
             </Card>
           </Grid.Column>
           <Grid.Column cols={3}>
             <Card align="center" styled>
-              <Card.Header color="red">Card Header</Card.Header>
-              <Card.Content color="orange">Card Content</Card.Content>
-              <Card.Footer color="yellow">Card Footer</Card.Footer>
+              <Header color="red">
+                <Header.Title>Card Header</Header.Title>
+              </Header>
+              <Section className="ui-orange">Card Content</Section>
+              <Footer className="ui-yellow">Card Footer</Footer>
             </Card>
           </Grid.Column>
           <Grid.Column cols={3}>
             <Card align="right" styled>
-              <Card.Header color="green">Card Header</Card.Header>
-              <Card.Content color="blue">Card Content</Card.Content>
-              <Card.Footer color="violet">Card Footer</Card.Footer>
+              <Header color="green">
+                <Header.Title>Card Header</Header.Title>
+              </Header>
+              <Section className="ui-blue">Card Content</Section>
+              <Footer className="ui-violet">Card Footer</Footer>
             </Card>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column textAlign="center">&nbsp;</Grid.Column>
+          <Grid.Column>&nbsp;</Grid.Column>
         </Grid.Row>
       </Grid>
     ];

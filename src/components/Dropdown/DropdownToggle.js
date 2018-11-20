@@ -4,31 +4,43 @@
  * @author Steven Jackson
  */
 import React from "react";
+import cx from "classnames";
 import {
   CoreComponent,
+  setCorePropTypes,
   setCorePropDefaults,
   getValidProps,
   ROLE
 } from "../../lib";
 
 class DropdownToggle extends CoreComponent {
+  static propTypes = setCorePropTypes({
+    caret: "bool"
+  });
+
   static defaultProps = setCorePropDefaults({
-    renderAs: "button",
+    renderAs: "div",
     uirole: ROLE.TOGGLE,
-    role: ROLE.PRESENTATION
+    role: ROLE.PRESENTATION,
+    caret: false
   });
 
   render() {
-    const { renderAs: Component, open, children, props } = getValidProps(
-      this.props
-    );
-
-    const caretClass = open ? "fa-caret-down" : "fa-caret-right";
-
+    const {
+      renderAs: Component,
+      className,
+      caret,
+      children,
+      props
+    } = getValidProps(this.props);
+    const classes = {
+      "ui-caret": caret
+    };
+    const uiClassCore = cx(className, classes);
+    delete props.className;
     return (
-      <Component {...props}>
+      <Component {...props} className={uiClassCore}>
         {children}
-        <span className={`ui-dropdown-caret fa ${caretClass}`} />
       </Component>
     );
   }

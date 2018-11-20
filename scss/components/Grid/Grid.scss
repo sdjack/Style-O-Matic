@@ -12,6 +12,7 @@
 .ui-grid {
   display: block;
   padding: 0;
+  width: 100%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -35,13 +36,15 @@
 
 .ui-grid-column,
 .ui-grid-row-column {
-  display: inline-block;
+  display: block;
+  justify-content: unset;
+  align-content: unset;
   flex-grow: 1;
   flex-shrink: 1;
 
   margin: 0.4em 0;
-  padding-left: 0.25%;
-  padding-right: 0.25%;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
   padding-bottom: 0.4em;
 
   &.ui-panel {

@@ -17,27 +17,21 @@ import {
   ROLE
 } from "../../lib";
 import NavItem from "./NavItem.js";
-import NavFolder from "./NavFolder.js";
-import NavWidget from "./NavWidget.js";
 import "./Nav.css";
 
 class Nav extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "nav",
-    uirole: ROLE.NAV,
-    orientation: "horizontal"
+    uirole: ROLE.NAV
   });
 
   static Item = NavItem;
-  static Folder = NavFolder;
-  static Widget = NavWidget;
 
   constructor(props, ...args) {
     super(props, ...args);
     const isMobile = window.innerWidth <= 1024;
     const collapsed = isMobile ? true : props.collapsed;
     this.state = {
-      orientation: props.orientation,
       collapsed,
       isMobile
     };
@@ -81,11 +75,35 @@ class Nav extends CoreComponent {
     const {
       renderAs: Component,
       canMinimize,
+      id,
       children,
       props,
       inherited
     } = getValidProps(this.props, this.state);
     const { collapsed, isMobile } = this.state;
+    const listChildren = [];
+    React.Children.map(children, child => {
+      if (
+        typeof child.props !== "undefined" &&
+        typeof child.props.uirole !== "undefined" &&
+        typeof child.props.uigroup !== "undefined" &&
+        child.props.uigroup === ROLE.NAV
+      ) {
+        listChildren.push(
+          <li key={`${id}_${listChildren.length}`}>
+            {this.renderChild(child, {
+              collapsed,
+              ...inherited
+            })}
+          </li>
+        );
+      } else {
+        listChildren.push(
+          <li key={`${id}_${listChildren.length}`}>{child}</li>
+        );
+      }
+      return null;
+    });
     return (
       <Component {...props}>
         {isMobile ? (
@@ -98,20 +116,7 @@ class Nav extends CoreComponent {
             </button>
           </div>
         ) : null}
-        <ul className="ui-nav-list">
-          {React.Children.map(children, child => {
-            if (
-              typeof child.props !== "undefined" &&
-              typeof child.props.uirole !== "undefined"
-            ) {
-              return this.renderChild(child, {
-                collapsed,
-                ...inherited
-              });
-            }
-            return child;
-          })}
-        </ul>
+        <ul className="ui-nav-list">{listChildren}</ul>
       </Component>
     );
   };

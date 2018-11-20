@@ -13,7 +13,7 @@ import {
   Dropdown,
   Grid,
   Pill,
-  Title
+  Header
 } from "../../../src/index";
 
 class ButtonsView extends React.Component {
@@ -21,15 +21,15 @@ class ButtonsView extends React.Component {
 
   render() {
     return [
-      <Title renderAs="h1" textAlign="center" key="view-title" sticky>
-        <Title.Content>Buttons</Title.Content>
-      </Title>,
+      <Header display="xxl" textAlign="center" key="view-title">
+        <Header.Title>Buttons</Header.Title>
+      </Header>,
       <Grid key="view-grid">
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Default</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center">
+              <Header.Title>Default</Header.Title>
+            </Header>
             <hr />
             <br />
             <Grid>
@@ -47,9 +47,9 @@ class ButtonsView extends React.Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Filled</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center">
+              <Header.Title>Filled</Header.Title>
+            </Header>
             <hr />
             <br />
             <Grid>
@@ -82,9 +82,9 @@ class ButtonsView extends React.Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Outlined</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center">
+              <Header.Title>Outlined</Header.Title>
+            </Header>
             <hr />
             <br />
             <Grid>
@@ -117,9 +117,9 @@ class ButtonsView extends React.Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Conditions</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center">
+              <Header.Title>Conditions</Header.Title>
+            </Header>
             <hr />
             <br />
             <Grid>
@@ -143,9 +143,9 @@ class ButtonsView extends React.Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Bonus Features</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center">
+              <Header.Title>Bonus Features</Header.Title>
+            </Header>
             <hr />
             <br />
             <Grid>
@@ -170,26 +170,24 @@ class ButtonsView extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Dropdown</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center">
+              <Header.Title>Dropdown</Header.Title>
+            </Header>
             <hr />
             <br />
             <Grid>
               <Grid.Row>
                 <Grid.Column textAlign="center">
                   <Dropdown id="dd1">
-                    <Dropdown.Toggle color="red">
-                      Example Dropdown
-                    </Dropdown.Toggle>
-                    <Dropdown.Content>
+                    <Button color="red">Example Dropdown</Button>
+                    <Dropdown.List>
                       <span>Option 1</span>
                       <span>Option 2</span>
                       <span>Option 3</span>
                       <span>Option 4</span>
                       <span>Option 5</span>
                       <span>Option 6</span>
-                    </Dropdown.Content>
+                    </Dropdown.List>
                   </Dropdown>
                 </Grid.Column>
               </Grid.Row>
@@ -198,9 +196,9 @@ class ButtonsView extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Pills</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center">
+              <Header.Title>Pills</Header.Title>
+            </Header>
             <hr />
             <br />
             <Grid>
@@ -234,9 +232,9 @@ class ButtonsView extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title renderAs="h2" textAlign="center">
-              <Title.Content>Button Bar</Title.Content>
-            </Title>
+            <Header display="xl" textAlign="center">
+              <Header.Title>Button Bar</Header.Title>
+            </Header>
             <hr />
             <br />
             <Grid>

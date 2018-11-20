@@ -11,7 +11,7 @@
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  overflow: hidden;
+  overflow: visible;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -42,10 +42,10 @@
   .ui-button:hover, .ui-button:active {
     color: rgba(255, 255, 255, 0.5);
     background-color: rgba(0, 0, 0, 0.3); }
-  .ui-button.disabled {
+  .ui-button.ui--disabled {
     color: #F5F8FB !important;
     background-color: #CFD3D8 !important; }
-    .ui-button.disabled:hover, .ui-button.disabled:focus, .ui-button.disabled:active {
+    .ui-button.ui--disabled:hover, .ui-button.ui--disabled:focus, .ui-button.ui--disabled:active {
       color: #F5F8FB !important;
       background-color: #CFD3D8 !important; }
   .ui-button.header {

@@ -69,6 +69,21 @@ span.label {
   line-height: $widget-size / 4;
 }
 
+label.ui--invalid {
+	color: #e32;
+}
+
+label.ui--required {
+	&:after {
+		color: #e32;
+		content: ' *  ';
+		display: inline;
+		font-size: 18px;
+		vertical-align: text-bottom;
+		margin-right: 2px;
+	}
+}
+
 legend {
   height: $widget-size;
   font-size: $widget-font-size + 2;

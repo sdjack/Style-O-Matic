@@ -9,7 +9,6 @@
  */
 import React, { cloneElement } from "react";
 import ReactDOM from "react-dom";
-import cx from "classnames";
 import {
   CoreComponent,
   setCorePropDefaults,
@@ -18,10 +17,6 @@ import {
   ROLE
 } from "../../lib";
 
-import ModalHeader from "./ModalHeader";
-import ModalContent from "./ModalContent";
-import ModalFooter from "./ModalFooter";
-
 import "./Modal.css";
 
 class Modal extends CoreComponent {
@@ -29,10 +24,6 @@ class Modal extends CoreComponent {
     renderAs: "div",
     uirole: ROLE.MODAL
   });
-
-  static Header = ModalHeader;
-  static Content = ModalContent;
-  static Footer = ModalFooter;
 
   constructor(props, context) {
     super(props, context);
@@ -109,15 +100,7 @@ class Modal extends CoreComponent {
                 >
                   <i className="ui-icon ui-icon-close" aria-hidden="true" />
                 </div>
-                {React.Children.map(children, child => {
-                  if (
-                    typeof child.props !== "undefined" &&
-                    typeof child.props.uirole !== "undefined"
-                  ) {
-                    return this.renderChild(child, inherited);
-                  }
-                  return child;
-                })}
+                {children}
               </div>
             </div>
           </div>

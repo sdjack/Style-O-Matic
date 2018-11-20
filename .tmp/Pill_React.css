@@ -39,15 +39,15 @@
     box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 3px -1px rgba(0, 0, 0, 0.2); }
   .ui-pill:hover, .ui-pill:focus, .ui-pill:active {
     border: none; }
-  .ui-pill.disabled {
+  .ui-pill.ui--disabled {
     color: #F5F8FB !important;
     background-color: #CFD3D8 !important; }
-    .ui-pill.disabled > .ui-pill-action {
+    .ui-pill.ui--disabled > .ui-pill-action {
       color: #F5F8FB !important;
       background-color: #CFD3D8 !important;
       cursor: default;
       box-shadow: none; }
-      .ui-pill.disabled > .ui-pill-action:hover, .ui-pill.disabled > .ui-pill-action:focus, .ui-pill.disabled > .ui-pill-action:active {
+      .ui-pill.ui--disabled > .ui-pill-action:hover, .ui-pill.ui--disabled > .ui-pill-action:focus, .ui-pill.ui--disabled > .ui-pill-action:active {
         color: #F5F8FB !important;
         background-color: #CFD3D8 !important; }
 
@@ -81,7 +81,10 @@
       -ms-flex-line-pack: center;
           align-content: center; }
   .ui-pill-action > .ui-icon {
-    padding-left: 0.08em; }
+    padding: 0; }
+    .ui-pill-action > .ui-icon:before, .ui-pill-action > .ui-icon:after {
+      padding: 0 !important;
+      font-size: .94em; }
   .ui-pill-action:hover, .ui-pill-action:focus, .ui-pill-action:active {
     border: none; }
   .ui-pill-action:hover, .ui-pill-action:active {

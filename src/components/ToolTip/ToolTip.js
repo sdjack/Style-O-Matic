@@ -20,19 +20,20 @@ class ToolTip extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "span",
     uirole: ROLE.TOOLTIP,
-    position: "bottom"
+    position: "top"
   });
 
   render() {
-    const { renderAs: Component, position, children, props } = getValidProps(
-      this.props
-    );
-
+    const {
+      renderAs: Component,
+      text,
+      position,
+      children,
+      props
+    } = getValidProps(this.props);
+    const tipText = text || escape(children);
     return (
-      <Component
-        data-ui-tooltip={`${escape(children)}`}
-        data-ui-tooltip-pos={position}
-      >
+      <Component data-ui-tooltip={tipText} data-ui-tooltip-pos={position}>
         {children}
       </Component>
     );

@@ -1,0 +1,27 @@
+.ui-bottom-bar {
+  display: block;
+  -webkit-justify-content: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-align-content: start;
+      -ms-flex-line-pack: start;
+          align-content: start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 199; }
+  .ui-bottom-bar > .ui-content {
+    display: block;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    font-size: 1em !important;
+    -webkit-overflow-scrolling: touch; }
+  .ui-bottom-bar.ui--styled {
+    color: #EFF3F8;
+    background-color: #2F3338;
+    box-shadow: inset 0 3px 4px -1px #262626; }

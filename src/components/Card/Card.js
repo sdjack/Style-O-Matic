@@ -26,10 +26,6 @@ import {
   setCorePropDefaults,
   ROLE
 } from "../../lib";
-import CardHeader from "./CardHeader";
-import CardContent from "./CardContent";
-import CardFooter from "./CardFooter";
-import CardIcon from "./CardIcon";
 import "./Card.css";
 
 class Card extends CoreComponent {
@@ -41,15 +37,9 @@ class Card extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "div",
     uirole: ROLE.CARD,
-    align: "left",
     styled: false,
     round: false
   });
-
-  static Header = CardHeader;
-  static Content = CardContent;
-  static Footer = CardFooter;
-  static Icon = CardIcon;
 
   render() {
     const {

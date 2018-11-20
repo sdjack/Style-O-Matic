@@ -1,0 +1,32 @@
+.ui-top-bar {
+  display: block;
+  -webkit-justify-content: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-align-content: start;
+      -ms-flex-line-pack: start;
+          align-content: start;
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 77; }
+  .ui-top-bar > .ui-content {
+    display: block;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    -webkit-overflow-scrolling: touch; }
+  .ui-top-bar.ui--styled {
+    color: #EFF3F8;
+    background-color: #3F4348;
+    box-shadow: -1px 1px 2px -1px rgba(0, 0, 0, 0.23), 2px 1px 2px -1px rgba(0, 0, 0, 0.23); }
+  @media screen and (max-width: 1024px) {
+    .ui-top-bar {
+      min-height: 40px; } }

@@ -22,7 +22,7 @@
   font-family: inherit;
   padding: 0 4px 0 1px;
 
-  &.disabled {
+  &.ui--disabled {
     background-color: rgba(0,0,0,0);
     & > .ui-pagination-page {
       color: $color-invisible !important;
@@ -30,7 +30,7 @@
   }
 }
 
-.ui-pagination-button:not(.disabled):hover {
+.ui-pagination-button:not(.ui--disabled):hover {
   background-color: rgba(150,150,150,0.033);
   & > .ui-pagination-page {
     border-color: rgba(0,0,0,0.6);
@@ -43,7 +43,7 @@
   height: 24px;
   font-family: inherit;
 
-  &.disabled {
+  &.ui--disabled {
     opacity: 0.33;
   }
 }
@@ -66,13 +66,13 @@
     opacity: 1;
   }
 
-  &.active {
+  &.ui--active {
     opacity: 1;
     border-color: rgba(0,0,0,0.2);
   }
 }
 
-.ui-pagination-page.active:hover {
+.ui-pagination-page.ui--active:hover {
   border-color: rgba(0,0,0,0.5);
 }
 

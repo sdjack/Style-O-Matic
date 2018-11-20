@@ -11,66 +11,62 @@
 $drawer-size-threshold: 1000px;
 
 .ui-drawer {
-  display: flex;
-  width: auto;
-  height: auto;
-  z-index: 99;
-  padding: 0px;
-  margin: 0px;
+  display: block;
+  z-index: 50;
+  padding: 0;
+  margin: 0;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-content: space-between;
-  @include box-shadow($shadow-hidden);
-  &.active.ui-shadow {
-    box-shadow: -1px 1px 2px -1px rgba(0,0,0,.23),2px 1px 2px -1px rgba(0,0,0,.23);
-  }
-
-  &.ui-orientation-vertical {
-    min-height: 100%;
-    max-height: 100%;
-    flex-direction: column;
-
-    & > .ui-drawer-content {
-      width: 0px;
-      height: 100%;
-    }
-
-    &.active {
-      & > .ui-drawer-content {
-        width: auto !important;
-      }
-    }
-  }
-
-  &.ui-orientation-horizontal {
-    min-width: 100%;
-    max-width: 100%;
-    flex-direction: row;
-
-    & > .ui-drawer-content {
-      height: 0px;
-      width: 100%;
-    }
-
-    &.active {
-      & > .ui-drawer-content {
-        height: auto !important;
-      }
-    }
-  }
-}
-
-.ui-drawer-content {
-  display: block;
-  overflow: hidden;
-}
-
-.ui-drawer,
-.ui-drawer-content {
   color: inherit;
   background-color: inherit;
   @include animate-default(0.2s);
   transition-property: all;
+  &:not(.ui--vertical) {
+    flex-direction: row;
+    &:not(.ui--collapsed) {
+      & > .ui-content {
+        min-width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+  &.ui--vertical {
+    flex-direction: column;
+    &:not(.ui--collapsed) {
+      & > .ui-content {
+        min-height: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+  &.ui--collapsed {
+    & > .ui-content {
+      width: 0px;
+      min-width: 0px;
+      max-width: 0px;
+      height: 0px;
+      min-height: 0px;
+      max-height: 0px;
+      padding: 0;
+    }
+  }
+  & > .ui-content {
+    display: block;
+    overflow: hidden;
+    color: inherit;
+    background-color: inherit;
+    @include animate-default(0.2s);
+    transition-property: all;
+    padding: 2.5em;
+  }
+  &.ui--styled {
+    color: $header-text-color;
+    background-color: $color-darkest;
+    & > .ui-content {
+      box-shadow: inset -.2em 2.2em .5em #000;
+    }
+  }
 }
 
 .ui-drawer-toggle {

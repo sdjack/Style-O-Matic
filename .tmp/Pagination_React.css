@@ -9,14 +9,14 @@
   display: inline-block;
   font-family: inherit;
   padding: 0 4px 0 1px; }
-  .ui-pagination-button.disabled {
+  .ui-pagination-button.ui--disabled {
     background-color: rgba(0, 0, 0, 0); }
-    .ui-pagination-button.disabled > .ui-pagination-page {
+    .ui-pagination-button.ui--disabled > .ui-pagination-page {
       color: rgba(0, 0, 0, 0) !important; }
 
-.ui-pagination-button:not(.disabled):hover {
+.ui-pagination-button:not(.ui--disabled):hover {
   background-color: rgba(150, 150, 150, 0.033); }
-  .ui-pagination-button:not(.disabled):hover > .ui-pagination-page {
+  .ui-pagination-button:not(.ui--disabled):hover > .ui-pagination-page {
     border-color: rgba(0, 0, 0, 0.6); }
 
 .ui-pagination-control,
@@ -24,8 +24,8 @@
   display: block;
   height: 24px;
   font-family: inherit; }
-  .ui-pagination-control.disabled,
-  .ui-pagination-page.disabled {
+  .ui-pagination-control.ui--disabled,
+  .ui-pagination-page.ui--disabled {
     opacity: 0.33; }
 
 .ui-pagination-control {
@@ -43,11 +43,11 @@
   opacity: 0.25; }
   .ui-pagination-page:hover {
     opacity: 1; }
-  .ui-pagination-page.active {
+  .ui-pagination-page.ui--active {
     opacity: 1;
     border-color: rgba(0, 0, 0, 0.2); }
 
-.ui-pagination-page.active:hover {
+.ui-pagination-page.ui--active:hover {
   border-color: rgba(0, 0, 0, 0.5); }
 
 .ui-pagination-num,

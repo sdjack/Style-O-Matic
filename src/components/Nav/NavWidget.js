@@ -14,40 +14,17 @@ import {
 } from "../../lib";
 
 class NavWidget extends CoreComponent {
-  static propTypes = setCorePropTypes({
-    minimized: "bool"
-  });
-
   static defaultProps = setCorePropDefaults({
-    renderAs: "li",
+    renderAs: "div",
     uirole: ROLE.WIDGET,
-    label: null,
-    minimized: false
+    uigroup: ROLE.NAV,
+    label: null
   });
 
   render() {
-    const {
-      renderAs: Component,
-      uirole,
-      coreClassName,
-      iconClassName,
-      to,
-      path,
-      minimized,
-      children,
-      props
-    } = getValidProps(this.props);
+    const { renderAs: Component, children, props } = getValidProps(this.props);
 
-    const classes = {
-      active: to && path.indexOf(to) !== -1,
-      minimized
-    };
-
-    return (
-      <Component {...props} className={classNames(coreClassName, classes)}>
-        {children}
-      </Component>
-    );
+    return <Component {...props}>{children}</Component>;
   }
 }
 

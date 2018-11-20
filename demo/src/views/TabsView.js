@@ -7,23 +7,23 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Grid, Title, Tabs } from "../../../src/index";
+import { Grid, Header, Tabs } from "../../../src/index";
 
 class TabsView extends React.Component {
   render() {
     return [
-      <Title renderAs="h1" textAlign="center" key="view-title" sticky>
-        <Title.Content>Tabs</Title.Content>
-      </Title>,
+      <Header display="xxl" textAlign="center" key="view-title">
+        <Header.Title>Tabs</Header.Title>
+      </Header>,
       <Grid key="grip-panel1">
         <Grid.Row>
           <Grid.Column textAlign="center">
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title renderAs="h2" textAlign="center">
-                    <Title.Content>Basic Tabs</Title.Content>
-                  </Title>
+                  <Header display="xl" textAlign="center">
+                    <Header.Title>Basic Tabs</Header.Title>
+                  </Header>
                   <hr />
                 </Grid.Column>
               </Grid.Row>
@@ -49,9 +49,9 @@ class TabsView extends React.Component {
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title renderAs="h2" textAlign="center">
-                    <Title.Content>Custom Tabs</Title.Content>
-                  </Title>
+                  <Header display="xl" textAlign="center">
+                    <Header.Title>Custom Tabs</Header.Title>
+                  </Header>
                   <hr />
                 </Grid.Column>
               </Grid.Row>

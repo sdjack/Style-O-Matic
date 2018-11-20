@@ -16,18 +16,16 @@ $nav-content-width: ($framing-size-large - 50);
 $nav-widget-content-fontsize: 1.2em;
 $nav-icon-size: $framing-size;
 $nav-icon-fontsize: 18px;
-$nav-title-fontsize: 1.6em;
+$nav-title-fontsize: 1.2em;
 $nav-folder-title-padding: 12px 0 12px 12px;
 $nav-folder-fontsize: 0.8em;
 $nav-default-alignment: start;
 
-nav {
+.ui-nav {
   width: auto;
   height: auto;
   padding: 0px;
   margin: 0px;
-  color: inherit;
-  background-color: inherit;
   display: block;
   flex-wrap: wrap;
   flex-direction: row;
@@ -36,176 +34,16 @@ nav {
   align-content: $nav-default-alignment;
   align-items: $nav-default-alignment;
   text-align: left;
-
-  & > button {
-    width: $framing-size;
-    height: $framing-size;
-    color: inherit;
-    background-color: transparent;
-    padding: 2px;
-    font-size: $toggle-size;
-    border: none;
-    border-radius: 0;
-    @include box-shadow(none);
-    outline: none !important;
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: transparent;
-      border: none;
-      outline: none !important;
-    }
-  }
-
-  & > ul {
-    padding: 0 !important;
-    margin: 0 !important;
-    display: flex;
-    list-style-type: none;
-    flex-wrap: inherit;
-    flex-direction: inherit;
-    align-content: inherit;
-    align-items: inherit;
-    justify-content: inherit;
-    justify-items: inherit;
-    text-align: inherit;
-    flex-basis: inherit;
-
-    & > li {
-      position: relative;
-      float: left;
-      text-align: inherit;
-      height: $nav-item-size;
-      width: auto;
-      margin: 0;
-      padding: 0px 12px;
-      color: inherit;
-      flex-basis: unset;
-      flex-grow: 1;
-
-      @media screen and (max-width: $mobile-screen-threshold) {
-        display: block !important;
-      }
-
-      &:hover,
-      &:focus {
-        & > ul {
-          width: auto;
-          min-width: 100%;
-          height: auto;
-          max-height: 500px;
-          border: $border;
-          box-shadow: 5px 8px 8px -2px rgba(0, 0, 0, 0.3),
-            2px 2px 2px 0px rgba(0, 0, 0, 0.2);
-
-          & > li {
-            flex-basis: 50%;
-            height: $nav-item-size;
-          }
-        }
-      }
-
-      & > ul {
-        z-index: 99;
-        display: flex;
-        position: absolute;
-        top: 100%;
-        width: 0px;
-        height: 0px;
-        flex-flow: wrap;
-        padding: 0 0 $padding 0 !important;
-        margin: 0 !important;
-        font-size: $nav-folder-fontsize;
-        font-weight: 600;
-        text-align: start;
-        line-height: 1;
-        padding: 0;
-        margin: 0;
-        border: 0px solid transparent;
-        color: $text-color;
-        background-color: $background-color;
-        list-style-type: none;
-        overflow-x: hidden;
-        overflow-y: auto;
-        @include box-shadow(none);
-
-        & > h5,
-        & > h6 {
-          padding: $nav-folder-title-padding;
-          background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        & > li {
-          flex-basis: 0%;
-          height: 0px;
-          min-width: $nav-item-width;
-          padding: 0;
-        }
-      }
-    }
-  }
-
-  & > ul,
-  & > ul > li > ul {
-    & > h5,
-    & > h6 {
-      display: inline-block;
-      width: 100%;
-      margin: 0 !important;
-      padding: 0;
-      font-weight: 600;
-      font-size: $nav-title-fontsize;
-      text-align: left;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-
-  & > ul > li,
-  & > ul > li > ul > li {
-    font-size: $nav-content-fontsize;
-    line-height: $nav-item-size;
-    @include animate-default(0.2s);
-    transition-property: all;
-    cursor: pointer;
-    &:hover,
-    &:focus {
-      color: $color-lightest;
-      background-color: $color-blue-highlight;
-    }
-    & > a,
-    & > i,
-    & > div,
-    & > span {
-      display: inline-block;
-      height: 100%;
-      vertical-align: middle;
-      white-space: nowrap;
-      text-align: start;
-      // overflow: hidden;
-      text-overflow: ellipsis;
-      margin: 0;
-      padding: 0 4px;
-      border: none;
-      font-size: inherit;
-      line-height: inherit;
-      font-weight: inherit;
-      color: inherit;
-      background-color: transparent;
-
-      &:hover,
-      &:focus {
-        color: inherit;
-        background-color: transparent;
-      }
-    }
-  }
-
-  &:not([data-orientation]) {
+  &:not(.ui--vertical) {
+    // min-width: 100%;
+    // max-width: 100%;
     height: $nav-item-size;
 
-    & > ul {
+    & > .ui-nav-toggle {
+      float: left;
+    }
+
+    & > .ui-nav-list {
       height: auto;
       flex-direction: row;
       & > li {
@@ -214,8 +52,8 @@ nav {
       }
     }
 
-    &[data-state-collapsed] {
-      & > ul {
+    &.ui--collapsed {
+      & > .ui-nav-list {
         overflow: hidden;
         height: 0px !important;
       }
@@ -228,11 +66,10 @@ nav {
       flex-basis: unset;
     }
   }
-
-  &[data-orientation=vertical] {
+  &.ui--vertical {
     height: auto;
 
-    & > ul {
+    & > .ui-nav-list {
       width: auto;
       height: inherit;
       flex-direction: column;
@@ -242,11 +79,149 @@ nav {
       }
     }
 
-    &[data-state-collapsed] {
-      & > ul {
+    &.ui--collapsed {
+      & > .ui-nav-list {
         overflow: hidden;
         width: 0px !important;
       }
     }
+  }
+}
+
+.ui-nav-list {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  list-style-type: none;
+  flex-wrap: inherit;
+  flex-direction: inherit;
+  align-content: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  justify-items: inherit;
+  text-align: inherit;
+  flex-basis: inherit;
+
+  & > li {
+    position: relative;
+    float: left;
+    text-align: inherit;
+    height: $nav-item-size;
+    width: auto;
+    margin: 0;
+    padding: 0px 12px;
+    color: inherit;
+    flex-basis: unset;
+    flex-grow: 1;
+    font-size: $nav-content-fontsize;
+    line-height: $nav-item-size;
+    @include animate-default(0.2s);
+    transition-property: all;
+
+    @media screen and (max-width: $mobile-screen-threshold) {
+      display: block !important;
+    }
+
+    & > * {
+      white-space: nowrap;
+      text-align: start;
+      text-overflow: ellipsis;
+      margin: 0;
+      padding: 0;
+      border: none;
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: inherit;
+      color: inherit;
+      background-color: transparent;
+    }
+    & > a {
+      &:hover,
+      &:focus {
+        color: inherit;
+        background-color: transparent;
+      }
+    }
+
+    & > .ui-dropdown {
+      & > .ui-dropdown-toggle {
+        border: none;
+        background: transparent;
+        &:hover,
+        &:focus,
+        &:active {
+          outline: none !important;
+          border: none;
+          background: none;
+        }
+      }
+    }
+
+    &:hover,
+    &:focus {
+      & > .ui-caret:before {
+          content: "\2212";
+      }
+    }
+  }
+}
+
+.ui-nav-item {
+  &:hover,
+  &:focus {
+    background-color: rgba(188, 188, 188, 0.1);
+  }
+}
+
+.ui-nav-icon {
+  display: inline-block;
+  max-width: $nav-icon-size;
+  margin: 0;
+  padding: 0;
+  font-size: $nav-icon-fontsize;
+  line-height: 1.4em;
+  text-align: center;
+  vertical-align: baseline;
+  flex-basis: $nav-icon-size;
+}
+
+.ui-nav-title {
+  display: inline-block;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0;
+  font-weight: 600;
+  font-size: $nav-title-fontsize;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-nav-toggle {
+  display: inline-block;
+  color: inherit;
+  @include text-horizontal-align-left();
+  @media screen and (max-width: $mobile-screen-threshold) {
+    display: block !important;
+  }
+}
+
+.ui-nav-toggle-button {
+  width: $framing-size;
+  height: $framing-size;
+  color: inherit;
+  background-color: transparent;
+  padding: 2px;
+  font-size: $toggle-size;
+  border: none;
+  @include box-shadow(none);
+  outline: none !important;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: transparent;
+    border: none;
+    outline: none !important;
   }
 }

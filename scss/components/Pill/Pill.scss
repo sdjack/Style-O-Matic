@@ -52,7 +52,7 @@ $pill-action-size: 24px !default;
     border: none;
   }
 
-  &.disabled {
+  &.ui--disabled {
     color: $pill-text-color-disabled !important;
     background-color: $pill-background-color-disabled !important;
 
@@ -95,7 +95,12 @@ $pill-action-size: 24px !default;
   @include text-align-center();
 
   & > .ui-icon {
-    padding-left: 0.08em;
+    padding: 0;
+    &:before,
+    &:after {
+      padding: 0 !important;
+      font-size: .94em;
+    }
   }
 
   &:hover,

@@ -7,7 +7,7 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Grid, Table, Title } from "../../../src/index";
+import { Grid, Table, Header } from "../../../src/index";
 
 class TableView extends React.Component {
   render() {
@@ -38,18 +38,18 @@ class TableView extends React.Component {
       ]
     });
     return [
-      <Title renderAs="h1" textAlign="center" key="grip-title1" sticky>
-        <Title.Content>Tables</Title.Content>
-      </Title>,
+      <Header display="xxl" textAlign="center" key="grip-title1">
+        <Header.Title>Tables</Header.Title>
+      </Header>,
       <Grid key="grip-panel1">
         <Grid.Row>
           <Grid.Column textAlign="center">
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title renderAs="h4" textAlign="center">
-                    <Title.Content>Default</Title.Content>
-                  </Title>
+                  <Header textAlign="center">
+                    <Header.Title>Default</Header.Title>
+                  </Header>
                   <hr />
                 </Grid.Column>
               </Grid.Row>
@@ -66,9 +66,9 @@ class TableView extends React.Component {
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title renderAs="h4" textAlign="center">
-                    <Title.Content>Bordered</Title.Content>
-                  </Title>
+                  <Header textAlign="center">
+                    <Header.Title>Bordered</Header.Title>
+                  </Header>
                   <hr />
                 </Grid.Column>
               </Grid.Row>
@@ -87,9 +87,9 @@ class TableView extends React.Component {
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title renderAs="h4" textAlign="center">
-                    <Title.Content>Bordered, Padded</Title.Content>
-                  </Title>
+                  <Header textAlign="center">
+                    <Header.Title>Bordered, Padded</Header.Title>
+                  </Header>
                   <hr />
                 </Grid.Column>
               </Grid.Row>
@@ -108,9 +108,9 @@ class TableView extends React.Component {
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title renderAs="h4" textAlign="center">
-                    <Title.Content>Bordered, Padded, Hover</Title.Content>
-                  </Title>
+                  <Header textAlign="center">
+                    <Header.Title>Bordered, Padded, Hover</Header.Title>
+                  </Header>
                   <hr />
                 </Grid.Column>
               </Grid.Row>
@@ -129,11 +129,11 @@ class TableView extends React.Component {
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title renderAs="h4" textAlign="center">
-                    <Title.Content>
+                  <Header textAlign="center">
+                    <Header.Title>
                       Bordered, Padded, Hover, Striped, Paginated
-                    </Title.Content>
-                  </Title>
+                    </Header.Title>
+                  </Header>
                   <hr />
                 </Grid.Column>
               </Grid.Row>

@@ -7,322 +7,93 @@
 /// @group base
 ////
 
-.ui-icon,
-[class^="ui-icon-"],
-[class*="ui-icon-"] {
-  &:before {
-    display: inline-block;
-    font-style: normal;
-    vertical-align: middle;
-  }
-}
-
 // General Icons
-.ui-icon-home {
-    &:before {
-        content: "\1F3E0";
-    }
-}
-.ui-icon-user {
-    &:before {
-        content: "\1F464";
-    }
-}
-.ui-icon-star {
-    &:before {
-        content: "\1F7CA";
-    }
-}
-.ui-icon-calendar {
-    &:before {
-        content: "\1F5D3";
-    }
-}
-.ui-icon-tools {
-    &:before {
-        content: "\1F6E0";
-    }
-}
-.ui-icon-cart {
-    &:before {
-        content: "\1F6D2";
-    }
-}
-.ui-icon-warning {
-    &:before {
-        content: "\26A0";
-    }
-}
-.ui-icon-speech {
-    &:before {
-        content: "\1F4AC";
-    }
-}
-.ui-icon-speech-left {
-    &:before {
-        content: "\1F5E8";
-    }
-}
-.ui-icon-speech-right {
-    &:before {
-        content: "\1F5E9";
-    }
-}
-.ui-icon-fire {
-    &:before {
-        content: "\1F525";
-    }
-}
-.ui-icon-eye {
-    &:before {
-        content: "\1F441";
-    }
-}
-.ui-icon-mail {
-    &:before {
-        content: "\1F582";
-    }
-}
-.ui-icon-info {
-    &:before {
-        content: "\1F6C8";
-    }
-}
-.ui-icon-disabled {
-    &:before {
-        content: "\26D4";
-    }
-}
-.ui-icon-lock {
-    &:before {
-        content: "\1F512";
-    }
-}
-.ui-icon-unlock {
-    &:before {
-        content: "\1F513";
-    }
-}
-.ui-icon-point-left {
-    &:before {
-        content: "\1F59C";
-    }
-}
-.ui-icon-point-right {
-    &:before {
-        content: "\1F59D";
-    }
-}
-.ui-icon-flag {
-    &:before {
-        content: "\1F3F3";
-    }
-}
-
+@include spawn-ui-icon("ui-icon-home", "\1F3E0");
+@include spawn-ui-icon("ui-icon-user", "\1F464");
+@include spawn-ui-icon("ui-icon-star", "\1F7CA");
+@include spawn-ui-icon("ui-icon-calendar", "\1F5D3");
+@include spawn-ui-icon("ui-icon-tools", "\1F6E0");
+@include spawn-ui-icon("ui-icon-cart", "\1F6D2");
+@include spawn-ui-icon("ui-icon-warning", "\26A0");
+@include spawn-ui-icon("ui-icon-speech", "\1F4AC");
+@include spawn-ui-icon("ui-icon-speech-left", "\1F5E8");
+@include spawn-ui-icon("ui-icon-speech-right", "\1F5E9");
+@include spawn-ui-icon("ui-icon-fire", "\1F525");
+@include spawn-ui-icon("ui-icon-eye", "\1F441");
+@include spawn-ui-icon("ui-icon-mail", "\1F582");
+@include spawn-ui-icon("ui-icon-info", "\1F6C8");
+@include spawn-ui-icon("ui-icon-disabled", "\26D4");
+@include spawn-ui-icon("ui-icon-lock", "\1F512");
+@include spawn-ui-icon("ui-icon-unlock", "\1F513");
+@include spawn-ui-icon("ui-icon-point-left", "\1F59C");
+@include spawn-ui-icon("ui-icon-point-right", "\1F59D");
+@include spawn-ui-icon("ui-icon-flag", "\1F3F3");
 // Arrow Icons
-.ui-icon-up {
-    &:before {
-        content: "\25BC";
-    }
-}
-.ui-icon-up-open {
-    &:before {
-        content: "\25B3";
-    }
-}
-.ui-icon-down {
-    &:before {
-        content: "\25BC";
-    }
-}
-.ui-icon-down-open {
-    &:before {
-        content: "\25BD";
-    }
-}
-.ui-icon-right {
-    &:before {
-        content: "\25B6";
-    }
-}
-.ui-icon-right-open {
-    &:before {
-        content: "\25B7";
-    }
-}
-.ui-icon-left {
-    &:before {
-        content: "\25C0";
-    }
-}
-.ui-icon-left-open {
-    &:before {
-        content: "\25C1";
-    }
-}
-
+@include spawn-ui-icon("ui-icon-up", "\25BC");
+@include spawn-ui-icon("ui-icon-up-open", "\25B3");
+@include spawn-ui-icon("ui-icon-down", "\25BC");
+@include spawn-ui-icon("ui-icon-down-open", "\25BD");
+@include spawn-ui-icon("ui-icon-right", "\25B6");
+@include spawn-ui-icon("ui-icon-right-open", "\25B7");
+@include spawn-ui-icon("ui-icon-left", "\25C0");
+@include spawn-ui-icon("ui-icon-left-open", "\25C1");
 // Control Icons
-.ui-icon-check {
-    &:before {
-        content: "\2714";
-    }
-}
-.ui-icon-x {
-    &:before {
-        content: "\2718";
-    }
-}
-.ui-icon-menu {
-    &:before {
-        content: "\2261";
-    }
-}
-.ui-icon-close {
-    &:before {
-        content: "\00d7";
-    }
-}
+@include spawn-ui-icon("ui-icon-check", "\2714");
+@include spawn-ui-icon("ui-icon-x", "\2718");
+@include spawn-ui-icon("ui-icon-menu", "\2261");
+@include spawn-ui-icon("ui-icon-close", "\00d7");
+@include spawn-ui-icon("ui-icon-follow", "\2BAB");
+@include spawn-ui-icon("ui-icon-edit", "\1F589");
+@include spawn-ui-icon("ui-icon-folder", "\1F5BF");
+@include spawn-ui-icon("ui-icon-folder-closed", "\1F5C0");
+@include spawn-ui-icon("ui-icon-folder-open", "\1F5C1");
+@include spawn-ui-icon("ui-icon-add", "\002B");
+@include spawn-ui-icon("ui-icon-remove", "\2212");
+@include spawn-ui-icon("ui-icon-plus", "\2795");
+@include spawn-ui-icon("ui-icon-minus", "\2796");
+@include spawn-ui-icon("ui-icon-maximize", "\1F5D6");
+@include spawn-ui-icon("ui-icon-minimize", "\1F5D5");
+@include spawn-ui-icon("ui-icon-checked", "\2611");
+@include spawn-ui-icon("ui-icon-unchecked", "\2610");
+// Random/Misc/Fun Icons
+@include spawn-ui-icon("ui-icon-spider", "\1F577");
+@include spawn-ui-icon("ui-icon-bat", "\1F987");
+@include spawn-ui-icon("ui-icon-ghost", "\1F47B");
+@include spawn-ui-icon("ui-icon-skull", "\1F480");
+@include spawn-ui-icon("ui-icon-doot", "\1F571");
+@include spawn-ui-icon("ui-icon-robot", "\1F916");
+@include spawn-ui-icon("ui-icon-invader", "\1F47E");
+@include spawn-ui-icon("ui-icon-rocket", "\1F680");
+@include spawn-ui-icon("ui-icon-sheep", "\1F411");
+@include spawn-ui-icon("ui-icon-shooting-star", "\1F320");
+@include spawn-ui-icon("ui-icon-atom", "\269B");
+@include spawn-ui-icon("ui-icon-tv", "\1F4FA");
+// Currently Unsupported In Most browsers
+@include spawn-ui-icon("ui-icon-ufo", "\1F6F8");
+@include spawn-ui-icon("ui-icon-zombie", "\1F9DF");
+
 .ui-icon-search {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  &:not(.ui--reversed) {
+    transform: rotate(45deg);
     &:before {
         content: "\26B2";
+        font-style: normal;
+        font-size: 2em;
+        padding: 0;
+        line-height: 1.3em;
     }
-}
-.ui-icon-follow {
-    &:before {
-        content: "\2BAB";
+  }
+  &.ui--reversed {
+    transform: rotate(-45deg);
+    &:after {
+        content: "\26B2";
+        font-style: normal;
+        font-size: 2em;
+        padding: 0;
+        line-height: 1.3em;
     }
-}
-.ui-icon-edit {
-    &:before {
-        content: "\1F589";
-    }
-}
-.ui-icon-folder {
-    &:before {
-        content: "\1F5BF";
-    }
-}
-.ui-icon-folder-closed {
-    &:before {
-        content: "\1F5C0";
-    }
-}
-.ui-icon-folder-open {
-    &:before {
-        content: "\1F5C1";
-    }
-}
-.ui-icon-add {
-    &:before {
-        content: "\002B";
-    }
-}
-.ui-icon-remove {
-    &:before {
-        content: "\2212";
-    }
-}
-.ui-icon-plus {
-    &:before {
-        content: "\2795";
-    }
-}
-.ui-icon-minus {
-    &:before {
-        content: "\2796";
-    }
-}
-.ui-icon-maximize {
-    &:before {
-        content: "\1F5D6";
-    }
-}
-.ui-icon-minimize {
-    &:before {
-        content: "\1F5D5";
-    }
-}
-.ui-icon-checked {
-    &:before {
-        content: "\2611";
-    }
-}
-.ui-icon-unchecked {
-    &:before {
-        content: "\2610";
-    }
-}
-
-// Random/Misc/Fun Icons
-.ui-icon-spider {
-    &:before {
-        content: "\1F577";
-    }
-}
-.ui-icon-bat {
-    &:before {
-        content: "\1F987";
-    }
-}
-.ui-icon-ghost {
-    &:before {
-        content: "\1F47B";
-    }
-}
-.ui-icon-skull {
-    &:before {
-        content: "\1F480";
-    }
-}
-.ui-icon-doot {
-    &:before {
-        content: "\1F571";
-    }
-}
-.ui-icon-robot {
-    &:before {
-        content: "\1F916";
-    }
-}
-.ui-icon-invader {
-    &:before {
-        content: "\1F47E";
-    }
-}
-.ui-icon-rocket {
-    &:before {
-        content: "\1F680";
-    }
-}
-.ui-icon-sheep {
-    &:before {
-        content: "\1F411";
-    }
-}
-.ui-icon-shooting-star {
-    &:before {
-        content: "\1F320";
-    }
-}
-.ui-icon-atom {
-    &:before {
-        content: "\269B";
-    }
-}
-.ui-icon-tv {
-    &:before {
-        content: "\1F4FA";
-    }
-}
-
-// Currently Unsupported In Most browsers
-.ui-icon-ufo {
-    &:before {
-        content: "\1F6F8";
-    }
-}
-.ui-icon-zombie {
-    &:before {
-        content: "\1F9DF";
-    }
+  }
 }

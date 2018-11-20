@@ -21,8 +21,7 @@ class GridColumn extends CoreComponent {
 
   static defaultProps = setCorePropDefaults({
     uirole: ROLE.COLUMN,
-    cols: 12,
-    textAlign: "left"
+    cols: 12
   });
 
   render() {

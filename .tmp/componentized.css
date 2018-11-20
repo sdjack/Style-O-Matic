@@ -71,6 +71,17 @@ span.label {
   font-size: 14px;
   line-height: 9px; }
 
+label.ui--invalid {
+  color: #e32; }
+
+label.ui--required:after {
+  color: #e32;
+  content: ' *  ';
+  display: inline;
+  font-size: 18px;
+  vertical-align: text-bottom;
+  margin-right: 2px; }
+
 legend {
   height: 36px;
   font-size: 16px;
@@ -242,32 +253,32 @@ body {
   line-height: 1;
   margin-top: 0;
   color: inherit;
-  font-size: 3.3333333333em;
-  margin-bottom: 2.0202020202rem; }
+  font-size: 3em;
+  margin-bottom: 1.8181818182rem; }
 
 .ui-fontsize-h3, h3 {
   text-rendering: optimizeLegibility;
   line-height: 1;
   margin-top: 0;
   color: inherit;
-  font-size: 2.6666666667em;
-  margin-bottom: 1.6161616162rem; }
+  font-size: 2.2222222222em;
+  margin-bottom: 1.3468013468rem; }
 
 .ui-fontsize-h4, h4 {
   text-rendering: optimizeLegibility;
   line-height: 1;
   margin-top: 0;
   color: inherit;
-  font-size: 2em;
-  margin-bottom: 1.2121212121rem; }
+  font-size: 1.7222222222em;
+  margin-bottom: 1.0437710438rem; }
 
 .ui-fontsize-h5, h5 {
   text-rendering: optimizeLegibility;
   line-height: 1;
   margin-top: 0;
   color: inherit;
-  font-size: 1.3333333333em;
-  margin-bottom: 0.8080808081rem; }
+  font-size: 1.5em;
+  margin-bottom: 0.9090909091rem; }
 
 .ui-fontsize-big {
   text-rendering: optimizeLegibility;
@@ -569,6 +580,10 @@ dl.ui-dictionary dd {
   width: 100% !important;
   height: 100% !important; }
 
+.ui-fit-screen {
+  width: 100vw !important;
+  height: 100vh !important; }
+
 .ui-float-left {
   float: left; }
 
@@ -712,192 +727,795 @@ dl.ui-dictionary dd {
 .ui-extra-padding {
   padding: 1em 1em 1.4em 1em !important; }
 
-.ui-icon:before,
-[class^="ui-icon-"]:before,
-[class*="ui-icon-"]:before {
+.ui-icon-home {
   display: inline-block;
-  font-style: normal;
-  vertical-align: middle; }
+  padding: 0;
+  margin: 0; }
+  .ui-icon-home:not(.ui--reversed):before {
+    content: "🏠";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-home.ui--reversed:after {
+    content: "🏠";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-home:before {
-  content: "\1F3E0"; }
+.ui-icon-user {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-user:not(.ui--reversed):before {
+    content: "👤";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-user.ui--reversed:after {
+    content: "👤";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-user:before {
-  content: "\1F464"; }
+.ui-icon-star {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-star:not(.ui--reversed):before {
+    content: "🟊";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-star.ui--reversed:after {
+    content: "🟊";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-star:before {
-  content: "\1F7CA"; }
+.ui-icon-calendar {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-calendar:not(.ui--reversed):before {
+    content: "🗓";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-calendar.ui--reversed:after {
+    content: "🗓";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-calendar:before {
-  content: "\1F5D3"; }
+.ui-icon-tools {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-tools:not(.ui--reversed):before {
+    content: "🛠";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-tools.ui--reversed:after {
+    content: "🛠";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-tools:before {
-  content: "\1F6E0"; }
+.ui-icon-cart {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-cart:not(.ui--reversed):before {
+    content: "🛒";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-cart.ui--reversed:after {
+    content: "🛒";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-cart:before {
-  content: "\1F6D2"; }
+.ui-icon-warning {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-warning:not(.ui--reversed):before {
+    content: "⚠";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-warning.ui--reversed:after {
+    content: "⚠";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-warning:before {
-  content: "\26A0"; }
+.ui-icon-speech {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-speech:not(.ui--reversed):before {
+    content: "💬";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-speech.ui--reversed:after {
+    content: "💬";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-speech:before {
-  content: "\1F4AC"; }
+.ui-icon-speech-left {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-speech-left:not(.ui--reversed):before {
+    content: "🗨";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-speech-left.ui--reversed:after {
+    content: "🗨";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-speech-left:before {
-  content: "\1F5E8"; }
+.ui-icon-speech-right {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-speech-right:not(.ui--reversed):before {
+    content: "🗩";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-speech-right.ui--reversed:after {
+    content: "🗩";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-speech-right:before {
-  content: "\1F5E9"; }
+.ui-icon-fire {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-fire:not(.ui--reversed):before {
+    content: "🔥";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-fire.ui--reversed:after {
+    content: "🔥";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-fire:before {
-  content: "\1F525"; }
+.ui-icon-eye {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-eye:not(.ui--reversed):before {
+    content: "👁";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-eye.ui--reversed:after {
+    content: "👁";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-eye:before {
-  content: "\1F441"; }
+.ui-icon-mail {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-mail:not(.ui--reversed):before {
+    content: "🖂";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-mail.ui--reversed:after {
+    content: "🖂";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-mail:before {
-  content: "\1F582"; }
+.ui-icon-info {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-info:not(.ui--reversed):before {
+    content: "🛈";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-info.ui--reversed:after {
+    content: "🛈";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-info:before {
-  content: "\1F6C8"; }
+.ui-icon-disabled {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-disabled:not(.ui--reversed):before {
+    content: "⛔";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-disabled.ui--reversed:after {
+    content: "⛔";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-disabled:before {
-  content: "\26D4"; }
+.ui-icon-lock {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-lock:not(.ui--reversed):before {
+    content: "🔒";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-lock.ui--reversed:after {
+    content: "🔒";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-lock:before {
-  content: "\1F512"; }
+.ui-icon-unlock {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-unlock:not(.ui--reversed):before {
+    content: "🔓";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-unlock.ui--reversed:after {
+    content: "🔓";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-unlock:before {
-  content: "\1F513"; }
+.ui-icon-point-left {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-point-left:not(.ui--reversed):before {
+    content: "🖜";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-point-left.ui--reversed:after {
+    content: "🖜";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-point-left:before {
-  content: "\1F59C"; }
+.ui-icon-point-right {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-point-right:not(.ui--reversed):before {
+    content: "🖝";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-point-right.ui--reversed:after {
+    content: "🖝";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-point-right:before {
-  content: "\1F59D"; }
+.ui-icon-flag {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-flag:not(.ui--reversed):before {
+    content: "🏳";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-flag.ui--reversed:after {
+    content: "🏳";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-flag:before {
-  content: "\1F3F3"; }
+.ui-icon-up {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-up:not(.ui--reversed):before {
+    content: "▼";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-up.ui--reversed:after {
+    content: "▼";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-up:before {
-  content: "\25BC"; }
+.ui-icon-up-open {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-up-open:not(.ui--reversed):before {
+    content: "△";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-up-open.ui--reversed:after {
+    content: "△";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-up-open:before {
-  content: "\25B3"; }
+.ui-icon-down {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-down:not(.ui--reversed):before {
+    content: "▼";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-down.ui--reversed:after {
+    content: "▼";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-down:before {
-  content: "\25BC"; }
+.ui-icon-down-open {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-down-open:not(.ui--reversed):before {
+    content: "▽";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-down-open.ui--reversed:after {
+    content: "▽";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-down-open:before {
-  content: "\25BD"; }
+.ui-icon-right {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-right:not(.ui--reversed):before {
+    content: "▶";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-right.ui--reversed:after {
+    content: "▶";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-right:before {
-  content: "\25B6"; }
+.ui-icon-right-open {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-right-open:not(.ui--reversed):before {
+    content: "▷";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-right-open.ui--reversed:after {
+    content: "▷";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-right-open:before {
-  content: "\25B7"; }
+.ui-icon-left {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-left:not(.ui--reversed):before {
+    content: "◀";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-left.ui--reversed:after {
+    content: "◀";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-left:before {
-  content: "\25C0"; }
+.ui-icon-left-open {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-left-open:not(.ui--reversed):before {
+    content: "◁";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-left-open.ui--reversed:after {
+    content: "◁";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-left-open:before {
-  content: "\25C1"; }
+.ui-icon-check {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-check:not(.ui--reversed):before {
+    content: "✔";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-check.ui--reversed:after {
+    content: "✔";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-check:before {
-  content: "\2714"; }
+.ui-icon-x {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-x:not(.ui--reversed):before {
+    content: "✘";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-x.ui--reversed:after {
+    content: "✘";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-x:before {
-  content: "\2718"; }
+.ui-icon-menu {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-menu:not(.ui--reversed):before {
+    content: "≡";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-menu.ui--reversed:after {
+    content: "≡";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-menu:before {
-  content: "\2261"; }
+.ui-icon-close {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-close:not(.ui--reversed):before {
+    content: "×";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-close.ui--reversed:after {
+    content: "×";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-close:before {
-  content: "\00d7"; }
+.ui-icon-follow {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-follow:not(.ui--reversed):before {
+    content: "⮫";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-follow.ui--reversed:after {
+    content: "⮫";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-search:before {
-  content: "\26B2"; }
+.ui-icon-edit {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-edit:not(.ui--reversed):before {
+    content: "🖉";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-edit.ui--reversed:after {
+    content: "🖉";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-follow:before {
-  content: "\2BAB"; }
+.ui-icon-folder {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-folder:not(.ui--reversed):before {
+    content: "🖿";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-folder.ui--reversed:after {
+    content: "🖿";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-edit:before {
-  content: "\1F589"; }
+.ui-icon-folder-closed {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-folder-closed:not(.ui--reversed):before {
+    content: "🗀";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-folder-closed.ui--reversed:after {
+    content: "🗀";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-folder:before {
-  content: "\1F5BF"; }
+.ui-icon-folder-open {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-folder-open:not(.ui--reversed):before {
+    content: "🗁";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-folder-open.ui--reversed:after {
+    content: "🗁";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-folder-closed:before {
-  content: "\1F5C0"; }
+.ui-icon-add {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-add:not(.ui--reversed):before {
+    content: "+";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-add.ui--reversed:after {
+    content: "+";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-folder-open:before {
-  content: "\1F5C1"; }
+.ui-icon-remove {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-remove:not(.ui--reversed):before {
+    content: "−";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-remove.ui--reversed:after {
+    content: "−";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-add:before {
-  content: "\002B"; }
+.ui-icon-plus {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-plus:not(.ui--reversed):before {
+    content: "➕";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-plus.ui--reversed:after {
+    content: "➕";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-remove:before {
-  content: "\2212"; }
+.ui-icon-minus {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-minus:not(.ui--reversed):before {
+    content: "➖";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-minus.ui--reversed:after {
+    content: "➖";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-plus:before {
-  content: "\2795"; }
+.ui-icon-maximize {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-maximize:not(.ui--reversed):before {
+    content: "🗖";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-maximize.ui--reversed:after {
+    content: "🗖";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-minus:before {
-  content: "\2796"; }
+.ui-icon-minimize {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-minimize:not(.ui--reversed):before {
+    content: "🗕";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-minimize.ui--reversed:after {
+    content: "🗕";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-maximize:before {
-  content: "\1F5D6"; }
+.ui-icon-checked {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-checked:not(.ui--reversed):before {
+    content: "☑";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-checked.ui--reversed:after {
+    content: "☑";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-minimize:before {
-  content: "\1F5D5"; }
+.ui-icon-unchecked {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-unchecked:not(.ui--reversed):before {
+    content: "☐";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-unchecked.ui--reversed:after {
+    content: "☐";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-checked:before {
-  content: "\2611"; }
+.ui-icon-spider {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-spider:not(.ui--reversed):before {
+    content: "🕷";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-spider.ui--reversed:after {
+    content: "🕷";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-unchecked:before {
-  content: "\2610"; }
+.ui-icon-bat {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-bat:not(.ui--reversed):before {
+    content: "🦇";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-bat.ui--reversed:after {
+    content: "🦇";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-spider:before {
-  content: "\1F577"; }
+.ui-icon-ghost {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-ghost:not(.ui--reversed):before {
+    content: "👻";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-ghost.ui--reversed:after {
+    content: "👻";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-bat:before {
-  content: "\1F987"; }
+.ui-icon-skull {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-skull:not(.ui--reversed):before {
+    content: "💀";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-skull.ui--reversed:after {
+    content: "💀";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-ghost:before {
-  content: "\1F47B"; }
+.ui-icon-doot {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-doot:not(.ui--reversed):before {
+    content: "🕱";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-doot.ui--reversed:after {
+    content: "🕱";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-skull:before {
-  content: "\1F480"; }
+.ui-icon-robot {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-robot:not(.ui--reversed):before {
+    content: "🤖";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-robot.ui--reversed:after {
+    content: "🤖";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-doot:before {
-  content: "\1F571"; }
+.ui-icon-invader {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-invader:not(.ui--reversed):before {
+    content: "👾";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-invader.ui--reversed:after {
+    content: "👾";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-robot:before {
-  content: "\1F916"; }
+.ui-icon-rocket {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-rocket:not(.ui--reversed):before {
+    content: "🚀";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-rocket.ui--reversed:after {
+    content: "🚀";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-invader:before {
-  content: "\1F47E"; }
+.ui-icon-sheep {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-sheep:not(.ui--reversed):before {
+    content: "🐑";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-sheep.ui--reversed:after {
+    content: "🐑";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-rocket:before {
-  content: "\1F680"; }
+.ui-icon-shooting-star {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-shooting-star:not(.ui--reversed):before {
+    content: "🌠";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-shooting-star.ui--reversed:after {
+    content: "🌠";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-sheep:before {
-  content: "\1F411"; }
+.ui-icon-atom {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-atom:not(.ui--reversed):before {
+    content: "⚛";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-atom.ui--reversed:after {
+    content: "⚛";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-shooting-star:before {
-  content: "\1F320"; }
+.ui-icon-tv {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-tv:not(.ui--reversed):before {
+    content: "📺";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-tv.ui--reversed:after {
+    content: "📺";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-atom:before {
-  content: "\269B"; }
+.ui-icon-ufo {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-ufo:not(.ui--reversed):before {
+    content: "🛸";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-ufo.ui--reversed:after {
+    content: "🛸";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-tv:before {
-  content: "\1F4FA"; }
+.ui-icon-zombie {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-zombie:not(.ui--reversed):before {
+    content: "🧟";
+    font-style: normal;
+    padding: 0 0.4em 0 0; }
+  .ui-icon-zombie.ui--reversed:after {
+    content: "🧟";
+    font-style: normal;
+    padding: 0 0 0 0.4em; }
 
-.ui-icon-ufo:before {
-  content: "\1F6F8"; }
-
-.ui-icon-zombie:before {
-  content: "\1F9DF"; }
+.ui-icon-search {
+  display: inline-block;
+  padding: 0;
+  margin: 0; }
+  .ui-icon-search:not(.ui--reversed) {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg); }
+    .ui-icon-search:not(.ui--reversed):before {
+      content: "\26B2";
+      font-style: normal;
+      font-size: 2em;
+      padding: 0;
+      line-height: 1.3em; }
+  .ui-icon-search.ui--reversed {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+    .ui-icon-search.ui--reversed:after {
+      content: "\26B2";
+      font-style: normal;
+      font-size: 2em;
+      padding: 0;
+      line-height: 1.3em; }
 
 .clearfix::after {
   clear: both;
@@ -907,6 +1525,10 @@ dl.ui-dictionary dd {
 .ui-no-spacing {
   padding: 0 !important;
   margin: 0 !important; }
+
+.ui--locked {
+  -webkit-filter: blur(2.5px) grayscale(100);
+          filter: blur(2.5px) grayscale(100); }
 
 .ui--open {
   width: auto !important;
@@ -997,16 +1619,22 @@ dl.ui-dictionary dd {
     color: #EFF3F8;
     background-color: rgba(25, 118, 210, 0.5); }
 
+.ui-caret:before {
+  display: inline-block;
+  font-style: normal;
+  vertical-align: middle;
+  padding: 0em 0.2em;
+  content: "\002B"; }
+
+.ui-caret.ui--active:before {
+  content: "\2212"; }
+
 .ui-grouped-border {
   border-right-color: rgba(255, 255, 255, 0.05);
   border-left-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.2); }
   .ui-grouped-border:hover {
     background-color: rgba(25, 118, 210, 0.5); }
-
-.ui-blurred {
-  -webkit-filter: blur(2.5px) grayscale(100);
-          filter: blur(2.5px) grayscale(100); }
 
 .ui-transparent {
   background-color: rgba(0, 0, 0, 0) !important;

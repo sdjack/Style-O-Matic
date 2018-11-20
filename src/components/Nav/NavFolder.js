@@ -24,6 +24,7 @@ class NavFolder extends CoreComponent {
   static defaultProps = setCorePropDefaults({
     renderAs: "ul",
     uirole: ROLE.FOLDER,
+    uigroup: ROLE.NAV,
     label: ""
   });
 

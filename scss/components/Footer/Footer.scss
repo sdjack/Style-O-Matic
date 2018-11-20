@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-  // Footer
+  // Title
 // -----------------------------------------------------------------------------
 
 ////
@@ -8,38 +8,10 @@
 ////
 
 // VARIABLES
-$footer-height: $framing-size * 0.8;
 
 .ui-footer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  flex-basis: 100%;
-  width: 100%;
-  height: $footer-height;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 199;
-  color: $header-text-color;
-  background-color: $header-background-color;
-  box-shadow: inset 0 3px 4px -1px #262626;
-}
-
-.ui-footer-content {
-  display: block;
-  width: 100%;
-  height: 100%;
-  flex-basis: 100%;
-  margin: 0px;
-  padding: 0px;
-  position: relative;
-  font-size: 1em !important;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
+	display: block;
+	padding: 0.8em 1.6em;
+	// margin: 0 0 .8em;
+	font-weight: inherit;
 }

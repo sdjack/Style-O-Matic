@@ -320,7 +320,7 @@
   padding: 0;
   position: relative;
   overflow: hidden;
-  z-index: 70;
+  z-index: 999;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -343,7 +343,7 @@
     top: 0;
     left: 0;
     opacity: 0.7 !important; }
-  .ui-loading.active {
+  .ui-loading.ui--active {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }

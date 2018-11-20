@@ -35,8 +35,6 @@ import {
   setCorePropDefaults,
   ROLE
 } from "../../lib";
-import BadgeContent from "./BadgeContent";
-import BadgeIcon from "./BadgeIcon";
 import "./Badge.css";
 
 class Badge extends CoreComponent {
@@ -44,9 +42,6 @@ class Badge extends CoreComponent {
     uirole: ROLE.BADGE,
     role: ROLE.PRESENTATION
   });
-
-  static Content = BadgeContent;
-  static Icon = BadgeIcon;
 
   render() {
     const { renderAs: Component, children, props, inherited } = getValidProps(

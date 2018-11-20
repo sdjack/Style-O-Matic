@@ -86,7 +86,7 @@ $button-icon-size-mini: 24px !default;
     background-color: $button-active-background-color;
   }
 
-  &.disabled {
+  &.ui--disabled {
     color: $button-text-color-disabled !important;
     background-color: $button-background-color-disabled !important;
 

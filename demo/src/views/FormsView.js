@@ -12,7 +12,7 @@ import {
   Select,
   Textarea,
   Grid,
-  Title,
+  Header,
   Toasts
 } from "../../../src/index";
 
@@ -36,16 +36,15 @@ class FormsView extends React.Component {
       <Toasts key="view-toasts" messages={this.state.msgs} timeout={4000}>
         Component
       </Toasts>,
-      <Title renderAs="h1" textAlign="center" key="view-title" sticky>
-        <Title.Content>Forms</Title.Content>
-      </Title>,
+      <Header display="xxl" textAlign="center" key="view-title">
+        <Header.Title>Forms</Header.Title>
+      </Header>,
       <Grid key="view-grid">
         <Grid.Row>
           <Grid.Column textAlign="center" panel>
-            <Title renderAs="h2" textAlign="center" key="view-title">
-              <Title.Content>Basic Form</Title.Content>
-              <Title.Subtitle>Standard usage html form</Title.Subtitle>
-            </Title>
+            <Header display="xl" textAlign="center" key="view-title">
+              <Header.Subtitle>Components</Header.Subtitle>
+            </Header>
             <hr />
             <br />
             <Form onSubmit={this.handleOnSubmit}>

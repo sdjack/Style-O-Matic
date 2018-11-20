@@ -29,24 +29,22 @@ import {
   ROLE
 } from "../../lib";
 import DropdownToggle from "./DropdownToggle.js";
-import DropdownContent from "./DropdownContent.js";
+import DropdownList from "./DropdownList.js";
 import "./Dropdown.css";
 
 class Dropdown extends CoreComponent {
-  static propTypes = setPropTypesA11y();
-
   static defaultProps = setPropDefaultsAutoId({
     renderAs: "div",
     uirole: ROLE.DROPDOWN
   });
 
   static Toggle = DropdownToggle;
-  static Content = DropdownContent;
+  static List = DropdownList;
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      open: false
+      active: false
     };
     this.focusInDropdown = false;
     this.lastOpenEventType = null;
@@ -57,18 +55,18 @@ class Dropdown extends CoreComponent {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if (!nextState.open && this.state.open) {
-      this.focusInDropdown = contains(this.content, activeElement(document));
+    if (!nextState.active && this.state.active && this.node) {
+      this.focusInDropdown = contains(this.node, activeElement(document));
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { open } = this.state;
-    const prevOpen = prevState.open;
-    if (open && !prevOpen) {
+    const { active } = this.state;
+    const prevOpen = prevState.active;
+    if (active && !prevOpen) {
       this.focusNextOnOpen();
     }
-    if (!open && prevOpen) {
+    if (!active && prevOpen) {
       if (this.focusInDropdown) {
         this.focusInDropdown = false;
         this.focus();
@@ -85,7 +83,7 @@ class Dropdown extends CoreComponent {
   }
 
   handleOnToggle = e => {
-    if (isModifiedEvent(e) || !isLeftClickEvent(e) || !this.state.open) {
+    if (isModifiedEvent(e) || !isLeftClickEvent(e) || !this.state.active) {
       return;
     }
     if (this.node && !this.node.contains(e.target)) {
@@ -101,14 +99,14 @@ class Dropdown extends CoreComponent {
   };
 
   focusNextOnOpen = () => {
-    if (!this.content || !this.content.focusNext) {
+    if (!this.node || !this.node.focusNext) {
       return;
     }
     if (
       this.lastOpenEventType === "keydown" ||
       this.props.role === "dropdown-item"
     ) {
-      this.content.focusNext();
+      this.node.focusNext();
     }
   };
 
@@ -120,7 +118,7 @@ class Dropdown extends CoreComponent {
   };
 
   handleClose = (event, eventDetails) => {
-    if (!this.state.open) {
+    if (!this.state.active) {
       return;
     }
     this.toggleOpen(event, eventDetails);
@@ -132,10 +130,10 @@ class Dropdown extends CoreComponent {
     }
     switch (event.keyCode) {
       case keycode.codes.down:
-        if (!this.state.open) {
+        if (!this.state.active) {
           this.toggleOpen(event, { source: "keydown" });
-        } else if (this.content.focusNext) {
-          this.content.focusNext();
+        } else if (this.node.focusNext) {
+          this.node.focusNext();
         }
         event.preventDefault();
         break;
@@ -147,15 +145,15 @@ class Dropdown extends CoreComponent {
   };
 
   toggleOpen = (event, eventDetails) => {
-    const open = !this.state.open;
-    if (open) {
+    const active = !this.state.active;
+    if (active) {
       this.lastOpenEventType = eventDetails.source;
     } else if (this.props.onClose) {
       this.props.onClose(event);
     }
-    this.setState({ open });
+    this.setState({ active });
     if (this.props.onToggle) {
-      this.props.onToggle(open, event, eventDetails);
+      this.props.onToggle(active, event, eventDetails);
     }
   };
 
@@ -170,7 +168,6 @@ class Dropdown extends CoreComponent {
       ...props,
       ref,
       id: `toggle_${id}`,
-      uiclass: this.childPrefix("toggle"),
       onClick: this.chainFunction(child.props.onClick, this.handleClick),
       onKeyDown: this.chainFunction(child.props.onKeyDown, this.handleKeyDown)
     });
@@ -186,8 +183,8 @@ class Dropdown extends CoreComponent {
     return cloneElement(child, {
       ...props,
       ref,
-      id: `content_${id}`,
-      uiclass: this.childPrefix("content"),
+      id: `list_${id}`,
+      uiclass: this.childPrefix("list"),
       onMouseDown(e) {
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
@@ -210,39 +207,52 @@ class Dropdown extends CoreComponent {
       rootcloseevent,
       onSelect,
       props
-    } = getValidProps(this.props);
+    } = getValidProps(this.props, this.state);
 
-    const { open } = this.state;
+    const { active } = this.state;
+
+    const listChildren = [];
 
     return (
-      <Component {...props} ref={this.onSetRef}>
+      <Component
+        {...props}
+        data-no-hover="true"
+        ref={this.onSetRef}
+        onClick={this.handleClick}
+        onKeyDown={this.handleKeyDown}
+      >
         {React.Children.map(children, child => {
-          switch (child.props.uirole) {
-            case ROLE.TOGGLE:
-              return this.renderToggle(child, {
-                id,
-                disabled,
-                open,
-                uiclass
-              });
-            case ROLE.BUTTON:
-              return this.renderToggle(child, {
-                id,
-                disabled,
-                open,
-                uiclass: "ui-dropdown"
-              });
-            case ROLE.CONTENT:
-              return this.renderContent(child, {
-                id,
-                onSelect,
-                rootcloseevent,
-                open,
-                uiclass
-              });
-            default:
-              return child;
+          if (
+            typeof child.props !== "undefined" &&
+            typeof child.props.uirole !== "undefined"
+          ) {
+            switch (child.props.uirole) {
+              case ROLE.TOGGLE:
+                return this.renderToggle(child, {
+                  id,
+                  disabled,
+                  active,
+                  uiclass
+                });
+              case ROLE.BUTTON:
+                return this.renderToggle(child, {
+                  id,
+                  disabled,
+                  active
+                });
+              case ROLE.LIST:
+                return this.renderContent(child, {
+                  id,
+                  onSelect,
+                  rootcloseevent,
+                  active,
+                  uiclass
+                });
+              default:
+                return child;
+            }
           }
+          return child;
         })}
       </Component>
     );

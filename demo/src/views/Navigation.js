@@ -7,7 +7,7 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Nav, ToolTip } from "../../../src/index";
+import { Dropdown, Header, Nav, ToolTip } from "../../../src/index";
 
 class Navigation extends React.Component {
   render() {
@@ -20,6 +20,9 @@ class Navigation extends React.Component {
         contentAlign="left"
         fit="flex"
       >
+        <Nav.Item>
+          <div className="ui-nav-title">Top Bar</div>
+        </Nav.Item>
         <Nav.Item to="/" icon="home" label="Home">
           <ToolTip position="bottom">Home</ToolTip>
         </Nav.Item>
@@ -29,38 +32,22 @@ class Navigation extends React.Component {
         <Nav.Item to="/layout" icon="shooting-star" label="Layout">
           <ToolTip position="bottom">Layout</ToolTip>
         </Nav.Item>
-        <Nav.Folder to="/misc" label="Misc">
-          <Nav.Item to="/toolbar" icon="star" label="ToolBar">
-            <ToolTip position="right">ToolBar</ToolTip>
-          </Nav.Item>
-          <Nav.Item to="/grid" icon="star" label="Grid">
-            <ToolTip position="right">Grid</ToolTip>
-          </Nav.Item>
-          <Nav.Item to="/cards" icon="star" label="Cards">
-            <ToolTip position="right">Cards</ToolTip>
-          </Nav.Item>
-          <Nav.Item to="/buttons" icon="star" label="Buttons">
-            <ToolTip position="right">Buttons</ToolTip>
-          </Nav.Item>
-          <Nav.Item to="/table" icon="star" label="Tables">
-            <ToolTip position="right">Tables</ToolTip>
-          </Nav.Item>
-          <Nav.Item to="/form" icon="star" label="Forms">
-            <ToolTip position="right">Forms</ToolTip>
-          </Nav.Item>
-          <Nav.Item to="/accordion" icon="star" label="Accordion">
-            <ToolTip position="right">Accordion</ToolTip>
-          </Nav.Item>
-          <Nav.Item to="/modal" icon="star" label="Modal">
-            <ToolTip position="right">Modal</ToolTip>
-          </Nav.Item>
-          <Nav.Item to="/tabs" icon="star" label="Tabs">
-            <ToolTip position="right">Tabs</ToolTip>
-          </Nav.Item>
-          <Nav.Item to="/toasts" icon="star" label="Toasts">
-            <ToolTip position="right">Toasts</ToolTip>
-          </Nav.Item>
-        </Nav.Folder>
+        <Dropdown>
+          <Dropdown.Toggle caret>Misc</Dropdown.Toggle>
+          <Dropdown.List>
+            <Header>Misc</Header>
+            <Nav.Item to="/toolbar" icon="star" label="ToolBar" />
+            <Nav.Item to="/grid" icon="star" label="Grid" />
+            <Nav.Item to="/cards" icon="star" label="Cards" />
+            <Nav.Item to="/buttons" icon="star" label="Buttons" />
+            <Nav.Item to="/table" icon="star" label="Tables" />
+            <Nav.Item to="/form" icon="star" label="Forms" />
+            <Nav.Item to="/accordion" icon="star" label="Accordion" />
+            <Nav.Item to="/modal" icon="star" label="Modal" />
+            <Nav.Item to="/tabs" icon="star" label="Tabs" />
+            <Nav.Item to="/toasts" icon="star" label="Toasts" />
+          </Dropdown.List>
+        </Dropdown>
       </Nav>
     );
   }

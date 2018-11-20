@@ -13,18 +13,18 @@ $tooltip-bg: #262626;
 
 @mixin tooltip-arrow($position: top) {
   $degrees: 0;
-  $height:  6px;
+  $height:  $tooltip-arrow-size;
   $width:   18px;
 
   @if ($position == bottom) {
     $degrees: 180 18 6;
   } @else if ($position == left) {
     $degrees: -90 18 18;
-    $width: 6px;
+    $width: $tooltip-arrow-size;
     $height: 18px;
   } @else if ($position == right) {
     $degrees: 90 6 6;
-    $width: 6px;
+    $width: $tooltip-arrow-size;
     $height: 18px;
   }
 
@@ -46,7 +46,7 @@ $tooltip-bg: #262626;
     color: #efefef;
     font-weight: 300;
     text-align: left;
-    border-radius: 0;
+    border-radius: .33em;
     content: attr(data-ui-tooltip);
     padding: .5em 1em;
     position: absolute;
@@ -104,7 +104,7 @@ $tooltip-bg: #262626;
     &:after {
       bottom: 100%;
       left: 50%;
-      margin-bottom: 5px + $tooltip-arrow-size;
+      margin-bottom: 4px + $tooltip-arrow-size;
       @include transform(translate(-50%, 10px));
       @include transform-origin(top);
     }
@@ -132,7 +132,7 @@ $tooltip-bg: #262626;
     &:after {
       bottom: 100%;
       left: 0;
-      margin-bottom: 5px + $tooltip-arrow-size;
+      margin-bottom: 4px + $tooltip-arrow-size;
       @include transform(translate(0, 10px));
       @include transform-origin(top);
     }
@@ -160,7 +160,7 @@ $tooltip-bg: #262626;
     &:after {
       bottom: 100%;
       right: 0;
-      margin-bottom: 5px + $tooltip-arrow-size;
+      margin-bottom: 4px + $tooltip-arrow-size;
       @include transform(translate(0, 10px));
       @include transform-origin(top);
     }

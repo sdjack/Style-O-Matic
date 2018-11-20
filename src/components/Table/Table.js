@@ -2,7 +2,7 @@
  * @memberof components
  * @namespace Table
  * @author Steven Jackson
-* @scss ../../scss/components/Table
+ * @scss ../../scss/components/Table
  */
 import React, { cloneElement } from "react";
 import cx from "classnames";

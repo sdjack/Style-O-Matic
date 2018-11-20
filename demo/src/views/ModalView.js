@@ -7,35 +7,42 @@
 /* eslint "react/prop-types": [0] */
 
 import React from "react";
-import { Button, Modal, Grid, Title, ToolTip } from "../../../src/index";
+import {
+  Button,
+  Modal,
+  Grid,
+  Header,
+  Section,
+  Footer,
+  ToolTip
+} from "../../../src/index";
 
 class ModalView extends React.Component {
   render() {
     return [
-      <Title renderAs="h1" textAlign="center" key="view-title" sticky>
-        <Title.Content>Modals</Title.Content>
-      </Title>,
+      <Header display="xxl" textAlign="center" key="view-title">
+        <Header.Title>Modals</Header.Title>
+      </Header>,
       <Grid key="grip-panel1">
         <Grid.Row>
           <Grid.Column textAlign="center">
             <Grid panel>
               <Grid.Row>
                 <Grid.Column textAlign="center">
-                  <Title renderAs="h2" textAlign="center">
-                    <Title.Content>Basic Modal</Title.Content>
-                  </Title>
+                  <Header display="xl" textAlign="center">
+                    <Header.Title>Basic Modal</Header.Title>
+                  </Header>
                   <hr />
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign="center">
                   <Button id="modal1-toggle">
-                    DEMO
-                    <ToolTip>Basic Modal</ToolTip>
+                    <ToolTip text="Basic Modal">DEMO</ToolTip>
                     <Modal toggle="modal1-toggle">
-                      <Modal.Header>Modal Header</Modal.Header>
-                      <Modal.Content>Modal Content</Modal.Content>
-                      <Modal.Footer>Modal Footer</Modal.Footer>
+                      <Header>Modal Header</Header>
+                      <Section>Modal Content</Section>
+                      <Footer>Modal Footer</Footer>
                     </Modal>
                   </Button>
                 </Grid.Column>
