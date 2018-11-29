@@ -1,6 +1,6 @@
 const gulp = require("gulp");
 const strip = require("gulp-strip-comments");
-const es = require("event-stream");
+const gulpMerge = require("gulp-merge");
 const $ = require("gulp-load-plugins")();
 const del = require("del");
 const pkg = require("./package.json");
@@ -122,7 +122,7 @@ gulp.task("styles", () =>
 );
 // React Components
 gulp.task("react_compile", cb => {
-  es.merge(
+  gulpMerge(
     componentList.map(componentName =>
       gulp
         .src(`scss/components/${componentName}/${componentName}_React.scss`)
