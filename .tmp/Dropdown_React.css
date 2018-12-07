@@ -52,7 +52,7 @@
   padding: 0;
   margin: 0;
   border: none;
-  color: #3F4348;
+  color: var(--text-color);
   background-color: white;
   list-style-type: none;
   overflow-x: hidden;

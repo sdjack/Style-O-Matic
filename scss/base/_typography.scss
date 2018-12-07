@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  color: $text-color;
+  color: var(--text-color);
   word-wrap: break-word;
   @include typography-hyphens(auto);
 }
@@ -93,7 +93,7 @@ a {
   &:hover,
   &:active,
   &:focus {
-    color: $text-color;
+    color: var(--text-color);
     text-decoration: underline;
   }
 }

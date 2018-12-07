@@ -120,22 +120,24 @@ export default class CoreComponent extends Component {
   };
 
   chainFunction = (...funcs) =>
-    funcs.filter(f => f !== null).reduce((acc, f) => {
-      if (f && typeof f !== "function") {
-        throw new Error(
-          "Invalid Argument Type, must only provide functions, undefined, or null."
-        );
-      }
+    funcs
+      .filter(f => f !== null)
+      .reduce((acc, f) => {
+        if (f && typeof f !== "function") {
+          throw new Error(
+            "Invalid Argument Type, must only provide functions, undefined, or null."
+          );
+        }
 
-      if (!acc) {
-        return f;
-      }
+        if (!acc) {
+          return f;
+        }
 
-      return function chainedFunction(...args) {
-        acc.apply(this, args);
-        f.apply(this, args);
-      };
-    }, null);
+        return function chainedFunction(...args) {
+          acc.apply(this, args);
+          f.apply(this, args);
+        };
+      }, null);
 
   childPrefix = variant =>
     getParentClass(this.props) + (variant ? `-${variant}` : "");

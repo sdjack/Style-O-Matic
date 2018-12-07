@@ -43,7 +43,7 @@
 }
 
 .ui-breadcrumb {
-  color: $text-color;
+  color: var(--text-color);
 	justify-content: start;
   @include text-align-left();
 }

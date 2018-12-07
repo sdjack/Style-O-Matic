@@ -69,7 +69,7 @@
 .ui-user-comment-flip {
   position: relative;
   display: block;
-  width: fit-content;
+  width: auto;
   margin: .4em auto .6em;
   font-weight: 300;
   letter-spacing: 0.02em;
@@ -87,16 +87,24 @@
 }
 
 .ui-user-comment {
-  @include callout(12px, 'left');
+  text-align: left;
+  padding-left: 46px !important;
+  & > q {
+    @include callout(12px, 'left');
+  }
   & > .ui-user-avatar {
-    left: -42px;
+    left: 0;
   }
 }
 
 .ui-user-comment-flip {
-  @include callout(12px, 'right');
+  text-align: right;
+  padding-right: 46px !important;
+  & > q {
+    @include callout(12px, 'right');
+  }
   & > .ui-user-avatar {
-    right: -42px;
+    right: 0;
   }
 }
 

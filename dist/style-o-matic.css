@@ -1,6 +1,6 @@
 /**
  * style-o-matic - Experimental element-based CSS framework with accompanying React.js component library
- * @version v1.2.2
+ * @version v1.2.10
  * @license MIT
  * @author Steven Jackson [sdj.root@gmail.com]
  * @copyright 2017 Steven Jackson. All rights reserved.
@@ -232,7 +232,7 @@ html {
   font-family: var(--text-font); }
 
 body {
-  color: #3F4348;
+  color: var(--text-color);
   word-wrap: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
@@ -365,7 +365,7 @@ a {
   text-decoration: none !important;
   text-decoration: none; }
   a:hover, a:active, a:focus {
-    color: #3F4348;
+    color: var(--text-color);
     text-decoration: underline; }
 
 dt,
@@ -2361,7 +2361,6 @@ input.ui-violet-text:active,
   background: #FFFFFF;
   color: #0F0F0F;
   font-weight: 300;
-  text-align: left;
   border-radius: .4em;
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 6px 12px;
@@ -2384,7 +2383,8 @@ input.ui-violet-text:active,
     border-bottom: 0;
     right: 100%;
     top: 50%;
-    margin-top: -15px; }
+    margin-top: -13.2px;
+    margin-left: -26.6px; }
   .ui-callout-left:after {
     border-right-color: #FFFFFF;
     border-left: 0;
@@ -2400,7 +2400,6 @@ input.ui-violet-text:active,
   background: #FFFFFF;
   color: #0F0F0F;
   font-weight: 300;
-  text-align: left;
   border-radius: .4em;
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 6px 12px;
@@ -2430,7 +2429,8 @@ input.ui-violet-text:active,
     border-top: 0;
     left: 100%;
     top: 50%;
-    margin-top: -14px; }
+    margin-top: -14px;
+    margin-left: 0px; }
 
 .ui-callout-top {
   min-height: 40px;
@@ -2439,7 +2439,6 @@ input.ui-violet-text:active,
   background: #FFFFFF;
   color: #0F0F0F;
   font-weight: 300;
-  text-align: left;
   border-radius: .4em;
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 6px 12px;
@@ -2474,7 +2473,6 @@ input.ui-violet-text:active,
   background: #FFFFFF;
   color: #0F0F0F;
   font-weight: 300;
-  text-align: left;
   border-radius: .4em;
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 6px 12px;
@@ -2536,9 +2534,7 @@ input.ui-violet-text:active,
 .ui-user-comment-flip {
   position: relative;
   display: block;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: auto;
   margin: .4em auto .6em;
   font-weight: 300;
   letter-spacing: 0.02em; }
@@ -2554,86 +2550,92 @@ input.ui-violet-text:active,
     margin: 0; }
 
 .ui-user-comment {
-  min-height: 24px;
-  min-width: 36px;
-  position: relative;
-  background: #FFFFFF;
-  color: #0F0F0F;
-  font-weight: 300;
   text-align: left;
-  border-radius: .4em;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 6px 12px;
-  line-height: 1.4em;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.07), 0px 3px 8px -3px rgba(0, 0, 0, 0.3); }
-  .ui-user-comment:before, .ui-user-comment:after {
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none; }
-  .ui-user-comment:before {
-    border-width: 12px; }
-  .ui-user-comment:after {
-    border-width: 10.2px; }
-  .ui-user-comment:before {
-    border-right-color: rgba(0, 0, 0, 0.2);
-    border-left: 0;
-    border-bottom: 0;
-    right: 100%;
-    top: 50%;
-    margin-top: -9px; }
-  .ui-user-comment:after {
-    border-right-color: #FFFFFF;
-    border-left: 0;
-    border-bottom: 0;
-    right: 100%;
-    top: 50%;
-    margin-top: -8px; }
+  padding-left: 46px !important; }
+  .ui-user-comment > q {
+    min-height: 24px;
+    min-width: 36px;
+    position: relative;
+    background: #FFFFFF;
+    color: #0F0F0F;
+    font-weight: 300;
+    border-radius: .4em;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 6px 12px;
+    line-height: 1.4em;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.07), 0px 3px 8px -3px rgba(0, 0, 0, 0.3); }
+    .ui-user-comment > q:before, .ui-user-comment > q:after {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none; }
+    .ui-user-comment > q:before {
+      border-width: 12px; }
+    .ui-user-comment > q:after {
+      border-width: 10.2px; }
+    .ui-user-comment > q:before {
+      border-right-color: rgba(0, 0, 0, 0.2);
+      border-left: 0;
+      border-bottom: 0;
+      right: 100%;
+      top: 50%;
+      margin-top: -7.92px;
+      margin-left: -15.96px; }
+    .ui-user-comment > q:after {
+      border-right-color: #FFFFFF;
+      border-left: 0;
+      border-bottom: 0;
+      right: 100%;
+      top: 50%;
+      margin-top: -8px; }
   .ui-user-comment > .ui-user-avatar {
-    left: -42px; }
+    left: 0; }
 
 .ui-user-comment-flip {
-  min-height: 24px;
-  min-width: 36px;
-  position: relative;
-  background: #FFFFFF;
-  color: #0F0F0F;
-  font-weight: 300;
-  text-align: left;
-  border-radius: .4em;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 6px 12px;
-  line-height: 1.4em;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.07), 0px 3px 8px -3px rgba(0, 0, 0, 0.3); }
-  .ui-user-comment-flip:before, .ui-user-comment-flip:after {
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none; }
-  .ui-user-comment-flip:before {
-    border-width: 12px; }
-  .ui-user-comment-flip:after {
-    border-width: 10.2px; }
-  .ui-user-comment-flip:before {
-    border-left-color: rgba(0, 0, 0, 0.2);
-    border-right: 0;
-    border-top: 0;
-    left: 100%;
-    top: 50%;
-    margin-top: -9px; }
-  .ui-user-comment-flip:after {
-    border-left-color: #FFFFFF;
-    border-right: 0;
-    border-top: 0;
-    left: 100%;
-    top: 50%;
-    margin-top: -8px; }
+  text-align: right;
+  padding-right: 46px !important; }
+  .ui-user-comment-flip > q {
+    min-height: 24px;
+    min-width: 36px;
+    position: relative;
+    background: #FFFFFF;
+    color: #0F0F0F;
+    font-weight: 300;
+    border-radius: .4em;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 6px 12px;
+    line-height: 1.4em;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.07), 0px 3px 8px -3px rgba(0, 0, 0, 0.3); }
+    .ui-user-comment-flip > q:before, .ui-user-comment-flip > q:after {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none; }
+    .ui-user-comment-flip > q:before {
+      border-width: 12px; }
+    .ui-user-comment-flip > q:after {
+      border-width: 10.2px; }
+    .ui-user-comment-flip > q:before {
+      border-left-color: rgba(0, 0, 0, 0.2);
+      border-right: 0;
+      border-top: 0;
+      left: 100%;
+      top: 50%;
+      margin-top: -9px; }
+    .ui-user-comment-flip > q:after {
+      border-left-color: #FFFFFF;
+      border-right: 0;
+      border-top: 0;
+      left: 100%;
+      top: 50%;
+      margin-top: -8px;
+      margin-left: 0px; }
   .ui-user-comment-flip > .ui-user-avatar {
-    right: -42px; }
+    right: 0; }
 
 .ui-reveal > .ui-reveal-default,
 .ui-reveal > .ui-reveal-hover {

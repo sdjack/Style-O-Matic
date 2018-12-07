@@ -165,7 +165,7 @@
   background: #FFFFFF;
   box-shadow: inset -1px -1px 1px rgba(0, 0, 0, 0.033); }
   .ui-datepicker-day-cell:hover, .ui-datepicker-day-cell:focus {
-    background: #3F4348; }
+    background: var(--text-color); }
   .ui-datepicker-day-cell.ui-datepicker-day-active {
     background: #388E3C; }
 
@@ -248,7 +248,7 @@
 .ui-datepicker-day {
   padding: 0 !important;
   line-height: 40px;
-  color: #3F4348;
+  color: var(--text-color);
   background: transparent !important;
   border: none !important;
   text-align: -webkit-center;

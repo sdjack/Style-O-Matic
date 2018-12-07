@@ -30,7 +30,7 @@
     opacity: 1; }
 
 .ui-breadcrumb {
-  color: #3F4348;
+  color: var(--text-color);
   -webkit-justify-content: start;
       -ms-flex-pack: start;
           justify-content: start;
