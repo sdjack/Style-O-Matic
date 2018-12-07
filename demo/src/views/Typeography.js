@@ -172,7 +172,7 @@ class Typeography extends React.Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column className="ui-divider-right" textAlign="center" cols={7}>
-                  <Header display="s" textAlign="center" className="ui-extra-margin">
+                  <Header textAlign="center" className="ui-extra-margin">
                     <Header.Title>Blockquotes</Header.Title>
                   </Header>
                   <section className="ui-separate-top">
@@ -207,7 +207,7 @@ class Typeography extends React.Component {
                   </section>
                 </Grid.Column>
                 <Grid.Column textAlign="center" cols={5}>
-                  <Header display="s" textAlign="center" className="ui-extra-margin">
+                  <Header textAlign="center" className="ui-extra-margin">
                     <Header.Title>Drop Caps</Header.Title>
                   </Header>
                   <section className="ui-separate-top">

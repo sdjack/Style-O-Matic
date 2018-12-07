@@ -11,7 +11,9 @@ html {
   @if $typography-custom-font {
     font: $typography-font-weight #{$typography-font-size + "%"}/#{$typography-line-height} $typography-custom-font, $typography-font-family;
   } @else {
-    font: $typography-font-weight #{$typography-font-size + "%"}/#{$typography-line-height} $typography-font-family;
+    font-weight: $typography-font-weight;
+    font-size: #{$typography-font-size + "%"}/#{$typography-line-height};
+    font-family: var(--text-font);
   }
 }
 
@@ -170,23 +172,23 @@ address {
 }
 
 .ui-serif {
-  font-family: $heading-font;
+  font-family: var(--heading-font);
 }
 
 .ui-drop-cap {
   text-indent: 0;
   margin-top: 0;
-  @include typography-dropcap(
-    $typography-dropcap-float-position,
-    $typography-dropcap-font-size,
-    $typography-dropcap-font-family,
-    $typography-dropcap-txt-indent,
-    $typography-dropcap-margin,
-    $typography-dropcap-padding,
-    $typography-dropcap-color,
-    $typography-dropcap-line-height,
-    $typography-dropcap-bg
-  );
+  &:first-letter {
+    float: $typography-dropcap-float-position;
+    margin: $typography-dropcap-margin;
+    padding: $typography-dropcap-padding;
+    font-size: $typography-dropcap-font-size;
+    line-height: $typography-dropcap-line-height;
+    text-indent: $typography-dropcap-txt-indent;
+    background: $typography-dropcap-bg;
+    color: $typography-dropcap-color;
+    font-family: var(--heading-font);
+  }
 }
 
 .ui-preface {
